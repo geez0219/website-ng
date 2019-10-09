@@ -1,0 +1,19 @@
+.head-container{
+    overflow:hidden;
+    background-color: #ffffff;
+    border-bottom: 3px solid darkorange;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+nav div div a{
+    color: rgb(38, 56, 66);
+    background-color: inherit;
+    padding: 2em 2em;
+}
+
+nav div div a:hover{
+    color:#555557;
+    font-weight:bold;
+}
