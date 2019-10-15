@@ -11,11 +11,12 @@ Args:
 
 Returns:
     model: model(s) compiled by FastEstimator***
+```
 Network
 ```python
 Network(ops)
 A class representing network operations for FastEstimator model training.
-
+```
 Args:
     ops : Specifies the series of operations for training modelload_epoch
 ```python
