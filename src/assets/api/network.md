@@ -1,4 +1,3 @@
-build
 ```python
 build(model_def, model_name, optimizer, loss_name)
 build keras model instance in FastEstimator
