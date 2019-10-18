@@ -1,0 +1,12 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" opened>
+    <ul>
+      <li *ngFor="let api of apiList">
+        <a (click)="updateCurrentAPI(api)">{{ api }}</a>
+      </li>
+    </ul>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <markdown [data]="currentAPI"></markdown>
+  </mat-sidenav-content>
+</mat-sidenav-container>

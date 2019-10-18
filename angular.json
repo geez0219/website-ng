@@ -24,15 +24,14 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.css",
-              
               "node_modules/prismjs/themes/prism-okaidia.css",
               "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css",
               "node_modules/prismjs/plugins/line-highlight/prism-line-highlight.css"
             ],
             "scripts": [
               "node_modules/marked/lib/marked.js",
-              
               "node_modules/prismjs/prism.js",
               "node_modules/prismjs/components/prism-python.min.js",
               "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js",
@@ -95,15 +94,14 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.css",
-
               "node_modules/prismjs/themes/prism-okaidia.css",
               "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css",
               "node_modules/prismjs/plugins/line-highlight/prism-line-highlight.css"
             ],
             "scripts": [
               "node_modules/marked/lib/marked.js",
-              
               "node_modules/prismjs/prism.js",
               "node_modules/prismjs/components/prism-python.min.js",
               "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js",
@@ -137,6 +135,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "fastestimator-web"
 }

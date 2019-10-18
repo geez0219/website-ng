@@ -12,6 +12,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { GettingStartedComponent } from './getting-started/getting-started.component';
 import { TutorialComponent } from './tutorial/tutorial.component';
 import { ExamplesComponent } from './examples/examples.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from  '@angular/material';
+import { ApiComponent } from './api/api.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,8 @@ import { ExamplesComponent } from './examples/examples.component';
     NavbarComponent,
     GettingStartedComponent,
     TutorialComponent,
-    ExamplesComponent
+    ExamplesComponent,
+    ApiComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +34,13 @@ import { ExamplesComponent } from './examples/examples.component';
 
     NgbModule,
     MarkdownModule.forRoot(),
+    BrowserAnimationsModule,
+
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatButtonModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
