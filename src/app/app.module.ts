@@ -15,6 +15,7 @@ import { ExamplesComponent } from './examples/examples.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from  '@angular/material';
+import { ApiComponent } from './api/api.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatBu
     NavbarComponent,
     GettingStartedComponent,
     TutorialComponent,
-    ExamplesComponent
+    ExamplesComponent,
+    ApiComponent
   ],
   imports: [
     BrowserModule,
