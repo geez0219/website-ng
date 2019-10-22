@@ -16,18 +16,19 @@ export class TutorialComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.getTutorialSummary();
+    this.getTutorialStructure();
     this.currentSelection = 'assets/tutorial/t01_basic_usage.md';
     this.getSelectedTutorialText();
   }
 
-  getTutorialSummary() {
+  getTutorialStructure() {
     this.http.get('assets/tutorial/structure.json', {responseType: 'text'}).subscribe(data => {
       this.tutorialList = <Tutorial[]>JSON.parse(data);
 
       console.log(this.tutorialList);
     });
   }
+  
   updateCurrentTutorial(tutorial: Tutorial) {
     this.currentSelection = 'assets/tutorial/' + tutorial.name;
 

@@ -10,18 +10,40 @@ export class ApiComponent implements OnInit {
 
   apiList: string[];
   currentSelection: string;
-  currentAPI: string;
+  currentAPIText: string;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
+    // this.getAPIStructure();
     this.apiList = ['network', 'pipeline'];
     this.currentSelection = 'assets/api/network.md';
     
     this.getAPIText();
 
-    console.log(this.currentAPI);
+    console.log(this.currentAPIText);
   }
+/*
+  getAPIStructure() {
+    this.http.get('assets/api/structure.json', {responseType: 'text'}).subscribe(data => {
+      this.apiList = <API[]>JSON.parse(data);
+
+      console.log(this.apiList);
+    });
+  }
+  
+  updateCurrentAPI(tutorial: API) {
+    this.currentSelection = 'assets/tutorial/' + tutorial.name;
+
+    this.getSelectedAPIText();
+  }
+
+  getSelectedAPIText() {
+    this.http.get(this.currentSelection, {responseType: 'text'}).subscribe(data => {
+      this.currentAPIText = data;
+    });
+  }
+*/
 
   updateCurrentAPI(api: string) {
     this.currentSelection = 'assets/api/' + api + '.md';
@@ -31,7 +53,7 @@ export class ApiComponent implements OnInit {
 
   getAPIText() {
     this.http.get(this.currentSelection, {responseType: 'text'}).subscribe(data => {
-      this.currentAPI = data;
+      this.currentAPIText = data;
     });
   }
 
