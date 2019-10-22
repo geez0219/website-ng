@@ -1,0 +1,42 @@
+[
+    {
+        "name": "t01_basic_usage.md",
+        "displayName": "Tutorial 1: Getting started with FastEstimator"
+    },
+    {
+        "name": "t02_using_data_in_disk.md",
+        "displayName": "Tutorial 2: Dealing with large datasets with FastEstimator"
+    },
+    {
+        "name": "t03_operator.md",
+        "displayName": "Tutorial 3: Operator"
+    },
+    {
+        "name": "t04_pipeline_debug_benchmark.md",
+        "displayName": "Tutorial 4: Pipeline debugging and benchmarking"
+    },
+    {
+        "name": "t05_trace_debug_training.md",
+        "displayName": "Tutorial 5: Trace - training control and debugging"
+    },
+    {
+        "name": "t06_TensorFilter_imbalanced_training.md",
+        "displayName": "Tutorial 6:  Dealing with imbalanced dataset using TensorFilter"
+    },
+    {
+        "name": "t07_expand_data_dimension.md",
+        "displayName": "Tutorial 7: Expanding data dimension in RecordWriter and Pipeline"
+    },
+    {
+        "name": "t08_scheduler_progressive_training.md",
+        "displayName": "Tutorial 8: Changing hyperparameters during training with Scheduler"
+    },
+    {
+        "name": "t09_learning_rate_controller.md",
+        "displayName": "Tutorial 9: Learning Rate Controller"
+    },
+    {
+        "name": "t10_unpaired_dataset.md",
+        "displayName": "Tutorial 10: Dataset with unpaired features"
+    }
+]
