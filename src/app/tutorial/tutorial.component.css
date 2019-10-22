@@ -1,0 +1,12 @@
+.sidebar-tutorial {
+    width: 20rem;
+}
+
+li {
+    cursor: pointer;
+}
+
+div:hover{
+    color:#555557;
+    font-weight:bold;
+}
