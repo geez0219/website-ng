@@ -1,5 +1,5 @@
 <mat-sidenav-container class="example-container">
-  <mat-sidenav mode="side" opened [fixedInViewport]="true" [fixedTopGap]="125">
+  <mat-sidenav mode="side" class="sidebar-api" opened [fixedInViewport]="true" [fixedTopGap]="125">
     
     
     <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
@@ -8,7 +8,7 @@
           <li class="mat-tree-node">
             <!-- use a disabled button to provide padding for tree leaf -->
             <button mat-icon-button disabled></button>
-            <div (click)="updateCurrentAPI(node)">{{node.displayName}}</div>
+            <div class="child" (click)="updateCurrentAPI(node)">{{node.displayName}}</div>
           </li>
         </mat-tree-node>
         <!-- This is the tree node template for expandable nodes -->
@@ -21,7 +21,7 @@
                   {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
                 </mat-icon>
               </button>
-              <div (click)="updateCurrentAPI(node)">{{node.displayName}}</div>
+              <div class="parent">{{node.displayName}}</div>
             </div>
             <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">
               <ng-container matTreeNodeOutlet></ng-container>
