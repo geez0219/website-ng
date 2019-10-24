@@ -6,7 +6,7 @@ A class representing network operations for FastEstimator model training.
 
 #### Args:
 
-* ** ops ** :  Specifies the series of operations for training model
+* **ops** :  Specifies the series of operations for training model
 
 ### load_epoch
 ```python
