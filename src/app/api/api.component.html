@@ -20,8 +20,8 @@
                 <mat-icon class="mat-icon-rtl-mirror">
                   {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
                 </mat-icon>
+                {{node.displayName}}
               </button>
-              <div class="parent">{{node.displayName}}</div>
             </div>
             <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">
               <ng-container matTreeNodeOutlet></ng-container>
@@ -32,6 +32,8 @@
 
 
   </mat-sidenav>
+
+  
   <mat-sidenav-content>
     <markdown [data]="currentAPIText"></markdown>
   </mat-sidenav-content>
