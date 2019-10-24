@@ -8,7 +8,6 @@ import { Tutorial } from '../tutorial';
   styleUrls: ['./tutorial.component.css']
 })
 export class TutorialComponent implements OnInit {
-  apiList: string[];
   currentSelection: string;
   currentTutorialText: string;
   tutorialList: Tutorial[];
