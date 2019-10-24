@@ -1,7 +1,7 @@
 {
     "name": ".",
     "type": "directory",
-    "displayName": "fe.",
+    "displayName": "fe",
     "children": [
         {
             "name": "summary",
