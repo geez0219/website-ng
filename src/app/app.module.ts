@@ -12,10 +12,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { GettingStartedComponent } from './getting-started/getting-started.component';
 import { TutorialComponent } from './tutorial/tutorial.component';
 import { ExamplesComponent } from './examples/examples.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from  '@angular/material';
 import { ApiComponent } from './api/api.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from  '@angular/material';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatTreeModule } from '@angular/material/tree';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { ApiComponent } from './api/api.component';
     MatListModule,
     MatButtonModule,
     MatIconModule,
+    MatNativeDateModule,
+    MatTreeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
