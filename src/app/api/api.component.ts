@@ -1,37 +1,52 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http'; 
 
+import { NestedTreeControl } from '@angular/cdk/tree';
+import { MatTreeNestedDataSource } from '@angular/material/tree';
+
+import { API } from '../api';
+
 @Component({
   selector: 'app-api',
   templateUrl: './api.component.html',
   styleUrls: ['./api.component.css']
 })
 export class ApiComponent implements OnInit {
-
-  apiList: string[];
+  apiList: API;
   currentSelection: string;
-  currentAPI: string;
+  currentAPIText: string;
+
+  treeControl = new NestedTreeControl<API>(node => node.children);
+  dataSource = new MatTreeNestedDataSource<API>();
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.apiList = ['network', 'pipeline'];
-    this.currentSelection = 'assets/api/network.md';
-    
-    this.getAPIText();
-
-    console.log(this.currentAPI);
+    this.getAPIStructure();
+    this.currentSelection = 'assets/api/Pipeline.md';
+    this.getSelectedAPIText();
   }
 
-  updateCurrentAPI(api: string) {
-    this.currentSelection = 'assets/api/' + api + '.md';
+  getAPIStructure() {
+    this.http.get('assets/api/structure.json', {responseType: 'text'}).subscribe(data => {
+      this.apiList = <API>JSON.parse(data);
 
-    this.getAPIText();
+      this.dataSource.data = this.apiList.children;
+      // console.log(this.apiList);
+    });
+  }
+  
+  hasChild = (_: number, node: API) => !!node.children && node.children.length > 0;
+
+  updateCurrentAPI(api: API) {
+    this.currentSelection = 'assets/api/' + api.name;
+
+    this.getSelectedAPIText();
   }
 
-  getAPIText() {
+  getSelectedAPIText() {
     this.http.get(this.currentSelection, {responseType: 'text'}).subscribe(data => {
-      this.currentAPI = data;
+      this.currentAPIText = data;
     });
   }
 

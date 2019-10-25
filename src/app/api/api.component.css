@@ -1,0 +1,23 @@
+.child:hover{
+    color:#555557;
+    font-weight:bold;
+}
+
+.child {
+    cursor: pointer;
+}
+
+.example-tree-invisible {
+    display: none;
+}
+
+.example-tree ul,
+.example-tree li {
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+}
+
+.sidebar-api {
+    width: 20rem;
+}
