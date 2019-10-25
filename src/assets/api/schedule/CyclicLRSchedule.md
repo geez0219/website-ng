@@ -6,9 +6,9 @@ A class representing cyclic learning rate scheduler
 
 #### Args:
 
-* ** num_cycle ** :  The number of cycles to be used by the learning rate scheduler
-* ** cycle_multiplier ** :  Multiplier of the next cycle length with respect to previous cycle length
-* ** decrease_method ** :  The decay method to be used with cyclic learning rate scheduler
+* **num_cycle** :  The number of cycles to be used by the learning rate scheduler
+* **cycle_multiplier** :  Multiplier of the next cycle length with respect to previous cycle length
+* **decrease_method** :  The decay method to be used with cyclic learning rate scheduler
 
 ### lr_cosine_decay
 ```python
@@ -18,11 +18,11 @@ This function applies cosine decay to the learning rate
 
 #### Args:
 
-* ** current_step ** :  Current step of the training epoch
-* ** lr_start ** :  Learning rate from where it will start decaying
-* ** lr_end ** :  Learning rate till which it will decay
-* ** step_start ** :  Beginning step in the cycle of the learning rate scheduler
-* ** step_end ** :  Last step in the cycle of the learning rate schedular
+* **current_step** :  Current step of the training epoch
+* **lr_start** :  Learning rate from where it will start decaying
+* **lr_end** :  Learning rate till which it will decay
+* **step_start** :  Beginning step in the cycle of the learning rate scheduler
+* **step_end** :  Last step in the cycle of the learning rate schedular
 
 #### Returns:
             Decayed learning rate        
@@ -35,11 +35,11 @@ This function applies linear decay to the learning rate
 
 #### Args:
 
-* ** current_step ** :  Current step of the training epoch
-* ** lr_start ** :  Learning rate from where it will start decaying
-* ** lr_end ** :  Learning rate till which it will decay
-* ** step_start ** :  Beginning step in the cycle of the learning rate scheduler
-* ** step_end ** :  Last step in the cycle of the learning rate schedular
+* **current_step** :  Current step of the training epoch
+* **lr_start** :  Learning rate from where it will start decaying
+* **lr_end** :  Learning rate till which it will decay
+* **step_start** :  Beginning step in the cycle of the learning rate scheduler
+* **step_end** :  Last step in the cycle of the learning rate schedular
 
 #### Returns:
             Decayed learning rate        
@@ -52,8 +52,8 @@ The function computes the learning rate decay ratio using cyclic learning rate
 
 #### Args:
 
-* ** current_step_or_epoch ** :  Current training step or epoch
-* ** lr ** :  Current learning rate
+* **current_step_or_epoch** :  Current training step or epoch
+* **lr** :  Current learning rate
 
 #### Returns:
             Learning rate ratio        

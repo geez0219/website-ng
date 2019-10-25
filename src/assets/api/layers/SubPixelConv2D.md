@@ -6,8 +6,8 @@ Class for upsampling using subpixel convolution (https://arxiv.org/pdf/1609.0515
 
 #### Args:
 
-* ** upsample_factor (int, optional) ** :  [description]. Defaults to 2.
-* ** nchannels (int, optional) ** :  [description]. Defaults to 128.
+* **upsample_factor (int, optional)** :  [description]. Defaults to 2.
+* **nchannels (int, optional)** :  [description]. Defaults to 128.
 
 ### compute_output_shape
 ```python
@@ -23,4 +23,4 @@ Get JSON config for params
 
 #### Returns:
 
-* ** [dict] ** :  params defining subpixel convolution layer        
+* **[dict]** :  params defining subpixel convolution layer        

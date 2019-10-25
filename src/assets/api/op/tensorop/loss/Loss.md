@@ -12,7 +12,7 @@ A method to ensure that either the inputs array or individual input arguments ar
 
 #### Args:
 
-* ** inputs ** :  None or a tuple/list of arguments
+* **inputs** :  None or a tuple/list of arguments
  *args :  a tuple of arguments or Nones
 
 #### Returns:

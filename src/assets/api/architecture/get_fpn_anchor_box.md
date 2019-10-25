@@ -8,8 +8,8 @@ Returns the anchor boxes of the Feature Pyramid Net.
 
 #### Args:
 
-* ** input_shape (tuple) ** :  shape of input image.
+* **input_shape (tuple)** :  shape of input image.
 
 #### Returns:
 
-* ** array ** :  numpy array with all anchor boxes.
+* **array** :  numpy array with all anchor boxes.

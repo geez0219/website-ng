@@ -12,8 +12,8 @@ Normalizes the data
 
 #### Args:
 
-* ** data ** :  Data to be normalized
-* ** state ** :  A dictionary containing background information such as 'mode'
+* **data** :  Data to be normalized
+* **state** :  A dictionary containing background information such as 'mode'
 
 #### Returns:
             Normalized numpy array        

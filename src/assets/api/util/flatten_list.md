@@ -8,8 +8,8 @@ Return a flattened list.
 
 #### Args:
 
-* ** input_list (list) ** :  A list that might be nested.
+* **input_list (list)** :  A list that might be nested.
 
 #### Returns:
 
-* ** list ** :  A list that is not nested.
+* **list** :  A list that is not nested.

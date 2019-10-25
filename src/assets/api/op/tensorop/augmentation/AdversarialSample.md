@@ -6,10 +6,10 @@ This class is to be used to train the model more robust against adversarial atta
 
 #### Args:
 
-* ** inputs ** :  key of the input to be mixed up
-* ** outputs ** :  key to store the mixed-up input
-* ** mode ** :  what mode to execute in.
-* ** epsilon ** :  epsilon value to perturb the input to create adversarial examples
+* **inputs** :  key of the input to be mixed up
+* **outputs** :  key to store the mixed-up input
+* **mode** :  what mode to execute in.
+* **epsilon** :  epsilon value to perturb the input to create adversarial examples
 
 ### forward
 ```python
@@ -19,8 +19,8 @@ forward(self, data, state)
 
 #### Args:
 
-* ** data ** :  Batch data to be augmented
-* ** state ** :  Information about the current execution context.
+* **data** :  Batch data to be augmented
+* **state** :  Information about the current execution context.
 
 #### Returns:
             Adversarial example created from perturbing the input data        

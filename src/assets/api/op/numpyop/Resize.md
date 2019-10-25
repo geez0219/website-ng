@@ -6,9 +6,9 @@ Resize image.
 
 #### Args:
 
-* ** target_size (tuple) ** :  Target image size in (height, width) format.
-* ** resize_method (string) ** :  `bilinear`, `nearest`, `area`, and `lanczos4` are available.
-* ** keep_ratio (bool) ** :  If `True`, the resulting image will be padded to keep the original aspect ratio.
+* **target_size (tuple)** :  Target image size in (height, width) format.
+* **resize_method (string)** :  `bilinear`, `nearest`, `area`, and `lanczos4` are available.
+* **keep_ratio (bool)** :  If `True`, the resulting image will be padded to keep the original aspect ratio.
 
 #### Returns:
     Resized `np.ndarray`.

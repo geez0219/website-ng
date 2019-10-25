@@ -6,7 +6,7 @@ Preprocessing class for reshaping the data
 
 #### Args:
 
-* ** shape ** :  target shape
+* **shape** :  target shape
 
 ### forward
 ```python
@@ -16,8 +16,8 @@ Reshapes data array
 
 #### Args:
 
-* ** data ** :  Data to be reshaped
-* ** state ** :  A dictionary containing background information such as 'mode'
+* **data** :  Data to be reshaped
+* **state** :  A dictionary containing background information such as 'mode'
 
 #### Returns:
             Reshaped array        

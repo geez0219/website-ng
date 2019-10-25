@@ -16,8 +16,8 @@ load_epoch(self, epoch, mode)
 
 #### Args:
 
-* ** epoch ** :  Training epoch number
-* ** mode ** :  'train' or 'eval'
+* **epoch** :  Training epoch number
+* **mode** :  'train' or 'eval'
 
 #### Returns:
              list of the models, epoch losses        
@@ -36,11 +36,11 @@ Function that calculates the loss and gradients for curent step in training. It 
 
 #### Args:
 
-* ** batch ** :  dictionary that contains batch data and predictions from last epoch
-* ** ops ** :  Model operation dictionary that contains 'Inputs','Mode', and 'Outputs'
-* ** model_list ** :  List of the models
-* ** epoch_losses ** :  List of epoch losses.
-* ** state ** :  run time dictionary that contains following keys 'mode' and 'batch size'
+* **batch** :  dictionary that contains batch data and predictions from last epoch
+* **ops** :  Model operation dictionary that contains 'Inputs','Mode', and 'Outputs'
+* **model_list** :  List of the models
+* **epoch_losses** :  List of epoch losses.
+* **state** :  run time dictionary that contains following keys 'mode' and 'batch size'
 
 #### Returns:
             dictionary containing the predictions of current epoch        

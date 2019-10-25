@@ -8,7 +8,7 @@ Return the tensorflow datatype from string.
 
 #### Args:
 
-* ** datatype ** :  String of datatype
+* **datatype** :  String of datatype
 
 #### Returns:
     Tensor data type

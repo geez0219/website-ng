@@ -12,8 +12,8 @@ Standardizes the data tensor.
 
 #### Args:
 
-* ** data ** :  Data to be standardized.
-* ** state ** :  Information about the current execution context.
+* **data** :  Data to be standardized.
+* **state** :  Information about the current execution context.
 
 #### Returns:
             Tensor containing standardized data.        

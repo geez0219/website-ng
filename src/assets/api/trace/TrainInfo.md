@@ -6,7 +6,7 @@ Essential training information for logging during training. Please don't add thi
 
 #### Args:
 
-* ** log_steps (int) ** :  Interval steps of logging
+* **log_steps (int)** :  Interval steps of logging
 
 ### on_batch_begin
 ```python
@@ -16,7 +16,7 @@ Runs at the beginning of every batch of the mode.
 
 #### Args:
 
-* ** state (ChainMap) ** :  dictionary of run time that has the following key(s)
+* **state (ChainMap)** :  dictionary of run time that has the following key(s)
  * "mode" (str) :  current run time mode, can be "train", "eval" or "test"
  * "epoch" (int) :  current epoch index starting from 0
  * "train_step" (int) :  current global training step starting from 0

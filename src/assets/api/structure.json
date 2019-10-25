@@ -1,1039 +1,842 @@
-{
-    "name": ".",
-    "type": "directory",
-    "displayName": "fe",
-    "children": [
-        {
-            "name": "summary",
-            "type": "directory",
-            "displayName": "fe.summary",
-            "children": [
-                {
-                    "name": "summary/Summary.md",
-                    "type": "file",
-                    "displayName": "Summary"
-                },
-                {
-                    "name": "summary/logs",
-                    "type": "directory",
-                    "displayName": "fe.logs",
-                    "children": [
-                        {
-                            "name": "summary/logs/parse_log_files.md",
-                            "type": "file",
-                            "displayName": "parse_log_files"
-                        },
-                        {
-                            "name": "summary/logs/plot_logs.md",
-                            "type": "file",
-                            "displayName": "plot_logs"
-                        },
-                        {
-                            "name": "summary/logs/parse_log_dir.md",
-                            "type": "file",
-                            "displayName": "parse_log_dir"
-                        },
-                        {
-                            "name": "summary/logs/visualize_logs.md",
-                            "type": "file",
-                            "displayName": "visualize_logs"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "Pipeline.md",
-            "type": "file",
-            "displayName": "Pipeline"
-        },
-        {
-            "name": "dataset",
-            "type": "directory",
-            "displayName": "fe.dataset",
-            "children": [
-                {
-                    "name": "dataset/load_data.md",
-                    "type": "file",
-                    "displayName": "load_data"
-                }
-            ]
-        },
-        {
-            "name": "xai",
-            "type": "directory",
-            "displayName": "fe.xai",
-            "children": [
-                {
-                    "name": "xai/UmapPlotter.md",
-                    "type": "file",
-                    "displayName": "UmapPlotter"
-                },
-                {
-                    "name": "xai/visualize_gradcam.md",
-                    "type": "file",
-                    "displayName": "visualize_gradcam"
-                },
-                {
-                    "name": "xai/generate_caricatures.md",
-                    "type": "file",
-                    "displayName": "generate_caricatures"
-                },
-                {
-                    "name": "xai/plot_caricature.md",
-                    "type": "file",
-                    "displayName": "plot_caricature"
-                },
-                {
-                    "name": "xai/visualize_caricature.md",
-                    "type": "file",
-                    "displayName": "visualize_caricature"
-                },
-                {
-                    "name": "xai/plot_gradcam.md",
-                    "type": "file",
-                    "displayName": "plot_gradcam"
-                },
-                {
-                    "name": "xai/plot_saliency.md",
-                    "type": "file",
-                    "displayName": "plot_saliency"
-                },
-                {
-                    "name": "xai/visualize_saliency.md",
-                    "type": "file",
-                    "displayName": "visualize_saliency"
-                },
-                {
-                    "name": "xai/FEGradCAM.md",
-                    "type": "file",
-                    "displayName": "FEGradCAM"
-                },
-                {
-                    "name": "xai/util",
-                    "type": "directory",
-                    "displayName": "fe.util",
-                    "children": [
-                        {
-                            "name": "xai/util/show_text.md",
-                            "type": "file",
-                            "displayName": "show_text"
-                        },
-                        {
-                            "name": "xai/util/show_gray_image.md",
-                            "type": "file",
-                            "displayName": "show_gray_image"
-                        },
-                        {
-                            "name": "xai/util/fig_to_img.md",
-                            "type": "file",
-                            "displayName": "fig_to_img"
-                        },
-                        {
-                            "name": "xai/util/SaliencyMask.md",
-                            "type": "file",
-                            "displayName": "SaliencyMask"
-                        },
-                        {
-                            "name": "xai/util/FileCache.md",
-                            "type": "file",
-                            "displayName": "FileCache"
-                        },
-                        {
-                            "name": "xai/util/Evaluator.md",
-                            "type": "file",
-                            "displayName": "Evaluator"
-                        },
-                        {
-                            "name": "xai/util/IntegratedGradients.md",
-                            "type": "file",
-                            "displayName": "IntegratedGradients"
-                        },
-                        {
-                            "name": "xai/util/GradientSaliency.md",
-                            "type": "file",
-                            "displayName": "GradientSaliency"
-                        },
-                        {
-                            "name": "xai/util/rfft2d_freqs.md",
-                            "type": "file",
-                            "displayName": "rfft2d_freqs"
-                        },
-                        {
-                            "name": "xai/util/show_image.md",
-                            "type": "file",
-                            "displayName": "show_image"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "Network.md",
-            "type": "file",
-            "displayName": "Network"
-        },
-        {
-            "name": "build.md",
-            "type": "file",
-            "displayName": "build"
-        },
-        {
-            "name": "layers",
-            "type": "directory",
-            "displayName": "fe.layers",
-            "children": [
-                {
-                    "name": "layers/ApplyBias.md",
-                    "type": "file",
-                    "displayName": "ApplyBias"
-                },
-                {
-                    "name": "layers/InstanceNormalization.md",
-                    "type": "file",
-                    "displayName": "InstanceNormalization"
-                },
-                {
-                    "name": "layers/PixelNormalization.md",
-                    "type": "file",
-                    "displayName": "PixelNormalization"
-                },
-                {
-                    "name": "layers/EqualizedLRDense.md",
-                    "type": "file",
-                    "displayName": "EqualizedLRDense"
-                },
-                {
-                    "name": "layers/ReflectionPadding2D.md",
-                    "type": "file",
-                    "displayName": "ReflectionPadding2D"
-                },
-                {
-                    "name": "layers/SubPixelConv2D.md",
-                    "type": "file",
-                    "displayName": "SubPixelConv2D"
-                },
-                {
-                    "name": "layers/EqualizedLRConv2D.md",
-                    "type": "file",
-                    "displayName": "EqualizedLRConv2D"
-                },
-                {
-                    "name": "layers/FadeIn.md",
-                    "type": "file",
-                    "displayName": "FadeIn"
-                },
-                {
-                    "name": "layers/MiniBatchStd.md",
-                    "type": "file",
-                    "displayName": "MiniBatchStd"
-                }
-            ]
-        },
-        {
-            "name": "Estimator.md",
-            "type": "file",
-            "displayName": "Estimator"
-        },
-        {
-            "name": "cli",
-            "type": "directory",
-            "displayName": "fe.cli",
-            "children": [
-                {
-                    "name": "cli/parse_log_files.md",
-                    "type": "file",
-                    "displayName": "parse_log_files"
-                },
-                {
-                    "name": "cli/SaveAction.md",
-                    "type": "file",
-                    "displayName": "SaveAction"
-                },
-                {
-                    "name": "cli/umap.md",
-                    "type": "file",
-                    "displayName": "umap"
-                },
-                {
-                    "name": "cli/configure_predict_parser.md",
-                    "type": "file",
-                    "displayName": "configure_predict_parser"
-                },
-                {
-                    "name": "cli/load_and_caricature.md",
-                    "type": "file",
-                    "displayName": "load_and_caricature"
-                },
-                {
-                    "name": "cli/configure_saliency_parser.md",
-                    "type": "file",
-                    "displayName": "configure_saliency_parser"
-                },
-                {
-                    "name": "cli/gradcam.md",
-                    "type": "file",
-                    "displayName": "gradcam"
-                },
-                {
-                    "name": "cli/parse_cli_to_dictionary.md",
-                    "type": "file",
-                    "displayName": "parse_cli_to_dictionary"
-                },
-                {
-                    "name": "cli/load_and_saliency.md",
-                    "type": "file",
-                    "displayName": "load_and_saliency"
-                },
-                {
-                    "name": "cli/configure_log_parser.md",
-                    "type": "file",
-                    "displayName": "configure_log_parser"
-                },
-                {
-                    "name": "cli/load_and_gradcam.md",
-                    "type": "file",
-                    "displayName": "load_and_gradcam"
-                },
-                {
-                    "name": "cli/parse_log_dir.md",
-                    "type": "file",
-                    "displayName": "parse_log_dir"
-                },
-                {
-                    "name": "cli/logs.md",
-                    "type": "file",
-                    "displayName": "logs"
-                },
-                {
-                    "name": "cli/configure_umap_parser.md",
-                    "type": "file",
-                    "displayName": "configure_umap_parser"
-                },
-                {
-                    "name": "cli/train.md",
-                    "type": "file",
-                    "displayName": "train"
-                },
-                {
-                    "name": "cli/predict.md",
-                    "type": "file",
-                    "displayName": "predict"
-                },
-                {
-                    "name": "cli/configure_visualization_parser.md",
-                    "type": "file",
-                    "displayName": "configure_visualization_parser"
-                },
-                {
-                    "name": "cli/configure_caricature_parser.md",
-                    "type": "file",
-                    "displayName": "configure_caricature_parser"
-                },
-                {
-                    "name": "cli/configure_train_parser.md",
-                    "type": "file",
-                    "displayName": "configure_train_parser"
-                },
-                {
-                    "name": "cli/draw.md",
-                    "type": "file",
-                    "displayName": "draw"
-                },
-                {
-                    "name": "cli/configure_gradcam_parser.md",
-                    "type": "file",
-                    "displayName": "configure_gradcam_parser"
-                },
-                {
-                    "name": "cli/caricature.md",
-                    "type": "file",
-                    "displayName": "caricature"
-                },
-                {
-                    "name": "cli/load_and_umap.md",
-                    "type": "file",
-                    "displayName": "load_and_umap"
-                },
-                {
-                    "name": "cli/saliency.md",
-                    "type": "file",
-                    "displayName": "saliency"
-                }
-            ]
-        },
-        {
-            "name": "trace",
-            "type": "directory",
-            "displayName": "fe.trace",
-            "children": [
-                {
-                    "name": "trace/metric",
-                    "type": "directory",
-                    "displayName": "fe.metric",
-                    "children": [
-                        {
-                            "name": "trace/metric/Precision.md",
-                            "type": "file",
-                            "displayName": "Precision"
-                        },
-                        {
-                            "name": "trace/metric/Dice.md",
-                            "type": "file",
-                            "displayName": "Dice"
-                        },
-                        {
-                            "name": "trace/metric/ConfusionMatrix.md",
-                            "type": "file",
-                            "displayName": "ConfusionMatrix"
-                        },
-                        {
-                            "name": "trace/metric/Recall.md",
-                            "type": "file",
-                            "displayName": "Recall"
-                        },
-                        {
-                            "name": "trace/metric/F1Score.md",
-                            "type": "file",
-                            "displayName": "F1Score"
-                        },
-                        {
-                            "name": "trace/metric/Accuracy.md",
-                            "type": "file",
-                            "displayName": "Accuracy"
-                        }
-                    ]
-                },
-                {
-                    "name": "trace/io",
-                    "type": "directory",
-                    "displayName": "fe.io",
-                    "children": [
-                        {
-                            "name": "trace/io/XAiTrace.md",
-                            "type": "file",
-                            "displayName": "XAiTrace"
-                        },
-                        {
-                            "name": "trace/io/GradCam.md",
-                            "type": "file",
-                            "displayName": "GradCam"
-                        },
-                        {
-                            "name": "trace/io/Saliency.md",
-                            "type": "file",
-                            "displayName": "Saliency"
-                        },
-                        {
-                            "name": "trace/io/Logger.md",
-                            "type": "file",
-                            "displayName": "Logger"
-                        },
-                        {
-                            "name": "trace/io/TensorBoard.md",
-                            "type": "file",
-                            "displayName": "TensorBoard"
-                        },
-                        {
-                            "name": "trace/io/Caricature.md",
-                            "type": "file",
-                            "displayName": "Caricature"
-                        },
-                        {
-                            "name": "trace/io/ModelSaver.md",
-                            "type": "file",
-                            "displayName": "ModelSaver"
-                        },
-                        {
-                            "name": "trace/io/CSVLogger.md",
-                            "type": "file",
-                            "displayName": "CSVLogger"
-                        },
-                        {
-                            "name": "trace/io/UMap.md",
-                            "type": "file",
-                            "displayName": "UMap"
-                        },
-                        {
-                            "name": "trace/io/SlackNotification.md",
-                            "type": "file",
-                            "displayName": "SlackNotification"
-                        },
-                        {
-                            "name": "trace/io/VisLogger.md",
-                            "type": "file",
-                            "displayName": "VisLogger"
-                        }
-                    ]
-                },
-                {
-                    "name": "trace/adapt",
-                    "type": "directory",
-                    "displayName": "fe.adapt",
-                    "children": [
-                        {
-                            "name": "trace/adapt/LRController.md",
-                            "type": "file",
-                            "displayName": "LRController"
-                        },
-                        {
-                            "name": "trace/adapt/TerminateOnNaN.md",
-                            "type": "file",
-                            "displayName": "TerminateOnNaN"
-                        },
-                        {
-                            "name": "trace/adapt/EarlyStopping.md",
-                            "type": "file",
-                            "displayName": "EarlyStopping"
-                        }
-                    ]
-                },
-                {
-                    "name": "trace/MonitorLoss.md",
-                    "type": "file",
-                    "displayName": "MonitorLoss"
-                },
-                {
-                    "name": "trace/TrainInfo.md",
-                    "type": "file",
-                    "displayName": "TrainInfo"
-                },
-                {
-                    "name": "trace/Trace.md",
-                    "type": "file",
-                    "displayName": "Trace"
-                }
-            ]
-        },
-        {
-            "name": "op",
-            "type": "directory",
-            "displayName": "fe.op",
-            "children": [
-                {
-                    "name": "op/get_op_from_mode.md",
-                    "type": "file",
-                    "displayName": "get_op_from_mode"
-                },
-                {
-                    "name": "op/numpyop",
-                    "type": "directory",
-                    "displayName": "fe.numpyop",
-                    "children": [
-                        {
-                            "name": "op/numpyop/Zscore.md",
-                            "type": "file",
-                            "displayName": "Zscore"
-                        },
-                        {
-                            "name": "op/numpyop/MatReader.md",
-                            "type": "file",
-                            "displayName": "MatReader"
-                        },
-                        {
-                            "name": "op/numpyop/Resize.md",
-                            "type": "file",
-                            "displayName": "Resize"
-                        },
-                        {
-                            "name": "op/numpyop/Minmax.md",
-                            "type": "file",
-                            "displayName": "Minmax"
-                        },
-                        {
-                            "name": "op/numpyop/Scale.md",
-                            "type": "file",
-                            "displayName": "Scale"
-                        },
-                        {
-                            "name": "op/numpyop/Reshape.md",
-                            "type": "file",
-                            "displayName": "Reshape"
-                        },
-                        {
-                            "name": "op/numpyop/ImageReader.md",
-                            "type": "file",
-                            "displayName": "ImageReader"
-                        }
-                    ]
-                },
-                {
-                    "name": "op/TensorOp.md",
-                    "type": "file",
-                    "displayName": "TensorOp"
-                },
-                {
-                    "name": "op/write_outputs_by_key.md",
-                    "type": "file",
-                    "displayName": "write_outputs_by_key"
-                },
-                {
-                    "name": "op/tensorop",
-                    "type": "directory",
-                    "displayName": "fe.tensorop",
-                    "children": [
-                        {
-                            "name": "op/tensorop/Onehot.md",
-                            "type": "file",
-                            "displayName": "Onehot"
-                        },
-                        {
-                            "name": "op/tensorop/Average.md",
-                            "type": "file",
-                            "displayName": "Average"
-                        },
-                        {
-                            "name": "op/tensorop/filter",
-                            "type": "directory",
-                            "displayName": "fe.filter",
-                            "children": [
-                                {
-                                    "name": "op/tensorop/filter/ScalarFilter.md",
-                                    "type": "file",
-                                    "displayName": "ScalarFilter"
-                                },
-                                {
-                                    "name": "op/tensorop/filter/TensorFilter.md",
-                                    "type": "file",
-                                    "displayName": "TensorFilter"
-                                }
-                            ]
-                        },
-                        {
-                            "name": "op/tensorop/loss",
-                            "type": "directory",
-                            "displayName": "fe.loss",
-                            "children": [
-                                {
-                                    "name": "op/tensorop/loss/SparseCategoricalCrossentropy.md",
-                                    "type": "file",
-                                    "displayName": "SparseCategoricalCrossentropy"
-                                },
-                                {
-                                    "name": "op/tensorop/loss/SmoothL1Loss.md",
-                                    "type": "file",
-                                    "displayName": "SmoothL1Loss"
-                                },
-                                {
-                                    "name": "op/tensorop/loss/MixUpLoss.md",
-                                    "type": "file",
-                                    "displayName": "MixUpLoss"
-                                },
-                                {
-                                    "name": "op/tensorop/loss/MeanSquaredError.md",
-                                    "type": "file",
-                                    "displayName": "MeanSquaredError"
-                                },
-                                {
-                                    "name": "op/tensorop/loss/BinaryCrossentropy.md",
-                                    "type": "file",
-                                    "displayName": "BinaryCrossentropy"
-                                },
-                                {
-                                    "name": "op/tensorop/loss/Loss.md",
-                                    "type": "file",
-                                    "displayName": "Loss"
-                                }
-                            ]
-                        },
-                        {
-                            "name": "op/tensorop/model",
-                            "type": "directory",
-                            "displayName": "fe.model",
-                            "children": [
-                                {
-                                    "name": "op/tensorop/model/ModelOp.md",
-                                    "type": "file",
-                                    "displayName": "ModelOp"
-                                }
-                            ]
-                        },
-                        {
-                            "name": "op/tensorop/Binarize.md",
-                            "type": "file",
-                            "displayName": "Binarize"
-                        },
-                        {
-                            "name": "op/tensorop/Zscore.md",
-                            "type": "file",
-                            "displayName": "Zscore"
-                        },
-                        {
-                            "name": "op/tensorop/augmentation",
-                            "type": "directory",
-                            "displayName": "fe.augmentation",
-                            "children": [
-                                {
-                                    "name": "op/tensorop/augmentation/MixUpBatch.md",
-                                    "type": "file",
-                                    "displayName": "MixUpBatch"
-                                },
-                                {
-                                    "name": "op/tensorop/augmentation/AdversarialSample.md",
-                                    "type": "file",
-                                    "displayName": "AdversarialSample"
-                                },
-                                {
-                                    "name": "op/tensorop/augmentation/Augmentation2D.md",
-                                    "type": "file",
-                                    "displayName": "Augmentation2D"
-                                },
-                                {
-                                    "name": "op/tensorop/augmentation/CutMixBatch.md",
-                                    "type": "file",
-                                    "displayName": "CutMixBatch"
-                                }
-                            ]
-                        },
-                        {
-                            "name": "op/tensorop/Resize.md",
-                            "type": "file",
-                            "displayName": "Resize"
-                        },
-                        {
-                            "name": "op/tensorop/Minmax.md",
-                            "type": "file",
-                            "displayName": "Minmax"
-                        },
-                        {
-                            "name": "op/tensorop/Scale.md",
-                            "type": "file",
-                            "displayName": "Scale"
-                        },
-                        {
-                            "name": "op/tensorop/Reshape.md",
-                            "type": "file",
-                            "displayName": "Reshape"
-                        }
-                    ]
-                },
-                {
-                    "name": "op/get_inputs_by_key.md",
-                    "type": "file",
-                    "displayName": "get_inputs_by_key"
-                },
-                {
-                    "name": "op/NumpyOp.md",
-                    "type": "file",
-                    "displayName": "NumpyOp"
-                },
-                {
-                    "name": "op/get_inputs_by_op.md",
-                    "type": "file",
-                    "displayName": "get_inputs_by_op"
-                },
-                {
-                    "name": "op/verify_ops.md",
-                    "type": "file",
-                    "displayName": "verify_ops"
-                }
-            ]
-        },
-        {
-            "name": "schedule",
-            "type": "directory",
-            "displayName": "fe.schedule",
-            "children": [
-                {
-                    "name": "schedule/LRSchedule.md",
-                    "type": "file",
-                    "displayName": "LRSchedule"
-                },
-                {
-                    "name": "schedule/CyclicLRSchedule.md",
-                    "type": "file",
-                    "displayName": "CyclicLRSchedule"
-                },
-                {
-                    "name": "schedule/Scheduler.md",
-                    "type": "file",
-                    "displayName": "Scheduler"
-                }
-            ]
-        },
-        {
-            "name": "util",
-            "type": "directory",
-            "displayName": "fe.util",
-            "children": [
-                {
-                    "name": "util/add_summary.md",
-                    "type": "file",
-                    "displayName": "add_summary"
-                },
-                {
-                    "name": "util/is_number.md",
-                    "type": "file",
-                    "displayName": "is_number"
-                },
-                {
-                    "name": "util/prettify_metric_name.md",
-                    "type": "file",
-                    "displayName": "prettify_metric_name"
-                },
-                {
-                    "name": "util/remove_blacklist_keys.md",
-                    "type": "file",
-                    "displayName": "remove_blacklist_keys"
-                },
-                {
-                    "name": "util/convert_tf_dtype.md",
-                    "type": "file",
-                    "displayName": "convert_tf_dtype"
-                },
-                {
-                    "name": "util/ImageLoader.md",
-                    "type": "file",
-                    "displayName": "ImageLoader"
-                },
-                {
-                    "name": "util/per_replica_to_global.md",
-                    "type": "file",
-                    "displayName": "per_replica_to_global"
-                },
-                {
-                    "name": "util/Timer.md",
-                    "type": "file",
-                    "displayName": "Timer"
-                },
-                {
-                    "name": "util/RecordWriter.md",
-                    "type": "file",
-                    "displayName": "RecordWriter"
-                },
-                {
-                    "name": "util/bar_custom.md",
-                    "type": "file",
-                    "displayName": "bar_custom"
-                },
-                {
-                    "name": "util/get_number_of_examples.md",
-                    "type": "file",
-                    "displayName": "get_number_of_examples"
-                },
-                {
-                    "name": "util/to_list.md",
-                    "type": "file",
-                    "displayName": "to_list"
-                },
-                {
-                    "name": "util/load_image.md",
-                    "type": "file",
-                    "displayName": "load_image"
-                },
-                {
-                    "name": "util/parse_string_to_python.md",
-                    "type": "file",
-                    "displayName": "parse_string_to_python"
-                },
-                {
-                    "name": "util/callback_progress.md",
-                    "type": "file",
-                    "displayName": "callback_progress"
-                },
-                {
-                    "name": "util/NonContext.md",
-                    "type": "file",
-                    "displayName": "NonContext"
-                },
-                {
-                    "name": "util/PathLoader.md",
-                    "type": "file",
-                    "displayName": "PathLoader"
-                },
-                {
-                    "name": "util/Suppressor.md",
-                    "type": "file",
-                    "displayName": "Suppressor"
-                },
-                {
-                    "name": "util/flatten_list.md",
-                    "type": "file",
-                    "displayName": "flatten_list"
-                },
-                {
-                    "name": "util/load_dict.md",
-                    "type": "file",
-                    "displayName": "load_dict"
-                },
-                {
-                    "name": "util/TestUtil.md",
-                    "type": "file",
-                    "displayName": "TestUtil"
-                },
-                {
-                    "name": "util/get_features.md",
-                    "type": "file",
-                    "displayName": "get_features"
-                },
-                {
-                    "name": "util/to_set.md",
-                    "type": "file",
-                    "displayName": "to_set"
-                },
-                {
-                    "name": "util/get_num_devices.md",
-                    "type": "file",
-                    "displayName": "get_num_devices"
-                },
-                {
-                    "name": "util/decode_predictions.md",
-                    "type": "file",
-                    "displayName": "decode_predictions"
-                },
-                {
-                    "name": "util/strip_suffix.md",
-                    "type": "file",
-                    "displayName": "strip_suffix"
-                }
-            ]
-        },
-        {
-            "name": "architecture",
-            "type": "directory",
-            "displayName": "fe.architecture",
-            "children": [
-                {
-                    "name": "architecture/up_concat.md",
-                    "type": "file",
-                    "displayName": "up_concat"
-                },
-                {
-                    "name": "architecture/fromrgb.md",
-                    "type": "file",
-                    "displayName": "fromrgb"
-                },
-                {
-                    "name": "architecture/pooling_combo3D.md",
-                    "type": "file",
-                    "displayName": "pooling_combo3D"
-                },
-                {
-                    "name": "architecture/nf.md",
-                    "type": "file",
-                    "displayName": "nf"
-                },
-                {
-                    "name": "architecture/regression_sub_net.md",
-                    "type": "file",
-                    "displayName": "regression_sub_net"
-                },
-                {
-                    "name": "architecture/build_generator.md",
-                    "type": "file",
-                    "displayName": "build_generator"
-                },
-                {
-                    "name": "architecture/get_fpn_anchor_box.md",
-                    "type": "file",
-                    "displayName": "get_fpn_anchor_box"
-                },
-                {
-                    "name": "architecture/styleTransferNet.md",
-                    "type": "file",
-                    "displayName": "styleTransferNet"
-                },
-                {
-                    "name": "architecture/conv_block.md",
-                    "type": "file",
-                    "displayName": "conv_block"
-                },
-                {
-                    "name": "architecture/deconv3D_block.md",
-                    "type": "file",
-                    "displayName": "deconv3D_block"
-                },
-                {
-                    "name": "architecture/block_G.md",
-                    "type": "file",
-                    "displayName": "block_G"
-                },
-                {
-                    "name": "architecture/UNet3D.md",
-                    "type": "file",
-                    "displayName": "UNet3D"
-                },
-                {
-                    "name": "architecture/LeNet.md",
-                    "type": "file",
-                    "displayName": "LeNet"
-                },
-                {
-                    "name": "architecture/build_D.md",
-                    "type": "file",
-                    "displayName": "build_D"
-                },
-                {
-                    "name": "architecture/get_loc_offset.md",
-                    "type": "file",
-                    "displayName": "get_loc_offset"
-                },
-                {
-                    "name": "architecture/get_target.md",
-                    "type": "file",
-                    "displayName": "get_target"
-                },
-                {
-                    "name": "architecture/classification_sub_net.md",
-                    "type": "file",
-                    "displayName": "classification_sub_net"
-                },
-                {
-                    "name": "architecture/build_G.md",
-                    "type": "file",
-                    "displayName": "build_G"
-                },
-                {
-                    "name": "architecture/RetinaNet.md",
-                    "type": "file",
-                    "displayName": "RetinaNet"
-                },
-                {
-                    "name": "architecture/conv3D_block.md",
-                    "type": "file",
-                    "displayName": "conv3D_block"
-                },
-                {
-                    "name": "architecture/build_discriminator.md",
-                    "type": "file",
-                    "displayName": "build_discriminator"
-                },
-                {
-                    "name": "architecture/UNet.md",
-                    "type": "file",
-                    "displayName": "UNet"
-                },
-                {
-                    "name": "architecture/block_D.md",
-                    "type": "file",
-                    "displayName": "block_D"
-                },
-                {
-                    "name": "architecture/lossNet.md",
-                    "type": "file",
-                    "displayName": "lossNet"
-                },
-                {
-                    "name": "architecture/get_iou.md",
-                    "type": "file",
-                    "displayName": "get_iou"
-                },
-                {
-                    "name": "architecture/torgb.md",
-                    "type": "file",
-                    "displayName": "torgb"
-                },
-                {
-                    "name": "architecture/clamp.md",
-                    "type": "file",
-                    "displayName": "clamp"
-                },
-                {
-                    "name": "architecture/upsample.md",
-                    "type": "file",
-                    "displayName": "upsample"
-                }
-            ]
-        }
-    ]
-}
+[
+    {
+        "name": "fe",
+        "displayName": "fe",
+        "children": [
+            {
+                "name": "fe/Estimator.md",
+                "displayName": "Estimator"
+            },
+            {
+                "name": "fe/Network.md",
+                "displayName": "Network"
+            },
+            {
+                "name": "fe/Pipeline.md",
+                "displayName": "Pipeline"
+            },
+            {
+                "name": "fe/build.md",
+                "displayName": "build"
+            }
+        ]
+    },
+    {
+        "name": "architecture",
+        "displayName": "fe.architecture",
+        "children": [
+            {
+                "name": "architecture/LeNet.md",
+                "displayName": "LeNet"
+            },
+            {
+                "name": "architecture/RetinaNet.md",
+                "displayName": "RetinaNet"
+            },
+            {
+                "name": "architecture/UNet.md",
+                "displayName": "UNet"
+            },
+            {
+                "name": "architecture/UNet3D.md",
+                "displayName": "UNet3D"
+            },
+            {
+                "name": "architecture/block_D.md",
+                "displayName": "block_D"
+            },
+            {
+                "name": "architecture/block_G.md",
+                "displayName": "block_G"
+            },
+            {
+                "name": "architecture/build_D.md",
+                "displayName": "build_D"
+            },
+            {
+                "name": "architecture/build_G.md",
+                "displayName": "build_G"
+            },
+            {
+                "name": "architecture/build_discriminator.md",
+                "displayName": "build_discriminator"
+            },
+            {
+                "name": "architecture/build_generator.md",
+                "displayName": "build_generator"
+            },
+            {
+                "name": "architecture/clamp.md",
+                "displayName": "clamp"
+            },
+            {
+                "name": "architecture/classification_sub_net.md",
+                "displayName": "classification_sub_net"
+            },
+            {
+                "name": "architecture/conv3D_block.md",
+                "displayName": "conv3D_block"
+            },
+            {
+                "name": "architecture/conv_block.md",
+                "displayName": "conv_block"
+            },
+            {
+                "name": "architecture/deconv3D_block.md",
+                "displayName": "deconv3D_block"
+            },
+            {
+                "name": "architecture/fromrgb.md",
+                "displayName": "fromrgb"
+            },
+            {
+                "name": "architecture/get_fpn_anchor_box.md",
+                "displayName": "get_fpn_anchor_box"
+            },
+            {
+                "name": "architecture/get_iou.md",
+                "displayName": "get_iou"
+            },
+            {
+                "name": "architecture/get_loc_offset.md",
+                "displayName": "get_loc_offset"
+            },
+            {
+                "name": "architecture/get_target.md",
+                "displayName": "get_target"
+            },
+            {
+                "name": "architecture/lossNet.md",
+                "displayName": "lossNet"
+            },
+            {
+                "name": "architecture/nf.md",
+                "displayName": "nf"
+            },
+            {
+                "name": "architecture/pooling_combo3D.md",
+                "displayName": "pooling_combo3D"
+            },
+            {
+                "name": "architecture/regression_sub_net.md",
+                "displayName": "regression_sub_net"
+            },
+            {
+                "name": "architecture/styleTransferNet.md",
+                "displayName": "styleTransferNet"
+            },
+            {
+                "name": "architecture/torgb.md",
+                "displayName": "torgb"
+            },
+            {
+                "name": "architecture/up_concat.md",
+                "displayName": "up_concat"
+            },
+            {
+                "name": "architecture/upsample.md",
+                "displayName": "upsample"
+            }
+        ]
+    },
+    {
+        "name": "cli",
+        "displayName": "fe.cli",
+        "children": [
+            {
+                "name": "cli/SaveAction.md",
+                "displayName": "SaveAction"
+            },
+            {
+                "name": "cli/caricature.md",
+                "displayName": "caricature"
+            },
+            {
+                "name": "cli/configure_caricature_parser.md",
+                "displayName": "configure_caricature_parser"
+            },
+            {
+                "name": "cli/configure_gradcam_parser.md",
+                "displayName": "configure_gradcam_parser"
+            },
+            {
+                "name": "cli/configure_log_parser.md",
+                "displayName": "configure_log_parser"
+            },
+            {
+                "name": "cli/configure_predict_parser.md",
+                "displayName": "configure_predict_parser"
+            },
+            {
+                "name": "cli/configure_saliency_parser.md",
+                "displayName": "configure_saliency_parser"
+            },
+            {
+                "name": "cli/configure_train_parser.md",
+                "displayName": "configure_train_parser"
+            },
+            {
+                "name": "cli/configure_umap_parser.md",
+                "displayName": "configure_umap_parser"
+            },
+            {
+                "name": "cli/configure_visualization_parser.md",
+                "displayName": "configure_visualization_parser"
+            },
+            {
+                "name": "cli/draw.md",
+                "displayName": "draw"
+            },
+            {
+                "name": "cli/gradcam.md",
+                "displayName": "gradcam"
+            },
+            {
+                "name": "cli/load_and_caricature.md",
+                "displayName": "load_and_caricature"
+            },
+            {
+                "name": "cli/load_and_gradcam.md",
+                "displayName": "load_and_gradcam"
+            },
+            {
+                "name": "cli/load_and_saliency.md",
+                "displayName": "load_and_saliency"
+            },
+            {
+                "name": "cli/load_and_umap.md",
+                "displayName": "load_and_umap"
+            },
+            {
+                "name": "cli/logs.md",
+                "displayName": "logs"
+            },
+            {
+                "name": "cli/parse_cli_to_dictionary.md",
+                "displayName": "parse_cli_to_dictionary"
+            },
+            {
+                "name": "cli/parse_log_dir.md",
+                "displayName": "parse_log_dir"
+            },
+            {
+                "name": "cli/parse_log_files.md",
+                "displayName": "parse_log_files"
+            },
+            {
+                "name": "cli/predict.md",
+                "displayName": "predict"
+            },
+            {
+                "name": "cli/saliency.md",
+                "displayName": "saliency"
+            },
+            {
+                "name": "cli/train.md",
+                "displayName": "train"
+            },
+            {
+                "name": "cli/umap.md",
+                "displayName": "umap"
+            }
+        ]
+    },
+    {
+        "name": "dataset",
+        "displayName": "fe.dataset",
+        "children": [
+            {
+                "name": "dataset/load_data.md",
+                "displayName": "load_data"
+            }
+        ]
+    },
+    {
+        "name": "layers",
+        "displayName": "fe.layers",
+        "children": [
+            {
+                "name": "layers/ApplyBias.md",
+                "displayName": "ApplyBias"
+            },
+            {
+                "name": "layers/EqualizedLRConv2D.md",
+                "displayName": "EqualizedLRConv2D"
+            },
+            {
+                "name": "layers/EqualizedLRDense.md",
+                "displayName": "EqualizedLRDense"
+            },
+            {
+                "name": "layers/FadeIn.md",
+                "displayName": "FadeIn"
+            },
+            {
+                "name": "layers/InstanceNormalization.md",
+                "displayName": "InstanceNormalization"
+            },
+            {
+                "name": "layers/MiniBatchStd.md",
+                "displayName": "MiniBatchStd"
+            },
+            {
+                "name": "layers/PixelNormalization.md",
+                "displayName": "PixelNormalization"
+            },
+            {
+                "name": "layers/ReflectionPadding2D.md",
+                "displayName": "ReflectionPadding2D"
+            },
+            {
+                "name": "layers/SubPixelConv2D.md",
+                "displayName": "SubPixelConv2D"
+            }
+        ]
+    },
+    {
+        "name": "op",
+        "displayName": "fe.op",
+        "children": [
+            {
+                "name": "op/NumpyOp.md",
+                "displayName": "NumpyOp"
+            },
+            {
+                "name": "op/TensorOp.md",
+                "displayName": "TensorOp"
+            },
+            {
+                "name": "op/get_inputs_by_key.md",
+                "displayName": "get_inputs_by_key"
+            },
+            {
+                "name": "op/get_inputs_by_op.md",
+                "displayName": "get_inputs_by_op"
+            },
+            {
+                "name": "op/get_op_from_mode.md",
+                "displayName": "get_op_from_mode"
+            },
+            {
+                "name": "op/numpyop",
+                "displayName": "fe.op.numpyop",
+                "children": [
+                    {
+                        "name": "op/numpyop/ImageReader.md",
+                        "displayName": "ImageReader"
+                    },
+                    {
+                        "name": "op/numpyop/MatReader.md",
+                        "displayName": "MatReader"
+                    },
+                    {
+                        "name": "op/numpyop/Minmax.md",
+                        "displayName": "Minmax"
+                    },
+                    {
+                        "name": "op/numpyop/Reshape.md",
+                        "displayName": "Reshape"
+                    },
+                    {
+                        "name": "op/numpyop/Resize.md",
+                        "displayName": "Resize"
+                    },
+                    {
+                        "name": "op/numpyop/Scale.md",
+                        "displayName": "Scale"
+                    },
+                    {
+                        "name": "op/numpyop/Zscore.md",
+                        "displayName": "Zscore"
+                    }
+                ]
+            },
+            {
+                "name": "op/tensorop",
+                "displayName": "fe.op.tensorop",
+                "children": [
+                    {
+                        "name": "op/tensorop/Average.md",
+                        "displayName": "Average"
+                    },
+                    {
+                        "name": "op/tensorop/Binarize.md",
+                        "displayName": "Binarize"
+                    },
+                    {
+                        "name": "op/tensorop/Minmax.md",
+                        "displayName": "Minmax"
+                    },
+                    {
+                        "name": "op/tensorop/Onehot.md",
+                        "displayName": "Onehot"
+                    },
+                    {
+                        "name": "op/tensorop/Reshape.md",
+                        "displayName": "Reshape"
+                    },
+                    {
+                        "name": "op/tensorop/Resize.md",
+                        "displayName": "Resize"
+                    },
+                    {
+                        "name": "op/tensorop/Scale.md",
+                        "displayName": "Scale"
+                    },
+                    {
+                        "name": "op/tensorop/Zscore.md",
+                        "displayName": "Zscore"
+                    },
+                    {
+                        "name": "op/tensorop/augmentation",
+                        "displayName": "fe.op.tensorop.augmentation",
+                        "children": [
+                            {
+                                "name": "op/tensorop/augmentation/AdversarialSample.md",
+                                "displayName": "AdversarialSample"
+                            },
+                            {
+                                "name": "op/tensorop/augmentation/Augmentation2D.md",
+                                "displayName": "Augmentation2D"
+                            },
+                            {
+                                "name": "op/tensorop/augmentation/CutMixBatch.md",
+                                "displayName": "CutMixBatch"
+                            },
+                            {
+                                "name": "op/tensorop/augmentation/MixUpBatch.md",
+                                "displayName": "MixUpBatch"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "op/tensorop/filter",
+                        "displayName": "fe.op.tensorop.filter",
+                        "children": [
+                            {
+                                "name": "op/tensorop/filter/ScalarFilter.md",
+                                "displayName": "ScalarFilter"
+                            },
+                            {
+                                "name": "op/tensorop/filter/TensorFilter.md",
+                                "displayName": "TensorFilter"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "op/tensorop/loss",
+                        "displayName": "fe.op.tensorop.loss",
+                        "children": [
+                            {
+                                "name": "op/tensorop/loss/BinaryCrossentropy.md",
+                                "displayName": "BinaryCrossentropy"
+                            },
+                            {
+                                "name": "op/tensorop/loss/Loss.md",
+                                "displayName": "Loss"
+                            },
+                            {
+                                "name": "op/tensorop/loss/MeanSquaredError.md",
+                                "displayName": "MeanSquaredError"
+                            },
+                            {
+                                "name": "op/tensorop/loss/MixUpLoss.md",
+                                "displayName": "MixUpLoss"
+                            },
+                            {
+                                "name": "op/tensorop/loss/SmoothL1Loss.md",
+                                "displayName": "SmoothL1Loss"
+                            },
+                            {
+                                "name": "op/tensorop/loss/SparseCategoricalCrossentropy.md",
+                                "displayName": "SparseCategoricalCrossentropy"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "op/tensorop/model",
+                        "displayName": "fe.op.tensorop.model",
+                        "children": [
+                            {
+                                "name": "op/tensorop/model/ModelOp.md",
+                                "displayName": "ModelOp"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "op/verify_ops.md",
+                "displayName": "verify_ops"
+            },
+            {
+                "name": "op/write_outputs_by_key.md",
+                "displayName": "write_outputs_by_key"
+            }
+        ]
+    },
+    {
+        "name": "schedule",
+        "displayName": "fe.schedule",
+        "children": [
+            {
+                "name": "schedule/CyclicLRSchedule.md",
+                "displayName": "CyclicLRSchedule"
+            },
+            {
+                "name": "schedule/LRSchedule.md",
+                "displayName": "LRSchedule"
+            },
+            {
+                "name": "schedule/Scheduler.md",
+                "displayName": "Scheduler"
+            }
+        ]
+    },
+    {
+        "name": "summary",
+        "displayName": "fe.summary",
+        "children": [
+            {
+                "name": "summary/Summary.md",
+                "displayName": "Summary"
+            },
+            {
+                "name": "summary/logs",
+                "displayName": "fe.summary.logs",
+                "children": [
+                    {
+                        "name": "summary/logs/parse_log_dir.md",
+                        "displayName": "parse_log_dir"
+                    },
+                    {
+                        "name": "summary/logs/parse_log_files.md",
+                        "displayName": "parse_log_files"
+                    },
+                    {
+                        "name": "summary/logs/plot_logs.md",
+                        "displayName": "plot_logs"
+                    },
+                    {
+                        "name": "summary/logs/visualize_logs.md",
+                        "displayName": "visualize_logs"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "trace",
+        "displayName": "fe.trace",
+        "children": [
+            {
+                "name": "trace/MonitorLoss.md",
+                "displayName": "MonitorLoss"
+            },
+            {
+                "name": "trace/Trace.md",
+                "displayName": "Trace"
+            },
+            {
+                "name": "trace/TrainInfo.md",
+                "displayName": "TrainInfo"
+            },
+            {
+                "name": "trace/adapt",
+                "displayName": "fe.trace.adapt",
+                "children": [
+                    {
+                        "name": "trace/adapt/EarlyStopping.md",
+                        "displayName": "EarlyStopping"
+                    },
+                    {
+                        "name": "trace/adapt/LRController.md",
+                        "displayName": "LRController"
+                    },
+                    {
+                        "name": "trace/adapt/TerminateOnNaN.md",
+                        "displayName": "TerminateOnNaN"
+                    }
+                ]
+            },
+            {
+                "name": "trace/io",
+                "displayName": "fe.trace.io",
+                "children": [
+                    {
+                        "name": "trace/io/CSVLogger.md",
+                        "displayName": "CSVLogger"
+                    },
+                    {
+                        "name": "trace/io/Caricature.md",
+                        "displayName": "Caricature"
+                    },
+                    {
+                        "name": "trace/io/GradCam.md",
+                        "displayName": "GradCam"
+                    },
+                    {
+                        "name": "trace/io/Logger.md",
+                        "displayName": "Logger"
+                    },
+                    {
+                        "name": "trace/io/ModelSaver.md",
+                        "displayName": "ModelSaver"
+                    },
+                    {
+                        "name": "trace/io/Saliency.md",
+                        "displayName": "Saliency"
+                    },
+                    {
+                        "name": "trace/io/SlackNotification.md",
+                        "displayName": "SlackNotification"
+                    },
+                    {
+                        "name": "trace/io/TensorBoard.md",
+                        "displayName": "TensorBoard"
+                    },
+                    {
+                        "name": "trace/io/UMap.md",
+                        "displayName": "UMap"
+                    },
+                    {
+                        "name": "trace/io/VisLogger.md",
+                        "displayName": "VisLogger"
+                    },
+                    {
+                        "name": "trace/io/XAiTrace.md",
+                        "displayName": "XAiTrace"
+                    }
+                ]
+            },
+            {
+                "name": "trace/metric",
+                "displayName": "fe.trace.metric",
+                "children": [
+                    {
+                        "name": "trace/metric/Accuracy.md",
+                        "displayName": "Accuracy"
+                    },
+                    {
+                        "name": "trace/metric/ConfusionMatrix.md",
+                        "displayName": "ConfusionMatrix"
+                    },
+                    {
+                        "name": "trace/metric/Dice.md",
+                        "displayName": "Dice"
+                    },
+                    {
+                        "name": "trace/metric/F1Score.md",
+                        "displayName": "F1Score"
+                    },
+                    {
+                        "name": "trace/metric/Precision.md",
+                        "displayName": "Precision"
+                    },
+                    {
+                        "name": "trace/metric/Recall.md",
+                        "displayName": "Recall"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "util",
+        "displayName": "fe.util",
+        "children": [
+            {
+                "name": "util/ImageLoader.md",
+                "displayName": "ImageLoader"
+            },
+            {
+                "name": "util/NonContext.md",
+                "displayName": "NonContext"
+            },
+            {
+                "name": "util/PathLoader.md",
+                "displayName": "PathLoader"
+            },
+            {
+                "name": "util/RecordWriter.md",
+                "displayName": "RecordWriter"
+            },
+            {
+                "name": "util/Suppressor.md",
+                "displayName": "Suppressor"
+            },
+            {
+                "name": "util/TestUtil.md",
+                "displayName": "TestUtil"
+            },
+            {
+                "name": "util/Timer.md",
+                "displayName": "Timer"
+            },
+            {
+                "name": "util/add_summary.md",
+                "displayName": "add_summary"
+            },
+            {
+                "name": "util/bar_custom.md",
+                "displayName": "bar_custom"
+            },
+            {
+                "name": "util/callback_progress.md",
+                "displayName": "callback_progress"
+            },
+            {
+                "name": "util/convert_tf_dtype.md",
+                "displayName": "convert_tf_dtype"
+            },
+            {
+                "name": "util/decode_predictions.md",
+                "displayName": "decode_predictions"
+            },
+            {
+                "name": "util/flatten_list.md",
+                "displayName": "flatten_list"
+            },
+            {
+                "name": "util/get_features.md",
+                "displayName": "get_features"
+            },
+            {
+                "name": "util/get_num_devices.md",
+                "displayName": "get_num_devices"
+            },
+            {
+                "name": "util/get_number_of_examples.md",
+                "displayName": "get_number_of_examples"
+            },
+            {
+                "name": "util/is_number.md",
+                "displayName": "is_number"
+            },
+            {
+                "name": "util/load_dict.md",
+                "displayName": "load_dict"
+            },
+            {
+                "name": "util/load_image.md",
+                "displayName": "load_image"
+            },
+            {
+                "name": "util/parse_string_to_python.md",
+                "displayName": "parse_string_to_python"
+            },
+            {
+                "name": "util/per_replica_to_global.md",
+                "displayName": "per_replica_to_global"
+            },
+            {
+                "name": "util/prettify_metric_name.md",
+                "displayName": "prettify_metric_name"
+            },
+            {
+                "name": "util/remove_blacklist_keys.md",
+                "displayName": "remove_blacklist_keys"
+            },
+            {
+                "name": "util/strip_suffix.md",
+                "displayName": "strip_suffix"
+            },
+            {
+                "name": "util/to_list.md",
+                "displayName": "to_list"
+            },
+            {
+                "name": "util/to_set.md",
+                "displayName": "to_set"
+            }
+        ]
+    },
+    {
+        "name": "xai",
+        "displayName": "fe.xai",
+        "children": [
+            {
+                "name": "xai/FEGradCAM.md",
+                "displayName": "FEGradCAM"
+            },
+            {
+                "name": "xai/UmapPlotter.md",
+                "displayName": "UmapPlotter"
+            },
+            {
+                "name": "xai/generate_caricatures.md",
+                "displayName": "generate_caricatures"
+            },
+            {
+                "name": "xai/plot_caricature.md",
+                "displayName": "plot_caricature"
+            },
+            {
+                "name": "xai/plot_gradcam.md",
+                "displayName": "plot_gradcam"
+            },
+            {
+                "name": "xai/plot_saliency.md",
+                "displayName": "plot_saliency"
+            },
+            {
+                "name": "xai/util",
+                "displayName": "fe.xai.util",
+                "children": [
+                    {
+                        "name": "xai/util/Evaluator.md",
+                        "displayName": "Evaluator"
+                    },
+                    {
+                        "name": "xai/util/FileCache.md",
+                        "displayName": "FileCache"
+                    },
+                    {
+                        "name": "xai/util/GradientSaliency.md",
+                        "displayName": "GradientSaliency"
+                    },
+                    {
+                        "name": "xai/util/IntegratedGradients.md",
+                        "displayName": "IntegratedGradients"
+                    },
+                    {
+                        "name": "xai/util/SaliencyMask.md",
+                        "displayName": "SaliencyMask"
+                    },
+                    {
+                        "name": "xai/util/fig_to_img.md",
+                        "displayName": "fig_to_img"
+                    },
+                    {
+                        "name": "xai/util/rfft2d_freqs.md",
+                        "displayName": "rfft2d_freqs"
+                    },
+                    {
+                        "name": "xai/util/show_gray_image.md",
+                        "displayName": "show_gray_image"
+                    },
+                    {
+                        "name": "xai/util/show_image.md",
+                        "displayName": "show_image"
+                    },
+                    {
+                        "name": "xai/util/show_text.md",
+                        "displayName": "show_text"
+                    }
+                ]
+            },
+            {
+                "name": "xai/visualize_caricature.md",
+                "displayName": "visualize_caricature"
+            },
+            {
+                "name": "xai/visualize_gradcam.md",
+                "displayName": "visualize_gradcam"
+            },
+            {
+                "name": "xai/visualize_saliency.md",
+                "displayName": "visualize_saliency"
+            }
+        ]
+    }
+]

@@ -6,4 +6,4 @@ End Training if a NaN value is detected. By default (inputs=None) it will monito
 
 #### Args:
 
-* ** monitor_names (str, list, optional) ** :  What key(s) to monitor for NaN values.                                        - None (default) will monitor all loss values.                                        - "*" will monitor all state keys and losses.                                        Defaults to None.
+* **monitor_names (str, list, optional)** :  What key(s) to monitor for NaN values.                                        - None (default) will monitor all loss values.                                        - "*" will monitor all state keys and losses.                                        Defaults to None.

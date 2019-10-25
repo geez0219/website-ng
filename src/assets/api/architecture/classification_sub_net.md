@@ -8,9 +8,9 @@ Creates an object classification sub-network for the RetinaNet.
 
 #### Args:
 
-* ** num_classes (int) ** :  number of classes.
-* ** num_anchor (int, optional) ** :  number of anchor boxes. Defaults to 9.
+* **num_classes (int)** :  number of classes.
+* **num_anchor (int, optional)** :  number of anchor boxes. Defaults to 9.
 
 #### Returns:
 
-* ** 'Model' object ** :  classification sub-network.
+* **'Model' object** :  classification sub-network.

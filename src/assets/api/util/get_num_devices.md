@@ -8,4 +8,4 @@ Return number of devices.
 
 #### Returns:
 
-* ** int ** :  Number of GPUs available. Returns 1 if no GPU is found.
+* **int** :  Number of GPUs available. Returns 1 if no GPU is found.
