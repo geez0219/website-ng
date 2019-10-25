@@ -6,4 +6,4 @@ This layer normalizes each pixel by its L2-norm along the channel axis divided b
 
 #### Args:
 
-* ** eps (float, optional) ** :  epsilon parameter which defaults to 1e-8
+* **eps (float, optional)** :  epsilon parameter which defaults to 1e-8

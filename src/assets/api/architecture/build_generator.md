@@ -8,9 +8,9 @@ Returns the generator of the GAN.
 
 #### Args:
 
-* ** input_shape (tuple, optional) ** :  shape of the input image. Defaults to (256, 256, 3).
-* ** num_blocks (int, optional) ** :  number of resblocks for the generator. Defaults to 9.
+* **input_shape (tuple, optional)** :  shape of the input image. Defaults to (256, 256, 3).
+* **num_blocks (int, optional)** :  number of resblocks for the generator. Defaults to 9.
 
 #### Returns:
 
-* ** 'Model' object ** :  GAN generator.
+* **'Model' object** :  GAN generator.

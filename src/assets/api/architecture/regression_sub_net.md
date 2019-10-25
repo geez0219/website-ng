@@ -8,8 +8,8 @@ Creates a regression sub-network for the RetinaNet.
 
 #### Args:
 
-* ** num_anchor (int, optional) ** :  number of anchor boxes. Defaults to 9.
+* **num_anchor (int, optional)** :  number of anchor boxes. Defaults to 9.
 
 #### Returns:
 
-* ** 'Model' object ** :  regression sub-network.
+* **'Model' object** :  regression sub-network.

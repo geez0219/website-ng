@@ -8,8 +8,8 @@ Remove the given suffix from the target if it is present there
 
 #### Args:
 
-* ** target ** :  A string to be formatted
-* ** suffix ** :  A string to be removed from 'target'
+* **target** :  A string to be formatted
+* **suffix** :  A string to be removed from 'target'
 
 #### Returns:
     The formatted version of 'target'

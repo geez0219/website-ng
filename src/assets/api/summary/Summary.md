@@ -6,7 +6,7 @@ The summary object that record the training history
 
 #### Args:
 
-* ** name (str) ** :  Name of the experiment.
+* **name (str)** :  Name of the experiment.
 
 ### merge
 ```python
@@ -16,4 +16,4 @@ Merge other experiment
 
 #### Args:
 
-* ** other (obj) ** :  Other experiment object need to be merged        
+* **other (obj)** :  Other experiment object need to be merged        

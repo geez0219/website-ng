@@ -8,10 +8,10 @@ Creates the RetinaNet. RetinaNet is composed of an FPN, a classification sub-net
 
 #### Args:
 
-* ** input_shape (tuple) ** :  shape of input image.
-* ** num_classes (int) ** :  number of classes.
-* ** num_anchor (int, optional) ** :  number of anchor boxes. Defaults to 9.
+* **input_shape (tuple)** :  shape of input image.
+* **num_classes (int)** :  number of classes.
+* **num_anchor (int, optional)** :  number of anchor boxes. Defaults to 9.
 
 #### Returns:
 
-* ** 'Model' object ** :  RetinaNet.
+* **'Model' object** :  RetinaNet.

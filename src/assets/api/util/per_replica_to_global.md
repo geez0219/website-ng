@@ -8,8 +8,8 @@ Combine data from "per-replica" values.For multi-GPU training, data are distribu
 
 #### Args:
 
-* ** data ** :  Distributed data.
+* **data** :  Distributed data.
 
 #### Returns:
 
-* ** obj ** :  Combined data from all replicas.
+* **obj** :  Combined data from all replicas.

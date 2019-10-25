@@ -12,7 +12,7 @@ Runs at the beginning of every batch of the mode.
 
 #### Args:
 
-* ** state (ChainMap) ** :  dictionary of run time that has the following key(s)
+* **state (ChainMap)** :  dictionary of run time that has the following key(s)
  * "mode" (str) :  current run time mode, can be "train", "eval" or "test"
  * "epoch" (int) :  current epoch index starting from 0
  * "train_step" (int) :  current global training step starting from 0
@@ -28,7 +28,7 @@ Runs once at the beginning of training
 
 #### Args:
 
-* ** state (ChainMap) ** :  dictionary of run time that has the following key(s)
+* **state (ChainMap)** :  dictionary of run time that has the following key(s)
  * "train_step" (int) :  current global training step starting from 0
  * "num_devices" (int) :  number of devices(mainly gpu) that are being used, if cpu only, the number is 1
  * "log_steps" (int) :  how many training steps between logging intervals
@@ -44,7 +44,7 @@ Runs once at the end training. Anything written into the state dictionary will b
 
 #### Args:
 
-* ** state (ChainMap) ** :  dictionary of run time that has the following key(s)
+* **state (ChainMap)** :  dictionary of run time that has the following key(s)
  * "train_step" (int) :  current global training step starting from 0
  * "epoch" (int) :  current epoch index starting from 0
  * "summary" (Experiment) :  will be returned from estimator.fit() if a summary input was specified                * any keys written by 'on_end' of previous traces        

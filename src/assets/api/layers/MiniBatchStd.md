@@ -6,4 +6,4 @@ A layer that outputs a concatenation of the input tensor and an average of chann
 
 #### Args:
 
-* ** group_size (int) ** :  a parameter determining size of subgroup to compute the statistics
+* **group_size (int)** :  a parameter determining size of subgroup to compute the statistics

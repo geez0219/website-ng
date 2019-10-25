@@ -8,10 +8,10 @@ Creates the network to compute the style loss.This network outputs a dictionary 
 
 #### Args:
 
-* ** input_shape (tuple, optional) ** :  shape of input image. Defaults to (256, 256, 3).
-* ** styleLayers (list, optional) ** :  list of style layers from VGG16. Defaults to ["block1_conv2", "block2_conv2",    "block3_conv3", "block4_conv3"].
-* ** contentLayers (list, optional) ** :  list of content layers from VGG16. Defaults to ["block3_conv3"].
+* **input_shape (tuple, optional)** :  shape of input image. Defaults to (256, 256, 3).
+* **styleLayers (list, optional)** :  list of style layers from VGG16. Defaults to ["block1_conv2", "block2_conv2",    "block3_conv3", "block4_conv3"].
+* **contentLayers (list, optional)** :  list of content layers from VGG16. Defaults to ["block3_conv3"].
 
 #### Returns:
 
-* ** 'Model' object ** :  style loss Network.
+* **'Model' object** :  style loss Network.

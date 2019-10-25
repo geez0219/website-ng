@@ -12,8 +12,8 @@ Normalizes the data tensor.
 
 #### Args:
 
-* ** data ** :  Data to be normalized.
-* ** state ** :  Information about the current execution context.
+* **data** :  Data to be normalized.
+* **state** :  Information about the current execution context.
 
 #### Returns:
             Tensor after minmax.        

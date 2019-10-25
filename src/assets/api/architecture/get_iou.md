@@ -8,9 +8,9 @@ Computes the value of intersection over union (IoU) of two boxes.
 
 #### Args:
 
-* ** box1 (array) ** :  first box
-* ** box2 (array) ** :  second box
+* **box1 (array)** :  first box
+* **box2 (array)** :  second box
 
 #### Returns:
 
-* ** float ** :  IoU value
+* **float** :  IoU value

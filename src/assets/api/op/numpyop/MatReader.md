@@ -6,7 +6,7 @@ Class for reading .mat files.
 
 #### Args:
 
-* ** parent_path ** :  Parent path that will be added on given path.
+* **parent_path** :  Parent path that will be added on given path.
 
 ### forward
 ```python
@@ -16,8 +16,8 @@ Reads mat file as dict.
 
 #### Args:
 
-* ** data ** :  Path to the mat file.
-* ** state ** :  A dictionary containing background information such as 'mode'
+* **data** :  Path to the mat file.
+* **state** :  A dictionary containing background information such as 'mode'
 
 #### Returns:
            dict        

@@ -12,8 +12,8 @@ forward(self, data, state)
 
 #### Args:
 
-* ** data ** :  input data to be averaged
-* ** state ** :   Information about the current execution context.
+* **data** :  input data to be averaged
+* **state** :   Information about the current execution context.
 
 #### Returns:
             Averaged input data        

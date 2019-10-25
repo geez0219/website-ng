@@ -6,7 +6,7 @@ Preprocessing class for scaling dataset
 
 #### Args:
 
-* ** scalar ** :  Scalar for scaling the data
+* **scalar** :  Scalar for scaling the data
 
 ### forward
 ```python
@@ -16,8 +16,8 @@ Scales the data tensor
 
 #### Args:
 
-* ** data ** :  Data to be scaled
-* ** state ** :  A dictionary containing background information such as 'mode'
+* **data** :  Data to be scaled
+* **state** :  A dictionary containing background information such as 'mode'
 
 #### Returns:
             Scaled data array        

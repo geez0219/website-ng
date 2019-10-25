@@ -12,8 +12,8 @@ Standardizes the data
 
 #### Args:
 
-* ** data ** :  Data to be standardized
-* ** state ** :  A dictionary containing background information such as 'mode'
+* **data** :  Data to be standardized
+* **state** :  A dictionary containing background information such as 'mode'
 
 #### Returns:
             Array containing standardized data        
