@@ -12,7 +12,7 @@ import { API } from '../api';
   styleUrls: ['./api.component.css']
 })
 export class ApiComponent implements OnInit {
-  apiList: API;
+  apiList: API[];
   currentSelection: string;
   currentAPIText: string;
 
@@ -23,16 +23,16 @@ export class ApiComponent implements OnInit {
 
   ngOnInit() {
     this.getAPIStructure();
-    this.currentSelection = 'assets/api/Pipeline.md';
+    this.currentSelection = 'assets/api/fe/Pipeline.md';
     this.getSelectedAPIText();
   }
 
   getAPIStructure() {
     this.http.get('assets/api/structure.json', {responseType: 'text'}).subscribe(data => {
-      this.apiList = <API>JSON.parse(data);
+      this.apiList = <API[]>JSON.parse(data);
 
-      this.dataSource.data = this.apiList.children;
-      // console.log(this.apiList);
+      this.dataSource.data = this.apiList;
+      console.log(this.apiList);
     });
   }
   
