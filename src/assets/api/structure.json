@@ -298,26 +298,6 @@
         "displayName": "fe.op",
         "children": [
             {
-                "name": "op/NumpyOp.md",
-                "displayName": "NumpyOp"
-            },
-            {
-                "name": "op/TensorOp.md",
-                "displayName": "TensorOp"
-            },
-            {
-                "name": "op/get_inputs_by_key.md",
-                "displayName": "get_inputs_by_key"
-            },
-            {
-                "name": "op/get_inputs_by_op.md",
-                "displayName": "get_inputs_by_op"
-            },
-            {
-                "name": "op/get_op_from_mode.md",
-                "displayName": "get_op_from_mode"
-            },
-            {
                 "name": "op/numpyop",
                 "displayName": "fe.op.numpyop",
                 "children": [
@@ -355,38 +335,6 @@
                 "name": "op/tensorop",
                 "displayName": "fe.op.tensorop",
                 "children": [
-                    {
-                        "name": "op/tensorop/Average.md",
-                        "displayName": "Average"
-                    },
-                    {
-                        "name": "op/tensorop/Binarize.md",
-                        "displayName": "Binarize"
-                    },
-                    {
-                        "name": "op/tensorop/Minmax.md",
-                        "displayName": "Minmax"
-                    },
-                    {
-                        "name": "op/tensorop/Onehot.md",
-                        "displayName": "Onehot"
-                    },
-                    {
-                        "name": "op/tensorop/Reshape.md",
-                        "displayName": "Reshape"
-                    },
-                    {
-                        "name": "op/tensorop/Resize.md",
-                        "displayName": "Resize"
-                    },
-                    {
-                        "name": "op/tensorop/Scale.md",
-                        "displayName": "Scale"
-                    },
-                    {
-                        "name": "op/tensorop/Zscore.md",
-                        "displayName": "Zscore"
-                    },
                     {
                         "name": "op/tensorop/augmentation",
                         "displayName": "fe.op.tensorop.augmentation",
@@ -462,8 +410,60 @@
                                 "displayName": "ModelOp"
                             }
                         ]
+                    },
+                    {
+                        "name": "op/tensorop/Average.md",
+                        "displayName": "Average"
+                    },
+                    {
+                        "name": "op/tensorop/Binarize.md",
+                        "displayName": "Binarize"
+                    },
+                    {
+                        "name": "op/tensorop/Minmax.md",
+                        "displayName": "Minmax"
+                    },
+                    {
+                        "name": "op/tensorop/Onehot.md",
+                        "displayName": "Onehot"
+                    },
+                    {
+                        "name": "op/tensorop/Reshape.md",
+                        "displayName": "Reshape"
+                    },
+                    {
+                        "name": "op/tensorop/Resize.md",
+                        "displayName": "Resize"
+                    },
+                    {
+                        "name": "op/tensorop/Scale.md",
+                        "displayName": "Scale"
+                    },
+                    {
+                        "name": "op/tensorop/Zscore.md",
+                        "displayName": "Zscore"
                     }
                 ]
+            },
+            {
+                "name": "op/NumpyOp.md",
+                "displayName": "NumpyOp"
+            },
+            {
+                "name": "op/TensorOp.md",
+                "displayName": "TensorOp"
+            },
+            {
+                "name": "op/get_inputs_by_key.md",
+                "displayName": "get_inputs_by_key"
+            },
+            {
+                "name": "op/get_inputs_by_op.md",
+                "displayName": "get_inputs_by_op"
+            },
+            {
+                "name": "op/get_op_from_mode.md",
+                "displayName": "get_op_from_mode"
             },
             {
                 "name": "op/verify_ops.md",
@@ -498,10 +498,6 @@
         "displayName": "fe.summary",
         "children": [
             {
-                "name": "summary/Summary.md",
-                "displayName": "Summary"
-            },
-            {
                 "name": "summary/logs",
                 "displayName": "fe.summary.logs",
                 "children": [
@@ -522,6 +518,10 @@
                         "displayName": "visualize_logs"
                     }
                 ]
+            },
+            {
+                "name": "summary/Summary.md",
+                "displayName": "Summary"
             }
         ]
     },
@@ -529,18 +529,6 @@
         "name": "trace",
         "displayName": "fe.trace",
         "children": [
-            {
-                "name": "trace/MonitorLoss.md",
-                "displayName": "MonitorLoss"
-            },
-            {
-                "name": "trace/Trace.md",
-                "displayName": "Trace"
-            },
-            {
-                "name": "trace/TrainInfo.md",
-                "displayName": "TrainInfo"
-            },
             {
                 "name": "trace/adapt",
                 "displayName": "fe.trace.adapt",
@@ -638,6 +626,18 @@
                         "displayName": "Recall"
                     }
                 ]
+            },
+            {
+                "name": "trace/MonitorLoss.md",
+                "displayName": "MonitorLoss"
+            },
+            {
+                "name": "trace/Trace.md",
+                "displayName": "Trace"
+            },
+            {
+                "name": "trace/TrainInfo.md",
+                "displayName": "TrainInfo"
             }
         ]
     },
@@ -756,30 +756,6 @@
         "displayName": "fe.xai",
         "children": [
             {
-                "name": "xai/FEGradCAM.md",
-                "displayName": "FEGradCAM"
-            },
-            {
-                "name": "xai/UmapPlotter.md",
-                "displayName": "UmapPlotter"
-            },
-            {
-                "name": "xai/generate_caricatures.md",
-                "displayName": "generate_caricatures"
-            },
-            {
-                "name": "xai/plot_caricature.md",
-                "displayName": "plot_caricature"
-            },
-            {
-                "name": "xai/plot_gradcam.md",
-                "displayName": "plot_gradcam"
-            },
-            {
-                "name": "xai/plot_saliency.md",
-                "displayName": "plot_saliency"
-            },
-            {
                 "name": "xai/util",
                 "displayName": "fe.xai.util",
                 "children": [
@@ -824,6 +800,30 @@
                         "displayName": "show_text"
                     }
                 ]
+            },
+            {
+                "name": "xai/FEGradCAM.md",
+                "displayName": "FEGradCAM"
+            },
+            {
+                "name": "xai/UmapPlotter.md",
+                "displayName": "UmapPlotter"
+            },
+            {
+                "name": "xai/generate_caricatures.md",
+                "displayName": "generate_caricatures"
+            },
+            {
+                "name": "xai/plot_caricature.md",
+                "displayName": "plot_caricature"
+            },
+            {
+                "name": "xai/plot_gradcam.md",
+                "displayName": "plot_gradcam"
+            },
+            {
+                "name": "xai/plot_saliency.md",
+                "displayName": "plot_saliency"
             },
             {
                 "name": "xai/visualize_caricature.md",
