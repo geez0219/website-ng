@@ -31,6 +31,7 @@ export class TutorialComponent implements OnInit {
   }
 
   updateCurrentTutorial(tutorial: Tutorial) {
+    window.scroll(0,0);
     this.selectedTutorial = tutorial.name;
     this.currentSelection = 'assets/tutorial/' + this.selectedTutorial;
 
