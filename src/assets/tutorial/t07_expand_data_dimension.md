@@ -63,7 +63,7 @@ from fastestimator.op.tensorop import Minmax
 from fastestimator.op import TensorOp
 import tensorflow as tf
 
-# We create a custom op for random sampling 
+# We create a custom op for random sampling
 class RandomSample(TensorOp):
     def forward(self, data, state):
         x, y = data
@@ -74,7 +74,7 @@ class RandomSample(TensorOp):
         coord_x2_top_left = tf.random.uniform([], maxval=8, dtype=tf.int32)
         coord_y2_top_left = tf.random.uniform([], maxval=8, dtype=tf.int32)
         # We sample two 20x20 images with (x1,y1) and (x2,y2) top-left corner.
-        x = tf.stack([x[coord_x1_top_left:coord_x1_top_left+20, coord_y1_top_left:coord_y1_top_left+20, :], 
+        x = tf.stack([x[coord_x1_top_left:coord_x1_top_left+20, coord_y1_top_left:coord_y1_top_left+20, :],
                       x[coord_x2_top_left:coord_x2_top_left+20, coord_y2_top_left:coord_y2_top_left+20, :]])
         y = tf.stack([y, y]) # same label
         return x, y
@@ -120,7 +120,7 @@ for i in range(4):
 
 
 
-![png](t07_expand_data_dimension_files/t07_expand_data_dimension_9_1.png)
+![png](../../assets/tutorial/t07_expand_data_dimension_files/t07_expand_data_dimension_9_1.png)
 
 
 As we can see, each image is indeed generating two random patches.

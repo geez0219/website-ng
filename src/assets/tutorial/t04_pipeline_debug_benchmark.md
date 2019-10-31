@@ -33,7 +33,7 @@ class Resize(TensorOp):
     def __init__(self, inputs, outputs, size):
         super().__init__(inputs=inputs, outputs=outputs)
         self.size = size
-    
+
     def forward(self, data, state):
         data = tf.image.resize(data, self.size)
         return data
@@ -47,7 +47,7 @@ print("image data is generated in {}".format(data_path))
 writer = RecordWriter(save_dir=os.path.join(data_path, "tfrecords"),
                          train_data=train_csv,
                          validation_data=eval_csv,
-                         ops=[ImageReader(inputs="x", parent_path=data_path, grey_scale=True), 
+                         ops=[ImageReader(inputs="x", parent_path=data_path, grey_scale=True),
                               Rescale(outputs="x")])
 # Create Pipeline
 pipeline = fe.Pipeline(data=writer,
@@ -58,7 +58,7 @@ pipeline = fe.Pipeline(data=writer,
 
 ## 2) Access the pipeline results
 
-`pipeline.show_results` is built for accessing the pipeline data.  
+`pipeline.show_results` is built for accessing the pipeline data.
 For example, if users want to access single batch of pipeline data on epoch 0 during training:
 
 
@@ -92,12 +92,12 @@ for i in range(4):
 
 
 
-![png](t04_pipeline_debug_benchmark_files/t04_pipeline_debug_benchmark_6_1.png)
+![png](../../assets/tutorial/t04_pipeline_debug_benchmark_files/t04_pipeline_debug_benchmark_6_1.png)
 
 
 ## 3) Benchmark pipeline speed
 
-`pipeline.benchmark` can be used to benchmark the pipeline speed.  
+`pipeline.benchmark` can be used to benchmark the pipeline speed.
 For example, if users want to benchmark on epoch 0 during training for 1500 steps (batches):
 
 
