@@ -40,14 +40,53 @@
     font-weight: bold;
 }
 
-.content {
-    border-style: solid;
-    border-width: 5px;
-}
-
 .hide {
     width: 0;
     height: 0;
 }
 
 button { outline: none; }
+
+.content {
+    border-style: outset;
+    border-width: 1px;
+    border-radius: 8px 8px;
+    padding: 2.5%;
+    margin: 1.5%;
+    font-size: 1em;
+}
+
+h1{
+    font-size: 2.25em;
+}
+
+h2{
+    margin-top: 20px;
+    font-size: 2em;
+}
+
+h3{
+    margin-top: 20px;
+    font-size: 1.35em;
+}
+
+h4{
+    font-size: 1.25em;
+}
+
+h1, h2, h3, h4{
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-variant-numeric: normal;
+    font-variant-east-asian: normal;
+    font-weight: 400;
+    font-stretch: normal;
+    line-height: 40px;
+    font-family: "Google Sans", "Noto Sans", "Noto Sans JP", "Noto Sans KR", "Noto Naskh Arabic", "Noto Sans Thai", "Noto Sans Hebrew", "Noto Sans Bengali", sans-serif;
+}
+
+table, th, td {
+  border: 1px solid black;
+  padding: 3px;
+}
