@@ -9,8 +9,7 @@ import { API } from '../api';
 @Component({
   selector: 'app-api',
   templateUrl: './api.component.html',
-  styleUrls: ['./api.component.css'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./api.component.css']
 })
 export class ApiComponent implements OnInit {
   apiList: API[];
