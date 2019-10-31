@@ -1,13 +1,20 @@
 <mat-sidenav-container class="example-container">
   <mat-sidenav mode="side" opened class="sidebar-tutorial" [fixedInViewport]="true" [fixedTopGap]="125">
-    <ul>
-      <li *ngFor = "let tutorial of tutorialList">
-        <div (click)="updateCurrentTutorial(tutorial)">{{ tutorial.displayName }}</div>
-      </li>
-    </ul>
+    <div *ngFor = "let tutorial of tutorialList">
+      <div [ngClass]="{'selected': selectedTutorial === tutorial.name, 
+                'not-selected': selectedTutorial != tutorial.name}" 
+                (click)="updateCurrentTutorial(tutorial)">
+      {{ tutorial.displayName }}
+      </div>
+    </div>
+    
   </mat-sidenav>
   <mat-sidenav-content>
-    <markdown [data]="currentTutorialText"></markdown>
+    <div class="content">
+      Common title
+      <markdown [data]="currentTutorialText"></markdown>
+    </div>
+    
   </mat-sidenav-content>
 </mat-sidenav-container>
 
