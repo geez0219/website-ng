@@ -32,20 +32,20 @@
     font-size: 1em;
 }
 
-h1{
+markdown ::ng-deep h1 {
     font-size: 2em;
 }
 
-h2{
+markdown ::ng-deep h2 {
     margin-top: 20px;
     font-size: 1.5em;
 }
 
-h4{
+markdown ::ng-deep h4 {
     font-size: 1.25em;
 }
 
-h1, h2, h3, h4{
+markdown ::ng-deep h1, markdown ::ng-deep h2, markdown ::ng-deep h3, markdown ::ng-deep h4 {
     font-style: normal;
     font-variant-ligatures: normal;
     font-variant-caps: normal;
@@ -57,7 +57,7 @@ h1, h2, h3, h4{
     font-family: "Google Sans", "Noto Sans", "Noto Sans JP", "Noto Sans KR", "Noto Naskh Arabic", "Noto Sans Thai", "Noto Sans Hebrew", "Noto Sans Bengali", sans-serif;
 }
 
-table, th, td {
+markdown ::ng-deep table, markdown ::ng-deep th, markdown ::ng-deep td {
   border: 1px solid black;
   padding: 3px;
 }
