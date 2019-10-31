@@ -4,11 +4,11 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="navbarsDefault">
-      <div class="navbar-nav">
-          <a class="nav-item nav-link active" routerLink="/api">API</a>
-        </div>
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" routerLink="/tutorial">Tutorials</a>
+      <a (click)="preRoute('API')" [ngClass]="{'selected': selected==='api'}" class="nav-item nav-link active" routerLink="/api">API</a>
+    </div>
+    <div class="navbar-nav">
+      <a (click)="preRoute('Tutorial')" [ngClass]="{'selected': selected==='tutorial'}" class="nav-item nav-link active" routerLink="/tutorial">Tutorials</a>
     </div>
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href="https://github.com/fastestimator/fastestimator" target="_blank">
