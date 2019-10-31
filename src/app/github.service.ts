@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class GithubService {
 
-  examples_url: string = 'https://api.github.com/repos/fastestimator/fastestimator/contents/showcase?Accept=application/vnd.github.v3+json';
+  examples_url: string = 'https://api.github.com/repos/fastestimator/fastestimator/contents/apphub?Accept=application/vnd.github.v3+json';
 
   constructor(private http: HttpClient) { }
 
