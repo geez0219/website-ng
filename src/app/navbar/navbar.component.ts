@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationStart, Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -7,11 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   isNavbarCollapsed=true;
+  selected: string;
 
-  constructor() { 
+  constructor(private router: Router) { 
   }
 
   ngOnInit() {
+    this.router.events.subscribe((val) => {
+      if (val instanceof NavigationStart) {
+        const ns = <NavigationStart>val;
+        this.selected = ns.url.substring(1);
+      }
+  });
+  }
+
+  preRoute(newSelection: string) {
+    this.selected = newSelection.toLowerCase();
   }
 
 }

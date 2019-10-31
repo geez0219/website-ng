@@ -13,16 +13,21 @@ import { API } from '../api';
 })
 export class ApiComponent implements OnInit {
   apiList: API[];
+  selectedAPI: string;
   currentSelection: string;
   currentAPIText: string;
 
-  treeControl = new NestedTreeControl<API>(node => node.children);
-  dataSource = new MatTreeNestedDataSource<API>();
+  treeControl: NestedTreeControl<API>;
+  dataSource: MatTreeNestedDataSource<API>;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
+    this.treeControl = new NestedTreeControl<API>(node => node.children);
+    this.dataSource = new MatTreeNestedDataSource<API>();
+
     this.getAPIStructure();
+    this.selectedAPI = "fe/Pipeline.md";
     this.currentSelection = 'assets/api/fe/Pipeline.md';
     this.getSelectedAPIText();
   }
@@ -32,13 +37,17 @@ export class ApiComponent implements OnInit {
       this.apiList = <API[]>JSON.parse(data);
 
       this.dataSource.data = this.apiList;
-      console.log(this.apiList);
+
+      this.treeControl.dataNodes = this.apiList;
+      this.treeControl.expand(this.treeControl.dataNodes[0]);
     });
   }
   
   hasChild = (_: number, node: API) => !!node.children && node.children.length > 0;
 
   updateCurrentAPI(api: API) {
+    window.scroll(0,0);
+    this.selectedAPI = api.name;
     this.currentSelection = 'assets/api/' + api.name;
 
     this.getSelectedAPIText();

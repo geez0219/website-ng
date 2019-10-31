@@ -27,8 +27,6 @@ export class TutorialComponent implements OnInit {
   getTutorialStructure() {
     this.http.get('assets/tutorial/structure.json', {responseType: 'text'}).subscribe(data => {
       this.tutorialList = <Tutorial[]>JSON.parse(data);
-
-      console.log(this.tutorialList);
     });
   }
 

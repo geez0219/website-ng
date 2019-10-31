@@ -2,10 +2,6 @@
     width: 20rem;
 }
 
-li {
-    list-style-type: none;
-}
-
 .selected, .not-selected {
     cursor: pointer;
     padding: 5px;
@@ -22,6 +18,9 @@ li {
 
 .selected {
     background: #E8F0FE;
+    border-radius: 10px;
+    color: rgb(25, 103, 210);
+    font-weight: bold;
 }
 
 .content {
