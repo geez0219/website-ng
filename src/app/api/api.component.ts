@@ -37,7 +37,7 @@ export class ApiComponent implements OnInit {
       this.apiList = <API[]>JSON.parse(data);
 
       this.dataSource.data = this.apiList;
-      
+
       this.treeControl.dataNodes = this.apiList;
       this.treeControl.expand(this.treeControl.dataNodes[0]);
     });
@@ -46,6 +46,7 @@ export class ApiComponent implements OnInit {
   hasChild = (_: number, node: API) => !!node.children && node.children.length > 0;
 
   updateCurrentAPI(api: API) {
+    window.scroll(0,0);
     this.selectedAPI = api.name;
     this.currentSelection = 'assets/api/' + api.name;
 
