@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http'; 
+import { HttpClient } from '@angular/common/http';
 import { Tutorial } from '../tutorial';
+import { ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-tutorial',
   templateUrl: './tutorial.component.html',
-  styleUrls: ['./tutorial.component.css']
+  styleUrls: ['./tutorial.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class TutorialComponent implements OnInit {
   selectedTutorial: string;
@@ -29,7 +31,7 @@ export class TutorialComponent implements OnInit {
       console.log(this.tutorialList);
     });
   }
-  
+
   updateCurrentTutorial(tutorial: Tutorial) {
     this.selectedTutorial = tutorial.name;
     this.currentSelection = 'assets/tutorial/' + this.selectedTutorial;
