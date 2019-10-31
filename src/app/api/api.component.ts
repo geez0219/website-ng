@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { HttpClient } from '@angular/common/http'; 
 
 import { NestedTreeControl } from '@angular/cdk/tree';
@@ -9,7 +9,8 @@ import { API } from '../api';
 @Component({
   selector: 'app-api',
   templateUrl: './api.component.html',
-  styleUrls: ['./api.component.css']
+  styleUrls: ['./api.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ApiComponent implements OnInit {
   apiList: API[];
