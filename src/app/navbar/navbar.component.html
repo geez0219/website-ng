@@ -5,13 +5,13 @@
   </button>
   <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="navbarsDefault">
     <div class="navbar-nav">
-      <a (click)="preRoute('api')" [ngClass]="{'selected': selected==='api'}" class="nav-item nav-link active" routerLink="/api">API</a>
+      <a (click)="preRoute('api')" [ngClass]="{'selected-title': selected==='api'}" class="nav-item nav-link active" routerLink="/api">API</a>
     </div>
     <div class="navbar-nav">
-      <a (click)="preRoute('tutorial')" [ngClass]="{'selected': selected==='tutorial'}" class="nav-item nav-link active" routerLink="/tutorial">Tutorials</a>
+      <a (click)="preRoute('tutorial')" [ngClass]="{'selected-title': selected==='tutorial'}" class="nav-item nav-link active" routerLink="/tutorial">Tutorials</a>
     </div>
     <div class="navbar-nav">
-        <a (click)="preRoute('examples')" [ngClass]="{'selected': selected==='examples'}" class="nav-item nav-link active" routerLink="/examples">Examples</a>
+        <a (click)="preRoute('examples')" [ngClass]="{'selected-title': selected==='examples'}" class="nav-item nav-link active" routerLink="/examples">Examples</a>
       </div>
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href="https://github.com/fastestimator/fastestimator" target="_blank">

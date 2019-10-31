@@ -13,7 +13,7 @@ nav div div a{
     padding: 2em 2em;
 }
 
-.selected, nav div div a:hover{
+.selected-title, nav div div a:hover{
     color:#555557;
     font-weight:bold;
 }

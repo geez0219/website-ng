@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
 import { Tutorial } from '../tutorial';
-import { ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-tutorial',
