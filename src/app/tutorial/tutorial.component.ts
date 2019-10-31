@@ -8,6 +8,7 @@ import { Tutorial } from '../tutorial';
   styleUrls: ['./tutorial.component.css']
 })
 export class TutorialComponent implements OnInit {
+  selectedTutorial: string;
   currentSelection: string;
   currentTutorialText: string;
   tutorialList: Tutorial[];
@@ -16,6 +17,7 @@ export class TutorialComponent implements OnInit {
 
   ngOnInit() {
     this.getTutorialStructure();
+    this.selectedTutorial = 't01_basic_usage.md';
     this.currentSelection = 'assets/tutorial/t01_basic_usage.md';
     this.getSelectedTutorialText();
   }
@@ -29,9 +31,11 @@ export class TutorialComponent implements OnInit {
   }
   
   updateCurrentTutorial(tutorial: Tutorial) {
-    this.currentSelection = 'assets/tutorial/' + tutorial.name;
+    this.selectedTutorial = tutorial.name;
+    this.currentSelection = 'assets/tutorial/' + this.selectedTutorial;
 
     this.getSelectedTutorialText();
+
   }
 
   getSelectedTutorialText() {
