@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from  '@angular/material';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTreeModule } from '@angular/material/tree';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MatTreeModule } from '@angular/material/tree';
     GettingStartedComponent,
     TutorialComponent,
     ExamplesComponent,
-    ApiComponent
+    ApiComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
