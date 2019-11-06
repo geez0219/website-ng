@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit {
         const ns = <NavigationStart>val;
         this.selected = ns.url.substring(1);
       }
-  });
+    });
   }
 
   preRoute(newSelection: string) {
