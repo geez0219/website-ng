@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 import { Tutorial } from '../tutorial';
 
@@ -14,18 +16,26 @@ export class TutorialComponent implements OnInit {
   currentTutorialText: string;
   tutorialList: Tutorial[];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private route: ActivatedRoute,
+    private location: Location) { }
 
   ngOnInit() {
     this.getTutorialStructure();
-    this.selectedTutorial = 't01_basic_usage.md';
-    this.currentSelection = 'assets/tutorial/t01_basic_usage.md';
-    this.getSelectedTutorialText();
   }
 
   getTutorialStructure() {
     this.http.get('assets/tutorial/structure.json', {responseType: 'text'}).subscribe(data => {
       this.tutorialList = <Tutorial[]>JSON.parse(data);
+
+      let name = this.route.snapshot.paramMap.get('name');
+      if (name === null) {
+        this.updateCurrentTutorial(this.tutorialList[0]);
+      } else {
+        var t: Tutorial[] = this.tutorialList.filter(tutorial => tutorial.name === (name + ".md"));
+        this.updateCurrentTutorial(t[0]);
+      }
+      
     });
   }
 
@@ -36,6 +46,7 @@ export class TutorialComponent implements OnInit {
 
     this.getSelectedTutorialText();
 
+    this.location.replaceState('/tutorials/' + tutorial.name.substring(0, tutorial.name.length - 3));
   }
 
   getSelectedTutorialText() {

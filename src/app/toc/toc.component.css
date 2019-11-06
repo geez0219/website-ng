@@ -1,0 +1,14 @@
+ul {
+    list-style: none;
+    border-left: 4px solid #5f6368;
+    border-color: #ff6f00;
+}
+
+a {
+    color: #202124;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #1967d2;
+}
