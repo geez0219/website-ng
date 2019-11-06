@@ -6,8 +6,7 @@ import { Tutorial } from '../tutorial';
 @Component({
   selector: 'app-tutorial',
   templateUrl: './tutorial.component.html',
-  styleUrls: ['./tutorial.component.css'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./tutorial.component.css']
 })
 export class TutorialComponent implements OnInit {
   selectedTutorial: string;
