@@ -2,3 +2,13 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+/* search bar css */
+.gstl_50:hover{
+    background-color: #8f8f8f
+}
+
+.gsc-input:hover{
+    background-color: #8f8f8f
+}

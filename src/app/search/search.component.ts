@@ -16,6 +16,7 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     const s = this.renderer2.createElement('script');
     s.type = 'text/javascript';
+    // s.src = 'https://cse.google.com/cse.js?cx=007435124061301021685:nx5ivx9bz4c';
     s.src = 'assets/GCSE.js';
     s.text = '';
     this.renderer2.appendChild(this._document.body, s);
