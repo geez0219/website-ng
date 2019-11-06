@@ -61,3 +61,21 @@ markdown ::ng-deep table, markdown ::ng-deep th, markdown ::ng-deep td {
   border: 1px solid black;
   padding: 3px;
 }
+
+.toc {
+    width: 10%;
+    float: right;
+    height:100vh;
+    position: fixed;
+    right: 0;
+}
+
+.sidenav-content {
+    width: 90%;
+    float:left;
+}
+
+#anchor{
+    position: relative;
+    padding-top: 100px;
+}

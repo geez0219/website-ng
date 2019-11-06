@@ -19,6 +19,7 @@ import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatBu
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTreeModule } from '@angular/material/tree';
 import { SearchComponent } from './search/search.component';
+import { TocComponent } from './toc/toc.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { SearchComponent } from './search/search.component';
     TutorialComponent,
     ExamplesComponent,
     ApiComponent,
-    SearchComponent
+    SearchComponent,
+    TocComponent
   ],
   imports: [
     BrowserModule,
