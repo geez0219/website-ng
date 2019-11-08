@@ -1,13 +1,24 @@
-<p>Current List of examples on our repo:</p>
+<div class="sidenav-content">
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav mode="side" opened class="sidebar-tutorial" [fixedInViewport]="true" [fixedTopGap]="100">
+      <div *ngFor="let tutorial of tutorialList">
+        <div [ngClass]="{'selected': selectedTutorial === tutorial.name,
+                  'not-selected': selectedTutorial != tutorial.name}" (click)="updateCurrentTutorial(tutorial)">
+          {{ tutorial.displayName }}
+        </div>
+      </div>
 
-<label for="typeahead-basic">Filter:</label>
-<input id="typeahead-basic" type="text" [(ngModel)]="showcase" [ngbTypeahead]="search"/>
-<hr>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="content-wrapper"> 
+        <div class="content">
+            <markdown [data]="currentTutorialText"></markdown>
+        </div>
+      </div>
+    </mat-sidenav-content>
 
-<div>
-    <ul>
-        <li *ngFor="let example of examples">
-                <a href="{{ example.url }}" target="_blank">{{ example.name }}</a>
-        </li>
-    </ul>
+  </mat-sidenav-container>
+</div>
+<div class="toc">
+  <toc></toc>
 </div>
