@@ -23,6 +23,10 @@
     font-weight: bold;
 }
 
+.content-wrapper {
+    margin: 0 1rem;
+}
+
 .content {
     border-style: outset;
     border-width: 1px;
