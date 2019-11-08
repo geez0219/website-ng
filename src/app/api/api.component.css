@@ -52,8 +52,9 @@ button { outline: none; }
     border-width: 1px;
     border-radius: 8px 8px;
     padding: 2.5%;
-    margin: 1.5%;
     font-size: 1em;
+    max-width: 80rem;
+    margin: 25px auto;
 }
 
 markdown ::ng-deep h1 {
