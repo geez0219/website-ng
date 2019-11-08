@@ -4,7 +4,7 @@
 
 .selected, .not-selected {
     cursor: pointer;
-    padding: 5px;
+    padding: 8px;
     font-size: 13px;
     font-family: Roboto, Noto Sans, Noto Sans JP, Noto Sans KR, Noto Naskh Arabic, Noto Sans Thai, Noto Sans Hebrew, Noto Sans Bengali, sans-serif;
 }
@@ -23,13 +23,18 @@
     font-weight: bold;
 }
 
+.content-wrapper {
+    margin: 0 1rem;
+}
+
 .content {
     border-style: outset;
     border-width: 1px;
     border-radius: 8px 8px;
     padding: 2.5%;
-    margin: 1.5%;
     font-size: 1em;
+    max-width: 80rem;
+    margin: 25px auto;
 }
 
 markdown ::ng-deep h1 {
@@ -79,3 +84,4 @@ markdown ::ng-deep table, markdown ::ng-deep th, markdown ::ng-deep td {
     position: relative;
     padding-top: 100px;
 }
+

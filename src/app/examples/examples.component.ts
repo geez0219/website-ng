@@ -1,37 +1,59 @@
-import { Component, OnInit } from '@angular/core';
-import { GithubService } from '../github.service';
-import { Observable } from 'rxjs';
-import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Location } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
-
-const showcaseList = ['NLP', 'benchmark', 'image_classification', 'image_detection', 'image_generation', 'image_segmentation', 'style_transfer', 'tabular'];
+import { Tutorial } from '../tutorial';
 
 @Component({
   selector: 'app-examples',
   templateUrl: './examples.component.html',
-  styleUrls: ['./examples.component.css'],
+  styleUrls: ['./examples.component.css']
 })
 export class ExamplesComponent implements OnInit {
+  selectedTutorial: string;
+  currentSelection: string;
+  currentTutorialText: string;
+  tutorialList: Tutorial[];
 
-  examples: Array<any>;
-  showcase: string;
-
-  search = (text$: Observable<string>) =>
-    text$.pipe(
-      debounceTime(200),
-      distinctUntilChanged(),
-      map(term => term.length < 1 ? []
-        : showcaseList.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
-    )
-
-
-  constructor(private githubService: GithubService) { }
+  constructor(private http: HttpClient,
+    private route: ActivatedRoute,
+    private location: Location) { }
 
   ngOnInit() {
-    this.githubService.getExampleList()
-      .subscribe((data) => {
-        this.examples = (data as any[]).filter(e => (e.type == 'dir')).map(e => { return {name: e.name, url: e.html_url}; });
-      });
+    this.getTutorialStructure();
+  }
+
+  getTutorialStructure() {
+    this.http.get('assets/tutorial/structure.json', {responseType: 'text'}).subscribe(data => {
+      this.tutorialList = <Tutorial[]>JSON.parse(data);
+
+      let name = this.route.snapshot.paramMap.get('name');
+      if (name === null) {
+        this.updateCurrentTutorial(this.tutorialList[0]);
+      } else {
+        var t: Tutorial[] = this.tutorialList.filter(tutorial => tutorial.name === (name + ".md"));
+        this.updateCurrentTutorial(t[0]);
+      }
+      
+    });
+  }
+
+  updateCurrentTutorial(tutorial: Tutorial) {
+    window.scroll(0,0);
+    this.selectedTutorial = tutorial.name;
+    this.currentSelection = 'assets/tutorial/' + this.selectedTutorial;
+
+    this.getSelectedTutorialText();
+
+    this.location.replaceState('/tutorials/' + tutorial.name.substring(0, tutorial.name.length - 3));
+  }
+
+  getSelectedTutorialText() {
+    this.http.get(this.currentSelection, {responseType: 'text'}).subscribe(data => {
+      this.currentTutorialText = data;
+    });
   }
 
 }
+
