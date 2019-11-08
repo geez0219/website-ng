@@ -12,14 +12,18 @@
     </div>
     <div class="navbar-nav">
         <a (click)="preRoute('examples')" [ngClass]="{'selected-title': selected==='examples'}" class="nav-item nav-link active" routerLink="/examples">Examples</a>
-      </div>
     </div>
+  </div>
 
-    <div class="navbar">
-      <div class="navbar-item">
-          <app-search>
-          </app-search>
-      </div>
+  <div class="navbar">
+    <div class="navbar-item">
+        <app-search>
+        </app-search>
+    </div>
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="https://github.com/fastestimator/fastestimator" target="_blank">
+        <img src="../../assets/GitHub-Mark-32px.png">
+      </a>
     </div>
   </div>
 </nav>
