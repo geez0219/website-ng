@@ -5,10 +5,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
 /* search bar css */
-.gstl_50:hover{
+#gs_id50, #gsc-i-id1{
+    background-color: #d3cece
+}
+#gs_id50:hover #gsc-i-id1, #gs_id50:hover{
     background-color: #8f8f8f
 }
 
-.gsc-input:hover{
-    background-color: #8f8f8f
-}
