@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
     this.router.events.subscribe((val) => {
       if (val instanceof NavigationStart) {
         const ns = <NavigationStart>val;
-        this.selected = ns.url.substring(1);
+        this.selected = ns.url.substring(1).split("/")[0];
       }
     });
   }

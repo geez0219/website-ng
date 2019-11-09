@@ -8,17 +8,20 @@ import { ApiComponent } from './api/api.component';
 
 const routes: Routes = [
   { path: '', component: GettingStartedComponent },
-  { path: 'api', component: ApiComponent },
   { path: 'api', children: [
       {
           path: "**",
           component: ApiComponent
       }
     ]},
-  { path: 'api/:name', component: ApiComponent },
-  { path: 'api/**', component: ApiComponent },
-  { path: 'tutorials', component: TutorialComponent },
-  { path: 'tutorials/:name', component: TutorialComponent },
+  { path: 'tutorials', 
+    children: [
+      {
+        path: "**",
+        component: TutorialComponent
+      },
+    ],
+    runGuardsAndResolvers: "always" },
   { path: 'examples', component: ExamplesComponent },
 ];
 
