@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http'; 
 import { Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -13,7 +13,7 @@ import { API } from '../api';
   templateUrl: './api.component.html',
   styleUrls: ['./api.component.css']
 })
-export class ApiComponent implements OnInit {
+export class ApiComponent implements OnInit, OnDestroy {
   apiList: API[];
   selectedAPI: string;
   currentSelection: string;
@@ -37,6 +37,12 @@ export class ApiComponent implements OnInit {
         this.parseURL();
       }
     });
+  }
+
+  ngOnDestroy() {
+    if (this.routerSubscription) {
+      this.routerSubscription.unsubscribe();
+    }
   }
 
   hasChild = (_: number, node: API) => !!node.children && node.children.length > 0;
@@ -87,6 +93,7 @@ export class ApiComponent implements OnInit {
       });
 
       this.updateAPIContent(a[0]);
+      this.treeControl.expand(this.treeControl.dataNodes[0]);
       // this.expandNodes(a[0], name);
     }
   }
