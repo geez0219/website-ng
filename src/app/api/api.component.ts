@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http'; 
-import { Router } from '@angular/router';
-import { Location } from '@angular/common';
+import { Router, NavigationEnd } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
@@ -18,19 +18,25 @@ export class ApiComponent implements OnInit {
   selectedAPI: string;
   currentSelection: string;
   currentAPIText: string;
+  routerSubscription: Subscription;
 
   treeControl: NestedTreeControl<API>;
   dataSource: MatTreeNestedDataSource<API>;
 
   constructor(private http: HttpClient,
-    private router: Router,
-    private location: Location) { }
+    private router: Router,) { }
 
   ngOnInit() {
     this.treeControl = new NestedTreeControl<API>(node => node.children);
     this.dataSource = new MatTreeNestedDataSource<API>();
 
     this.getAPIStructure();
+
+    this.routerSubscription = this.router.events.subscribe((e: any) => {
+      if (e instanceof NavigationEnd) {
+        this.parseURL();
+      }
+    });
   }
 
   hasChild = (_: number, node: API) => !!node.children && node.children.length > 0;
@@ -55,42 +61,61 @@ export class ApiComponent implements OnInit {
       this.dataSource.data = this.apiList;
       this.treeControl.dataNodes = this.apiList;
       
-      var pathComponents = this.router.url.split("/api/");
-      var name = "";
-      if (pathComponents.length > 1) {
-        name = pathComponents[1];
-      } else {
-          name = "";
-      }
-
-      if (name === "") {
-        this.updateCurrentAPI(this.apiList[0].children[0]);
-        this.treeControl.expand(this.treeControl.dataNodes[0]);
-      } else {
-        var a: API[] = this.flatten(this.apiList).filter(api => {
-          var split: string[] = api.name.split("/");
-          var matchName: string[] = (name + ".md").split("/");
-          return split[split.length - 1] === matchName[matchName.length - 1];
-        });
-        
-        this.updateCurrentAPI(a[0]);
-        this.treeControl.expand(this.treeControl.dataNodes[0]);
-      }
+      this.parseURL();
     });
   }
 
+  private parseURL() {
+    var pathComponents = this.router.url.split("/api/");
+    var name = "";
+    if (pathComponents.length > 1) {
+      name = pathComponents[1];
+    }
+    else {
+      name = "";
+    }
+    if (name === "") {
+      this.updateCurrentAPI(this.apiList[0].children[0]);
+
+      this.treeControl.expand(this.treeControl.dataNodes[0]);
+    }
+    else {
+      var a: API[] = this.flatten(this.apiList).filter(api => {
+        var split: string[] = api.name.split("/");
+        var matchName: string[] = (name + ".md").split("/");
+        return split[split.length - 1] === matchName[matchName.length - 1];
+      });
+
+      this.updateAPIContent(a[0]);
+      // this.expandNodes(a[0], name);
+    }
+  }
+
+  expandNodes(api: API, apiName: string) {
+    console.log(apiName);
+    for (let node of this.treeControl.dataNodes) {
+      console.log(node);
+    }
+    // this.treeControl.expand(this.treeControl.dataNodes[5]);
+    // this.treeControl.expand(this.treeControl.dataNodes[5].children[0]);
+  }
+
   updateCurrentAPI(api: API) {
-    window.scroll(0,0);
+    var path = this.updateAPIContent(api);
+
+    this.router.navigateByUrl('/api/' + path);
+  }
+
+  private updateAPIContent(api: API) {
+    window.scroll(0, 0);
     this.selectedAPI = api.name;
     this.currentSelection = 'assets/api/' + api.name;
-
-    this.getSelectedAPIText();
-
     var path = api.name.substring(0, api.name.length - 3);
     if (!path.startsWith("fe")) {
       path = "fe/" + path;
     }
-    this.location.replaceState('/api/' + path);
+    this.getSelectedAPIText();
+    return path;
   }
 
   getSelectedAPIText() {
