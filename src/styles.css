@@ -2,3 +2,20 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+/* search bar css */
+#gs_id50, #gsc-i-id1{
+    background-color: #d3cece
+}
+#gs_id50:hover #gsc-i-id1, #gs_id50:hover{
+    background-color: #8f8f8f
+}
+button.gsc-search-button
+{
+    padding:0px !important;
+    height:0px !important; 
+    width:0px !important;
+    visibility: hidden;
+	background-color:transparent !important;
+}
