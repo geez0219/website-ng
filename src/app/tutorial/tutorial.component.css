@@ -68,7 +68,7 @@ markdown ::ng-deep table, markdown ::ng-deep th, markdown ::ng-deep td {
 }
 
 .toc {
-    width: 10%;
+    width: 15%;
     float: right;
     height:100vh;
     position: fixed;
@@ -76,7 +76,7 @@ markdown ::ng-deep table, markdown ::ng-deep th, markdown ::ng-deep td {
 }
 
 .sidenav-content {
-    width: 90%;
+    /* width: 85%; */
     float:left;
 }
 

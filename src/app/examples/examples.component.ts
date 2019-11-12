@@ -25,7 +25,7 @@ export class ExamplesComponent implements OnInit {
   }
 
   getTutorialStructure() {
-    this.http.get('assets/tutorial/structure.json', {responseType: 'text'}).subscribe(data => {
+    this.http.get('assets/examples/structure.json', {responseType: 'text'}).subscribe(data => {
       this.tutorialList = <Tutorial[]>JSON.parse(data);
 
       let name = this.route.snapshot.paramMap.get('name');
@@ -37,16 +37,17 @@ export class ExamplesComponent implements OnInit {
       }
       
     });
+    // console.log(typeof(this.tutorialList));
   }
 
   updateCurrentTutorial(tutorial: Tutorial) {
     window.scroll(0,0);
     this.selectedTutorial = tutorial.name;
-    this.currentSelection = 'assets/tutorial/' + this.selectedTutorial;
+    this.currentSelection = 'assets/examples/' + this.selectedTutorial;
 
     this.getSelectedTutorialText();
 
-    this.location.replaceState('/tutorials/' + tutorial.name.substring(0, tutorial.name.length - 3));
+    this.location.replaceState('/examples/' + tutorial.name.substring(0, tutorial.name.length - 3));
   }
 
   getSelectedTutorialText() {

@@ -7,12 +7,11 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TocComponent implements OnInit {
   @Input()
-  items: string[];
+  items: string[] = [];
 
   constructor() { }
 
   ngOnInit() {
-    this.items = ["asd", "asdf"]
   }
 
 }

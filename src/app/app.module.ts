@@ -20,6 +20,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatTreeModule } from '@angular/material/tree';
 import { SearchComponent } from './search/search.component';
 import { TocComponent } from './toc/toc.component';
+import { InstallComponent } from './install/install.component';
+import { CommunityComponent } from './community/community.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { TocComponent } from './toc/toc.component';
     ExamplesComponent,
     ApiComponent,
     SearchComponent,
-    TocComponent
+    TocComponent,
+    InstallComponent,
+    CommunityComponent
   ],
   imports: [
     BrowserModule,

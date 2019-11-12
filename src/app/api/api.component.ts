@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http'; 
 import { Router, NavigationEnd } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, range } from 'rxjs';
 
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
@@ -75,7 +75,7 @@ export class ApiComponent implements OnInit, OnDestroy {
     var pathComponents = this.router.url.split("/api/");
     var name = "";
     if (pathComponents.length > 1) {
-      name = pathComponents[1];
+      name = pathComponents[1].split("#")[0];
     }
     else {
       name = "";
@@ -93,18 +93,27 @@ export class ApiComponent implements OnInit, OnDestroy {
       });
 
       this.updateAPIContent(a[0]);
-      this.treeControl.expand(this.treeControl.dataNodes[0]);
-      // this.expandNodes(a[0], name);
+      this.expandNodes(a[0], name);
     }
   }
 
   expandNodes(api: API, apiName: string) {
-    console.log(apiName);
-    for (let node of this.treeControl.dataNodes) {
-      console.log(node);
+    var apiParts: Array<string> = apiName.split("/");
+    apiParts.pop();
+
+    if (apiParts.length === 1) {
+      this.treeControl.expand(this.treeControl.dataNodes[0]);
+    } else {
+      var searchRange = this.treeControl.dataNodes;
+      var searchName = apiParts[0];
+      for (var i: number = 0; i < apiParts.length - 1; i++) {
+        searchName = searchName + "." + apiParts[i + 1];
+        var expandNode = searchRange.filter(api => api.displayName === searchName)[0];
+        this.treeControl.expand(expandNode);
+
+        searchRange = expandNode.children;
+      }
     }
-    // this.treeControl.expand(this.treeControl.dataNodes[5]);
-    // this.treeControl.expand(this.treeControl.dataNodes[5].children[0]);
   }
 
   updateCurrentAPI(api: API) {
@@ -115,6 +124,7 @@ export class ApiComponent implements OnInit, OnDestroy {
 
   private updateAPIContent(api: API) {
     window.scroll(0, 0);
+
     this.selectedAPI = api.name;
     this.currentSelection = 'assets/api/' + api.name;
     var path = api.name.substring(0, api.name.length - 3);
@@ -122,6 +132,7 @@ export class ApiComponent implements OnInit, OnDestroy {
       path = "fe/" + path;
     }
     this.getSelectedAPIText();
+    
     return path;
   }
 

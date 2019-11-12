@@ -4,7 +4,8 @@ import { GettingStartedComponent } from './getting-started/getting-started.compo
 import { TutorialComponent } from './tutorial/tutorial.component';
 import { ExamplesComponent } from './examples/examples.component';
 import { ApiComponent } from './api/api.component';
-
+import { InstallComponent } from './install/install.component';
+import { CommunityComponent } from './community/community.component';
 
 const routes: Routes = [
   { path: '', component: GettingStartedComponent },
@@ -23,6 +24,9 @@ const routes: Routes = [
     ],
     runGuardsAndResolvers: "always" },
   { path: 'examples', component: ExamplesComponent },
+  { path: 'examples/:name', component: ExamplesComponent },
+  { path: 'install', component: InstallComponent},
+  { path: 'community', component: CommunityComponent}
 ];
 
 const routerOptions: ExtraOptions = {

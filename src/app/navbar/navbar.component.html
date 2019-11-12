@@ -4,23 +4,26 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="navbarsDefault">
-    <div class="navbar-nav">
-      <a (click)="preRoute('api')" [ngClass]="{'selected-title': selected==='api'}" class="nav-item nav-link active" routerLink="/api/fe/Estimator">API</a>
+    <div class="navbar-item">
+      <a (click)="preRoute('install')" [ngClass]="{'selected-title': selected==='install'}" class="nav-item nav-link active" routerLink="/install">Install</a>
     </div>
-    <div class="navbar-nav">
+    <div class="navbar-item">
       <a (click)="preRoute('tutorials')" [ngClass]="{'selected-title': selected==='tutorials'}" class="nav-item nav-link active" routerLink="/tutorials/t01_basic_usage">Tutorials</a>
     </div>
-    <div class="navbar-nav">
-        <a (click)="preRoute('examples')" [ngClass]="{'selected-title': selected==='examples'}" class="nav-item nav-link active" routerLink="/examples">Examples</a>
-    </div>
-  </div>
 
-  <div class="navbar">
     <div class="navbar-item">
-        <app-search>
-        </app-search>
+      <a (click)="preRoute('examples')" [ngClass]="{'selected-title': selected==='examples'}" class="nav-item nav-link active" routerLink="/examples">Examples</a>
     </div>
-    <div class="navbar-nav">
+    <div class="navbar-item">
+      <a (click)="preRoute('api')" [ngClass]="{'selected-title': selected==='api'}" class="nav-item nav-link active" routerLink="/api">API</a>
+    </div>
+    <div class="navbar-item">
+      <a (click)="preRoute('community')" [ngClass]="{'selected-title': selected==='community'}" class="nav-item nav-link active" routerLink="/community">Coummunity</a>
+    </div>
+    <div class="navbar-item">
+      <app-search></app-search>
+    </div>
+    <div class="navbar-item">
       <a class="nav-item nav-link active" href="https://github.com/fastestimator/fastestimator" target="_blank">
         <img src="../../assets/images/GitHub-Mark-32px.png">
       </a>
