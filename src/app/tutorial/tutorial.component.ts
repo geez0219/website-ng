@@ -1,52 +1,85 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Location } from '@angular/common';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 import { Tutorial } from '../tutorial';
+import { TOC } from '../toc';
 
 @Component({
   selector: 'app-tutorial',
   templateUrl: './tutorial.component.html',
   styleUrls: ['./tutorial.component.css']
 })
-export class TutorialComponent implements OnInit {
+export class TutorialComponent implements OnInit, OnDestroy {
   selectedTutorial: string;
   currentSelection: string;
   currentTutorialText: string;
   tutorialList: Tutorial[];
+  tocContent: TOC[];
+  routerSubscription: Subscription;
 
   constructor(private http: HttpClient,
-    private route: ActivatedRoute,
-    private location: Location) { }
+    private router: Router,) { }
 
   ngOnInit() {
     this.getTutorialStructure();
+
+    this.routerSubscription = this.router.events.subscribe((e: any) => {
+      if (e instanceof NavigationEnd) {
+        this.parseURL();
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.routerSubscription) {
+      this.routerSubscription.unsubscribe();
+    }
   }
 
   getTutorialStructure() {
     this.http.get('assets/tutorial/structure.json', {responseType: 'text'}).subscribe(data => {
       this.tutorialList = <Tutorial[]>JSON.parse(data);
 
-      let name = this.route.snapshot.paramMap.get('name');
-      if (name === null) {
-        this.updateCurrentTutorial(this.tutorialList[0]);
-      } else {
-        var t: Tutorial[] = this.tutorialList.filter(tutorial => tutorial.name === (name + ".md"));
-        this.updateCurrentTutorial(t[0]);
-      }
-      
+      console.log(this.tutorialList);
+      this.parseURL();
     });
   }
 
-  updateCurrentTutorial(tutorial: Tutorial) {
+  private parseURL() {
+    var pathComponents = this.router.url.split("/tutorials/");
+    var name = "";
+    if (pathComponents.length > 1) {
+      name = pathComponents[1].split("#")[0];
+    }
+    else {
+      name = "";
+    }
+
+    if (name === "") {
+      this.updateCurrentTutorial(this.tutorialList[0]);
+    }
+    else {
+      var t: Tutorial[] = this.tutorialList.filter(tutorial => tutorial.name === (name + ".md"));
+      this.updateTutorialContent(t[0]);
+    }
+  }
+
+  updateTutorialContent(tutorial: Tutorial) {
     window.scroll(0,0);
+
     this.selectedTutorial = tutorial.name;
     this.currentSelection = 'assets/tutorial/' + this.selectedTutorial;
 
+    this.tocContent = tutorial.toc;
     this.getSelectedTutorialText();
+  }
 
-    this.location.replaceState('/tutorials/' + tutorial.name.substring(0, tutorial.name.length - 3));
+  updateCurrentTutorial(tutorial: Tutorial) {
+    this.updateTutorialContent(tutorial);
+
+    this.router.navigate(['/tutorials/' + tutorial.name.substring(0, tutorial.name.length - 3)]);
   }
 
   getSelectedTutorialText() {
@@ -54,5 +87,7 @@ export class TutorialComponent implements OnInit {
       this.currentTutorialText = data;
     });
   }
+
+  
 
 }

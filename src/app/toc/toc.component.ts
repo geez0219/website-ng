@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'toc',
@@ -6,12 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./toc.component.css']
 })
 export class TocComponent implements OnInit {
-  items: string[];
+  @Input()
+  items: string[] = [];
 
   constructor() { }
 
   ngOnInit() {
-    this.items = ["asd", "asdf"]
   }
 
 }
