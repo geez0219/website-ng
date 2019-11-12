@@ -4,6 +4,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { Tutorial } from '../tutorial';
+import { TOC } from '../toc';
 
 @Component({
   selector: 'app-tutorial',
@@ -15,6 +16,7 @@ export class TutorialComponent implements OnInit, OnDestroy {
   currentSelection: string;
   currentTutorialText: string;
   tutorialList: Tutorial[];
+  tocContent: TOC[];
   routerSubscription: Subscription;
 
   constructor(private http: HttpClient,
@@ -40,6 +42,7 @@ export class TutorialComponent implements OnInit, OnDestroy {
     this.http.get('assets/tutorial/structure.json', {responseType: 'text'}).subscribe(data => {
       this.tutorialList = <Tutorial[]>JSON.parse(data);
 
+      console.log(this.tutorialList);
       this.parseURL();
     });
   }
@@ -48,7 +51,7 @@ export class TutorialComponent implements OnInit, OnDestroy {
     var pathComponents = this.router.url.split("/tutorials/");
     var name = "";
     if (pathComponents.length > 1) {
-      name = pathComponents[1];
+      name = pathComponents[1].split("#")[0];
     }
     else {
       name = "";
@@ -69,6 +72,7 @@ export class TutorialComponent implements OnInit, OnDestroy {
     this.selectedTutorial = tutorial.name;
     this.currentSelection = 'assets/tutorial/' + this.selectedTutorial;
 
+    this.tocContent = tutorial.toc;
     this.getSelectedTutorialText();
   }
 
