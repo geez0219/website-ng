@@ -4,13 +4,20 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
-/* search bar css */
+.gsc-input-box {
+    background-color: #ebe5e5 !important;
+    border-color: #ebe5e5 !important;
+    border-radius: 2px;
+}
+
 #gs_id50, #gsc-i-id1{
-    background-color: #d3cece
+    background-color: #ebe5e5;
+    border-radius: 2px;
 }
 #gs_id50:hover #gsc-i-id1, #gs_id50:hover{
-    background-color: #8f8f8f
+    background-color: #d3cece;
 }
+
 button.gsc-search-button
 {
     padding:0px !important;
