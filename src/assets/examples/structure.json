@@ -1,0 +1,684 @@
+[
+    {
+        "name": "t01_basic_usage.md",
+        "displayName": " Tutorial 1: Getting started with FastEstimator",
+        "toc": [
+            {
+                "name": "tutorial-1-getting-started-with-fastestimator",
+                "displayName": "Tutorial 1: Getting started with FastEstimator"
+            },
+            {
+                "name": "step-1-prepare-the-pipeline",
+                "displayName": "Step 1: Prepare the Pipeline"
+            },
+            {
+                "name": "import-training-and-validation-data-as-numpy-array-for-instance",
+                "displayName": "Import training and validation data as numpy array for instance"
+            },
+            {
+                "name": "add-one-channel-dimension-for-convolution-later",
+                "displayName": "Add one channel dimension for convolution later"
+            },
+            {
+                "name": "create-a-dictionary-to-identify-the-training-and-evaluation-data",
+                "displayName": "Create a dictionary to identify the training and evaluation data."
+            },
+            {
+                "name": "we-specify-for-each-x-images-and-y-label-also-in-a-dictionnary",
+                "displayName": "We specify for each x images and y label also in a dictionnary."
+            },
+            {
+                "name": "creating-the-pipeline-with-the-desired-batchsize-and-preprocessing-operation-here-minmax",
+                "displayName": "Creating the pipeline with the desired batchsize and preprocessing operation here Minmax."
+            },
+            {
+                "name": "step-2-define-the-network",
+                "displayName": "Step 2: Define the network"
+            },
+            {
+                "name": "we-first-define-a-model-using-femodel-to-compile-it",
+                "displayName": "We first define a model, using FEModel to compile it."
+            },
+            {
+                "name": "we-summarize-all-operations-and-loss-in-the-network",
+                "displayName": "We summarize all operations and loss in the Network."
+            },
+            {
+                "name": "step-3-create-the-estimator",
+                "displayName": "Step 3: Create the Estimator..."
+            },
+            {
+                "name": "we-create-the-estimator-and-specify-the-number-of-epochs-for-training",
+                "displayName": "We create the estimator and specify the number of epochs for training."
+            },
+            {
+                "name": "and-train-your-model",
+                "displayName": "... and train your model!"
+            }
+        ]
+    },
+    {
+        "name": "t02_using_data_in_disk.md",
+        "displayName": " Tutorial 2: Dealing with large datasets with FastEstimator",
+        "toc": [
+            {
+                "name": "tutorial-2-dealing-with-large-datasets-with-fastestimator",
+                "displayName": "Tutorial 2: Dealing with large datasets with FastEstimator"
+            },
+            {
+                "name": "before-we-start",
+                "displayName": "Before we start:"
+            },
+            {
+                "name": "step-0-get-the-paths-to-the-csv-files",
+                "displayName": "Step 0: Get the paths to the csv files"
+            },
+            {
+                "name": "step-1-recordwriter",
+                "displayName": "Step 1: RecordWriter"
+            },
+            {
+                "name": "we-simply-create-a-recordwriter-will-all-required-arguments",
+                "displayName": "We simply create a RecordWriter will all required arguments."
+            },
+            {
+                "name": "step-2-pipeline--network--estimator-see-tutorial-1-for-details",
+                "displayName": "Step 2: Pipeline  Network  Estimator see tutorial 1 for details"
+            },
+            {
+                "name": "pipeline-creation",
+                "displayName": "Pipeline creation"
+            },
+            {
+                "name": "model-and-network-definition",
+                "displayName": "Model and network definition"
+            },
+            {
+                "name": "estimator-definition",
+                "displayName": "Estimator definition"
+            },
+            {
+                "name": "step-3-start-training",
+                "displayName": "Step 3: Start training"
+            },
+            {
+                "name": "launch-the-training",
+                "displayName": "Launch the training!"
+            },
+            {
+                "name": "key-takeaways",
+                "displayName": "Key takeaways:"
+            }
+        ]
+    },
+    {
+        "name": "t03_operator.md",
+        "displayName": " Tutorial 3: Operator",
+        "toc": [
+            {
+                "name": "tutorial-3-operator",
+                "displayName": "Tutorial 3: Operator"
+            },
+            {
+                "name": "how-does-operator-work",
+                "displayName": "How does Operator work"
+            },
+            {
+                "name": "how-to-express-operator-connections-in-fastestimator",
+                "displayName": "How to express Operator connections in FastEstimator"
+            },
+            {
+                "name": "what-different-types-of-operators-are-there",
+                "displayName": "What different types of Operators are there"
+            },
+            {
+                "name": "how-is-an-operator-defined",
+                "displayName": "How is an Operator defined"
+            },
+            {
+                "name": "operator-demo-in-fastestimator",
+                "displayName": "Operator demo in FastEstimator"
+            },
+            {
+                "name": "import-libraries",
+                "displayName": "Import libraries"
+            },
+            {
+                "name": "download-data-in-a-temporary-repository-using-loaddata",
+                "displayName": "Download data in a temporary repository using loaddata"
+            },
+            {
+                "name": "step-0-use-prebuilt-op-and-custom-op-for-data-preprocessing-in-recordwriter",
+                "displayName": "Step 0: Use prebuilt Op and custom Op for data preprocessing in RecordWriter"
+            },
+            {
+                "name": "create-a-custom-numpy-op-to-rescale-images-in-forward-function",
+                "displayName": "Create a custom Numpy Op to rescale images in forward function"
+            },
+            {
+                "name": "define-the-recordwriter-with-two-ops-rescale-and-predefined-imagereader",
+                "displayName": "Define the RecordWriter with two ops, Rescale and predefined ImageReader"
+            },
+            {
+                "name": "step-1-use-prebuilt-and-custom-ops-for-pipeline",
+                "displayName": "Step 1: Use prebuilt and custom Ops for Pipeline"
+            },
+            {
+                "name": "create-a-custom-resize-tensor-op",
+                "displayName": "Create a custom Resize Tensor op"
+            },
+            {
+                "name": "we-need-init-here-as-we-want-to-add-the-size-argument",
+                "displayName": "We need init here as we want to add the size argument."
+            },
+            {
+                "name": "create-pipeline-with-resize-op-and-augmentation-prebuilt-op",
+                "displayName": "Create Pipeline with Resize op and Augmentation prebuilt op"
+            },
+            {
+                "name": "augmentation2d-automatically-augment-the-dataset-with-rotation-in-the-specified-range",
+                "displayName": "Augmentation2D automatically augment the dataset with rotation in the specified range."
+            },
+            {
+                "name": "step-2-use-prebuilt-and-custom-ops-for-network",
+                "displayName": "Step 2: Use prebuilt and custom ops for Network"
+            },
+            {
+                "name": "create-a-custom-tensorop",
+                "displayName": "Create a custom TensorOp"
+            },
+            {
+                "name": "build-the-model-and-network",
+                "displayName": "Build the model and network"
+            },
+            {
+                "name": "step-3-create-the-estimator-and-train",
+                "displayName": "Step 3: Create the Estimator and train!"
+            },
+            {
+                "name": "create-the-estimator",
+                "displayName": "Create the estimator"
+            },
+            {
+                "name": "launch-the-training",
+                "displayName": "Launch the training"
+            }
+        ]
+    },
+    {
+        "name": "t04_pipeline_debug_benchmark.md",
+        "displayName": " Tutorial 4: Pipeline debugging and benchmarking",
+        "toc": [
+            {
+                "name": "tutorial-4-pipeline-debugging-and-benchmarking",
+                "displayName": "Tutorial 4: Pipeline debugging and benchmarking"
+            },
+            {
+                "name": "1-define-the-pipeline-same-as-tutorial-3",
+                "displayName": "1 Define the pipeline same as tutorial 3"
+            },
+            {
+                "name": "create-rescale-and-resize-custom-ops",
+                "displayName": "Create Rescale and Resize custom ops"
+            },
+            {
+                "name": "load-data",
+                "displayName": "Load data"
+            },
+            {
+                "name": "create-recordwriter",
+                "displayName": "Create RecordWriter"
+            },
+            {
+                "name": "create-pipeline",
+                "displayName": "Create Pipeline"
+            },
+            {
+                "name": "2-access-the-pipeline-results",
+                "displayName": "2 Access the pipeline results"
+            },
+            {
+                "name": "use-showresults-by-specifying-the-epoch-mode-and-step-batch",
+                "displayName": "Use showresults by specifying the epoch, mode and step batch"
+            },
+            {
+                "name": "isolate-x-and-y-from-result",
+                "displayName": "Isolate x and y from result"
+            },
+            {
+                "name": "display-4-examples-of-data-after-pipeline",
+                "displayName": "Display 4 examples of data after Pipeline"
+            },
+            {
+                "name": "3-benchmark-pipeline-speed",
+                "displayName": "3 Benchmark pipeline speed"
+            },
+            {
+                "name": "you-just-have-to-specify-the-epoch-mode-and-number-of-batches",
+                "displayName": "You just have to specify the epoch, mode, and number of batches"
+            }
+        ]
+    },
+    {
+        "name": "t05_trace_debug_training.md",
+        "displayName": " Tutorial 5: Trace  training control and debugging",
+        "toc": [
+            {
+                "name": "tutorial-5-trace--training-control-and-debugging",
+                "displayName": "Tutorial 5: Trace  training control and debugging"
+            },
+            {
+                "name": "import-libraries",
+                "displayName": "Import libraries"
+            },
+            {
+                "name": "using-trace-to-debug-training-loop",
+                "displayName": "Using Trace to debug training loop"
+            },
+            {
+                "name": "1-define-the-operation-to-test--pipeline-and-network",
+                "displayName": "1 Define the operation to test,  pipeline and network."
+            },
+            {
+                "name": "we-define-the-scaling-operation",
+                "displayName": "We define the scaling operation."
+            },
+            {
+                "name": "we-load-data-create-dictionnaries-and-prepare-the-pipeline",
+                "displayName": "We load data, create dictionnaries and prepare the Pipeline."
+            },
+            {
+                "name": "we-prepare-the-model-and-network-which-will-use-the-scaling-operation",
+                "displayName": "We prepare the model and network, which will use the scaling operation."
+            },
+            {
+                "name": "2-define-the-trace",
+                "displayName": "2 Define the trace"
+            },
+            {
+                "name": "we-define-a-trace-to-show-the-predictions-and-test-the-scaling-op",
+                "displayName": "We define a trace to show the predictions and test the scaling op."
+            },
+            {
+                "name": "we-finally-define-the-estimator-specifying-the-trace-argument-for-debugging-we-only-use-one-epoch-with-one-step",
+                "displayName": "We finally define the estimator, specifying the trace argument. For debugging, we only use one epoch with one step."
+            },
+            {
+                "name": "we-launch-the-training-and-can-see-what-the-scaled-prediction-looks-like",
+                "displayName": "We launch the training and can see what the scaled prediction looks like."
+            }
+        ]
+    },
+    {
+        "name": "t06_TensorFilter_imbalanced_training.md",
+        "displayName": " Tutorial 6:  Dealing with imbalanced dataset using TensorFilter",
+        "toc": [
+            {
+                "name": "tutorial-6--dealing-with-imbalanced-dataset-using-tensorfilter",
+                "displayName": "Tutorial 6:  Dealing with imbalanced dataset using TensorFilter"
+            },
+            {
+                "name": "step-0--data-preparation-same-as-tutorial-1",
+                "displayName": "Step 0  Data preparation same as tutorial 1"
+            },
+            {
+                "name": "import-libraries",
+                "displayName": "Import libraries"
+            },
+            {
+                "name": "load-data-and-create-dictionaries",
+                "displayName": "Load data and create dictionaries"
+            },
+            {
+                "name": "step-1--customize-your-own-filter",
+                "displayName": "Step 1  Customize your own Filter..."
+            },
+            {
+                "name": "we-create-our-filter-in-forward-function-its-just-our-condition",
+                "displayName": "We create our filter in forward function, its just our condition."
+            },
+            {
+                "name": "we-specify-the-filter-in-pipeline-ops-list",
+                "displayName": "We specify the filter in Pipeline ops list."
+            },
+            {
+                "name": "lets-check-our-pipeline-ops-results-with-showresults",
+                "displayName": "Lets check our pipeline ops results with showresults"
+            },
+            {
+                "name": "or-use-a-prebuilt-scalarfilter",
+                "displayName": "... or use a prebuilt ScalarFilter"
+            },
+            {
+                "name": "we-specify-the-list-of-scalars-to-filter-out-and-the-probability-to-keep-these-scalars",
+                "displayName": "We specify the list of scalars to filter out and the probability to keep these scalars"
+            },
+            {
+                "name": "lets-check-our-pipeline-ops-results-with-showresults",
+                "displayName": "Lets check our pipeline ops results with showresults"
+            }
+        ]
+    },
+    {
+        "name": "t07_expand_data_dimension.md",
+        "displayName": " Tutorial 7: Expanding data dimension in RecordWriter and Pipeline",
+        "toc": [
+            {
+                "name": "tutorial-7-expanding-data-dimension-in-recordwriter-and-pipeline",
+                "displayName": "Tutorial 7: Expanding data dimension in RecordWriter and Pipeline"
+            },
+            {
+                "name": "import-libraries",
+                "displayName": "Import libraries"
+            },
+            {
+                "name": "step-1--recordwriter-expand-data-dimension-and-write-it-to-the-disk",
+                "displayName": "Step 1  RecordWriter: expand data dimension and write it to the disk"
+            },
+            {
+                "name": "load-mnist-data",
+                "displayName": "Load Mnist data"
+            },
+            {
+                "name": "create-a-custom-numpy-op-to-sample-4-images-from-the-corners-of-each-image",
+                "displayName": "Create a custom Numpy op to sample 4 images from the corners of each image"
+            },
+            {
+                "name": "we-sample-4-27x27-images-from-the-corners",
+                "displayName": "we sample 4 27x27 images from the corners:"
+            },
+            {
+                "name": "we-insert-this-custom-op-in-the-ops-list-of-recordwriter",
+                "displayName": "We insert this custom op in the ops list of RecordWriter."
+            },
+            {
+                "name": "we-have-to-specify-expanddimstrue-to-allow-data-dimension-expansion",
+                "displayName": "We have to specify expanddimsTrue to allow data dimension expansion."
+            },
+            {
+                "name": "step-2--pipeline-expand-dimension-on-the-fly",
+                "displayName": "Step 2  Pipeline: expand dimension on the fly"
+            },
+            {
+                "name": "we-create-a-custom-op-for-random-sampling",
+                "displayName": "We create a custom op for random sampling"
+            },
+            {
+                "name": "we-randomly-select-the-topleft-point-of-our-image-for-each-sample-x-and-y-coordinate",
+                "displayName": "We randomly select the topleft point of our image for each sample x and y coordinate"
+            },
+            {
+                "name": "it-cannot-be-greater-than-8-as-we-will-sample-a-20x20-image-from-a-27x27-one",
+                "displayName": "It cannot be greater than 8 as we will sample a 20x20 image from a 27x27 one"
+            },
+            {
+                "name": "we-sample-two-20x20-images-with-x1y1-and-x2y2-topleft-corner",
+                "displayName": "We sample two 20x20 images with x1,y1 and x2,y2 topleft corner."
+            },
+            {
+                "name": "create-pipeline-with-randomsample-op-and-expanddimstrue",
+                "displayName": "Create Pipeline with RandomSample op and expanddimsTrue"
+            },
+            {
+                "name": "step-3--check-pipeline-results",
+                "displayName": "Step 3  Check pipeline results..."
+            },
+            {
+                "name": "lets-check-our-pipeline-ops-results-with-showresults",
+                "displayName": "Lets check our pipeline ops results with showresults"
+            },
+            {
+                "name": "and-visualize",
+                "displayName": ".... and visualize!"
+            },
+            {
+                "name": "lets-visualize-the-first-4-images-keeping-the-order-from-our-postpipeline-data",
+                "displayName": "Lets visualize the first 4 images keeping the order from our postpipeline data:"
+            }
+        ]
+    },
+    {
+        "name": "t08_scheduler_progressive_training.md",
+        "displayName": " Tutorial 8: Changing hyperparameters during training with Scheduler",
+        "toc": [
+            {
+                "name": "tutorial-8-changing-hyperparameters-during-training-with-scheduler",
+                "displayName": "Tutorial 8: Changing hyperparameters during training with Scheduler"
+            },
+            {
+                "name": "1-how-to-use-scheduler",
+                "displayName": "1 How to use Scheduler:"
+            },
+            {
+                "name": "2-scheduler-example",
+                "displayName": "2 Scheduler example:"
+            },
+            {
+                "name": "step-0-prepare-data",
+                "displayName": "Step 0 Prepare data"
+            },
+            {
+                "name": "we-load-mnist-dataset",
+                "displayName": "We load MNIST dataset"
+            },
+            {
+                "name": "step-1-prepare-the-pipeline-with-the-schedulers",
+                "displayName": "Step 1 Prepare the Pipeline with the Schedulers"
+            },
+            {
+                "name": "we-create-a-scheduler-for-batchsize-with-the-epochs-at-which-it-will-change-and-corresponding-values",
+                "displayName": "We create a scheduler for batchsize with the epochs at which it will change and corresponding values."
+            },
+            {
+                "name": "we-create-a-scheduler-for-the-resize-ops",
+                "displayName": "We create a scheduler for the Resize ops."
+            },
+            {
+                "name": "we-create-a-scheduler-for-the-different-normalize-ops-we-will-want-to-use",
+                "displayName": "We create a scheduler for the different normalize ops we will want to use."
+            },
+            {
+                "name": "in-pipeline-we-use-the-schedulers-for-batchsize-and-ops",
+                "displayName": "In Pipeline, we use the schedulers for batchsize and ops."
+            },
+            {
+                "name": "step-2-prepare-network-with-the-two-models-and-a-scheduler",
+                "displayName": "Step 2 Prepare Network with the two models and a Scheduler"
+            },
+            {
+                "name": "we-create-two-models-and-build-them-with-their-optimizer-and-loss",
+                "displayName": "We create two models and build them with their optimizer and loss."
+            },
+            {
+                "name": "we-create-a-scheduler-to-indicate-what-model-we-want-to-train-for-each-epoch",
+                "displayName": "We create a Scheduler to indicate what model we want to train for each epoch."
+            },
+            {
+                "name": "we-summarize-the-ops-in-network-using-modelscheduler-for-modelop",
+                "displayName": "We summarize the ops in Network, using modelscheduler for ModelOp."
+            },
+            {
+                "name": "step-3-build-the-estimator-and-train",
+                "displayName": "Step 3 Build the Estimator and train!"
+            }
+        ]
+    },
+    {
+        "name": "t09_learning_rate_controller.md",
+        "displayName": " Tutorial 9: Learning Rate Controller",
+        "toc": [
+            {
+                "name": "tutorial-9-learning-rate-controller",
+                "displayName": "Tutorial 9: Learning Rate Controller"
+            },
+            {
+                "name": "step-0-preparation",
+                "displayName": "Step 0 Preparation"
+            },
+            {
+                "name": "create-a-function-to-get-pipeline-and-network",
+                "displayName": "Create a function to get Pipeline and Network"
+            },
+            {
+                "name": "step-1-prepare-data",
+                "displayName": "step 1. Prepare data"
+            },
+            {
+                "name": "step-2-prepare-model",
+                "displayName": "step 2. Prepare model"
+            },
+            {
+                "name": "option-1-customize-the-learning-rate-stepwise-control",
+                "displayName": "Option 1 Customize the learning rate: stepwise control"
+            },
+            {
+                "name": "create-a-lr-scheduler-with-a-custom-schedulefn",
+                "displayName": "Create a LR Scheduler with a custom schedulefn"
+            },
+            {
+                "name": "create-pipeline-network-and-lrscheduler",
+                "displayName": "Create pipeline, network and lrscheduler"
+            },
+            {
+                "name": "in-estimator-indicate-in-traces-the-lr-scheduler-using-lr-controller-you-also-have-to-specify-the-modelname",
+                "displayName": "In Estimator, indicate in traces the LR Scheduler using LR Controller, you also have to specify the modelname."
+            },
+            {
+                "name": "save-the-training-history-and-train-the-model",
+                "displayName": "Save the training history and train the model"
+            },
+            {
+                "name": "show-the-learning-rates-history-for-each-step",
+                "displayName": "Show the learning rates history for each step"
+            },
+            {
+                "name": "option-2--customize-the-learning-rate-epochwise-control",
+                "displayName": "Option 2  Customize the learning rate: epochwise control"
+            },
+            {
+                "name": "we-define-our-custom-scheduler-in-the-same-way-as-above",
+                "displayName": "We define our custom Scheduler in the same way as above."
+            },
+            {
+                "name": "create-pipeline-and-network",
+                "displayName": "Create pipeline and network."
+            },
+            {
+                "name": "here-we-now-indicate-epoch-as-schedulemode",
+                "displayName": "Here we now indicate epoch as schedulemode."
+            },
+            {
+                "name": "train-and-save-history",
+                "displayName": "Train and save history"
+            },
+            {
+                "name": "show-the-learning-rate-for-each-step-it-changes-only-at-an-epoch-level",
+                "displayName": "Show the learning rate for each step: it changes only at an epoch level!"
+            },
+            {
+                "name": "option-3-builtin-cyclic-learning-rate--example-1",
+                "displayName": "Option 3 Builtin Cyclic Learning Rate  example 1"
+            },
+            {
+                "name": "create-pipeline-and-network",
+                "displayName": "Create pipeline and network"
+            },
+            {
+                "name": "directly-use-the-prebuilt-cycliclrschedule-with-a-cosine-decrease-method-and-one-cycle",
+                "displayName": "Directly use the prebuilt CyclicLRSchedule, with a cosine decrease method and one cycle."
+            },
+            {
+                "name": "train-and-save-history",
+                "displayName": "Train and save history"
+            },
+            {
+                "name": "plot-the-learning-rate-for-each-step",
+                "displayName": "Plot the learning rate for each step"
+            },
+            {
+                "name": "option-3-builtin-cyclic-learning-rate-example-2",
+                "displayName": "Option 3 Builtin Cyclic Learning Rate: example 2"
+            },
+            {
+                "name": "we-create-pipeline-and-network",
+                "displayName": "We create pipeline and network."
+            },
+            {
+                "name": "we-specify-numcycle-and-cyclemultiplier-in-cycliclrschedule",
+                "displayName": "We specify numcycle and cyclemultiplier in CyclicLRSchedule."
+            },
+            {
+                "name": "train-and-save-history",
+                "displayName": "Train and save history"
+            },
+            {
+                "name": "plot-the-learning-rate",
+                "displayName": "Plot the learning rate"
+            }
+        ]
+    },
+    {
+        "name": "t10_unpaired_dataset.md",
+        "displayName": " Tutorial 10: Dataset with unpaired features",
+        "toc": [
+            {
+                "name": "tutorial-10-dataset-with-unpaired-features",
+                "displayName": "Tutorial 10: Dataset with unpaired features"
+            },
+            {
+                "name": "step-0--data-preparation-and-visualization",
+                "displayName": "Step 0  Data preparation and visualization"
+            },
+            {
+                "name": "use-loaddata-from-our-dataset-api-to-load-the-dataset",
+                "displayName": "Use loaddata from our dataset API to load the dataset."
+            },
+            {
+                "name": "lets-take-a-look-at-the-data-by-loading-the-csv-file-with-all-images-path-information",
+                "displayName": "Lets take a look at the data, by loading the csv file with all images path information."
+            },
+            {
+                "name": "we-select-one-image-of-horse-and-one-of-zebra-and-plot-them",
+                "displayName": "We select one image of horse and one of zebra and plot them."
+            },
+            {
+                "name": "step-1--recordwriter-read-unpaired-features-using-a-tuple",
+                "displayName": "Step 1  RecordWriter: read unpaired features using a tuple"
+            },
+            {
+                "name": "create-a-recordwriter-with-a-tuple-of-two-ops-to-pair-images",
+                "displayName": "Create a RecordWriter with a tuple of two ops to pair images."
+            },
+            {
+                "name": "we-write-the-data-to-the-disk-using-the-write-method",
+                "displayName": "We write the data to the disk using the write method"
+            }
+        ]
+    },
+    {
+        "name": "t11_interpretation.md",
+        "displayName": " Tutorial 11: Interpretation",
+        "toc": [
+            {
+                "name": "tutorial-11-interpretation",
+                "displayName": "Tutorial 11: Interpretation"
+            },
+            {
+                "name": "download-a-sample-model-for-demonstration",
+                "displayName": "Download a sample model for demonstration"
+            },
+            {
+                "name": "interpretation-with-bash",
+                "displayName": "Interpretation with Bash"
+            },
+            {
+                "name": "interpretation-with-python-api",
+                "displayName": "Interpretation with Python API"
+            },
+            {
+                "name": "interpretation-with-traces",
+                "displayName": "Interpretation with Traces"
+            }
+        ]
+    }
+]
