@@ -92,7 +92,7 @@ for i in range(4):
 
 
 
-![png](../../assets/tutorial/t04_pipeline_debug_benchmark_files/t04_pipeline_debug_benchmark_6_1.png)
+![png](assets/tutorial/t04_pipeline_debug_benchmark_files/t04_pipeline_debug_benchmark_6_1.png)
 
 
 ## 3) Benchmark pipeline speed

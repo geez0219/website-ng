@@ -129,7 +129,7 @@ print("ground truth of image is {}".format(df_train["y"][1]))
 
 
 
-![png](../../assets/tutorial/t02_using_data_in_disk_6_1.png)
+![png](assets/tutorial/t02_using_data_in_disk_6_1.png)
 
 
 ## Step 1: RecordWriter
