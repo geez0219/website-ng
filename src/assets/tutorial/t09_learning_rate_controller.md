@@ -132,7 +132,7 @@ visualize_logs(history1, include_metrics="lenet_lr")
 ```
 
 
-![png](../../assets/tutorial/t09_learning_rate_controller_files/t09_learning_rate_controller_8_0.png)
+![png](assets/tutorial/t09_learning_rate_controller_files/t09_learning_rate_controller_8_0.png)
 
 
 ## Option 2 - Customize the learning rate: epoch-wise control

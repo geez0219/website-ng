@@ -53,7 +53,7 @@ axes[1].imshow(img2)
 
 
 
-![png](../../assets/tutorial/t10_unpaired_dataset_files/t10_unpaired_dataset_4_1.png)
+![png](assets/tutorial/t10_unpaired_dataset_files/t10_unpaired_dataset_4_1.png)
 
 
 ## Step 1 - RecordWriter: read unpaired features using a tuple
