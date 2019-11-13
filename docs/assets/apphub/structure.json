@@ -1,0 +1,50 @@
+[
+    {
+        "name": "image_styletransfer/fst_coco.md",
+        "displayName": "Fast Style Transfer with FastEstimator"
+    },
+    {
+        "name": "NLP/lstm_imdb.md",
+        "displayName": "IMDB Reviews Sentiments prediction with LSTM"
+    },
+    {
+        "name": "image_segmentation/unet_montgomery.md",
+        "displayName": "Lung Segmentation  Montgomery Dataset"
+    },
+    {
+        "name": "image_segmentation/unet_cub200.md",
+        "displayName": "Image Segmation: CaltechUCSD Birds 200 Dataset"
+    },
+    {
+        "name": "image_generation/dcgan_mnist.md",
+        "displayName": "DCGAN Example with MNIST Dataset"
+    },
+    {
+        "name": "image_generation/cvae_mnist.md",
+        "displayName": "Convolutional Variational Autoencoder example using MNIST dataset"
+    },
+    {
+        "name": "image_generation/cyclegan.md",
+        "displayName": "Horse to Zebra Unpaired Image Translation with CycleGAN in FastEstimator"
+    },
+    {
+        "name": "tabular/dnn_housing.md",
+        "displayName": "Boston housing price predictor regression using DNN"
+    },
+    {
+        "name": "image_classification/lenet_mnist.md",
+        "displayName": "MNIST Image Classification Using LeNet"
+    },
+    {
+        "name": "image_classification/lenet_cifar10_adversarial.md",
+        "displayName": "CIFAR10 Image Classification Using LeNet With Adversarial Training"
+    },
+    {
+        "name": "image_classification/densenet121_cifar10.md",
+        "displayName": "CIFAR10 Image Classification Using DenseNet121"
+    },
+    {
+        "name": "image_classification/lenet_cifar10_mixup.md",
+        "displayName": "CIFAR10 Image Classification Using LeNet With Mixup Training"
+    }
+]

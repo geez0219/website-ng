@@ -14,7 +14,7 @@ export class InstallComponent implements OnInit {
   ngOnInit() {
   }
 
-  copied() {
+  copied(event: any) {
     this._snackBar.openFromComponent(SnackbarComponent, {
       duration: this.durationInSeconds * 1000,
       data: 'Copied'
