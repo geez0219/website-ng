@@ -7,7 +7,7 @@ _____
 * __Network__: responsible for trainable and differentiable models, operations and loss.
 * __Estimator__: manages the training loop.
 
-Any deep learning implementation will follow the `Pipeline` -> `Network` -> `Estimator` process as illustrated below:<img src="../../assets/tutorial/image/workflow.png">
+Any deep learning implementation will follow the `Pipeline` -> `Network` -> `Estimator` process as illustrated below:<img src="assets/tutorial/image/workflow.png">
 
 Pipeline operations will usually happen on CPU, whereas Network operations will happen on GPU when available.
 
