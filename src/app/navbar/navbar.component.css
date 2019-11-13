@@ -13,6 +13,7 @@ nav div div a{
     color: rgb(38, 56, 66);
     background-color: inherit;
     padding: 2em 2em;
+    outline: none;
 }
 
 .selected-title, nav div div a:hover{
@@ -22,5 +23,17 @@ nav div div a{
 
 #navbarsDefault{
     min-height: 3rem;
-    /* height: 3rem; */
+}
+
+.navbar {
+    padding: 0;
+}
+
+.navbar-brand {
+    outline: none;
+}
+
+.logo {
+    width:256px;
+    height:64px;
 }

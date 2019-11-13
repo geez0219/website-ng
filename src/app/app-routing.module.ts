@@ -23,8 +23,14 @@ const routes: Routes = [
       },
     ],
     runGuardsAndResolvers: "always" },
-  { path: 'examples', component: ExamplesComponent },
-  { path: 'examples/:name', component: ExamplesComponent },
+  { path: 'examples', 
+    children: [
+      {
+        path: "**",
+        component: ExamplesComponent
+      },
+    ],
+    runGuardsAndResolvers: "always" },
   { path: 'install', component: InstallComponent},
   { path: 'community', component: CommunityComponent}
 ];
