@@ -1,33 +1,11 @@
-p, blockquote {
-    font-size: .9em;
-    line-height: 1.6em;
-}
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-.container {
-    margin-top: 80px;
-    text-align: center;
-    padding: 0;
-
-}
-
-/*showcase*/
-
 .theme {
-    display: block;
-    text-align:center;
     position: relative;
-    z-index: -10;
+}
+.showcase {
+    width: 100%;
+    height:340px;
+}
 
-  }
-  .showcase{
-      width: 100%;
-      height: 340px;
-  }
- 
 .slogan {
     position: absolute;
     font-size: 2.3em;
@@ -44,317 +22,49 @@ ul {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-.start{
-    background-color: #0A1E2E;
-    width: 6em;
-    display: block;
-    color:white;
-    border-radius:  20px;
-    padding: .5em;
-    text-decoration: none;
-    font-size: 1.5em;
-    margin: 35px auto 0 auto;
-    position: relative;
-    z-index: -1;
 
+.container{
+    text-align: center;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #F0F0F0;
 }
+
 .why, .using{
     color: chocolate;
     font-size: 2.2em;
-    margin: -60px 20% 20px 20%;
+    margin-top: 2rem;
+    /* text-align: center; */
 }
+
 .why-exp, .using-exp{
     color: darkslategray;
     font-size: 1.5em;
     margin: 5px 10% 5px 10%;
-
-}
-.why-box , .using-box {
-    width: 90%;
-    margin:5% 8% 0 8%;
-    padding: 0 1em 2em 0;
-}
-.why-box li p {
-    margin: 5px 10% 5px 10%;
-}
- .icons{
-     width: 80px;
-     height: 80px;
- }
- .videos{
-     width: 280px;
-     height: 180px;
- }
-
-.footer-container{
-    width: 100%;
-    background: #0A1E2E;
-    color: #fff;
-    padding: 2em 0;
-}
-ul.footer-links{
-    margin: 0 auto;
-}
-ul.footer-links li{
-    display: inilne-block;
-}
-ul.footer-links li a{
-    color: #9d9d9d;
-    font-size: .8em;
-}  
-
-
-@media only screen and (min-width: 850px){
-    /*nav*/
-    .show-desktop li:nth-child(5){
-        display: none;
-    }
-    .show-desktop li:nth-child(6){
-         display: none;
-     }
-    .show-desktop li:nth-child(7){
-        display: none;
-    }
-    /*dropdown button*/
-    .dropdown {
-        position: relative;
-        display: inline-block;
-    }
-
-    .dropbtn {
-        background-color: rgb(255, 255, 255);
-        color: black;
-        padding: 8px;
-        margin-top: .5em;
-        margin-left: 2.5em;
-        font-size: 16px;
-        border: none;
-    }
-    .dropdown-content {
-        display: none;
-        position: fixed;
-        background-color: #ffffff;
-        max-width: 100px;
-
-        z-index: 1;
-    }
-      .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-    }
-
-    .slogan{
-        font-size: 2.5em;
-    }
-    .subhead{
-        font-size: 1.5em;
-    }
-    .start{
-        width: 16em;
-    }
-    .why-container, .using-container{
-        background-color: white;
-        margin: 10px 5px 30% 5px;
-    }
-
-    .why-box li , .using-box li{
-        float: left;
-        display: table-row;
-        text-align:center;
-        padding: 10px 5px 10px 5px;
-        width:30%;
-    }
-
-    .icons{
-        width: 100px;
-        height: 100px;
-    }
-
-    .videos{
-        width: 200px;
-        height: 140px;
-    }
-   
-    .footer-container{
-        padding: 10px 10px 30px 5px;
-    }
-    .foot-logo{
-        float: left;
-        display: block;
-        width: 10px;
-        height: 20px;
-    }
-
-    .show-desktop{
-        display: block;
-        margin: 0 auto 0 auto;
-    }
-
-    .hide-desktop{
-        display: none;
-    }
-
-    nav ul{
-        position: inherit;
-        width: auto;
-        background: none;
-        height: auto;
-        display: flex;
-        padding-top:5px;
-    }
-
-    nav ul li{
-        float: left;
-    }
-     nav ul li a{
-         color: rgb(38, 56, 66);
-         background-color: inherit;
-         padding: 2em 2em;
-     }
-     nav ul li a:hover{
-         background-color: inherit;
-     }
-
-
 }
 
-
-
-@media only screen and (min-width: 944px){
-
-    .show-desktop li:nth-child(5){
-        display: block;
-    }
-    .show-desktop li:nth-child(6){
-        display: none;
-    }
-   .show-desktop li:nth-child(7){
-       display: none;
-   }
-
-   .dropdown-content a:nth-child(1){
-       display: none;
-   }
-       /*dropdown button*/
-       .dropdown {
-        position: relative;
-        display: inline-block;
-    }
-
-    .dropbtn {
-        background-color: rgb(255, 255, 255);
-        color: black;
-        padding: 8px;
-        margin-top: .5em;
-        margin-left: 2.5em;
-        font-size: 16px;
-        border: none;
-    }
-    .dropdown-content {
-        display: none;
-        position: fixed;
-        background-color: #ffffff;
-        max-width: 100px;
-
-        z-index: 1;
-    }
-      .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-    }
+.icons{
+    width: 80px;
+    height: 80px;
+    display:block;
+    margin:auto;
 }
 
-
-
-@media only screen and (min-width: 1080px){
-
-    .show-desktop li:nth-child(6){
-        display: block;
-    }
-   .show-desktop li:nth-child(7){
-       display: block;
-   }
-
-    .dropdown{
-        display: none;
-    }
-
-
-    .slogan{
-        font-size: 2.5em;
-    }
-    .subhead{
-        font-size: 1.5em;
-    }
-    .start{
-        width: 16em;
-    }
-    .show-desktop{
-        display: block;
-        margin: 0 auto 0 auto;
-    }
-
-    .hide-desktop{
-        display: none;
-    }
-    nav ul{
-        position: inherit;
-        width: auto;
-        background: none;
-        height: auto;
-        display: flex;
-        padding-top:5px;
-    }
-
-    nav ul li{
-        float: left;
-    }
-     nav ul li a{
-         color: rgb(38, 56, 66);
-         background-color: inherit;
-         padding: 2em 2em;
-     }
-     nav ul li a:hover{
-         background-color: inherit;
-     }
-     .why-container, .using-container{
-        background-color: white;
-        margin: 10px 5px 30% 5px;
-    }
-
-    .why-box li , .using-box li{
-        float: left;
-        display: table-row;
-        text-align:center;
-        padding: 10px 5px 10px 5px;
-        width:30%;
-    }
-
-    .icons{
-        width: 100px;
-        height: 100px;
-    }
-    .footer-container{
-        padding: 16px;
-    }
-    .foot-logo{
-        float: left;
-        width: 20px;
-        height: 50px;
-        padding: 1em 10em 0 1em;
-    }
-
+.text {
+    color: black;
 }
 
-.noselect {
-    user-select: none;
-    -ms-user-select: none;
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -webkit-touch-callout: none;
+.videos {
+    width: 200px;
+    height: 140px;
+    display:block;
+    margin:auto;
+}
+
+.row .col-sm{
+    margin-top: 4rem;
+    padding: 0px 30px;
+
+}
+.content{
+    padding-top: 6rem;
 }

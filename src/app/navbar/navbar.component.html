@@ -3,6 +3,7 @@
   <button class="navbar-toggler hidden-sm-up" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+
   <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="navbarsDefault">
     <div class="navbar-item">
       <a (click)="preRoute('install')" [ngClass]="{'selected-title': selected==='install'}" class="nav-item nav-link active" routerLink="/install">Install</a>
@@ -20,13 +21,17 @@
     <div class="navbar-item">
       <a (click)="preRoute('community')" [ngClass]="{'selected-title': selected==='community'}" class="nav-item nav-link active" routerLink="/community">Coummunity</a>
     </div>
-    <div class="navbar-item">
-      <app-search></app-search>
-    </div>
-    <div class="navbar-item">
-      <a class="nav-item nav-link active" href="https://github.com/fastestimator/fastestimator" target="_blank">
-        <img src="../../assets/images/GitHub-Mark-32px.png">
-      </a>
-    </div>
+    
   </div>
+  
+  <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+    <li class="nav-item">
+      <app-search></app-search>
+      </li>
+      <li class="nav-item">
+        <a class="nav-item nav-link active" href="https://github.com/fastestimator/fastestimator" target="_blank">
+          <img src="../../assets/images/GitHub-Mark-32px.png">
+        </a>
+      </li>
+  </ul>
 </nav>
