@@ -28,3 +28,12 @@ nav div div a{
 .navbar {
     padding: 0;
 }
+
+.navbar-brand {
+    outline: none;
+}
+
+.logo {
+    width:256px;
+    height:64px;
+}
