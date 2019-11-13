@@ -120,7 +120,7 @@ for i in range(4):
 
 
 
-![png](../../assets/tutorial/t07_expand_data_dimension_files/t07_expand_data_dimension_9_1.png)
+![png](assets/tutorial/t07_expand_data_dimension_files/t07_expand_data_dimension_9_1.png)
 
 
 As we can see, each image is indeed generating two random patches.
