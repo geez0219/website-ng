@@ -1,5 +1,5 @@
 <div class="sidenav-content">
-  <mat-sidenav-container class="example-container">
+  <mat-sidenav-container>
     <mat-sidenav mode="side" opened class="sidebar-tutorial" [fixedInViewport]="true" [fixedTopGap]="100">
       <div *ngFor="let tutorial of tutorialList">
         <div [ngClass]="{'selected': selectedTutorial === tutorial.name,
@@ -19,6 +19,6 @@
 
   </mat-sidenav-container>
 </div>
-<div class="toc">
-  <toc></toc>
-</div>
+<!-- <div class="toc">
+  <toc [items]="tocContent"></toc>
+</div> -->

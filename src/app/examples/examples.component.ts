@@ -8,7 +8,7 @@ import { Tutorial } from '../tutorial';
 @Component({
   selector: 'app-examples',
   templateUrl: './examples.component.html',
-  styleUrls: ['./examples.component.css']
+  styleUrls: ['../tutorial/tutorial.component.css']
 })
 export class ExamplesComponent implements OnInit {
   selectedTutorial: string;
@@ -25,7 +25,7 @@ export class ExamplesComponent implements OnInit {
   }
 
   getTutorialStructure() {
-    this.http.get('assets/examples/structure.json', {responseType: 'text'}).subscribe(data => {
+    this.http.get('assets/apphub/structure.json', {responseType: 'text'}).subscribe(data => {
       this.tutorialList = <Tutorial[]>JSON.parse(data);
 
       let name = this.route.snapshot.paramMap.get('name');
@@ -43,7 +43,7 @@ export class ExamplesComponent implements OnInit {
   updateCurrentTutorial(tutorial: Tutorial) {
     window.scroll(0,0);
     this.selectedTutorial = tutorial.name;
-    this.currentSelection = 'assets/examples/' + this.selectedTutorial;
+    this.currentSelection = 'assets/apphub/' + this.selectedTutorial;
 
     this.getSelectedTutorialText();
 
