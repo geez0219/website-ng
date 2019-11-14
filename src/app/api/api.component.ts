@@ -123,6 +123,9 @@ export class ApiComponent implements OnInit, OnDestroy {
   }
 
   private updateAPIContent(api: API) {
+    if (!api)
+      this.router.navigate(['PageNotFound']);
+
     window.scroll(0, 0);
 
     this.selectedAPI = api.name;
