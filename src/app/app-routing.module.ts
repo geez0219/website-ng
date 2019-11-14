@@ -6,6 +6,7 @@ import { ExamplesComponent } from './examples/examples.component';
 import { ApiComponent } from './api/api.component';
 import { InstallComponent } from './install/install.component';
 import { CommunityComponent } from './community/community.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', component: GettingStartedComponent },
@@ -32,7 +33,8 @@ const routes: Routes = [
     ],
     runGuardsAndResolvers: "always" },
   { path: 'install', component: InstallComponent},
-  { path: 'community', component: CommunityComponent}
+  { path: 'community', component: CommunityComponent},
+  { path: '**', component: PageNotFoundComponent, data: {name: 'PageNotFound'}},
 ];
 
 const routerOptions: ExtraOptions = {

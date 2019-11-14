@@ -25,6 +25,7 @@ import { CommunityComponent } from './community/community.component';
 import { ClipboardModule } from 'ngx-clipboard';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SnackbarComponent } from './snackbar/snackbar.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
     TocComponent,
     InstallComponent,
     CommunityComponent,
-    SnackbarComponent
+    SnackbarComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

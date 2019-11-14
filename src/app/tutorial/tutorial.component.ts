@@ -67,6 +67,9 @@ export class TutorialComponent implements OnInit, OnDestroy {
   }
 
   updateTutorialContent(tutorial: Tutorial) {
+    if (!tutorial)
+      this.router.navigate(['PageNotFound']);
+    
     window.scroll(0,0);
 
     this.selectedTutorial = tutorial.name;
