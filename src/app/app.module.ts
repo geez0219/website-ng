@@ -22,6 +22,10 @@ import { SearchComponent } from './search/search.component';
 import { TocComponent } from './toc/toc.component';
 import { InstallComponent } from './install/install.component';
 import { CommunityComponent } from './community/community.component';
+import { ClipboardModule } from 'ngx-clipboard';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SnackbarComponent } from './snackbar/snackbar.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,9 @@ import { CommunityComponent } from './community/community.component';
     SearchComponent,
     TocComponent,
     InstallComponent,
-    CommunityComponent
+    CommunityComponent,
+    SnackbarComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -53,8 +59,11 @@ import { CommunityComponent } from './community/community.component';
     MatIconModule,
     MatNativeDateModule,
     MatTreeModule,
+    ClipboardModule,
+    MatSnackBarModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [SnackbarComponent]
 })
 export class AppModule { }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarComponent } from '../snackbar/snackbar.component';
 
 @Component({
   selector: 'app-install',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./install.component.css']
 })
 export class InstallComponent implements OnInit {
-
-  constructor() { }
+  durationInSeconds = 3;
+  constructor(private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
 
+  copied(event: any) {
+    this._snackBar.openFromComponent(SnackbarComponent, {
+      duration: this.durationInSeconds * 1000,
+      data: 'Copied'
+    });
+  }
 }

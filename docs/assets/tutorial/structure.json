@@ -1,0 +1,264 @@
+[
+    {
+        "name": "t01_basic_usage.md",
+        "displayName": " Tutorial 1: Getting started with FastEstimator",
+        "toc": [
+            {
+                "id": "step-1-prepare-the-pipeline",
+                "displayName": "Step 1: Prepare the Pipeline"
+            },
+            {
+                "id": "step-2-define-the-network",
+                "displayName": "Step 2: Define the network"
+            },
+            {
+                "id": "step-3-create-the-estimator",
+                "displayName": "Step 3: Create the Estimator..."
+            },
+            {
+                "id": "and-train-your-model",
+                "displayName": "... and train your model!"
+            }
+        ]
+    },
+    {
+        "name": "t02_using_data_in_disk.md",
+        "displayName": " Tutorial 2: Dealing with large datasets with FastEstimator",
+        "toc": [
+            {
+                "id": "before-we-start",
+                "displayName": "Before we start:"
+            },
+            {
+                "id": "step-0-get-the-paths-to-the-csv-files",
+                "displayName": "Step 0: Get the paths to the csv files"
+            },
+            {
+                "id": "step-1-recordwriter",
+                "displayName": "Step 1: RecordWriter"
+            },
+            {
+                "id": "step-2-pipeline--network--estimator-see-tutorial-1-for-details",
+                "displayName": "Step 2: Pipeline  Network  Estimator see tutorial 1 for details"
+            },
+            {
+                "id": "step-3-start-training",
+                "displayName": "Step 3: Start training"
+            },
+            {
+                "id": "key-takeaways",
+                "displayName": "Key takeaways:"
+            }
+        ]
+    },
+    {
+        "name": "t03_operator.md",
+        "displayName": " Tutorial 3: Operator",
+        "toc": [
+            {
+                "id": "how-does-operator-work",
+                "displayName": "How does Operator work"
+            },
+            {
+                "id": "how-to-express-operator-connections-in-fastestimator",
+                "displayName": "How to express Operator connections in FastEstimator"
+            },
+            {
+                "id": "what-different-types-of-operators-are-there",
+                "displayName": "What different types of Operators are there"
+            },
+            {
+                "id": "how-is-an-operator-defined",
+                "displayName": "How is an Operator defined"
+            },
+            {
+                "id": "operator-demo-in-fastestimator",
+                "displayName": "Operator demo in FastEstimator"
+            },
+            {
+                "id": "step-0-use-prebuilt-op-and-custom-op-for-data-preprocessing-in-recordwriter",
+                "displayName": "Step 0: Use prebuilt Op and custom Op for data preprocessing in RecordWriter"
+            },
+            {
+                "id": "step-1-use-prebuilt-and-custom-ops-for-pipeline",
+                "displayName": "Step 1: Use prebuilt and custom Ops for Pipeline"
+            },
+            {
+                "id": "step-2-use-prebuilt-and-custom-ops-for-network",
+                "displayName": "Step 2: Use prebuilt and custom ops for Network"
+            },
+            {
+                "id": "step-3-create-the-estimator-and-train",
+                "displayName": "Step 3: Create the Estimator and train!"
+            }
+        ]
+    },
+    {
+        "name": "t04_pipeline_debug_benchmark.md",
+        "displayName": " Tutorial 4: Pipeline debugging and benchmarking",
+        "toc": [
+            {
+                "id": "1-define-the-pipeline-same-as-tutorial-3",
+                "displayName": "1 Define the pipeline same as tutorial 3"
+            },
+            {
+                "id": "2-access-the-pipeline-results",
+                "displayName": "2 Access the pipeline results"
+            },
+            {
+                "id": "3-benchmark-pipeline-speed",
+                "displayName": "3 Benchmark pipeline speed"
+            }
+        ]
+    },
+    {
+        "name": "t05_trace_debug_training.md",
+        "displayName": " Tutorial 5: Trace  training control and debugging",
+        "toc": [
+            {
+                "id": "using-trace-to-debug-training-loop",
+                "displayName": "Using Trace to debug training loop"
+            },
+            {
+                "id": "1-define-the-operation-to-test--pipeline-and-network",
+                "displayName": "1 Define the operation to test,  pipeline and network."
+            },
+            {
+                "id": "2-define-the-trace",
+                "displayName": "2 Define the trace"
+            }
+        ]
+    },
+    {
+        "name": "t06_TensorFilter_imbalanced_training.md",
+        "displayName": " Tutorial 6:  Dealing with imbalanced dataset using TensorFilter",
+        "toc": [
+            {
+                "id": "step-0--data-preparation-same-as-tutorial-1",
+                "displayName": "Step 0  Data preparation same as tutorial 1"
+            },
+            {
+                "id": "step-1--customize-your-own-filter",
+                "displayName": "Step 1  Customize your own Filter..."
+            },
+            {
+                "id": "or-use-a-prebuilt-scalarfilter",
+                "displayName": "... or use a prebuilt ScalarFilter"
+            }
+        ]
+    },
+    {
+        "name": "t07_expand_data_dimension.md",
+        "displayName": " Tutorial 7: Expanding data dimension in RecordWriter and Pipeline",
+        "toc": [
+            {
+                "id": "step-1--recordwriter-expand-data-dimension-and-write-it-to-the-disk",
+                "displayName": "Step 1  RecordWriter: expand data dimension and write it to the disk"
+            },
+            {
+                "id": "step-2--pipeline-expand-dimension-on-the-fly",
+                "displayName": "Step 2  Pipeline: expand dimension on the fly"
+            },
+            {
+                "id": "step-3--check-pipeline-results",
+                "displayName": "Step 3  Check pipeline results..."
+            },
+            {
+                "id": "and-visualize",
+                "displayName": ".... and visualize!"
+            }
+        ]
+    },
+    {
+        "name": "t08_scheduler_progressive_training.md",
+        "displayName": " Tutorial 8: Changing hyperparameters during training with Scheduler",
+        "toc": [
+            {
+                "id": "1-how-to-use-scheduler",
+                "displayName": "1 How to use Scheduler:"
+            },
+            {
+                "id": "2-scheduler-example",
+                "displayName": "2 Scheduler example:"
+            },
+            {
+                "id": "step-0-prepare-data",
+                "displayName": "Step 0 Prepare data"
+            },
+            {
+                "id": "step-1-prepare-the-pipeline-with-the-schedulers",
+                "displayName": "Step 1 Prepare the Pipeline with the Schedulers"
+            },
+            {
+                "id": "step-2-prepare-network-with-the-two-models-and-a-scheduler",
+                "displayName": "Step 2 Prepare Network with the two models and a Scheduler"
+            },
+            {
+                "id": "step-3-build-the-estimator-and-train",
+                "displayName": "Step 3 Build the Estimator and train!"
+            }
+        ]
+    },
+    {
+        "name": "t09_learning_rate_controller.md",
+        "displayName": " Tutorial 9: Learning Rate Controller",
+        "toc": [
+            {
+                "id": "step-0-preparation",
+                "displayName": "Step 0 Preparation"
+            },
+            {
+                "id": "option-1-customize-the-learning-rate-stepwise-control",
+                "displayName": "Option 1 Customize the learning rate: stepwise control"
+            },
+            {
+                "id": "option-2--customize-the-learning-rate-epochwise-control",
+                "displayName": "Option 2  Customize the learning rate: epochwise control"
+            },
+            {
+                "id": "option-3-builtin-cyclic-learning-rate--example-1",
+                "displayName": "Option 3 Builtin Cyclic Learning Rate  example 1"
+            },
+            {
+                "id": "option-3-builtin-cyclic-learning-rate-example-2",
+                "displayName": "Option 3 Builtin Cyclic Learning Rate: example 2"
+            }
+        ]
+    },
+    {
+        "name": "t10_unpaired_dataset.md",
+        "displayName": " Tutorial 10: Dataset with unpaired features",
+        "toc": [
+            {
+                "id": "step-0--data-preparation-and-visualization",
+                "displayName": "Step 0  Data preparation and visualization"
+            },
+            {
+                "id": "step-1--recordwriter-read-unpaired-features-using-a-tuple",
+                "displayName": "Step 1  RecordWriter: read unpaired features using a tuple"
+            }
+        ]
+    },
+    {
+        "name": "t11_interpretation.md",
+        "displayName": " Tutorial 11: Interpretation",
+        "toc": [
+            {
+                "id": "download-a-sample-model-for-demonstration",
+                "displayName": "Download a sample model for demonstration"
+            },
+            {
+                "id": "interpretation-with-bash",
+                "displayName": "Interpretation with Bash"
+            },
+            {
+                "id": "interpretation-with-python-api",
+                "displayName": "Interpretation with Python API"
+            },
+            {
+                "id": "interpretation-with-traces",
+                "displayName": "Interpretation with Traces"
+            }
+        ]
+    }
+]
