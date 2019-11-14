@@ -35,6 +35,7 @@ pre {
   max-width: calc(1150px - (30px * 2));
   margin-right: auto;
   margin-left: auto;
+  padding-top: 4rem;
   padding-right: 30px;
   padding-left: 30px; }
   @media screen and (max-width: 1024px) {
