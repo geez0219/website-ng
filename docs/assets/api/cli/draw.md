@@ -1,6 +1,0 @@
-
-
-### draw
-```python
-draw()
-```
