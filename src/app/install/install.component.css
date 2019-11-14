@@ -1,0 +1,70 @@
+.codeblock {
+    background: #f0f3f3;
+    position: relative;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px !important;
+}
+
+pre,
+code {
+  font-size: 15.9375px;
+  border: 1px solid whitesmoke;
+  border-radius: 3px;
+  background-color: #eef; }
+
+code {
+  padding: 1px 5px; }
+
+pre {
+  padding: 8px 12px;
+  overflow-x: auto; }
+  pre > code {
+    border: 0;
+    padding-right: 0;
+    padding-left: 0; }
+
+.span-accented {
+  color: orangered;
+  float: none !important;
+  margin: 0 !important;
+  font-size: 120%; }
+
+.wrapper {
+  max-width: -webkit-calc(1150px - (30px * 2));
+  max-width: calc(1150px - (30px * 2));
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 30px;
+  padding-left: 30px; }
+  @media screen and (max-width: 1024px) {
+    .wrapper {
+      max-width: -webkit-calc(1150px - (30px));
+      max-width: calc(1150px - (30px));
+      padding-right: 14px;
+      padding-left: 14px; } }
+
+.highlight pre {
+  box-shadow: inset 0 -2px 0 0 #048ccc;
+  margin-bottom: 0 !important; }
+
+.python-comments {
+    margin-left: 16px;
+    color: saddlebrown;
+}
+
+.copy-btn {
+    position: absolute;
+    right: 0;
+    width: 50px;
+    padding: 2px;
+    margin-top: 6px;
+    background-color:transparent;
+    border: 0;
+    box-shadow: none;
+    outline: none;
+}
+
+.install-content{
+    margin-bottom: 32px;
+}

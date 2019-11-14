@@ -1,0 +1,70 @@
+.theme {
+    position: relative;
+}
+.showcase {
+    width: 100%;
+    height:340px;
+}
+
+.slogan {
+    position: absolute;
+    font-size: 2.3em;
+    color: rgb(255, 255, 255);
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.subhead {
+    position: absolute;
+    font-size: 1.2em;
+    color: rgb(255, 255, 255);
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.container{
+    text-align: center;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #F0F0F0;
+}
+
+.why, .using{
+    color: chocolate;
+    font-size: 2.2em;
+    margin-top: 2rem;
+    /* text-align: center; */
+}
+
+.why-exp, .using-exp{
+    color: darkslategray;
+    font-size: 1.5em;
+    margin: 5px 10% 5px 10%;
+}
+
+.icons{
+    width: 80px;
+    height: 80px;
+    display:block;
+    margin:auto;
+}
+
+.text {
+    color: black;
+}
+
+.videos {
+    width: 200px;
+    height: 140px;
+    display:block;
+    margin:auto;
+}
+
+.row .col-sm{
+    margin-top: 4rem;
+    padding: 0px 30px;
+
+}
+.content{
+    padding-top: 6rem;
+}

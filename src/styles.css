@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.gsc-input-box {
+    background-color: #ebe5e5 !important;
+    border-color: #ebe5e5 !important;
+    border-radius: 2px;
+}
+
+#gs_id50, #gsc-i-id1{
+    background-color: #ebe5e5;
+    border-radius: 2px;
+}
+#gs_id50:hover #gsc-i-id1, #gs_id50:hover{
+    background-color: #d3cece;
+}
+
+button.gsc-search-button
+{
+    padding:0px !important;
+    height:0px !important; 
+    width:0px !important;
+    visibility: hidden;
+	background-color:transparent !important;
+}

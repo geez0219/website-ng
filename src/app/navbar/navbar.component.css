@@ -1,0 +1,39 @@
+.head-container{
+    overflow:hidden;
+    background-color: #ffffff;
+    border-bottom: 3px solid darkorange;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    /* height: 6rem; */
+    min-height: 6rem;
+}
+
+nav div div a{
+    color: rgb(38, 56, 66);
+    background-color: inherit;
+    padding: 2em 2em;
+    outline: none;
+}
+
+.selected-title, nav div div a:hover{
+    color:#555557;
+    font-weight:bold;
+}
+
+#navbarsDefault{
+    min-height: 3rem;
+}
+
+.navbar {
+    padding: 0;
+}
+
+.navbar-brand {
+    outline: none;
+}
+
+.logo {
+    width:256px;
+    height:64px;
+}

@@ -1,0 +1,42 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" class="sidebar-api" opened [fixedInViewport]="true" [fixedTopGap]="100">
+    <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
+        <!-- This is the tree node template for leaf nodes -->
+        <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+          <!-- use a disabled button to provide padding for tree leaf -->
+          <button class="hide" mat-icon-button disabled></button>
+          <div [ngClass]="{'selected': selectedAPI === node.name, 
+                          'not-selected': selectedAPI != node.name}" 
+                          (click)="updateCurrentAPI(node)">
+                          {{node.displayName}}
+          </div>
+        </mat-tree-node>
+        <!-- This is the tree node template for expandable nodes -->
+        <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+          <li>
+            <button class="not-selected" mat-icon-button matTreeNodeToggle
+                    [attr.aria-label]="'toggle ' + node.displayName">
+              <mat-icon class="mat-icon-rtl-mirror">
+                {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+              </mat-icon>
+              {{node.displayName}}
+            </button>
+            <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">
+              <ng-container matTreeNodeOutlet></ng-container>
+            </ul>
+          </li>
+        </mat-nested-tree-node>
+      </mat-tree>
+
+
+  </mat-sidenav>
+
+  
+  <mat-sidenav-content>
+    <div class="content-wrapper">
+      <div class="content">
+        <markdown [data]="currentAPIText"></markdown>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

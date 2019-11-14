@@ -1,0 +1,57 @@
+<p>install works!</p>
+
+<div class="wrapper">
+    <h2>Installing FastEstimator</h2>
+    <div class="install-content">
+        <div class="python">
+            <div class="pip">
+                <p>Install current stable release with Python's pip package manager.</p>
+                <div>
+                    <figure class="codeblock">
+                        <button ngxClipboard [cbContent]="'pip install fastestimator'" (cbOnSuccess)="copied($event)" class="material-icons copy-button no-print copy-btn" title="Copy code snippet" aria-label="">
+                            <span aria-hidden="true">content_copy</span>
+                        </button>
+                        <pre><code data-lang="bash"><span class="nv">$</span> pip <span class="nb">install</span> fastestimator </code></pre>
+                    </figure>
+                </div>
+                <p>Install the nightly build</p>
+                <div>
+                    <figure class="codeblock">
+                        <button class="material-icons copy-button no-print copy-btn" title="Copy code snippet" aria-label="">
+                            <span aria-hidden="true">content_copy</span>
+                        </button>
+                        <pre><code data-lang="bash"><span class="nv">$</span> pip <span class="nb">install</span> fastestimator-nightly </code></pre>
+                    </figure>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <h2>Running FastEstimator Container</h2>
+    <div class="install-container">
+        <div class="python">
+            <div class="pip">
+                <p>Docker container creates isolated virtual environment that shares resources with host machine. Docker
+                    provides an easy
+                    way to set up FastEstimator environment.</p>
+                <div>
+                    <figure class="codeblock">
+                        <button class="material-icons copy-button no-print copy-btn" title="Copy code snippet" aria-label="">
+                            <span aria-hidden="true">content_copy</span>
+                        </button>
+                        <pre><code data-lang="bash"><span class="nv">$</span><span> docker pull fastestimator/fastestimator:1.0b0-gpu</span><span class="python-comments"># GPU docker image</span></code></pre>
+                    </figure>
+                </div>
+                <div>
+                    <figure class="codeblock">
+                        <button class="material-icons copy-button no-print copy-btn" title="Copy code snippet" aria-label="">
+                            <span aria-hidden="true">content_copy</span>
+                        </button>
+                        <pre><code data-lang="bash"><span class="nv">$</span><span> docker pull fastestimator/fastestimator:1.0b0-cpu</span><span class="python-comments"># CPU docker image</span></code></pre>
+                    </figure>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
