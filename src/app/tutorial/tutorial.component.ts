@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, NavigationEnd } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, BehaviorSubject } from 'rxjs';
 
 import { Tutorial } from '../tutorial';
 import { TOC } from '../toc';
@@ -18,9 +18,17 @@ export class TutorialComponent implements OnInit, OnDestroy {
   tutorialList: Tutorial[];
   tocContent: TOC[];
   routerSubscription: Subscription;
+  
+  screenWidth: number;
+  private screenWidth$ = new BehaviorSubject<number>(window.innerWidth);
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.screenWidth$.next(event.target.innerWidth);
+  }
 
   constructor(private http: HttpClient,
-    private router: Router,) { }
+              private router: Router,) { }
 
   ngOnInit() {
     this.getTutorialStructure();
@@ -29,6 +37,10 @@ export class TutorialComponent implements OnInit, OnDestroy {
       if (e instanceof NavigationEnd) {
         this.parseURL();
       }
+    });
+
+    this.screenWidth$.subscribe(width => {
+      this.screenWidth = width;
     });
   }
 
