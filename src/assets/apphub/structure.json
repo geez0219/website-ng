@@ -1,79 +1,79 @@
 [
     {
-        "name": "image_styletransfer",
+        "name": "Image Style Transfer",
         "children": [
             {
                 "name": "image_styletransfer/fst_coco.md",
-                "displayName": "Fast Style Transfer with FastEstimator"
+                "displayName": "Fast Style Transfer"
             }
         ]
     },
     {
-        "name": "NLP",
+        "name": "Natural Language Processing (NLP)",
         "children": [
             {
                 "name": "NLP/lstm_imdb.md",
-                "displayName": "IMDB Reviews Sentiments prediction with LSTM"
+                "displayName": "LSTM"
             }
         ]
     },
     {
-        "name": "image_segmentation",
+        "name": "Semantic Segmentation",
         "children": [
             {
                 "name": "image_segmentation/unet_montgomery.md",
-                "displayName": "Lung Segmentation  Montgomery Dataset"
+                "displayName": "UNet"
             },
             {
                 "name": "image_segmentation/unet_cub200.md",
-                "displayName": "Image Segmation: CaltechUCSD Birds 200 Dataset"
+                "displayName": "UNet"
             }
         ]
     },
     {
-        "name": "image_generation",
+        "name": "Image Generation",
         "children": [
             {
                 "name": "image_generation/cyclegan.md",
-                "displayName": "Horse to Zebra Unpaired Image Translation with CycleGAN in FastEstimator"
+                "displayName": "CycleGAN"
             },
             {
                 "name": "image_generation/dcgan_mnist.md",
-                "displayName": "DCGAN Example with MNIST Dataset"
+                "displayName": "DCGAN"
             },
             {
                 "name": "image_generation/cvae_mnist.md",
-                "displayName": "Convolutional Variational Autoencoder example using MNIST dataset"
+                "displayName": "CVAE"
             }
         ]
     },
     {
-        "name": "tabular",
+        "name": "Tabular Data",
         "children": [
             {
                 "name": "tabular/dnn_housing.md",
-                "displayName": "Boston housing price predictor regression using DNN"
+                "displayName": "DNN"
             }
         ]
     },
     {
-        "name": "image_classification",
+        "name": "Image Classification",
         "children": [
             {
                 "name": "image_classification/lenet_cifar10_mixup.md",
-                "displayName": "CIFAR10 Image Classification Using LeNet With Mixup Training"
+                "displayName": "Mixup"
             },
             {
                 "name": "image_classification/lenet_cifar10_adversarial.md",
-                "displayName": "CIFAR10 Image Classification Using LeNet With Adversarial Training"
+                "displayName": "Adversarial Attack"
             },
             {
                 "name": "image_classification/densenet121_cifar10.md",
-                "displayName": "CIFAR10 Image Classification Using DenseNet121"
+                "displayName": "DenseNet"
             },
             {
                 "name": "image_classification/lenet_mnist.md",
-                "displayName": "MNIST Image Classification Using LeNet"
+                "displayName": "LeNet"
             }
         ]
     }

@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { HttpClient } from '@angular/common/http'; 
 import { Router, NavigationEnd } from '@angular/router';
-import { Subscription, range, BehaviorSubject } from 'rxjs';
+import { Subscription, BehaviorSubject } from 'rxjs';
 
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
@@ -18,6 +18,7 @@ export class ApiComponent implements OnInit, OnDestroy {
   selectedAPI: string;
   currentSelection: string;
   currentAPIText: string;
+  
   routerSubscription: Subscription;
 
   treeControl: NestedTreeControl<API>;
@@ -32,7 +33,7 @@ export class ApiComponent implements OnInit, OnDestroy {
   }
 
   constructor(private http: HttpClient,
-    private router: Router,) { }
+              private router: Router,) { }
 
   ngOnInit() {
     this.treeControl = new NestedTreeControl<API>(node => node.children);
@@ -92,6 +93,7 @@ export class ApiComponent implements OnInit, OnDestroy {
     else {
       name = "";
     }
+
     if (name === "") {
       this.updateCurrentAPI(this.apiList[0].children[0]);
 
@@ -101,6 +103,7 @@ export class ApiComponent implements OnInit, OnDestroy {
       var a: API[] = this.flatten(this.apiList).filter(api => {
         var split: string[] = api.name.split("/");
         var matchName: string[] = (name + ".md").split("/");
+        
         return split[split.length - 1] === matchName[matchName.length - 1];
       });
 
