@@ -1,6 +1,0 @@
-
-
-### nf
-```python
-nf(stage)
-```
