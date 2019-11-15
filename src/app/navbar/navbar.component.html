@@ -5,21 +5,26 @@
   </button>
 
   <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="navbarsDefault">
-    <div class="navbar-item">
+    <div class="navbar-item" id="install-btn">
       <a (click)="preRoute('install')" [ngClass]="{'selected-title': selected==='install'}" class="nav-item nav-link active" routerLink="/install">Install</a>
+      <div class="rise-block"> </div>
     </div>
-    <div class="navbar-item">
+    <div class="navbar-item" id="tutorial-btn">
       <a (click)="preRoute('tutorials')" [ngClass]="{'selected-title': selected==='tutorials'}" class="nav-item nav-link active" routerLink="/tutorials/t01_basic_usage">Tutorials</a>
+      <div class="rise-block"> </div>
     </div>
 
     <div class="navbar-item">
       <a (click)="preRoute('examples')" [ngClass]="{'selected-title': selected==='examples'}" class="nav-item nav-link active" routerLink="/examples">Examples</a>
+      <div class="rise-block"> </div>
     </div>
     <div class="navbar-item">
       <a (click)="preRoute('api')" [ngClass]="{'selected-title': selected==='api'}" class="nav-item nav-link active" routerLink="/api">API</a>
+      <div class="rise-block"> </div>
     </div>
     <div class="navbar-item">
       <a (click)="preRoute('community')" [ngClass]="{'selected-title': selected==='community'}" class="nav-item nav-link active" routerLink="/community">Coummunity</a>
+      <div class="rise-block"> </div>
     </div>
     
   </div>
