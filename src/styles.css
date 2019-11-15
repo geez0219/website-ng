@@ -3,7 +3,6 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-
 .gsc-input-box {
     background-color: #ebe5e5 !important;
     border-color: #ebe5e5 !important;
@@ -13,6 +12,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 #gs_id50, #gsc-i-id1{
     background-color: #ebe5e5;
     border-radius: 2px;
+    width: 100%;
+    transition-property: all;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
 }
 #gs_id50:hover #gsc-i-id1, #gs_id50:hover{
     background-color: #d3cece;
@@ -26,3 +29,4 @@ button.gsc-search-button
     visibility: hidden;
 	background-color:transparent !important;
 }
+
