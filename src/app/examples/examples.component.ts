@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, HostListener } from '@angular/core';
 import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 
 import { Tutorial } from '../tutorial';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-examples',
@@ -16,12 +17,24 @@ export class ExamplesComponent implements OnInit {
   currentTutorialText: string;
   tutorialList: Tutorial[];
 
+  screenWidth: number;
+  private screenWidth$ = new BehaviorSubject<number>(window.innerWidth);
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.screenWidth$.next(event.target.innerWidth);
+  }
+
   constructor(private http: HttpClient,
     private route: ActivatedRoute,
     private location: Location) { }
 
   ngOnInit() {
     this.getTutorialStructure();
+
+    this.screenWidth$.subscribe(width => {
+      this.screenWidth = width;
+    });
   }
 
   getTutorialStructure() {

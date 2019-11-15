@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { HttpClient } from '@angular/common/http'; 
 import { Router, NavigationEnd } from '@angular/router';
-import { Subscription, range } from 'rxjs';
+import { Subscription, range, BehaviorSubject } from 'rxjs';
 
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
@@ -23,6 +23,14 @@ export class ApiComponent implements OnInit, OnDestroy {
   treeControl: NestedTreeControl<API>;
   dataSource: MatTreeNestedDataSource<API>;
 
+  screenWidth: number;
+  private screenWidth$ = new BehaviorSubject<number>(window.innerWidth);
+  
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.screenWidth$.next(event.target.innerWidth);
+  }
+
   constructor(private http: HttpClient,
     private router: Router,) { }
 
@@ -36,6 +44,10 @@ export class ApiComponent implements OnInit, OnDestroy {
       if (e instanceof NavigationEnd) {
         this.parseURL();
       }
+    });
+
+    this.screenWidth$.subscribe(width => {
+      this.screenWidth = width;
     });
   }
 
