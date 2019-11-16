@@ -8,15 +8,20 @@ import { DOCUMENT } from '@angular/common'
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit{
-  constructor(private renderer: Renderer2, private el: ElementRef, @Inject(DOCUMENT) private _document) {}
-  ngOnInit() {
-    const s = this.renderer.createElement('script');
-    s.type = 'text/javascript';
-    s.src = 'https://cse.google.com/cse.js?cx=007435124061301021685:nx5ivx9bz4c';
-    s.text="";
-    this.renderer.appendChild(this.el.nativeElement, s);
-  }
+  ngOnInit() {}
 }
+
+
+// export class SearchComponent implements OnInit{
+//   constructor(private renderer: Renderer2, private el: ElementRef, @Inject(DOCUMENT) private _document) {}
+//   ngOnInit() {
+//     const s = this.renderer.createElement('script');
+//     s.type = 'text/javascript';
+//     s.src = 'https://cse.google.com/cse.js?cx=007435124061301021685:nx5ivx9bz4c';
+//     s.text="";
+//     this.renderer.appendChild(this.el.nativeElement, s);
+//   }
+// }
 
 // export class SearchComponent implements OnInit, AfterViewInit{
 //   constructor(private renderer: Renderer2, private el: ElementRef, @Inject(DOCUMENT) private _document) {}
