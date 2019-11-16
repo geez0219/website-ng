@@ -19,7 +19,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
 ## Deploy
-Build the website with prod settings using the following command: `ng build --prod --base-href "https://fastestimator.org/"`
+Build the website with prod settings using the following command: `ng build --prod --base-href "https://fastestimator.org/"`.   
 Once it's done use `ngh` to automatically push to gh-pages branch. Then create a pull request to deploy to prod.
 
 ## Running unit tests
