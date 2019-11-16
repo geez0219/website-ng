@@ -10,8 +10,6 @@ import { DOCUMENT } from '@angular/common'
 export class SearchComponent implements OnInit{
   ngOnInit() {}
 }
-
-
 // export class SearchComponent implements OnInit{
 //   constructor(private renderer: Renderer2, private el: ElementRef, @Inject(DOCUMENT) private _document) {}
 //   ngOnInit() {
