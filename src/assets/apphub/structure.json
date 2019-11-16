@@ -1,6 +1,7 @@
 [
     {
-        "name": "Image Style Transfer",
+        "displayName": "Image Style Transfer",
+        "name": "",
         "children": [
             {
                 "name": "image_styletransfer/fst_coco.md",
@@ -9,7 +10,8 @@
         ]
     },
     {
-        "name": "Natural Language Processing (NLP)",
+        "displayName": "Natural Language Processing (NLP)",
+        "name": "",
         "children": [
             {
                 "name": "NLP/lstm_imdb.md",
@@ -18,7 +20,8 @@
         ]
     },
     {
-        "name": "Semantic Segmentation",
+        "displayName": "Semantic Segmentation",
+        "name": "",
         "children": [
             {
                 "name": "image_segmentation/unet_montgomery.md",
@@ -31,7 +34,8 @@
         ]
     },
     {
-        "name": "Image Generation",
+        "displayName": "Image Generation",
+        "name": "",
         "children": [
             {
                 "name": "image_generation/cyclegan.md",
@@ -48,7 +52,8 @@
         ]
     },
     {
-        "name": "Tabular Data",
+        "displayName": "Tabular Data",
+        "name": "",
         "children": [
             {
                 "name": "tabular/dnn_housing.md",
@@ -57,7 +62,8 @@
         ]
     },
     {
-        "name": "Image Classification",
+        "displayName": "Image Classification",
+        "name": "",
         "children": [
             {
                 "name": "image_classification/lenet_cifar10_mixup.md",
