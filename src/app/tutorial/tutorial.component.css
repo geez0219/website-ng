@@ -72,8 +72,9 @@ markdown ::ng-deep table, markdown ::ng-deep th, markdown ::ng-deep td {
   border: 1px solid black;
   padding: 3px;
 }
+
 markdown ::ng-deep img {
-    width: 100%;
+    max-width: 100%;
 }
 
 .toc {
