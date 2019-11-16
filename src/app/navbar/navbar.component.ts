@@ -23,6 +23,7 @@ export class NavbarComponent implements OnInit {
   }
 
   preRoute(newSelection: string) {
+    this.isNavbarCollapsed = !this.isNavbarCollapsed;
     this.selected = newSelection.toLowerCase();
   }
 
