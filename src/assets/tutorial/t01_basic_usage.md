@@ -7,7 +7,7 @@ _____
 * __Network__: responsible for trainable and differentiable models, operations and loss.
 * __Estimator__: manages the training loop.
 
-Any deep learning implementation will follow the `Pipeline` -> `Network` -> `Estimator` process as illustrated below:<img src="assets/tutorial/image/workflow.png">
+<img src="assets/tutorial/image/workflow.png">
 
 Pipeline operations will usually happen on CPU, whereas Network operations will happen on GPU when available.
 
@@ -20,7 +20,7 @@ import numpy as np
 
 ## Step 1: Prepare the Pipeline
 
-For in-memory data, `Pipeline` can take a nested **dictionary** like `{"train": {"x": x_train, "y": y_train}, "eval": {"x": x_eval, "y": y_eval}}`.  For both training and validation data, we link the images and labels to a key (respectively "x" and "y"). Note that the `eval` part is not needed, if validation data is not available.
+For in-memory data, `Pipeline` can take a nested **dictionary** like `{"train": {"x": x_train, "y": y_train}, "eval": {"x": x_eval, "y": y_eval}}`.  For both training and validation data, we link the images and labels to a key (respectively "x" and "y"). Note that the `eval` part is not needed, if validation data is not available.  
 We will explain `ops` arguments in more details in tutorial 3.
 
 
@@ -32,8 +32,8 @@ from fastestimator.op.tensorop import Minmax
 (x_train, y_train), (x_eval, y_eval) = tf.keras.datasets.mnist.load_data()
 
 # Add one channel dimension for convolution later
-x_train = np.expand_dims(x_train, -1)
-x_eval = np.expand_dims(x_eval, -1)
+x_train = np.expand_dims(x_train, -1) 
+x_eval = np.expand_dims(x_eval, -1) 
 
 # Create a dictionary to identify the training and evaluation data.
 # We specify for each x (images) and y (label) also in a dictionnary.
@@ -46,15 +46,15 @@ pipeline = fe.Pipeline(batch_size=32, data=data, ops=Minmax(inputs="x", outputs=
 ## Step 2: Define the network
 
 For Network architecture, users can choose one of the following:
-* Define a custom network architecture using  `tf.keras.Model` or `tf.keras.Sequential`.
-* Use an existing architecture provided by `tf.keras.applications` or `fe.architecture`.
+* Define a custom network architecture using  `tf.keras.Model` or `tf.keras.Sequential`.  
+* Use an existing architecture provided by `tf.keras.applications` or `fe.architecture`. 
 
     In this tutorial, we are going to import a pre-defined LeNet architecture in [fastestimator.architecture.lenet](https://github.com/fastestimator/fastestimator/blob/master/fastestimator/architecture/lenet.py).
 
 Once the architecture is defined, we have to associate the model with its optimizer and expected loss name using `fe.build`.
 
 Finally, we create the Network to summarize all operations and loss. In this case, we have one ModelOp where we specify the input key, model we want to use, and output key.
-Network is also where we define the loss, here SparseCategoricalCrossentropy. We specify the key for predictions and groundtruths and the loss name as output.
+Network is also where we define the loss, here SparseCategoricalCrossentropy. We specify the key for predictions and groundtruths and the loss name as output. 
 
 
 ```python
@@ -66,13 +66,13 @@ from fastestimator.op.tensorop.loss import SparseCategoricalCrossentropy
 model = fe.build(model_def=LeNet, model_name="lenet", optimizer="adam", loss_name="loss")
 
 # We summarize all operations and loss in the Network.
-network = fe.Network(ops=[ModelOp(inputs="x", model=model, outputs="y_pred"),
+network = fe.Network(ops=[ModelOp(inputs="x", model=model, outputs="y_pred"), 
                           SparseCategoricalCrossentropy(y_pred="y_pred", y_true="y", outputs="loss")])
 ```
 
 ## Step 3: Create the Estimator...
 
-`Estimator` takes both `pipeline` and `network` and combines them into the training loop. Here's the basic usage of `Estimator`.
+`Estimator` takes both `pipeline` and `network` and combines them into the training loop. Here's the basic usage of `Estimator`. 
 
 
 ```python

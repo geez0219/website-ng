@@ -1,15 +1,15 @@
 # Tutorial 2: Dealing with large datasets with FastEstimator
 _____
 
-In Tutorial 1, we introduced our 3 main APIs and general workflow of a deep learning task using FastEstimator:  `Pipeline` -> `Network` -> `Estimator`. Then we used in-memory data for training.
+In Tutorial 1, we introduced our 3 main APIs and general workflow of a deep learning task using FastEstimator:  `Pipeline` -> `Network` -> `Estimator`. Then we used in-memory data for training.  
 *__But what if the dataset size was too big to fit in memory? Imagine data is the size of ImageNet?__*
 
-The short answer is: __the user will use one more API to use in disk data for training: `RecordWriter`__, such that the overall workflow becomes:
+The short answer is: __the user will use one more API to use in disk data for training: `RecordWriter`__, such that the overall workflow becomes:   
 `RecordWriter` -> `Pipeline` -> `Network` -> `Estimator`. In this tutorial, we are going to show you how to do in-disk data training in FastEstimator.
 
 ## Before we start:
 
-Two things are required regarding in-disk data :
+Two things are required regarding in-disk data : 
 * Data files, obviously :)
 * A csv file that describes the data (prepare two csv files if you have a separate validation set)
 
@@ -32,13 +32,13 @@ The csv of a multi-mask segmentation task may look like this:
 |... | ...  |...|
 
 
-Please keep in mind that, there is no restriction on the data folder structures, number of features or name of features.
+Please keep in mind that, there is no restriction on the data folder structures, number of features or name of features.  
 
 Now, let's generate some in-disk data for this tutorial!
 
 ## Step 0: Get the paths to the csv files
 
-For this example, we will use the function `load_data` from MNIST dataset to create images and csv files in disk, and get the paths to the above-mentioned csv files for training, evaluation.
+For this example, we will use the function `load_data` from MNIST dataset to create images and csv files in disk, and get the paths to the above-mentioned csv files for training, evaluation. 
 
 
 ```python
@@ -129,25 +129,25 @@ print("ground truth of image is {}".format(df_train["y"][1]))
 
 
 
-![png](assets/tutorial/t02_using_data_in_disk_6_1.png)
+![png](assets/tutorial/t02_using_data_in_disk_files/t02_using_data_in_disk_6_1.png)
 
 
 ## Step 1: RecordWriter
 
 
-In FastEstimator, we convert user's in-disk data to TFRecord for the best training speed. The RecordWriter API takes care of it.
+In FastEstimator, we convert user's in-disk data to TFRecord for the best training speed. The RecordWriter API takes care of it. 
 
-You will have to specify :
+You will have to specify : 
 
-- `save_dir` : the path to write the record.
-
-
-- `train_data` : can either be a csv path or a dictionary like the one used in tutorial 1.
-
-
-- `validation_data` (optional) : it can take all input formats of `train_data`. In addition, `validation_data` can also take a floating point number between 0 to 1 which indicates the validation split ratio, then validation data will be randomly sampled from training data.
-
-
+- `save_dir` : the path to write the record.    
+   
+   
+- `train_data` : can either be a csv path or a dictionary like the one used in tutorial 1.  
+ 
+ 
+- `validation_data` (optional) : it can take all input formats of `train_data`. In addition, `validation_data` can also take a floating point number between 0 to 1 which indicates the validation split ratio, then validation data will be randomly sampled from training data.  
+ 
+ 
 - `ops`: before converting data to TFRecord, users can apply a series of propcoessing tasks to the data in `ops` argument, we will talk about them in detail in tutorial 3.
 
 
@@ -157,7 +157,7 @@ from fastestimator.op.numpyop import ImageReader
 import fastestimator as fe
 import tempfile
 
-# We simply create a RecordWriter will all required arguments.
+# We simply create a RecordWriter will all required arguments. 
 writer = RecordWriter(save_dir=os.path.join(folder_path, "tfrecords"),
                          train_data=train_csv,
                          validation_data=eval_csv,
@@ -178,7 +178,7 @@ pipeline = fe.Pipeline(batch_size=32, data=writer, ops=Minmax(inputs="x", output
 
 # Model and network definition
 model = fe.build(model_def=LeNet, model_name="lenet", optimizer="adam", loss_name="loss")
-network = fe.Network(ops=[ModelOp(inputs="x", model=model, outputs="y_pred"),
+network = fe.Network(ops=[ModelOp(inputs="x", model=model, outputs="y_pred"), 
                           SparseCategoricalCrossentropy(y_pred="y_pred", y_true="y", outputs="loss")])
 
 # Estimator definition
