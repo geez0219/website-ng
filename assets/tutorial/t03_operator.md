@@ -48,7 +48,7 @@ our data then becomes:
 
 `Operator` can take multiple inputs and produce multiple outputs. One can see the true power of `Operator` when combining multiple ones in a sequence. The Figure below lists several examples of graph topologies enabled by lists of `Operator`. We will talk about `Schedule` in detail in future tutorials.
 
-<img src="image/ops.png">
+<img src="assets/tutorial/image/ops.png">
 
 ## What different types of Operators are there?
 

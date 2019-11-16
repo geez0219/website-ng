@@ -2,7 +2,7 @@
 
 In almost all deep learning applications, different features within a dataset are paired together as single example. For instance, image and label(s) are paired in image classification, image and mask(s) are paired in image segmentation.
 
-However, in image-image translation, sometimes the features in dataset are unpaired. For example, we may have 500 horse images for 700 zebra images. During the training, we need to randomly select one horse image and one zebra image.
+However, in image-image translation, sometimes the features in dataset are unpaired. For example, we may have 500 horse images for 700 zebra images. During the training, we need to randomly select one horse image and one zebra image. 
 
 In FastEstimator, unpaired features are handled by `RecordWriter`. If there are multiple unpaired features, express them as __tuple__  in the `train_data`, `validation_data` and `ops` argument of `RecordWriter`.
 
