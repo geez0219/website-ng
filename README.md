@@ -20,7 +20,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Deploy
 Build the website with prod settings using the following command: `ng build --prod --base-href "https://fastestimator.org/"`.   
-Once it's done use `ngh` to automatically push to gh-pages branch. Then create a pull request to deploy to prod.
+Once build is done, use `ngh` to automatically push to gh-pages branch. Then create a pull request to deploy to prod.
 
 ## Running unit tests
 
