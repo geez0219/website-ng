@@ -1,26 +1,27 @@
-import { Component, OnInit, ViewEncapsulation, HostListener } from '@angular/core';
-import { Location } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
+import { HttpClient } from '@angular/common/http'; 
+import { Router, NavigationEnd } from '@angular/router';
+import { Subscription, BehaviorSubject } from 'rxjs';
 
-import { Tutorial } from '../tutorial';
-import { BehaviorSubject } from 'rxjs';
+import { NestedTreeControl } from '@angular/cdk/tree';
+import { MatTreeNestedDataSource } from '@angular/material/tree';
 
+import { Example } from '../example';
 @Component({
   selector: 'app-examples',
   templateUrl: './examples.component.html',
   styleUrls: ['../tutorial/tutorial.component.css']
 })
-export class ApiExamples implements OnInit, OnDestroy {
-  apiList: API[];
+export class ExamplesComponent implements OnInit, OnDestroy {
+  exList: Example[];
   selectedAPI: string;
   currentSelection: string;
   currentAPIText: string;
   
   routerSubscription: Subscription;
 
-  treeControl: NestedTreeControl<API>;
-  dataSource: MatTreeNestedDataSource<API>;
+  treeControl: NestedTreeControl<Example>;
+  dataSource: MatTreeNestedDataSource<Example>;
 
   screenWidth: number;
   private screenWidth$ = new BehaviorSubject<number>(window.innerWidth);
@@ -34,8 +35,8 @@ export class ApiExamples implements OnInit, OnDestroy {
               private router: Router,) { }
 
   ngOnInit() {
-    this.treeControl = new NestedTreeControl<API>(node => node.children);
-    this.dataSource = new MatTreeNestedDataSource<API>();
+    this.treeControl = new NestedTreeControl<Example>(node => node.children);
+    this.dataSource = new MatTreeNestedDataSource<Example>();
 
     this.getAPIStructure();
 
@@ -56,10 +57,10 @@ export class ApiExamples implements OnInit, OnDestroy {
     }
   }
 
-  hasChild = (_: number, node: API) => !!node.children && node.children.length > 0;
+  hasChild = (_: number, node: Example) => !!node.children && node.children.length > 0;
 
   flatten(arr) {
-    var ret: API[] = [];
+    var ret: Example[] = [];
     for (let a of arr) {
       if (a.children) {
         ret = ret.concat(this.flatten(a.children));
@@ -72,18 +73,18 @@ export class ApiExamples implements OnInit, OnDestroy {
   }
 
   getAPIStructure() {
-    this.http.get('assets/examples/structure.json', {responseType: 'text'}).subscribe(data => {
-      this.apiList = <API[]>JSON.parse(data);
+    this.http.get('assets/example/structure.json', {responseType: 'text'}).subscribe(data => {
+      this.exList = <Example[]>JSON.parse(data);
       
-      this.dataSource.data = this.apiList;
-      this.treeControl.dataNodes = this.apiList;
+      this.dataSource.data = this.exList;
+      this.treeControl.dataNodes = this.exList;
       
       this.parseURL();
     });
   }
 
   private parseURL() {
-    var pathComponents = this.router.url.split("/api/");
+    var pathComponents = this.router.url.split("/examples/");
     var name = "";
     if (pathComponents.length > 1) {
       name = pathComponents[1].split("#")[0];
@@ -93,12 +94,12 @@ export class ApiExamples implements OnInit, OnDestroy {
     }
 
     if (name === "") {
-      this.updateCurrentAPI(this.apiList[0].children[0]);
+      this.updateCurrentAPI(this.exList[0].children[0]);
 
       this.treeControl.expand(this.treeControl.dataNodes[0]);
     }
     else {
-      var a: API[] = this.flatten(this.apiList).filter(api => {
+      var a: Example[] = this.flatten(this.exList).filter(api => {
         var split: string[] = api.name.split("/");
         var matchName: string[] = (name + ".md").split("/");
         
@@ -110,7 +111,7 @@ export class ApiExamples implements OnInit, OnDestroy {
     }
   }
 
-  expandNodes(api: API, apiName: string) {
+  expandNodes(api: Example, apiName: string) {
     var apiParts: Array<string> = apiName.split("/");
     apiParts.pop();
 
@@ -129,24 +130,24 @@ export class ApiExamples implements OnInit, OnDestroy {
     }
   }
 
-  updateCurrentAPI(api: API) {
+  updateCurrentAPI(api: Example) {
     var path = this.updateAPIContent(api);
 
-    this.router.navigateByUrl('/api/' + path);
+    this.router.navigateByUrl('/examples/' + path);
   }
 
-  private updateAPIContent(api: API) {
+  private updateAPIContent(api: Example) {
     if (!api)
       this.router.navigate(['PageNotFound']);
 
     window.scroll(0, 0);
 
     this.selectedAPI = api.name;
-    this.currentSelection = 'assets/api/' + api.name;
+    this.currentSelection = 'assets/example/' + api.name;
     var path = api.name.substring(0, api.name.length - 3);
-    if (!path.startsWith("fe")) {
-      path = "fe/" + path;
-    }
+    // if (!path.startsWith("fe")) {
+    //   path = "fe/" + path;
+    // }
     this.getSelectedAPIText();
     
     return path;
