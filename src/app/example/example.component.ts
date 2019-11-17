@@ -8,11 +8,11 @@ import { MatTreeNestedDataSource } from '@angular/material/tree';
 
 import { Example } from '../example';
 @Component({
-  selector: 'app-examples',
-  templateUrl: './examples.component.html',
-  styleUrls: ['../tutorial/tutorial.component.css']
+  selector: 'app-example',
+  templateUrl: './example.component.html',
+  styleUrls: ['../api/api.component.css']
 })
-export class ExamplesComponent implements OnInit, OnDestroy {
+export class ExampleComponent implements OnInit, OnDestroy {
   exList: Example[];
   selectedAPI: string;
   currentSelection: string;

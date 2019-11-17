@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 import { GettingStartedComponent } from './getting-started/getting-started.component';
 import { TutorialComponent } from './tutorial/tutorial.component';
-import { ExamplesComponent } from './examples/examples.component';
+import { ExampleComponent } from './example/example.component';
 import { ApiComponent } from './api/api.component';
 import { InstallComponent } from './install/install.component';
 import { CommunityComponent } from './community/community.component';
@@ -28,7 +28,7 @@ const routes: Routes = [
     children: [
       {
         path: "**",
-        component: ExamplesComponent
+        component: ExampleComponent
       },
     ],
     runGuardsAndResolvers: "always" },
