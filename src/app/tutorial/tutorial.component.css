@@ -4,7 +4,11 @@
 }
 
 .selected, .not-selected {
-    cursor: pointer;
+    display: block;
+    color: inherit;
+    text-decoration: inherit;
+    outline: none;
+
     padding: 8px;
     font-size: 13px;
     font-family: Roboto, Noto Sans, Noto Sans JP, Noto Sans KR, Noto Naskh Arabic, Noto Sans Thai, Noto Sans Hebrew, Noto Sans Bengali, sans-serif;
