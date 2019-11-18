@@ -11,7 +11,6 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { GettingStartedComponent } from './getting-started/getting-started.component';
 import { TutorialComponent } from './tutorial/tutorial.component';
-import { ExamplesComponent } from './examples/examples.component';
 import { ApiComponent } from './api/api.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,6 +25,7 @@ import { ClipboardModule } from 'ngx-clipboard';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SnackbarComponent } from './snackbar/snackbar.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ExampleComponent } from './example/example.component';
 
 @NgModule({
   declarations: [
@@ -33,14 +33,14 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     NavbarComponent,
     GettingStartedComponent,
     TutorialComponent,
-    ExamplesComponent,
     ApiComponent,
     SearchComponent,
     TocComponent,
     InstallComponent,
     CommunityComponent,
     SnackbarComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ExampleComponent
   ],
   imports: [
     BrowserModule,
