@@ -2,6 +2,11 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.1.
 
+## prerequisite
+
+1. Install [node.js](https://nodejs.org/en/)
+2. Run `npm install -g @angular/cli` to install [Angular CLI]
+
 ## Setup
 
 Run `npm install` in the repo folder to install all angular dependency.
