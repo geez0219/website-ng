@@ -1,6 +1,6 @@
-import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { HttpClient } from '@angular/common/http'; 
-import { ActivatedRoute, Router, NavigationEnd, UrlSegment } from '@angular/router';
+import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
 import { NestedTreeControl } from '@angular/cdk/tree';
@@ -83,15 +83,18 @@ export class ApiComponent implements OnInit {
   private loadSelectedAPI() {
     if (this.segments.length == 0) {
       this.updateAPIContent(this.apiList[0].children[0]);
-
       this.treeControl.expand(this.treeControl.dataNodes[0]);
     }
     else {
       var a: API[] = this.flatten(this.apiList)
         .filter(api => this.segments[this.segments.length - 1].toString() === api.displayName);
 
-      this.updateAPIContent(a[0]);
-      this.expandNodes(a[0].name);
+      if (a.length > 0) {
+        this.updateAPIContent(a[0]);
+        this.expandNodes(a[0].name);
+      } else {
+        this.router.navigate(['PageNotFound']);
+      }
     }
   }
 
@@ -118,20 +121,12 @@ export class ApiComponent implements OnInit {
   }
 
   private updateAPIContent(api: API) {
-    if (!api)
-      this.router.navigate(['PageNotFound']);
-
     window.scroll(0, 0);
 
     this.selectedAPI = api.name;
     this.currentSelection = 'assets/api/' + api.name;
-    var path = api.name.substring(0, api.name.length - 3);
-    if (!path.startsWith("fe")) {
-      path = "fe/" + path;
-    }
-    this.getSelectedAPIText();
     
-    return path;
+    this.getSelectedAPIText();
   }
 
   getSelectedAPIText() {
