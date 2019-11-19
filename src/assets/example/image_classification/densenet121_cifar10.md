@@ -88,7 +88,7 @@ plt.show()
 
 
 
-![png](densenet121_cifar10_files/densenet121_cifar10_9_1.png)
+![png](assets/example/image_classification/densenet121_cifar10_files/densenet121_cifar10_9_1.png)
 
 
 ### Validate The Pipeline Output
@@ -166,7 +166,7 @@ network = fe.Network(ops=[
 ```
 
 The network will connect like the following graph 
-<img src="network_workflow.png">
+<img src="assets/example/image_classification/network_workflow.png">
 
 ## Step 3: Create `Estimator` 
 `Estimator` is the APi that wrap up the `Pipeline`, `Network` and other training metadata together.
@@ -226,8 +226,8 @@ eval_sample = pipeline.show_results(mode="eval")
 x_input = eval_sample[0]["x2"].numpy()
 y_input = eval_sample[0]["y"].numpy()
 y_output = trained_model.predict(x_input)
-y_predict = np.argmax(y_output, axis=1).reshape(10000,1)
-print("the evaluation accuracy is {}".format(np.count_nonzero((y_input == y_predict))/10000))
+y_predict = np.argmax(y_output, axis=1).reshape(-1,1)
+print("the evaluation accuracy is {}".format(np.count_nonzero((y_input == y_predict))/y_predict.shape[0]))
 ```
 
     the evaluation accuracy is 0.7518
@@ -248,5 +248,5 @@ print("the ground truth label is {}, and the prediction is {}".format(y_input[ra
 
 
 
-![png](densenet121_cifar10_files/densenet121_cifar10_28_1.png)
+![png](assets/example/image_classification/densenet121_cifar10_files/densenet121_cifar10_28_1.png)
 

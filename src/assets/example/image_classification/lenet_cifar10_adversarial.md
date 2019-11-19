@@ -90,7 +90,7 @@ model2 = fe.build(model_def=lambda: LeNet(input_shape=x_train.shape[1:], classes
 adversarial_network = fe.Network(ops=[
         ModelOp(inputs="x", model=model2, outputs="y_pred", track_input=True),
         SparseCategoricalCrossentropy(y_true="y", y_pred="y_pred", outputs="loss"),
-        AdversarialSample(inputs=("loss", "x"), outputs="x_adverse", epsilon=0.01, mode="train"),
+        AdversarialSample(inputs="x", loss="loss", outputs="x_adverse", epsilon=0.01, mode="train"),
         ModelOp(inputs="x_adverse", model=model2, outputs="y_pred_adverse", mode="train"),
         SparseCategoricalCrossentropy(y_true="y", y_pred="y_pred_adverse", outputs="adverse_loss", mode="train"),
         Average(inputs=("loss", "adverse_loss"), outputs="loss", mode="train")
@@ -174,7 +174,7 @@ Lets consider a few images from the evaluation dataset and see how the networks 
 ```python
 import matplotlib.pyplot as plt
 import numpy as np
-from fastestimator.interpretation import show_image
+from fastestimator.xai import show_image
 from fastestimator.op.tensorop import Minmax
 
 minmax = Minmax()
@@ -211,7 +211,7 @@ print("Adversarial Model Predicts:[{}] ({:2.1%} accuracy over {} images)".format
 
 
 
-![png](lenet_cifar10_adversarial_files/lenet_cifar10_adversarial_32_1.png)
+![png](assets/example/image_classification/lenet_cifar10_adversarial_files/lenet_cifar10_adversarial_32_1.png)
 
 
 As we can see, both the simple model and the one trained against adversarial samples correctly identify a majority of the evaluation images, with a population accuracy around 70% each. Now, to create the adversarial versions of the images, we'll simulate the adversarial augmentation object
@@ -262,7 +262,7 @@ print("Adversarial Model Predicts:[{}] ({:2.1%} accuracy over {} images)".format
 
 
 
-![png](lenet_cifar10_adversarial_files/lenet_cifar10_adversarial_36_1.png)
+![png](assets/example/image_classification/lenet_cifar10_adversarial_files/lenet_cifar10_adversarial_36_1.png)
 
 
 Even though these adversarially attacked images look basically the same as the original images, the accuracy of the traditionally trained model has dropped to 31.9%. The adversarially trained model also sees a reduction in accuracy, but only to 65.2%. It is, however, an incomplete/unfair comparison since the attack is white-box against the simple network but black-box against the adversarially trained network. Let's now generate adversarial images using the adversarially trainined network instead and see how well the models resist the attack
@@ -295,7 +295,7 @@ print("Adversarial Model Predicts:[{}] ({:2.1%} accuracy over {} images)".format
 
 
 
-![png](lenet_cifar10_adversarial_files/lenet_cifar10_adversarial_38_1.png)
+![png](assets/example/image_classification/lenet_cifar10_adversarial_files/lenet_cifar10_adversarial_38_1.png)
 
 
 Under this attack, the accuracy of the traditionally trained model has dropped to 61.6%. The adversarially trained model meanwhile has its performance reduced to 49.1%. While the raw adversarial accuracy here is now lower than the simple model, the performance loss is significantly less than it was for the simple model in the previous attack. To properly compare the models, the white-box and black-box attacks should be compared pairwise against one another:
