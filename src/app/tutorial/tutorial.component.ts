@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router, NavigationEnd } from '@angular/router';
-import { Subscription, BehaviorSubject } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 import { Tutorial } from '../tutorial';
 import { TOC } from '../toc';
@@ -11,13 +11,11 @@ import { TOC } from '../toc';
   templateUrl: './tutorial.component.html',
   styleUrls: ['./tutorial.component.css']
 })
-export class TutorialComponent implements OnInit, OnDestroy {
+export class TutorialComponent implements OnInit {
   selectedTutorial: string;
-  currentSelection: string;
   currentTutorialText: string;
   tutorialList: Tutorial[];
   tocContent: TOC[];
-  routerSubscription: Subscription;
   
   screenWidth: number;
   private screenWidth$ = new BehaviorSubject<number>(window.innerWidth);
@@ -27,15 +25,11 @@ export class TutorialComponent implements OnInit, OnDestroy {
     this.screenWidth$.next(event.target.innerWidth);
   }
 
-  constructor(private http: HttpClient,
-              private router: Router,) { }
-
-  ngOnInit() {
-    this.getTutorialStructure();
-
-    this.routerSubscription = this.router.events.subscribe((e: any) => {
-      if (e instanceof NavigationEnd) {
-        this.parseURL();
+  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) {
+    this.route.params.subscribe(params => {
+      if (params['name']) {
+        this.selectedTutorial = params['name'];
+        this.getTutorialStructure();
       }
     });
 
@@ -44,38 +38,16 @@ export class TutorialComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy() {
-    if (this.routerSubscription) {
-      this.routerSubscription.unsubscribe();
-    }
+  ngOnInit() {
   }
 
   getTutorialStructure() {
     this.http.get('assets/tutorial/structure.json', {responseType: 'text'}).subscribe(data => {
       this.tutorialList = <Tutorial[]>JSON.parse(data);
 
-      console.log(this.tutorialList);
-      this.parseURL();
-    });
-  }
-
-  private parseURL() {
-    var pathComponents = this.router.url.split("/tutorials/");
-    var name = "";
-    if (pathComponents.length > 1) {
-      name = pathComponents[1].split("#")[0];
-    }
-    else {
-      name = "";
-    }
-
-    if (name === "") {
-      this.updateCurrentTutorial(this.tutorialList[0]);
-    }
-    else {
-      var t: Tutorial[] = this.tutorialList.filter(tutorial => tutorial.name === (name + ".md"));
+      var t: Tutorial[] = this.tutorialList.filter(tutorial => tutorial.name === (this.selectedTutorial + ".md"));
       this.updateTutorialContent(t[0]);
-    }
+    });
   }
 
   updateTutorialContent(tutorial: Tutorial) {
@@ -84,25 +56,13 @@ export class TutorialComponent implements OnInit, OnDestroy {
     
     window.scroll(0,0);
 
-    this.selectedTutorial = tutorial.name;
-    this.currentSelection = 'assets/tutorial/' + this.selectedTutorial;
-
-    this.tocContent = tutorial.toc;
-    this.getSelectedTutorialText();
+    this.getSelectedTutorialText('assets/tutorial/' + tutorial.name);
   }
 
-  updateCurrentTutorial(tutorial: Tutorial) {
-    this.updateTutorialContent(tutorial);
-
-    this.router.navigate(['/tutorials/' + tutorial.name.substring(0, tutorial.name.length - 3)]);
-  }
-
-  getSelectedTutorialText() {
-    this.http.get(this.currentSelection, {responseType: 'text'}).subscribe(data => {
+  getSelectedTutorialText(tutorialName) {
+    this.http.get(tutorialName, {responseType: 'text'}).subscribe(data => {
       this.currentTutorialText = data;
     });
   }
-
-  
 
 }

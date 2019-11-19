@@ -10,20 +10,13 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 const routes: Routes = [
   { path: '', component: GettingStartedComponent },
+  { path: 'tutorials/:name', component: TutorialComponent },
   { path: 'api', children: [
       {
           path: "**",
           component: ApiComponent
       }
     ]},
-  { path: 'tutorials', 
-    children: [
-      {
-        path: "**",
-        component: TutorialComponent
-      },
-    ],
-    runGuardsAndResolvers: "always" },
   { path: 'examples', 
     children: [
       {
@@ -33,7 +26,6 @@ const routes: Routes = [
     ],
     runGuardsAndResolvers: "always" },
   { path: 'install', component: InstallComponent},
-  { path: 'community', component: CommunityComponent},
   { path: '**', component: PageNotFoundComponent, data: {name: 'PageNotFound'}},
 ];
 

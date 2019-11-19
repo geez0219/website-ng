@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { HttpClient } from '@angular/common/http'; 
-import { Router, NavigationEnd } from '@angular/router';
-import { Subscription, BehaviorSubject } from 'rxjs';
+import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
@@ -13,13 +13,13 @@ import { API } from '../api';
   templateUrl: './api.component.html',
   styleUrls: ['./api.component.css']
 })
-export class ApiComponent implements OnInit, OnDestroy {
+export class ApiComponent implements OnInit {
   apiList: API[];
   selectedAPI: string;
   currentSelection: string;
   currentAPIText: string;
   
-  routerSubscription: Subscription;
+  segments: UrlSegment[];
 
   treeControl: NestedTreeControl<API>;
   dataSource: MatTreeNestedDataSource<API>;
@@ -33,29 +33,21 @@ export class ApiComponent implements OnInit, OnDestroy {
   }
 
   constructor(private http: HttpClient,
-              private router: Router,) { }
+              private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.treeControl = new NestedTreeControl<API>(node => node.children);
     this.dataSource = new MatTreeNestedDataSource<API>();
 
-    this.getAPIStructure();
-
-    this.routerSubscription = this.router.events.subscribe((e: any) => {
-      if (e instanceof NavigationEnd) {
-        this.parseURL();
-      }
+    this.route.url.subscribe((segments: UrlSegment[]) => {
+      this.segments = segments;
+      this.getAPIStructure();
     });
 
     this.screenWidth$.subscribe(width => {
       this.screenWidth = width;
     });
-  }
-
-  ngOnDestroy() {
-    if (this.routerSubscription) {
-      this.routerSubscription.unsubscribe();
-    }
   }
 
   hasChild = (_: number, node: API) => !!node.children && node.children.length > 0;
@@ -74,55 +66,52 @@ export class ApiComponent implements OnInit, OnDestroy {
   }
 
   getAPIStructure() {
-    this.http.get('assets/api/structure.json', {responseType: 'text'}).subscribe(data => {
-      this.apiList = <API[]>JSON.parse(data);
-      
-      this.dataSource.data = this.apiList;
-      this.treeControl.dataNodes = this.apiList;
-      
-      this.parseURL();
-    });
+    if (this.apiList) {
+      this.loadSelectedAPI();
+    } else {
+      this.http.get('assets/api/structure.json', {responseType: 'text'}).subscribe(data => {
+        this.apiList = <API[]>JSON.parse(data);
+        
+        this.dataSource.data = this.apiList;
+        this.treeControl.dataNodes = this.apiList;
+        
+        this.loadSelectedAPI();
+      });
+    }
   }
 
-  private parseURL() {
-    var pathComponents = this.router.url.split("/api/");
-    var name = "";
-    if (pathComponents.length > 1) {
-      name = pathComponents[1].split("#")[0];
-    }
-    else {
-      name = "";
-    }
-
-    if (name === "") {
-      this.updateCurrentAPI(this.apiList[0].children[0]);
-
+  private loadSelectedAPI() {
+    if (this.segments.length == 0) {
+      this.updateAPIContent(this.apiList[0].children[0]);
       this.treeControl.expand(this.treeControl.dataNodes[0]);
     }
     else {
-      var a: API[] = this.flatten(this.apiList).filter(api => {
-        var split: string[] = api.name.split("/");
-        var matchName: string[] = (name + ".md").split("/");
-        
-        return split[split.length - 1] === matchName[matchName.length - 1];
-      });
+      var a: API[] = this.flatten(this.apiList)
+        .filter(api => this.segments[this.segments.length - 1].toString() === api.displayName);
 
-      this.updateAPIContent(a[0]);
-      this.expandNodes(a[0], name);
+      if (a.length > 0) {
+        this.updateAPIContent(a[0]);
+        this.expandNodes(a[0].name);
+      } else {
+        this.router.navigate(['PageNotFound']);
+      }
     }
   }
 
-  expandNodes(api: API, apiName: string) {
+  expandNodes(apiName: string) {
     var apiParts: Array<string> = apiName.split("/");
     apiParts.pop();
-
-    if (apiParts.length === 1) {
-      this.treeControl.expand(this.treeControl.dataNodes[0]);
+    if (apiParts[0] != "fe")
+      apiParts = ['fe'].concat(apiParts);
+    
+    if (apiParts.length == 1) {
+      this.treeControl.expand(this.apiList[0]);
     } else {
-      var searchRange = this.treeControl.dataNodes;
+      var searchRange = this.apiList;
       var searchName = apiParts[0];
       for (var i: number = 0; i < apiParts.length - 1; i++) {
         searchName = searchName + "." + apiParts[i + 1];
+
         var expandNode = searchRange.filter(api => api.displayName === searchName)[0];
         this.treeControl.expand(expandNode);
 
@@ -131,27 +120,13 @@ export class ApiComponent implements OnInit, OnDestroy {
     }
   }
 
-  updateCurrentAPI(api: API) {
-    var path = this.updateAPIContent(api);
-
-    this.router.navigateByUrl('/api/' + path);
-  }
-
   private updateAPIContent(api: API) {
-    if (!api)
-      this.router.navigate(['PageNotFound']);
-
     window.scroll(0, 0);
 
     this.selectedAPI = api.name;
     this.currentSelection = 'assets/api/' + api.name;
-    var path = api.name.substring(0, api.name.length - 3);
-    if (!path.startsWith("fe")) {
-      path = "fe/" + path;
-    }
-    this.getSelectedAPIText();
     
-    return path;
+    this.getSelectedAPIText();
   }
 
   getSelectedAPIText() {
@@ -160,4 +135,13 @@ export class ApiComponent implements OnInit, OnDestroy {
     });
   }
 
+  createRouterLink(url: string) {
+    var components: Array<string> = url.substring(0, url.length - 3).split('/');
+    if (components[0] != 'fe')
+      components = ['fe'].concat(components);
+    
+    var ret = ['/api'];
+    
+    return ret.concat(components);;
+  }
 }
