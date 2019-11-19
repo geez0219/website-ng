@@ -8,7 +8,9 @@
     left: 0;
     width: 11px;
     height: 100%;
-    background-image: "assets/images/sidebar-grippy-hide.png";
+    background-image: url('../../assets/images/sidebar-grippy-hide.png');
+    background-repeat: no-repeat;
+    background-position-y: 50px;
     border-left: 1px solid #ccc;
     box-shadow: 0 0 6px rgba(0,0,0,0.2);
     z-index: 5;
