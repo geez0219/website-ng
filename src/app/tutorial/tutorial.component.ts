@@ -1,7 +1,9 @@
-import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+
+import { MatSidenav } from '@angular/material';
 
 import { Tutorial } from '../tutorial';
 import { TOC } from '../toc';
@@ -17,9 +19,13 @@ export class TutorialComponent implements OnInit {
   tutorialList: Tutorial[];
   tocContent: TOC[];
   
+  minWidth: number = 640;
   screenWidth: number;
   private screenWidth$ = new BehaviorSubject<number>(window.innerWidth);
 
+  @ViewChild('sidenav', { static: true })
+  sidenav: MatSidenav;
+  
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.screenWidth$.next(event.target.innerWidth);
@@ -65,4 +71,7 @@ export class TutorialComponent implements OnInit {
     });
   }
 
+  toggleMenu(){
+    this.sidenav.toggle();
+  }
 }

@@ -1,6 +1,6 @@
 <div class="sidenav-content">
   <mat-sidenav-container>
-    <mat-sidenav mode="side" [opened]="screenWidth > 640" class="sidebar-tutorial" [fixedInViewport]="true" [fixedTopGap]="100">
+    <mat-sidenav #sidenav [mode]="screenWidth < minWidth ? 'over':'side'" [opened]="screenWidth > minWidth" class="sidebar-tutorial" [fixedInViewport]="true" [fixedTopGap]="100">
       <div *ngFor="let tutorial of tutorialList">
         <a [ngClass]="{'selected': selectedTutorial === tutorial.name.substring(0, tutorial.name.length - 3), 'not-selected': selectedTutorial != tutorial.name.substring(0, tutorial.name.length - 3)}" 
             [routerLink]="['/tutorials/', tutorial.name.substring(0, tutorial.name.length - 3)]">
@@ -10,6 +10,8 @@
 
     </mat-sidenav>
     <mat-sidenav-content>
+      <div class="grippy" [style.backgroundImage]="'assets/images/sidebar-grippy-hide.png'" (click)="toggleMenu()"></div>
+      
       <div class="content-wrapper"> 
         <div class="content">
             <markdown [data]="currentTutorialText"></markdown>
