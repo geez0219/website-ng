@@ -27,7 +27,7 @@ from fastestimator.trace import Dice, ModelSaver
 from fastestimator.op.numpyop import ImageReader, Reshape, Resize
 from fastestimator.op.tensorop import Augmentation2D, BinaryCrossentropy, Minmax, ModelOp
 from fastestimator.op import NumpyOp
-from fastestimator.util import RecordWriter
+from fastestimator import RecordWriter
 ```
 
 ## Download and prepare the montgomery dataset
@@ -231,7 +231,7 @@ plt.show()
 
 
 
-![png](unet_montgomery_files/unet_montgomery_16_1.png)
+![png](assets/example/semantic_segmentation/unet_montgomery_files/unet_montgomery_16_1.png)
 
 
 ## Creation of the network
@@ -365,7 +365,7 @@ plt.show()
 ```
 
 
-![png](unet_montgomery_files/unet_montgomery_32_0.png)
+![png](assets/example/semantic_segmentation/unet_montgomery_files/unet_montgomery_32_0.png)
 
 
 

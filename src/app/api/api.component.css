@@ -22,7 +22,7 @@
     color: inherit;
     text-decoration: inherit;
     outline: none;
-    
+
     padding: 5px;
     font-size: 13px;
     font-family: Roboto, Noto Sans, Noto Sans JP, Noto Sans KR, Noto Naskh Arabic, Noto Sans Thai, Noto Sans Hebrew, Noto Sans Bengali, sans-serif;
@@ -98,4 +98,8 @@ markdown ::ng-deep h1, markdown ::ng-deep h2, markdown ::ng-deep h3, markdown ::
 markdown ::ng-deep table, markdown ::ng-deep th, markdown ::ng-deep td {
   border: 1px solid black;
   padding: 3px;
+}
+
+markdown ::ng-deep img {
+    max-width: 100%;
 }

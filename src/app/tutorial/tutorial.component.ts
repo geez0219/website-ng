@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
@@ -18,14 +18,17 @@ export class TutorialComponent implements OnInit {
   currentTutorialText: string;
   tutorialList: Tutorial[];
   tocContent: TOC[];
-  
+
   minWidth: number = 640;
   screenWidth: number;
   private screenWidth$ = new BehaviorSubject<number>(window.innerWidth);
 
   @ViewChild('sidenav', { static: true })
   sidenav: MatSidenav;
-  
+
+  @ViewChild('grippy', { static: true })
+  grippy: ElementRef;
+
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.screenWidth$.next(event.target.innerWidth);
@@ -59,7 +62,7 @@ export class TutorialComponent implements OnInit {
   updateTutorialContent(tutorial: Tutorial) {
     if (!tutorial)
       this.router.navigate(['PageNotFound']);
-    
+
     window.scroll(0,0);
 
     this.getSelectedTutorialText('assets/tutorial/' + tutorial.name);
