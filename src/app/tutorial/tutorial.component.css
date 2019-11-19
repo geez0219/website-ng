@@ -3,6 +3,18 @@
     padding-top: 10px;
 }
 
+.grippy {
+    position: absolute;
+    left: 0;
+    width: 11px;
+    height: 100%;
+    background-image: "assets/images/sidebar-grippy-hide.png";
+    border-left: 1px solid #ccc;
+    box-shadow: 0 0 6px rgba(0,0,0,0.2);
+    z-index: 5;
+    cursor: pointer;
+}
+
 .selected, .not-selected {
     display: block;
     color: inherit;
