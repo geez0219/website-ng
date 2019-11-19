@@ -215,5 +215,5 @@ for i in range(images.shape[0]):
 ```
 
 
-![png](dcgan_mnist_files/dcgan_mnist_35_0.png)
+![png](assets/example/image_generation/dcgan_mnist_files/dcgan_mnist_35_0.png)
 

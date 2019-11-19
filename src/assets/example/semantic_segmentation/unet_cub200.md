@@ -17,7 +17,7 @@ from fastestimator.trace import Dice, ModelSaver
 from fastestimator.op.tensorop import BinaryCrossentropy, ModelOp, Minmax
 from fastestimator.op.numpyop import ImageReader, MatReader, Reshape, Resize
 from fastestimator.op import NumpyOp
-from fastestimator.util import RecordWriter
+from fastestimator import RecordWriter
 ```
 
 
@@ -118,7 +118,7 @@ axes[1].imshow(np.squeeze(mask_batch[0]), cmap='gray')
 
 
 
-![png](unet_cub200_files/unet_cub200_18_1.png)
+![png](assets/example/semantic_segmentation/unet_cub200_files/unet_cub200_18_1.png)
 
 
 ## Create network
@@ -211,5 +211,5 @@ axes[2].set_title('segmentation mask', y=-0.3)
 
 
 
-![png](unet_cub200_files/unet_cub200_35_1.png)
+![png](assets/example/semantic_segmentation/unet_cub200_files/unet_cub200_35_1.png)
 
