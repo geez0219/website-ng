@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { HttpClient } from '@angular/common/http'; 
 import { ActivatedRoute, Router, NavigationEnd, UrlSegment } from '@angular/router';
-import { Subscription, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
@@ -13,14 +13,13 @@ import { API } from '../api';
   templateUrl: './api.component.html',
   styleUrls: ['./api.component.css']
 })
-export class ApiComponent implements OnInit, OnDestroy {
+export class ApiComponent implements OnInit {
   apiList: API[];
   selectedAPI: string;
   currentSelection: string;
   currentAPIText: string;
   
   segments: UrlSegment[];
-  routerSubscription: Subscription;
 
   treeControl: NestedTreeControl<API>;
   dataSource: MatTreeNestedDataSource<API>;
@@ -49,12 +48,6 @@ export class ApiComponent implements OnInit, OnDestroy {
     this.screenWidth$.subscribe(width => {
       this.screenWidth = width;
     });
-  }
-
-  ngOnDestroy() {
-    if (this.routerSubscription) {
-      this.routerSubscription.unsubscribe();
-    }
   }
 
   hasChild = (_: number, node: API) => !!node.children && node.children.length > 0;
