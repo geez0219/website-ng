@@ -111,6 +111,10 @@ export class ExampleComponent implements OnInit {
         this.treeControl.dataNodes = this.exampleList;
 
         this.loadSelectedExample();
+      },
+      error => {
+        console.error(error);
+        this.router.navigate(['PageNotFound'])
       });
     }
   }
@@ -147,6 +151,10 @@ export class ExampleComponent implements OnInit {
   getSelectedExampleText() {
     this.http.get(this.currentSelection, this.contentRequestOptions).subscribe(data => {
       this.currentExampleText = data;
+    },
+    error => {
+      console.error(error);
+      this.router.navigate(['PageNotFound'])
     });
   }
 

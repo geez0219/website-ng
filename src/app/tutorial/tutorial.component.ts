@@ -86,6 +86,10 @@ export class TutorialComponent implements OnInit {
 
       var t: Tutorial[] = this.tutorialList.filter(tutorial => tutorial.name === (this.selectedTutorial + ".md"));
       this.updateTutorialContent(t[0]);
+    },
+    error => {
+      console.error(error);
+      this.router.navigate(['PageNotFound'])
     });
   }
 
@@ -102,6 +106,10 @@ export class TutorialComponent implements OnInit {
   getSelectedTutorialText(tutorialName) {
     this.http.get(tutorialName, this.contentRequestOptions).subscribe(data => {
       this.currentTutorialText = data;
+    },
+    error => {
+      console.error(error);
+      this.router.navigate(['PageNotFound'])
     });
   }
 
