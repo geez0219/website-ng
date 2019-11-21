@@ -1,5 +1,5 @@
-<mat-sidenav-container class="example-container">
-  <mat-sidenav mode="side" class="sidebar-api" [opened]="screenWidth > 640" [fixedInViewport]="true" [fixedTopGap]="100">
+<mat-sidenav-container class="example-container" (click)="checkSidebar()">
+  <mat-sidenav #sidenav [mode]="screenWidth < minWidth ? 'over':'side'" [opened]="screenWidth > minWidth" class="sidebar-api" [opened]="screenWidth > 640" [fixedInViewport]="true" [fixedTopGap]="100">
     <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
       <!-- This is the tree node template for leaf nodes -->
       <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
@@ -27,11 +27,10 @@
       </mat-nested-tree-node>
     </mat-tree>
 
-
   </mat-sidenav>
 
-  
   <mat-sidenav-content>
+    <div #grippy [style.background-image]="getImageUrl()" class="grippy" (click)="toggleMenu()"></div>
     <div class="content-wrapper">
       <div class="content">
         <markdown [data]="currentExampleText"></markdown>

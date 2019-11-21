@@ -32,6 +32,14 @@ export class TutorialComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.screenWidth$.next(event.target.innerWidth);
+    if (this.sidenav.opened && this.screenWidth < this.minWidth) {
+      this.grippy.nativeElement.style.backgroundImage = "url(../../assets/images/sidebar-grippy-show.png)"
+      this.grippy.nativeElement.style.left = "0rem"
+    }
+    else{
+      this.grippy.nativeElement.style.backgroundImage = "url(../../assets/images/sidebar-grippy-hide.png)"
+      this.grippy.nativeElement.style.left = "20rem"
+    }
   }
 
   constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) {
@@ -74,7 +82,30 @@ export class TutorialComponent implements OnInit {
     });
   }
 
+  getImageUrl() {
+    //console.log(this.sidenav.opened)
+    if (this.sidenav.opened) {
+      this.grippy.nativeElement.style.left = "20rem"
+      return "url(../../assets/images/sidebar-grippy-hide.png)"
+    }else{
+      this.grippy.nativeElement.style.left = "0rem"
+      return "url(../../assets/images/sidebar-grippy-show.png)"
+    }
+  }
+
+  checkSidebar() {
+    console.log(this.sidenav.opened)
+    if (this.sidenav.opened) {
+      this.grippy.nativeElement.style.backgroundImage = "url(../../assets/images/sidebar-grippy-hide.png)"
+      this.grippy.nativeElement.style.left = "20rem"
+    } else {
+      this.grippy.nativeElement.style.backgroundImage = "url(../../assets/images/sidebar-grippy-show.png)"
+      this.grippy.nativeElement.style.left = "0rem"
+    }
+  }
+
   toggleMenu(){
     this.sidenav.toggle();
+    this.checkSidebar();
   }
 }
