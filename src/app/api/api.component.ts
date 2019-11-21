@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-import { Component, OnInit, HostListener } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http'; 
-=======
 import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
->>>>>>> 666d04e5d0df562ad96451280a0f06c6e3b1f216
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
@@ -33,7 +29,6 @@ export class ApiComponent implements OnInit {
   minWidth: number = 640;
   screenWidth: number;
   private screenWidth$ = new BehaviorSubject<number>(window.innerWidth);
-<<<<<<< HEAD
   
   structureHeaderDict = {
     'Content-Type': 'application/json',
@@ -52,8 +47,6 @@ export class ApiComponent implements OnInit {
     responseType: 'text' as 'text',
     headers: new HttpHeaders(this.contentHeaderDict)
   };
-=======
->>>>>>> 666d04e5d0df562ad96451280a0f06c6e3b1f216
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
