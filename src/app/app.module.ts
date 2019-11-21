@@ -26,6 +26,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SnackbarComponent } from './snackbar/snackbar.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ExampleComponent } from './example/example.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { ExampleComponent } from './example/example.component';
     MatTreeModule,
     ClipboardModule,
     MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent],

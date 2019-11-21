@@ -1,1 +1,7 @@
-<div class="gcse-search" enableAutoComplete="true"></div>
+<form>
+  <div>
+    <input [(ngModel)]="searchContent" [ngModelOptions]="{standalone: true}">
+  </div>
+  <button (click)="onClick2(searchContent)"> clickme </button>
+</form>
+
