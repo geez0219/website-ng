@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-getting-started',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GettingStartedComponent implements OnInit {
 
-  constructor() { }
+  data = {
+    name: "FastEstimator"
+  }
+
+  constructor(private title: Title) { }
 
   ngOnInit() {
+    this.title.setTitle(this.data.name);
   }
 
 }
