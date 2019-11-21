@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import { Component, OnInit, HostListener } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'; 
+=======
+import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+>>>>>>> 666d04e5d0df562ad96451280a0f06c6e3b1f216
 import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
@@ -7,6 +12,7 @@ import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 
 import { API } from '../api';
+import { MatSidenav } from '@angular/material';
 
 @Component({
   selector: 'app-api',
@@ -18,14 +24,16 @@ export class ApiComponent implements OnInit {
   selectedAPI: string;
   currentSelection: string;
   currentAPIText: string;
-  
+
   segments: UrlSegment[];
 
   treeControl: NestedTreeControl<API>;
   dataSource: MatTreeNestedDataSource<API>;
 
+  minWidth: number = 640;
   screenWidth: number;
   private screenWidth$ = new BehaviorSubject<number>(window.innerWidth);
+<<<<<<< HEAD
   
   structureHeaderDict = {
     'Content-Type': 'application/json',
@@ -44,11 +52,19 @@ export class ApiComponent implements OnInit {
     responseType: 'text' as 'text',
     headers: new HttpHeaders(this.contentHeaderDict)
   };
+=======
+>>>>>>> 666d04e5d0df562ad96451280a0f06c6e3b1f216
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.screenWidth$.next(event.target.innerWidth);
   }
+
+  @ViewChild('sidenav', { static: true })
+  sidenav: MatSidenav;
+
+  @ViewChild('grippy', { static: true })
+  grippy: ElementRef;
 
   constructor(private http: HttpClient,
               private router: Router,
@@ -92,7 +108,7 @@ export class ApiComponent implements OnInit {
         
         this.dataSource.data = this.apiList;
         this.treeControl.dataNodes = this.apiList;
-        
+
         this.loadSelectedAPI();
       });
     }
@@ -121,7 +137,7 @@ export class ApiComponent implements OnInit {
     apiParts.pop();
     if (apiParts[0] != "fe")
       apiParts = ['fe'].concat(apiParts);
-    
+
     if (apiParts.length == 1) {
       this.treeControl.expand(this.apiList[0]);
     } else {
@@ -143,7 +159,7 @@ export class ApiComponent implements OnInit {
 
     this.selectedAPI = api.name;
     this.currentSelection = 'assets/api/' + api.name;
-    
+
     this.getSelectedAPIText();
   }
 
@@ -157,9 +173,36 @@ export class ApiComponent implements OnInit {
     var components: Array<string> = url.substring(0, url.length - 3).split('/');
     if (components[0] != 'fe')
       components = ['fe'].concat(components);
-    
+
     var ret = ['/api'];
-    
+
     return ret.concat(components);;
+  }
+
+  checkSidebar() {
+    console.log(this.sidenav.opened)
+    if (this.sidenav.opened) {
+      this.grippy.nativeElement.style.backgroundImage = "url(../../assets/images/sidebar-grippy-hide.png)"
+      this.grippy.nativeElement.style.left = "20rem"
+    } else {
+      this.grippy.nativeElement.style.backgroundImage = "url(../../assets/images/sidebar-grippy-show.png)"
+      this.grippy.nativeElement.style.left = "0rem"
+    }
+  }
+
+  getImageUrl() {
+    console.log(this.sidenav.opened)
+    if (this.sidenav.opened) {
+      this.grippy.nativeElement.style.left = "20rem"
+      return "url(../../assets/images/sidebar-grippy-hide.png)"
+    } else {
+      this.grippy.nativeElement.style.left = "0rem"
+      return "url(../../assets/images/sidebar-grippy-show.png)"
+    }
+  }
+
+  toggleMenu() {
+    this.sidenav.toggle();
+    this.checkSidebar();
   }
 }

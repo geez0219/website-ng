@@ -1,10 +1,10 @@
 [
     {
         "displayName": "Image Style Transfer",
-        "name": "image_styletransfer",
+        "name": "style_transfer",
         "children": [
             {
-                "name": "image_styletransfer/fst_coco.md",
+                "name": "style_transfer/fst_coco.md",
                 "displayName": "Fast Style Transfer"
             }
         ]

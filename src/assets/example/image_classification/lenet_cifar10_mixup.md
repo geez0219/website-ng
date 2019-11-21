@@ -165,5 +165,5 @@ visualize_logs([simple_summary, mixup_summary], ignore_metrics={"LeNet_lr"})
 ```
 
 
-![png](lenet_cifar10_mixup_files/lenet_cifar10_mixup_30_0.png)
+![png](assets/example/image_classification/lenet_cifar10_mixup_files/lenet_cifar10_mixup_30_0.png)
 

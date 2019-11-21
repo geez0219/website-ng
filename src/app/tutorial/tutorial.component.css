@@ -3,6 +3,20 @@
     padding-top: 10px;
 }
 
+.grippy {
+    position: fixed;
+    left: 20rem;
+    width: 11px;
+    height: 100%;
+    background-repeat: no-repeat;
+    border-left: 1px solid #ccc;
+    background-position-y: center;
+    box-shadow: 0 0 6px rgba(0,0,0,0.2);
+    z-index: 5;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+}
+
 .selected, .not-selected {
     display: block;
     color: inherit;
