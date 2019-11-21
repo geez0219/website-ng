@@ -1,4 +1,4 @@
-<div class="sidenav-content">
+<div class="sidenav-content" (click)="checkSidebar()">
   <mat-sidenav-container>
     <mat-sidenav #sidenav [mode]="screenWidth < minWidth ? 'over':'side'" [opened]="screenWidth > minWidth" class="sidebar-tutorial" [fixedInViewport]="true" [fixedTopGap]="100">
       <div *ngFor="let tutorial of tutorialList">
@@ -10,7 +10,7 @@
 
     </mat-sidenav>
     <mat-sidenav-content>
-      <div #grippy class="grippy" (click)="toggleMenu()"></div>
+      <div #grippy [style.background-image]="getImageUrl()" class="grippy" (click)="toggleMenu()"></div>
 
       <div class="content-wrapper">
         <div class="content">
