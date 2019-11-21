@@ -21,7 +21,7 @@ export class TutorialComponent implements OnInit {
   private screenWidth$ = new BehaviorSubject<number>(window.innerWidth);
 
   structureHeaderDict = {
-    // 'Content-Type': 'application/json',
+    'Content-Type': 'application/json',
     'Accept': "application/json, text/plain",
     'Access-Control-Allow-Origin': '*'
   }
@@ -33,7 +33,7 @@ export class TutorialComponent implements OnInit {
     'Accept': "application/json, text/plain",
     'Access-Control-Allow-Origin': '*'
   }
-  contentHeaderOptions = {
+  contentRequestOptions = {
     responseType: 'text' as 'text',
     headers: new HttpHeaders(this.contentHeaderDict)
   };
@@ -79,7 +79,7 @@ export class TutorialComponent implements OnInit {
   }
 
   getSelectedTutorialText(tutorialName) {
-    this.http.get(tutorialName, this.contentHeaderOptions).subscribe(data => {
+    this.http.get(tutorialName, this.contentRequestOptions).subscribe(data => {
       this.currentTutorialText = data;
     });
   }

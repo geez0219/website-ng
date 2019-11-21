@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { HttpClient } from '@angular/common/http'; 
+import { HttpClient, HttpHeaders } from '@angular/common/http'; 
 import { ActivatedRoute, Router, NavigationEnd, UrlSegment } from '@angular/router';
 import { Subscription, BehaviorSubject } from 'rxjs';
 
@@ -27,6 +27,24 @@ export class ExampleComponent implements OnInit {
   screenWidth: number;
   private screenWidth$ = new BehaviorSubject<number>(window.innerWidth);
   
+  structureHeaderDict = {
+    'Content-Type': 'application/json',
+    'Accept': "application/json, text/plain",
+    'Access-Control-Allow-Origin': '*'
+  }
+  structureRequestOptions = {
+    headers: new HttpHeaders(this.structureHeaderDict),
+  };
+
+  contentHeaderDict = {
+    'Accept': "application/json, text/plain",
+    'Access-Control-Allow-Origin': '*'
+  }
+  contentRequestOptions = {
+    responseType: 'text' as 'text',
+    headers: new HttpHeaders(this.contentHeaderDict)
+  };
+
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.screenWidth$.next(event.target.innerWidth);
@@ -69,8 +87,8 @@ export class ExampleComponent implements OnInit {
     if (this.exampleList) {
       this.loadSelectedExample();
     } else {
-      this.http.get('assets/example/structure.json', {responseType: 'text'}).subscribe(data => {
-        this.exampleList = <Example[]>JSON.parse(data);
+      this.http.get('assets/example/structure.json', this.structureRequestOptions).subscribe(data => {
+        this.exampleList = <Example[]>(data);
         
         this.dataSource.data = this.exampleList;
         this.treeControl.dataNodes = this.exampleList;
@@ -117,7 +135,7 @@ export class ExampleComponent implements OnInit {
   }
 
   getSelectedExampleText() {
-    this.http.get(this.currentSelection, {responseType: 'text'}).subscribe(data => {
+    this.http.get(this.currentSelection, this.contentRequestOptions).subscribe(data => {
       this.currentExampleText = data;
     });
   }

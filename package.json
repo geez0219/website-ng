@@ -11,7 +11,7 @@
     "compile:server": "webpack --config webpack.server.config.js --progress --colors",
     "serve:ssr": "node dist/server",
     "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
-    "build:client-and-server-bundles": "ng build --prod && ng run fastestimator-web:server:production --bundleDependencies all"
+    "build:client-and-server-bundles": "ng build --prod --base-href https://true-charter-189200.appspot.com && ng run fastestimator-web:server:production --bundleDependencies all"
   },
   "private": true,
   "dependencies": {
@@ -29,6 +29,7 @@
     "@ng-bootstrap/ng-bootstrap": "^5.1.2",
     "@nguniversal/express-engine": "8.1.1",
     "@nguniversal/module-map-ngfactory-loader": "8.1.1",
+    "cors": "^2.8.5",
     "express": "^4.15.2",
     "hammerjs": "^2.0.8",
     "ngx-clipboard": "^12.2.1",
