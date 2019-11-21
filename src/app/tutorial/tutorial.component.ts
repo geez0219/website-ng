@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-=======
 import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
->>>>>>> 666d04e5d0df562ad96451280a0f06c6e3b1f216
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
@@ -28,7 +23,6 @@ export class TutorialComponent implements OnInit {
   screenWidth: number;
   private screenWidth$ = new BehaviorSubject<number>(window.innerWidth);
 
-<<<<<<< HEAD
   structureHeaderDict = {
     'Content-Type': 'application/json',
     'Accept': "application/json, text/plain",
@@ -47,13 +41,11 @@ export class TutorialComponent implements OnInit {
     headers: new HttpHeaders(this.contentHeaderDict)
   };
 
-=======
   @ViewChild('sidenav', { static: true })
   sidenav: MatSidenav;
 
   @ViewChild('grippy', { static: true })
   grippy: ElementRef;
->>>>>>> 666d04e5d0df562ad96451280a0f06c6e3b1f216
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
