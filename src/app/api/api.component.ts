@@ -1,5 +1,10 @@
+<<<<<<< HEAD
+import { Component, OnInit, HostListener } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http'; 
+=======
 import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+>>>>>>> 666d04e5d0df562ad96451280a0f06c6e3b1f216
 import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
@@ -28,6 +33,27 @@ export class ApiComponent implements OnInit {
   minWidth: number = 640;
   screenWidth: number;
   private screenWidth$ = new BehaviorSubject<number>(window.innerWidth);
+<<<<<<< HEAD
+  
+  structureHeaderDict = {
+    'Content-Type': 'application/json',
+    'Accept': "application/json, text/plain",
+    'Access-Control-Allow-Origin': '*'
+  }
+  structureRequestOptions = {
+    headers: new HttpHeaders(this.structureHeaderDict),
+  };
+
+  contentHeaderDict = {
+    'Accept': "application/json, text/plain",
+    'Access-Control-Allow-Origin': '*'
+  }
+  contentRequestOptions = {
+    responseType: 'text' as 'text',
+    headers: new HttpHeaders(this.contentHeaderDict)
+  };
+=======
+>>>>>>> 666d04e5d0df562ad96451280a0f06c6e3b1f216
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
@@ -77,9 +103,9 @@ export class ApiComponent implements OnInit {
     if (this.apiList) {
       this.loadSelectedAPI();
     } else {
-      this.http.get('assets/api/structure.json', {responseType: 'text'}).subscribe(data => {
-        this.apiList = <API[]>JSON.parse(data);
-
+      this.http.get('assets/api/structure.json', this.structureRequestOptions).subscribe(data => {
+        this.apiList = <API[]>(data);
+        
         this.dataSource.data = this.apiList;
         this.treeControl.dataNodes = this.apiList;
 
@@ -138,7 +164,7 @@ export class ApiComponent implements OnInit {
   }
 
   getSelectedAPIText() {
-    this.http.get(this.currentSelection, {responseType: 'text'}).subscribe(data => {
+    this.http.get(this.currentSelection, this.contentRequestOptions).subscribe(data => {
       this.currentAPIText = data;
     });
   }

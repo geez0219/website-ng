@@ -1,5 +1,10 @@
+<<<<<<< HEAD
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+=======
 import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+>>>>>>> 666d04e5d0df562ad96451280a0f06c6e3b1f216
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
@@ -23,11 +28,32 @@ export class TutorialComponent implements OnInit {
   screenWidth: number;
   private screenWidth$ = new BehaviorSubject<number>(window.innerWidth);
 
+<<<<<<< HEAD
+  structureHeaderDict = {
+    'Content-Type': 'application/json',
+    'Accept': "application/json, text/plain",
+    'Access-Control-Allow-Origin': '*'
+  }
+  structureRequestOptions = {
+    headers: new HttpHeaders(this.structureHeaderDict),
+  };
+
+  contentHeaderDict = {
+    'Accept': "application/json, text/plain",
+    'Access-Control-Allow-Origin': '*'
+  }
+  contentRequestOptions = {
+    responseType: 'text' as 'text',
+    headers: new HttpHeaders(this.contentHeaderDict)
+  };
+
+=======
   @ViewChild('sidenav', { static: true })
   sidenav: MatSidenav;
 
   @ViewChild('grippy', { static: true })
   grippy: ElementRef;
+>>>>>>> 666d04e5d0df562ad96451280a0f06c6e3b1f216
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
@@ -59,8 +85,8 @@ export class TutorialComponent implements OnInit {
   }
 
   getTutorialStructure() {
-    this.http.get('assets/tutorial/structure.json', {responseType: 'text'}).subscribe(data => {
-      this.tutorialList = <Tutorial[]>JSON.parse(data);
+    this.http.get('assets/tutorial/structure.json', this.structureRequestOptions).subscribe(data => {
+      this.tutorialList = <Tutorial[]>(data);
 
       var t: Tutorial[] = this.tutorialList.filter(tutorial => tutorial.name === (this.selectedTutorial + ".md"));
       this.updateTutorialContent(t[0]);
@@ -77,7 +103,7 @@ export class TutorialComponent implements OnInit {
   }
 
   getSelectedTutorialText(tutorialName) {
-    this.http.get(tutorialName, {responseType: 'text'}).subscribe(data => {
+    this.http.get(tutorialName, this.contentRequestOptions).subscribe(data => {
       this.currentTutorialText = data;
     });
   }
