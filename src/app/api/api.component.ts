@@ -127,6 +127,10 @@ export class ApiComponent implements OnInit {
         this.treeControl.dataNodes = this.apiList;
 
         this.loadSelectedAPI();
+      },
+      error => {
+        console.error(error);
+        this.router.navigate(['PageNotFound'])
       });
     }
   }
@@ -162,6 +166,10 @@ export class ApiComponent implements OnInit {
   getSelectedAPIText() {
     this.http.get(this.currentSelection, this.contentRequestOptions).subscribe(data => {
       this.currentAPIText = data;
+    },
+    error => {
+      console.error(error);
+      this.router.navigate(['PageNotFound'])
     });
   }
 
