@@ -10,7 +10,7 @@
     position: absolute;
     font-size: 2.3em;
     color: rgb(255, 255, 255);
-    top: 20%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -18,7 +18,7 @@
     position: absolute;
     font-size: 1.2em;
     color: rgb(255, 255, 255);
-    top: 45%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
