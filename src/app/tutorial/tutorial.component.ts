@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
@@ -23,6 +23,24 @@ export class TutorialComponent implements OnInit {
   screenWidth: number;
   private screenWidth$ = new BehaviorSubject<number>(window.innerWidth);
 
+  structureHeaderDict = {
+    'Content-Type': 'application/json',
+    'Accept': "application/json, text/plain",
+    'Access-Control-Allow-Origin': '*'
+  }
+  structureRequestOptions = {
+    headers: new HttpHeaders(this.structureHeaderDict),
+  };
+
+  contentHeaderDict = {
+    'Accept': "application/json, text/plain",
+    'Access-Control-Allow-Origin': '*'
+  }
+  contentRequestOptions = {
+    responseType: 'text' as 'text',
+    headers: new HttpHeaders(this.contentHeaderDict)
+  };
+
   @ViewChild('sidenav', { static: true })
   sidenav: MatSidenav;
 
@@ -32,6 +50,14 @@ export class TutorialComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.screenWidth$.next(event.target.innerWidth);
+    if (this.sidenav.opened && this.screenWidth < this.minWidth) {
+      this.grippy.nativeElement.style.backgroundImage = "url(../../assets/images/sidebar-grippy-show.png)"
+      this.grippy.nativeElement.style.left = "0rem"
+    }
+    else{
+      this.grippy.nativeElement.style.backgroundImage = "url(../../assets/images/sidebar-grippy-hide.png)"
+      this.grippy.nativeElement.style.left = "20rem"
+    }
   }
 
   constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) {
@@ -51,8 +77,8 @@ export class TutorialComponent implements OnInit {
   }
 
   getTutorialStructure() {
-    this.http.get('assets/tutorial/structure.json', {responseType: 'text'}).subscribe(data => {
-      this.tutorialList = <Tutorial[]>JSON.parse(data);
+    this.http.get('assets/tutorial/structure.json', this.structureRequestOptions).subscribe(data => {
+      this.tutorialList = <Tutorial[]>(data);
 
       var t: Tutorial[] = this.tutorialList.filter(tutorial => tutorial.name === (this.selectedTutorial + ".md"));
       this.updateTutorialContent(t[0]);
@@ -69,12 +95,35 @@ export class TutorialComponent implements OnInit {
   }
 
   getSelectedTutorialText(tutorialName) {
-    this.http.get(tutorialName, {responseType: 'text'}).subscribe(data => {
+    this.http.get(tutorialName, this.contentRequestOptions).subscribe(data => {
       this.currentTutorialText = data;
     });
   }
 
+  getImageUrl() {
+    //console.log(this.sidenav.opened)
+    if (this.sidenav.opened) {
+      this.grippy.nativeElement.style.left = "20rem"
+      return "url(../../assets/images/sidebar-grippy-hide.png)"
+    }else{
+      this.grippy.nativeElement.style.left = "0rem"
+      return "url(../../assets/images/sidebar-grippy-show.png)"
+    }
+  }
+
+  checkSidebar() {
+    console.log(this.sidenav.opened)
+    if (this.sidenav.opened) {
+      this.grippy.nativeElement.style.backgroundImage = "url(../../assets/images/sidebar-grippy-hide.png)"
+      this.grippy.nativeElement.style.left = "20rem"
+    } else {
+      this.grippy.nativeElement.style.backgroundImage = "url(../../assets/images/sidebar-grippy-show.png)"
+      this.grippy.nativeElement.style.left = "0rem"
+    }
+  }
+
   toggleMenu(){
     this.sidenav.toggle();
+    this.checkSidebar();
   }
 }
