@@ -4,6 +4,7 @@ import { Renderer2, Inject, ElementRef } from '@angular/core';
 import { DOCUMENT } from '@angular/common'
 import { Tutorial } from '../tutorial' 
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DialogComponent} from '../dialog/dialog.component'
 
 export interface DialogData {
   animal: string;
@@ -45,26 +46,10 @@ export class SearchComponent implements OnInit{
   }
 
   onClick2(content){
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+    const dialogRef = this.dialog.open(DialogComponent, {
       width: '250px',
       data: {name: this.name, animal: this.animal}
     });
   }
 }
 
-
-@Component({
-  selector: 'dialog-overview-example-dialog',
-  templateUrl: 'dialog-overview-example-dialog.html',
-})
-export class DialogOverviewExampleDialog {
-
-  constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-}
