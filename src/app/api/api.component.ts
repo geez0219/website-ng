@@ -9,6 +9,7 @@ import { MatTreeNestedDataSource } from '@angular/material/tree';
 
 import { API } from '../api';
 import { MatSidenav } from '@angular/material';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-api',
@@ -61,7 +62,8 @@ export class ApiComponent implements OnInit {
 
   constructor(private http: HttpClient,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private title: Title) { }
 
   ngOnInit() {
     this.treeControl = new NestedTreeControl<API>(node => node.children);
@@ -92,39 +94,6 @@ export class ApiComponent implements OnInit {
     return ret;
   }
 
-  getAPIStructure() {
-    if (this.apiList) {
-      this.loadSelectedAPI();
-    } else {
-      this.http.get('assets/api/structure.json', this.structureRequestOptions).subscribe(data => {
-        this.apiList = <API[]>(data);
-        
-        this.dataSource.data = this.apiList;
-        this.treeControl.dataNodes = this.apiList;
-
-        this.loadSelectedAPI();
-      });
-    }
-  }
-
-  private loadSelectedAPI() {
-    if (this.segments.length == 0) {
-      this.updateAPIContent(this.apiList[0].children[0]);
-      this.treeControl.expand(this.treeControl.dataNodes[0]);
-    }
-    else {
-      var a: API[] = this.flatten(this.apiList)
-        .filter(api => this.segments[this.segments.length - 1].toString() === api.displayName);
-
-      if (a.length > 0) {
-        this.updateAPIContent(a[0]);
-        this.expandNodes(a[0].name);
-      } else {
-        this.router.navigate(['PageNotFound']);
-      }
-    }
-  }
-
   expandNodes(apiName: string) {
     var apiParts: Array<string> = apiName.split("/");
     apiParts.pop();
@@ -147,7 +116,45 @@ export class ApiComponent implements OnInit {
     }
   }
 
+  getAPIStructure() {
+    if (this.apiList) {
+      this.loadSelectedAPI();
+    } else {
+      this.http.get('assets/api/structure.json', this.structureRequestOptions).subscribe(data => {
+        this.apiList = <API[]>(data);
+        
+        this.dataSource.data = this.apiList;
+        this.treeControl.dataNodes = this.apiList;
+
+        this.loadSelectedAPI();
+      },
+      error => {
+        console.error(error);
+        this.router.navigate(['PageNotFound'])
+      });
+    }
+  }
+
+  private loadSelectedAPI() {
+    if (this.segments.length == 0) {
+      this.updateAPIContent(this.apiList[0].children[0]);
+      this.treeControl.expand(this.treeControl.dataNodes[0]);
+    }
+    else {
+      var a: API[] = this.flatten(this.apiList)
+        .filter(api => this.segments[this.segments.length - 1].toString() === api.displayName);
+
+      if (a.length > 0) {
+        this.updateAPIContent(a[0]);
+        this.expandNodes(a[0].name);
+      } else {
+        this.router.navigate(['PageNotFound']);
+      }
+    }
+  }
+
   private updateAPIContent(api: API) {
+    this.title.setTitle(api.displayName + " | Fastestimator");
     window.scroll(0, 0);
 
     this.selectedAPI = api.name;
@@ -159,6 +166,10 @@ export class ApiComponent implements OnInit {
   getSelectedAPIText() {
     this.http.get(this.currentSelection, this.contentRequestOptions).subscribe(data => {
       this.currentAPIText = data;
+    },
+    error => {
+      console.error(error);
+      this.router.navigate(['PageNotFound'])
     });
   }
 
@@ -173,7 +184,6 @@ export class ApiComponent implements OnInit {
   }
 
   checkSidebar() {
-    console.log(this.sidenav.opened)
     if (this.sidenav.opened) {
       this.grippy.nativeElement.style.backgroundImage = "url(../../assets/images/sidebar-grippy-hide.png)"
       this.grippy.nativeElement.style.left = "20rem"
@@ -184,7 +194,6 @@ export class ApiComponent implements OnInit {
   }
 
   getImageUrl() {
-    console.log(this.sidenav.opened)
     if (this.sidenav.opened) {
       this.grippy.nativeElement.style.left = "20rem"
       return "url(../../assets/images/sidebar-grippy-hide.png)"

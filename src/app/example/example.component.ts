@@ -1,13 +1,14 @@
 import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ActivatedRoute, Router, NavigationEnd, UrlSegment } from '@angular/router';
-import { Subscription, BehaviorSubject } from 'rxjs';
+import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 
 import { Example } from '../example';
 import { MatSidenav } from '@angular/material';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-example',
@@ -59,7 +60,8 @@ export class ExampleComponent implements OnInit {
 
   constructor(private http: HttpClient,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private title: Title) { }
 
   ngOnInit() {
     this.treeControl = new NestedTreeControl<Example>(node => node.children);
@@ -90,6 +92,14 @@ export class ExampleComponent implements OnInit {
     return ret;
   }
 
+  expandNodes(exampleName: string) {
+    var exampleParts: Array<string> = exampleName.split("/");
+    exampleParts.pop();
+
+    var expandNode = this.exampleList.filter(example => example.name === exampleParts[0])[0];
+    this.treeControl.expand(expandNode);
+  }
+
   getExampleStructure() {
     if (this.exampleList) {
       this.loadSelectedExample();
@@ -101,6 +111,10 @@ export class ExampleComponent implements OnInit {
         this.treeControl.dataNodes = this.exampleList;
 
         this.loadSelectedExample();
+      },
+      error => {
+        console.error(error);
+        this.router.navigate(['PageNotFound'])
       });
     }
   }
@@ -124,15 +138,8 @@ export class ExampleComponent implements OnInit {
     }
   }
 
-  expandNodes(exampleName: string) {
-    var exampleParts: Array<string> = exampleName.split("/");
-    exampleParts.pop();
-
-    var expandNode = this.exampleList.filter(example => example.name === exampleParts[0])[0];
-    this.treeControl.expand(expandNode);
-  }
-
   private updateExampleContent(example: Example) {
+    this.title.setTitle(example.displayName + " | Fastestimator");
     window.scroll(0, 0);
 
     this.selectedExample = example.name;
@@ -144,11 +151,14 @@ export class ExampleComponent implements OnInit {
   getSelectedExampleText() {
     this.http.get(this.currentSelection, this.contentRequestOptions).subscribe(data => {
       this.currentExampleText = data;
+    },
+    error => {
+      console.error(error);
+      this.router.navigate(['PageNotFound'])
     });
   }
 
   getImageUrl() {
-    console.log(this.sidenav.opened)
     if (this.sidenav.opened) {
       this.grippy.nativeElement.style.left = "20rem"
       return "url(../../assets/images/sidebar-grippy-hide.png)"
@@ -159,7 +169,6 @@ export class ExampleComponent implements OnInit {
   }
 
   checkSidebar() {
-    console.log(this.sidenav.opened)
     if (this.sidenav.opened) {
       this.grippy.nativeElement.style.backgroundImage = "url(../../assets/images/sidebar-grippy-hide.png)"
       this.grippy.nativeElement.style.left = "20rem"

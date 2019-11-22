@@ -7,6 +7,7 @@ import { MatSidenav } from '@angular/material';
 
 import { Tutorial } from '../tutorial';
 import { TOC } from '../toc';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-tutorial',
@@ -60,7 +61,10 @@ export class TutorialComponent implements OnInit {
     }
   }
 
-  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) {
+  constructor(private http: HttpClient, 
+              private router: Router, 
+              private route: ActivatedRoute,
+              private title: Title) {
     this.route.params.subscribe(params => {
       if (params['name']) {
         this.selectedTutorial = params['name'];
@@ -82,6 +86,10 @@ export class TutorialComponent implements OnInit {
 
       var t: Tutorial[] = this.tutorialList.filter(tutorial => tutorial.name === (this.selectedTutorial + ".md"));
       this.updateTutorialContent(t[0]);
+    },
+    error => {
+      console.error(error);
+      this.router.navigate(['PageNotFound'])
     });
   }
 
@@ -89,6 +97,7 @@ export class TutorialComponent implements OnInit {
     if (!tutorial)
       this.router.navigate(['PageNotFound']);
 
+    this.title.setTitle(tutorial.displayName + " | Fastestimator");
     window.scroll(0,0);
 
     this.getSelectedTutorialText('assets/tutorial/' + tutorial.name);
@@ -97,6 +106,10 @@ export class TutorialComponent implements OnInit {
   getSelectedTutorialText(tutorialName) {
     this.http.get(tutorialName, this.contentRequestOptions).subscribe(data => {
       this.currentTutorialText = data;
+    },
+    error => {
+      console.error(error);
+      this.router.navigate(['PageNotFound'])
     });
   }
 
