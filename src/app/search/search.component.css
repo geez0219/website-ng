@@ -1,0 +1,9 @@
+.smalldesc {
+  max-height: 52px;
+  overflow: hidden;
+  transition: all .3s ease;
+}
+
+.smalldesc.expand {
+  max-height: 250px;
+}

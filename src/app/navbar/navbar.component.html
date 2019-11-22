@@ -1,9 +1,9 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white fixed-top head-container">
+<nav class="navbar navbar-expand-md navbar-light fixed-top head-container">
     <a class="navbar-brand" routerLink="/"><img class="logo" src="assets/images/logo.png"></a>
     <button class="navbar-toggler hidden-sm-up" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-  
+
     <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="navbarsDefault">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item tab">
@@ -30,5 +30,5 @@
       </ul>
       <app-search></app-search>
     </div>
-  
+
   </nav>
