@@ -1,0 +1,7 @@
+<div mat-dialog-content>
+  <div *ngFor="let result of searchData.items">
+    <a [href]="result.link"> {{result.title}}</a>
+    <div [innerHTML]="result.htmlSnippet">
+    </div>
+  </div>
+</div>
