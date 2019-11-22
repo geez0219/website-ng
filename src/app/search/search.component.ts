@@ -1,6 +1,5 @@
-import { Component, OnInit, AfterViewInit, ViewChild}  from '@angular/core';
+import { Component, OnInit}  from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Tutorial } from '../tutorial' 
 import { MatDialog} from '@angular/material/dialog';
 import { DialogComponent} from '../dialog/dialog.component'
 
@@ -15,12 +14,8 @@ import { DialogComponent} from '../dialog/dialog.component'
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit{
-  email:any;
-  name = "sam";
-  animal = "dog"
   constructor(private http: HttpClient, public dialog: MatDialog) {
   }
-  tutorialList:Tutorial[];
   structureHeaderDict = {
     'Content-Type': 'application/json',
     'Accept': "application/json, text/plain",
