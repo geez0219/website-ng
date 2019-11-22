@@ -3,6 +3,8 @@ import { NavigationStart, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatDialog} from '@angular/material/dialog';
 import { DialogComponent} from '../dialog/dialog.component'
+import { BehaviorSubject } from 'rxjs';
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -11,6 +13,7 @@ import { DialogComponent} from '../dialog/dialog.component'
 export class NavbarComponent implements OnInit {
   isNavbarCollapsed=true;
   selected: string;
+  searchContent:any
   structureHeaderDict = {
     'Content-Type': 'application/json',
     'Accept': "application/json, text/plain",
@@ -19,7 +22,7 @@ export class NavbarComponent implements OnInit {
   structureRequestOptions = {
     headers: new HttpHeaders(this.structureHeaderDict),
   };
-  
+
   constructor(private router: Router, private http: HttpClient, public dialog: MatDialog) { 
   }
 
