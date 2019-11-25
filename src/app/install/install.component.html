@@ -15,7 +15,7 @@
                 <p>Install the nightly build</p>
                 <div>
                     <figure class="codeblock">
-                        <button class="material-icons copy-button no-print copy-btn" title="Copy code snippet" aria-label="">
+                        <button ngxClipboard [cbContent]="'pip install fastestimator-nightly'" (cbOnSuccess)="copied($event)" class="material-icons copy-button no-print copy-btn" title="Copy code snippet" aria-label="">
                             <span aria-hidden="true">content_copy</span>
                         </button>
                         <pre><code data-lang="bash"><span class="nv">$</span> pip <span class="nb">install</span> fastestimator-nightly </code></pre>
@@ -34,7 +34,7 @@
                     way to set up FastEstimator environment.</p>
                 <div>
                     <figure class="codeblock">
-                        <button class="material-icons copy-button no-print copy-btn" title="Copy code snippet" aria-label="">
+                        <button ngxClipboard [cbContent]="'docker pull fastestimator/fastestimator:1.0b0-gpu'" (cbOnSuccess)="copied($event)" class="material-icons copy-button no-print copy-btn" title="Copy code snippet" aria-label="">
                             <span aria-hidden="true">content_copy</span>
                         </button>
                         <pre><code data-lang="bash"><span class="nv">$</span><span> docker pull fastestimator/fastestimator:1.0b0-gpu</span><span class="python-comments"># GPU docker image</span></code></pre>
@@ -42,7 +42,7 @@
                 </div>
                 <div>
                     <figure class="codeblock">
-                        <button class="material-icons copy-button no-print copy-btn" title="Copy code snippet" aria-label="">
+                        <button ngxClipboard [cbContent]="'docker pull fastestimator/fastestimator:1.0b0-cpu'" (cbOnSuccess)="copied($event)" class="material-icons copy-button no-print copy-btn" title="Copy code snippet" aria-label="">
                             <span aria-hidden="true">content_copy</span>
                         </button>
                         <pre><code data-lang="bash"><span class="nv">$</span><span> docker pull fastestimator/fastestimator:1.0b0-cpu</span><span class="python-comments"># CPU docker image</span></code></pre>

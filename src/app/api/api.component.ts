@@ -1,61 +1,82 @@
-import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
-import { HttpClient } from '@angular/common/http'; 
-import { Router, NavigationEnd } from '@angular/router';
-import { Subscription, BehaviorSubject } from 'rxjs';
+import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 
 import { API } from '../api';
+import { MatSidenav } from '@angular/material';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-api',
   templateUrl: './api.component.html',
   styleUrls: ['./api.component.css']
 })
-export class ApiComponent implements OnInit, OnDestroy {
+export class ApiComponent implements OnInit {
   apiList: API[];
   selectedAPI: string;
   currentSelection: string;
   currentAPIText: string;
-  
-  routerSubscription: Subscription;
+
+  segments: UrlSegment[];
 
   treeControl: NestedTreeControl<API>;
   dataSource: MatTreeNestedDataSource<API>;
 
+  minWidth: number = 640;
   screenWidth: number;
   private screenWidth$ = new BehaviorSubject<number>(window.innerWidth);
   
+  structureHeaderDict = {
+    'Content-Type': 'application/json',
+    'Accept': "application/json, text/plain",
+    'Access-Control-Allow-Origin': '*'
+  }
+  structureRequestOptions = {
+    headers: new HttpHeaders(this.structureHeaderDict),
+  };
+
+  contentHeaderDict = {
+    'Accept': "application/json, text/plain",
+    'Access-Control-Allow-Origin': '*'
+  }
+  contentRequestOptions = {
+    responseType: 'text' as 'text',
+    headers: new HttpHeaders(this.contentHeaderDict)
+  };
+
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.screenWidth$.next(event.target.innerWidth);
   }
 
+  @ViewChild('sidenav', { static: true })
+  sidenav: MatSidenav;
+
+  @ViewChild('grippy', { static: true })
+  grippy: ElementRef;
+
   constructor(private http: HttpClient,
-              private router: Router,) { }
+              private router: Router,
+              private route: ActivatedRoute,
+              private title: Title) { }
 
   ngOnInit() {
     this.treeControl = new NestedTreeControl<API>(node => node.children);
     this.dataSource = new MatTreeNestedDataSource<API>();
 
-    this.getAPIStructure();
-
-    this.routerSubscription = this.router.events.subscribe((e: any) => {
-      if (e instanceof NavigationEnd) {
-        this.parseURL();
-      }
+    this.route.url.subscribe((segments: UrlSegment[]) => {
+      this.segments = segments;
+      this.getAPIStructure();
     });
 
     this.screenWidth$.subscribe(width => {
       this.screenWidth = width;
     });
-  }
-
-  ngOnDestroy() {
-    if (this.routerSubscription) {
-      this.routerSubscription.unsubscribe();
-    }
   }
 
   hasChild = (_: number, node: API) => !!node.children && node.children.length > 0;
@@ -73,56 +94,20 @@ export class ApiComponent implements OnInit, OnDestroy {
     return ret;
   }
 
-  getAPIStructure() {
-    this.http.get('assets/api/structure.json', {responseType: 'text'}).subscribe(data => {
-      this.apiList = <API[]>JSON.parse(data);
-      
-      this.dataSource.data = this.apiList;
-      this.treeControl.dataNodes = this.apiList;
-      
-      this.parseURL();
-    });
-  }
-
-  private parseURL() {
-    var pathComponents = this.router.url.split("/api/");
-    var name = "";
-    if (pathComponents.length > 1) {
-      name = pathComponents[1].split("#")[0];
-    }
-    else {
-      name = "";
-    }
-
-    if (name === "") {
-      this.updateCurrentAPI(this.apiList[0].children[0]);
-
-      this.treeControl.expand(this.treeControl.dataNodes[0]);
-    }
-    else {
-      var a: API[] = this.flatten(this.apiList).filter(api => {
-        var split: string[] = api.name.split("/");
-        var matchName: string[] = (name + ".md").split("/");
-        
-        return split[split.length - 1] === matchName[matchName.length - 1];
-      });
-
-      this.updateAPIContent(a[0]);
-      this.expandNodes(a[0], name);
-    }
-  }
-
-  expandNodes(api: API, apiName: string) {
+  expandNodes(apiName: string) {
     var apiParts: Array<string> = apiName.split("/");
     apiParts.pop();
+    if (apiParts[0] != "fe")
+      apiParts = ['fe'].concat(apiParts);
 
-    if (apiParts.length === 1) {
-      this.treeControl.expand(this.treeControl.dataNodes[0]);
+    if (apiParts.length == 1) {
+      this.treeControl.expand(this.apiList[0]);
     } else {
-      var searchRange = this.treeControl.dataNodes;
+      var searchRange = this.apiList;
       var searchName = apiParts[0];
       for (var i: number = 0; i < apiParts.length - 1; i++) {
         searchName = searchName + "." + apiParts[i + 1];
+
         var expandNode = searchRange.filter(api => api.displayName === searchName)[0];
         this.treeControl.expand(expandNode);
 
@@ -131,33 +116,95 @@ export class ApiComponent implements OnInit, OnDestroy {
     }
   }
 
-  updateCurrentAPI(api: API) {
-    var path = this.updateAPIContent(api);
+  getAPIStructure() {
+    if (this.apiList) {
+      this.loadSelectedAPI();
+    } else {
+      this.http.get('assets/api/structure.json', this.structureRequestOptions).subscribe(data => {
+        this.apiList = <API[]>(data);
+        
+        this.dataSource.data = this.apiList;
+        this.treeControl.dataNodes = this.apiList;
 
-    this.router.navigateByUrl('/api/' + path);
+        this.loadSelectedAPI();
+      },
+      error => {
+        console.error(error);
+        this.router.navigate(['PageNotFound'], {replaceUrl:true})
+      });
+    }
+  }
+
+  private loadSelectedAPI() {
+    if (this.segments.length == 0) {
+      this.updateAPIContent(this.apiList[0].children[0]);
+      this.treeControl.expand(this.treeControl.dataNodes[0]);
+    }
+    else {
+      var a: API[] = this.flatten(this.apiList)
+        .filter(api => this.segments[this.segments.length - 1].toString() === api.displayName);
+
+      if (a.length > 0) {
+        this.updateAPIContent(a[0]);
+        this.expandNodes(a[0].name);
+      } else {
+        this.router.navigate(['PageNotFound'], {replaceUrl:true});
+      }
+    }
   }
 
   private updateAPIContent(api: API) {
-    if (!api)
-      this.router.navigate(['PageNotFound']);
-
+    this.title.setTitle(api.displayName + " | Fastestimator");
     window.scroll(0, 0);
 
     this.selectedAPI = api.name;
     this.currentSelection = 'assets/api/' + api.name;
-    var path = api.name.substring(0, api.name.length - 3);
-    if (!path.startsWith("fe")) {
-      path = "fe/" + path;
-    }
+
     this.getSelectedAPIText();
-    
-    return path;
   }
 
   getSelectedAPIText() {
-    this.http.get(this.currentSelection, {responseType: 'text'}).subscribe(data => {
+    this.http.get(this.currentSelection, this.contentRequestOptions).subscribe(data => {
       this.currentAPIText = data;
+    },
+    error => {
+      console.error(error);
+      this.router.navigate(['PageNotFound'], {replaceUrl:true})
     });
   }
 
+  createRouterLink(url: string) {
+    var components: Array<string> = url.substring(0, url.length - 3).split('/');
+    if (components[0] != 'fe')
+      components = ['fe'].concat(components);
+
+    var ret = ['/api'];
+
+    return ret.concat(components);;
+  }
+
+  checkSidebar() {
+    if (this.sidenav.opened) {
+      this.grippy.nativeElement.style.backgroundImage = "url(../../assets/images/sidebar-grippy-hide.png)"
+      this.grippy.nativeElement.style.left = "20rem"
+    } else {
+      this.grippy.nativeElement.style.backgroundImage = "url(../../assets/images/sidebar-grippy-show.png)"
+      this.grippy.nativeElement.style.left = "0rem"
+    }
+  }
+
+  getImageUrl() {
+    if (this.sidenav.opened) {
+      this.grippy.nativeElement.style.left = "20rem"
+      return "url(../../assets/images/sidebar-grippy-hide.png)"
+    } else {
+      this.grippy.nativeElement.style.left = "0rem"
+      return "url(../../assets/images/sidebar-grippy-show.png)"
+    }
+  }
+
+  toggleMenu() {
+    this.sidenav.toggle();
+    this.checkSidebar();
+  }
 }

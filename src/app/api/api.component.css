@@ -18,7 +18,11 @@
 }
 
 .selected, .not-selected {
-    cursor: pointer;
+    display: block;
+    color: inherit;
+    text-decoration: inherit;
+    outline: none;
+
     padding: 5px;
     font-size: 13px;
     font-family: Roboto, Noto Sans, Noto Sans JP, Noto Sans KR, Noto Naskh Arabic, Noto Sans Thai, Noto Sans Hebrew, Noto Sans Bengali, sans-serif;
@@ -61,6 +65,20 @@ button { outline: none; }
     margin: 25px auto;
 }
 
+.grippy {
+    position: fixed;
+    left: 20rem;
+    width: 11px;
+    height: 100%;
+    background-repeat: no-repeat;
+    border-left: 1px solid #ccc;
+    background-position-y: center;
+    box-shadow: 0 0 6px rgba(0,0,0,0.2);
+    z-index: 5;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+}
+
 markdown ::ng-deep h1 {
     font-size: 2.25em;
 }
@@ -94,4 +112,8 @@ markdown ::ng-deep h1, markdown ::ng-deep h2, markdown ::ng-deep h3, markdown ::
 markdown ::ng-deep table, markdown ::ng-deep th, markdown ::ng-deep td {
   border: 1px solid black;
   padding: 3px;
+}
+
+markdown ::ng-deep img {
+    max-width: 100%;
 }

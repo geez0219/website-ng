@@ -10,7 +10,7 @@
     position: absolute;
     font-size: 2.3em;
     color: rgb(255, 255, 255);
-    top: 20%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -18,25 +18,25 @@
     position: absolute;
     font-size: 1.2em;
     color: rgb(255, 255, 255);
-    top: 45%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-.container{
+.container {
     text-align: center;
     padding-bottom: 40px;
     border-bottom: 1px solid #F0F0F0;
 }
 
-.why, .using{
+.section-heading {
     color: chocolate;
     font-size: 2.2em;
     margin-top: 2rem;
     /* text-align: center; */
 }
 
-.why-exp, .using-exp{
+.section-content {
     color: darkslategray;
     font-size: 1.5em;
     margin: 5px 10% 5px 10%;
@@ -60,12 +60,13 @@
     margin:auto;
 }
 
-.row .col-sm{
+.row .col-sm {
     margin-top: 4rem;
     padding: 0px 30px;
 
 }
-.content{
+
+.content {
     padding-top: 1rem;
 }
 
@@ -92,4 +93,12 @@
 .myButton:active {
 	position:relative;
 	top:1px;
+}
+.noselect {
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
 }

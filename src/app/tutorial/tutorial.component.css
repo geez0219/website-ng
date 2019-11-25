@@ -3,8 +3,26 @@
     padding-top: 10px;
 }
 
-.selected, .not-selected {
+.grippy {
+    position: fixed;
+    left: 20rem;
+    width: 11px;
+    height: 100%;
+    background-repeat: no-repeat;
+    border-left: 1px solid #ccc;
+    background-position-y: center;
+    box-shadow: 0 0 6px rgba(0,0,0,0.2);
+    z-index: 5;
     cursor: pointer;
+    transition: all 0.15s ease-in-out;
+}
+
+.selected, .not-selected {
+    display: block;
+    color: inherit;
+    text-decoration: inherit;
+    outline: none;
+
     padding: 8px;
     font-size: 13px;
     font-family: Roboto, Noto Sans, Noto Sans JP, Noto Sans KR, Noto Naskh Arabic, Noto Sans Thai, Noto Sans Hebrew, Noto Sans Bengali, sans-serif;

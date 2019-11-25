@@ -38,7 +38,7 @@ plt.axis('off');
 ```
 
 
-![png](fst_coco_files/fst_coco_3_0.png)
+![png](assets/example/style_transfer/fst_coco_files/fst_coco_3_0.png)
 
 
 
@@ -64,7 +64,7 @@ Downloading the images will take awhile.
 
 ```python
 from fastestimator.dataset.mscoco import load_data
-train_csv, path = load_data()
+train_csv, _, path = load_data(load_object=False)
 ```
 
     reusing existing dataset
@@ -90,7 +90,7 @@ Then, we resize the images to $256 \times 256$.
 
 ```python
 from fastestimator.op.numpyop import ImageReader, Resize
-from fastestimator.util import RecordWriter
+from fastestimator import RecordWriter
 tfr_save_dir = os.path.join(path, 'tfrecords')
 writer = RecordWriter(
     train_data=train_csv,
@@ -303,5 +303,5 @@ plt.axis('off');
 ```
 
 
-![png](fst_coco_files/fst_coco_26_0.png)
+![png](assets/example/style_transfer/fst_coco_files/fst_coco_26_0.png)
 
