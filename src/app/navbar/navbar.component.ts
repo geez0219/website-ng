@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit {
   isNavbarCollapsed=true;
   selected: string;
   searchContent:any
+  dialogRef: any = null;
   structureHeaderDict = {
     'Content-Type': 'application/json',
     'Accept': "application/json, text/plain",
@@ -54,13 +55,14 @@ export class NavbarComponent implements OnInit {
 
   onClick2(content){
     var httpPrefix = "https://www.googleapis.com/customsearch/v1?q=";
-    var httpPostfix = "&cx=007435124061301021685%3Anx5ivx9bz4c&key=AIzaSyBqaEXf6vE07xB4PONkHzCSEb69XDCSud8";
-
+    var httpPostfix = "&cx=008491496338527180074:d9p4ksqgel2&key=AIzaSyBLYeHKwpAOftKnYDsBAd4rSmX3VD9EJ7U";
     this.http.get(httpPrefix+content+httpPostfix, this.structureRequestOptions).subscribe(data => {
       console.log(data);
-
-      const dialogRef = this.dialog.open(DialogComponent, {
-        width: '50%',
+      if(this.dialogRef != null){
+        this.dialog.closeAll();
+      }
+      this.dialogRef = this.dialog.open(DialogComponent, {
+        minWidth:'50%',
         data: data
       });
     })

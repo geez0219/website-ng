@@ -1,7 +1,31 @@
 <div mat-dialog-content>
-  <div *ngFor="let result of searchData.items">
-    <a [href]="result.link"> {{result.title}}</a>
-    <div [innerHTML]="result.htmlSnippet">
+  <div>
+
+  </div>
+  <div class="container">
+    <div *ngFor="let result of searchData.items" class="row">
+      <div class="col search-block">
+        <a [href]="result.link"> {{result.title}}</a>
+        <div class="path">
+          PATH: {{parse(result.link)}}
+        </div>
+        <div [innerHTML]="removeBr(result.htmlSnippet)"></div>
+      </div>
     </div>
   </div>
 </div>
+
+
+<!-- <div mat-dialog-content>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+            1235464564444444444444444444444444444444444444444444444444444444444444444
+        </div>
+        <div class="col-sm">
+          123
+        </div>
+      </div>
+    </div>
+  
+  </div> -->

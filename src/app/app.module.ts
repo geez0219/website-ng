@@ -28,6 +28,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ExampleComponent } from './example/example.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
+import { WINDOW_PROVIDERS } from './window-provider/window-provider.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import { DialogComponent } from './dialog/dialog.component';
     SnackbarComponent,
     PageNotFoundComponent,
     ExampleComponent,
-    DialogComponent
+    DialogComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -66,7 +67,7 @@ import { DialogComponent } from './dialog/dialog.component';
     MatSnackBarModule,
     MatDialogModule
   ],
-  providers: [],
+  providers: [WINDOW_PROVIDERS],
   bootstrap: [AppComponent],
   entryComponents: [SnackbarComponent, DialogComponent]
 })
