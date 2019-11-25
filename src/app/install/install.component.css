@@ -11,7 +11,7 @@ code {
   font-size: 15.9375px;
   border: 1px solid whitesmoke;
   border-radius: 3px;
-  background-color: #eef; }
+  background-color: #F1F3F4; }
 
 code {
   padding: 1px 5px; }
@@ -31,11 +31,15 @@ pre {
   font-size: 120%; }
 
 .wrapper {
+  border-style: outset;
+  border-width: 1px;
+  border-radius: 8px 8px;
   max-width: -webkit-calc(1150px - (30px * 2));
   max-width: calc(1150px - (30px * 2));
+  margin-top: 6.5rem;
   margin-right: auto;
   margin-left: auto;
-  padding-top: 4rem;
+  padding-top: 2rem;
   padding-right: 30px;
   padding-left: 30px; }
   @media screen and (max-width: 1024px) {

@@ -12,6 +12,7 @@ import { MatTreeModule } from '@angular/material/tree';
 import { ClipboardModule } from 'ngx-clipboard';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
 import { DialogComponent } from './dialog/dialog.component';
 import { WINDOW_PROVIDERS } from './window-provider/window-provider.component';
 
@@ -63,7 +64,8 @@ import { ExampleComponent } from './example/example.component';
     MatTreeModule,
     ClipboardModule,
     MatSnackBarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCardModule
   ],
   providers: [WINDOW_PROVIDERS],
   bootstrap: [AppComponent],
