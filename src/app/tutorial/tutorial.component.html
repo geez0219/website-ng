@@ -1,11 +1,13 @@
 <div class="sidenav-content" (click)="checkSidebar()">
   <mat-sidenav-container>
     <mat-sidenav #sidenav [mode]="screenWidth < minWidth ? 'over':'side'" [opened]="screenWidth > minWidth" class="sidebar-tutorial" [fixedInViewport]="true" [fixedTopGap]="100">
-      <div *ngFor="let tutorial of tutorialList">
-        <a [ngClass]="{'selected': selectedTutorial === tutorial.name.substring(0, tutorial.name.length - 3), 'not-selected': selectedTutorial != tutorial.name.substring(0, tutorial.name.length - 3)}"
-            [routerLink]="['/tutorials/', tutorial.name.substring(0, tutorial.name.length - 3)]">
-          {{ tutorial.displayName }}
-        </a>
+      <div class="items" *ngFor="let tutorial of tutorialList">
+        <li class="active-trail active">
+          <a class ="active-trail active-trail active" [ngClass]="{'selected': selectedTutorial === tutorial.name.substring(0, tutorial.name.length - 3), 'not-selected': selectedTutorial != tutorial.name.substring(0, tutorial.name.length - 3)}"
+              [routerLink]="['/tutorials/', tutorial.name.substring(0, tutorial.name.length - 3)]">
+            {{ tutorial.displayName }}
+          </a>
+        </li>
       </div>
 
     </mat-sidenav>
