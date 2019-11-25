@@ -1,22 +1,18 @@
 <div mat-dialog-content>
   <div>
-    host: {{location_data.host}} <br>
-    hostname: {{location_data.hostname}} <br>
-    origin: {{location_data.origin}} <br>
+
   </div>
   <div class="container">
     <div *ngFor="let result of searchData.items" class="row">
-      <div class="col domain">
+      <div class="col search-block">
         <a [href]="result.link"> {{result.title}}</a>
-        <div [innerHTML]="result.htmlSnippet"></div>        
-      </div>
-      <div class="col">
-        <a [href]="result.link"> {{result.title}}</a>
-        <div [innerHTML]="result.htmlSnippet"></div>
+        <div class="path">
+          PATH: {{parse(result.link)}}
+        </div>
+        <div [innerHTML]="removeBr(result.htmlSnippet)"></div>
       </div>
     </div>
   </div>
-
 </div>
 
 

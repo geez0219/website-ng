@@ -17,12 +17,19 @@ export class DialogComponent {
     public dialogRef: MatDialogRef<DialogComponent>,
     @Inject(WINDOW) private window:Window,
     @Inject(MAT_DIALOG_DATA) public data: any) {
+      console.log(data);
       this.searchData = data;
-      console.log("hey");
-      console.log("hey");
-      console.log(window.location);
-      this.location_data = window.location;
+      // this.location_data = window.location.origin;
+      this.location_data = "https://true-charter-189200.appspot.com/"
     }
+  
+  parse(content:string){
+    return content.replace(this.location_data, "");
+  }
+
+  removeBr(content:string){
+    return content.replace(/<br>/g, "");
+  }
 }
 
 // export class DialogComponent {

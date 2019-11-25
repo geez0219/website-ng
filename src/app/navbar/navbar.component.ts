@@ -56,8 +56,6 @@ export class NavbarComponent implements OnInit {
   onClick2(content){
     var httpPrefix = "https://www.googleapis.com/customsearch/v1?q=";
     var httpPostfix = "&cx=007435124061301021685%3Anx5ivx9bz4c&key=AIzaSyBqaEXf6vE07xB4PONkHzCSEb69XDCSud8";
-
-
     this.http.get(httpPrefix+content+httpPostfix, this.structureRequestOptions).subscribe(data => {
       console.log(data);
       if(this.dialogRef != null){
