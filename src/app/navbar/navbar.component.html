@@ -30,9 +30,7 @@
       </ul>
     </div>
     <form class="form-inline mr-auto .hidden-xs-down">
-      <input [(ngModel)]="searchContent" [ngModelOptions]="{standalone: true}" class="form-control " type="text" placeholder="Search" aria-label="Search" (keydown.enter)="onClick2(searchContent)">
-      <!-- <button (click)="onClick2(searchContent)"> click</button> -->
+      <input [(ngModel)]="searchContent" [ngModelOptions]="{standalone: true}" (keydown.enter)="search(searchContent)"
+              class="form-control" type="text" placeholder="Search" aria-label="Search">
     </form>
-
-
   </nav>
