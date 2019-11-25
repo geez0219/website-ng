@@ -130,7 +130,7 @@ export class ApiComponent implements OnInit {
       },
       error => {
         console.error(error);
-        this.router.navigate(['PageNotFound'])
+        this.router.navigate(['PageNotFound'], {replaceUrl:true})
       });
     }
   }
@@ -148,7 +148,7 @@ export class ApiComponent implements OnInit {
         this.updateAPIContent(a[0]);
         this.expandNodes(a[0].name);
       } else {
-        this.router.navigate(['PageNotFound']);
+        this.router.navigate(['PageNotFound'], {replaceUrl:true});
       }
     }
   }
@@ -169,7 +169,7 @@ export class ApiComponent implements OnInit {
     },
     error => {
       console.error(error);
-      this.router.navigate(['PageNotFound'])
+      this.router.navigate(['PageNotFound'], {replaceUrl:true})
     });
   }
 
