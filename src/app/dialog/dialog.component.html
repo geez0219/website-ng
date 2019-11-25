@@ -1,6 +1,6 @@
 <div mat-dialog-content>
-  <div>
-
+  <div *ngIf="searchData.items == null" class="find-no-match">
+    Sorry! Could not find any match.
   </div>
   <div class="container">
     <div *ngFor="let result of searchData.items" class="row">
