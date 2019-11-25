@@ -89,13 +89,13 @@ export class TutorialComponent implements OnInit {
     },
     error => {
       console.error(error);
-      this.router.navigate(['PageNotFound'])
+      this.router.navigate(['PageNotFound'], {replaceUrl:true})
     });
   }
 
   updateTutorialContent(tutorial: Tutorial) {
     if (!tutorial)
-      this.router.navigate(['PageNotFound']);
+      this.router.navigate(['PageNotFound'], {replaceUrl:true});
 
     this.title.setTitle(tutorial.displayName + " | Fastestimator");
     window.scroll(0,0);

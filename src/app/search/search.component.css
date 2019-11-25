@@ -1,4 +1,0 @@
-input[type='text']:focus {
-  width: 300px;
-  transition-duration: 300ms;
-}

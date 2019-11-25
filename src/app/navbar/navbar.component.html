@@ -1,17 +1,8 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white fixed-top head-container">
     <a class="navbar-brand" routerLink="/"><img class="logo" src="assets/images/logo.png"></a>
-    <!-- Collapse button -->
-    <button class="navbar-toggler" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
-        class="navbar-toggler-icon"></span></button>
-
-    <!-- Collapsible content -->
-    <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="navbarSupportedContent">
-
-    <!--<form class="form-inline mr-auto">
-      <input [(ngModel)]="searchContent" [ngModelOptions]="{standalone: true}" class="form-control navbar-toggler" type="text" placeholder="Search" aria-label="Search">
-       <button (click)="onClick2(searchContent)" class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2" type="submit">Search</button>
-    </form>-->
+    <button class="navbar-toggler hidden-sm-up" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
     <!--<div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="navbarsDefault">-->
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -37,14 +28,9 @@
             </a>
         </li>
       </ul>
-
-    <!-- Search form -->
-    <form class="form-inline">
-      <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-    </form>
     </div>
-    <!--<button class="navbar-toggler hidden-sm-up" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed"
-      data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>-->
+    <form class="form-inline mr-auto .hidden-xs-down">
+      <input [(ngModel)]="searchContent" [ngModelOptions]="{standalone: true}" (keydown.enter)="search(searchContent)"
+              class="form-control" type="text" placeholder="Search" aria-label="Search">
+    </form>
   </nav>

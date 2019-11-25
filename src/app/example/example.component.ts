@@ -116,7 +116,7 @@ export class ExampleComponent implements OnInit {
       },
       error => {
         console.error(error);
-        this.router.navigate(['PageNotFound'])
+        this.router.navigate(['PageNotFound'], {replaceUrl:true})
       });
     }
   }
@@ -135,7 +135,7 @@ export class ExampleComponent implements OnInit {
         this.updateExampleContent(e[0]);
         this.expandNodes(e[0].name);
       } else {
-        this.router.navigate(['PageNotFound']);
+        this.router.navigate(['PageNotFound'], {replaceUrl:true});
       }
     }
   }
@@ -156,7 +156,7 @@ export class ExampleComponent implements OnInit {
     },
     error => {
       console.error(error);
-      this.router.navigate(['PageNotFound'])
+      this.router.navigate(['PageNotFound'], {replaceUrl:true})
     });
   }
 

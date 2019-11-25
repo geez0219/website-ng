@@ -30,3 +30,6 @@ button.gsc-search-button
 	background-color:transparent !important;
 }
 
+.cdk-overlay-container { 
+    z-index: 1050; 
+}

@@ -40,6 +40,16 @@ Once build is done, use `ngh` to automatically push to gh-pages branch. Then cre
 6. test the web before deployment `firebase serve`
 7. deploy web app `firebase deploy`
 
+### google app engine
+1. install google cloud cli 
+2. run `gcloud init` to initialize gcloud project and login  
+3. gcloud app deploy
+
+* to logout `gcloud auth revoke`
+* to login `gcloud auth login`
+* to unset project `gcloud config unset project`
+* to set project `gcloud config set project <project ID>`
+
 
 ## Running unit tests
 
@@ -52,5 +62,3 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-

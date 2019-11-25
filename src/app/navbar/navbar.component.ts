@@ -3,7 +3,6 @@ import { NavigationStart, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatDialog} from '@angular/material/dialog';
 import { DialogComponent} from '../dialog/dialog.component'
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -14,6 +13,7 @@ export class NavbarComponent implements OnInit {
   isNavbarCollapsed=true;
   selected: string;
   searchContent:any
+  dialogRef: any = null;
   structureHeaderDict = {
     'Content-Type': 'application/json',
     'Accept': "application/json, text/plain",
@@ -40,27 +40,16 @@ export class NavbarComponent implements OnInit {
     this.selected = newSelection.toLowerCase();
   }
 
-
-  onClick(content:string){
+  search(content){
     var httpPrefix = "https://www.googleapis.com/customsearch/v1?q=";
-    var httpPostfix = "&cx=007435124061301021685%3Anx5ivx9bz4c&key=AIzaSyBqaEXf6vE07xB4PONkHzCSEb69XDCSud8";
+    var httpPostfix = "&cx=008491496338527180074:d9p4ksqgel2&key=AIzaSyBLYeHKwpAOftKnYDsBAd4rSmX3VD9EJ7U";
 
-    this.http.get(httpPrefix+content+httpPostfix, this.structureRequestOptions).subscribe(data => {
-      console.log(data);
-
-      // data.items[n].Link, Snippet, Title, 
-    })
-  }
-
-  onClick2(content){
-    var httpPrefix = "https://www.googleapis.com/customsearch/v1?q=";
-    var httpPostfix = "&cx=007435124061301021685%3Anx5ivx9bz4c&key=AIzaSyBqaEXf6vE07xB4PONkHzCSEb69XDCSud8";
-
-    this.http.get(httpPrefix+content+httpPostfix, this.structureRequestOptions).subscribe(data => {
-      console.log(data);
-
-      const dialogRef = this.dialog.open(DialogComponent, {
-        width: '50%',
+    this.http.get(httpPrefix + content + httpPostfix, this.structureRequestOptions).subscribe(data => {
+      if(this.dialogRef != null){
+        this.dialog.closeAll();
+      }
+      this.dialogRef = this.dialog.open(DialogComponent, {
+        minWidth:'50%',
         data: data
       });
     })
