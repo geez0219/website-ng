@@ -7,7 +7,9 @@ import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 
 import { Example } from '../example';
-import { MatSidenav } from '@angular/material';
+import { MatSidenav} from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
+
 import { Title } from '@angular/platform-browser';
 
 @Component({
@@ -28,7 +30,7 @@ export class ExampleComponent implements OnInit {
   minWidth: number = 640;
   screenWidth: number;
   private screenWidth$ = new BehaviorSubject<number>(window.innerWidth);
-  
+
   structureHeaderDict = {
     'Content-Type': 'application/json',
     'Accept': "application/json, text/plain",
@@ -106,7 +108,7 @@ export class ExampleComponent implements OnInit {
     } else {
       this.http.get('assets/example/structure.json', this.structureRequestOptions).subscribe(data => {
         this.exampleList = <Example[]>(data);
-        
+
         this.dataSource.data = this.exampleList;
         this.treeControl.dataNodes = this.exampleList;
 
