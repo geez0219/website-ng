@@ -20,7 +20,7 @@ export class DialogComponent {
       console.log(data);
       this.searchData = data;
       // this.location_data = window.location.origin;
-      this.location_data = "https://true-charter-189200.appspot.com/"
+      this.location_data = "https://true-charter-189200.appspot.com/";
     }
   
   parse(content:string){
