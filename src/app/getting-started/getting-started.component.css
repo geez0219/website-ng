@@ -1,26 +1,39 @@
-.theme {
-    position: relative;
+.content {
+    padding-top: 1rem;
 }
-.showcase {
+
+.theme {
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+
+    position: relative;
+
     width: 100%;
     height:340px;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(../../assets/images/page2.png);
 }
 
 .slogan {
-    position: absolute;
+    position: relative;
+    text-align: center;
+    top: 35%;
     font-size: 2.3em;
     color: rgb(255, 255, 255);
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }
+
 .subhead {
-    position: absolute;
+    position: relative;
+    text-align: center;
+    top: 40%;
     font-size: 1.2em;
     color: rgb(255, 255, 255);
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }
 
 .container {
@@ -29,11 +42,14 @@
     border-bottom: 1px solid #F0F0F0;
 }
 
+.container-footer {
+    padding-top: 1rem;
+    font-size: 1.5rem;
+}
 .section-heading {
     color: chocolate;
     font-size: 2.2em;
     margin-top: 2rem;
-    /* text-align: center; */
 }
 
 .section-content {
@@ -42,15 +58,11 @@
     margin: 5px 10% 5px 10%;
 }
 
-.icons{
+.icons {
     width: 80px;
     height: 80px;
     display:block;
     margin:auto;
-}
-
-.text {
-    color: black;
 }
 
 .videos {
@@ -66,8 +78,9 @@
 
 }
 
-.content {
-    padding-top: 1rem;
+.image-heading {
+    font-size: 1.5rem;
+    color: #2A7BBA;;
 }
 
 .myButton {
@@ -80,25 +93,19 @@
 	cursor:pointer;
 	color:#ffffff;
 	font-family:Trebuchet MS;
-	font-size:18px;
+	font-size: 28px;
 	font-weight:bold;
 	padding:6px 24px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #528ecc;
 }
+
 .myButton:hover {
 	background:linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
 	background-color:#378de5;
 }
+
 .myButton:active {
 	position:relative;
 	top:1px;
-}
-.noselect {
-    user-select: none;
-    -ms-user-select: none;
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -webkit-touch-callout: none;
 }
