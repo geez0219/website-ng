@@ -21,6 +21,10 @@
     padding:1.10em 20px;
 }
 
+.no-list-style {
+    list-style: none;
+}
+
 li a.focus, li a.hover {
     background-color:#363636;
     border-color:#363636;
