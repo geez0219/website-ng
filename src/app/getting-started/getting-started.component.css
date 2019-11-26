@@ -54,7 +54,7 @@
     margin: 5px 10% 5px 10%;
 }
 
-.icons{
+.icons {
     width: 80px;
     height: 80px;
     display:block;
@@ -72,6 +72,11 @@
     margin-top: 4rem;
     padding: 0px 30px;
 
+}
+
+.image-heading {
+    font-size: 1.5rem;
+    color: #2A7BBA;;
 }
 
 .myButton {
