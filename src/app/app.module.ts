@@ -24,6 +24,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { SnackbarComponent } from './snackbar/snackbar.component';
 import { ExampleComponent } from './example/example.component';
 import { SearchComponent } from './search/search.component';
+import { FooterComponent } from './footer/footer.component';
  
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { SearchComponent } from './search/search.component';
     ExampleComponent,
     DialogComponent,
     SearchComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
