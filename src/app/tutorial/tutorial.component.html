@@ -2,7 +2,7 @@
   <mat-sidenav-container>
     <mat-sidenav #sidenav [mode]="screenWidth < minWidth ? 'over':'side'" [opened]="screenWidth > minWidth" class="sidebar-tutorial" [fixedInViewport]="true" [fixedTopGap]="100">
       <div class="items" *ngFor="let tutorial of tutorialList">
-        <li class="active-trail active">
+        <li class="no-list-style">
           <a class ="active-trail active-trail active" [ngClass]="{'selected': selectedTutorial === tutorial.name.substring(0, tutorial.name.length - 3), 'not-selected': selectedTutorial != tutorial.name.substring(0, tutorial.name.length - 3)}"
               [routerLink]="['/tutorials/', tutorial.name.substring(0, tutorial.name.length - 3)]">
             {{ tutorial.displayName }}
