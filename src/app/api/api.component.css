@@ -13,6 +13,10 @@
     min-height: 0;
 }
 
+.mat-icon-button {
+    border-radius: 0px;
+}
+
 .sidebar-api {
     width: 20rem;
     padding-top: 10px;
@@ -29,11 +33,28 @@
     text-align: -webkit-match-parent;
 }
 
+.overview {
+    color: rgb(97, 97, 97);
+    background-color: #fff;
+    border-left: 7px #fff solid;
+    width: 100%;
+    text-align: left;
+    margin-left: 20px;
+    display: block;
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    padding-left: 8px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border-left: 7px #fff solid;
+}
+
 .sidebar-api .items li a{
     display: block;
     font-size: 1em;
     line-height: 1.5em;
-    padding:1.10em 20px;
+    padding:6px 18px;
 }
 
 .selected, .not-selected {
@@ -44,9 +65,10 @@
     text-align: left;
 }
 
-.not-selected:hover {
+.not-selected:hover, .overview:hover {
     background-color: #f3f3f3;
     text-decoration: underline;
+    border-color: #f3f3f3;
 }
 
 .selected {
@@ -118,7 +140,7 @@ markdown ::ng-deep h1 {
 }
 
 markdown ::ng-deep h2{
-    margin-top: 20px;
+    margin-top: 12px;
     font-size: 2em;
 }
 
