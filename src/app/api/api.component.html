@@ -12,6 +12,7 @@
       </mat-tree-node>
       <!-- This is the tree node template for expandable nodes -->
       <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+        <div class="items">
         <li>
           <button class="not-selected" mat-icon-button matTreeNodeToggle
                   [attr.aria-label]="'toggle ' + node.displayName">
@@ -24,6 +25,7 @@
             <ng-container matTreeNodeOutlet></ng-container>
           </ul>
         </li>
+        </div>
       </mat-nested-tree-node>
     </mat-tree>
 
