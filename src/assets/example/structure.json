@@ -21,14 +21,14 @@
     },
     {
         "displayName": "Semantic Segmentation",
-        "name": "image_segmentation",
+        "name": "semantic_segmentation",
         "children": [
             {
-                "name": "image_segmentation/unet_montgomery.md",
+                "name": "semantic_segmentation/unet_montgomery.md",
                 "displayName": "UNet"
             },
             {
-                "name": "image_segmentation/unet_cub200.md",
+                "name": "semantic_segmentation/unet_cub200.md",
                 "displayName": "UNet"
             }
         ]
