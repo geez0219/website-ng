@@ -1,0 +1,33 @@
+.footer {
+    border-top: 1px solid #dadce0;
+}
+
+.content {
+    margin: auto;
+    width: 50%;
+}
+
+.footer-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+.footer-list-box {
+    flex-grow: 1;
+    margin: 24px 0;
+}
+
+.footer-list-item {
+    margin: 0;
+}
+
+.footer-list-item-text {
+    color: #202124;
+    display: block;
+    padding: 8px 0;
+}
+
+.footer-heading {
+    font: 400 16px/26px Google Sans,Noto Sans,Noto Sans JP,Noto Sans KR,Noto Naskh Arabic,Noto Sans Thai,Noto Sans Hebrew,Noto Sans Bengali,sans-serif;
+}
