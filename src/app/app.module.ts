@@ -23,7 +23,8 @@ import { CommunityComponent } from './community/community.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SnackbarComponent } from './snackbar/snackbar.component';
 import { ExampleComponent } from './example/example.component';
-
+import { SearchComponent } from './search/search.component';
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +39,7 @@ import { ExampleComponent } from './example/example.component';
     PageNotFoundComponent,
     ExampleComponent,
     DialogComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
