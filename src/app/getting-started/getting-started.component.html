@@ -72,45 +72,60 @@
     <div class="row">
       <div class="col-sm">
         <mat-card class="clickable-card" routerLink = "/examples/image_classification/lenet_mnist">
-          <mat-card-title>
-            image-classification
-          </mat-card-title>
-          <mat-card-subtitle>
-            MNIST dataset
-          </mat-card-subtitle>
-          <img src="assets/images/lenet_mnist_29_1.png" mat-card-image>
-          <mat-card-content>
-            Train a LeNet neural network to classify MNIST handwritten digital number. 
-          </mat-card-content>
+          <div class="card-header">
+            <div>
+              <mat-card-title>
+                  Handwritten Digit Classification
+                </mat-card-title>
+                <mat-card-subtitle>
+                  LeNet, MNIST dataset
+                </mat-card-subtitle>
+            </div>
+          </div>
+          <div class="card-content">
+              <img src="assets/example/image_classification/lenet_mnist_files/lenet_mnist_29_1.png" class="card-image">
+              <mat-card-content>
+                Train a LeNet neural network to classify MNIST handwritten digital number. 
+              </mat-card-content>
+          </div>
         </mat-card>
+      </div>
+      <div class="col-sm">
+          <mat-card class="clickable-card" routerLink="/examples/semantic_segmentation/unet_montgomery">
+            <div class="card-header">
+              <div>
+                <mat-card-title>
+                  Lung X-ray Image Segmentation
+                </mat-card-title>
+                <mat-card-subtitle>
+                  Unet, Montgomery dataset  
+                </mat-card-subtitle>
+              </div>
+            </div>
+            <div class="card-content">
+                <img src="assets/example/semantic_segmentation/unet_montgomery_files/unet_montgomery_32_0.png" class="card-image">
+              Train a neural network to label the region of patient lung from a X-ray images.  
+            </div>
+          </mat-card>
       </div>
       <div class="col-sm">
         <mat-card class="clickable-card" routerLink="/examples/style_transfer/fst_coco">
-          <mat-card-title>
-            Fast Style Transfer with FastEstimator
-          </mat-card-title>
-          <mat-card-subtitle>
-            COC2014,  
-          </mat-card-subtitle>
-          <img src="assets/images/fst_coco_26_0.png" mat-card-image>
-          <mat-card-content>
-            Train an neural network to apply artistic style on any target image
-          </mat-card-content>
+          <div class="card-header">
+            <div>
+              <mat-card-title>
+                Fast Style Transfer
+              </mat-card-title>
+              <mat-card-subtitle>
+                Modified ResNet, COCO2014 dataset   
+              </mat-card-subtitle>
+            </div>
+          </div> 
+          
+          <div class="card-content">
+            <img src="assets/example/style_transfer/fst_coco_files/fst_coco_26_0.png" class="card-image">
+            Train a neural network that applies art style on any target image
+          </div>
         </mat-card>
-      </div>
-      <div class="col-sm">
-          <mat-card class="clickable-card" routerLink="/examples/style_transfer/fst_coco">
-            <mat-card-title>
-              Fast Style Transfer with FastEstimator
-            </mat-card-title>
-            <mat-card-subtitle>
-              COC2014,  
-            </mat-card-subtitle>
-            <img src="assets/images/fst_coco_26_0.png" mat-card-image>
-            <mat-card-content>
-              Train an neural network to apply artistic style on any target image
-            </mat-card-content>
-          </mat-card>
       </div>
     </div>
     <div class="container-footer">

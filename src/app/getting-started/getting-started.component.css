@@ -114,11 +114,29 @@
     cursor:pointer
 }
 
+.clickable-card{
+    height: 320px;
+}
+
+
 .card-image{
     display: block;
-    max-width:230px;
-    max-height:95px;
+    max-width:250px;
+    max-height:100px;
     width: auto;
     height: auto;
     margin: auto;
+    margin-bottom: 10px;
+}
+
+.card-header{
+    height: 110px;
+    display: flex;
+    align-items: center;
+    background-color: #FFFFFF;
+}
+
+.card-content{
+    margin-top: 15px;
+    font-size: 14px;
 }
