@@ -42,6 +42,10 @@
     border-bottom: 1px solid #F0F0F0;
 }
 
+.container-footer {
+    padding-top: 1rem;
+    font-size: 1.5rem;
+}
 .section-heading {
     color: chocolate;
     font-size: 2.2em;

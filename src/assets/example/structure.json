@@ -1,11 +1,15 @@
 [
     {
-        "displayName": "Image Style Transfer",
-        "name": "style_transfer",
+        "displayName": "Overview",
+        "name": "overview.md"
+    },
+    {
+        "displayName": "Domain Adaptation",
+        "name": "domain_adaptation",
         "children": [
             {
-                "name": "style_transfer/fst_coco.md",
-                "displayName": "Fast Style Transfer"
+                "name": "domain_adaptation/ADDA.md",
+                "displayName": "Adversarial Discriminative Domain Adaptation (ADDA)"
             }
         ]
     },
@@ -24,12 +28,22 @@
         "name": "semantic_segmentation",
         "children": [
             {
-                "name": "semantic_segmentation/unet_montgomery.md",
+                "name": "semantic_segmentation/unet_cub200.md",
                 "displayName": "UNet"
             },
             {
-                "name": "semantic_segmentation/unet_cub200.md",
+                "name": "semantic_segmentation/unet_montgomery.md",
                 "displayName": "UNet"
+            }
+        ]
+    },
+    {
+        "displayName": "Image Style Transfer",
+        "name": "style_transfer",
+        "children": [
+            {
+                "name": "style_transfer/fst_coco.md",
+                "displayName": "Fast Style Transfer"
             }
         ]
     },
@@ -38,16 +52,20 @@
         "name": "image_generation",
         "children": [
             {
-                "name": "image_generation/cyclegan.md",
-                "displayName": "CycleGAN"
+                "name": "image_generation/cvae_mnist.md",
+                "displayName": "CVAE"
+            },
+            {
+                "name": "image_generation/pggan_nihchestxray.md",
+                "displayName": "PGGAN"
             },
             {
                 "name": "image_generation/dcgan_mnist.md",
                 "displayName": "DCGAN"
             },
             {
-                "name": "image_generation/cvae_mnist.md",
-                "displayName": "CVAE"
+                "name": "image_generation/cyclegan.md",
+                "displayName": "CycleGAN"
             }
         ]
     },
@@ -66,10 +84,6 @@
         "name": "image_classification",
         "children": [
             {
-                "name": "image_classification/lenet_cifar10_mixup.md",
-                "displayName": "Mixup"
-            },
-            {
                 "name": "image_classification/lenet_cifar10_adversarial.md",
                 "displayName": "Adversarial Attack"
             },
@@ -80,6 +94,10 @@
             {
                 "name": "image_classification/lenet_mnist.md",
                 "displayName": "LeNet"
+            },
+            {
+                "name": "image_classification/lenet_cifar10_mixup.md",
+                "displayName": "Mixup"
             }
         ]
     }

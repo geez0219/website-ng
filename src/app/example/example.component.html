@@ -2,16 +2,19 @@
   <mat-sidenav #sidenav [mode]="screenWidth < minWidth ? 'over':'side'" [opened]="screenWidth > minWidth" class="sidebar-api" [opened]="screenWidth > 640" [fixedInViewport]="true" [fixedTopGap]="100">
     <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
       <!-- This is the tree node template for leaf nodes -->
-      <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+      <mat-tree-node #examplenode *matTreeNodeDef="let node" matTreeNodeToggle>
         <!-- use a disabled button to provide padding for tree leaf -->
-        <button class="hide" mat-icon-button disabled></button>
-        <a [ngClass]="{'selected': selectedExample === node.name, 'not-selected': selectedExample != node.name}"
-            [routerLink]="createRouterLink(node.name)">
-          {{node.displayName}}
-        </a>
+
+          <button class="hide" mat-icon-button disabled></button>
+          <a #exampletitle [ngClass]="{'selected': selectedExample === node.name, 'not-selected': selectedExample != node.name}"
+              [routerLink]="createRouterLink(node.name)">
+            {{node.displayName}}
+          </a>
+
       </mat-tree-node>
       <!-- This is the tree node template for expandable nodes -->
       <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+        <div class="items">
         <li>
           <button class="not-selected" mat-icon-button matTreeNodeToggle
                   [attr.aria-label]="'toggle ' + node.displayName">
@@ -24,6 +27,7 @@
             <ng-container matTreeNodeOutlet></ng-container>
           </ul>
         </li>
+        </div>
       </mat-nested-tree-node>
     </mat-tree>
 
@@ -33,7 +37,7 @@
     <div #grippy [style.background-image]="getImageUrl()" class="grippy" (click)="toggleMenu()"></div>
     <div class="content-wrapper">
       <div class="content">
-        <div>
+        <!--<div>
           <div>
             <h3>Image Classification</h3>
             <div class="grid-container">
@@ -82,9 +86,10 @@
             </div>
           </div>
 
-        </div>
+        </div> -->
         <markdown [data]="currentExampleText"></markdown>
       </div>
     </div>
+    <app-footer></app-footer>
   </mat-sidenav-content>
 </mat-sidenav-container>
