@@ -1,32 +1,34 @@
 <mat-sidenav-container class="example-container" (click)="checkSidebar()">
-  <mat-sidenav #sidenav [mode]="screenWidth < minWidth ? 'over':'side'" [opened]="screenWidth > minWidth" class="sidebar-api" [opened]="screenWidth > 640" [fixedInViewport]="true" [fixedTopGap]="100">
+  <mat-sidenav #sidenav [mode]="screenWidth < minWidth ? 'over':'side'" [opened]="screenWidth > minWidth"
+    class="sidebar-api" [opened]="screenWidth > 640" [fixedInViewport]="true" [fixedTopGap]="100">
+    <!-- <a class="overview" [routerLink]="">Overview</a> -->
     <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
       <!-- This is the tree node template for leaf nodes -->
       <mat-tree-node #examplenode *matTreeNodeDef="let node" matTreeNodeToggle>
         <!-- use a disabled button to provide padding for tree leaf -->
 
-          <button class="hide" mat-icon-button disabled></button>
-          <a #exampletitle [ngClass]="{'selected': selectedExample === node.name, 'not-selected': selectedExample != node.name}"
-              [routerLink]="createRouterLink(node.name)">
-            {{node.displayName}}
-          </a>
+        <button class="hide" mat-icon-button disabled></button>
+        <a [ngClass]="{'overview': node.name==='overview.md', 'selected': selectedExample === node.name, 'not-selected': selectedExample != node.name}"
+          [routerLink]="createRouterLink(node.name)">
+          {{node.displayName}}
+        </a>
 
       </mat-tree-node>
       <!-- This is the tree node template for expandable nodes -->
       <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
         <div class="items">
-        <li>
-          <button class="not-selected" mat-icon-button matTreeNodeToggle
-                  [attr.aria-label]="'toggle ' + node.displayName">
-            <mat-icon class="mat-icon-rtl-mirror">
-              {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-            </mat-icon>
-            {{node.displayName}}
-          </button>
-          <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">
-            <ng-container matTreeNodeOutlet></ng-container>
-          </ul>
-        </li>
+          <li>
+            <button class="not-selected" mat-icon-button matTreeNodeToggle
+              [attr.aria-label]="'toggle ' + node.displayName">
+              <mat-icon class="mat-icon-rtl-mirror">
+                {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+              </mat-icon>
+              {{node.displayName}}
+            </button>
+            <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">
+              <ng-container matTreeNodeOutlet></ng-container>
+            </ul>
+          </li>
         </div>
       </mat-nested-tree-node>
     </mat-tree>
@@ -37,56 +39,6 @@
     <div #grippy [style.background-image]="getImageUrl()" class="grippy" (click)="toggleMenu()"></div>
     <div class="content-wrapper">
       <div class="content">
-        <!--<div>
-          <div>
-            <h3>Image Classification</h3>
-            <div class="grid-container">
-              <mat-card class="card-container">
-                <mat-card-title>DenseNet</mat-card-title>
-              </mat-card>
-              <mat-card class="card-container">
-                <mat-card-title>Adverserial Attack</mat-card-title>
-              </mat-card>
-              <mat-card class="card-container">
-                <mat-card-title>LeNet</mat-card-title>
-              </mat-card>
-              <mat-card class="card-container">
-                <mat-card-title>Mixup</mat-card-title>
-              </mat-card>
-            </div>
-          </div>
-          <div>
-            <h3>Image Generation</h3>
-            <div class="grid-container">
-              <mat-card class="card-container">
-                <mat-card-title>CVAE</mat-card-title>
-              </mat-card>
-              <mat-card class="card-container">
-                <mat-card-title>CycleGAN</mat-card-title>
-              </mat-card>
-              <mat-card class="card-container">
-                <mat-card-title>DCGAN</mat-card-title>
-              </mat-card>
-            </div>
-          </div>
-          <div>
-            <h3>Text</h3>
-            <div class="grid-container">
-              <mat-card class="card-container">
-                <mat-card-title>LSTM</mat-card-title>
-              </mat-card>
-            </div>
-          </div>
-          <div>
-            <h3>Semantic Segmantation</h3>
-            <div class="grid-container">
-              <mat-card class="card-container">
-                <mat-card-title>Unet</mat-card-title>
-              </mat-card>
-            </div>
-          </div>
-
-        </div> -->
         <markdown [data]="currentExampleText"></markdown>
       </div>
     </div>
