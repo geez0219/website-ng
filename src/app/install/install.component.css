@@ -4,20 +4,19 @@
     margin-left: 20px;
     margin-right: 20px;
     margin-bottom: 20px !important;
+    align-content: center;
 }
 
 pre,
 code {
   font-size: 15.9375px;
+  color: #fff;
   border: 1px solid whitesmoke;
   border-radius: 3px;
-  background-color: #F1F3F4; }
-
-code {
-  padding: 1px 5px; }
+  background-color: #000; }
 
 pre {
-  padding: 8px 12px;
+  padding: 12px 12px;
   overflow-x: auto; }
   pre > code {
     border: 0;
@@ -36,9 +35,9 @@ pre {
   border-radius: 8px 8px;
   max-width: -webkit-calc(1150px - (30px * 2));
   max-width: calc(1150px - (30px * 2));
-  margin-top: 6.5rem;
+  margin-top: 7.5rem;
   margin-right: auto;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   margin-left: auto;
   padding-top: 2rem;
   padding-right: 30px;
@@ -56,7 +55,7 @@ pre {
 
 .python-comments {
     margin-left: 16px;
-    color: saddlebrown;
+    color: #708090;
 }
 
 .copy-btn {
@@ -64,11 +63,12 @@ pre {
     right: 0;
     width: 50px;
     padding: 2px;
-    margin-top: 6px;
     background-color:transparent;
     border: 0;
     box-shadow: none;
     outline: none;
+    color: white;
+    margin-top: 10px;
 }
 
 .install-content{

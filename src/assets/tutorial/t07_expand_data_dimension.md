@@ -25,7 +25,7 @@ In RecordWriter, for each 28x28 image, let's create 4 different 27x27 images fro
 ```python
 from fastestimator.dataset.mnist import load_data
 from fastestimator.op import NumpyOp
-from fastestimator.util import RecordWriter
+from fastestimator import RecordWriter
 from fastestimator.op.numpyop import ImageReader
 
 # Load Mnist data

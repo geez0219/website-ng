@@ -39,12 +39,12 @@
     border-left: 7px #fff solid;
     width: 100%;
     text-align: left;
-    margin-left: 20px;
+    margin-left: 0px;
     display: block;
     font-family: Roboto,"Helvetica Neue",sans-serif;
     font-weight: 500;
     font-size: 14px;
-    padding-left: 8px;
+    padding-left: 28px;
     padding-top: 6px;
     padding-bottom: 6px;
     border-left: 7px #fff solid;
@@ -65,7 +65,7 @@
     text-align: left;
 }
 
-.not-selected:hover, .overview:hover {
+.not-selected:hover, .overview.not-selected:hover {
     background-color: #f3f3f3;
     text-decoration: underline;
     border-color: #f3f3f3;
@@ -95,7 +95,7 @@ button { outline: none; }
     border-style: outset;
     border-width: 1px;
     border-radius: 8px 8px;
-    padding: 2.5%;
+    padding: 2em;
     font-size: 1em;
     max-width: 100%;
     margin: 25px auto;
@@ -141,12 +141,10 @@ markdown ::ng-deep h1 {
 }
 
 markdown ::ng-deep h2{
-    margin-top: 12px;
     font-size: 2em;
 }
 
 markdown ::ng-deep h3 {
-    margin-top: 20px;
     font-size: 1.5em;
 }
 
