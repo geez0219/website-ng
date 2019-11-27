@@ -6,7 +6,7 @@ The summary object that record the training history
 
 #### Args:
 
-* **name (str)** :  Name of the experiment.
+* **name (str)** :  Name of the experiment.    
 
 ### merge
 ```python

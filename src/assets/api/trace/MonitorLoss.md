@@ -2,7 +2,7 @@
 ```python
 MonitorLoss()
 ```
-Records loss value. Please don't add this trace into an estimator manually. An estimator will add itautomatically.
+Records loss value. Please don't add this trace into an estimator manually. An estimator will add it    automatically.    
 
 ### on_batch_begin
 ```python

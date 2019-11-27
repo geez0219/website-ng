@@ -9,7 +9,7 @@ Preprocessing class for converting categorical labels to onehot encoding.
 * **num_dim** :  Number of dimensions of the labels.
 * **inputs** :  Name of the key in the dataset that is to be filtered.
 * **outputs** :  Name of the key to be created/used in the dataset to store the results.
-* **mode** :  mode that the filter acts on.
+* **mode** :  mode that the filter acts on.    
 
 ### forward
 ```python

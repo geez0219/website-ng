@@ -3,7 +3,7 @@
 IntegratedGradients(model)
 ```
 A SaliencyMask class that implements the integrated gradients method.
-* **https** : //arxiv.org/abs/1703.01365
+* **https** : //arxiv.org/abs/1703.01365    
 
 ### get_smoothed_mask
 ```python

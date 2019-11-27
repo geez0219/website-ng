@@ -2,7 +2,7 @@
 ```python
 Loss(inputs=None, outputs=None, mode=None)
 ```
-A base class for loss operations. It can be used directly to perform value pass-through (see the adversarialtraining showcase for an example of when this is useful)
+A base class for loss operations. It can be used directly to perform value pass-through (see the adversarial    training showcase for an example of when this is useful)    
 
 ### validate_loss_inputs
 ```python

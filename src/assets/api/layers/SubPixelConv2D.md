@@ -2,12 +2,12 @@
 ```python
 SubPixelConv2D(upsample_factor=2, nchannels=128)
 ```
-Class for upsampling using subpixel convolution (https://arxiv.org/pdf/1609.05158.pdf)
+ Class for upsampling using subpixel convolution (https://arxiv.org/pdf/1609.05158.pdf)
 
 #### Args:
 
 * **upsample_factor (int, optional)** :  [description]. Defaults to 2.
-* **nchannels (int, optional)** :  [description]. Defaults to 128.
+* **nchannels (int, optional)** :  [description]. Defaults to 128.    
 
 ### compute_output_shape
 ```python
