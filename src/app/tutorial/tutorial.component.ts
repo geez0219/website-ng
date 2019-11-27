@@ -114,7 +114,6 @@ export class TutorialComponent implements OnInit {
   }
 
   getImageUrl() {
-    //console.log(this.sidenav.opened)
     if (this.sidenav.opened) {
       this.grippy.nativeElement.style.left = "20rem"
       return "url(../../assets/images/sidebar-grippy-hide.png)"
@@ -125,7 +124,6 @@ export class TutorialComponent implements OnInit {
   }
 
   checkSidebar() {
-    console.log(this.sidenav.opened)
     if (this.sidenav.opened) {
       this.grippy.nativeElement.style.backgroundImage = "url(../../assets/images/sidebar-grippy-hide.png)"
       this.grippy.nativeElement.style.left = "20rem"
