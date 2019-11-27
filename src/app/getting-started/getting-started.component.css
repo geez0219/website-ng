@@ -23,7 +23,7 @@
 .slogan {
     position: relative;
     text-align: center;
-    top: 50%;
+    top: 40%;
     font-size: 2.3em;
     color: rgb(255, 255, 255);
     transform: translateY(-50%);
@@ -32,10 +32,11 @@
 .subhead {
     position: relative;
     text-align: center;
-    top: 40%;
-    font-size: 1.2em;
-    color: rgb(255, 255, 255);
+    top: 50%;
+}
 
+.sub-button{
+    font-size: 1.2em;
 }
 
 .container {
@@ -89,6 +90,7 @@
 
 .myButton {
     background-color:#378de5;
+    /* font-size: 1.2em; */
 }
 
 .clickable-card:hover{
