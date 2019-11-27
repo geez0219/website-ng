@@ -2,11 +2,11 @@
 ```python
 TrainInfo()
 ```
-Essential training information for logging during training. Please don't add this trace into an estimatormanually. An estimator will add it automatically.
+Essential training information for logging during training. Please don't add this trace into an estimator    manually. An estimator will add it automatically.
 
 #### Args:
 
-* **log_steps (int)** :  Interval steps of logging
+* **log_steps (int)** :  Interval steps of logging    
 
 ### on_batch_begin
 ```python

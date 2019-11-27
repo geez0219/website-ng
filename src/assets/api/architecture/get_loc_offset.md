@@ -15,5 +15,5 @@ Computes the offset of a groundtruth box and an anchor box.
 
 * **float** :  offset between x1 coordinate of the two boxes.
 * **float** :  offset between y1 coordinate of the two boxes.
-* **float** :  offset between x2 coordinate of the two boxes.
-* **float** :  offset between y2 coordinate of the two boxes.
+* **float** :  offset between width of the two boxes.
+* **float** :  offset between height of the two boxes.

@@ -6,7 +6,7 @@ Preprocessing class for reshaping the data
 
 #### Args:
 
-* **shape** :  target shape
+* **shape** :  target shape    
 
 ### forward
 ```python

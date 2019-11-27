@@ -6,7 +6,7 @@ Preprocessing class for scaling dataset
 
 #### Args:
 
-* **scalar** :  Scalar for scaling the data
+* **scalar** :  Scalar for scaling the data    
 
 ### forward
 ```python
