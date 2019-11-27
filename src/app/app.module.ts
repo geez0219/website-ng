@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MarkdownModule } from 'ngx-markdown';
 import { ClipboardModule } from 'ngx-clipboard';
-import { MatNativeDateModule, MatCardModule, MatDialogModule, MatSnackBarModule, MatTreeModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from  '@angular/material';
+import { MatProgressBarModule, MatNativeDateModule, MatCardModule, MatDialogModule, MatSnackBarModule, MatTreeModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from  '@angular/material';
 
 import { WINDOW_PROVIDERS } from './window-provider/window-provider.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -63,7 +63,8 @@ import { FooterComponent } from './footer/footer.component';
     ClipboardModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatCardModule
+    MatCardModule,
+    MatProgressBarModule,
   ],
   providers: [WINDOW_PROVIDERS],
   bootstrap: [AppComponent],

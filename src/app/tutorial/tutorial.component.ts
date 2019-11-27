@@ -8,6 +8,7 @@ import { MatSidenav } from '@angular/material';
 import { Tutorial } from '../tutorial';
 import { TOC } from '../toc';
 import { Title } from '@angular/platform-browser';
+import { GlobalService } from '../global.service';
 
 @Component({
   selector: 'app-tutorial',
@@ -64,9 +65,12 @@ export class TutorialComponent implements OnInit {
   constructor(private http: HttpClient, 
               private router: Router, 
               private route: ActivatedRoute,
-              private title: Title) {
+              private title: Title,
+              private globalService: GlobalService) {
     this.route.params.subscribe(params => {
       if (params['name']) {
+        this.globalService.toggleLoading();
+        
         this.selectedTutorial = params['name'];
         this.getTutorialStructure();
       }
@@ -81,21 +85,29 @@ export class TutorialComponent implements OnInit {
   }
 
   getTutorialStructure() {
-    this.http.get('assets/tutorial/structure.json', this.structureRequestOptions).subscribe(data => {
-      this.tutorialList = <Tutorial[]>(data);
-
+    if (this.tutorialList) {
       var t: Tutorial[] = this.tutorialList.filter(tutorial => tutorial.name === (this.selectedTutorial + ".md"));
       this.updateTutorialContent(t[0]);
-    },
-    error => {
-      console.error(error);
-      this.router.navigate(['PageNotFound'], {replaceUrl:true})
-    });
+    } else {
+      this.http.get('assets/tutorial/structure.json', this.structureRequestOptions).subscribe(data => {
+        this.tutorialList = <Tutorial[]>(data);
+
+        var t: Tutorial[] = this.tutorialList.filter(tutorial => tutorial.name === (this.selectedTutorial + ".md"));
+        this.updateTutorialContent(t[0]);
+      },
+      error => {
+        console.error(error);
+        this.globalService.resetLoading();
+        this.router.navigate(['PageNotFound'], {replaceUrl:true})
+      });
+    }
   }
 
   updateTutorialContent(tutorial: Tutorial) {
-    if (!tutorial)
-      this.router.navigate(['PageNotFound'], {replaceUrl:true});
+    if (!tutorial) {
+      this.globalService.resetLoading();
+      this.router.navigate(['PageNotFound'], {replaceUrl: true});
+    }
 
     window.scroll(0,0);
 
@@ -106,10 +118,12 @@ export class TutorialComponent implements OnInit {
   getSelectedTutorialText(tutorialName) {
     this.http.get(tutorialName, this.contentRequestOptions).subscribe(data => {
       this.currentTutorialText = data;
+      this.globalService.resetLoading();
     },
     error => {
       console.error(error);
-      this.router.navigate(['PageNotFound'])
+      this.globalService.resetLoading();
+      this.router.navigate(['PageNotFound'], {replaceUrl: true})
     });
   }
 

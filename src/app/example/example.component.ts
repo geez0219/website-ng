@@ -11,6 +11,7 @@ import { MatSidenav} from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 
 import { Title } from '@angular/platform-browser';
+import { GlobalService } from '../global.service';
 
 @Component({
   selector: 'app-example',
@@ -63,13 +64,16 @@ export class ExampleComponent implements OnInit {
   constructor(private http: HttpClient,
               private router: Router,
               private route: ActivatedRoute,
-              private title: Title) { }
+              private title: Title,
+              private globalService: GlobalService) { }
 
   ngOnInit() {
     this.treeControl = new NestedTreeControl<Example>(node => node.children);
     this.dataSource = new MatTreeNestedDataSource<Example>();
 
     this.route.url.subscribe((segments: UrlSegment[]) => {
+      this.globalService.setLoading();
+
       this.segments = segments;
       this.getExampleStructure();
     });
@@ -116,6 +120,7 @@ export class ExampleComponent implements OnInit {
       },
       error => {
         console.error(error);
+        this.globalService.resetLoading();
         this.router.navigate(['PageNotFound'], {replaceUrl:true})
       });
     }
@@ -135,6 +140,7 @@ export class ExampleComponent implements OnInit {
         this.updateExampleContent(e[0]);
         this.expandNodes(e[0].name);
       } else {
+        this.globalService.resetLoading();
         this.router.navigate(['PageNotFound'], {replaceUrl:true});
       }
     }
@@ -153,9 +159,11 @@ export class ExampleComponent implements OnInit {
   getSelectedExampleText() {
     this.http.get(this.currentSelection, this.contentRequestOptions).subscribe(data => {
       this.currentExampleText = data;
+      this.globalService.resetLoading();
     },
     error => {
       console.error(error);
+      this.globalService.resetLoading();
       this.router.navigate(['PageNotFound'], {replaceUrl:true})
     });
   }

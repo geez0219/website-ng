@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, HostBinding } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatDialog} from '@angular/material/dialog';
 import { DialogComponent} from '../dialog/dialog.component'
+import { GlobalService } from '../global.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,16 +15,24 @@ export class NavbarComponent implements OnInit {
   selected: string;
   searchContent:any
   dialogRef: any = null;
+  
   structureHeaderDict = {
     'Content-Type': 'application/json',
     'Accept': "application/json, text/plain",
     'Access-Control-Allow-Origin': '*'
   }
+
   structureRequestOptions = {
     headers: new HttpHeaders(this.structureHeaderDict),
   };
 
-  constructor(private router: Router, private http: HttpClient, public dialog: MatDialog) { 
+  @HostBinding('class.loading')
+  loading = false;
+
+  constructor(private router: Router, 
+              private http: HttpClient, 
+              public dialog: MatDialog,
+              private globalService: GlobalService) {
   }
 
   ngOnInit() {
@@ -32,6 +41,10 @@ export class NavbarComponent implements OnInit {
         const ns = <NavigationStart>val;
         this.selected = ns.url.substring(1).split("/")[0];
       }
+    });
+
+    this.globalService.change.subscribe(loading => {
+      this.loading = loading;
     });
   }
 
