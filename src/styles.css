@@ -35,3 +35,7 @@ button.gsc-search-button
 .cdk-overlay-container { 
     z-index: 1050; 
 }
+
+mat-progress-bar .mat-progress-bar-buffer {
+    background: #2A7BBA;
+}
