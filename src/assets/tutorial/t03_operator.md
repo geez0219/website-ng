@@ -127,7 +127,7 @@ In this example, when the csv files and training images are provided in-disk, we
 
 ```python
 from fastestimator.op import NumpyOp
-from fastestimator.util import RecordWriter
+from fastestimator import RecordWriter
 from fastestimator.op.numpyop import ImageReader
 
 # Create a custom Numpy Op to rescale images in forward function

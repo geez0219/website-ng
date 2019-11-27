@@ -18,7 +18,7 @@ import tensorflow as tf
 ```python
 from fastestimator.dataset.mnist import load_data
 from fastestimator.op import NumpyOp
-from fastestimator.util import RecordWriter
+from fastestimator import RecordWriter
 from fastestimator.op.numpyop import ImageReader
 from fastestimator.op.tensorop import Augmentation2D
 from fastestimator.op import TensorOp
