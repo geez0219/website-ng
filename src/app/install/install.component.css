@@ -30,6 +30,7 @@ pre {
   font-size: 120%; }
 
 .wrapper {
+  background-color: #FAFAFA;
   border-style: outset;
   border-width: 1px;
   border-radius: 8px 8px;

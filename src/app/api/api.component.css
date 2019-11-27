@@ -89,6 +89,7 @@ button { outline: none; }
 
 .content-wrapper {
     margin: 0 1rem;
+    background-color: #FAFAFA;
 }
 
 .content {
@@ -134,6 +135,10 @@ button { outline: none; }
   padding: 20px;
   font-size: 30px;
   text-align: center;
+}
+
+mat-sidenav-content {
+    background-color: white;
 }
 
 markdown ::ng-deep h1 {

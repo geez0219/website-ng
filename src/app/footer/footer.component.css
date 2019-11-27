@@ -1,6 +1,6 @@
 .footer {
-    border-top: 1px solid #dadce0;
-    background-color: snow;
+    border-top: 1px solid #FAFAFA;
+    background-color: #FAFAFA;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -36,4 +36,12 @@
     font: 400 16px/26px Google Sans,Noto Sans,Noto Sans JP,Noto Sans KR,Noto Naskh Arabic,Noto Sans Thai,Noto Sans Hebrew,Noto Sans Bengali,sans-serif;
     color: chocolate;
     font-weight: bold;
+}
+
+.credit{
+    font-size: 13px;
+}
+
+.credit a{
+    color: black;
 }
