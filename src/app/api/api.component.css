@@ -95,7 +95,7 @@ button { outline: none; }
     border-style: outset;
     border-width: 1px;
     border-radius: 8px 8px;
-    padding: 2.5%;
+    padding: 2em;
     font-size: 1em;
     max-width: 100%;
     margin: 25px auto;
@@ -141,12 +141,10 @@ markdown ::ng-deep h1 {
 }
 
 markdown ::ng-deep h2{
-    margin-top: 12px;
     font-size: 2em;
 }
 
 markdown ::ng-deep h3 {
-    margin-top: 20px;
     font-size: 1.5em;
 }
 
