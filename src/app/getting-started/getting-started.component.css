@@ -67,8 +67,8 @@
 }
 
 .videos {
-    width: 200px;
-    height: 140px;
+    max-width: 80px;
+    max-height: 80px;
     display:block;
     margin:auto;
 }

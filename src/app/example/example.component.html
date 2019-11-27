@@ -42,6 +42,8 @@
         <markdown [data]="currentExampleText"></markdown>
       </div>
     </div>
-    <app-footer></app-footer>
+    <div *ngIf="currentExampleText">
+      <app-footer></app-footer>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
