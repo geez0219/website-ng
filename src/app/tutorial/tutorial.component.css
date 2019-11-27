@@ -68,6 +68,7 @@ li a.focus, li a.hover {
 
 .content-wrapper {
     margin: 0 1rem;
+    background-color: #FAFAFA;
 }
 
 .content {
@@ -78,6 +79,10 @@ li a.focus, li a.hover {
     font-size: 1em;
     width: 100%;
     margin: 25px auto;
+}
+
+mat-sidenav-content {
+    background-color: white;
 }
 
 markdown ::ng-deep h1 {
