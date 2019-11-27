@@ -11,4 +11,4 @@ Resize image.
 * **keep_ratio (bool)** :  If `True`, the resulting image will be padded to keep the original aspect ratio.
 
 #### Returns:
-    Resized `np.ndarray`.
+        Resized `np.ndarray`.    

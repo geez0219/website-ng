@@ -2,13 +2,13 @@
 ```python
 Trace(inputs=None, outputs=None, mode=None)
 ```
-Trace base class. User can use `Trace` to customize their own operations during training, validation and testing.The `Network` instance can be accessible by `self.network`. Trace execution order will attempt to be inferredwhenever possible based on the provided inputs and outputs variables.
+Trace base class. User can use `Trace` to customize their own operations during training, validation and testing.    The `Network` instance can be accessible by `self.network`. Trace execution order will attempt to be inferred    whenever possible based on the provided inputs and outputs variables.
 
 #### Args:
 
 * **inputs (str, list, set)** :  A set of keys that this trace intends to read from the state dictionary as inputs
 * **outputs (str, list, set)** :  A set of keys that this trace intends to write into the state dictionary
-* **mode (string)** :  Restrict the trace to run only on given modes ('train', 'eval', 'test'). None will always                    execute
+* **mode (string)** :  Restrict the trace to run only on given modes ('train', 'eval', 'test'). None will always                        execute    
 
 ### on_batch_begin
 ```python

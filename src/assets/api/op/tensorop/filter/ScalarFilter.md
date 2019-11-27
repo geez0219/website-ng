@@ -9,7 +9,7 @@ Class for performing filtering on dataset based on scalar values.
 * **inputs** :  Name of the key in the dataset that is to be filtered.
 * **filter_value** :  The values in the dataset that are to be filtered.
 * **keep_prob** :  The probability of keeping the example.
-* **mode** :  mode that the filter acts on.
+* **mode** :  mode that the filter acts on.    
 
 ### forward
 ```python

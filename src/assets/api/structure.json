@@ -16,6 +16,10 @@
                 "displayName": "Pipeline"
             },
             {
+                "name": "fe/RecordWriter.md",
+                "displayName": "RecordWriter"
+            },
+            {
                 "name": "fe/build.md",
                 "displayName": "build"
             }
@@ -30,6 +34,10 @@
                 "displayName": "LeNet"
             },
             {
+                "name": "architecture/PredictBox.md",
+                "displayName": "PredictBox"
+            },
+            {
                 "name": "architecture/RetinaNet.md",
                 "displayName": "RetinaNet"
             },
@@ -40,6 +48,10 @@
             {
                 "name": "architecture/UNet3D.md",
                 "displayName": "UNet3D"
+            },
+            {
+                "name": "architecture/UncertaintyLoss.md",
+                "displayName": "UncertaintyLoss"
             },
             {
                 "name": "architecture/block_D.md",
@@ -246,8 +258,24 @@
         "displayName": "fe.dataset",
         "children": [
             {
+                "name": "dataset/extract_images_labels.md",
+                "displayName": "extract_images_labels"
+            },
+            {
+                "name": "dataset/get_batch.md",
+                "displayName": "get_batch"
+            },
+            {
                 "name": "dataset/load_data.md",
                 "displayName": "load_data"
+            },
+            {
+                "name": "dataset/load_eval_data.md",
+                "displayName": "load_eval_data"
+            },
+            {
+                "name": "dataset/one_shot_trial.md",
+                "displayName": "one_shot_trial"
             }
         ]
     },
@@ -290,6 +318,10 @@
             {
                 "name": "layers/SubPixelConv2D.md",
                 "displayName": "SubPixelConv2D"
+            },
+            {
+                "name": "layers/UncertaintyWeightedLoss.md",
+                "displayName": "UncertaintyWeightedLoss"
             }
         ]
     },
@@ -322,8 +354,16 @@
                         "displayName": "Resize"
                     },
                     {
+                        "name": "op/numpyop/ResizeImageAndBbox.md",
+                        "displayName": "ResizeImageAndBbox"
+                    },
+                    {
                         "name": "op/numpyop/Scale.md",
                         "displayName": "Scale"
+                    },
+                    {
+                        "name": "op/numpyop/TypeConverter.md",
+                        "displayName": "TypeConverter"
                     },
                     {
                         "name": "op/numpyop/Zscore.md",
@@ -350,6 +390,10 @@
                             {
                                 "name": "op/tensorop/augmentation/CutMixBatch.md",
                                 "displayName": "CutMixBatch"
+                            },
+                            {
+                                "name": "op/tensorop/augmentation/FlipImageAndBbox.md",
+                                "displayName": "FlipImageAndBbox"
                             },
                             {
                                 "name": "op/tensorop/augmentation/MixUpBatch.md",
@@ -408,6 +452,10 @@
                             {
                                 "name": "op/tensorop/model/ModelOp.md",
                                 "displayName": "ModelOp"
+                            },
+                            {
+                                "name": "op/tensorop/model/UpdateOp.md",
+                                "displayName": "UpdateOp"
                             }
                         ]
                     },
@@ -420,12 +468,32 @@
                         "displayName": "Binarize"
                     },
                     {
+                        "name": "op/tensorop/Constant.md",
+                        "displayName": "Constant"
+                    },
+                    {
+                        "name": "op/tensorop/Gradients.md",
+                        "displayName": "Gradients"
+                    },
+                    {
                         "name": "op/tensorop/Minmax.md",
                         "displayName": "Minmax"
                     },
                     {
                         "name": "op/tensorop/Onehot.md",
                         "displayName": "Onehot"
+                    },
+                    {
+                        "name": "op/tensorop/Pad.md",
+                        "displayName": "Pad"
+                    },
+                    {
+                        "name": "op/tensorop/Probability.md",
+                        "displayName": "Probability"
+                    },
+                    {
+                        "name": "op/tensorop/Rescale.md",
+                        "displayName": "Rescale"
                     },
                     {
                         "name": "op/tensorop/Reshape.md",
@@ -438,6 +506,14 @@
                     {
                         "name": "op/tensorop/Scale.md",
                         "displayName": "Scale"
+                    },
+                    {
+                        "name": "op/tensorop/Sum.md",
+                        "displayName": "Sum"
+                    },
+                    {
+                        "name": "op/tensorop/Watch.md",
+                        "displayName": "Watch"
                     },
                     {
                         "name": "op/tensorop/Zscore.md",
@@ -618,6 +694,10 @@
                         "displayName": "F1Score"
                     },
                     {
+                        "name": "trace/metric/MeanAvgPrecision.md",
+                        "displayName": "MeanAvgPrecision"
+                    },
+                    {
                         "name": "trace/metric/Precision.md",
                         "displayName": "Precision"
                     },
@@ -658,10 +738,6 @@
                 "displayName": "PathLoader"
             },
             {
-                "name": "util/RecordWriter.md",
-                "displayName": "RecordWriter"
-            },
-            {
                 "name": "util/Suppressor.md",
                 "displayName": "Suppressor"
             },
@@ -684,6 +760,10 @@
             {
                 "name": "util/callback_progress.md",
                 "displayName": "callback_progress"
+            },
+            {
+                "name": "util/convert_np_dtype.md",
+                "displayName": "convert_np_dtype"
             },
             {
                 "name": "util/convert_tf_dtype.md",

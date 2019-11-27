@@ -12,7 +12,7 @@ Class representing the data pipeline required for fastestimator
 * **read_feature** :  List of features that should be used in training. If None all the features available are used.
 * **padded_batch** :  Boolean representing if a batch should be padded or not.
 * **expand_dims** :  Boolean representing if a batch dimensions should be expanded or not.
-* **max_shuffle_buffer_mb** :  Maximum buffer size to shuffle data. This is used only if the number of examples are        more than that could fit in the buffer. Defaults to 3000.
+* **max_shuffle_buffer_mb** :  Maximum buffer size to shuffle data. This is used only if the number of examples are            more than that could fit in the buffer. Defaults to 3000.    
 
 ### benchmark
 ```python
@@ -45,7 +45,7 @@ Create the dataset used by the pipeline by running all the ops specified.
 
 ### show_results
 ```python
-show_results(self, mode='train', num_steps=1, current_epoch=0)
+show_results(self, mode='train', num_steps=1, current_epoch=0, reuse=False)
 ```
 Processes the pipeline ops on the given input data.
 

@@ -7,7 +7,7 @@ Class for reading png or jpg images
 #### Args:
 
 * **parent_path (str)** :  Parent path that will be added on given path
-* **grey_scale (bool)** :  Boolean to indicate whether or not to read image as grayscale
+* **grey_scale (bool)** :  Boolean to indicate whether or not to read image as grayscale    
 
 ### forward
 ```python

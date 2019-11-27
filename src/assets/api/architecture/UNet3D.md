@@ -2,7 +2,7 @@
 
 ### UNet3D
 ```python
-UNet3D(input_size=(9, 512, 512, 1), clip=(1024, 2048), dropout=0.5, nchannels=(32, 64, 128, 256), nclasses=1, bn=None, activation=<function <lambda> at 0x7f4d50021c80>, upsampling='copy', dilation_rates=(1, 1, 1, 1), residual=False)
+UNet3D(input_size=(9, 512, 512, 1), clip=(1024, 2048), dropout=0.5, nchannels=(32, 64, 128, 256), nclasses=1, bn=None, activation=<function <lambda> at 0x7f640819e400>, upsampling='copy', dilation_rates=(1, 1, 1, 1), residual=False)
 ```
 Creates a U-Net model.This 3D U-Net model is composed of len(nchannels) "contracting blocks" and len(nchannels) "expansive blocks".
 

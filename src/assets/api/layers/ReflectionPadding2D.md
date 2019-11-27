@@ -6,7 +6,7 @@ Class for performing Reflection Padding on 2D arrays.
 
 #### Args:
 
-* **padding (tuple, optional)** :  padding size. Defaults to (1, 1).
+* **padding (tuple, optional)** :  padding size. Defaults to (1, 1).    
 
 ### compute_output_shape
 ```python
