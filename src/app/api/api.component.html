@@ -40,6 +40,8 @@
         <markdown [data]="currentAPIText"></markdown>
       </div>
     </div>
-    <app-footer></app-footer>
+    <div *ngIf="currentAPIText">
+      <app-footer></app-footer>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

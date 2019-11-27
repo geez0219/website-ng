@@ -186,7 +186,6 @@ export class ExampleComponent implements OnInit {
   }
 
   createRouterLink(url: string) {
-    console.log(url)
     var components: Array<string> = url.substring(0, url.length - 3).split('/');
     var ret = ['/examples'];
 
