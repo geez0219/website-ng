@@ -141,13 +141,13 @@ export class ExampleComponent implements OnInit {
   }
 
   private updateExampleContent(example: Example) {
-    this.title.setTitle(example.displayName + " | Fastestimator");
     window.scroll(0, 0);
 
     this.selectedExample = example.name;
     this.currentSelection = 'assets/example/' + example.name;
 
     this.getSelectedExampleText();
+    this.title.setTitle(example.displayName + " | Fastestimator");
   }
 
   getSelectedExampleText() {

@@ -97,10 +97,10 @@ export class TutorialComponent implements OnInit {
     if (!tutorial)
       this.router.navigate(['PageNotFound'], {replaceUrl:true});
 
-    this.title.setTitle(tutorial.displayName + " | Fastestimator");
     window.scroll(0,0);
 
     this.getSelectedTutorialText('assets/tutorial/' + tutorial.name);
+    this.title.setTitle(tutorial.displayName + " | Fastestimator");
   }
 
   getSelectedTutorialText(tutorialName) {

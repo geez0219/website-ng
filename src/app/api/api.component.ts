@@ -154,13 +154,13 @@ export class ApiComponent implements OnInit {
   }
 
   private updateAPIContent(api: API) {
-    this.title.setTitle(api.displayName + " | Fastestimator");
     window.scroll(0, 0);
 
     this.selectedAPI = api.name;
     this.currentSelection = 'assets/api/' + api.name;
 
     this.getSelectedAPIText();
+    this.title.setTitle(api.displayName + " | Fastestimator");
   }
 
   getSelectedAPIText() {
