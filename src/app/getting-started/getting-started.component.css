@@ -45,6 +45,7 @@
 .container-footer {
     padding-top: 1rem;
     font-size: 1.5rem;
+    margin-top: 2.5rem;
 }
 .section-heading {
     color: chocolate;
@@ -54,7 +55,7 @@
 
 .section-content {
     color: darkslategray;
-    font-size: 1.5em;
+    font-size: 1.25em;
     margin: 5px 10% 5px 10%;
 }
 
