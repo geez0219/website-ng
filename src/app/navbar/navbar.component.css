@@ -70,3 +70,8 @@ nav div ul li a{
 .nav-item:hover .rise-block{
     height: 110%;
 }
+
+.highest {
+    z-index: 1050;
+    color: #2A7BBA;
+}

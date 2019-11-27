@@ -10,6 +10,7 @@ import { MatTreeNestedDataSource } from '@angular/material/tree';
 import { API } from '../api';
 import { MatSidenav } from '@angular/material';
 import { Title } from '@angular/platform-browser';
+import { GlobalService } from '../global.service';
 
 @Component({
   selector: 'app-api',
@@ -63,13 +64,16 @@ export class ApiComponent implements OnInit {
   constructor(private http: HttpClient,
               private router: Router,
               private route: ActivatedRoute,
-              private title: Title) { }
+              private title: Title,
+              private globalService: GlobalService) { }
 
   ngOnInit() {
     this.treeControl = new NestedTreeControl<API>(node => node.children);
     this.dataSource = new MatTreeNestedDataSource<API>();
 
     this.route.url.subscribe((segments: UrlSegment[]) => {
+      this.globalService.setLoading();
+
       this.segments = segments;
       this.getAPIStructure();
     });
@@ -130,7 +134,9 @@ export class ApiComponent implements OnInit {
       },
       error => {
         console.error(error);
-        this.router.navigate(['PageNotFound'], {replaceUrl:true})
+        this.globalService.resetLoading();
+
+        this.router.navigate(['PageNotFound'], {replaceUrl: true})
       });
     }
   }
@@ -148,28 +154,33 @@ export class ApiComponent implements OnInit {
         this.updateAPIContent(a[0]);
         this.expandNodes(a[0].name);
       } else {
-        this.router.navigate(['PageNotFound'], {replaceUrl:true});
+        this.globalService.resetLoading();
+        this.router.navigate(['PageNotFound'], {replaceUrl: true});
       }
     }
   }
 
   private updateAPIContent(api: API) {
-    this.title.setTitle(api.displayName + " | Fastestimator");
     window.scroll(0, 0);
 
     this.selectedAPI = api.name;
     this.currentSelection = 'assets/api/' + api.name;
 
     this.getSelectedAPIText();
+    this.title.setTitle(api.displayName + " | Fastestimator");
   }
 
   getSelectedAPIText() {
     this.http.get(this.currentSelection, this.contentRequestOptions).subscribe(data => {
       this.currentAPIText = data;
+
+      this.globalService.resetLoading();
     },
     error => {
       console.error(error);
-      this.router.navigate(['PageNotFound'], {replaceUrl:true})
+      this.globalService.resetLoading();
+
+      this.router.navigate(['PageNotFound'], {replaceUrl: true})
     });
   }
 
