@@ -23,7 +23,7 @@
 .slogan {
     position: relative;
     text-align: center;
-    top: 50%;
+    top: 40%;
     font-size: 2.3em;
     color: rgb(255, 255, 255);
     transform: translateY(-50%);
@@ -32,10 +32,17 @@
 .subhead {
     position: relative;
     text-align: center;
-    top: 40%;
-    font-size: 1.2em;
-    color: rgb(255, 255, 255);
+    top: 50%;
+}
 
+.sub-button{
+    font-size: 1.2em;
+    background-color: #df6c3f;
+    text-decoration: none;
+}
+
+.sub-button:hover{
+    box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
 }
 
 .container {
@@ -89,6 +96,12 @@
 
 .myButton {
     background-color:#378de5;
+    text-decoration: none;
+    /* font-size: 1.2em; */
+}
+
+.myButton:hover{
+    box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
 }
 
 .clickable-card:hover{

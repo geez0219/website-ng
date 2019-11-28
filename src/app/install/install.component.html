@@ -1,29 +1,44 @@
 <div class="wrapper">
     <h2>Install FastEstimator</h2>
     <div class="install-content">
-        <div class="python">
-            <div class="pip">
-                <p>Install current stable release with Python's pip package manager.</p>
-                <div>
-                    <figure class="codeblock">
-                        <button ngxClipboard [cbContent]="'pip install fastestimator'" (cbOnSuccess)="copied($event)" class="material-icons copy-button no-print copy-btn" title="Copy code snippet" aria-label="">
-                            <span aria-hidden="true">content_copy</span>
-                        </button>
-                        <pre><code data-lang="bash"><span class="nv">$</span> pip <span class="nb">install</span> fastestimator </code></pre>
-                    </figure>
-                </div>
-                <p>Install the nightly build</p>
-                <div>
-                    <figure class="codeblock">
-                        <button ngxClipboard [cbContent]="'pip install fastestimator-nightly'" (cbOnSuccess)="copied($event)" class="material-icons copy-button no-print copy-btn" title="Copy code snippet" aria-label="">
-                            <span aria-hidden="true">content_copy</span>
-                        </button>
-                        <pre><code data-lang="bash"><span class="nv">$</span> pip <span class="nb">install</span> fastestimator-nightly </code></pre>
-                    </figure>
-                </div>
-            </div>
-
+      <div class="python">
+        <div class="pip">
+          <p>Please choose one:</p>
+          <p>* I have no idea what FastEstimator is about:</p>
+          <div>
+            <figure class="codeblock">
+              <button ngxClipboard [cbContent]="'pip install fastestimator==1.0b0'" (cbOnSuccess)="copied($event)" class="material-icons copy-button no-print copy-btn" title="Copy code snippet" aria-label="">
+                <span aria-hidden="true">content_copy</span>
+              </button>
+              <pre><code data-lang="bash">$ pip install fastestimator==1.0b0 </code></pre>
+            </figure>
+          </div>
+          <p>* I want to keep up to date with the latest:</p>
+          <div>
+            <figure class="codeblock">
+              <button ngxClipboard [cbContent]="'pip install fastestimator-nightly'" (cbOnSuccess)="copied($event)" class="material-icons copy-button no-print copy-btn" title="Copy code snippet" aria-label="">
+                <span aria-hidden="true">content_copy</span>
+              </button>
+              <pre><code data-lang="bash"> pip install fastestimator-nightly </code></pre>
+            </figure>
+          </div>
+          <p>* I'm here to play hardcore mode:</p>
+          <div>
+            <figure class="codeblock">
+              <button ngxClipboard [cbContent]="'git clone https://github.com/fastestimator/fastestimator.git'" (cbOnSuccess)="copied($event)" class="material-icons copy-button no-print copy-btn" title="Copy code snippet" aria-label="">
+                <span aria-hidden="true">content_copy</span>
+              </button>
+              <pre><code data-lang="bash">git clone https://github.com/fastestimator/fastestimator.git </code></pre>
+            </figure>
+            <figure class="codeblock">
+              <button ngxClipboard [cbContent]="'pip install -e fastestimator'" (cbOnSuccess)="copied($event)" class="material-icons copy-button no-print copy-btn" title="Copy code snippet" aria-label="">
+                <span aria-hidden="true">content_copy</span>
+              </button>
+              <pre><code data-lang="bash">pip install -e fastestimator </code></pre>
+            </figure>
+          </div>
         </div>
+      </div>
     </div>
     <h2>Running FastEstimator Container</h2>
     <div class="install-container">
@@ -54,8 +69,8 @@
     </div>
     <hr/>
     <div class="install-content">
-        <p>All done!!! To learn more about FastEstimator jump over to <a routerLink="/tutorials/t01_basic_usage">Tutorials</a></p>
-        <p>...or take a look at the <a routerLink="/examples/overview">examples</a></p>
+        <p>All done!!! To learn more about FastEstimator jump over to <a routerLink="/tutorials/t01_basic_usage">Tutorials</a> ...or take a look at the <a routerLink="/examples/overview">examples</a></p>
+
     </div>
 </div>
 <app-footer></app-footer>
