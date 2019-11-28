@@ -87,7 +87,13 @@ THE SOFTWARE.
 
 @angular/material/button
 
+@angular/material/card
+
+@angular/material/dialog
+
 @angular/material/icon
+
+@angular/material/progress-bar
 
 @angular/material/sidenav
 

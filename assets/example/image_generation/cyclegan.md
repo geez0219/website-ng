@@ -36,7 +36,7 @@ Once the images are downloaded, we will create *tfrecords* that will be used ext
 
 ```python
 from fastestimator.op.numpyop import ImageReader
-from fastestimator.util import RecordWriter
+from fastestimator import RecordWriter
 
 tfr_save_dir = os.path.join(parent_path, 'tfrecords')
 writer = RecordWriter(
@@ -144,7 +144,7 @@ plt.tight_layout()
 
 
 
-![png](cyclegan_files/cyclegan_14_1.png)
+![png](assets/example/image_generation/cyclegan_files/cyclegan_14_1.png)
 
 
 ## Step 2: Defining Model Architectures
@@ -340,7 +340,7 @@ plt.tight_layout()
 ```
 
 
-![png](cyclegan_files/cyclegan_29_0.png)
+![png](assets/example/image_generation/cyclegan_files/cyclegan_29_0.png)
 
 
 Note the addition of zebra-like stripe texture on top of horses when translating from horses to zebras.

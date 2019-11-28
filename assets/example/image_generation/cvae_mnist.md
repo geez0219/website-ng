@@ -76,7 +76,7 @@ plt.show()
 ```
 
 
-![png](cvae_mnist_files/cvae_mnist_9_0.png)
+![png](assets/example/image_generation/cvae_mnist_files/cvae_mnist_9_0.png)
 
 
 ### Preprocessing
@@ -383,5 +383,5 @@ plt.show()
 ```
 
 
-![png](cvae_mnist_files/cvae_mnist_47_0.png)
+![png](assets/example/image_generation/cvae_mnist_files/cvae_mnist_47_0.png)
 

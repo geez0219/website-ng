@@ -6,7 +6,7 @@ Class for reading .mat files.
 
 #### Args:
 
-* **parent_path** :  Parent path that will be added on given path.
+* **parent_path** :  Parent path that will be added on given path.    
 
 ### forward
 ```python

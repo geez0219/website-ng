@@ -12,7 +12,7 @@ Download the MNIST dataset to local storage, if not already downloaded. This wil
 
 #### Returns:
 
-* **(tuple)** :  tuple containing
-* **train_csv (str)** :  Path to train csv file.
-* **eval_csv (str)** :  Path to test csv file.
-* **path (str)** :  Path to data root directory.
+* **tuple** :  (train_csv, eval_csv, path) tuple, where    
+ * **train_csv** (str) -- Path to train csv file, containing the following columns :     
+ * x (str) :  Image directory relative to the returned path.
+ * y (int) :  Label indicating the number shown in the image.        * **eval_csv** (str) -- Path to test csv file, containing the same columns as train_csv.    * **path** (str) -- Path to data directory.

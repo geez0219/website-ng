@@ -2,9 +2,7 @@
 ```python
 FEGradCAM()
 ```
-Perform Grad CAM algorithm for a given input
-* **Paper** :  [Grad-CAM Visual Explanations from Deep Networks
-* **via Gradient-based Localization](https** : //arxiv.org/abs/1610.02391)
+
 
 ### explain
 ```python

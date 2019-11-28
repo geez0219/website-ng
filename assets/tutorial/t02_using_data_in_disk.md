@@ -152,7 +152,7 @@ You will have to specify :
 
 
 ```python
-from fastestimator.util import RecordWriter
+from fastestimator import RecordWriter
 from fastestimator.op.numpyop import ImageReader
 import fastestimator as fe
 import tempfile

@@ -8,7 +8,7 @@ A class representing cyclic learning rate scheduler
 
 * **num_cycle** :  The number of cycles to be used by the learning rate scheduler
 * **cycle_multiplier** :  Multiplier of the next cycle length with respect to previous cycle length
-* **decrease_method** :  The decay method to be used with cyclic learning rate scheduler
+* **decrease_method** :  The decay method to be used with cyclic learning rate scheduler    
 
 ### lr_cosine_decay
 ```python

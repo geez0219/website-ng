@@ -2,7 +2,7 @@
 ```python
 SaliencyMask(model)
 ```
-Base class for saliency masks. Alone, this class doesn't do anything.This code was adapted from https://github.com/PAIR-code/saliency to be compatible with TensorFlow 2.0
+Base class for saliency masks. Alone, this class doesn't do anything.    This code was adapted from https://github.com/PAIR-code/saliency to be compatible with TensorFlow 2.0    
 
 ### get_smoothed_mask
 ```python
