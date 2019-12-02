@@ -1,8 +1,8 @@
 
 
-### UncertaintyLoss
+### UncertaintyLossNet
 ```python
-UncertaintyLoss(num_losses=2)
+UncertaintyLossNet(num_losses=2)
 ```
 Creates Uncertainty weighted loss model https://arxiv.org/abs/1705.07115
 
