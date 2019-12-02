@@ -74,5 +74,9 @@ pre {
 }
 
 .install-content{
-    margin-bottom: 32px;
+    margin-bottom: 50px;
+}
+
+.bullet{
+    padding-left: 1rem;
 }
