@@ -1,5 +1,5 @@
 .head-container{
-    overflow:hidden;
+    overflow:visible;
     background: #fff;
     border-bottom: 3px solid #2A7BBA;
     position: fixed;
@@ -56,9 +56,9 @@ nav div ul li a{
     background: rgba(42, 124, 186, 0.692);
     height: 0%;
     width: 100%;
-    border-radius: 5px;
+    border-radius: 5px 5px 0px 0px;
     position:absolute;
-    top:110%;
+    top:101%;
     left:0%;
     transform: translate(0, -100%);
     z-index:-100;
@@ -68,7 +68,7 @@ nav div ul li a{
 }
 
 .nav-item:hover .rise-block{
-    height: 110%;
+    height: 100%;
 }
 
 .highest {
