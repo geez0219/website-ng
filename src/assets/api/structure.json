@@ -50,16 +50,8 @@
                 "displayName": "UNet3D"
             },
             {
-                "name": "architecture/UncertaintyLoss.md",
-                "displayName": "UncertaintyLoss"
-            },
-            {
-                "name": "architecture/block_D.md",
-                "displayName": "block_D"
-            },
-            {
-                "name": "architecture/block_G.md",
-                "displayName": "block_G"
+                "name": "architecture/UncertaintyLossNet.md",
+                "displayName": "UncertaintyLossNet"
             },
             {
                 "name": "architecture/build_D.md",
@@ -78,76 +70,12 @@
                 "displayName": "build_generator"
             },
             {
-                "name": "architecture/clamp.md",
-                "displayName": "clamp"
-            },
-            {
-                "name": "architecture/classification_sub_net.md",
-                "displayName": "classification_sub_net"
-            },
-            {
-                "name": "architecture/conv3D_block.md",
-                "displayName": "conv3D_block"
-            },
-            {
-                "name": "architecture/conv_block.md",
-                "displayName": "conv_block"
-            },
-            {
-                "name": "architecture/deconv3D_block.md",
-                "displayName": "deconv3D_block"
-            },
-            {
-                "name": "architecture/fromrgb.md",
-                "displayName": "fromrgb"
-            },
-            {
-                "name": "architecture/get_fpn_anchor_box.md",
-                "displayName": "get_fpn_anchor_box"
-            },
-            {
-                "name": "architecture/get_iou.md",
-                "displayName": "get_iou"
-            },
-            {
-                "name": "architecture/get_loc_offset.md",
-                "displayName": "get_loc_offset"
-            },
-            {
-                "name": "architecture/get_target.md",
-                "displayName": "get_target"
-            },
-            {
                 "name": "architecture/lossNet.md",
                 "displayName": "lossNet"
             },
             {
-                "name": "architecture/nf.md",
-                "displayName": "nf"
-            },
-            {
-                "name": "architecture/pooling_combo3D.md",
-                "displayName": "pooling_combo3D"
-            },
-            {
-                "name": "architecture/regression_sub_net.md",
-                "displayName": "regression_sub_net"
-            },
-            {
                 "name": "architecture/styleTransferNet.md",
                 "displayName": "styleTransferNet"
-            },
-            {
-                "name": "architecture/torgb.md",
-                "displayName": "torgb"
-            },
-            {
-                "name": "architecture/up_concat.md",
-                "displayName": "up_concat"
-            },
-            {
-                "name": "architecture/upsample.md",
-                "displayName": "upsample"
             }
         ]
     },

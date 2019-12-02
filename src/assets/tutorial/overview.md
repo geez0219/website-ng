@@ -52,4 +52,4 @@ These improvements brought by Trace have enabled many new functionalities. For e
  
 ![trace](../assets/tutorial/image/trace_image.png)
  
- ##**Already comfortable with FastEstimator? Check our state-of-the-art implementations!**
+**Already comfortable with FastEstimator? Check our state-of-the-art implementations!**
