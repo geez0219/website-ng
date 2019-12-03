@@ -7,58 +7,76 @@
         </div>
       </div>
   </section>
-
   <div class="container">
     <p class="section-heading">Why FastEstimator?</p>
-    <p class="section-content">FastEstimator provides all the simplicity and flexibility needed to build a high-performance deep learning model and run it anywhere.</p>
-    <div class="row">
-      <div class="col-sm">
-        <img src="assets/images/10.png" class="icons">
-        <p class="image-heading">Simple...</p>
-        <p>You only need to know 3 modular APIs to get started. Implement and train high performance models in only a few lines of code! </p>
-      </div>
-      <div class="col-sm">
-          <img src="assets/images/11.png" class="icons">
-          <p class="image-heading">Yet flexible!</p>
-          <p>We introduce a new concept of building AI: use Operator & Trace to define and control your model without friction. Customize and implement your crazy ideas!</p>
+    <p class="section-content">FastEstimator is a high-level open source deep learning framework that can help you build complex deep learning systems easily.
+      It provides all the simplicity and flexibility needed to build a high-performance deep learning model and run it anywhere.
+    </p>
+    <div class="grid-content">
+      <div class="row">
+        <div class="col-sm">
+          <img src="assets/images/hybrid4.png" class="icons">
+          <p class="image-heading"> Hybrid </p>
+          <p>Built upon TensorFlow2 and PyTorch, FastEstimator combines the best of the two. Enjoy both speed and flexibility! </p>
+
         </div>
-      <div class="col-sm">
-        <img src="assets/images/12.png" class="icons">
-        <p class="image-heading">Useful AI modules</p>
-        <p>FastEstimator offers ready-made AI modular components to make prototyping easier. Plug them in your own applications!</p>
+        <div class="col-sm">
+            <img src="assets/images/10.png" class="icons">
+            <p class="image-heading">Simple...</p>
+            <p>You only need to know 3 modular APIs to get started. Use your favorite backend for customization, no extra learning is needed.</p>
+          </div>
+        <div class="col-sm">
+          <img src="assets/images/atom.png" class="icons">
+          <p class="image-heading">Yet Flexible!</p>
+          <p>We introduce new concepts of of AI modularization: Operator & Trace, which can help you implement your crazy ideas without friction.</p>
+        </div>
       </div>
-      <div class="col-sm">
-        <img src="assets/images/3.png" class="icons">
-        <p class="image-heading">Easy to scale</p>
-        <p>Built upon Tensorflow2 and Pytorch, FastEstimator combines the best of the two frameworks. Enjoy both speed and flexibility!</p>
+      <div class="row">
+        <div class="col-sm">
+          <img src="assets/images/lan.png" class="icons">
+          <p class="image-heading"> Easy to scale </p>
+          <p>Multi-GPU training requires no efforts on your side. Just run the code on multi-GPU system and we will scale it for you!</p>
+        </div>
+        <div class="col-sm">
+            <img src="assets/images/box.png" class="icons">
+            <p class="image-heading">Pre-bundled Power</p>
+            <p>FastEstimator provides ready-made AI modular components to make prototyping easier. Plug them in your own applications!</p>
+          </div>
+        <div class="col-sm">
+          <img src="assets/images/light2.png" class="icons">
+          <p class="image-heading-sm">Application Hub, not model zoo</p>
+          <p>We offer end-to-end workflows of State-Of-The-Art across different AI domains. Come learn with us and use them for your own project!</p>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="container">
     <p class="section-heading">How does FastEstimator work?</p>
-    <p class="section-content">In FastEstimator, users only need to interact with three main APIs for any deep learning task. Each one represents one part of the machine learning process.</p>
-    <div class="row">
-      <div class="col-sm">
-        <p class="image-heading">Pipeline</p>
-        <img src="assets/images/pipeline.png" class="videos">
-        <p>Pipeline takes care of loading and preprocessing data</p>
-      </div>
-      <div class="col-sm">
-        <p class="image-heading">Network</p>
-        <img src="assets/images/neural.png" class="videos">
-        <p>Network compiles all trainable and differentiable model operations and the loss. </p>
-      </div>
-      <div class="col-sm">
-        <p class="image-heading">Estimator</p>
-        <img src="assets/images/plan.png" class="videos">
-        <p>Finally, Estimator manages the training loop.</p>
-      </div>
+    <p class="section-content">All deep learning training workflows involve three essential components: data pipeline, network, and optimization strategy. Each one represents a critical API in FastEstimator:</p>
+    <div class="grid-content">
+      <div class="row">
+          <div class="col-sm">
+            <p class="image-heading">Pipeline</p>
+            <img src="assets/images/pipeline.png" class="videos">
+            <p>Pipeline takes care of loading and preprocessing data</p>
+          </div>
+          <div class="col-sm">
+            <p class="image-heading">Network</p>
+            <img src="assets/images/neural.png" class="videos">
+            <p>Network compiles all trainable and differentiable model operations. </p>
+          </div>
+          <div class="col-sm">
+            <p class="image-heading">Estimator</p>
+            <img src="assets/images/plan.png" class="videos">
+            <p>Estimator manages the training loop. </p>
+          </div>
+        </div>
     </div>
     <div class="container-footer">
-      <p>Learn more about the concepts behind FastEstimator</p>
-      <a mat-raised-button color="primary" class="myButton" routerLink="/tutorials/overview">Learn</a>
-    </div>
+        <p>Learn more about the concepts behind FastEstimator</p>
+        <a mat-raised-button color="primary" class="myButton" routerLink="/tutorials/overview">Learn</a>
+      </div>
   </div>
 
   <div class="container">
@@ -67,63 +85,64 @@
       Every template has step-by-step instructions to ensure you can easily build new AI applications using your own data.
 
     </p>
-    <div class="row">
-      <div class="col-sm">
-        <mat-card class="clickable-card" routerLink = "/examples/image_classification/lenet_mnist">
-          <div class="card-header">
-            <div>
-              <mat-card-title>
-                  Handwritten Digit Classification
-                </mat-card-title>
-                <mat-card-subtitle>
-                  LeNet, MNIST dataset
-                </mat-card-subtitle>
-            </div>
-          </div>
-          <div class="card-content">
-              <img src="assets/example/image_classification/lenet_mnist_files/lenet_mnist_29_1.png" class="card-image">
-              <mat-card-content>
-                Train a LeNet neural network to classify MNIST handwritten digital number. 
-              </mat-card-content>
-          </div>
-        </mat-card>
-      </div>
-      <div class="col-sm">
-          <mat-card class="clickable-card" routerLink="/examples/semantic_segmentation/unet_montgomery">
+    <div class="grid-content">
+      <div class="row">
+        <div class="col-sm">
+          <mat-card class="clickable-card" routerLink = "/examples/image_classification/lenet_mnist">
             <div class="card-header">
               <div>
                 <mat-card-title>
-                  Lung X-ray Image Segmentation
-                </mat-card-title>
-                <mat-card-subtitle>
-                  Unet, Montgomery dataset  
-                </mat-card-subtitle>
+                    Handwritten Digit Classification
+                  </mat-card-title>
+                  <mat-card-subtitle>
+                    LeNet, MNIST dataset
+                  </mat-card-subtitle>
               </div>
             </div>
             <div class="card-content">
-                <img src="assets/example/semantic_segmentation/unet_montgomery_files/unet_montgomery_32_0.png" class="card-image">
-              Train a neural network to label the region of patient lung from a X-ray images.  
+                <img src="assets/example/image_classification/lenet_mnist_files/lenet_mnist_29_1.png" class="card-image">
+                <mat-card-content>
+                  Train a LeNet neural network to classify MNIST handwritten digital number. 
+                </mat-card-content>
             </div>
           </mat-card>
-      </div>
-      <div class="col-sm">
-        <mat-card class="clickable-card" routerLink="/examples/style_transfer/fst_coco">
-          <div class="card-header">
-            <div>
-              <mat-card-title>
-                Fast Style Transfer
-              </mat-card-title>
-              <mat-card-subtitle>
-                Modified ResNet, COCO2014 dataset   
-              </mat-card-subtitle>
+        </div>
+        <div class="col-sm">
+            <mat-card class="clickable-card" routerLink="/examples/semantic_segmentation/unet_montgomery">
+              <div class="card-header">
+                <div>
+                  <mat-card-title>
+                    Lung X-ray Image Segmentation
+                  </mat-card-title>
+                  <mat-card-subtitle>
+                    Unet, Montgomery dataset  
+                  </mat-card-subtitle>
+                </div>
+              </div>
+              <div class="card-content">
+                  <img src="assets/example/semantic_segmentation/unet_montgomery_files/unet_montgomery_32_0.png" class="card-image">
+                Train a neural network to label the region of patient lung from a X-ray images.  
+              </div>
+            </mat-card>
+        </div>
+        <div class="col-sm">
+          <mat-card class="clickable-card" routerLink="/examples/style_transfer/fst_coco">
+            <div class="card-header">
+              <div>
+                <mat-card-title>
+                  Fast Style Transfer
+                </mat-card-title>
+                <mat-card-subtitle>
+                  Modified ResNet, COCO2014 dataset   
+                </mat-card-subtitle>
+              </div>
+            </div> 
+            <div class="card-content">
+              <img src="assets/example/style_transfer/fst_coco_files/fst_coco_26_0.png" class="card-image">
+              Train a neural network that applies art style on any target image
             </div>
-          </div> 
-          
-          <div class="card-content">
-            <img src="assets/example/style_transfer/fst_coco_files/fst_coco_26_0.png" class="card-image">
-            Train a neural network that applies art style on any target image
-          </div>
-        </mat-card>
+          </mat-card>
+        </div>
       </div>
     </div>
     <div class="container-footer">
