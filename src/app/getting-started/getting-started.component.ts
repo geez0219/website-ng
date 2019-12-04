@@ -26,17 +26,17 @@ export class GettingStartedComponent implements OnInit {
     this.particleStyle = {
     'position': 'absolute',
     'width': '100%',
-    'height': '340px',
+    'height': '450px',
     'background-repeat': 'no-repeat',
     'background-color': '#23153c'
     }
     this.particleParams = {
       "particles": {
         "number": {
-          "value": 199,
+          "value": 150,
           "density": {
             "enable": true,
-            "value_area": 750
+            "value_area": 650
           }
         },
         "color": {
