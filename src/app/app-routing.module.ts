@@ -26,6 +26,7 @@ const routes: Routes = [
     ],
     runGuardsAndResolvers: "always" },
   { path: 'install', component: InstallComponent},
+  { path: 'community', component: CommunityComponent},
   { path: '**', component: PageNotFoundComponent, data: {name: 'PageNotFound'}},
 ];
 

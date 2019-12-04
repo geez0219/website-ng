@@ -24,6 +24,10 @@
             <div class="rise-block"> </div>
         </li>
         <li class="nav-item">
+            <a (click)="preRoute('community')" [ngClass]="{'selected-title': selected==='community'}" class="nav-item nav-link active tab" routerLink="/community">Community</a>
+            <div class="rise-block"> </div>
+        </li>
+        <li class="nav-item">
             <a class="nav-item nav-link active" href="https://github.com/fastestimator/fastestimator" target="_blank">
               <img src="assets/images/GitHub-Mark-32px.png">
             </a>
