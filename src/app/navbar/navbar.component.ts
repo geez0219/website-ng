@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, HostBinding } from '@angular/core';
+import { Component, OnInit, Input, HostBinding, HostListener } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatDialog} from '@angular/material/dialog';
@@ -10,12 +10,13 @@ import { GlobalService } from '../global.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
+
 export class NavbarComponent implements OnInit {
   isNavbarCollapsed=true;
   selected: string;
-  searchContent:any
+  searchContent:any;
   dialogRef: any = null;
-  
+
   structureHeaderDict = {
     'Content-Type': 'application/json',
     'Accept': "application/json, text/plain",
@@ -29,8 +30,8 @@ export class NavbarComponent implements OnInit {
   @HostBinding('class.loading')
   loading = false;
 
-  constructor(private router: Router, 
-              private http: HttpClient, 
+  constructor(private router: Router,
+              private http: HttpClient,
               public dialog: MatDialog,
               private globalService: GlobalService) {
   }

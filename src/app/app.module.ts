@@ -25,7 +25,8 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
 import { ExampleComponent } from './example/example.component';
 import { SearchComponent } from './search/search.component';
 import { FooterComponent } from './footer/footer.component';
- 
+import { ParticlesModule } from 'angular-particle';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +42,7 @@ import { FooterComponent } from './footer/footer.component';
     ExampleComponent,
     DialogComponent,
     SearchComponent,
-    FooterComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -52,6 +53,7 @@ import { FooterComponent } from './footer/footer.component';
     NgbModule,
     MarkdownModule.forRoot(),
     BrowserAnimationsModule,
+    ParticlesModule,
 
     MatToolbarModule,
     MatSidenavModule,
