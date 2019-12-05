@@ -7,6 +7,8 @@ import { ApiComponent } from './api/api.component';
 import { InstallComponent } from './install/install.component';
 import { CommunityComponent } from './community/community.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SlackFormComponent } from './slack-form/slack-form.component';
+
 
 const routes: Routes = [
   { path: '', component: GettingStartedComponent },
@@ -27,6 +29,7 @@ const routes: Routes = [
     runGuardsAndResolvers: "always" },
   { path: 'install', component: InstallComponent},
   { path: 'community', component: CommunityComponent},
+  { path: 'community/slack', component: SlackFormComponent},
   { path: '**', component: PageNotFoundComponent, data: {name: 'PageNotFound'}},
 ];
 
