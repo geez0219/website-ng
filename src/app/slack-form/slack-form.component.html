@@ -1,13 +1,38 @@
 <div class="content">
   <div class="container">
-    <!-- <form method="POST" action="/submit-form">
-      <input type="text" name="username" />
-      <input type="submit" />
-    </form> -->
     
     <form #form action="/submit-form" method='post'>
-      <input type="text" name="username" />
-      <button type="submit" class="btn btn-success" (click)="form.submit()">Submit</button>
+      <div class="form-group">
+        <label for="email"> Email address</label>
+        <input required ngModel #email="ngModel" id="email" type="text" class="form-control" name="subject">  
+        <div class="alert alert-danger" *ngIf="hasError && !email.valid"> email address is required </div>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="purpose" id="exampleRadios1" value="join to contribute" (click)="clickRadio(purposeOther2.checked)">
+        <label class="form-check-label" for="exampleRadios1">
+          Join to contribute
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="purpose" id="exampleRadios2" value="join to learn" (click)="clickRadio(purposeOther2.checked)">
+        <label class="form-check-label" for="exampleRadios2">
+          Joint to learn
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" ngModel #purpseOther="ngModel" #purposeOther2 type="radio" name="purpose" id="exampleRadios3" value="other" (click)="clickRadio(purposeOther2.checked)">
+        <label class="form-check-label" for="exampleRadios3">
+            Other
+        </label>
+      </div>
+      <input required ngModel id="other-purpose" type="text" class="form-control" name="other-purpose" [disabled]="disabled" [(ngModel)]="otherPurposeValue">
+
+      <button class="btn btn-primary" (click)="validateAndSubmit([email], form)">Submit</button>
+
+
     </form>
+
   </div>
 </div>
+
+
