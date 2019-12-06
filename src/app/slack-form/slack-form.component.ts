@@ -6,44 +6,43 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./slack-form.component.css']
 })
 export class SlackFormComponent implements OnInit {
-
-  testvalue: any;
   hasError:boolean;
-  disabled:boolean = true;
+  disabledPurpose:boolean = true;
+  disabledExp:boolean = true;
   otherPurposeValue:string = "";
+  otherExpValue:string = "";
   constructor() { }
 
   ngOnInit() {
   }
 
-  onClick(content){
-    this.testvalue=content;
-  }
-
   log(content){
     console.log(content);
   }
-  validateAndSubmit(formControlList, form){
-    console.log(formControlList);
 
-    for (var i=0;i<formControlList.length; i++){
-      if(!formControlList[i].valid){
+  validateAndSubmit(boolList, form){
+  // boolList need to be all true to passs the validation
+    for (var i=0;i<boolList.length; i++){
+      if(!boolList[i]){
         this.hasError = true;
         return ;
       }
     }
-
     form.submit();
   }
 
-  toggle(){
-    this.disabled = !this.disabled;
-  }
-
-  clickRadio(x:boolean){
+  clickRadioPurpose(x:boolean){
     if(!x){
       this.otherPurposeValue = "";
     }
-    this.disabled = !x;
+    this.disabledPurpose = !x;
   }
+
+  clickRadioExp(x:boolean){
+    if(!x){
+      this.otherExpValue = "";
+    }
+    this.disabledExp = !x;
+  }
+
 }

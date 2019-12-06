@@ -3,35 +3,65 @@
     
     <form #form action="/submit-form" method='post'>
       <div class="form-group">
-        <label for="email"> Email address</label>
-        <input required ngModel #email="ngModel" id="email" type="text" class="form-control" name="subject">  
-        <div class="alert alert-danger" *ngIf="hasError && !email.valid"> email address is required </div>
+        <label for="email"> Email address </label>
+        <input required ngModel email #email="ngModel" id="email" type="email" class="form-control" name="email">  
+        <div class="alert alert-danger" *ngIf="hasError && !email.valid"> The email address is not valid. </div>
       </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="purpose" id="exampleRadios1" value="join to contribute" (click)="clickRadio(purposeOther2.checked)">
-        <label class="form-check-label" for="exampleRadios1">
-          Join to contribute
-        </label>
+      <div>
+        <p> What is your primary purpose to join?</p>
+        <div class="form-check">
+          <input required class="form-check-input" ngModel type="radio" name="purpose" id="exampleRadios1" 
+            value="join to contribute" (click)="clickRadioPurpose(purposeOther2.checked)">
+          <label class="form-check-label" for="exampleRadios1">
+            Join to contribute.
+          </label>
+        </div>
+        <div class="form-check">
+          <input required class="form-check-input" ngModel type="radio" name="purpose" id="exampleRadios2" 
+            value="join to learn" (click)="clickRadioPurpose(purposeOther2.checked)">
+          <label class="form-check-label" for="exampleRadios2">
+            Join to learn.
+          </label>
+        </div>
+        <div class="form-check">
+          <input required class="form-check-input" ngModel #purposeOther="ngModel" #purposeOther2 type="radio" name="purpose" 
+            id="exampleRadios3" value="other" (click)="clickRadioPurpose(purposeOther2.checked)">
+          <label class="form-check-label" for="exampleRadios3">
+              Other
+          </label>
+        </div> 
+        <input required id="other-purpose" type="text" class="form-control" name="otherPurpose" 
+          [disabled]="disabledPurpose" [(ngModel)]="otherPurposeValue">
+        <div class="alert alert-danger" *ngIf="hasError && !purposeOther.valid"> Need to select one.  </div>
+        <div class="alert alert-danger" *ngIf="hasError && purposeOther2.checked && otherPurposeValue==''"> Need to fill the blank.  </div>
       </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="purpose" id="exampleRadios2" value="join to learn" (click)="clickRadio(purposeOther2.checked)">
-        <label class="form-check-label" for="exampleRadios2">
-          Joint to learn
-        </label>
+  
+      <div>
+        <p> Have you contributed to any open source ML based framework? </p>
+        <div class="form-check">
+          <input required class="form-check-input" ngModel type="radio" name="exp" id="expRadios1" 
+            value="no" (click)="clickRadioExp(exp2.checked)">
+          <label class="form-check-label" for="expRadios1"> No </label>
+        
+        </div>
+        <div class="form-check">
+          <input required class="form-check-input" ngModel #exp="ngModel" #exp2 type="radio" name="exp" id="expRadios2" 
+            value="yes" (click)="clickRadioExp(exp2.checked)">
+          <label class="form-check-label" for="expRadios2"> Yes and it is ...</label>
+        </div>
+        <input required id="other-exp" type="text" class="form-control" name="otherExp" 
+          [disabled]="disabledExp" [(ngModel)]="otherExpValue">
+        <div class="alert alert-danger" *ngIf="hasError && !exp.valid"> Need to select one.  </div>
+        <div class="alert alert-danger" *ngIf="hasError && exp2.checked && otherExpValue==''"> Need to fill the blank.  </div>
       </div>
-      <div class="form-check">
-        <input class="form-check-input" ngModel #purpseOther="ngModel" #purposeOther2 type="radio" name="purpose" id="exampleRadios3" value="other" (click)="clickRadio(purposeOther2.checked)">
-        <label class="form-check-label" for="exampleRadios3">
-            Other
-        </label>
-      </div>
-      <input required ngModel id="other-purpose" type="text" class="form-control" name="other-purpose" [disabled]="disabled" [(ngModel)]="otherPurposeValue">
 
-      <button class="btn btn-primary" (click)="validateAndSubmit([email], form)">Submit</button>
-
+      <button class="btn btn-primary" (click)="validateAndSubmit([email.valid, 
+                                                                  purposeOther.valid, 
+                                                                  exp.valid,
+                                                                  !(purposeOther2.checked && otherPurposeValue==''),
+                                                                  !(exp2.checked && otherExpValue=='')], form)">Submit</button>
 
     </form>
-
   </div>
 </div>
 

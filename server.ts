@@ -59,11 +59,11 @@ app.post('/submit-form', (req, res) => {
   console.log("request came");
   let content = req.body;
   console.log(req.body);
-  res.end();
+  // res.end();
 
-  // sendMail(content, info => {
-  //   res.send(info);
-  // });
+  sendMail(content, info => {
+    res.send(info);
+  });
 })
 
 // Example Express Rest API endpoints
@@ -87,12 +87,12 @@ app.listen(PORT, () => {
 async function sendMail(content, callback) {
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
+    host: "email-smtp.us-west-2.amazonaws.com",
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-      user: "fastestimator.dev@gmail.com",
-      pass: "Acc3ssD3nied"
+      user: "AKIAUPT4I4DGZLRPS55L",
+      pass: "BJbE8q27Z6WmeskYId5aF+nvwB5W9HCzI+p/WuO08Xpt"
     }
   });
 
@@ -100,8 +100,16 @@ async function sendMail(content, callback) {
     from: '"slack channel join request" <fastestimator.dev@gmail.com>', // sender address
     to: "fastestimator.dev@gmail.com", // list of receivers
     subject: "slack channel join request from " + content.email, // Subject line
-    html: `<h1>Hi</h1><br>
-    <h4>Thanks for joining us</h4>`
+    html: `<p> email: ${content.email} </p>
+          <ul>
+            <li> What is your primary purpose to join? <br>
+                ${content.purpose}, ${content.otherPurpose}
+            </li>
+
+            <li> Have you contributed to any open source ML based framework? <br>
+                ${content.exp}, ${content.otherExp}
+          </ul> 
+      `
   };
 
   // send mail with defined transport object
