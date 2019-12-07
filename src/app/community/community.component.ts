@@ -15,7 +15,9 @@ export class CommunityComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      this.showMessage(params.slackEmailResponse);
+      if(params.slackEmailResponse){
+        this.showMessage(params.slackEmailResponse);
+      }
     });
   }
 
