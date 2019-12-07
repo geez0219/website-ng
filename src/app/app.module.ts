@@ -26,6 +26,7 @@ import { ExampleComponent } from './example/example.component';
 import { SearchComponent } from './search/search.component';
 import { FooterComponent } from './footer/footer.component';
 import { ParticlesModule } from 'angular-particle';
+import { SlackFormComponent } from './slack-form/slack-form.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ParticlesModule } from 'angular-particle';
     ExampleComponent,
     DialogComponent,
     SearchComponent,
-    FooterComponent
+    FooterComponent,
+    SlackFormComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
