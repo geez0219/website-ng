@@ -2,15 +2,12 @@ import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 
 import { NestedTreeControl } from '@angular/cdk/tree';
-import { MatTreeNestedDataSource, MatTreeModule, MatTreeNode } from '@angular/material/tree';
+import { MatSidenav, MatTreeNestedDataSource } from '@angular/material';
 
 import { Example } from '../example';
-import { MatSidenav} from '@angular/material';
-import { MatCardModule } from '@angular/material/card';
-
-import { Title } from '@angular/platform-browser';
 import { GlobalService } from '../global.service';
 
 @Component({
