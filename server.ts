@@ -58,11 +58,11 @@ app.post('/submit-form', (req, res) => {
 
   console.log("request came");
   let content = req.body;
-  console.log(req.body);
   // res.end();
 
   sendMail(content, info => {
-    res.send(info);
+    // parse the 250 code from info.response
+    res.redirect('/community?slackEmailResponse='+info.response.split(' ')[0]);
   });
 })
 
@@ -114,6 +114,5 @@ async function sendMail(content, callback) {
 
   // send mail with defined transport object
   let info = await transporter.sendMail(mailOptions);
-
   callback(info);
 }

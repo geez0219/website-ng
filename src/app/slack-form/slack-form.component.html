@@ -1,14 +1,24 @@
 <div class="content">
   <div class="container">
-    
+    <div class="heading">
+      <div class="title">
+          Slack Channel Invitation Form
+        </div>
+        <div class="subhead">
+          Thank you for the anticipation of Fastestimator.
+          Before joining the slack channel, here is a form need to be completed. You will receive an invitation email as soon as the review is done.
+          (<em class="star"> *</em> means required section)
+        </div>
+    </div>
+
     <form #form action="/submit-form" method='post'>
       <div class="form-group">
-        <label for="email"> Email address </label>
+        <div class="question"> 1. Email address <em class="star">*</em></div>
         <input required ngModel email #email="ngModel" id="email" type="email" class="form-control" name="email">  
         <div class="alert alert-danger" *ngIf="hasError && !email.valid"> The email address is not valid. </div>
       </div>
-      <div>
-        <p> What is your primary purpose to join?</p>
+      <div class="form-group"> 
+        <div class="question"> 2. What is your primary purpose to join? <em class="star">*</em></div>
         <div class="form-check">
           <input required class="form-check-input" ngModel type="radio" name="purpose" id="exampleRadios1" 
             value="join to contribute" (click)="clickRadioPurpose(purposeOther2.checked)">
@@ -36,8 +46,8 @@
         <div class="alert alert-danger" *ngIf="hasError && purposeOther2.checked && otherPurposeValue==''"> Need to fill the blank.  </div>
       </div>
   
-      <div>
-        <p> Have you contributed to any open source ML based framework? </p>
+      <div class="form-group">
+        <div class="question"> 3. Have you contributed to any open source ML-based framework? <em class="star">*</em></div>
         <div class="form-check">
           <input required class="form-check-input" ngModel type="radio" name="exp" id="expRadios1" 
             value="no" (click)="clickRadioExp(exp2.checked)">
@@ -60,7 +70,6 @@
                                                                   exp.valid,
                                                                   !(purposeOther2.checked && otherPurposeValue==''),
                                                                   !(exp2.checked && otherExpValue=='')], form)">Submit</button>
-
     </form>
   </div>
 </div>
