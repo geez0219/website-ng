@@ -1,4 +1,4 @@
-.head-container{
+.head-container {
     overflow:visible;
     background: #fff;
     border-bottom: 3px solid #2A7BBA;
@@ -13,7 +13,7 @@ input {
     margin-right: 16px;
 }
 
-nav div ul li a{
+nav div ul li a {
     /* color: #ccc; */
      color: rgb(38, 56, 66);
     background-color: inherit;
@@ -24,12 +24,12 @@ nav div ul li a{
     top:5%;
 }
 
-.selected-title, nav div ul li a:hover{
+.selected-title, nav div ul li a:hover {
     color:#555557;
     font-weight:bold;
 }
 
-#navbarsDefault{
+#navbarsDefault {
     min-height: 3rem;
 }
 
@@ -47,12 +47,12 @@ nav div ul li a{
     height: auto;
 }
 
-.nav-item{
+.nav-item {
     position: relative;
 }
 
 
-.rise-block{
+.rise-block {
     background: rgba(42, 124, 186, 0.692);
     height: 0%;
     width: 100%;
@@ -67,7 +67,7 @@ nav div ul li a{
     transition-timing-function: ease-out;
 }
 
-.nav-item:hover .rise-block{
+.nav-item:hover .rise-block {
     height: 100%;
 }
 

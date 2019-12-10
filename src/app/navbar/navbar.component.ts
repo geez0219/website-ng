@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatDialog} from '@angular/material/dialog';
 import { DialogComponent} from '../dialog/dialog.component'
 import { GlobalService } from '../global.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +13,7 @@ import { GlobalService } from '../global.service';
 })
 
 export class NavbarComponent implements OnInit {
-  isNavbarCollapsed=true;
+  isNavbarCollapsed = true;
   selected: string;
   searchContent:any;
   dialogRef: any = null;
@@ -30,10 +31,29 @@ export class NavbarComponent implements OnInit {
   @HostBinding('class.loading')
   loading = false;
 
+  minWidth: number = 1150;
+  screenWidth: number;
+  private screenWidth$ = new BehaviorSubject<number>(window.innerWidth);
+  
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.screenWidth$.next(event.target.innerWidth);
+    // console.log(this.screenWidth);
+    // if (this.screenWidth < this.minWidth) {
+    //   this.isNavbarCollapsed = true;
+    // }
+    // else{
+    //   this.isNavbarCollapsed = false;
+    // }
+  }
+
   constructor(private router: Router,
               private http: HttpClient,
               public dialog: MatDialog,
               private globalService: GlobalService) {
+    this.screenWidth$.subscribe(width => {
+      this.screenWidth = width;
+    });
   }
 
   ngOnInit() {
