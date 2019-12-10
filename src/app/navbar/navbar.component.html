@@ -31,19 +31,22 @@
         <div class="rise-block"> </div>
       </li>
       <li class="nav-item">
-          <a (click)="preRoute('community')" [ngClass]="{'selected-title': selected==='community'}"
-            class="nav-item nav-link active tab" routerLink="/community">Community</a>
-          <div class="rise-block"> </div>
-        </li>
-      <li class="nav-item">
-        <a class="nav-item nav-link active" href="https://github.com/fastestimator/fastestimator" target="_blank">
-          <img src="assets/images/GitHub-Mark-32px.png">
-        </a>
+        <a (click)="preRoute('community')" [ngClass]="{'selected-title': selected==='community'}"
+          class="nav-item nav-link active tab" routerLink="/community">Community</a>
+        <div class="rise-block"> </div>
       </li>
     </ul>
+
+    <button mat-button [matMenuTriggerFor]="menu">More<mat-icon aria-hidden="true" role="img" class="mat-icon notranslate material-icons mat-icon-no-color">arrow_drop_down</mat-icon></button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
+
     <form class="form-inline mr-auto .hidden-xs-down">
       <app-search></app-search>
     </form>
+
   </div>
   
 </nav>

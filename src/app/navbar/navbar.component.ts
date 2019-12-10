@@ -38,13 +38,13 @@ export class NavbarComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.screenWidth$.next(event.target.innerWidth);
-    console.log(this.screenWidth);
-    if (this.screenWidth < this.minWidth) {
-      this.isNavbarCollapsed = true;
-    }
-    else{
-      this.isNavbarCollapsed = false;
-    }
+    // console.log(this.screenWidth);
+    // if (this.screenWidth < this.minWidth) {
+    //   this.isNavbarCollapsed = true;
+    // }
+    // else{
+    //   this.isNavbarCollapsed = false;
+    // }
   }
 
   constructor(private router: Router,

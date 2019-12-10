@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MarkdownModule } from 'ngx-markdown';
 import { ClipboardModule } from 'ngx-clipboard';
-import { MatProgressBarModule, MatNativeDateModule, MatCardModule, MatDialogModule, MatSnackBarModule, MatTreeModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from  '@angular/material';
+import { MatMenuModule, MatProgressBarModule, MatNativeDateModule, MatCardModule, MatDialogModule, MatSnackBarModule, MatTreeModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from  '@angular/material';
 
 import { WINDOW_PROVIDERS } from './window-provider/window-provider.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -69,6 +69,7 @@ import { SlackFormComponent } from './slack-form/slack-form.component';
     MatDialogModule,
     MatCardModule,
     MatProgressBarModule,
+    MatMenuModule,
   ],
   providers: [WINDOW_PROVIDERS],
   bootstrap: [AppComponent],
