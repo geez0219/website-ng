@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, HostBinding, HostListener } from '@angular/core';
+import { Component, OnInit,
+  HostBinding, HostListener, ElementRef, QueryList, ViewChildren, ViewChild, AfterViewInit} from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatDialog} from '@angular/material/dialog';
@@ -12,11 +13,22 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./navbar.component.css']
 })
 
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, AfterViewInit {
   isNavbarCollapsed = true;
+  isMathidden = true;
   selected: string;
   searchContent:any;
   dialogRef: any = null;
+  tabList = [{name: "Install", routerLink: "/install", preRoute: "install", hidden:false},
+             {name: "Tutorials", routerLink: "/tutorials/overview", preRoute: "tutorials", hidden:false},
+             {name: "Examples", routerLink: "/examples/overview", preRoute: "examples", hidden:false},
+             {name: "API", routerLink: "/api/fe/Estimator", preRoute: "api", hidden:false},
+             {name: "Community", routerLink: "/community", preRoute: "community", hidden:false}]
+
+  @ViewChildren('tabDOM') tabDOMs: QueryList<ElementRef>;
+  @ViewChild('logo', {static:true}) logoDOM: ElementRef;
+  tabBreakList:number[] = new Array(this.tabList.length);
+  firstTabHideIndex:number;
 
   structureHeaderDict = {
     'Content-Type': 'application/json',
@@ -31,20 +43,16 @@ export class NavbarComponent implements OnInit {
   @HostBinding('class.loading')
   loading = false;
 
-  minWidth: number = 1150;
+  minWidth: number = 1200;
   screenWidth: number;
   private screenWidth$ = new BehaviorSubject<number>(window.innerWidth);
   
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.screenWidth$.next(event.target.innerWidth);
-    // console.log(this.screenWidth);
-    // if (this.screenWidth < this.minWidth) {
-    //   this.isNavbarCollapsed = true;
-    // }
-    // else{
-    //   this.isNavbarCollapsed = false;
-    // }
+    this.checkBreaking();
+    this.dealBreaking();
+    console.log(this.screenWidth);
   }
 
   constructor(private router: Router,
@@ -67,6 +75,16 @@ export class NavbarComponent implements OnInit {
     this.globalService.change.subscribe(loading => {
       this.loading = loading;
     });
+
+    this.screenWidth$.subscribe(width => {
+      this.screenWidth = width;
+    });
+  }
+
+  ngAfterViewInit(){
+    // measure the navbar tab length and get the breaking points
+    this.getBreakPoint();
+    this.checkBreaking();
   }
 
   preRoute(newSelection: string) {
@@ -87,5 +105,41 @@ export class NavbarComponent implements OnInit {
         data: data
       });
     })
+  }
+
+  logWidth(){
+    console.log(this.tabBreakList);
+  }
+
+  getBreakPoint(){
+    var tabArray = this.tabDOMs.toArray();
+    this.tabBreakList[0] = this.logoDOM.nativeElement.offsetWidth + tabArray[0].nativeElement.offsetWidth;
+
+    for (var i=1;i<tabArray.length;i++){
+      this.tabBreakList[i] = this.tabBreakList[i-1] + tabArray[i].nativeElement.offsetWidth;
+    }
+  }
+
+  checkBreaking(){
+    for(var i=0;i<this.tabBreakList.length;i++){
+      if(this.screenWidth < this.tabBreakList[i]){
+        this.firstTabHideIndex = i;
+        return;
+      }
+      this.firstTabHideIndex = this.tabBreakList.length;
+    }
+  }
+
+  dealBreaking(){
+    console.log(this.firstTabHideIndex);
+
+    for(var i=0;i<this.tabList.length;i++){
+      if( i < this.firstTabHideIndex){
+        this.tabList[i].hidden = false;
+      }
+      else{
+        this.tabList[i].hidden = true;
+      }
+    }
   }
 }
