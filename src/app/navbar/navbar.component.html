@@ -9,7 +9,7 @@
           class="nav-item nav-link active" [routerLink]="tab.routerLink" [hidden]="tab.hidden || isSearchExpanded "> {{tab.name}}</a>
         <div class="rise-block"> </div>
       </li>
-      <button #moreDOM mat-button [matMenuTriggerFor]="menu" style="outline:none">
+      <button #moreDOM mat-button [matMenuTriggerFor]="menu" style="outline:none" [hidden]="isMoreHidden || isSearchExpanded">
         More
         <mat-icon aria-hidden="true" role="img" class="mat-icon notranslate material-icons mat-icon-no-color">
           arrow_drop_down
@@ -18,14 +18,17 @@
       <mat-menu #menu="matMenu">
         <button  *ngFor="let tab of tabList" mat-menu-item [routerLink]="tab.routerLink" [hidden]="!tab.hidden"
         (click)="preRoute(tab.preRoute)"> {{tab.name}}</button>
+        <button  mat-menu-item [hidden]="!isSearchIconHidden || !isSearchHidden"
+        (click)="onClick()"> Search</button>
       </mat-menu>
-      <button (click)="onClick()" style="background-color: transparent; border:none; width:50px; outline:none; padding-top:10px"> 
-          <mat-icon aria-hidden="true" role="img" class="mat-icon notranslate material-icons mat-icon-no-color" style="font-size: 2rem; width:inherit; height:inherit">
-              search
-          </mat-icon>
-        </button>
+      <button #searchIconDOM (click)="onClick()" style="background-color: transparent; border:none; width:50px; outline:none; padding-top:10px"> 
+        <mat-icon aria-hidden="true" role="img" class="mat-icon notranslate material-icons mat-icon-no-color" 
+          style="font-size: 2rem; width:inherit; height:inherit" [hidden]="isSearchIconHidden">
+            search
+        </mat-icon>
+      </button>
     </ul>
-    <form #searchDOM class="form-inline .hidden-xs-down" style="width:100%; max-width: 500px;" [hidden]="false">
+    <form #searchDOM class="form-inline .hidden-xs-down" style="width:100%; max-width: 500px;" [hidden]="isSearchHidden && !isSearchExpanded">
       <app-search style="width:100%"></app-search>
     </form>
     
