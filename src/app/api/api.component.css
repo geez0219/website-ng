@@ -77,7 +77,6 @@
     font-weight: bold;
     text-decoration: underline;
     background-color: #f3f3f3;
-
 }
 
 .hide {
@@ -87,9 +86,16 @@
 
 button { outline: none; }
 
+.matContent{
+    min-height: calc(100vh - 6rem);
+    display:flex;
+    flex-direction: column;
+}
+
 .content-wrapper {
     margin: 0 1rem;
-    background-color: #FAFAFA;
+    background-color: white;
+    flex: 1 0 auto;
 }
 
 .content {
@@ -100,6 +106,7 @@ button { outline: none; }
     font-size: 1em;
     max-width: 100%;
     margin: 25px auto;
+    background-color: #FAFAFA;
 }
 
 .grippy {

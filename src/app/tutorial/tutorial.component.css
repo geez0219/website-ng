@@ -66,9 +66,17 @@ li a.focus, li a.hover {
 
 }
 
+.matContent{
+    min-height: calc(100vh - 6rem);
+    display:flex;
+    flex-direction: column;
+}
+
+
 .content-wrapper {
     margin: 0 1rem;
-    background-color: #FAFAFA;
+    background-color: white;
+    flex: 1 0 auto;
 }
 
 .content {
@@ -79,6 +87,7 @@ li a.focus, li a.hover {
     font-size: 1em;
     width: 100%;
     margin: 25px auto;
+    background-color: #FAFAFA;
 }
 
 mat-sidenav-content {

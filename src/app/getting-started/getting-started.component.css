@@ -1,5 +1,15 @@
 .content {
     padding-top: 1rem;
+    min-height: calc(100vh - 6rem);
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    text-align: center;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #F0F0F0;
+    flex: 1 0 auto;
 }
 
 .theme {
@@ -40,12 +50,6 @@
 
 .sub-button:hover{
     box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
-}
-
-.container {
-    text-align: center;
-    padding-bottom: 40px;
-    border-bottom: 1px solid #F0F0F0;
 }
 
 .container-footer {
