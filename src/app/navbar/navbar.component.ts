@@ -1,5 +1,5 @@
 import { Component, OnInit,
-  HostBinding, HostListener, ElementRef, QueryList, ViewChildren, ViewChild, AfterViewInit} from '@angular/core';
+  HostBinding, HostListener, ElementRef, QueryList, ViewChildren, ViewChild, AfterViewInit, ChangeDetectorRef} from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatDialog} from '@angular/material/dialog';
@@ -26,9 +26,12 @@ export class NavbarComponent implements OnInit, AfterViewInit {
              {name: "Community", routerLink: "/community", preRoute: "community", hidden:false}]
 
   @ViewChildren('tabDOM') tabDOMs: QueryList<ElementRef>;
-  @ViewChild('logo', {static:true}) logoDOM: ElementRef;
+  @ViewChild('logoDOM', {static:true}) logoDOM: ElementRef;
+  @ViewChild('moreDOM', {read:ElementRef, static:true}) moreDOM: ElementRef;
+  @ViewChild('searchDOM', {read:ElementRef, static:true}) searchDOM: ElementRef;
   tabBreakList:number[] = new Array(this.tabList.length);
   firstTabHideIndex:number;
+  beforeMeasure = true;
 
   structureHeaderDict = {
     'Content-Type': 'application/json',
@@ -52,13 +55,13 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     this.screenWidth$.next(event.target.innerWidth);
     this.checkBreaking();
     this.dealBreaking();
-    console.log(this.screenWidth);
   }
 
   constructor(private router: Router,
               private http: HttpClient,
               public dialog: MatDialog,
-              private globalService: GlobalService) {
+              private globalService: GlobalService,
+              private cd: ChangeDetectorRef) {
     this.screenWidth$.subscribe(width => {
       this.screenWidth = width;
     });
@@ -84,7 +87,10 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(){
     // measure the navbar tab length and get the breaking points
     this.getBreakPoint();
+    this.beforeMeasure = false;
     this.checkBreaking();
+    this.dealBreaking();
+    this.cd.detectChanges();
   }
 
   preRoute(newSelection: string) {
@@ -113,11 +119,16 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
   getBreakPoint(){
     var tabArray = this.tabDOMs.toArray();
-    this.tabBreakList[0] = this.logoDOM.nativeElement.offsetWidth + tabArray[0].nativeElement.offsetWidth;
+    this.tabBreakList[0] = this.logoDOM.nativeElement.offsetWidth +
+                           this.moreDOM.nativeElement.offsetWidth + 
+                           this.searchDOM.nativeElement.offsetWidth +
+                          tabArray[0].nativeElement.offsetWidth;
 
     for (var i=1;i<tabArray.length;i++){
       this.tabBreakList[i] = this.tabBreakList[i-1] + tabArray[i].nativeElement.offsetWidth;
     }
+
+    console.log(this.moreDOM.nativeElement.offsetWidth);
   }
 
   checkBreaking(){
@@ -131,8 +142,6 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   }
 
   dealBreaking(){
-    console.log(this.firstTabHideIndex);
-
     for(var i=0;i<this.tabList.length;i++){
       if( i < this.firstTabHideIndex){
         this.tabList[i].hidden = false;
@@ -141,5 +150,30 @@ export class NavbarComponent implements OnInit, AfterViewInit {
         this.tabList[i].hidden = true;
       }
     }
+
+    this.moreDOM.nativeElement.hidden = this.getMoreHiddenBool();
   }
+
+  getMoreHiddenBool(){
+    if(this.beforeMeasure){
+      return false;
+    }
+
+    for(var i=0;i<this.tabList.length;i++){
+      if(this.tabList[i].hidden == true){
+        return false;
+      }
+    }
+    return true;
+  }
+
+  // onFocus(){
+  //   var tmp = this.searchDOM.nativeElement;
+  //   for(var i=0;i<15;i++){
+  //     tmp = tmp.children[0];
+  //   }
+  //   console.log(this.searchDOM.nativeElement);
+  //   console.log(tmp);
+  //   console.log(tmp.attributes);
+  // }
 }
