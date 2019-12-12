@@ -32,6 +32,8 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   tabBreakList:number[] = new Array(this.tabList.length);
   firstTabHideIndex:number;
   beforeMeasure = true;
+  isSearchExpanded = false;
+  searchBreak:number;
 
   structureHeaderDict = {
     'Content-Type': 'application/json',
@@ -113,22 +115,17 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     })
   }
 
-  logWidth(){
-    console.log(this.tabBreakList);
-  }
-
   getBreakPoint(){
     var tabArray = this.tabDOMs.toArray();
     this.tabBreakList[0] = this.logoDOM.nativeElement.offsetWidth +
                            this.moreDOM.nativeElement.offsetWidth + 
-                           this.searchDOM.nativeElement.offsetWidth +
-                          tabArray[0].nativeElement.offsetWidth;
+                           tabArray[0].nativeElement.offsetWidth;
 
     for (var i=1;i<tabArray.length;i++){
       this.tabBreakList[i] = this.tabBreakList[i-1] + tabArray[i].nativeElement.offsetWidth;
     }
 
-    console.log(this.moreDOM.nativeElement.offsetWidth);
+    this.searchBreak = this.searchDOM.nativeElement.offsetWidth + this.tabBreakList[tabArray.length-1]; 
   }
 
   checkBreaking(){
@@ -150,9 +147,14 @@ export class NavbarComponent implements OnInit, AfterViewInit {
         this.tabList[i].hidden = true;
       }
     }
-
-    this.moreDOM.nativeElement.hidden = this.getMoreHiddenBool();
+    this.moreDOM.nativeElement.hidden = this.getMoreHiddenBool() || this.isSearchExpanded;
   }
+
+  checkAndDealSearchBreaking(){
+    if(this.screenWidth < this.searchBreak){
+
+    }
+  }  
 
   getMoreHiddenBool(){
     if(this.beforeMeasure){
@@ -176,4 +178,8 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   //   console.log(tmp);
   //   console.log(tmp.attributes);
   // }
+
+  onClick(){
+    this.isSearchExpanded = !this.isSearchExpanded;
+  }
 }

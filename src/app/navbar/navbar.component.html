@@ -1,36 +1,33 @@
 <mat-progress-bar class="mat-progress-bar-buffer highest" *ngIf="loading" mode="indeterminate"></mat-progress-bar>
 
 <nav class="navbar navbar-light fixed-top head-container">
-  <a #logoDOM class="navbar-brand" routerLink="/"><img class="logo" src="assets/images/logo2.png"></a>
-
-  <!-- <button class="navbar-toggler hidden-sm-up" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed"
-    data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button> -->
-
-  <!-- <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="navbarsDefault"> -->
+  <a #logoDOM class="navbar-brand" routerLink="/"><img class="logo" src="assets/images/logo2.png" [hidden]="isSearchExpanded"></a>
   <div style="display:flex; flex-flow: row nowrap; width:100%">
     <ul class="navbar-nav mr-auto">
-      <!-- <li *ngFor="let tab of tabList" class="nav-item tab">
-        <a (click)="preRoute(tab.preRoute)" [ngClass]="{'selected-title': selected===tab.preRoute}"
-          class="nav-item nav-link active" [routerLink]="tab.routerLink"> {{tab.name}}</a>
-        <div class="rise-block"> </div>
-      </li> -->
       <li *ngFor="let tab of tabList" class="nav-item">
         <a #tabDOM (click)="preRoute(tab.preRoute)" [ngClass]="{'selected-title': selected===tab.preRoute}"
-          class="nav-item nav-link active" [routerLink]="tab.routerLink" [hidden]="tab.hidden"> {{tab.name}}</a>
+          class="nav-item nav-link active" [routerLink]="tab.routerLink" [hidden]="tab.hidden || isSearchExpanded "> {{tab.name}}</a>
         <div class="rise-block"> </div>
       </li>
-      <button #moreDOM mat-button [matMenuTriggerFor]="menu">More<mat-icon aria-hidden="true" role="img" class="mat-icon notranslate material-icons mat-icon-no-color">arrow_drop_down</mat-icon></button>
+      <button #moreDOM mat-button [matMenuTriggerFor]="menu" style="outline:none">
+        More
+        <mat-icon aria-hidden="true" role="img" class="mat-icon notranslate material-icons mat-icon-no-color">
+          arrow_drop_down
+        </mat-icon>
+      </button>
       <mat-menu #menu="matMenu">
         <button  *ngFor="let tab of tabList" mat-menu-item [routerLink]="tab.routerLink" [hidden]="!tab.hidden"
         (click)="preRoute(tab.preRoute)"> {{tab.name}}</button>
       </mat-menu>
+      <button (click)="onClick()" style="background-color: transparent; border:none; width:50px; outline:none; padding-top:10px"> 
+          <mat-icon aria-hidden="true" role="img" class="mat-icon notranslate material-icons mat-icon-no-color" style="font-size: 2rem; width:inherit; height:inherit">
+              search
+          </mat-icon>
+        </button>
     </ul>
-
-
-    <form #searchDOM class="form-inline .hidden-xs-down" style="width:100%; max-width: 500px;">
+    <form #searchDOM class="form-inline .hidden-xs-down" style="width:100%; max-width: 500px;" [hidden]="false">
       <app-search style="width:100%"></app-search>
     </form>
+    
   </div>
 </nav>
