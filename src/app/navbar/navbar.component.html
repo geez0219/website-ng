@@ -9,7 +9,7 @@
           class="nav-item nav-link active" [routerLink]="tab.routerLink" [hidden]="tab.hidden || isSearchExpanded "> {{tab.name}}</a>
         <div class="rise-block"> </div>
       </li>
-      <button #moreDOM mat-button [matMenuTriggerFor]="menu" style="outline:none" [hidden]="isMoreHidden || isSearchExpanded">
+      <button #moreDOM mat-button [matMenuTriggerFor]="menu" style="outline:none; font-size:1rem; font-weight:400" [hidden]="isMoreHidden || isSearchExpanded">
         More
         <mat-icon aria-hidden="true" role="img" class="mat-icon notranslate material-icons mat-icon-no-color">
           arrow_drop_down
@@ -18,12 +18,20 @@
       <mat-menu #menu="matMenu">
         <button  *ngFor="let tab of tabList" mat-menu-item [routerLink]="tab.routerLink" [hidden]="!tab.hidden"
         (click)="preRoute(tab.preRoute)"> {{tab.name}}</button>
-        <button  mat-menu-item [hidden]="!isSearchIconHidden || !isSearchHidden"
-        (click)="onClick()"> Search</button>
+        <button  mat-menu-item [hidden]="!(isSearchIconHidden && isSearchHidden)"
+        (click)="expandSearch()"> Search</button>
       </mat-menu>
-      <button #searchIconDOM (click)="onClick()" style="background-color: transparent; border:none; width:50px; outline:none; padding-top:10px"> 
+
+      <button (click)="closeSearch()" style="background-color: transparent; border:none; outline:none; padding-top:10px"> 
         <mat-icon aria-hidden="true" role="img" class="mat-icon notranslate material-icons mat-icon-no-color" 
-          style="font-size: 2rem; width:inherit; height:inherit" [hidden]="isSearchIconHidden">
+          style="font-size: 2rem; width:inherit; height:inherit" [hidden]="!isSearchExpanded">
+           arrow_back_ios
+        </mat-icon>
+      </button>
+
+      <button #searchIconDOM (click)="expandSearch()" style="background-color: transparent; border:none; outline:none; padding-top:10px"> 
+        <mat-icon aria-hidden="true" role="img" class="mat-icon notranslate material-icons mat-icon-no-color" 
+          style="font-size: 2rem; width:inherit; height:inherit" [hidden]="isSearchIconHidden || isSearchExpanded">
             search
         </mat-icon>
       </button>

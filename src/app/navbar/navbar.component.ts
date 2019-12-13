@@ -123,27 +123,21 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   }
 
   getBreakPoint(){
-    console.log(this.logoDOM.nativeElement.offsetWidth);
-    console.log(this.moreDOM.nativeElement.offsetWidth);
-    console.log(this.searchIconDOM.nativeElement.offsetWidth);
     var tabArray = this.tabDOMs.toArray();
     this.tabBreakList[0] = this.logoDOM.nativeElement.offsetWidth +
                            this.moreDOM.nativeElement.offsetWidth + 
                            this.searchIconDOM.nativeElement.offsetWidth + 
                            this.errorPixel + 
                            tabArray[0].nativeElement.offsetWidth;
-    console.log(tabArray[0].nativeElement.offsetWidth);
 
 
     for (var i=1;i<tabArray.length;i++){
       this.tabBreakList[i] = this.tabBreakList[i-1] + tabArray[i].nativeElement.offsetWidth;
-      console.log(tabArray[i].nativeElement.offsetWidth);
     }
     
     this.tabBreakList[tabArray.length-1] = this.tabBreakList[tabArray.length-1] - this.moreDOM.nativeElement.offsetWidth;
     this.searchBreak = this.searchDOM.nativeElement.offsetWidth + this.tabBreakList[tabArray.length-1] + this.searchIconDOM.nativeElement.offsetWidth; 
     this.searchInMoreBreak = this.logoDOM.nativeElement.offsetWidth + this.moreDOM.nativeElement.offsetWidth + this.searchIconDOM.nativeElement.offsetWidth
-    console.log(this.searchDOM.nativeElement.offsetWidth);
   }
 
   checkBreaking(){
@@ -194,18 +188,11 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     return true;
   }
 
-  // onFocus(){
-  //   var tmp = this.searchDOM.nativeElement;
-  //   for(var i=0;i<15;i++){
-  //     tmp = tmp.children[0];
-  //   }
-  //   console.log(this.searchDOM.nativeElement);
-  //   console.log(tmp);
-  //   console.log(tmp.attributes);
-  // }
+  expandSearch(){
+    this.isSearchExpanded = true;
+  }
 
-  onClick(){
-    this.isSearchExpanded = !this.isSearchExpanded;
-    console.log(this.tabBreakList);
+  closeSearch(){
+    this.isSearchExpanded = false;
   }
 }
