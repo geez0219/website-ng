@@ -29,9 +29,17 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   @ViewChild('logoDOM', {static:true}) logoDOM: ElementRef;
   @ViewChild('moreDOM', {read:ElementRef, static:true}) moreDOM: ElementRef;
   @ViewChild('searchDOM', {read:ElementRef, static:true}) searchDOM: ElementRef;
+  @ViewChild('searchIconDOM', {static:true}) searchIconDOM: ElementRef;
+
   tabBreakList:number[] = new Array(this.tabList.length);
   firstTabHideIndex:number;
-  beforeMeasure = true;
+  isMoreHidden = false;
+  isSearchHidden = false;
+  isSearchIconHidden = false;
+  isSearchExpanded = false;
+  errorPixel:number = 25;
+  searchBreak:number;
+  searchInMoreBreak:number;
 
   structureHeaderDict = {
     'Content-Type': 'application/json',
@@ -55,6 +63,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     this.screenWidth$.next(event.target.innerWidth);
     this.checkBreaking();
     this.dealBreaking();
+    this.checkAndDealSearchBreaking();
   }
 
   constructor(private router: Router,
@@ -87,9 +96,9 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(){
     // measure the navbar tab length and get the breaking points
     this.getBreakPoint();
-    this.beforeMeasure = false;
     this.checkBreaking();
     this.dealBreaking();
+    this.checkAndDealSearchBreaking();
     this.cd.detectChanges();
   }
 
@@ -113,22 +122,22 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     })
   }
 
-  logWidth(){
-    console.log(this.tabBreakList);
-  }
-
   getBreakPoint(){
     var tabArray = this.tabDOMs.toArray();
     this.tabBreakList[0] = this.logoDOM.nativeElement.offsetWidth +
                            this.moreDOM.nativeElement.offsetWidth + 
-                           this.searchDOM.nativeElement.offsetWidth +
-                          tabArray[0].nativeElement.offsetWidth;
+                           this.searchIconDOM.nativeElement.offsetWidth + 
+                           this.errorPixel + 
+                           tabArray[0].nativeElement.offsetWidth;
+
 
     for (var i=1;i<tabArray.length;i++){
       this.tabBreakList[i] = this.tabBreakList[i-1] + tabArray[i].nativeElement.offsetWidth;
     }
-
-    console.log(this.moreDOM.nativeElement.offsetWidth);
+    
+    this.tabBreakList[tabArray.length-1] = this.tabBreakList[tabArray.length-1] - this.moreDOM.nativeElement.offsetWidth;
+    this.searchBreak = this.searchDOM.nativeElement.offsetWidth + this.tabBreakList[tabArray.length-1] + this.searchIconDOM.nativeElement.offsetWidth; 
+    this.searchInMoreBreak = this.logoDOM.nativeElement.offsetWidth + this.moreDOM.nativeElement.offsetWidth + this.searchIconDOM.nativeElement.offsetWidth
   }
 
   checkBreaking(){
@@ -151,14 +160,26 @@ export class NavbarComponent implements OnInit, AfterViewInit {
       }
     }
 
-    this.moreDOM.nativeElement.hidden = this.getMoreHiddenBool();
+    this.isMoreHidden = this.getMoreHiddenBool();
   }
 
-  getMoreHiddenBool(){
-    if(this.beforeMeasure){
-      return false;
+  checkAndDealSearchBreaking(){
+    if(this.screenWidth > this.searchBreak){
+      this.isSearchHidden = false;
+      this.isSearchIconHidden = true;
+    }
+    else if(this.screenWidth > this.searchInMoreBreak){
+      this.isSearchHidden = true;
+      this.isSearchIconHidden = false;
     }
 
+    else{
+      this.isSearchHidden = true;
+      this.isSearchIconHidden = true;
+    }
+  }  
+
+  getMoreHiddenBool(){
     for(var i=0;i<this.tabList.length;i++){
       if(this.tabList[i].hidden == true){
         return false;
@@ -167,13 +188,11 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     return true;
   }
 
-  // onFocus(){
-  //   var tmp = this.searchDOM.nativeElement;
-  //   for(var i=0;i<15;i++){
-  //     tmp = tmp.children[0];
-  //   }
-  //   console.log(this.searchDOM.nativeElement);
-  //   console.log(tmp);
-  //   console.log(tmp.attributes);
-  // }
+  expandSearch(){
+    this.isSearchExpanded = true;
+  }
+
+  closeSearch(){
+    this.isSearchExpanded = false;
+  }
 }
