@@ -29,6 +29,25 @@ pre {
   margin: 0 !important;
   font-size: 120%; }
 
+
+.content {
+    border-style: outset;
+    border-width: 1px;
+    border-radius: 8px 8px;
+    padding: 2em;
+    font-size: 1em;
+    max-width: 100%;
+    margin: 25px auto;
+    background-color: #FAFAFA;
+}
+
+.content-wrapper {
+  margin: 0 1rem;  
+  background-color: white;
+  flex: 1 0 auto;
+  overflow: auto;
+}
+
 .wrapper {
   background-color: #FAFAFA;
   border-color: #d4d2d2;
