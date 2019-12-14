@@ -93,7 +93,8 @@ button { outline: none; }
 }
 
 .content-wrapper {
-    margin: 0 1rem;
+    margin-left: 1.8rem;
+    margin-right: 1rem;
     background-color: white;
     flex: 1 0 auto;
 }
