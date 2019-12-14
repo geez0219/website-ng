@@ -40,6 +40,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   errorPixel:number = 25;
   searchBreak:number;
   searchInMoreBreak:number;
+  searchbarWidth:number = 500;
 
   structureHeaderDict = {
     'Content-Type': 'application/json',
@@ -107,21 +108,6 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     this.selected = newSelection.toLowerCase();
   }
 
-  search(content){
-    var httpPrefix = "https://www.googleapis.com/customsearch/v1?q=";
-    var httpPostfix = "&cx=008491496338527180074:d9p4ksqgel2&key=AIzaSyBLYeHKwpAOftKnYDsBAd4rSmX3VD9EJ7U";
-
-    this.http.get(httpPrefix + content + httpPostfix, this.structureRequestOptions).subscribe(data => {
-      if(this.dialogRef != null){
-        this.dialog.closeAll();
-      }
-      this.dialogRef = this.dialog.open(DialogComponent, {
-        minWidth:'50%',
-        data: data
-      });
-    })
-  }
-
   getBreakPoint(){
     var tabArray = this.tabDOMs.toArray();
     this.tabBreakList[0] = this.logoDOM.nativeElement.offsetWidth +
@@ -136,7 +122,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     }
     
     this.tabBreakList[tabArray.length-1] = this.tabBreakList[tabArray.length-1] - this.moreDOM.nativeElement.offsetWidth;
-    this.searchBreak = this.searchDOM.nativeElement.offsetWidth + this.tabBreakList[tabArray.length-1] + this.searchIconDOM.nativeElement.offsetWidth; 
+    this.searchBreak = this.searchbarWidth + this.tabBreakList[tabArray.length-1] + this.searchIconDOM.nativeElement.offsetWidth; 
     this.searchInMoreBreak = this.logoDOM.nativeElement.offsetWidth + this.moreDOM.nativeElement.offsetWidth + this.searchIconDOM.nativeElement.offsetWidth
   }
 
