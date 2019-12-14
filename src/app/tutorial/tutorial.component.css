@@ -74,7 +74,8 @@ li a.focus, li a.hover {
 
 
 .content-wrapper {
-    margin: 0 1rem;
+    margin-left: 1.8rem;
+    margin-right: 1rem;
     background-color: white;
     flex: 1 0 auto;
 }
@@ -83,9 +84,9 @@ li a.focus, li a.hover {
     border-style: outset;
     border-width: 1px;
     border-radius: 8px 8px;
-    padding: 2.5%;
+    padding: 2em;
     font-size: 1em;
-    width: 100%;
+    max-width: 100%;
     margin: 25px auto;
     background-color: #FAFAFA;
 }
