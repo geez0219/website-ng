@@ -107,7 +107,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     this.isNavbarCollapsed = !this.isNavbarCollapsed;
     this.selected = newSelection.toLowerCase();
   }
-
+                  
   getBreakPoint(){
     var tabArray = this.tabDOMs.toArray();
     this.tabBreakList[0] = this.logoDOM.nativeElement.offsetWidth +

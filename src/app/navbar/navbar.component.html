@@ -17,9 +17,9 @@
       </button>
       <mat-menu #menu="matMenu">
         <button  *ngFor="let tab of tabList" mat-menu-item [routerLink]="tab.routerLink" [hidden]="!tab.hidden"
-        (click)="preRoute(tab.preRoute)"> {{tab.name}}</button>
+        (click)="preRoute(tab.preRoute)" style="outline:none"> {{tab.name}}</button>
         <button  mat-menu-item [hidden]="!(isSearchIconHidden && isSearchHidden)"
-        (click)="expandSearch()"> Search</button>
+        (click)="expandSearch()" style="outline:none"> Search</button>
       </mat-menu>
 
       <button (click)="closeSearch()" style="background-color: transparent; border:none; outline:none; padding-top:10px"> 
