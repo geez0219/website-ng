@@ -87,7 +87,7 @@
     margin-top:2rem;
 }
 
-.row .col-sm {
+.col-sm, .col-lg {
     margin-top: 2rem;
     padding: 0px 30px;
 }
