@@ -1,11 +1,12 @@
 import { Component, OnInit,
-  HostBinding, HostListener, ElementRef, QueryList, ViewChildren, ViewChild, AfterViewInit, ChangeDetectorRef} from '@angular/core';
+  HostBinding, HostListener, ElementRef, QueryList, ViewChildren, ViewChild, AfterViewInit, ChangeDetectorRef, Inject} from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatDialog} from '@angular/material/dialog';
 import { DialogComponent} from '../dialog/dialog.component'
 import { GlobalService } from '../global.service';
 import { BehaviorSubject } from 'rxjs';
+import { DOCUMENT } from '@angular/common'
 
 @Component({
   selector: 'app-navbar',
@@ -30,6 +31,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   @ViewChild('moreDOM', {read:ElementRef, static:true}) moreDOM: ElementRef;
   @ViewChild('searchDOM', {read:ElementRef, static:true}) searchDOM: ElementRef;
   @ViewChild('searchIconDOM', {static:true}) searchIconDOM: ElementRef;
+  @ViewChild('inputDOM', {static:true}) inputDOM:ElementRef;
 
   tabBreakList:number[] = new Array(this.tabList.length);
   firstTabHideIndex:number;
@@ -71,7 +73,9 @@ export class NavbarComponent implements OnInit, AfterViewInit {
               private http: HttpClient,
               public dialog: MatDialog,
               private globalService: GlobalService,
+              @Inject(DOCUMENT) private _document,
               private cd: ChangeDetectorRef) {
+
     this.screenWidth$.subscribe(width => {
       this.screenWidth = width;
     });
@@ -176,6 +180,8 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
   expandSearch(){
     this.isSearchExpanded = true;
+    console.log(this._document.getElementById('gsc-i-id1'));
+    setTimeout(() => this._document.getElementById('gsc-i-id1').focus(), 0);
   }
 
   closeSearch(){
