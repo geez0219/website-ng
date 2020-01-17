@@ -180,8 +180,6 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
   expandSearch(){
     this.isSearchExpanded = true;
-    console.log(this._document.getElementById('gsc-i-id1'));
-    setTimeout(() => this._document.getElementById('gsc-i-id1').focus(), 0);
   }
 
   closeSearch(){
