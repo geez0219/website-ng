@@ -1,1 +1,5 @@
-<div class="gcse-search" enableAutoComplete="true"></div>
+<!-- <div class="gcse-search" enableAutoComplete="true"></div> -->
+
+<div>
+    <input [(ngModel)]="searchText" type="text" (keydown.enter)="search()">
+</div>

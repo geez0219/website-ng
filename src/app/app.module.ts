@@ -27,6 +27,7 @@ import { SearchComponent } from './search/search.component';
 import { FooterComponent } from './footer/footer.component';
 import { ParticlesModule } from 'angular-particle';
 import { SlackFormComponent } from './slack-form/slack-form.component';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { SlackFormComponent } from './slack-form/slack-form.component';
     DialogComponent,
     SearchComponent,
     FooterComponent,
-    SlackFormComponent
+    SlackFormComponent,
+    SearchResultComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -73,6 +75,6 @@ import { SlackFormComponent } from './slack-form/slack-form.component';
   ],
   providers: [WINDOW_PROVIDERS],
   bootstrap: [AppComponent],
-  entryComponents: [SnackbarComponent, DialogComponent]
+  entryComponents: [SnackbarComponent, DialogComponent, SearchResultComponent]
 })
 export class AppModule { }

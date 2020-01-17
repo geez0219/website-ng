@@ -1,0 +1,9 @@
+<div mat-dialog-content>
+    <ul>
+        <li *ngFor="let searchResult of data.hits.hits">
+            <div class="heading"><a href={{searchResult._source.link}}>{{searchResult._source.title}}</a></div>
+            <div class="url"><a href={{searchResult._source.link}}>{{searchResult._source.link}}</a></div>
+            <div class="highlight" [innerHTML]="searchResult.highlight.body[0]"></div>
+        </li>
+    </ul>
+</div>
