@@ -48,7 +48,6 @@ export class SearchComponent implements OnInit{
 
   openDialog(searchResults): void {
     const dialogRef = this.dialog.open(SearchResultComponent, {
-      // height: '400px',
       width: '550px',
       data: searchResults
     });
