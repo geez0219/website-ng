@@ -8,6 +8,7 @@ import { InstallComponent } from './install/install.component';
 import { CommunityComponent } from './community/community.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SlackFormComponent } from './slack-form/slack-form.component';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 
 const routes: Routes = [
@@ -19,7 +20,7 @@ const routes: Routes = [
           component: ApiComponent
       }
     ]},
-  { path: 'examples', 
+  { path: 'examples',
     children: [
       {
         path: "**",
@@ -30,7 +31,9 @@ const routes: Routes = [
   { path: 'install', component: InstallComponent},
   { path: 'community', component: CommunityComponent},
   { path: 'community/slack', component: SlackFormComponent},
+  { path: 'searchresult', component: SearchResultComponent },
   { path: '**', component: PageNotFoundComponent, data: {name: 'PageNotFound'}},
+
 ];
 
 const routerOptions: ExtraOptions = {
