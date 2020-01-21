@@ -24,11 +24,11 @@ export class SearchComponent implements OnInit{
     headers: new HttpHeaders(this.structureHeaderDict),
   };
 
-  constructor(private http: HttpClient, 
+  constructor(private http: HttpClient,
               private router: Router,
               private globalService: GlobalService,
               public dialog: MatDialog) {}
-  
+
   ngOnInit() {}
 
   search() {
@@ -47,13 +47,15 @@ export class SearchComponent implements OnInit{
   }
 
   openDialog(searchResults): void {
-    const dialogRef = this.dialog.open(SearchResultComponent, {
-      width: '550px',
-      data: searchResults
-    });
+    console.log('Search results')
+    this.router.navigate(['searchresult'], {state:searchResults})
+    // const dialogRef = this.dialog.open(SearchResultComponent, {
+    //   width: '550px',
+    //   data: searchResults
+    // });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('The dialog was closed');
+    // });
   }
 }

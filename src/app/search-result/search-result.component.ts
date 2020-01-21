@@ -2,8 +2,6 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 export interface DialogData {
-  animal: string;
-  name: string;
 }
 
 @Component({
@@ -12,16 +10,20 @@ export interface DialogData {
   styleUrls: ['./search-result.component.css']
 })
 export class SearchResultComponent implements OnInit {
-
+  data: any;
   constructor(
-    public dialogRef: MatDialogRef<SearchResultComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+    //public dialogRef: MatDialogRef<SearchResultComponent>,
+    //@Inject(MAT_DIALOG_DATA) public data: DialogData
+    )
+    {}
 
   onNoClick(): void {
-    this.dialogRef.close();
+
   }
 
   ngOnInit() {
+    console.log(history.state)
+    this.data = history.state
   }
 
 }
