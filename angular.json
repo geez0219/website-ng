@@ -28,7 +28,8 @@
               "src/styles.css",
               "node_modules/prismjs/themes/prism-okaidia.css",
               "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css",
-              "node_modules/prismjs/plugins/line-highlight/prism-line-highlight.css"
+              "node_modules/prismjs/plugins/line-highlight/prism-line-highlight.css",
+              "node_modules/katex/dist/katex.min.css"
             ],
             "scripts": [
               "node_modules/marked/lib/marked.js",
@@ -36,9 +37,9 @@
               "node_modules/prismjs/components/prism-python.min.js",
               "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js",
               "node_modules/prismjs/plugins/line-highlight/prism-line-highlight.js",
-              // "src/assets/js/GCSE.js",
-              "src/assets/js/particle.js"
-
+              "src/assets/js/particle.js",
+              "node_modules/marked/lib/marked.js",
+              "node_modules/katex/dist/katex.min.js"
             ]
           },
           "configurations": {
@@ -101,14 +102,17 @@
               "src/styles.css",
               "node_modules/prismjs/themes/prism-okaidia.css",
               "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css",
-              "node_modules/prismjs/plugins/line-highlight/prism-line-highlight.css"
+              "node_modules/prismjs/plugins/line-highlight/prism-line-highlight.css",
+              "node_modules/katex/dist/katex.min.css"
             ],
             "scripts": [
               "node_modules/marked/lib/marked.js",
               "node_modules/prismjs/prism.js",
               "node_modules/prismjs/components/prism-python.min.js",
               "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js",
-              "node_modules/prismjs/plugins/line-highlight/prism-line-highlight.js"
+              "node_modules/prismjs/plugins/line-highlight/prism-line-highlight.js",
+              "node_modules/marked/lib/marked.js",
+              "node_modules/katex/dist/katex.min.js"
             ]
           }
         },
