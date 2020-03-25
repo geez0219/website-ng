@@ -1,6 +1,6 @@
 #!/bin/bash
-TMP_DIR=../../tmp_output
-ANGULAR_ASSETS=$WORKSPACE/src/assets
+TMP_DIR=../../../tmp_output
+ANGULAR_ASSETS=$WORKSPACE/website-ng/src/assets
 echo $TMP_DIR
 echo $ANGULAR_ASSETS
 rm -rf ../../fastestimator
