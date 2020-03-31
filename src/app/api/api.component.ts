@@ -22,6 +22,7 @@ export class ApiComponent implements OnInit {
   selectedAPI: string;
   currentSelection: string;
   currentAPIText: string;
+  currentAPILink: string;
 
   segments: UrlSegment[];
 
@@ -165,6 +166,7 @@ export class ApiComponent implements OnInit {
 
     this.selectedAPI = api.name;
     this.currentSelection = 'assets/api/' + api.name;
+    this.currentAPILink = api.github_link;
 
     this.getSelectedAPIText();
     this.title.setTitle(api.displayName + " | Fastestimator");
