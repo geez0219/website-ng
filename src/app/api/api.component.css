@@ -185,3 +185,8 @@ markdown ::ng-deep table, markdown ::ng-deep th, markdown ::ng-deep td {
 markdown ::ng-deep img {
     max-width: 100%;
 }
+
+.git-button {
+    background-color:#378de5;
+    text-decoration: none;
+}
