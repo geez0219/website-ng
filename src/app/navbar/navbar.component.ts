@@ -42,7 +42,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   errorPixel:number = 25;
   searchBreak:number;
   searchInMoreBreak:number;
-  searchbarWidth:number = 500;
+  searchbarMinWidth:number = 200;
 
   structureHeaderDict = {
     'Content-Type': 'application/json',
@@ -60,7 +60,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   minWidth: number = 1200;
   screenWidth: number;
   private screenWidth$ = new BehaviorSubject<number>(window.innerWidth);
-  
+
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.screenWidth$.next(event.target.innerWidth);
@@ -111,22 +111,22 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     this.isNavbarCollapsed = !this.isNavbarCollapsed;
     this.selected = newSelection.toLowerCase();
   }
-                  
+
   getBreakPoint(){
     var tabArray = this.tabDOMs.toArray();
     this.tabBreakList[0] = this.logoDOM.nativeElement.offsetWidth +
-                           this.moreDOM.nativeElement.offsetWidth + 
-                           this.searchIconDOM.nativeElement.offsetWidth + 
-                           this.errorPixel + 
+                           this.moreDOM.nativeElement.offsetWidth +
+                           this.searchIconDOM.nativeElement.offsetWidth +
+                           this.errorPixel +
                            tabArray[0].nativeElement.offsetWidth;
 
 
     for (var i=1;i<tabArray.length;i++){
       this.tabBreakList[i] = this.tabBreakList[i-1] + tabArray[i].nativeElement.offsetWidth;
     }
-    
+
     this.tabBreakList[tabArray.length-1] = this.tabBreakList[tabArray.length-1] - this.moreDOM.nativeElement.offsetWidth;
-    this.searchBreak = this.searchbarWidth + this.tabBreakList[tabArray.length-1] + this.searchIconDOM.nativeElement.offsetWidth; 
+    this.searchBreak = this.searchbarMinWidth + this.tabBreakList[tabArray.length-1] + this.searchIconDOM.nativeElement.offsetWidth;
     this.searchInMoreBreak = this.logoDOM.nativeElement.offsetWidth + this.moreDOM.nativeElement.offsetWidth + this.searchIconDOM.nativeElement.offsetWidth
   }
 
@@ -167,7 +167,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
       this.isSearchHidden = true;
       this.isSearchIconHidden = true;
     }
-  }  
+  }
 
   getMoreHiddenBool(){
     for(var i=0;i<this.tabList.length;i++){
