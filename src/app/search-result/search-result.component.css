@@ -1,5 +1,5 @@
 .heading a {
-    color: rgb(38, 56, 66);
+    color: #0865bd;
     font-size: 1.25rem;
 }
 
@@ -51,6 +51,7 @@
     font-size: 1rem;
     pointer-events: none;
     cursor: not-allowed;
+    color:#1e8e3e;
 }
 
 .searchqueryheader{

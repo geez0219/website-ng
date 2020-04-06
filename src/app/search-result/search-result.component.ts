@@ -37,7 +37,7 @@ export class SearchResultComponent implements OnInit {
   }
 
   getSearchResults() {
-    var searchURL = "http://35.165.103.176:3200/search/" + this.searchText;
+    var searchURL = "https://search.fastestimator.org:3200/search/" + this.searchText;
 
     this.http.get(searchURL).subscribe(data => {
       console.log(data);
