@@ -32,7 +32,7 @@ export class ApiComponent implements OnInit {
   minWidth: number = 640;
   screenWidth: number;
   private screenWidth$ = new BehaviorSubject<number>(window.innerWidth);
-  
+
   structureHeaderDict = {
     'Content-Type': 'application/json',
     'Accept': "application/json, text/plain",
@@ -125,9 +125,8 @@ export class ApiComponent implements OnInit {
     if (this.apiList) {
       this.loadSelectedAPI();
     } else {
-      this.http.get('assets/api/structure.json', this.structureRequestOptions).subscribe(data => {
+      this.http.get('assets/r1.0/api/structure.json', this.structureRequestOptions).subscribe(data => {
         this.apiList = <API[]>(data);
-        
         this.dataSource.data = this.apiList;
         this.treeControl.dataNodes = this.apiList;
 
@@ -165,7 +164,7 @@ export class ApiComponent implements OnInit {
     window.scroll(0, 0);
 
     this.selectedAPI = api.name;
-    this.currentSelection = 'assets/api/' + api.name;
+    this.currentSelection = 'assets/r1.0/api/' + api.name;
     this.currentAPILink = api.github_link;
 
     this.getSelectedAPIText();
