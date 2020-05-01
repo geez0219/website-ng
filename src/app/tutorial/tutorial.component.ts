@@ -106,7 +106,7 @@ export class TutorialComponent implements OnInit {
     if (this.exampleList) {
       this.loadSelectedExample();
     } else {
-      this.http.get('assets/r1.0/tutorial/structure.json', this.structureRequestOptions).subscribe(data => {
+      this.http.get('assets/branches/r1.0/tutorial/structure.json', this.structureRequestOptions).subscribe(data => {
         this.exampleList = <Example[]>(data);
 
         this.dataSource.data = this.exampleList;
@@ -146,7 +146,7 @@ export class TutorialComponent implements OnInit {
     window.scroll(0, 0);
 
     this.selectedExample = example.name;
-    this.currentSelection = 'assets/r1.0/tutorial/' + example.name;
+    this.currentSelection = 'assets/branches/r1.0/tutorial/' + example.name;
 
     this.getSelectedExampleText();
     this.title.setTitle(example.displayName + " | Fastestimator");

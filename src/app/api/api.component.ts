@@ -126,7 +126,7 @@ export class ApiComponent implements OnInit {
     if (this.apiList) {
       this.loadSelectedAPI();
     } else {
-      this.http.get('assets/r1.0/api/structure.json', this.structureRequestOptions).subscribe(data => {
+      this.http.get('assets/branches/r1.0/api/structure.json', this.structureRequestOptions).subscribe(data => {
         this.apiList = <API[]>(data);
         this.dataSource.data = this.apiList;
         this.treeControl.dataNodes = this.apiList;
@@ -165,7 +165,7 @@ export class ApiComponent implements OnInit {
     window.scroll(0, 0);
 
     this.selectedAPI = api.name;
-    this.currentSelection = 'assets/r1.0/api/' + api.name;
+    this.currentSelection = 'assets/branches/r1.0/api/' + api.name;
     this.currentAPILink = api.sourceurl;
 
     this.getSelectedAPIText();
