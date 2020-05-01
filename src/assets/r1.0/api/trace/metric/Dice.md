@@ -1,13 +1,13 @@
 ## Dice
 ```python
-Dice(true_key, pred_key, threshold=0.5, mode='eval', output_name='dice')
+Dice(true_key:str, pred_key:str, threshold:float=0.5, mode:Union[NoneType, str, List[str]]=('eval', 'test'), output_name:str='Dice') -> None
 ```
-Computes Dice score for binary classification between y_true and y_predict.
+Dice score for binary classification between y_true and y_predicted.
 
 #### Args:
 
-* **true_key (str)** :  Name of the keys in the ground truth label in data pipeline.
-* **pred_key (str, optional)** :  Mame of the keys in predicted label. Default is `None`.
-* **threshold (float, optional)** :  Threshold of the prediction. Defaults to 0.5.
-* **mode (str, optional)** :  Restrict the trace to run only on given modes {'train', 'eval', 'test'}. None will always                    execute. Defaults to 'eval'.
-* **output_name (str, optional)** :  Name of the key to store to the state. Defaults to "dice".    
+* **true_key** :  The key of the ground truth mask.
+* **pred_key** :  The key of the prediction values.
+* **threshold** :  The threshold for binarizing the prediction.
+* **mode** :  What mode(s) to execute this Trace in. For example, "train", "eval", "test", or "infer". To execute            regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument            like "!infer" or "!train".
+* **output_name** :  What to call the output from this trace (for example in the logger output).    

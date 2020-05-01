@@ -1,12 +1,13 @@
 ## Accuracy
 ```python
-Accuracy(true_key, pred_key, mode='eval', output_name='accuracy')
+Accuracy(true_key:str, pred_key:str, mode:Union[str, Set[str]]=('eval', 'test'), output_name:str='accuracy') -> None
 ```
-Calculates accuracy for classification task and report it back to logger.
+A trace which computes the accuracy for a given set of predictions.
+* **Consider using MCC instead** :  https//www.ncbi.nlm.nih.gov/pmc/articles/PMC6941312/
 
 #### Args:
 
-* **true_key (str)** :  Name of the key that corresponds to ground truth in batch dictionary
-* **pred_key (str)** :  Name of the key that corresponds to predicted score in batch dictionary
-* **mode (str, optional)** :  Restrict the trace to run only on given modes {'train', 'eval', 'test'}. None will always                    execute. Defaults to 'eval'.
-* **output_name (str, optional)** :  Name of the key to store to the state. Defaults to "accuracy".    
+* **true_key** :  Name of the key that corresponds to ground truth in the batch dictionary.
+* **pred_key** :  Name of the key that corresponds to predicted score in the batch dictionary.
+* **mode** :  What mode(s) to execute this Trace in. For example, "train", "eval", "test", or "infer". To execute            regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument            like "!infer" or "!train".
+* **output_name** :  What to call the output from this trace (for example in the logger output).    

@@ -1,26 +1,12 @@
 ## Reshape
 ```python
-Reshape(shape, inputs=None, outputs=None, mode=None)
+Reshape(inputs:Union[str, List[str]], outputs:Union[str, List[str]], shape:Union[int, Tuple[int, ...]], mode:Union[NoneType, str, Iterable[str]]='!infer') -> None
 ```
-Preprocessing class for reshaping the data.
+Reshape a input tensor to conform to a given shape.
 
 #### Args:
 
-* **shape** :  target shape.
-* **inputs** :  Name of the key in the dataset that is to be filtered.
-* **outputs** :  Name of the key to be created/used in the dataset to store the results.
-* **mode** :  mode that the filter acts on.    
-
-### forward
-```python
-forward(self, data, state)
-```
-Reshapes data tensor.
-
-#### Args:
-
-* **data** :  Data to be reshaped.
-* **state** :  Information about the current execution context.
-
-#### Returns:
-            Reshaped tensor.        
+* **inputs** :  Key of the input tensor that is to be reshaped.
+* **outputs** :  Key of the output tensor that has been reshaped.
+* **shape** :  Target shape.
+* **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute            regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument            like "!infer" or "!train".    

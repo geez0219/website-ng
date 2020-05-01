@@ -74,6 +74,7 @@ export class ApiComponent implements OnInit {
 
     this.route.url.subscribe((segments: UrlSegment[]) => {
       this.globalService.setLoading();
+      console.log(segments)
 
       this.segments = segments;
       this.getAPIStructure();
@@ -165,7 +166,7 @@ export class ApiComponent implements OnInit {
 
     this.selectedAPI = api.name;
     this.currentSelection = 'assets/r1.0/api/' + api.name;
-    this.currentAPILink = api.github_link;
+    this.currentAPILink = api.sourceurl;
 
     this.getSelectedAPIText();
     this.title.setTitle(api.displayName + " | Fastestimator");

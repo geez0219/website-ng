@@ -1,7 +1,7 @@
 export interface API {
     name: string;
     displayName: string;
-    github_link: string;
+    sourceurl: string;
     type: string;
     children?: API[];
 }

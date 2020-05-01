@@ -8,7 +8,7 @@
         <!-- use a disabled button to provide padding for tree leaf -->
 
         <button class="hide" mat-icon-button disabled></button>
-        <a [ngClass]="{'overview': node.name==='overview.md', 'selected': selectedExample === node.name, 'not-selected': selectedExample != node.name}"
+        <a [ngClass]="{'selected': selectedExample === node.name, 'not-selected': selectedExample != node.name}"
           [routerLink]="createRouterLink(node.name)">
           {{node.displayName}}
         </a>

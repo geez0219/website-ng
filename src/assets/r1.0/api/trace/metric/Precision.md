@@ -1,16 +1,12 @@
 ## Precision
 ```python
-Precision(true_key, pred_key=None, labels=None, pos_label=1, average='auto', sample_weight=None, mode='eval', output_name='precision')
+Precision(true_key:str, pred_key:str, mode:Union[str, Set[str]]=('eval', 'test'), output_name:str='precision') -> None
 ```
-Computes precision for classification task and report it back to logger.
+Computes precision for a classification task and reports it back to the logger.
 
 #### Args:
 
-* **true_key (str)** :  Name of the keys in the ground truth label in data pipeline.
-* **pred_key (str, optional)** :  Name of the keys in predicted label. Defaults to None.
-* **labels (list, optional)** :  The set of labels to include. For more details please refer to            sklearn.metrics.precision_score. Defaults to None.
-* **pos_label (str or int, optional)** :  The class to report. For more details please refer to            sklearn.metrics.precision_score. Defaults to 1.
-* **average (str, optional)** :  It should be one of {"auto", "binary", "micro", "macro", "weighted", "samples", None}.            If "auto", the trace will detect the input data type and choose the right average for you. Otherwise, it            will pass its to sklearn.metrics.precision_score. Defaults to "auto".
-* **sample_weight (1d array-like, optional)** :  Sample weight. If None, it will not apply sample weight. For more            details please refer to sklearn.metrics.precision_score. Defaults to None.
-* **mode (str, optional)** :  Restrict the trace to run only on given modes {'train', 'eval', 'test'}. None will always                    execute. Defaults to 'eval'.
-* **output_name (str, optional)** :  Name of the key to store to the state. Defaults to "precision".    
+* **true_key** :  Name of the key that corresponds to ground truth in the batch dictionary.
+* **pred_key** :  Name of the key that corresponds to predicted score in the batch dictionary.
+* **mode** :  What mode(s) to execute this Trace in. For example, "train", "eval", "test", or "infer". To execute            regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument            like "!infer" or "!train".
+* **output_name** :  Name of the key to store to the state.    

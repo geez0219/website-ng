@@ -1,281 +1,613 @@
 [
   {
-    "name": "overview.md",
-    "displayName": "Overview"
-  },
-  {
-    "name": "t01_basic_usage.md",
-    "displayName": " Tutorial 1: Getting started with FastEstimator",
-    "toc": [
+    "name": "beginner",
+    "displayName": " Beginner Tutorials",
+    "children": [
       {
-        "id": "step-1-prepare-the-pipeline",
-        "displayName": "Step 1: Prepare the Pipeline"
+        "name": "beg/t01_getting_started.md",
+        "displayName": " Tutorial 1: Getting Started",
+        "toc": [
+          {
+            "id": "overview",
+            "displayName": "Overview"
+          },
+          {
+            "id": "three-main-apis",
+            "displayName": "Three main APIs"
+          },
+          {
+            "id": "image-classification-example",
+            "displayName": "Image Classification Example"
+          },
+          {
+            "id": "step-1--pipeline",
+            "displayName": "Step 1  Pipeline"
+          },
+          {
+            "id": "step-2--network",
+            "displayName": "Step 2  Network"
+          },
+          {
+            "id": "step-3--estimator",
+            "displayName": "Step 3  Estimator"
+          },
+          {
+            "id": "start-training",
+            "displayName": "Start Training"
+          },
+          {
+            "id": "inferencing",
+            "displayName": "Inferencing"
+          }
+        ]
       },
       {
-        "id": "step-2-define-the-network",
-        "displayName": "Step 2: Define the network"
+        "name": "beg/t02_dataset.md",
+        "displayName": " Tutorial 2: Creating a FastEstimator dataset",
+        "toc": [
+          {
+            "id": "overview",
+            "displayName": "Overview"
+          },
+          {
+            "id": "torch-dataset-recap",
+            "displayName": "Torch Dataset Recap"
+          },
+          {
+            "id": "fastestimator-dataset",
+            "displayName": "FastEstimator Dataset"
+          },
+          {
+            "id": "1-dataset-from-disk",
+            "displayName": "1. Dataset from disk"
+          },
+          {
+            "id": "2-dataset-from-memory",
+            "displayName": "2. Dataset from memory"
+          },
+          {
+            "id": "3-dataset-from-generator",
+            "displayName": "3. Dataset from Generator"
+          }
+        ]
       },
       {
-        "id": "step-3-create-the-estimator",
-        "displayName": "Step 3: Create the Estimator..."
+        "name": "beg/t03_operator.md",
+        "displayName": " Tutorial 3: Operator",
+        "toc": [
+          {
+            "id": "overview",
+            "displayName": "Overview"
+          },
+          {
+            "id": "operator-concept",
+            "displayName": "Operator Concept"
+          },
+          {
+            "id": "operator-structure",
+            "displayName": "Operator Structure"
+          },
+          {
+            "id": "operator-expression",
+            "displayName": "Operator Expression"
+          },
+          {
+            "id": "single-operator",
+            "displayName": "Single Operator"
+          },
+          {
+            "id": "multiple-operators",
+            "displayName": "Multiple Operators"
+          },
+          {
+            "id": "deep-learning-with-operator",
+            "displayName": "Deep learning with operator"
+          },
+          {
+            "id": "image-classification----------------------------------------------------------------sourcehttpsgithubcomfastestimatorfastestimatortree10devapphubimageclassificationmnist",
+            "displayName": "Image Classification:                                                                sourcehttps:github.comfastestimatorfastestimatortree1.0devapphubimageclassificationmnist"
+          },
+          {
+            "id": "dcgan----------------------------------------------------------------------------------sourcehttpsgithubcomfastestimatorfastestimatortree10devapphubimagegenerationdcgan",
+            "displayName": "DCGAN:                                                                                  sourcehttps:github.comfastestimatorfastestimatortree1.0devapphubimagegenerationdcgan"
+          },
+          {
+            "id": "adversarial-hardening----------------------------------------------------------------------------------sourcehttpsgithubcomfastestimatorfastestimatortree10devapphubadversarialtrainingfgsm",
+            "displayName": "Adversarial Hardening:                                                                                  sourcehttps:github.comfastestimatorfastestimatortree1.0devapphubadversarialtrainingfgsm"
+          }
+        ]
       },
       {
-        "id": "and-train-your-model",
-        "displayName": "... and train your model!"
+        "name": "beg/t04_pipeline.md",
+        "displayName": " sample numpy array to later create datasets from them",
+        "toc": []
+      },
+      {
+        "name": "beg/t05_model.md",
+        "displayName": " Tutorial 5: Model",
+        "toc": [
+          {
+            "id": "overview",
+            "displayName": "Overview"
+          },
+          {
+            "id": "instantiating-and-compiling-the-model",
+            "displayName": "Instantiating and Compiling the model"
+          },
+          {
+            "id": "model-function",
+            "displayName": "Model Function"
+          },
+          {
+            "id": "custom-model-architecture",
+            "displayName": "Custom model architecture"
+          },
+          {
+            "id": "importing-model-architecture-from-fastestimator",
+            "displayName": "Importing model architecture from fastestimator"
+          },
+          {
+            "id": "importing-pretrained-modelsarchitectures-from-pytorch-or-tensorflow",
+            "displayName": "Importing pretrained modelsarchitectures from pytorch or tensorflow"
+          },
+          {
+            "id": "optimizer-function",
+            "displayName": "Optimizer function"
+          },
+          {
+            "id": "optimizer-from-string",
+            "displayName": "Optimizer from string"
+          },
+          {
+            "id": "optimizer-from-function",
+            "displayName": "Optimizer from function"
+          },
+          {
+            "id": "loading-model-weights",
+            "displayName": "Loading model weights"
+          },
+          {
+            "id": "specifying-model-name",
+            "displayName": "Specifying model name"
+          }
+        ]
+      },
+      {
+        "name": "beg/t06_network.md",
+        "displayName": " Tutorial 6: Network",
+        "toc": [
+          {
+            "id": "overview",
+            "displayName": "Overview"
+          },
+          {
+            "id": "network-scope",
+            "displayName": "Network scope"
+          },
+          {
+            "id": "tensorop-and-its-inherited-class",
+            "displayName": "TensorOp and its inherited class"
+          },
+          {
+            "id": "modelop",
+            "displayName": "ModelOp"
+          },
+          {
+            "id": "updateop",
+            "displayName": "UpdateOp"
+          },
+          {
+            "id": "others-loss-gradient",
+            "displayName": "Others loss, gradient..."
+          },
+          {
+            "id": "customize-tensorop",
+            "displayName": "Customize TensorOp"
+          },
+          {
+            "id": "example-for-using-tensorflow",
+            "displayName": "Example for using Tensorflow"
+          },
+          {
+            "id": "example-for-using-pytorch",
+            "displayName": "Example for using Pytorch"
+          },
+          {
+            "id": "example-for-using-febackend",
+            "displayName": "Example for using fe.backend"
+          }
+        ]
+      },
+      {
+        "name": "beg/t07_estimator.md",
+        "displayName": " Tutorial 7: Estimator",
+        "toc": [
+          {
+            "id": "overview",
+            "displayName": "Overview"
+          },
+          {
+            "id": "estimator-api",
+            "displayName": "Estimator API"
+          },
+          {
+            "id": "reduce-the-number-of-steps-per-epoch",
+            "displayName": "Reduce the number of steps per epoch"
+          },
+          {
+            "id": "change-logging-behavior",
+            "displayName": "Change logging behavior"
+          },
+          {
+            "id": "monitor-intermediate-results",
+            "displayName": "Monitor intermediate results"
+          },
+          {
+            "id": "trace",
+            "displayName": "Trace"
+          },
+          {
+            "id": "concept",
+            "displayName": "Concept"
+          },
+          {
+            "id": "structure",
+            "displayName": "Structure"
+          },
+          {
+            "id": "model-testing",
+            "displayName": "Model Testing"
+          }
+        ]
+      },
+      {
+        "name": "beg/t08_mode.md",
+        "displayName": " Tutorial 8: Mode",
+        "toc": [
+          {
+            "id": "overview",
+            "displayName": "Overview"
+          },
+          {
+            "id": "mode-concept",
+            "displayName": "Mode concept"
+          },
+          {
+            "id": "when-the-modes-are-activated",
+            "displayName": "When the modes are activated"
+          },
+          {
+            "id": "how-to-set-mode",
+            "displayName": "How to set mode"
+          },
+          {
+            "id": "code-example",
+            "displayName": "Code example"
+          },
+          {
+            "id": "train-mode",
+            "displayName": "Train mode"
+          },
+          {
+            "id": "eval-mode",
+            "displayName": "Eval mode"
+          },
+          {
+            "id": "test-mode",
+            "displayName": "Test mode"
+          },
+          {
+            "id": "infer-mode",
+            "displayName": "Infer mode"
+          }
+        ]
+      },
+      {
+        "name": "beg/t09_inference.md",
+        "displayName": " Tutorial 9: Inference",
+        "toc": [
+          {
+            "id": "overview",
+            "displayName": "Overview"
+          },
+          {
+            "id": "running-inference-with-transform-method",
+            "displayName": "Running inference with transform method"
+          },
+          {
+            "id": "pipelinetransform",
+            "displayName": "Pipeline.transform"
+          },
+          {
+            "id": "networktransform",
+            "displayName": "Network.transform"
+          }
+        ]
       }
     ]
   },
   {
-    "name": "t02_using_data_in_disk.md",
-    "displayName": " Tutorial 2: Dealing with large datasets with FastEstimator",
-    "toc": [
+    "name": "advanced",
+    "displayName": " Advanced Tutorials",
+    "children": [
       {
-        "id": "before-we-start",
-        "displayName": "Before we start:"
+        "name": "adv/t01_dataset.md",
+        "displayName": " Advanced Tutorial 1: Dataset",
+        "toc": [
+          {
+            "id": "overview",
+            "displayName": "Overview"
+          },
+          {
+            "id": "dataset-summary",
+            "displayName": "Dataset summary"
+          },
+          {
+            "id": "dataset-splitting",
+            "displayName": "Dataset Splitting"
+          },
+          {
+            "id": "random-fraction-split",
+            "displayName": "random fraction split"
+          },
+          {
+            "id": "random-count-split",
+            "displayName": "Random count split"
+          },
+          {
+            "id": "index-split",
+            "displayName": "Index split"
+          },
+          {
+            "id": "global-dataset-editting",
+            "displayName": "Global Dataset Editting"
+          },
+          {
+            "id": "batchdataset",
+            "displayName": "BatchDataset"
+          },
+          {
+            "id": "deterministic-batching",
+            "displayName": "Deterministic batching"
+          },
+          {
+            "id": "distribution-batching",
+            "displayName": "Distribution batching"
+          },
+          {
+            "id": "unpaird-dataset",
+            "displayName": "Unpaird dataset"
+          }
+        ]
       },
       {
-        "id": "step-0-get-the-paths-to-the-csv-files",
-        "displayName": "Step 0: Get the paths to the csv files"
+        "name": "adv/t02_pipeline.md",
+        "displayName": " sample numpy array to later create datasets from them",
+        "toc": []
       },
       {
-        "id": "step-1-recordwriter",
-        "displayName": "Step 1: RecordWriter"
+        "name": "adv/t03_operator.md",
+        "displayName": " Advanced Tutorial 3: Operator",
+        "toc": [
+          {
+            "id": "overview",
+            "displayName": "Overview"
+          },
+          {
+            "id": "operator-mechanism",
+            "displayName": "Operator Mechanism"
+          },
+          {
+            "id": "data",
+            "displayName": "data"
+          },
+          {
+            "id": "state",
+            "displayName": "state"
+          },
+          {
+            "id": "numpyop",
+            "displayName": "NumpyOp"
+          },
+          {
+            "id": "delete",
+            "displayName": "Delete"
+          },
+          {
+            "id": "meta",
+            "displayName": "meta"
+          },
+          {
+            "id": "customization",
+            "displayName": "Customization"
+          },
+          {
+            "id": "tensorop",
+            "displayName": "TensorOp"
+          },
+          {
+            "id": "customization",
+            "displayName": "Customization"
+          }
+        ]
       },
       {
-        "id": "step-2-pipeline--network--estimator-see-tutorial-1-for-details",
-        "displayName": "Step 2: Pipeline  Network  Estimator see tutorial 1 for details"
+        "name": "adv/t04_trace.md",
+        "displayName": " Advanced Tutorial 4: Trace",
+        "toc": [
+          {
+            "id": "overview",
+            "displayName": "Overview"
+          },
+          {
+            "id": "customizing-trace",
+            "displayName": "Customizing Trace"
+          },
+          {
+            "id": "example",
+            "displayName": "Example"
+          },
+          {
+            "id": "more-about-trace",
+            "displayName": "More about Trace"
+          },
+          {
+            "id": "inputs-outputs-and-mode",
+            "displayName": "Inputs, Outputs and Mode"
+          },
+          {
+            "id": "data",
+            "displayName": "Data"
+          },
+          {
+            "id": "system",
+            "displayName": "System"
+          },
+          {
+            "id": "trace-communication",
+            "displayName": "Trace communication"
+          },
+          {
+            "id": "other-trace-usages",
+            "displayName": "Other Trace usages"
+          },
+          {
+            "id": "debuggingmonitoring",
+            "displayName": "DebuggingMonitoring"
+          }
+        ]
       },
       {
-        "id": "step-3-start-training",
-        "displayName": "Step 3: Start training"
+        "name": "adv/t05_scheduler.md",
+        "displayName": " Advanced Tutorial 5: Scheduler",
+        "toc": [
+          {
+            "id": "scheduler",
+            "displayName": "Scheduler"
+          },
+          {
+            "id": "concept",
+            "displayName": "Concept"
+          },
+          {
+            "id": "epochscheduler",
+            "displayName": "EpochScheduler"
+          },
+          {
+            "id": "repeatscheduler",
+            "displayName": "RepeatScheduler"
+          },
+          {
+            "id": "things-you-can-schedule",
+            "displayName": "Things you can schedule:"
+          },
+          {
+            "id": "dataset",
+            "displayName": "dataset"
+          },
+          {
+            "id": "batch-size",
+            "displayName": "batch size"
+          },
+          {
+            "id": "numpyop",
+            "displayName": "NumpyOp"
+          },
+          {
+            "id": "optimizer",
+            "displayName": "optimizer"
+          },
+          {
+            "id": "tensorop",
+            "displayName": "TensorOp"
+          },
+          {
+            "id": "let-the-training-begin",
+            "displayName": "Let the training begin"
+          }
+        ]
       },
       {
-        "id": "key-takeaways",
-        "displayName": "Key takeaways:"
-      }
-    ]
-  },
-  {
-    "name": "t03_operator.md",
-    "displayName": " Tutorial 3: Operator",
-    "toc": [
-      {
-        "id": "how-does-operator-work",
-        "displayName": "How does Operator work"
+        "name": "adv/t06_summary.md",
+        "displayName": " Advanced Tutorial 6: Summary",
+        "toc": [
+          {
+            "id": "overview",
+            "displayName": "Overview"
+          },
+          {
+            "id": "preliminary-setup",
+            "displayName": "Preliminary Setup"
+          },
+          {
+            "id": "experiment-logging",
+            "displayName": "Experiment Logging"
+          },
+          {
+            "id": "experiment-summaries",
+            "displayName": "Experiment Summaries"
+          },
+          {
+            "id": "log-parsing",
+            "displayName": "Log Parsing"
+          },
+          {
+            "id": "log-visualization",
+            "displayName": "Log Visualization"
+          },
+          {
+            "id": "tensorboard",
+            "displayName": "TensorBoard"
+          }
+        ]
       },
       {
-        "id": "how-to-express-operator-connections-in-fastestimator",
-        "displayName": "How to express Operator connections in FastEstimator"
+        "name": "adv/t07_learning_rate_scheduling.md",
+        "displayName": " Advanced Tutorial 7: Learning Rate Scheduling",
+        "toc": [
+          {
+            "id": "overview",
+            "displayName": "Overview"
+          },
+          {
+            "id": "customizing-learning-rate-schedule-function",
+            "displayName": "Customizing Learning Rate schedule function"
+          },
+          {
+            "id": "epochwise",
+            "displayName": "Epochwise"
+          },
+          {
+            "id": "stepwise",
+            "displayName": "Stepwise"
+          },
+          {
+            "id": "using-builtin-lrschedule-function",
+            "displayName": "Using builtin lrschedule function"
+          },
+          {
+            "id": "cosinedecay",
+            "displayName": "cosinedecay"
+          }
+        ]
       },
       {
-        "id": "what-different-types-of-operators-are-there",
-        "displayName": "What different types of Operators are there"
-      },
-      {
-        "id": "how-is-an-operator-defined",
-        "displayName": "How is an Operator defined"
-      },
-      {
-        "id": "operator-demo-in-fastestimator",
-        "displayName": "Operator demo in FastEstimator"
-      },
-      {
-        "id": "step-0-use-prebuilt-op-and-custom-op-for-data-preprocessing-in-recordwriter",
-        "displayName": "Step 0: Use prebuilt Op and custom Op for data preprocessing in RecordWriter"
-      },
-      {
-        "id": "step-1-use-prebuilt-and-custom-ops-for-pipeline",
-        "displayName": "Step 1: Use prebuilt and custom Ops for Pipeline"
-      },
-      {
-        "id": "step-2-use-prebuilt-and-custom-ops-for-network",
-        "displayName": "Step 2: Use prebuilt and custom ops for Network"
-      },
-      {
-        "id": "step-3-create-the-estimator-and-train",
-        "displayName": "Step 3: Create the Estimator and train!"
-      }
-    ]
-  },
-  {
-    "name": "t04_pipeline_debug_benchmark.md",
-    "displayName": " Tutorial 4: Pipeline debugging and benchmarking",
-    "toc": [
-      {
-        "id": "1-define-the-pipeline-same-as-tutorial-3",
-        "displayName": "1 Define the pipeline same as tutorial 3"
-      },
-      {
-        "id": "2-access-the-pipeline-results",
-        "displayName": "2 Access the pipeline results"
-      },
-      {
-        "id": "3-benchmark-pipeline-speed",
-        "displayName": "3 Benchmark pipeline speed"
-      }
-    ]
-  },
-  {
-    "name": "t05_trace_debug_training.md",
-    "displayName": " Tutorial 5: Trace  training control and debugging",
-    "toc": [
-      {
-        "id": "using-trace-to-debug-training-loop",
-        "displayName": "Using Trace to debug training loop"
-      },
-      {
-        "id": "1-define-the-operation-to-test--pipeline-and-network",
-        "displayName": "1 Define the operation to test,  pipeline and network."
-      },
-      {
-        "id": "2-define-the-trace",
-        "displayName": "2 Define the trace"
-      }
-    ]
-  },
-  {
-    "name": "t06_TensorFilter_imbalanced_training.md",
-    "displayName": " Tutorial 6:  Dealing with imbalanced dataset using TensorFilter",
-    "toc": [
-      {
-        "id": "step-0--data-preparation-same-as-tutorial-1",
-        "displayName": "Step 0  Data preparation same as tutorial 1"
-      },
-      {
-        "id": "step-1--customize-your-own-filter",
-        "displayName": "Step 1  Customize your own Filter..."
-      },
-      {
-        "id": "or-use-a-prebuilt-scalarfilter",
-        "displayName": "... or use a prebuilt ScalarFilter"
-      }
-    ]
-  },
-  {
-    "name": "t07_expand_data_dimension.md",
-    "displayName": " Tutorial 7: Expanding data dimension in RecordWriter and Pipeline",
-    "toc": [
-      {
-        "id": "step-1--recordwriter-expand-data-dimension-and-write-it-to-the-disk",
-        "displayName": "Step 1  RecordWriter: expand data dimension and write it to the disk"
-      },
-      {
-        "id": "step-2--pipeline-expand-dimension-on-the-fly",
-        "displayName": "Step 2  Pipeline: expand dimension on the fly"
-      },
-      {
-        "id": "step-3--check-pipeline-results",
-        "displayName": "Step 3  Check pipeline results..."
-      },
-      {
-        "id": "and-visualize",
-        "displayName": ".... and visualize!"
-      }
-    ]
-  },
-  {
-    "name": "t08_scheduler_progressive_training.md",
-    "displayName": " Tutorial 8: Changing hyperparameters during training with Scheduler",
-    "toc": [
-      {
-        "id": "1-how-to-use-scheduler",
-        "displayName": "1 How to use Scheduler:"
-      },
-      {
-        "id": "2-scheduler-example",
-        "displayName": "2 Scheduler example:"
-      },
-      {
-        "id": "step-0-prepare-data",
-        "displayName": "Step 0 Prepare data"
-      },
-      {
-        "id": "step-1-prepare-the-pipeline-with-the-schedulers",
-        "displayName": "Step 1 Prepare the Pipeline with the Schedulers"
-      },
-      {
-        "id": "step-2-prepare-network-with-the-two-models-and-a-scheduler",
-        "displayName": "Step 2 Prepare Network with the two models and a Scheduler"
-      },
-      {
-        "id": "step-3-build-the-estimator-and-train",
-        "displayName": "Step 3 Build the Estimator and train!"
-      }
-    ]
-  },
-  {
-    "name": "t09_learning_rate_controller.md",
-    "displayName": " Tutorial 9: Learning Rate Controller",
-    "toc": [
-      {
-        "id": "step-0-preparation",
-        "displayName": "Step 0 Preparation"
-      },
-      {
-        "id": "option-1-customize-the-learning-rate-stepwise-control",
-        "displayName": "Option 1 Customize the learning rate: stepwise control"
-      },
-      {
-        "id": "option-2--customize-the-learning-rate-epochwise-control",
-        "displayName": "Option 2  Customize the learning rate: epochwise control"
-      },
-      {
-        "id": "option-3-builtin-cyclic-learning-rate--example-1",
-        "displayName": "Option 3 Builtin Cyclic Learning Rate  example 1"
-      },
-      {
-        "id": "option-3-builtin-cyclic-learning-rate-example-2",
-        "displayName": "Option 3 Builtin Cyclic Learning Rate: example 2"
-      }
-    ]
-  },
-  {
-    "name": "t10_unpaired_dataset.md",
-    "displayName": " Tutorial 10: Dataset with unpaired features",
-    "toc": [
-      {
-        "id": "step-0--data-preparation-and-visualization",
-        "displayName": "Step 0  Data preparation and visualization"
-      },
-      {
-        "id": "step-1--recordwriter-read-unpaired-features-using-a-tuple",
-        "displayName": "Step 1  RecordWriter: read unpaired features using a tuple"
-      }
-    ]
-  },
-  {
-    "name": "t11_interpretation.md",
-    "displayName": " Tutorial 11: Interpretation",
-    "toc": [
-      {
-        "id": "download-a-sample-model-for-demonstration",
-        "displayName": "Download a sample model for demonstration"
-      },
-      {
-        "id": "interpretation-with-python-api",
-        "displayName": "Interpretation with Python API"
-      },
-      {
-        "id": "interpretation-with-bash",
-        "displayName": "Interpretation with Bash"
-      },
-      {
-        "id": "interpretation-with-traces",
-        "displayName": "Interpretation with Traces"
-      }
-    ]
-  },
-  {
-    "name": "t12_transfer_learning.md",
-    "displayName": " Tutorial 12: Transfer Learning in FastEstimator",
-    "toc": [
-      {
-        "id": "prepare-the-pretrainedmodel-by-training-from-scratch",
-        "displayName": "Prepare the pretrainedmodel by training from scratch"
-      },
-      {
-        "id": "training-on-existing-weights",
-        "displayName": "Training on existing weights"
+        "name": "adv/t08_xai.md",
+        "displayName": " Advanced Tutorial 8: Explainable AI XAI",
+        "toc": [
+          {
+            "id": "overview",
+            "displayName": "Overview"
+          },
+          {
+            "id": "saliency-maps",
+            "displayName": "Saliency Maps"
+          },
+          {
+            "id": "saliency-maps-without-traces",
+            "displayName": "Saliency Maps without Traces"
+          }
+        ]
       }
     ]
   }

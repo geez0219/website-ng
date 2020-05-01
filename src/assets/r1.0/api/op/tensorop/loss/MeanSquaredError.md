@@ -1,14 +1,11 @@
 ## MeanSquaredError
 ```python
-MeanSquaredError(y_true=None, y_pred=None, inputs=None, outputs=None, mode=None, **kwargs)
+MeanSquaredError(inputs:Union[NoneType, str, Iterable[str], Callable]=None, outputs:Union[NoneType, str, Iterable[str]]=None, mode:Union[NoneType, str, Iterable[str]]=None, average_loss:bool=True)
 ```
-Calculate mean squared error loss, the rest of the keyword argument will be passed to    tf.losses.MeanSquaredError
+Calculate the mean squared error loss between two tensors.
 
 #### Args:
 
-* **y_true** :  ground truth label key
-* **y_pred** :  prediction label key
-* **inputs** :  A tuple or list like [<y_true>, <y_pred>]
-* **outputs** :  Where to store the computed loss value (not required under normal use cases)
-* **mode** :  'train', 'eval', 'test', or None
-* **kwargs** :  Arguments to be passed along to the tf.losses constructor    
+* **inputs** :  A tuple or list like [<y_true>, <y_pred>].
+* **outputs** :  String key under which to store the computed loss.
+* **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute            regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument            like "!infer" or "!train".    

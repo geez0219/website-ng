@@ -4,8 +4,7 @@
 ```python
 get_num_devices()
 ```
-Return number of devices.
+Determine the number of available GPUs.
 
 #### Returns:
-
-* **int** :  Number of GPUs available. Returns 1 if no GPU is found.
+    The number of available GPUs, or 1 if none are found.

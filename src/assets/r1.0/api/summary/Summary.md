@@ -1,19 +1,19 @@
 ## Summary
 ```python
-Summary(name)
+Summary(name:Union[str, NoneType]) -> None
 ```
-The summary object that record the training history
+A summary object that records training history.
 
 #### Args:
 
-* **name (str)** :  Name of the experiment.    
+* **name** :  Name of the experiment. If None then experiment results will be ignored    
 
 ### merge
 ```python
-merge(self, other)
+merge(self, other:'Summary')
 ```
-Merge other experiment
+Merge another `Summary` into this one.
 
 #### Args:
 
-* **other (obj)** :  Other experiment object need to be merged        
+* **other** :  Other `summary` object to be merged.        

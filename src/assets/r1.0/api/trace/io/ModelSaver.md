@@ -1,13 +1,11 @@
 ## ModelSaver
 ```python
-ModelSaver(model_name, save_dir, save_best=False, save_best_mode='min', save_freq=1)
+ModelSaver(model:Union[tensorflow.python.keras.engine.training.Model, torch.nn.modules.module.Module], save_dir:str, frequency:int=1) -> None
 ```
-Save trained model in hdf5 format.
+Save model weights based on epoch frequency during training.
 
 #### Args:
 
-* **model_name (str)** :  Name of FE model.
-* **save_dir (str)** :  Directory to save the trained models.
-* **save_best (bool, str, optional)** :  Best model saving monitor name. If True, the model loss is used. Defaults to            False.
-* **save_best_mode (str, optional)** :  Can be `'min'`, `'max'`, or `'auto'`. Defaults to 'min'.
-* **save_freq (int, optional)** :  Number of epochs to save models. Cannot be used with `save_best_only=True`. Defaults            to 1.    
+* **model** :  A model instance compiled with fe.build.
+* **save_dir** :  Folder path into which to save the `model`.
+* **frequency** :  Model saving frequency in epoch(s).    

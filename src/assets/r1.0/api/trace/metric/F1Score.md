@@ -1,16 +1,13 @@
 ## F1Score
 ```python
-F1Score(true_key, pred_key=None, labels=None, pos_label=1, average='auto', sample_weight=None, mode='eval', output_name='f1score')
+F1Score(true_key:str, pred_key:str, mode:Union[str, Set[str]]=('eval', 'test'), output_name:str='f1_score') -> None
 ```
-Calculate F1 score for classification task and report it back to logger.
+Calculate the F1 score for a classification task and report it back to the logger.
+* **Consider using MCC instead** :  https//www.ncbi.nlm.nih.gov/pmc/articles/PMC6941312/
 
 #### Args:
 
-* **true_key (str)** :  Name of the keys in the ground truth label in data pipeline.
-* **pred_key (str, optional)** :  Name of the keys in predicted label. Default is `None`.
-* **labels (list, optional)** :  The set of labels to include. For more details, please refer to            sklearn.netrics.f1_score. Defaults to None.
-* **pos_label (str or int, optional)** :  The class to report. For more details, please refer to            sklearn.netrics.f1_score. Defaults to 1.
-* **average (str, optional)** :  It should be one of {"auto", "binary", "micro", "macro", "weighted", "samples", None}.            If "auto", the trace will detect the input data type and choose the right average for you. Otherwise, it            will pass its to sklearn.metrics.f1_score. Defaults to "auto".
-* **sample_weight (array-like of shape, optional)** :  Sample weights, For more details, please refer to            sklearn.netrics.f1_score. Defaults to None.
-* **mode (str, optional)** :  Restrict the trace to run only on given modes {'train', 'eval', 'test'}. None will always                    execute. Defaults to 'eval'.
-* **output_name (str, optional)** :  Name of the key to store back to the state. Defaults to "f1score".    
+* **true_key** :  Name of the key that corresponds to ground truth in the batch dictionary.
+* **pred_key** :  Name of the key that corresponds to predicted score in the batch dictionary.
+* **mode** :  What mode(s) to execute this Trace in. For example, "train", "eval", "test", or "infer". To execute            regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument            like "!infer" or "!train".
+* **output_name** :  Name of the key to store back to the state.    

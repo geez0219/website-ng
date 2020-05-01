@@ -5,38 +5,38 @@
         "children": [
             {
                 "name": "fe/BaseNetwork.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/network.py#L31-L135",
-                "displayName": "BaseNetwork"
+                "displayName": "BaseNetwork",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/network.py#L31-L134"
             },
             {
                 "name": "fe/Estimator.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/estimator.py#L36-L311",
-                "displayName": "Estimator"
+                "displayName": "Estimator",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/estimator.py#L36-L419"
             },
             {
                 "name": "fe/Network.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/network.py#L150-L170",
-                "displayName": "Network"
+                "displayName": "Network",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/network.py#L149-L169"
             },
             {
                 "name": "fe/Pipeline.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/pipeline.py#L36-L251",
-                "displayName": "Pipeline"
+                "displayName": "Pipeline",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/pipeline.py#L37-L292"
             },
             {
                 "name": "fe/TFNetwork.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/network.py#L233-L320",
-                "displayName": "TFNetwork"
+                "displayName": "TFNetwork",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/network.py#L232-L326"
             },
             {
                 "name": "fe/TorchNetwork.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/network.py#L173-L230",
-                "displayName": "TorchNetwork"
+                "displayName": "TorchNetwork",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/network.py#L172-L229"
             },
             {
                 "name": "fe/build.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/network.py#L323-L381",
-                "displayName": "build"
+                "displayName": "build",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/network.py#L329-L387"
             }
         ]
     },
@@ -50,23 +50,23 @@
                 "children": [
                     {
                         "name": "architecture/pytorch/LeNet.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/architecture/tensorflow/lenet.py#L21-L40",
-                        "displayName": "LeNet"
+                        "displayName": "LeNet",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/architecture/tensorflow/lenet.py#L22-L43"
                     },
                     {
                         "name": "architecture/pytorch/UNet.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/architecture/tensorflow/unet.py#L21-L75",
-                        "displayName": "UNet"
+                        "displayName": "UNet",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/architecture/tensorflow/unet.py#L23-L77"
                     },
                     {
                         "name": "architecture/pytorch/UNetDecoderBlock.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/architecture/pytorch/unet.py#L41-L58",
-                        "displayName": "UNetDecoderBlock"
+                        "displayName": "UNetDecoderBlock",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/architecture/pytorch/unet.py#L47-L71"
                     },
                     {
                         "name": "architecture/pytorch/UNetEncoderBlock.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/architecture/pytorch/unet.py#L23-L38",
-                        "displayName": "UNetEncoderBlock"
+                        "displayName": "UNetEncoderBlock",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/architecture/pytorch/unet.py#L23-L44"
                     }
                 ]
             },
@@ -76,13 +76,13 @@
                 "children": [
                     {
                         "name": "architecture/tensorflow/LeNet.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/architecture/tensorflow/lenet.py#L21-L40",
-                        "displayName": "LeNet"
+                        "displayName": "LeNet",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/architecture/tensorflow/lenet.py#L22-L43"
                     },
                     {
                         "name": "architecture/tensorflow/UNet.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/architecture/tensorflow/unet.py#L21-L75",
-                        "displayName": "UNet"
+                        "displayName": "UNet",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/architecture/tensorflow/unet.py#L23-L77"
                     }
                 ]
             }
@@ -94,158 +94,168 @@
         "children": [
             {
                 "name": "backend/abs.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/backend/abs.py#L25-L33",
-                "displayName": "abs"
+                "displayName": "abs",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/backend/abs.py#L24-L61"
             },
             {
                 "name": "backend/argmax.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/backend/argmax.py#L26-L32",
-                "displayName": "argmax"
+                "displayName": "argmax",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/backend/argmax.py#L24-L65"
             },
             {
                 "name": "backend/binary_crossentropy.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/backend/binary_crossentropy.py#L25-L57",
-                "displayName": "binary_crossentropy"
+                "displayName": "binary_crossentropy",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/backend/binary_crossentropy.py#L25-L80"
             },
             {
                 "name": "backend/categorical_crossentropy.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/backend/categorical_crossentropy.py#L25-L48",
-                "displayName": "categorical_crossentropy"
+                "displayName": "categorical_crossentropy",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/backend/categorical_crossentropy.py#L25-L72"
             },
             {
                 "name": "backend/clip_by_value.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/backend/clip_by_value.py#L24-L30",
-                "displayName": "clip_by_value"
+                "displayName": "clip_by_value",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/backend/clip_by_value.py#L24-L67"
             },
             {
                 "name": "backend/concat.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/backend/concat.py#L24-L32",
-                "displayName": "concat"
+                "displayName": "concat",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/backend/concat.py#L24-L67"
             },
             {
                 "name": "backend/expand_dims.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/backend/expand_dims.py#L25-L33",
-                "displayName": "expand_dims"
+                "displayName": "expand_dims",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/backend/expand_dims.py#L24-L65"
             },
             {
                 "name": "backend/feed_forward.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/backend/feed_forward.py#L26-L39",
-                "displayName": "feed_forward"
+                "displayName": "feed_forward",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/backend/feed_forward.py#L26-L68"
             },
             {
                 "name": "backend/gather_from_batch.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/backend/gather_from_batch.py#L26-L47",
-                "displayName": "gather_from_batch"
+                "displayName": "gather_from_batch",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/backend/gather_from_batch.py#L28-L82"
             },
             {
                 "name": "backend/get_gradient.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/backend/get_gradient.py#L25-L57",
-                "displayName": "get_gradient"
+                "displayName": "get_gradient",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/backend/get_gradient.py#L25-L85"
             },
             {
                 "name": "backend/get_lr.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/backend/get_lr.py#L21-L33",
-                "displayName": "get_lr"
+                "displayName": "get_lr",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/backend/get_lr.py#L21-L57"
             },
             {
                 "name": "backend/load_model.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/backend/load_model.py#L22-L35",
-                "displayName": "load_model"
+                "displayName": "load_model",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/backend/load_model.py#L22-L52"
+            },
+            {
+                "name": "backend/mean_squared_error.md",
+                "displayName": "mean_squared_error",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/backend/mean_squared_error.py#L25-L69"
             },
             {
                 "name": "backend/percentile.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/backend/percentile.py#L28-L69",
-                "displayName": "percentile"
+                "displayName": "percentile",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/backend/percentile.py#L27-L113"
             },
             {
                 "name": "backend/permute.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/backend/permute.py#L25-L33",
-                "displayName": "permute"
+                "displayName": "permute",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/backend/permute.py#L24-L65"
             },
             {
                 "name": "backend/random_normal_like.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/backend/random_normal_like.py#L26-L37",
-                "displayName": "random_normal_like"
-            },
-            {
-                "name": "backend/reduce_loss.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/backend/reduce_loss.py#L23-L34",
-                "displayName": "reduce_loss"
+                "displayName": "random_normal_like",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/backend/random_normal_like.py#L26-L75"
             },
             {
                 "name": "backend/reduce_max.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/backend/reduce_max.py#L26-L38",
-                "displayName": "reduce_max"
+                "displayName": "reduce_max",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/backend/reduce_max.py#L26-L82"
+            },
+            {
+                "name": "backend/reduce_mean.md",
+                "displayName": "reduce_mean",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/backend/reduce_mean.py#L26-L84"
             },
             {
                 "name": "backend/reduce_min.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/backend/reduce_min.py#L26-L38",
-                "displayName": "reduce_min"
+                "displayName": "reduce_min",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/backend/reduce_min.py#L26-L82"
             },
             {
                 "name": "backend/reduce_sum.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/backend/reduce_sum.py#L25-L35",
-                "displayName": "reduce_sum"
+                "displayName": "reduce_sum",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/backend/reduce_sum.py#L24-L76"
             },
             {
                 "name": "backend/reshape.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/backend/reshape.py#L25-L33",
-                "displayName": "reshape"
+                "displayName": "reshape",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/backend/reshape.py#L24-L72"
             },
             {
                 "name": "backend/save_model.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/backend/save_model.py#L22-L39",
-                "displayName": "save_model"
+                "displayName": "save_model",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/backend/save_model.py#L22-L55"
             },
             {
                 "name": "backend/set_lr.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/backend/set_lr.py#L21-L32",
-                "displayName": "set_lr"
+                "displayName": "set_lr",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/backend/set_lr.py#L21-L56"
+            },
+            {
+                "name": "backend/sign.md",
+                "displayName": "sign",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/backend/sign.py#L24-L61"
             },
             {
                 "name": "backend/sparse_categorical_crossentropy.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/backend/sparse_categorical_crossentropy.py#L25-L53",
-                "displayName": "sparse_categorical_crossentropy"
+                "displayName": "sparse_categorical_crossentropy",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/backend/sparse_categorical_crossentropy.py#L25-L77"
             },
             {
                 "name": "backend/squeeze.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/backend/squeeze.py#L25-L36",
-                "displayName": "squeeze"
+                "displayName": "squeeze",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/backend/squeeze.py#L24-L71"
             },
             {
                 "name": "backend/to_number.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/backend/to_number.py#L22-L38",
-                "displayName": "to_number"
+                "displayName": "to_number",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/backend/to_number.py#L22-L58"
             },
             {
                 "name": "backend/to_shape.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/backend/to_shape.py#L21-L47",
-                "displayName": "to_shape"
+                "displayName": "to_shape",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/backend/to_shape.py#L24-L81"
             },
             {
                 "name": "backend/to_tensor.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/backend/to_tensor.py#L24-L47",
-                "displayName": "to_tensor"
+                "displayName": "to_tensor",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/backend/to_tensor.py#L24-L70"
             },
             {
                 "name": "backend/to_type.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/backend/to_type.py#L21-L41",
-                "displayName": "to_type"
+                "displayName": "to_type",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/backend/to_type.py#L24-L68"
             },
             {
                 "name": "backend/update_model.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/backend/update_model.py#L24-L42",
-                "displayName": "update_model"
+                "displayName": "update_model",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/backend/update_model.py#L24-L80"
             },
             {
                 "name": "backend/watch.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/backend/watch.py#L24-L41",
-                "displayName": "watch"
+                "displayName": "watch",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/backend/watch.py#L23-L59"
             },
             {
                 "name": "backend/zeros_like.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/backend/zeros_like.py#L26-L32",
-                "displayName": "zeros_like"
+                "displayName": "zeros_like",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/backend/zeros_like.py#L26-L67"
             }
         ]
     },
@@ -255,48 +265,48 @@
         "children": [
             {
                 "name": "cli/SaveAction.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/cli/cli_util.py#L8-L28",
-                "displayName": "SaveAction"
+                "displayName": "SaveAction",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/cli/cli_util.py#L8-L43"
             },
             {
                 "name": "cli/configure_log_parser.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/cli/visualize.py#L38-L96",
-                "displayName": "configure_log_parser"
+                "displayName": "configure_log_parser",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/cli/logs.py#L47-L110"
             },
             {
                 "name": "cli/configure_test_parser.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/cli/train.py#L67-L82",
-                "displayName": "configure_test_parser"
+                "displayName": "configure_test_parser",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/cli/train.py#L96-L116"
             },
             {
                 "name": "cli/configure_train_parser.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/cli/train.py#L49-L64",
-                "displayName": "configure_train_parser"
-            },
-            {
-                "name": "cli/configure_visualization_parser.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/cli/visualize.py#L99-L108",
-                "displayName": "configure_visualization_parser"
+                "displayName": "configure_train_parser",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/cli/train.py#L73-L93"
             },
             {
                 "name": "cli/logs.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/cli/visualize.py#L23-L35",
-                "displayName": "logs"
+                "displayName": "logs",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/cli/logs.py#L23-L44"
             },
             {
                 "name": "cli/parse_cli_to_dictionary.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/cli/cli_util.py#L31-L56",
-                "displayName": "parse_cli_to_dictionary"
+                "displayName": "parse_cli_to_dictionary",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/cli/cli_util.py#L46-L77"
+            },
+            {
+                "name": "cli/run.md",
+                "displayName": "run",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/cli/main.py#L22-L34"
             },
             {
                 "name": "cli/test.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/cli/train.py#L44-L46",
-                "displayName": "test"
+                "displayName": "test",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/cli/train.py#L61-L70"
             },
             {
                 "name": "cli/train.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/cli/train.py#L39-L41",
-                "displayName": "train"
+                "displayName": "train",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/cli/train.py#L49-L58"
             }
         ]
     },
@@ -310,85 +320,123 @@
                 "children": [
                     {
                         "name": "dataset/data/MSCOCODataset.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/dataset/data/mscoco.py#L31-L91",
-                        "displayName": "MSCOCODataset"
+                        "displayName": "MSCOCODataset",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/dataset/data/mscoco.py#L32-L155"
+                    },
+                    {
+                        "name": "dataset/data/get_sentences_and_labels.md",
+                        "displayName": "get_sentences_and_labels",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/dataset/data/german_ner.py#L27-L57"
                     },
                     {
                         "name": "dataset/data/load_data.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/dataset/data/mnist.py#L22-L26",
-                        "displayName": "load_data"
+                        "displayName": "load_data",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/dataset/data/mnist.py#L22-L35"
                     },
                     {
                         "name": "dataset/data/pad.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/dataset/data/imdb_review.py#L23-L24",
-                        "displayName": "pad"
+                        "displayName": "pad",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/dataset/data/imdb_review.py#L23-L34"
                     }
                 ]
             },
             {
                 "name": "dataset/BatchDataset.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/dataset/batch_dataset.py#L25-L132",
-                "displayName": "BatchDataset"
+                "displayName": "BatchDataset",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/dataset/batch_dataset.py#L25-L212"
             },
             {
                 "name": "dataset/CSVDataset.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/dataset/csv_dataset.py#L22-L35",
-                "displayName": "CSVDataset"
+                "displayName": "CSVDataset",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/dataset/csv_dataset.py#L22-L38"
             },
             {
                 "name": "dataset/DatasetSummary.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/dataset/dataset.py#L54-L90",
-                "displayName": "DatasetSummary"
+                "displayName": "DatasetSummary",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/dataset/dataset.py#L53-L88"
             },
             {
                 "name": "dataset/DirDataset.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/dataset/dir_dataset.py#L22-L53",
-                "displayName": "DirDataset"
+                "displayName": "DirDataset",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/dataset/dir_dataset.py#L21-L52"
             },
             {
                 "name": "dataset/FEDataset.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/dataset/dataset.py#L93-L160",
-                "displayName": "FEDataset"
+                "displayName": "FEDataset",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/dataset/dataset.py#L91-L224"
             },
             {
                 "name": "dataset/GeneratorDataset.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/dataset/generator_dataset.py#L23-L58",
-                "displayName": "GeneratorDataset"
+                "displayName": "GeneratorDataset",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/dataset/generator_dataset.py#L23-L79"
             },
             {
                 "name": "dataset/InMemoryDataset.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/dataset/dataset.py#L163-L247",
-                "displayName": "InMemoryDataset"
+                "displayName": "InMemoryDataset",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/dataset/dataset.py#L227-L371"
             },
             {
                 "name": "dataset/KeySummary.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/dataset/dataset.py#L28-L51",
-                "displayName": "KeySummary"
+                "displayName": "KeySummary",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/dataset/dataset.py#L28-L50"
             },
             {
                 "name": "dataset/LabeledDirDataset.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/dataset/labeled_dir_dataset.py#L23-L78",
-                "displayName": "LabeledDirDataset"
+                "displayName": "LabeledDirDataset",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/dataset/labeled_dir_dataset.py#L22-L81"
             },
             {
                 "name": "dataset/NumpyDataset.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/dataset/numpy_dataset.py#L22-L33",
-                "displayName": "NumpyDataset"
+                "displayName": "NumpyDataset",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/dataset/numpy_dataset.py#L22-L41"
             },
             {
                 "name": "dataset/OpDataset.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/dataset/op_dataset.py#L25-L44",
-                "displayName": "OpDataset"
+                "displayName": "OpDataset",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/dataset/op_dataset.py#L26-L65"
             },
             {
                 "name": "dataset/PickleDataset.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/dataset/pickle_dataset.py#L22-L32",
-                "displayName": "PickleDataset"
+                "displayName": "PickleDataset",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/dataset/pickle_dataset.py#L22-L35"
             },
             {
                 "name": "dataset/SiameseDirDataset.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/dataset/siamese_dir_dataset.py#L25-L136",
-                "displayName": "SiameseDirDataset"
+                "displayName": "SiameseDirDataset",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/dataset/siamese_dir_dataset.py#L24-L175"
+            }
+        ]
+    },
+    {
+        "name": "layers",
+        "displayName": "fe.layers",
+        "children": [
+            {
+                "name": "layers/pytorch",
+                "displayName": "fe.layers.pytorch",
+                "children": [
+                    {
+                        "name": "layers/pytorch/Cropping2D.md",
+                        "displayName": "Cropping2D",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/layers/pytorch/cropping_2d.py#L21-L73"
+                    }
+                ]
+            },
+            {
+                "name": "layers/tensorflow",
+                "displayName": "fe.layers.tensorflow",
+                "children": [
+                    {
+                        "name": "layers/tensorflow/InstanceNormalization.md",
+                        "displayName": "InstanceNormalization",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/layers/tensorflow/instance_norm.py#L21-L59"
+                    },
+                    {
+                        "name": "layers/tensorflow/ReflectionPadding2D.md",
+                        "displayName": "ReflectionPadding2D",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/layers/tensorflow/reflection_padding_2d.py#L21-L53"
+                    }
+                ]
             }
         ]
     },
@@ -406,13 +454,13 @@
                         "children": [
                             {
                                 "name": "op/numpyop/meta/OneOf.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/meta/one_of.py#L23-L51",
-                                "displayName": "OneOf"
+                                "displayName": "OneOf",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/meta/one_of.py#L23-L51"
                             },
                             {
                                 "name": "op/numpyop/meta/Sometimes.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/meta/sometimes.py#L22-L47",
-                                "displayName": "Sometimes"
+                                "displayName": "Sometimes",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/meta/sometimes.py#L22-L47"
                             }
                         ]
                     },
@@ -422,138 +470,143 @@
                         "children": [
                             {
                                 "name": "op/numpyop/multivariate/Affine.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/multivariate/affine.py#L24-L116",
-                                "displayName": "Affine"
+                                "displayName": "Affine",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/multivariate/affine.py#L25-L120"
                             },
                             {
                                 "name": "op/numpyop/multivariate/CenterCrop.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/multivariate/center_crop.py#L23-L74",
-                                "displayName": "CenterCrop"
+                                "displayName": "CenterCrop",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/multivariate/center_crop.py#L23-L77"
                             },
                             {
                                 "name": "op/numpyop/multivariate/Crop.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/multivariate/crop.py#L23-L78",
-                                "displayName": "Crop"
+                                "displayName": "Crop",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/multivariate/crop.py#L23-L81"
                             },
                             {
                                 "name": "op/numpyop/multivariate/CropNonEmptyMaskIfExists.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/multivariate/crop_non_empty_mask_if_exists.py#L23-L85",
-                                "displayName": "CropNonEmptyMaskIfExists"
+                                "displayName": "CropNonEmptyMaskIfExists",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/multivariate/crop_non_empty_mask_if_exists.py#L23-L88"
                             },
                             {
                                 "name": "op/numpyop/multivariate/ElasticTransform.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/multivariate/elastic_transform.py#L23-L88",
-                                "displayName": "ElasticTransform"
+                                "displayName": "ElasticTransform",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/multivariate/elastic_transform.py#L23-L89"
                             },
                             {
                                 "name": "op/numpyop/multivariate/Flip.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/multivariate/flip.py#L23-L70",
-                                "displayName": "Flip"
+                                "displayName": "Flip",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/multivariate/flip.py#L23-L73"
                             },
                             {
                                 "name": "op/numpyop/multivariate/GridDistortion.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/multivariate/grid_distortion.py#L23-L82",
-                                "displayName": "GridDistortion"
+                                "displayName": "GridDistortion",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/multivariate/grid_distortion.py#L23-L82"
                             },
                             {
                                 "name": "op/numpyop/multivariate/HorizontalFlip.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/multivariate/horizontal_flip.py#L23-L70",
-                                "displayName": "HorizontalFlip"
+                                "displayName": "HorizontalFlip",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/multivariate/horizontal_flip.py#L23-L73"
                             },
                             {
                                 "name": "op/numpyop/multivariate/LongestMaxSize.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/multivariate/longest_max_size.py#L24-L75",
-                                "displayName": "LongestMaxSize"
+                                "displayName": "LongestMaxSize",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/multivariate/longest_max_size.py#L24-L79"
                             },
                             {
                                 "name": "op/numpyop/multivariate/MaskDropout.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/multivariate/mask_dropout.py#L22-L72",
-                                "displayName": "MaskDropout"
+                                "displayName": "MaskDropout",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/multivariate/mask_dropout.py#L22-L75"
                             },
                             {
                                 "name": "op/numpyop/multivariate/MultiVariateAlbumentation.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/multivariate/multivariate.py#L24-L67",
-                                "displayName": "MultiVariateAlbumentation"
+                                "displayName": "MultiVariateAlbumentation",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/multivariate/multivariate.py#L24-L91"
                             },
                             {
                                 "name": "op/numpyop/multivariate/OpticalDistortion.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/multivariate/optical_distortion.py#L23-L83",
-                                "displayName": "OpticalDistortion"
+                                "displayName": "OpticalDistortion",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/multivariate/optical_distortion.py#L23-L82"
                             },
                             {
                                 "name": "op/numpyop/multivariate/PadIfNeeded.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/multivariate/pad_if_needed.py#L24-L87",
-                                "displayName": "PadIfNeeded"
+                                "displayName": "PadIfNeeded",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/multivariate/pad_if_needed.py#L24-L90"
                             },
                             {
                                 "name": "op/numpyop/multivariate/RandomCrop.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/multivariate/random_crop.py#L23-L74",
-                                "displayName": "RandomCrop"
+                                "displayName": "RandomCrop",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/multivariate/random_crop.py#L23-L77"
                             },
                             {
                                 "name": "op/numpyop/multivariate/RandomCropNearBBox.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/multivariate/random_crop_near_bbox.py#L23-L72",
-                                "displayName": "RandomCropNearBBox"
+                                "displayName": "RandomCropNearBBox",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/multivariate/random_crop_near_bbox.py#L23-L75"
                             },
                             {
                                 "name": "op/numpyop/multivariate/RandomGridShuffle.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/multivariate/random_grid_shuffle.py#L22-L59",
-                                "displayName": "RandomGridShuffle"
+                                "displayName": "RandomGridShuffle",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/multivariate/random_grid_shuffle.py#L22-L62"
                             },
                             {
                                 "name": "op/numpyop/multivariate/RandomResizedCrop.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/multivariate/random_resized_crop.py#L24-L89",
-                                "displayName": "RandomResizedCrop"
+                                "displayName": "RandomResizedCrop",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/multivariate/random_resized_crop.py#L24-L91"
                             },
                             {
                                 "name": "op/numpyop/multivariate/RandomRotate90.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/multivariate/random_rotate_90.py#L23-L70",
-                                "displayName": "RandomRotate90"
+                                "displayName": "RandomRotate90",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/multivariate/random_rotate_90.py#L23-L73"
                             },
                             {
                                 "name": "op/numpyop/multivariate/RandomScale.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/multivariate/random_scale.py#L24-L78",
-                                "displayName": "RandomScale"
+                                "displayName": "RandomScale",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/multivariate/random_scale.py#L24-L80"
                             },
                             {
                                 "name": "op/numpyop/multivariate/RandomSizedBBoxSafeCrop.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/multivariate/random_sized_bbox_safe_crop.py#L24-L80",
-                                "displayName": "RandomSizedBBoxSafeCrop"
+                                "displayName": "RandomSizedBBoxSafeCrop",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/multivariate/random_sized_bbox_safe_crop.py#L24-L82"
                             },
                             {
                                 "name": "op/numpyop/multivariate/RandomSizedCrop.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/multivariate/random_sized_crop.py#L24-L89",
-                                "displayName": "RandomSizedCrop"
+                                "displayName": "RandomSizedCrop",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/multivariate/random_sized_crop.py#L24-L91"
+                            },
+                            {
+                                "name": "op/numpyop/multivariate/ReadMat.md",
+                                "displayName": "ReadMat",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/multivariate/read_mat.py#L23-L48"
                             },
                             {
                                 "name": "op/numpyop/multivariate/Resize.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/multivariate/resize.py#L24-L79",
-                                "displayName": "Resize"
+                                "displayName": "Resize",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/multivariate/resize.py#L24-L81"
                             },
                             {
                                 "name": "op/numpyop/multivariate/Rotate.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/multivariate/rotate.py#L24-L92",
-                                "displayName": "Rotate"
+                                "displayName": "Rotate",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/multivariate/rotate.py#L24-L93"
                             },
                             {
                                 "name": "op/numpyop/multivariate/ShiftScaleRotate.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/multivariate/shift_scale_rotate.py#L24-L101",
-                                "displayName": "ShiftScaleRotate"
+                                "displayName": "ShiftScaleRotate",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/multivariate/shift_scale_rotate.py#L24-L101"
                             },
                             {
                                 "name": "op/numpyop/multivariate/SmallestMaxSize.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/multivariate/smallest_max_size.py#L24-L75",
-                                "displayName": "SmallestMaxSize"
+                                "displayName": "SmallestMaxSize",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/multivariate/smallest_max_size.py#L24-L79"
                             },
                             {
                                 "name": "op/numpyop/multivariate/Transpose.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/multivariate/transpose.py#L23-L70",
-                                "displayName": "Transpose"
+                                "displayName": "Transpose",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/multivariate/transpose.py#L23-L73"
                             },
                             {
                                 "name": "op/numpyop/multivariate/VerticalFlip.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/multivariate/vertical_flip.py#L23-L70",
-                                "displayName": "VerticalFlip"
+                                "displayName": "VerticalFlip",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/multivariate/vertical_flip.py#L23-L73"
                             }
                         ]
                     },
@@ -563,215 +616,235 @@
                         "children": [
                             {
                                 "name": "op/numpyop/univariate/Binarize.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/binarize.py#L23-L45",
-                                "displayName": "Binarize"
+                                "displayName": "Binarize",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/binarize.py#L22-L43"
                             },
                             {
                                 "name": "op/numpyop/univariate/Blur.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/blur.py#L21-L37",
-                                "displayName": "Blur"
+                                "displayName": "Blur",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/blur.py#L22-L41"
                             },
                             {
                                 "name": "op/numpyop/univariate/CLAHE.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/clahe.py#L22-L44",
-                                "displayName": "CLAHE"
+                                "displayName": "CLAHE",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/clahe.py#L22-L47"
                             },
                             {
                                 "name": "op/numpyop/univariate/ChannelDropout.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/channel_dropout.py#L22-L44",
-                                "displayName": "ChannelDropout"
+                                "displayName": "ChannelDropout",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/channel_dropout.py#L22-L47"
                             },
                             {
                                 "name": "op/numpyop/univariate/ChannelShuffle.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/channel_shuffle.py#L22-L36",
-                                "displayName": "ChannelShuffle"
+                                "displayName": "ChannelShuffle",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/channel_shuffle.py#L22-L38"
                             },
                             {
                                 "name": "op/numpyop/univariate/ChannelTranspose.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/channel_transpose.py#L22-L41",
-                                "displayName": "ChannelTranspose"
+                                "displayName": "ChannelTranspose",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/channel_transpose.py#L22-L43"
                             },
                             {
                                 "name": "op/numpyop/univariate/CoarseDropout.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/coarse_dropout.py#L22-L64",
-                                "displayName": "CoarseDropout"
+                                "displayName": "CoarseDropout",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/coarse_dropout.py#L22-L64"
                             },
                             {
                                 "name": "op/numpyop/univariate/Downscale.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/downscale.py#L23-L47",
-                                "displayName": "Downscale"
+                                "displayName": "Downscale",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/downscale.py#L23-L50"
                             },
                             {
                                 "name": "op/numpyop/univariate/Equalize.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/equalize.py#L23-L52",
-                                "displayName": "Equalize"
+                                "displayName": "Equalize",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/equalize.py#L23-L54"
                             },
                             {
                                 "name": "op/numpyop/univariate/ExpandDims.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/expand_dims.py#L22-L41",
-                                "displayName": "ExpandDims"
+                                "displayName": "ExpandDims",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/expand_dims.py#L22-L43"
                             },
                             {
                                 "name": "op/numpyop/univariate/FromFloat.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/from_float.py#L24-L45",
-                                "displayName": "FromFloat"
+                                "displayName": "FromFloat",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/from_float.py#L23-L47"
                             },
                             {
                                 "name": "op/numpyop/univariate/GaussianBlur.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/gaussian_blur.py#L23-L43",
-                                "displayName": "GaussianBlur"
+                                "displayName": "GaussianBlur",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/gaussian_blur.py#L22-L44"
                             },
                             {
                                 "name": "op/numpyop/univariate/GaussianNoise.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/gaussian_noise.py#L23-L45",
-                                "displayName": "GaussianNoise"
+                                "displayName": "GaussianNoise",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/gaussian_noise.py#L22-L46"
                             },
                             {
                                 "name": "op/numpyop/univariate/HueSaturationValue.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/hue_saturation_value.py#L22-L52",
-                                "displayName": "HueSaturationValue"
+                                "displayName": "HueSaturationValue",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/hue_saturation_value.py#L22-L55"
                             },
                             {
                                 "name": "op/numpyop/univariate/ISONoise.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/iso_noise.py#L22-L45",
-                                "displayName": "ISONoise"
+                                "displayName": "ISONoise",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/iso_noise.py#L22-L47"
                             },
                             {
                                 "name": "op/numpyop/univariate/ImageCompression.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/image_compression.py#L22-L50",
-                                "displayName": "ImageCompression"
+                                "displayName": "ImageCompression",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/image_compression.py#L22-L52"
                             },
                             {
                                 "name": "op/numpyop/univariate/ImageOnlyAlbumentation.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/univariate.py#L24-L41",
-                                "displayName": "ImageOnlyAlbumentation"
+                                "displayName": "ImageOnlyAlbumentation",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/univariate.py#L24-L55"
                             },
                             {
                                 "name": "op/numpyop/univariate/InvertImg.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/invert_img.py#L22-L36",
-                                "displayName": "InvertImg"
+                                "displayName": "InvertImg",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/invert_img.py#L22-L39"
                             },
                             {
                                 "name": "op/numpyop/univariate/MedianBlur.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/median_blur.py#L23-L43",
-                                "displayName": "MedianBlur"
+                                "displayName": "MedianBlur",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/median_blur.py#L22-L45"
                             },
                             {
                                 "name": "op/numpyop/univariate/Minmax.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/minmax.py#L22-L47",
-                                "displayName": "Minmax"
+                                "displayName": "Minmax",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/minmax.py#L22-L49"
                             },
                             {
                                 "name": "op/numpyop/univariate/MotionBlur.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/motion_blur.py#L22-L41",
-                                "displayName": "MotionBlur"
+                                "displayName": "MotionBlur",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/motion_blur.py#L22-L44"
                             },
                             {
                                 "name": "op/numpyop/univariate/MultiplicativeNoise.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/multiplicative_noise.py#L22-L52",
-                                "displayName": "MultiplicativeNoise"
+                                "displayName": "MultiplicativeNoise",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/multiplicative_noise.py#L22-L54"
                             },
                             {
                                 "name": "op/numpyop/univariate/Normalize.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/normalize.py#L22-L45",
-                                "displayName": "Normalize"
+                                "displayName": "Normalize",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/normalize.py#L22-L48"
                             },
                             {
                                 "name": "op/numpyop/univariate/Onehot.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/onehot.py#L22-L57",
-                                "displayName": "Onehot"
+                                "displayName": "Onehot",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/onehot.py#L22-L60"
+                            },
+                            {
+                                "name": "op/numpyop/univariate/PadSequence.md",
+                                "displayName": "PadSequence",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/pad_sequence.py#L22-L69"
                             },
                             {
                                 "name": "op/numpyop/univariate/Posterize.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/posterize.py#L23-L45",
-                                "displayName": "Posterize"
+                                "displayName": "Posterize",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/posterize.py#L22-L46"
                             },
                             {
                                 "name": "op/numpyop/univariate/RGBShift.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/rgb_shift.py#L23-L53",
-                                "displayName": "RGBShift"
+                                "displayName": "RGBShift",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/rgb_shift.py#L22-L55"
                             },
                             {
                                 "name": "op/numpyop/univariate/RandomBrightnessContrast.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/random_brightness_contrast.py#L22-L52",
-                                "displayName": "RandomBrightnessContrast"
+                                "displayName": "RandomBrightnessContrast",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/random_brightness_contrast.py#L22-L54"
                             },
                             {
                                 "name": "op/numpyop/univariate/RandomFog.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/random_fog.py#L22-L49",
-                                "displayName": "RandomFog"
+                                "displayName": "RandomFog",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/random_fog.py#L22-L52"
                             },
                             {
                                 "name": "op/numpyop/univariate/RandomGamma.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/random_gamma.py#L22-L44",
-                                "displayName": "RandomGamma"
+                                "displayName": "RandomGamma",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/random_gamma.py#L22-L46"
                             },
                             {
                                 "name": "op/numpyop/univariate/RandomRain.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/random_rain.py#L22-L64",
-                                "displayName": "RandomRain"
+                                "displayName": "RandomRain",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/random_rain.py#L22-L67"
                             },
                             {
                                 "name": "op/numpyop/univariate/RandomShadow.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/random_shadow.py#L23-L60",
-                                "displayName": "RandomShadow"
+                                "displayName": "RandomShadow",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/random_shadow.py#L22-L61"
                             },
                             {
                                 "name": "op/numpyop/univariate/RandomSnow.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/random_snow.py#L22-L49",
-                                "displayName": "RandomSnow"
+                                "displayName": "RandomSnow",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/random_snow.py#L22-L52"
                             },
                             {
                                 "name": "op/numpyop/univariate/RandomSunFlare.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/random_sun_flare.py#L22-L64",
-                                "displayName": "RandomSunFlare"
+                                "displayName": "RandomSunFlare",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/random_sun_flare.py#L22-L67"
                             },
                             {
                                 "name": "op/numpyop/univariate/ReadImage.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/read_image.py#L24-L61",
-                                "displayName": "ReadImage"
+                                "displayName": "ReadImage",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/read_image.py#L24-L64"
                             },
                             {
                                 "name": "op/numpyop/univariate/Reshape.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/reshape.py#L22-L42",
-                                "displayName": "Reshape"
+                                "displayName": "Reshape",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/tensorop/reshape.py#L25-L52"
                             },
                             {
                                 "name": "op/numpyop/univariate/Solarize.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/solarize.py#L22-L39",
-                                "displayName": "Solarize"
+                                "displayName": "Solarize",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/solarize.py#L22-L41"
+                            },
+                            {
+                                "name": "op/numpyop/univariate/ToArray.md",
+                                "displayName": "ToArray",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/to_array.py#L22-L46"
                             },
                             {
                                 "name": "op/numpyop/univariate/ToFloat.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/to_float.py#L23-L39",
-                                "displayName": "ToFloat"
+                                "displayName": "ToFloat",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/to_float.py#L22-L41"
                             },
                             {
                                 "name": "op/numpyop/univariate/ToGray.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/to_gray.py#L22-L36",
-                                "displayName": "ToGray"
+                                "displayName": "ToGray",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/to_gray.py#L22-L39"
                             },
                             {
                                 "name": "op/numpyop/univariate/ToSepia.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/univariate/to_sepia.py#L22-L36",
-                                "displayName": "ToSepia"
+                                "displayName": "ToSepia",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/to_sepia.py#L22-L39"
+                            },
+                            {
+                                "name": "op/numpyop/univariate/Tokenize.md",
+                                "displayName": "Tokenize",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/tokenize.py#L22-L66"
+                            },
+                            {
+                                "name": "op/numpyop/univariate/WordtoId.md",
+                                "displayName": "WordtoId",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/univariate/word_to_id.py#L22-L65"
                             }
                         ]
                     },
                     {
                         "name": "op/numpyop/Delete.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/numpyop.py#L28-L38",
-                        "displayName": "Delete"
+                        "displayName": "Delete",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/numpyop.py#L44-L56"
                     },
                     {
                         "name": "op/numpyop/NumpyOp.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/numpyop.py#L22-L25",
-                        "displayName": "NumpyOp"
+                        "displayName": "NumpyOp",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/numpyop.py#L22-L41"
                     },
                     {
                         "name": "op/numpyop/forward_numpyop.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/numpyop/numpyop.py#L41-L57",
-                        "displayName": "forward_numpyop"
+                        "displayName": "forward_numpyop",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/numpyop/numpyop.py#L59-L74"
                     }
                 ]
             },
@@ -780,13 +853,39 @@
                 "displayName": "fe.op.tensorop",
                 "children": [
                     {
+                        "name": "op/tensorop/gradient",
+                        "displayName": "fe.op.tensorop.gradient",
+                        "children": [
+                            {
+                                "name": "op/tensorop/gradient/FGSM.md",
+                                "displayName": "FGSM",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/tensorop/gradient/fgsm.py#L30-L66"
+                            },
+                            {
+                                "name": "op/tensorop/gradient/GradientOp.md",
+                                "displayName": "GradientOp",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/tensorop/gradient/gradient.py#L27-L58"
+                            },
+                            {
+                                "name": "op/tensorop/gradient/Watch.md",
+                                "displayName": "Watch",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/tensorop/gradient/watch.py#L26-L42"
+                            }
+                        ]
+                    },
+                    {
                         "name": "op/tensorop/loss",
                         "displayName": "fe.op.tensorop.loss",
                         "children": [
                             {
                                 "name": "op/tensorop/loss/CrossEntropy.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/tensorop/loss/cross_entropy.py#L28-L69",
-                                "displayName": "CrossEntropy"
+                                "displayName": "CrossEntropy",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/tensorop/loss/cross_entropy.py#L28-L71"
+                            },
+                            {
+                                "name": "op/tensorop/loss/MeanSquaredError.md",
+                                "displayName": "MeanSquaredError",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/tensorop/loss/mean_squared_error.py#L27-L50"
                             }
                         ]
                     },
@@ -796,68 +895,62 @@
                         "children": [
                             {
                                 "name": "op/tensorop/model/ModelOp.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/tensorop/model/model.py#L26-L50",
-                                "displayName": "ModelOp"
+                                "displayName": "ModelOp",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/tensorop/model/model.py#L26-L52"
                             },
                             {
                                 "name": "op/tensorop/model/UpdateOp.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/tensorop/model/update.py#L27-L58",
-                                "displayName": "UpdateOp"
+                                "displayName": "UpdateOp",
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/tensorop/model/update.py#L27-L60"
                             }
                         ]
                     },
                     {
-                        "name": "op/tensorop/xai",
-                        "displayName": "fe.op.tensorop.xai",
-                        "children": [
-                            {
-                                "name": "op/tensorop/xai/Argmax.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/tensorop/xai/argmax.py#L26-L45",
-                                "displayName": "Argmax"
-                            },
-                            {
-                                "name": "op/tensorop/xai/Gather.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/tensorop/xai/gather.py#L28-L64",
-                                "displayName": "Gather"
-                            },
-                            {
-                                "name": "op/tensorop/xai/GradientOp.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/tensorop/xai/gradient.py#L27-L56",
-                                "displayName": "GradientOp"
-                            },
-                            {
-                                "name": "op/tensorop/xai/Watch.md",
-                                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/tensorop/xai/watch.py#L26-L40",
-                                "displayName": "Watch"
-                            }
-                        ]
+                        "name": "op/tensorop/Argmax.md",
+                        "displayName": "Argmax",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/tensorop/argmax.py#L26-L47"
+                    },
+                    {
+                        "name": "op/tensorop/Average.md",
+                        "displayName": "Average",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/tensorop/average.py#L26-L45"
+                    },
+                    {
+                        "name": "op/tensorop/Gather.md",
+                        "displayName": "Gather",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/tensorop/gather.py#L28-L67"
+                    },
+                    {
+                        "name": "op/tensorop/Reshape.md",
+                        "displayName": "Reshape",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/tensorop/reshape.py#L25-L52"
                     },
                     {
                         "name": "op/tensorop/TensorOp.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/tensorop/tensorop.py#L25-L27",
-                        "displayName": "TensorOp"
+                        "displayName": "TensorOp",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/tensorop/tensorop.py#L25-L43"
                     }
                 ]
             },
             {
                 "name": "op/Op.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/op.py#L21-L36",
-                "displayName": "Op"
+                "displayName": "Op",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/op.py#L21-L73"
             },
             {
                 "name": "op/get_current_ops.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/op.py#L42-L49",
-                "displayName": "get_current_ops"
+                "displayName": "get_current_ops",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/op.py#L79-L96"
             },
             {
                 "name": "op/get_inputs_by_op.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/op.py#L52-L58",
-                "displayName": "get_inputs_by_op"
+                "displayName": "get_inputs_by_op",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/op.py#L99-L114"
             },
             {
                 "name": "op/write_outputs_by_op.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/op/op.py#L61-L65",
-                "displayName": "write_outputs_by_op"
+                "displayName": "write_outputs_by_op",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/op/op.py#L117-L128"
             }
         ]
     },
@@ -867,23 +960,23 @@
         "children": [
             {
                 "name": "schedule/EpochScheduler.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/schedule/schedule.py#L42-L68",
-                "displayName": "EpochScheduler"
+                "displayName": "EpochScheduler",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/schedule/schedule.py#L79-L137"
             },
             {
                 "name": "schedule/RepeatScheduler.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/schedule/schedule.py#L28-L39",
-                "displayName": "RepeatScheduler"
+                "displayName": "RepeatScheduler",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/schedule/schedule.py#L43-L76"
             },
             {
                 "name": "schedule/Scheduler.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/schedule/schedule.py#L20-L25",
-                "displayName": "Scheduler"
+                "displayName": "Scheduler",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/schedule/schedule.py#L20-L40"
             },
             {
                 "name": "schedule/cosine_decay.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/schedule/lr_shedule.py#L18-L35",
-                "displayName": "cosine_decay"
+                "displayName": "cosine_decay",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/schedule/lr_shedule.py#L18-L42"
             }
         ]
     },
@@ -897,37 +990,42 @@
                 "children": [
                     {
                         "name": "summary/logs/parse_log_dir.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/summary/logs/log_parse.py#L91-L123",
-                        "displayName": "parse_log_dir"
+                        "displayName": "parse_log_dir",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/summary/logs/log_parse.py#L96-L128"
                     },
                     {
                         "name": "summary/logs/parse_log_files.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/summary/logs/log_parse.py#L54-L88",
-                        "displayName": "parse_log_files"
+                        "displayName": "parse_log_files",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/summary/logs/log_parse.py#L54-L93"
                     },
                     {
                         "name": "summary/logs/plot_logs.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/summary/logs/log_plot.py#L30-L165",
-                        "displayName": "plot_logs"
+                        "displayName": "plot_logs",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/summary/logs/log_plot.py#L30-L166"
                     },
                     {
                         "name": "summary/logs/visualize_logs.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/summary/logs/log_plot.py#L168-L201",
-                        "displayName": "visualize_logs"
+                        "displayName": "visualize_logs",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/summary/logs/log_plot.py#L169-L202"
                     }
                 ]
             },
             {
                 "name": "summary/Summary.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/summary/summary.py#L19-L38",
-                "displayName": "Summary"
+                "displayName": "Summary",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/summary/summary.py#L19-L45"
             },
             {
                 "name": "summary/System.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/summary/system.py#L24-L91",
-                "displayName": "System"
+                "displayName": "System",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/summary/system.py#L24-L137"
             }
         ]
+    },
+    {
+        "name": "test",
+        "displayName": "fe.test",
+        "children": []
     },
     {
         "name": "trace",
@@ -939,18 +1037,18 @@
                 "children": [
                     {
                         "name": "trace/adapt/EarlyStopping.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/trace/adapt/early_stopping.py#L23-L83",
-                        "displayName": "EarlyStopping"
+                        "displayName": "EarlyStopping",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/trace/adapt/early_stopping.py#L23-L87"
                     },
                     {
                         "name": "trace/adapt/LRScheduler.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/trace/adapt/lr_scheduler.py#L29-L62",
-                        "displayName": "LRScheduler"
+                        "displayName": "LRScheduler",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/trace/adapt/lr_scheduler.py#L29-L72"
                     },
                     {
                         "name": "trace/adapt/ReduceLROnPlateau.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/trace/adapt/reduce_lr_on_plateau.py#L28-L79",
-                        "displayName": "ReduceLROnPlateau"
+                        "displayName": "ReduceLROnPlateau",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/trace/adapt/reduce_lr_on_plateau.py#L28-L82"
                     }
                 ]
             },
@@ -960,43 +1058,38 @@
                 "children": [
                     {
                         "name": "trace/io/BestModelSaver.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/trace/io/best_model_saver.py#L26-L66",
-                        "displayName": "BestModelSaver"
+                        "displayName": "BestModelSaver",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/trace/io/best_model_saver.py#L26-L70"
                     },
                     {
                         "name": "trace/io/CSVLogger.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/trace/io/csv_logger.py#L25-L58",
-                        "displayName": "CSVLogger"
+                        "displayName": "CSVLogger",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/trace/io/csv_logger.py#L25-L63"
                     },
                     {
                         "name": "trace/io/ImageSaver.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/trace/io/image_saver.py#L26-L55",
-                        "displayName": "ImageSaver"
+                        "displayName": "ImageSaver",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/trace/io/image_saver.py#L25-L64"
                     },
                     {
                         "name": "trace/io/ImageViewer.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/trace/io/image_viewer.py#L25-L39",
-                        "displayName": "ImageViewer"
+                        "displayName": "ImageViewer",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/trace/io/image_viewer.py#L24-L46"
                     },
                     {
                         "name": "trace/io/ModelSaver.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/trace/io/model_saver.py#L25-L43",
-                        "displayName": "ModelSaver"
-                    },
-                    {
-                        "name": "trace/io/QMSDocx.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/trace/io/qms.py#L95-L349",
-                        "displayName": "QMSDocx"
+                        "displayName": "ModelSaver",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/trace/io/model_saver.py#L25-L43"
                     },
                     {
                         "name": "trace/io/QMSTest.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/trace/io/qms.py#L27-L92",
-                        "displayName": "QMSTest"
+                        "displayName": "QMSTest",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/trace/io/qms.py#L30-L101"
                     },
                     {
                         "name": "trace/io/TensorBoard.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/trace/io/tensorboard.py#L203-L355",
-                        "displayName": "TensorBoard"
+                        "displayName": "TensorBoard",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/trace/io/tensorboard.py#L260-L422"
                     }
                 ]
             },
@@ -1006,38 +1099,38 @@
                 "children": [
                     {
                         "name": "trace/metric/Accuracy.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/trace/metric/accuracy.py#L24-L68",
-                        "displayName": "Accuracy"
+                        "displayName": "Accuracy",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/trace/metric/accuracy.py#L24-L71"
                     },
                     {
                         "name": "trace/metric/ConfusionMatrix.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/trace/metric/confusion_matrix.py#L26-L76",
-                        "displayName": "ConfusionMatrix"
+                        "displayName": "ConfusionMatrix",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/trace/metric/confusion_matrix.py#L25-L76"
                     },
                     {
                         "name": "trace/metric/Dice.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/trace/metric/dice.py#L24-L69",
-                        "displayName": "Dice"
+                        "displayName": "Dice",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/trace/metric/dice.py#L24-L71"
                     },
                     {
                         "name": "trace/metric/F1Score.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/trace/metric/f1_score.py#L26-L75",
-                        "displayName": "F1Score"
+                        "displayName": "F1Score",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/trace/metric/f1_score.py#L25-L78"
                     },
                     {
                         "name": "trace/metric/MCC.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/trace/metric/mcc.py#L26-L73",
-                        "displayName": "MCC"
+                        "displayName": "MCC",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/trace/metric/mcc.py#L25-L75"
                     },
                     {
                         "name": "trace/metric/Precision.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/trace/metric/precision.py#L25-L75",
-                        "displayName": "Precision"
+                        "displayName": "Precision",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/trace/metric/precision.py#L25-L76"
                     },
                     {
                         "name": "trace/metric/Recall.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/trace/metric/recall.py#L25-L75",
-                        "displayName": "Recall"
+                        "displayName": "Recall",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/trace/metric/recall.py#L25-L76"
                     }
                 ]
             },
@@ -1047,30 +1140,30 @@
                 "children": [
                     {
                         "name": "trace/xai/Saliency.md",
-                        "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/trace/xai/saliency.py#L37-L158",
-                        "displayName": "Saliency"
+                        "displayName": "Saliency",
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/trace/xai/saliency.py#L36-L168"
                     }
                 ]
             },
             {
                 "name": "trace/EvalEssential.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/trace/trace.py#L116-L153",
-                "displayName": "EvalEssential"
+                "displayName": "EvalEssential",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/trace/trace.py#L167-L223"
             },
             {
                 "name": "trace/Logger.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/trace/trace.py#L156-L198",
-                "displayName": "Logger"
+                "displayName": "Logger",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/trace/trace.py#L226-L277"
             },
             {
                 "name": "trace/Trace.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/trace/trace.py#L27-L68",
-                "displayName": "Trace"
+                "displayName": "Trace",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/trace/trace.py#L27-L115"
             },
             {
                 "name": "trace/TrainEssential.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/trace/trace.py#L71-L113",
-                "displayName": "TrainEssential"
+                "displayName": "TrainEssential",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/trace/trace.py#L118-L164"
             }
         ]
     },
@@ -1080,103 +1173,118 @@
         "children": [
             {
                 "name": "util/Data.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/util/data.py#L18-L31",
-                "displayName": "Data"
+                "displayName": "Data",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/util/data.py#L18-L73"
             },
             {
                 "name": "util/DefaultKeyDict.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/util/util.py#L304-L314",
-                "displayName": "DefaultKeyDict"
+                "displayName": "DefaultKeyDict",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/util/util.py#L504-L523"
             },
             {
                 "name": "util/NonContext.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/util/util.py#L106-L113",
-                "displayName": "NonContext"
+                "displayName": "NonContext",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/util/util.py#L138-L152"
             },
             {
                 "name": "util/Suppressor.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/util/util.py#L116-L137",
-                "displayName": "Suppressor"
+                "displayName": "Suppressor",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/util/util.py#L155-L184"
             },
             {
                 "name": "util/Timer.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/util/util.py#L140-L161",
-                "displayName": "Timer"
+                "displayName": "Timer",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/util/util.py#L187-L213"
             },
             {
                 "name": "util/bar_custom.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/util/wget_util.py#L24-L94",
-                "displayName": "bar_custom"
+                "displayName": "bar_custom",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/util/wget_util.py#L21-L107"
             },
             {
                 "name": "util/callback_progress.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/util/wget_util.py#L97-L121",
-                "displayName": "callback_progress"
+                "displayName": "callback_progress",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/util/wget_util.py#L110-L141"
             },
             {
                 "name": "util/draw.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/util/util.py#L164-L165",
-                "displayName": "draw"
+                "displayName": "draw",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/util/util.py#L216-L219"
+            },
+            {
+                "name": "util/get_num_devices.md",
+                "displayName": "get_num_devices",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/util/util.py#L526-L532"
             },
             {
                 "name": "util/get_shape.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/util/util.py#L262-L274",
-                "displayName": "get_shape"
+                "displayName": "get_shape",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/util/util.py#L365-L402"
             },
             {
                 "name": "util/get_type.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/util/util.py#L249-L259",
-                "displayName": "get_type"
+                "displayName": "get_type",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/util/util.py#L336-L362"
             },
             {
                 "name": "util/is_number.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/util/util.py#L290-L301",
-                "displayName": "is_number"
+                "displayName": "is_number",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/util/util.py#L483-L501"
             },
             {
                 "name": "util/lcms.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/util/util.py#L168-L172",
-                "displayName": "lcms"
+                "displayName": "lcms",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/util/util.py#L222-L239"
+            },
+            {
+                "name": "util/pad_batch.md",
+                "displayName": "pad_batch",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/util/util.py#L436-L458"
+            },
+            {
+                "name": "util/pad_data.md",
+                "displayName": "pad_data",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/util/util.py#L461-L480"
             },
             {
                 "name": "util/parse_modes.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/util/util.py#L277-L287",
-                "displayName": "parse_modes"
+                "displayName": "parse_modes",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/util/util.py#L405-L433"
             },
             {
                 "name": "util/parse_string_to_python.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/util/util.py#L54-L69",
-                "displayName": "parse_string_to_python"
+                "displayName": "parse_string_to_python",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/util/util.py#L55-L78"
             },
             {
                 "name": "util/per_replica_to_global.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/util/util.py#L222-L246",
-                "displayName": "per_replica_to_global"
+                "displayName": "per_replica_to_global",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/util/util.py#L304-L333"
             },
             {
                 "name": "util/prettify_metric_name.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/util/util.py#L175-L183",
-                "displayName": "prettify_metric_name"
+                "displayName": "prettify_metric_name",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/util/util.py#L242-L255"
             },
             {
                 "name": "util/strip_prefix.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/util/util.py#L204-L219",
-                "displayName": "strip_prefix"
+                "displayName": "strip_prefix",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/util/util.py#L281-L301"
             },
             {
                 "name": "util/strip_suffix.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/util/util.py#L186-L201",
-                "displayName": "strip_suffix"
+                "displayName": "strip_suffix",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/util/util.py#L258-L278"
             },
             {
                 "name": "util/to_list.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/util/util.py#L72-L86",
-                "displayName": "to_list"
+                "displayName": "to_list",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/util/util.py#L81-L107"
             },
             {
                 "name": "util/to_set.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/util/util.py#L89-L103",
-                "displayName": "to_set"
+                "displayName": "to_set",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/util/util.py#L110-L135"
             }
         ]
     },
@@ -1186,18 +1294,18 @@
         "children": [
             {
                 "name": "xai/SaliencyNet.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/xai/saliency.py#L44-L232",
-                "displayName": "SaliencyNet"
+                "displayName": "SaliencyNet",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/xai/saliency.py#L42-L272"
             },
             {
                 "name": "xai/XaiData.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/xai/util.py#L126-L243",
-                "displayName": "XaiData"
+                "displayName": "XaiData",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/xai/util.py#L143-L373"
             },
             {
                 "name": "xai/show_image.md",
-                "github_link": "https://github.com/fastestimator/fastestimator/blob/1.0dev/fastestimator/xai/util.py#L30-L97",
-                "displayName": "show_image"
+                "displayName": "show_image",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/xai/util.py#L29-L96"
             }
         ]
     }

@@ -2,13 +2,13 @@
 
 ### is_number
 ```python
-is_number(s)
+is_number(arg:str) -> bool
 ```
-Check if a given string can be converted into a number.
+Check if a given string can be converted into a number.```pythonx = fe.util.is_number("13.7")  # Truex = fe.util.is_number("ae13.7")  # False```
 
 #### Args:
 
-* **s** :  A string
+* **arg** :  A potentially numeric input string.
 
 #### Returns:
-    True iff the string represents a number
+    True iff `arg` represents a number.

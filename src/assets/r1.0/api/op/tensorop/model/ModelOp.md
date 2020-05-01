@@ -1,13 +1,13 @@
 ## ModelOp
 ```python
-ModelOp(model, inputs=None, outputs=None, mode=None, trainable=True, track_input=False)
+ModelOp(model:Union[tensorflow.python.keras.engine.training.Model, torch.nn.modules.module.Module], inputs:Union[NoneType, str, Iterable[str], Callable]=None, outputs:Union[NoneType, str, Iterable[str]]=None, mode:Union[NoneType, str, Iterable[str]]=None, trainable:bool=True)
 ```
-This class represents the Model operator that defines String keys for storing batch data and predictions
+This class performs forward passes of a neural network over batch data to generate predictions.
 
 #### Args:
 
-* **model** :  keras model compiled by fe.build
-* **inputs** :  String key of input training data. Defaults to None.
-* **outputs** :  String key of predictions. Defaults to None.
-* **mode** :  'train' or 'eval'. Defaults to None.
-* **track_input** :  If 'true' it tracks the gradients with respect to inputs. Defaults to False.    
+* **model** :  A model compiled by fe.build.
+* **inputs** :  String key of input training data.
+* **outputs** :  String key under which to store predictions.
+* **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute            regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument            like "!infer" or "!train".
+* **trainable** :  Indicates whether the model should have its weights tracked for update.    

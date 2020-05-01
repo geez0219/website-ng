@@ -1,102 +1,73 @@
 ## Trace
 ```python
-Trace(inputs=None, outputs=None, mode=None)
+Trace(inputs:Union[NoneType, str, Iterable[str]]=None, outputs:Union[NoneType, str, Iterable[str]]=None, mode:Union[NoneType, str, Iterable[str]]=None) -> None
 ```
-Trace base class. User can use `Trace` to customize their own operations during training, validation and testing.    The `Network` instance can be accessible by `self.network`. Trace execution order will attempt to be inferred    whenever possible based on the provided inputs and outputs variables.
+Trace controls the training loop. Users can use the `Trace` base class to customize their own functionality.    Traces are invoked by the fe.Estimator periodically as it runs. In addition to the current data dictionary, they are    also given a pointer to the current `System` instance which allows access to more information as well as giving the
+* **ability to modify or even cancel training. The order of function invocations is as follows** : 
+* **Training** :                                        Testing        on_begin                                            on_begin            |                                                   |        on_epoch_begin (train)  <------<                    on_epoch_begin (test)  <------<            |                          |                        |                         |        on_batch_begin (train) <----<  |                    on_batch_begin (test) <----<  |            |                       |  |                        |                      |  |        on_batch_end (train) >-----^   |                    on_batch_end (test) >------^  |            |                          ^                        |                         |        on_epoch_end (train)           |                    on_epoch_end (test) >---------^            |                          |                        |        on_epoch_begin (eval)          |                    on_end            |                          ^        on_batch_begin (eval) <----<   |            |                      |   |        on_batch_end (eval) >-----^    |            |                          |        on_epoch_end (eval) >----------^            |        on_end
 
 #### Args:
 
-* **inputs (str, list, set)** :  A set of keys that this trace intends to read from the state dictionary as inputs
-* **outputs (str, list, set)** :  A set of keys that this trace intends to write into the state dictionary
-* **mode (string)** :  Restrict the trace to run only on given modes ('train', 'eval', 'test'). None will always                        execute    
+* **inputs** :  A set of keys that this trace intends to read from the state dictionary as inputs.
+* **outputs** :  A set of keys that this trace intends to write into the system buffer.
+* **mode** :  What mode(s) to execute this Trace in. For example, "train", "eval", "test", or "infer". To execute            regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument            like "!infer" or "!train".    
 
 ### on_batch_begin
 ```python
-on_batch_begin(self, state)
+on_batch_begin(self, data:fastestimator.util.data.Data) -> None
 ```
-Runs at the beginning of every batch of the mode.
+Runs at the beginning of each batch.
 
 #### Args:
 
-* **state (ChainMap)** :  dictionary of run time that has the following key(s)
- * "mode" (str) :  current run time mode, can be "train", "eval" or "test"
- * "epoch" (int) :  current epoch index starting from 0
- * "train_step" (int) :  current global training step starting from 0
- * "batch_idx" (int) :  current local step of the epoch starting from 0
- * "batch_size" (int) :  current global batch size
- * "local_batch_size" (int) :  current batch size for single device                * any keys written by 'on_batch_begin' of previous traces        
+* **data** :  A dictionary through which traces can communicate with each other or write values for logging.        
 
 ### on_batch_end
 ```python
-on_batch_end(self, state)
+on_batch_end(self, data:fastestimator.util.data.Data) -> None
 ```
-Runs at the end of every batch of the mode. Anything written to the top level of the state dictionary will be        printed in the logs. Things written only to the batch sub-dictionary will not be logged
+Runs at the end of each batch.
 
 #### Args:
 
-* **state (ChainMap)** :  dictionary of run time that has the following key(s)
- * "mode" (str) :   current run time mode, can be "train", "eval" or "test"
- * "epoch" (int) :  current epoch index starting from 0
- * "train_step" (int) :  current global training step starting from 0
- * "batch_idx" (int) :  current local step of the epoch starting from 0
- * "batch_size" (int) :  current global batch size
- * "batch" (dict) :  the batch data after the Network execution
- * "local_batch_size" (int) :  current batch size for single device
- * <loss_name> defined in model (float) :  loss of current batch (only available when mode is "train")                * any keys written by 'on_batch_end' of previous traces        
+* **data** :  The current batch and prediction data, as well as any information written by prior `Traces`.        
 
 ### on_begin
 ```python
-on_begin(self, state)
+on_begin(self, data:fastestimator.util.data.Data) -> None
 ```
-Runs once at the beginning of training
+Runs once at the beginning of training or testing.
 
 #### Args:
 
-* **state (ChainMap)** :  dictionary of run time that has the following key(s)
- * "train_step" (int) :  current global training step starting from 0
- * "num_devices" (int) :  number of devices(mainly gpu) that are being used, if cpu only, the number is 1
- * "log_steps" (int) :  how many training steps between logging intervals
- * "persist_summary" (bool) :  whether to persist the experiment history/summary
- * "total_epochs" (int) :  how many epochs the training is scheduled to run for
- * "total_train_steps" (int) :  how many training steps the training is scheduled to run for                * any keys written by 'on_begin' of previous traces        
+* **data** :  A dictionary through which traces can communicate with each other or write values for logging.        
 
 ### on_end
 ```python
-on_end(self, state)
+on_end(self, data:fastestimator.util.data.Data) -> None
 ```
-Runs once at the end training. Anything written into the state dictionary will be logged
+Runs once at the end training.
 
 #### Args:
 
-* **state (ChainMap)** :  dictionary of run time that has the following key(s)
- * "train_step" (int) :  current global training step starting from 0
- * "epoch" (int) :  current epoch index starting from 0
- * "summary" (Experiment) :  will be returned from estimator.fit() if a summary input was specified                * any keys written by 'on_end' of previous traces        
+* **data** :  A dictionary through which traces can communicate with each other or write values for logging.        
 
 ### on_epoch_begin
 ```python
-on_epoch_begin(self, state)
+on_epoch_begin(self, data:fastestimator.util.data.Data) -> None
 ```
-Runs at the beginning of each epoch of the mode.
+Runs at the beginning of each epoch.
 
 #### Args:
 
-* **state (ChainMap)** :  dictionary of run time that has the following key(s)
- * "mode" (str) :   current run time mode, can be "train", "eval" or "test"
- * "epoch" (int) :  current epoch index starting from 0
- * "train_step" (int) :  current global training step starting from 0
- * "num_examples" (int) :  total number of examples available for current mode                * any keys written by 'on_epoch_begin' of previous traces        
+* **data** :  A dictionary through which traces can communicate with each other or write values for logging.        
 
 ### on_epoch_end
 ```python
-on_epoch_end(self, state)
+on_epoch_end(self, data:fastestimator.util.data.Data) -> None
 ```
-Runs at the end of every epoch of the mode. Anything written into the state dictionary will be logged
+Runs at the end of each epoch.
 
 #### Args:
 
-* **state (ChainMap)** :  dictionary of run time that has the following key(s)
- * "mode" (str) :   current run time mode, can be "train", "eval" or "test"
- * "epoch" (int) :  current epoch index starting from 0
- * "train_step" (int) :  current global training step starting from 0
- * <loss_name> defined in model (float) :  average loss of the epoch (only available when mode is "eval")                * any keys written by 'on_epoch_end' of previous traces        
+* **data** :  A dictionary through which traces can communicate with each other or write values for logging.        

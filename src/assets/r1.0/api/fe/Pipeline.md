@@ -1,56 +1,98 @@
 ## Pipeline
 ```python
-Pipeline(data, batch_size, ops=None, read_feature=None, padded_batch=False, expand_dims=False, max_shuffle_buffer_mb=3000)
+Pipeline(train_data:Union[NoneType, ~DataSource, fastestimator.schedule.schedule.Scheduler[~DataSource]]=None, eval_data:Union[NoneType, ~DataSource, fastestimator.schedule.schedule.Scheduler[~DataSource]]=None, test_data:Union[NoneType, ~DataSource, fastestimator.schedule.schedule.Scheduler[~DataSource]]=None, batch_size:Union[NoneType, int, fastestimator.schedule.schedule.Scheduler[int]]=None, ops:Union[NoneType, fastestimator.op.numpyop.numpyop.NumpyOp, fastestimator.schedule.schedule.Scheduler[fastestimator.op.numpyop.numpyop.NumpyOp], List[Union[fastestimator.op.numpyop.numpyop.NumpyOp, fastestimator.schedule.schedule.Scheduler[fastestimator.op.numpyop.numpyop.NumpyOp]]]]=None, num_process:Union[int, NoneType]=None, drop_last:bool=False, pad_value:Union[int, float, NoneType]=None)
 ```
-Class representing the data pipeline required for fastestimator
+Data pipeline class that takes care of the data preprocessing.
 
 #### Args:
 
-* **data** :  The input for the pipeline. This can be either a dictionary, a tfrecord path or a RecordWriter.
-* **batch_size** :  Integer representing the batch size per device for training the model.
-* **ops** :  List of fastestimator operations that needs to be applied on the data in the pipeline.
-* **read_feature** :  List of features that should be used in training. If None all the features available are used.
-* **padded_batch** :  Boolean representing if a batch should be padded or not.
-* **expand_dims** :  Boolean representing if a batch dimensions should be expanded or not.
-* **max_shuffle_buffer_mb** :  Maximum buffer size to shuffle data. This is used only if the number of examples are            more than that could fit in the buffer. Defaults to 3000.    
+* **train_data** :  training data, can be a tf.data.Dataset, fe.dataset or torch.data.DataLoader or a scheduler of them.                    Defaults to None, which means no training data available.
+* **eval_data** :  evaludation data, can be a tf.data.Dataset, fe.dataset or torch.data.DataLoader or a scheduler of them.                    Defaults to None, which means no evaluation data available.
+* **test_data** :  testing data, can be a tf.data.Dataset, fe.dataset or torch.data.DataLoader or a scheduler of them.                    Defaults to None, which means no testing data available.
+* **batch_size** :  batch size, can be an integer or a scheduelr of integer, only used when fe.dataset is available.                    Defaults to None.
+* **ops** :  preprocessing numpy ops, only used when fe.dataset is available. Defaults to None.
+* **num_process** :  number of processes, only used whenfe.dataset is available. Defaults to None, which will be the                    system cpu count. use num_process=0 for debugging.
+* **drop_last** :  whether to drop the last batch if last batch is incomplete.
+* **pad_value** :  the padding value if batch padding is needed. Defaults to None, which indicates no padding. only used                    when fe.dataset is available.    
 
 ### benchmark
 ```python
-benchmark(self, mode='train', num_steps=1000, log_interval=100, current_epoch=0)
+benchmark(self, mode:str='train', epoch:int=1, num_steps:int=1000, log_interval:int=100)
 ```
-Runs benchmarks for the current epoch.
+benchmark the pipeline processing speed
 
 #### Args:
 
-* **mode** :  can be either "train" or "eval".
-* **num_steps** :  the number of steps to show the results for.
-* **log_interval** : 
-* **current_epoch** :  to specify the current epoch in the training.        
+* **mode** :  Current mode, can be 'train', 'eval' or 'test'.
+* **epoch** :  Current epoch index. Defaults to 1.
+* **num_steps** :  Maximum number of steps to do benchmark on. Defaults to 1000.
+* **log_interval** :  Logging interval. Defaults to 100.        
 
-### get_global_batch_size
+### get_loader
 ```python
-get_global_batch_size(self, epoch)
+get_loader(self, mode:str, epoch:int=1, shuffle:Union[bool, NoneType]=None) -> Union[torch.utils.data.dataloader.DataLoader, tensorflow.python.data.ops.dataset_ops.DatasetV2]
 ```
-Gets the global batch size for the current epoch. Batch size changes if there is a schedule which specifies a        change for the given epoch.
+get the data loader given mode and epoch
 
 #### Args:
 
-* **epoch** :  The epoch number in the training        
+* **mode** :  Current mode, can be 'train', 'eval' or 'test'.
+* **epoch** :  Current epoch index. Defaults to 1.
+* **shuffle** :  Whether to shuffle, only used with FE dataset. If None, shuffle is based on mode. Defaults to None.
 
-### prepare
-```python
-prepare(self)
-```
-Create the dataset used by the pipeline by running all the ops specified.        
+#### Returns:
+            data loader given the mode and epoch.        
 
-### show_results
+### get_modes
 ```python
-show_results(self, mode='train', num_steps=1, current_epoch=0, reuse=False)
+get_modes(self) -> Set[str]
 ```
-Processes the pipeline ops on the given input data.
+get the active modes in pipeline
+
+#### Returns:
+            set of active modes        
+
+### get_results
+```python
+get_results(self, mode:str='train', epoch:int=1, num_steps:int=1, shuffle:bool=False) -> Union[List[Dict[str, Any]], Dict[str, Any]]
+```
+get the pipeline outputs after all ops
 
 #### Args:
 
-* **mode** :  can be either "train" or "eval".
-* **num_steps** :  the number of steps for the pipeline to run.
-* **current_epoch** :  to specify the current epoch in the training. This is useful if you are using a schedule to                change the pipeline during training.        
+* **mode** :  Current mode, can be 'train', 'eval' or 'test'.
+* **epoch** :  Current epoch index. Defaults to 1.
+* **num_steps** :  number of steps(batches) to get. Defaults to 1.
+* **shuffle** :  whether to use shuffling
+
+#### Returns:
+            pipeline outputs        
+
+### get_signature_epochs
+```python
+get_signature_epochs(self, total_epochs:int)
+```
+get the signature epochs that scheduler will be effective on.
+
+#### Args:
+
+* **total_epochs** :  total number of epochs
+
+#### Returns:
+
+* **set** :  set of epoch index        
+
+### transform
+```python
+transform(self, data:Dict[str, Any], mode:str, epoch:int=1) -> Dict[str, Any]
+```
+apply all pipeline operations on given data for certain mode and epoch.
+
+#### Args:
+
+* **data** :  Input data in dictionary format
+* **mode** :  Current mode, can be "train", "eval", "test" or "infer"
+* **epoch** :  Current epoch index. Defaults to 1.
+
+#### Returns:
+            transformed data        
