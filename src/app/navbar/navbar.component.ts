@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   dialogRef: any = null;
   tabList = [{name: "Install", routerLink: "/install", preRoute: "install", hidden:false},
              {name: "Tutorials", routerLink: "/tutorials/beginner/t01_getting_started", preRoute: "tutorials", hidden:false},
-             {name: "Examples", routerLink: "/examples/image_classification/mnist", preRoute: "examples", hidden:false},
+             {name: "Examples", routerLink: "/examples/overview", preRoute: "examples", hidden:false},
              {name: "API", routerLink: "/api/fe/Estimator", preRoute: "api", hidden:false},
              {name: "Community", routerLink: "/community", preRoute: "community", hidden:false}]
 
