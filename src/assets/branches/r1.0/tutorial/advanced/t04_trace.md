@@ -35,7 +35,7 @@ def get_pipeline_model_network(model_name="LeNet", batch_size=32):
                            ops=[ExpandDims(inputs="x", outputs="x"), 
                                 Minmax(inputs="x", outputs="x")])
 
-    model = fe.build(model_fn=LeNet, optimizer_fn="adam", model_names=model_name)
+    model = fe.build(model_fn=LeNet, optimizer_fn="adam", model_name=model_name)
 
     network = fe.Network(ops=[
         ModelOp(model=model, inputs="x", outputs="y_pred"),
@@ -143,7 +143,8 @@ Trace has access to the current `System` instance which has information on netwo
 * batch_idx
 * stop_training
 * network
-* max_steps_per_epoch
+* max_train_steps_per_epoch
+* max_eval_steps_per_epoch
 * summary
 * experiment_time
 
@@ -254,7 +255,7 @@ class MonitorPred(Trace):
 pipeline, model, network = get_pipeline_model_network(batch_size=4)
 
 traces = MonitorPred(true_key="y", pred_key="y_pred")
-estimator = fe.Estimator(pipeline=pipeline, network=network, epochs=2, traces=traces, max_steps_per_epoch=2, log_steps=None)
+estimator = fe.Estimator(pipeline=pipeline, network=network, epochs=2, traces=traces, max_train_steps_per_epoch=2, log_steps=None)
 ```
 
     FastEstimator-Warn: No ModelSaver Trace detected. Models will not be saved.

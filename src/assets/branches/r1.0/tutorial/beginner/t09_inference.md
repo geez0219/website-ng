@@ -136,7 +136,7 @@ print_dict_but_value(infer_data)
 
 ### Network.transform
 
-We then use the network object to call `transform` method that run the network graph("x_out" to "y_pred"). Much alike with `pipeline.transform`, it will generate all nodes' data in the `network` with all data in the type of Tensor. The data type depends on the backend of the network. it is `tf.Tensor` with Tensorflow backend and `torch.Tensor` with Pytorch. Please check out **Tutorial 7: Network** for more detail about `Network` backend). 
+We then use the network object to call `transform` method that run the netowrk graph("x_out" to "y_pred"). Much alike with `pipeline.transform`, it will generate all nodes' data in the `network` with all data in the type of Tensor. The data type depends on the backend of the network. it is `tf.Tensor` with Tensorflow backend and `torch.Tensor` with Pytorch. Please check out **Tutorial 7: Network** for more detail about `Network` backend). 
 
 <img src="assets/branches/r1.0/tutorial/../resources/t09_infer_mode3.PNG" alt="drawing" width="700"/>
 
@@ -164,5 +164,5 @@ print("Prediction class is {}".format(np.argmax(infer_data["y_pred"])))
 
 
 
-![png](assets/branches/r1.0/tutorial/t09_inference_files/t09_inference_16_1.png)
+![png](assets/branches/r1.0/tutorial/beginner/t09_inference_files/t09_inference_16_1.png)
 
