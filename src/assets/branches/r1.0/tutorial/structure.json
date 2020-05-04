@@ -427,9 +427,34 @@
       },
       {
         "name": "advanced/t02_pipeline.md",
-        "displayName": " sample numpy array to later create datasets from them",
-        "toc": []
-      },
+        "displayName": " Advanced Tutorial 2: Pipeline",
+        "toc": [
+            {
+                "id": "overview",
+                "displayName": "Overview"
+            },
+            {
+                "id": "how-to-iterate-through-the-pipeline-data",
+                "displayName": "How to iterate through the pipeline data"
+            },
+            {
+                "id": "example-use-case",
+                "displayName": "Example use case"
+            },
+            {
+                "id": "dropping-the-last-batch",
+                "displayName": "Dropping the last batch"
+            },
+            {
+                "id": "handling-the-batch-padding",
+                "displayName": "Handling the batch padding"
+            },
+            {
+                "id": "benchmarking-pipeline-performance",
+                "displayName": "Benchmarking pipeline performance"
+            }
+        ]
+    },
       {
         "name": "advanced/t03_operator.md",
         "displayName": " Advanced Tutorial 3: Operator",

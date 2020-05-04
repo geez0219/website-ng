@@ -32,9 +32,9 @@ AddOneOp = AddOne(inputs=("x", "y"), outputs=("x_out", "y_out"))
 ```
 
 ## Operator Mechanism
-We learned about the operator structure in [Tutorial 3](https://github.com/fastestimator/fastestimator/blob/master/tutorial/beginner/t03_operator.ipynb). Operators are used to build complex computation graphs in Fastestimator.
+We learned about the operator structure in [tutorial 3](./tutorials/beginner/t03_operator) in beginner section. Operators are used to build complex computation graphs in Fastestimator.
 
-In Fastestimator, all the available data is held in a data dictionary during execution. An `Op` interacts with the required portion of this data using the keys specified through the `inputs` key, processes the data through the `forward` function and writes the values returned from the `forward` function to this data dictionary using the `outputs` key. An `Op` runs when it's `mode` matches the current execution mode. For more information on mode, you can go through [Tutorial 8](https://github.com/fastestimator/fastestimator/blob/master/tutorial/beginner/t08_mode.ipynb).
+In Fastestimator, all the available data is held in a data dictionary during execution. An `Op` interacts with the required portion of this data using the keys specified through the `inputs` key, processes the data through the `forward` function and writes the values returned from the `forward` function to this data dictionary using the `outputs` key. An `Op` runs when it's `mode` matches the current execution mode. For more information on mode, you can go through [tutorial 8](./tutorials/beginner/t08_mode).
 
 <img src="assets/branches/r1.0/tutorial/../resources/t03_advanced_operator_mechanism.png" alt="drawing" width="500"/>
 
@@ -45,7 +45,7 @@ The data argument passes the portion of data dictionary corresponding to the key
 State stores meta information about training like mode, GradientTape for tensorflow etc. It is very unlikely that you would need to interact with it.
 
 ## NumpyOp
-NumpyOp is used in pipeline for data pre-processing and augmentation. You can go through [Tutorial 4](https://github.com/fastestimator/fastestimator/blob/master/tutorial/beginner/t04_pipeline.ipynb) to get an overview of NumpyOp and their usage. Here, we will talk about some advanced NumpyOps.
+NumpyOp is used in pipeline for data pre-processing and augmentation. You can go through [tutorial 4](./tutorials/beginner/t04_pipeline) in beginner section to get an overview of NumpyOp and their usage. Here, we will talk about some advanced NumpyOps.
 
 ### Delete
 Delete op is used to delete keys from the data dictionary which are no longer required by the user. This helps in improving processing speed as we are holding only the required data in the memory. Below, we show it's usage.
@@ -133,19 +133,19 @@ for i in range(4):
 ```
 
 
-![png](assets/branches/r1.0/tutorial/t03_operator_files/t03_operator_14_0.png)
+![png](assets/branches/r1.0/tutorial/advanced/t03_operator_files/t03_operator_14_0.png)
 
 
 
-![png](assets/branches/r1.0/tutorial/t03_operator_files/t03_operator_14_1.png)
+![png](assets/branches/r1.0/tutorial/advanced/t03_operator_files/t03_operator_14_1.png)
 
 
 
-![png](assets/branches/r1.0/tutorial/t03_operator_files/t03_operator_14_2.png)
+![png](assets/branches/r1.0/tutorial/advanced/t03_operator_files/t03_operator_14_2.png)
 
 
 
-![png](assets/branches/r1.0/tutorial/t03_operator_files/t03_operator_14_3.png)
+![png](assets/branches/r1.0/tutorial/advanced/t03_operator_files/t03_operator_14_3.png)
 
 
 As you can see, Sometimes Op horizontally flips the image with 50% probability and OneOf applies, vertical flip, rotation and blur augmentations randomly.
@@ -219,23 +219,23 @@ for i in range(4):
 ```
 
 
-![png](assets/branches/r1.0/tutorial/t03_operator_files/t03_operator_20_0.png)
+![png](assets/branches/r1.0/tutorial/advanced/t03_operator_files/t03_operator_20_0.png)
 
 
 
-![png](assets/branches/r1.0/tutorial/t03_operator_files/t03_operator_20_1.png)
+![png](assets/branches/r1.0/tutorial/advanced/t03_operator_files/t03_operator_20_1.png)
 
 
 
-![png](assets/branches/r1.0/tutorial/t03_operator_files/t03_operator_20_2.png)
+![png](assets/branches/r1.0/tutorial/advanced/t03_operator_files/t03_operator_20_2.png)
 
 
 
-![png](assets/branches/r1.0/tutorial/t03_operator_files/t03_operator_20_3.png)
+![png](assets/branches/r1.0/tutorial/advanced/t03_operator_files/t03_operator_20_3.png)
 
 
 ## TensorOp
-TensorOp is used to process tensor data. It's used in `Network` for graph-based operations. You can go through [Tutorial 6](https://github.com/fastestimator/fastestimator/blob/master/tutorial/beginner/t06_network.ipynb) to get an overview of TensorOp and their usage.
+TensorOp is used to process tensor data. It's used in `Network` for graph-based operations. You can go through [tutorial 6](./tutorials/beginner/t06_network) in beginner section to get an overview of TensorOp and their usage.
 
 ### Customization
 We can create a custom TensorOp using TensorFlow or Pytorch library according to our requirements. Below, we showcase a custom TensorOp which reshapes the output of above Pipeline to make it compatible to the network.  

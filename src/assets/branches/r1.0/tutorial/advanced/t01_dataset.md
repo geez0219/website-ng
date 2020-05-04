@@ -13,7 +13,7 @@ In this tutorial, we will talk about the following topics:
     * Distribution batching
     * Unpaired dataset
 
-Before going through the tutorial, it is recommended to check [beginner tutorial 02](linkneeded) for basic understanding of `dataset` from Pytorch and FastEstimator. We will talk about more details about `fe.dataset` API in this tutorial.
+Before going through the tutorial, it is recommended to check [tutorial 02](./tutorials/beginner/t02_dataset) in beginner section for basic understanding of `dataset` from Pytorch and FastEstimator. We will talk about more details about `fe.dataset` API in this tutorial.
 
 ## Dataset summary
 As we have mentioned in previous tutorial, users can import our inherited dataset class for easy use in `Pipeline`. But how do we know what keys are available in the dataset?   Well, obviously one easy way is just call `dataset[0]` and check the keys. However, there's a more elegant way to check information of dataset: `dataset.summary()`.

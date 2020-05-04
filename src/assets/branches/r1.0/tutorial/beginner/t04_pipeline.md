@@ -157,7 +157,7 @@ minmax_op = Minmax(inputs="x", outputs="x_out")
 
 ### Multivariate NumpyOp
 
-Multivariate numpy operaters perform different operations simultaneously based on the nature of features. For example, bounding box and mask of the same input image require different operations.
+Multivariate numpy operators perform different operations based on the nature of features. For example, bounding box and mask of the same input image require different operations.
 
 We will define Rotate numpy operator that will rotate the images 180 degrees.
 
@@ -229,5 +229,5 @@ for i, j in enumerate(np.random.randint(low=0, high=2, size=sample_num)):
 ```
 
 
-![png](assets/branches/r1.0/tutorial/t04_pipeline_files/t04_pipeline_39_0.png)
+![png](assets/branches/r1.0/tutorial/beginner/t04_pipeline_files/t04_pipeline_39_0.png)
 

@@ -1,6 +1,6 @@
-<h1>Advanced Tutorial 2: Pipeline</h1>
+# Advanced Tutorial 2: Pipeline
 
-<h2>Overview</h2>
+## Overview
 
 In the beginner's tutorial of `Pipeline`, we learned how to build data pipeline that handles data loading and preprocessing tasks efficiently. Now that you have understood some basic operations in the `Pipeline`, we will demonstrate some advanced concepts and how to leverage them to create efficient `Pipeline` in this tutorial.
 
@@ -13,7 +13,7 @@ In this tutorial we will discuss following topics,
 * Handling the batch padding
 * How to benchmark Pipeline performance
 
-<h2>How to iterate through the pipeline data</h2>
+## How to iterate through the pipeline data
 
 We will first see how to iterate through the pipeline batch data. For example if we want to calculate global mean of pixel value or standard deviation over the channels we could iterate through the batch data and compute them.
 
@@ -68,7 +68,7 @@ for batch in loader_fe:
     {'x': tensor([[0.8078, 0.3384]], dtype=torch.float64), 'y': tensor([[0.2901]], dtype=torch.float64)}
 
 
-<h3>Example use case</h3>
+### Example use case
 
 Let's say we have CIFAR-10 dataset and we want to find global average pixel value over three channels then we can loop through the batch data and quickly compute the value.
 
@@ -105,7 +105,7 @@ print("Mean pixel value over the channels: ", mean_arr)
     Mean pixel value over the channels:  [125.32287898 122.96682199 113.8856495 ]
 
 
-<h2>Dropping the last batch</h2>
+## Dropping the last batch
 
 When we specify `batch_size` in the `Pipeline`, it will combine consecutive number of tensors into a batch and resulting shape will be <br><b>batch_size * shape of input tensor</b><br> However, if `batch_size` does not divide the input data evenly then last batch could have different batch_size than other batches.<br>
 To drop the last batch we can set `drop_last` to `True`. Therefore, if the last batch is incomplete it will be dropped.
@@ -115,7 +115,7 @@ To drop the last batch we can set `drop_last` to `True`. Therefore, if the last 
 pipeline_fe = fe.Pipeline(train_data=dataset_fe, batch_size=3, drop_last=True)
 ```
 
-<h2>Handling the batch padding</h2>
+## Handling the batch padding
 
 In the previous section we saw that if last batch has different shape than rest of the batches then we can drop the last batch. But there might be scenario where the input tensors that are batched have different dimensions i.e. In Natural language processing problems we can have input strings can have different lengths. For that the tensors are padded out to the maximum length of the all the tensors in the dataset.
 
@@ -155,7 +155,7 @@ for elem in iter(pipeline_fe.get_loader(mode='train', shuffle=False)):
             [3, 0, 0]])}
 
 
-<h2>Benchmarking pipeline performance</h2>
+## Benchmarking pipeline performance
 
 In the ideal world, deep learning scientists would need to evaluate costs and speed in either in terms of data processing or model training before deploying. That makes benchmarking such tasks significant as we need good summary of the measures.<br>
 `Pipeline.benchmark` provides that important feature of benchmarking processing speed of pre-processing operations in the `Pipeline`
