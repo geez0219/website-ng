@@ -2,11 +2,11 @@
 
 ## Overview
 In this tutorial we will talk about:
-* **Instantiating and Compiling the model**
-* **Model function**
-* **Optimizer function**
-* **Loading model weights**
-* **Specifying model name**
+* Instantiating and Compiling the model
+* Model function
+* Optimizer function
+* Loading model weights
+* Specifying model name
 
 ## Instantiating and Compiling the model
 
@@ -182,15 +182,15 @@ resnet50_torch = fe.build(model_fn=lambda: models.resnet50(pretrained=False),
 
 ## Specifying model name
 
-Name of the model can be specified using `model_names` parameter. The name of the model is helpful in distinguishing the model in presence of multiple models.
+Name of the model can be specified using `model_name` parameter. The name of the model is helpful in distinguishing the model in presence of multiple models.
 
 
 ```python
-model = fe.build(model_fn=LeNet, optimizer_fn="adam", model_names="LeNet")
+model = fe.build(model_fn=LeNet, optimizer_fn="adam", model_name="LeNet")
 print("Model Name: ", model.model_name)
 ```
 
     Model Name:  LeNet
 
 
-If a model function returns multiple models, list of model_names can be given. You can go through **[pggan apphub](https://github.com/fastestimator/fastestimator/blob/master/apphub/image_generation/pggan/pggan.ipynb)** for an illustration with multiple models and model names.
+If a model function returns multiple models, list of model_name can be given. You can go through **[pggan apphub](https://github.com/fastestimator/fastestimator/blob/master/apphub/image_generation/pggan/pggan.ipynb)** for an illustration with multiple models and model names.

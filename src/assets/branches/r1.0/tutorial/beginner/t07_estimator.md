@@ -2,17 +2,18 @@
 
 ## Overview
 In this tutorial, we will talk about:
-* **Estimator API**:
+* Estimator API:
     * reducing number of training steps per epoch
+    * reducing number of evaluation steps per epoch
     * changing logging behavior
     * monitoring intermediate results during training
-* **Trace**
+* Trace
     * Concept
     * Structure
     * Usage
-* **Model Testing**
+* Model Testing
 
-`Estimator` is the API that manages everything related to training loop. It combines `Pipeline` and `Network` together and provides users with fine-grain control of the training loop. Before we demonstrate different ways to control the training loop, let's define a template similar to [tutorial 1](linkneeded) and will use pytorch model this time.
+`Estimator` is the API that manages everything related to training loop. It combines `Pipeline` and `Network` together and provides users with fine-grain control of the training loop. Before we demonstrate different ways to control the training loop, let's define a template similar to [tutorial 1](./tutorials/beginner/t01_getting_started) and will use pytorch model this time.
 
 
 ```python
@@ -24,7 +25,7 @@ from fastestimator.op.tensorop.loss import CrossEntropy
 from fastestimator.op.tensorop.model import ModelOp, UpdateOp
 import tempfile
 
-def get_estimator(log_steps=100, monitor_names=None, use_trace=False, max_steps_per_epoch=None, epochs=2):
+def get_estimator(log_steps=100, monitor_names=None, use_trace=False, max_train_steps_per_epoch=None, epochs=2):
     # step 1
     train_data, eval_data = mnist.load_data()
     test_data = eval_data.split(0.5)
@@ -34,7 +35,7 @@ def get_estimator(log_steps=100, monitor_names=None, use_trace=False, max_steps_
                            batch_size=32,
                            ops=[ExpandDims(inputs="x", outputs="x", axis=0), Minmax(inputs="x", outputs="x")])
     # step 2
-    model = fe.build(model_fn=LeNet, optimizer_fn="adam", model_names="LeNet")
+    model = fe.build(model_fn=LeNet, optimizer_fn="adam", model_name="LeNet")
     network = fe.Network(ops=[
         ModelOp(model=model, inputs="x", outputs="y_pred"),
         CrossEntropy(inputs=("y_pred", "y"), outputs="ce"),
@@ -50,7 +51,7 @@ def get_estimator(log_steps=100, monitor_names=None, use_trace=False, max_steps_
                              network=network,
                              epochs=epochs,
                              traces=traces,
-                             max_steps_per_epoch=max_steps_per_epoch,
+                             max_train_steps_per_epoch=max_train_steps_per_epoch,
                              log_steps=log_steps,
                              monitor_names=monitor_names)
     return estimator
@@ -119,7 +120,7 @@ est.fit()
 
 
 ## Estimator API
-### Reduce the number of steps per epoch
+### Reduce the number of training steps per epoch
 In general, one epoch means one round of the entire training dataset. If evaluation data is available, evaluation happens after every epoch by default. Consider the following two scenarios:
 
 * Training dataset is too large such that evaluation needs to happen multiple times during one epoch.
@@ -130,7 +131,7 @@ One easy solution to the above scenarios is to reduce the number of training ste
 
 
 ```python
-est = get_estimator(max_steps_per_epoch=300, epochs=4)
+est = get_estimator(max_train_steps_per_epoch=300, epochs=4)
 est.fit()
 ```
 
@@ -167,6 +168,9 @@ est.fit()
     FastEstimator-Finish: step: 1200; total_time: 37.42 sec; LeNet_lr: 0.001; 
 
 
+### Reduce the number of evaluation steps per epoch
+One may need to reduce the number of evaluation steps for debugging purpose. Similarly, simply change `max_eval_steps_per_epoch` argument in `Estimator`.
+
 ### Change logging behavior
 When the number of training epochs is large, the log can become verbose. You can change the logging behavior by choosing one of following options:
 * set `log_steps` to `None` if you do not want to see any training log printed.
@@ -177,7 +181,7 @@ Let's set the `log_steps` to 0:
 
 
 ```python
-est = get_estimator(max_steps_per_epoch=300, epochs=4, log_steps=0)
+est = get_estimator(max_train_steps_per_epoch=300, epochs=4, log_steps=0)
 est.fit()
 ```
 
@@ -206,7 +210,7 @@ Easy, just add `ce1` to `monitor_names` in `Estimator`.
 
 
 ```python
-est = get_estimator(max_steps_per_epoch=300, epochs=4, log_steps=150, monitor_names="ce1")
+est = get_estimator(max_train_steps_per_epoch=300, epochs=4, log_steps=150, monitor_names="ce1")
 est.fit()
 ```
 
@@ -269,7 +273,7 @@ As we can see from the illustration above, training process is essentially a nes
 
 
 ### Structure
-If you are familiar with Keras, you will notice that the structure of `Trace` is very similar to the `Callback` in keras.  Despite the similarity on structure, `Trace` has a lot more capabilities and we will talk about it in depth in [advanced tutorial 4](linkneeded).  Implementation-wise, `Trace` is implemented as a python class with structure like this:
+If you are familiar with Keras, you will notice that the structure of `Trace` is very similar to the `Callback` in keras.  Despite the similarity on structure, `Trace` has a lot more capabilities and we will talk about it in depth in [advanced tutorial 4](./t04_pipeline.ipynb).  Implementation-wise, `Trace` is implemented as a python class with structure like this:
 
 
 ```python

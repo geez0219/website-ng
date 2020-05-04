@@ -10,7 +10,7 @@ In this tutorial we will talk about:
 
 Learning rate schedules can be implemented using **LRScheduler** trace. LRScheduler takes the model and learning schedule through the **lr_fn** parameter. **lr_fn** should be a function/lambda function with step or epoch as parameter. This determines whether learning schedule will be applied at a step or epoch level.
 
-For more details on traces, you can visit [tutorial 7](https://github.com/fastestimator/fastestimator/blob/master/tutorial/beginner/t07_estimator.ipynb) in beginner section and [tutorial 4](https://github.com/fastestimator/fastestimator/blob/master/tutorial/advanced/t04_trace.ipynb) in the advanced section. 
+For more details on traces, you can visit [tutorial 7](./tutorials/t07_estimator.ipynb) in beginner section and [tutorial 4](./t04_trace) in the advanced section. 
 
 Let's create a function to generate pipeline, model and network to be used for the tutorial
 
@@ -32,7 +32,7 @@ def get_pipeline_model_network(model_name="LeNet"):
                            ops=[ExpandDims(inputs="x", outputs="x"), 
                                 Minmax(inputs="x", outputs="x")])
 
-    model = fe.build(model_fn=LeNet, optimizer_fn="adam", model_names=model_name)
+    model = fe.build(model_fn=LeNet, optimizer_fn="adam", model_name=model_name)
 
     network = fe.Network(ops=[
         ModelOp(model=model, inputs="x", outputs="y_pred"),
@@ -47,7 +47,7 @@ def get_pipeline_model_network(model_name="LeNet"):
 We can specify custom learning schedule by passing a custom function to the **lr_fn** parameter of LRScheduler. We can specify learning rate schedule to be applied at epoch or step level. Epoch and step start from 1.
 
 ### Epoch-wise
-To apply learning rate at epoch level, the custom function should have epoch as a parameter. Let's look at the example below which demonstrates this. We will be using summary parameter in the fit method to be able to visualize the learning rate later. You can go through [Tutorial 6](https://github.com/fastestimator/fastestimator/blob/master/tutorial/advanced/t06_summary.ipynb) in the advanced section for more details on accessing training history.
+To apply learning rate at epoch level, the custom function should have epoch as a parameter. Let's look at the example below which demonstrates this. We will be using summary parameter in the fit method to be able to visualize the learning rate later. You can go through [tutorial 6](./tutorials/advanced/t06_summary) in the advanced section for more details on accessing training history.
 
 
 ```python
@@ -146,7 +146,7 @@ visualize_logs(history, include_metrics="LeNet_lr")
 ```
 
 
-![png](assets/branches/r1.0/tutorial/t07_learning_rate_scheduling_files/t07_learning_rate_scheduling_7_0.png)
+![png](assets/branches/r1.0/tutorial/advanced/t07_learning_rate_scheduling_files/t07_learning_rate_scheduling_7_0.png)
 
 
 As you can see, the learning rate changes only at an epoch level
@@ -226,7 +226,7 @@ visualize_logs(history2, include_metrics="LeNet_lr")
 ```
 
 
-![png](assets/branches/r1.0/tutorial/t07_learning_rate_scheduling_files/t07_learning_rate_scheduling_11_0.png)
+![png](assets/branches/r1.0/tutorial/advanced/t07_learning_rate_scheduling_files/t07_learning_rate_scheduling_11_0.png)
 
 
 ## Using built-in lr_schedule function
@@ -305,5 +305,5 @@ visualize_logs(history3, include_metrics="LeNet_lr")
 ```
 
 
-![png](assets/branches/r1.0/tutorial/t07_learning_rate_scheduling_files/t07_learning_rate_scheduling_15_0.png)
+![png](assets/branches/r1.0/tutorial/advanced/t07_learning_rate_scheduling_files/t07_learning_rate_scheduling_15_0.png)
 

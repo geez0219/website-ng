@@ -2,14 +2,14 @@
 
 ## Overview
 In this tutorial we will talk about the following:
-* **operator concept**
-* **operator structure**
-* **operator expression**
-* **deep learning examples using operators**
+* operator concept
+* operator structure
+* operator expression
+* deep learning examples using operators
 
 ## Operator Concept
 
-In [tutorial 1](link_need), we know that the preprocessing in `Pipeline` and the training in `Network` can be divided into several sub-tasks:
+In [tutorial 1](./tutorials/beginner/t01_getting_started), we know that the preprocessing in `Pipeline` and the training in `Network` can be divided into several sub-tasks:
 
 * **Pipeline**: `Expand_dim` -> `Minmax`
 * **Network**: `ModelOp` -> `CrossEntropy` -> `UpdateOp`
@@ -23,7 +23,7 @@ An Operator has 3 main components:
 * **outputs**: the key(s) of output data
 * **forward function**: the transformation 
 
-Implementation-wise, `Operator` is implemented as python class. Ignore `mode` for now as we will talk about `mode` extensively in [tutorial 9](link needed).
+Implementation-wise, `Operator` is implemented as python class. Ignore `mode` for now as we will talk about `mode` extensively in [tutorial 9](./tutorials/beginner/t09_inference).
 
 
 ```python
