@@ -1,26 +1,30 @@
 import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-
-import { MatSidenav } from '@angular/material';
-
-import { Tutorial } from '../tutorial';
-import { TOC } from '../toc';
 import { Title } from '@angular/platform-browser';
+
+import { NestedTreeControl } from '@angular/cdk/tree';
+import { MatSidenav, MatTreeNestedDataSource } from '@angular/material';
+
+import { Example } from '../example';
 import { GlobalService } from '../global.service';
 
 @Component({
   selector: 'app-tutorial',
   templateUrl: './tutorial.component.html',
-  styleUrls: ['./tutorial.component.css']
+  styleUrls: ['../api/api.component.css']
 })
 export class TutorialComponent implements OnInit {
-  selectedTutorial: string;
-  currentTutorialText: string;
-  tutorialList: Tutorial[];
-  tocContent: TOC[];
+  exampleList: Example[];
+  selectedExample: string;
+  currentSelection: string;
+  currentExampleText: string;
 
+  segments: UrlSegment[];
+
+  treeControl: NestedTreeControl<Example>;
+  dataSource: MatTreeNestedDataSource<Example>;
   minWidth: number = 640;
   screenWidth: number;
   private screenWidth$ = new BehaviorSubject<number>(window.innerWidth);
@@ -52,28 +56,22 @@ export class TutorialComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.screenWidth$.next(event.target.innerWidth);
-    if (this.sidenav.opened && this.screenWidth < this.minWidth) {
-      this.grippy.nativeElement.style.backgroundImage = "url(../../assets/images/sidebar-grippy-show.png)"
-      this.grippy.nativeElement.style.left = "0rem"
-    }
-    else{
-      this.grippy.nativeElement.style.backgroundImage = "url(../../assets/images/sidebar-grippy-hide.png)"
-      this.grippy.nativeElement.style.left = "20rem"
-    }
   }
 
-  constructor(private http: HttpClient, 
-              private router: Router, 
-              private route: ActivatedRoute,
-              private title: Title,
-              private globalService: GlobalService) {
-    this.route.params.subscribe(params => {
-      if (params['name']) {
-        this.globalService.toggleLoading();
-        
-        this.selectedTutorial = params['name'];
-        this.getTutorialStructure();
-      }
+  constructor(private http: HttpClient,
+    private router: Router,
+    private route: ActivatedRoute,
+    private title: Title,
+    private globalService: GlobalService) { }
+
+  ngOnInit() {
+    this.treeControl = new NestedTreeControl<Example>(node => node.children);
+    this.dataSource = new MatTreeNestedDataSource<Example>();
+
+    this.route.url.subscribe((segments: UrlSegment[]) => {
+      this.globalService.setLoading();
+      this.segments = segments;
+      this.getExampleStructure();
     });
 
     this.screenWidth$.subscribe(width => {
@@ -81,57 +79,96 @@ export class TutorialComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  hasChild = (_: number, node: Example) => !!node.children && node.children.length > 0;
+
+  flatten(arr) {
+    var ret: Example[] = [];
+    for (let a of arr) {
+      if (a.children) {
+        ret = ret.concat(this.flatten(a.children));
+      } else {
+        ret = ret.concat(a);
+      }
+    }
+
+    return ret;
   }
 
-  getTutorialStructure() {
-    if (this.tutorialList) {
-      var t: Tutorial[] = this.tutorialList.filter(tutorial => tutorial.name === (this.selectedTutorial + ".md"));
-      this.updateTutorialContent(t[0]);
-    } else {
-      this.http.get('assets/tutorial/structure.json', this.structureRequestOptions).subscribe(data => {
-        this.tutorialList = <Tutorial[]>(data);
+  expandNodes(exampleName: string) {
+    var exampleParts: Array<string> = exampleName.split("/");
+    exampleParts.pop();
 
-        var t: Tutorial[] = this.tutorialList.filter(tutorial => tutorial.name === (this.selectedTutorial + ".md"));
-        this.updateTutorialContent(t[0]);
+    var expandNode = this.exampleList.filter(example => example.name === exampleParts[0])[0];
+    this.treeControl.expand(expandNode);
+  }
+
+  getExampleStructure() {
+    if (this.exampleList) {
+      this.loadSelectedExample();
+    } else {
+      this.http.get('assets/branches/r1.0/tutorial/structure.json', this.structureRequestOptions).subscribe(data => {
+        this.exampleList = <Example[]>(data);
+
+        this.dataSource.data = this.exampleList;
+        this.treeControl.dataNodes = this.exampleList;
+
+        this.loadSelectedExample();
       },
+        error => {
+          console.error(error);
+          this.globalService.resetLoading();
+          this.router.navigate(['PageNotFound'], { replaceUrl: true })
+        });
+    }
+  }
+
+  private loadSelectedExample() {
+    if (this.segments.length == 0) {
+      this.updateExampleContent(this.exampleList[0].children[0]);
+      this.treeControl.expand(this.treeControl.dataNodes[0]);
+    }
+    else {
+      var e: Example[] = this.flatten(this.exampleList)
+        .filter(example =>
+          (this.segments.map(segment => segment.toString()).join('/') + ".md") === example.name);
+
+      if (e.length > 0) {
+        this.updateExampleContent(e[0]);
+        this.expandNodes(e[0].name);
+      } else {
+        this.globalService.resetLoading();
+        this.router.navigate(['PageNotFound'], { replaceUrl: true });
+      }
+    }
+  }
+
+  private updateExampleContent(example: Example) {
+    window.scroll(0, 0);
+
+    this.selectedExample = example.name;
+    this.currentSelection = 'assets/branches/r1.0/tutorial/' + example.name;
+
+    this.getSelectedExampleText();
+    this.title.setTitle(example.displayName + " | Fastestimator");
+  }
+
+  getSelectedExampleText() {
+    this.http.get(this.currentSelection, this.contentRequestOptions).subscribe(data => {
+      this.currentExampleText = data;
+      this.globalService.resetLoading();
+    },
       error => {
         console.error(error);
         this.globalService.resetLoading();
-        this.router.navigate(['PageNotFound'], {replaceUrl:true})
+        this.router.navigate(['PageNotFound'], { replaceUrl: true })
       });
-    }
-  }
-
-  updateTutorialContent(tutorial: Tutorial) {
-    if (!tutorial) {
-      this.globalService.resetLoading();
-      this.router.navigate(['PageNotFound'], {replaceUrl: true});
-    }
-
-    window.scroll(0,0);
-
-    this.getSelectedTutorialText('assets/tutorial/' + tutorial.name);
-    this.title.setTitle(tutorial.displayName + " | Fastestimator");
-  }
-
-  getSelectedTutorialText(tutorialName) {
-    this.http.get(tutorialName, this.contentRequestOptions).subscribe(data => {
-      this.currentTutorialText = data;
-      this.globalService.resetLoading();
-    },
-    error => {
-      console.error(error);
-      this.globalService.resetLoading();
-      this.router.navigate(['PageNotFound'], {replaceUrl: true})
-    });
   }
 
   getImageUrl() {
     if (this.sidenav.opened) {
       this.grippy.nativeElement.style.left = "20rem"
       return "url(../../assets/images/sidebar-grippy-hide.png)"
-    }else{
+    } else {
       this.grippy.nativeElement.style.left = "0rem"
       return "url(../../assets/images/sidebar-grippy-show.png)"
     }
@@ -147,8 +184,15 @@ export class TutorialComponent implements OnInit {
     }
   }
 
-  toggleMenu(){
+  toggleMenu() {
     this.sidenav.toggle();
     this.checkSidebar();
+  }
+
+  createRouterLink(url: string) {
+    var components: Array<string> = url.substring(0, url.length - 3).split('/');
+    var ret = ['/tutorials'];
+
+    return ret.concat(components);
   }
 }

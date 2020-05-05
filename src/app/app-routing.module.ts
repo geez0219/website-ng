@@ -13,7 +13,12 @@ import { SearchResultComponent } from './search-result/search-result.component';
 
 const routes: Routes = [
   { path: '', component: GettingStartedComponent },
-  { path: 'tutorials/:name', component: TutorialComponent },
+  { path: 'tutorials', children: [
+      {
+        path: "**",
+        component: TutorialComponent
+      }
+    ]},
   { path: 'api', children: [
       {
           path: "**",

@@ -190,3 +190,8 @@ markdown ::ng-deep img {
     background-color:#378de5;
     text-decoration: none;
 }
+
+markdown ::ng-deep .language-none{
+    background-color: #737272;
+    font-style: italic;
+}

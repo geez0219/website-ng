@@ -1,31 +1,49 @@
-<div class="sidenav-content" (click)="checkSidebar()">
-  <mat-sidenav-container>
-    <mat-sidenav #sidenav [mode]="screenWidth < minWidth ? 'over':'side'" [opened]="screenWidth > minWidth" class="sidebar-tutorial" [fixedInViewport]="true" [fixedTopGap]="100">
-      <div class="items" *ngFor="let tutorial of tutorialList">
-        <li class="no-list-style">
-          <a class ="active-trail active-trail active" [ngClass]="{'selected': selectedTutorial === tutorial.name.substring(0, tutorial.name.length - 3), 'not-selected': selectedTutorial != tutorial.name.substring(0, tutorial.name.length - 3)}"
-              [routerLink]="['/tutorials/', tutorial.name.substring(0, tutorial.name.length - 3)]">
-            {{ tutorial.displayName }}
-          </a>
-        </li>
-      </div>
+<mat-sidenav-container class="example-container" (click)="checkSidebar()">
+  <mat-sidenav #sidenav [mode]="screenWidth < minWidth ? 'over':'side'" [opened]="screenWidth > minWidth"
+    class="sidebar-api" [opened]="screenWidth > 640" [fixedInViewport]="true" [fixedTopGap]="100">
+    <!-- <a class="overview" [routerLink]="">Overview</a> -->
+    <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
+      <!-- This is the tree node template for leaf nodes -->
+      <mat-tree-node #examplenode *matTreeNodeDef="let node" matTreeNodeToggle>
+        <!-- use a disabled button to provide padding for tree leaf -->
 
-    </mat-sidenav>
-    <mat-sidenav-content class="matContent">
-      <div #grippy [style.background-image]="getImageUrl()" class="grippy" (click)="toggleMenu()"></div>
+        <button class="hide" mat-icon-button disabled></button>
+        <a [ngClass]="{'overview': node.name==='overview.md', 'selected': selectedExample === node.name, 'not-selected': selectedExample != node.name}"
+          [routerLink]="createRouterLink(node.name)">
+          {{node.displayName}}
+        </a>
 
-      <div class="content-wrapper">
-        <div class="content">
-            <markdown [data]="currentTutorialText" katex></markdown>
+      </mat-tree-node>
+      <!-- This is the tree node template for expandable nodes -->
+      <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+        <div class="items">
+          <li>
+            <button class="not-selected" mat-icon-button matTreeNodeToggle
+              [attr.aria-label]="'toggle ' + node.displayName">
+              <mat-icon class="mat-icon-rtl-mirror">
+                {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+              </mat-icon>
+              {{node.displayName}}
+            </button>
+            <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">
+              <ng-container matTreeNodeOutlet></ng-container>
+            </ul>
+          </li>
         </div>
-      </div>
-      <div *ngIf="currentTutorialText">
-        <app-footer></app-footer>
-      </div>
-    </mat-sidenav-content>
+      </mat-nested-tree-node>
+    </mat-tree>
 
-  </mat-sidenav-container>
-</div>
-<!-- <div class="toc">
-  <toc [items]="tocContent"></toc>
-</div> -->
+  </mat-sidenav>
+
+  <mat-sidenav-content class="matContent">
+    <div #grippy [style.background-image]="getImageUrl()" class="grippy" (click)="toggleMenu()"></div>
+    <div class="content-wrapper">
+      <div class="content">
+        <markdown [data]="currentExampleText" katex></markdown>
+      </div>
+    </div>
+    <div *ngIf="currentExampleText">
+      <app-footer></app-footer>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
