@@ -2,18 +2,21 @@
 
 ## Overview
 In this tutorial, we will talk about the following topics:
-* Dataset summary
-* Dataset splitting
-    * Random fraction split
-    * Random count split
-    * Index split
-* Global Dataset Editing
-* BatchDataset
-    * Deterministic batching
-    * Distribution batching
-    * Unpaired dataset
+* [Dataset Summary](#ta01summary)
+* [Dataset Splitting](#ta01splitting)
+    * [Random Fraction Split](#ta01rfs)
+    * [Random Count Split](#ta01rcs)
+    * [Index Split](#ta01is)
+* [Global Dataset Editing](#ta01gde)
+* [BatchDataset](#ta01bd)
+    * [Deterministic Batching](#ta01deterministic)
+    * [Distribution Batching](#ta01distribution)
+    * [Unpaired Dataset](#ta01ud)
+* [Related Apphub Examples](#ta01rae)
 
-Before going through the tutorial, it is recommended to check [tutorial 02](./tutorials/beginner/t02_dataset) in beginner section for basic understanding of `dataset` from Pytorch and FastEstimator. We will talk about more details about `fe.dataset` API in this tutorial.
+Before going through the tutorial, it is recommended to check [beginner tutorial 02](./tutorials/beginner/t02_dataset) for basic understanding of `dataset` from PyTorch and FastEstimator. We will talk about more details about `fe.dataset` API in this tutorial.
+
+<a id='ta01summary'></a>
 
 ## Dataset summary
 As we have mentioned in previous tutorial, users can import our inherited dataset class for easy use in `Pipeline`. But how do we know what keys are available in the dataset?   Well, obviously one easy way is just call `dataset[0]` and check the keys. However, there's a more elegant way to check information of dataset: `dataset.summary()`.
@@ -36,27 +39,43 @@ train_data.summary()
 
 
 
+Or even more simply, by invoking the print function:
+
+
+```python
+print(train_data)
+```
+
+    {"keys": {"x": {"dtype": "uint8", "shape": [28, 28]}, "y": {"dtype": "uint8", "num_unique_values": 10, "shape": []}}, "num_instances": 60000}
+
+
+<a id='ta01splitting'></a>
+
 ## Dataset Splitting
 
-dataset splitting is nothing new in machine learning, in FastEstimator, users can easily split their data in different ways:
+Dataset splitting is nothing new in machine learning. In FastEstimator, users can easily split their data in different ways. 
 
-### random fraction split
-Let's say we want to randomly split 50% of evaluation data into test data, simply do:
+<a id='ta01rfs'></a>
+
+### Random Fraction Split
+Let's say we want to randomly split 50% of the evaluation data into test data. This is easily accomplished:
 
 
 ```python
 test_data = eval_data.split(0.5)
 ```
 
-Or if I want to split evaluation data into two test datasets with 20% of evaluation data each.
+Or if I want to split evaluation data into two test datasets with 20% of the evaluation data each:
 
 
 ```python
-testdata1, test_data2 = eval_data.split(0.2, 0.2)
+test_data1, test_data2 = eval_data.split(0.2, 0.2)
 ```
 
-### Random count split
-Sometimes instead of fractions, we want actual number of examples to split, for example, randomly splitting 100 samples from evaluation dataset:
+<a id='ta01rcs'></a>
+
+### Random Count Split
+Sometimes instead of fractions, we want an actual number of examples to split; for example, randomly splitting 100 samples from the evaluation dataset:
 
 
 ```python
@@ -70,15 +89,17 @@ And of course, we can generate multiple datasets by providing multiple inputs:
 test_data4, test_data5 = eval_data.split(100, 100)
 ```
 
-### Index split
-There are times when we need to split the dataset in a specific way, then you can provide the index: for example, if we want to split the 0th, 1st and 100th element of evaluation dataset into new test set:
+<a id='ta01is'></a>
+
+### Index Split
+There are times when we need to split the dataset in a specific way. For that, you can provide a list of indexes. For example, if we want to split the 0th, 1st and 100th element of evaluation dataset into new test set:
 
 
 ```python
 test_data6 = eval_data.split([0,1,100])
 ```
 
-if you just want continuous index, here's an easy way to provide index:
+If you just want continuous index, here's an easy way to provide index:
 
 
 ```python
@@ -92,8 +113,10 @@ Needless to say, you can provide multiple inputs too:
 test_data7, test_data8 = eval_data.split([0, 1 ,2], [3, 4, 5])
 ```
 
+<a id='ta01gde'></a>
+
 ## Global Dataset Editting
-In deep learning, we usually process the dataset batch by batch. However, when we are handling the tabular data, we might need to apply some transformation globally before the training.  For example, standardize the tabular data using `sklearn`:
+In deep learning, we usually process the dataset batch by batch. However, when we are handling tabular data, we might need to apply some transformation globally before the training. For example, we may want to standardize the tabular data using `sklearn`:
 
 
 ```python
@@ -107,12 +130,16 @@ train_data["x"] = scaler.fit_transform(train_data["x"])
 eval_data["x"] = scaler.transform(eval_data["x"])
 ```
 
+<a id='ta01bd'></a>
+
 ## BatchDataset
 
-There might be scenarios where we need to combine multiple datasets together into one dataset in a specific way, next we will talk about 3 such use cases.
+There might be scenarios where we need to combine multiple datasets together into one dataset in a specific way. Let's consider three such use-cases now:
 
-### Deterministic batching
-Let's say we have `mnist` and `cifar` dataset, given the total batch size of 8, if we always want 4 examples from `mnist` and the rest from `cifar`:
+<a id='ta01deterministic'></a>
+
+### Deterministic Batching
+Let's say we have `mnist` and `cifar` datasets, and want to combine them with a total batch size of 8. If we always want 4 examples from `mnist` and the rest from `cifar`:
 
 
 ```python
@@ -123,11 +150,13 @@ mnist_data, _ = mnist.load_data(image_key="x", label_key="y")
 cifar_data, _ = cifar10.load_data(image_key="x", label_key="y")
 
 dataset_deterministic = BatchDataset(datasets=[mnist_data, cifar_data], num_samples=[4,4])
-# ready to use dataset_deterministic in Pipeline
+# ready to use dataset_deterministic in Pipeline, you might need to resize them to have consistent shape
 ```
 
-### Distribution batching
-Some people who prefer randomness in a batch, for example, given total batch size of 8, we want 0.5 probability of `mnist` and the other 0.5 from `cifar`:
+<a id='ta01distribution'></a>
+
+### Distribution Batching
+Some people prefer randomness in a batch. For example, given total batch size of 8, let's say we want 0.5 probability of `mnist` and the other 0.5 from `cifar`:
 
 
 ```python
@@ -138,11 +167,13 @@ mnist_data, _ = mnist.load_data(image_key="x", label_key="y")
 cifar_data, _ = cifar10.load_data(image_key="x", label_key="y")
 
 dataset_distribution = BatchDataset(datasets=[mnist_data, cifar_data], num_samples=8, probability=[0.5, 0.5])
-# ready to use dataset_distribution in Pipeline
+# ready to use dataset_distribution in Pipeline, you might need to resize them to have consistent shape
 ```
 
-### Unpaird dataset
-Some deep learning tasks require random unpaired dataset. For example, in image-to-image translation (like Cycle-GAN), it needs to randomly sample one horse image and one zebra image for every batch. In FastEstimator, `BatchDataset` can also handle unpaired dataset, all you need to make sure is: **keys from two different datasets must be unique for unpaired dataset**.
+<a id='ta01ud'></a>
+
+### Unpaired Dataset
+Some deep learning tasks require random unpaired datasets. For example, in image-to-image translation (like Cycle-GAN), the system needs to randomly sample one horse image and one zebra image for every batch. In FastEstimator, `BatchDataset` can also handle unpaired datasets. The only restriction is that: **keys from two different datasets must be unique for unpaired datasets**.
 
 For example, let's sample one image from `mnist` and one image from `cifar` for every batch:
 
@@ -157,3 +188,10 @@ cifar_data, _ = cifar10.load_data(image_key="x_cifar", label_key="y_cifar")
 dataset_unpaired = BatchDataset(datasets=[mnist_data, cifar_data], num_samples=[1,1])
 # ready to use dataset_unpaired in Pipeline
 ```
+
+<a id='ta01rae'></a>
+
+## Apphub Examples
+You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
+
+* [DNN](./examples/tabular/dnn)

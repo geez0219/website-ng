@@ -2,49 +2,57 @@
 
 ## Overview
 In this tutorial we are going to cover:
-* mode concept 
-* when the mode be activated
-* how to set mode
-* code example
+* [Modes](#t08mode)
+* [When Modes are Activated](#t08when)
+* [How to Set Modes](#t08how)
+* [A Code Example](#t08code)
+* [Related Apphub Examples](#t08apphub)
 
-## Mode concept
-The development cycle of deep learning application usually takes 4 phases: training, evaluation, testing, inference.
-FastEstimator provides 4 corresponding modes: `train`, `eval`, `test`, `infer` that allow users to manage each phase independently. Users have the flexibility to construct the network and pipeline in different ways among those modes. 
-Only single mode can be active at a time and then the corresponding topology graph will be retrieved and executed.   
+<a id='t08mode'></a>
 
-## When the modes are activated
+## Modes
+The development cycle of a deep learning application can usually be broken into 4 phases: training, evaluation, testing, and inference.
+FastEstimator provides 4 corresponding modes: `train`, `eval`, `test`, and `infer` that allow users to manage each phase independently. Users have the flexibility to construct the `Network` and `Pipeline` in different ways for each of those modes. Only a single mode can ever be active at a time, and for each given mode the corresponding graph topology will be computed and executed.
+
+<a id='t08when'></a>
+
+## When Modes are Activated
 * train: `estimator.fit()` being called, during training cycle
 * eval: `estimator.fit()` being called, during evaluation cycle
-* test: `estimator.test()` being called.
-* infer: `pipeline.transform(mode="infer")` or `network.transform(mode="infer")` being called. (The inference part is later covered in **Tutorial 9: Inference**)
+* test: `estimator.test()` being called
+* infer: `pipeline.transform(mode="infer")` or `network.transform(mode="infer")` being called (inference will be covered in [tutorial 9](./tutorials/beginner/t09_inference))
 
-## How to set mode
-In the previous tutorials we already knew that `Ops` define the workflow of `Network` and `Pipeline` whereas `Trace` control the training process. All `Op` and `Trace` can be specified with one or more modes where users want them to land. Here are all 5 ways to set the modes.
+<a id='t08how'></a>
 
-1. **Setting single mode**<br>
-  Specify the desired mode as string. <br>
-  Ex: Op(mode="train") <br><br>
+## How to Set Modes
+From the previous tutorials we already know that `Ops` define the workflow of `Networks` and `Pipelines`, whereas `Traces` control the training process. All `Ops` and `Traces` can be specified to run in one or more modes. Here are all 5 ways to set the modes:
 
-2. **Setting multiple mode**<br>
-  Put all desired modes in a tuple or list as an argument.<br>
-  Ex: Trace(mode=["train", "test"]) <br><br>
+1. **Setting a single mode**<br>
+    Specify the desired mode as string.<br>
+    Ex: Op(mode="train")<br><br>
 
-3. **Setting exception mode**<br>
-  Prefix a "!" on a mode, and then all other modes will have this object. <br>
-  Ex: Op(mode="!train") <br><br>
+2. **Setting multiple modes**<br>
+    Put all desired modes in a tuple or list as an argument.<br>
+    Ex: Trace(mode=["train", "test"]) <br><br>
+
+3. **Setting an exception mode**<br>
+    Prefix a "!" on a mode, and then the object will execute during all modes that are NOT the specified one.<br>
+    Ex: Op(mode="!train") <br><br>
 
 4. **Setting all modes**<br>
-  Set the mode argument equal to None. <br>
-  Ex: Trace(mode=None) <br><br>
+    Set the mode argument equal to None.<br>
+    Ex: Trace(mode=None) <br><br>
 
-5. **Using default mode setting**<br> 
-  Not specify anything in mode argument. Different `Op` and `Trace` have different default mode setting. <br>
-  Ex: `UpdateOp` -> default mode: train <br>
-      `Accuracy` trace -> default mode: eval, test 
+5. **Using the default mode setting**<br> 
+    Don't specify anything in mode argument. Different `Ops` and `Traces` have different default mode settings.<br>
+    Ex: `UpdateOp` -> default mode: train <br>
+    Ex: `Accuracy` trace -> default mode: eval, test<br> 
 
 
-## Code example
-In order to enhance readers' idea of modes, we are going to show a example code and visualize the topology graph of each mode.
+<a id='t08code'></a>
+
+## Code Example
+Let's see come example code and visualize the topology of the corresponding execution graphs for each mode:
 
 
 ```python
@@ -82,25 +90,29 @@ estimator = fe.Estimator(pipeline=pipeline,
                          traces=Accuracy(true_key="y", pred_key="y_pred")) # default mode=[eval, test]
 ```
 
-    FastEstimator-Warn: No ModelSaver Trace detected. Models will not be saved.
-
-
-### Train mode
-The following figure is the topology graph in "train" mode. It has complete data pipeline including the data augmentation block, `CoarseDropout`. The data source of the pipeline is "train_data". `Accuracy` block will not exist in this mode because the default mode of that trace is "eval" and "test".
+### Train Mode
+The following figure shows the execution flow for the "train" mode. It has a complete data pipeline including the `CoarseDropout` data augmentation Op. The data source of the pipeline is "train_data". The `Accuracy` Trace will not exist in this mode because the default mode of that trace is "eval" and "test".
 
 <img src="assets/branches/r1.0/tutorial/../resources/t08_train_mode.PNG" alt="drawing" width="700"/>
 
-### Eval mode
-The following figure is the topology graph in "eval" mode. The data augmentation block is missing and the pipeline data source is "eval_data". `Accuracy` block exist in this mode because of its default trace setting.
+### Eval Mode
+The following figure shows the execution flow for the "eval" mode. The data augmentation block is missing and the pipeline data source is "eval_data". The `Accuracy` block exist in this mode because of its default trace setting.
 
 <img src="assets/branches/r1.0/tutorial/../resources/t08_eval_mode.PNG" alt="drawing" width="700"/>
 
-### Test mode
-Everything of "test" mode is the same as "eval" mode except that the data source of pipeline has switched to "test_data"
+### Test Mode
+Everything in the "test" mode is the same as the "eval" mode, except that the data source of pipeline has switched to "test_data":
 
 <img src="assets/branches/r1.0/tutorial/../resources/t08_test_mode.PNG" alt="drawing" width="700"/>
 
-### Infer mode
-"Infer" mode only has the minimum operations that model inference needs. Data source is not defined yet at this time point because input data will not be passed until calling the inference function. The detail of running model inference is covered in [tutorial 9](./tutorials/beginner/t09_inference). 
+### Infer Mode
+"Infer" mode only has the minimum operations that model inference requires. The data source is not defined yet because input data will not be passed until the inference function is invoked. See [tutorial 9](./tutorials/beginner/t09_inference) for more details.
 
 <img src="assets/branches/r1.0/tutorial/../resources/t08_infer_mode.PNG" alt="drawing" width="700"/>
+
+<a id='t08apphub'></a>
+
+## Apphub Examples
+You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
+
+* [CIFAR10](./examples/image_classification/cifar10_fast)

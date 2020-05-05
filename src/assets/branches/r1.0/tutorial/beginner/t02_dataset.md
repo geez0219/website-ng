@@ -1,25 +1,30 @@
 # Tutorial 2: Creating a FastEstimator dataset
 
 ## Overview
-Welcome to FastEstimator! In this tutorial we are going to cover three different ways to create a Dataset using FastEstimator. To showcase that, this tutorial is structured as follows:
-* Torch Dataset Recap
-* FastEstimator Dataset
-	* Dataset from disk
-		* LabeledDirDataset
-		* CSVDataset
-	* Dataset from memory
-		* NumpyDataset
-	* Dataset from generator
+In this tutorial we are going to cover three different ways to create a Dataset using FastEstimator. This tutorial is structured as follows:
+
+* [Torch Dataset Recap](#t02Recap)
+* [FastEstimator Dataset](#t02FEDS)
+    * [Dataset from disk](#t02Disk)
+        * [LabeledDirDataset](#t02LDirDs)
+        * [CSVDataset](#t02CSVDS)
+    * [Dataset from memory](#t02Memory)
+        * [NumpyDataset](#t02Numpy)
+    * [Dataset from generator](#t02Generator)
+* [Related Apphub Examples](#t02Apphub)
+
+<a id='t02Recap'></a>
 
 ##  Torch Dataset Recap
 
-A Dataset in FastEstimator is a class that wraps raw input data and makes it easier to ingest by your code. In this tutorial we will learn about the different ways we can create these Datasets.
+A Dataset in FastEstimator is a class that wraps raw input data and makes it easier to ingest into your model(s). In this tutorial we will learn about the different ways we can create these Datasets.
 
-The FastEstimator Dataset class inherited from the PyTorch Dataset class which provides a clean and efficient interface to load raw data. Thus, all your code that worked for PyTorch will continue to work for FastEstimator too. For a refresher on the PyTorch Dataset you can go [here](https://pytorch.org/tutorials/beginner/data_loading_tutorial.html).
+The FastEstimator Dataset class inherits from the PyTorch Dataset class which provides a clean and efficient interface to load raw data. Thus, any code that you have written for PyTorch will continue to work in FastEstimator too. For a refresher on PyTorch Datasets you can go [here](https://pytorch.org/tutorials/beginner/data_loading_tutorial.html).
 
 In this tutorial we will focus on two key functionalities that we need to provide for the Dataset class. The first one is the ability to get an individual data entry from the Dataset and the second one is the ability to get the length of the Dataset. This is done as follows:
-* len(dataset) should return the size of the dataset.
-* dataset[i] should return the ith sample in the dataset.
+
+* len(dataset) should return the size (number of samples) of the dataset.
+* dataset[i] should return the i-th sample in the dataset. The return value should be a dictionary with data values keyed by strings.
 
 Let's create a simple PyTorch Dataset which shows this functionality.
 
@@ -36,27 +41,34 @@ class mydataset(Dataset):
         return self.data['x'].shape[0]
     def __getitem__(self, idx):
         return {key: self.data[key][idx] for key in self.data}
+
 a = {'x': np.random.rand(100,5), 'y': np.random.rand(100)}
 ds = mydataset(a)
-print (ds[0])
-print (len(ds))
+print(ds[0])
+print(len(ds))
 ```
 
-    {'x': array([0.04542747, 0.4162909 , 0.24907324, 0.84718429, 0.03261794]), 'y': 0.7262192218518535}
+    {'x': array([0.11588935, 0.27958611, 0.45703942, 0.36171531, 0.66472315]), 'y': 0.5592775462425909}
     100
 
 
+<a id='t02FEDS'></a>
+
 ## FastEstimator Dataset
 
-In this section we will showcase how a Dataset can be created using FastEstimator. This tutorial shows three ways you can create a Dataset in FastEstimator, first is using data from disk, the second one showing the creation of Dataset from memory and the last one uses a generator to create the Dataset.
+In this section we will showcase how a Dataset can be created using FastEstimator. This tutorial shows three ways to create Datasets. The first uses data from disk, the second uses data already in memory, and the third uses a generator to create a Dataset.
+
+<a id='t02Disk'></a>
 
 ### 1. Dataset from disk
 
 In this tutorial we will showcase two ways to create a Dataset from disk:
 
+<a id='t02LDirDs'></a>
+
 #### 1.1 LabeledDirDataset
 
-To showcase this we will first have to create a dummy directory structure representing the two classes. Then we create a few files in each of the directories. The following image shows how the temp directory structure looks like:
+To showcase this we will first have to create a dummy directory structure representing the two classes. Then we create a few files in each of the directories. The following image shows the hierarchy of our temporary data directory:
 
 <img src="assets/branches/r1.0/tutorial/../resources/t02_dataset_folder_structure.png" alt="drawing" width="200"/>
 
@@ -81,23 +93,25 @@ b1 = open(os.path.join(b_tmpdirname.name, "b1.txt"), "x")
 b2 = open(os.path.join(b_tmpdirname.name, "b2.txt"), "x")
 ```
 
-Once that is done, all you have to do is create a Dataset by passing the dummy directory to the LabeledDirDataset class constructor. The following code snippet shows how this can be done:
+Once that is done, all you have to do is create a Dataset by passing the dummy directory to the `LabeledDirDataset` class constructor. The following code snippet shows how this can be done:
 
 
 ```python
 dataset = fe.dataset.LabeledDirDataset(root_dir=tmpdirname)
 
-print (dataset[0])
-print (len(dataset))
+print(dataset[0])
+print(len(dataset))
 ```
 
-    {'x': '/tmp/tmpa70w1cfg/tmpg___5e05/a1.txt', 'y': 0}
+    {'x': '/var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmp8ttxesg9/tmpcmkfpq_n/a1.txt', 'y': 0}
     4
 
 
+<a id='t02CSVDS'></a>
+
 #### 1.2 CSVDataset
 
-To showcase creating Dataset from CSV we now create a dummy CSV file representing information for the two classes. First, let's create the data to be used as input as follows:
+To showcase creating a Dataset based on a CSV file, we now create a dummy CSV file representing information for the two classes. First, let's create the data to be used as input as follows:
 
 
 ```python
@@ -114,27 +128,31 @@ df = pd.DataFrame(data=data)
 df.to_csv(os.path.join(tmpdirname, 'data.csv'), index=False)
 ```
 
-Once that is done you can create a Dataset by passing the CSV to the CSVDataset class constructor. The following code snippet shows how this can be done:
+Once that is done you can create a Dataset by passing the CSV to the `CSVDataset` class constructor. The following code snippet shows how this can be done:
 
 
 ```python
 dataset = fe.dataset.CSVDataset(file_path=os.path.join(tmpdirname, 'data.csv'))
 
-print (dataset[0])
-print (len(dataset))
+print(dataset[0])
+print(len(dataset))
 ```
 
     {'x': 'a1.txt', 'y': 0}
     4
 
 
+<a id='t02Memory'></a>
+
 ### 2. Dataset from memory
 
-It is also possible to create a Dataset from data stored in memory. The following two sections demonstrate how.
+It is also possible to create a Dataset from data stored in memory. This may be useful for smaller datasets.
+
+<a id='t02Numpy'></a>
 
 #### 2.1 NumpyDataset
 
-To create a Dataset from memory, you use the NumpyDataset class passing it the data dictionary. The following code snippet shows how this can be done:
+If you already have data in memory in the form of a Numpy array, it is easy to convert this data into a FastEstimator Dataset. To accomplish this, simply pass your data dictionary into the `NumpyDataset` class constructor. The following code snippet demonstrates this:
 
 
 ```python
@@ -155,6 +173,8 @@ print (len(train_data))
     60000
 
 
+<a id='t02Generator'></a>
+
 ### 3. Dataset from Generator
 
 It is also possible to create a Dataset using generators. As an example, we will first create a generator which will generate random input data for us.
@@ -162,22 +182,32 @@ It is also possible to create a Dataset using generators. As an example, we will
 
 ```python
 import numpy as np
+
 def inputs():
     while True:
         yield {'x': np.random.rand(4), 'y':np.random.randint(2)}
 ```
 
-We then pass the generator as an argument to the GeneratorDataset class. The following code snippet showcases how this can be done:
+We then pass the generator as an argument to the `GeneratorDataset` class:
 
 
 ```python
 from fastestimator.dataset import GeneratorDataset
 
 dataset = GeneratorDataset(generator=inputs(), samples_per_epoch=10)
-print (dataset[0])
-print (len(dataset))
+print(dataset[0])
+print(len(dataset))
 ```
 
-    {'x': array([0.59146293, 0.53450084, 0.70742744, 0.05188558]), 'y': 0}
+    {'x': array([0.30590938, 0.65189247, 0.37606477, 0.01100033]), 'y': 1}
     10
 
+
+<a id='t02Apphub'></a>
+
+## Apphub Examples
+You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
+
+* [UNET](./examples/semantic_segmentation/unet)
+* [DCGAN](./examples/image_generation/dcgan)
+* [Siamese Networks](./examples/one_shot_learning/siamese)

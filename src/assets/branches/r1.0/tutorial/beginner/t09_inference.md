@@ -1,15 +1,18 @@
 # Tutorial 9: Inference
 ## Overview
 In this tutorial we are going to cover:
-* Running inference with transform method
-    * Pipeline.transform
-    * Network.transform
+* [Running inference with the transform method](#t09inference)
+    * [Pipeline.transform](#t09pipeline)
+    * [Network.transform](#t09inference)
+* [Related Apphub Examples](#t09apphub)
+
+<a id='t09inference'></a>
 
 ## Running inference with transform method
 
-Running inference means using a trained deep learning model to get the prediction of input data. Users can use `pipeline.transform` and `network.transform` to feed the data forward and get the computed result in any operation node. Here we are going to use an end-to-end example (the same example code of [tutorial 8](./tutorials/beginner/t08_mode)) of MNIST image classification to demonstrate how to run inference.  
+Running inference means using a trained deep learning model to get a prediction from some input data. Users can use `pipeline.transform` and `network.transform` to feed the data forward and get the computed result in any operation mode. Here we are going to use an end-to-end example (the same example code from [tutorial 8](t08_mode.ipynb)) on MNIST image classification to demonstrate how to run inference.  
 
-We first train a deep leaning model with the following code.
+We first train a deep leaning model with the following code:
 
 
 ```python
@@ -48,7 +51,6 @@ estimator = fe.Estimator(pipeline=pipeline,
 estimator.fit()
 ```
 
-    FastEstimator-Warn: No ModelSaver Trace detected. Models will not be saved.
         ______           __  ______     __  _                 __            
        / ____/___ ______/ /_/ ____/____/ /_(_)___ ___  ____ _/ /_____  _____
       / /_  / __ `/ ___/ __/ __/ / ___/ __/ / __ `__ \/ __ `/ __/ __ \/ ___/
@@ -56,32 +58,33 @@ estimator.fit()
     /_/    \__,_/____/\__/_____/____/\__/_/_/ /_/ /_/\__,_/\__/\____/_/     
                                                                             
     
-    FastEstimator-Start: step: 1; model_lr: 0.001; 
-    FastEstimator-Train: step: 1; ce: 2.306116; 
-    FastEstimator-Train: step: 100; ce: 1.3739773; steps/sec: 68.23; 
-    FastEstimator-Train: step: 200; ce: 1.0571189; steps/sec: 70.64; 
-    FastEstimator-Train: step: 300; ce: 1.3136258; steps/sec: 72.51; 
-    FastEstimator-Train: step: 400; ce: 1.0577172; steps/sec: 74.09; 
-    FastEstimator-Train: step: 500; ce: 1.0502439; steps/sec: 64.83; 
-    FastEstimator-Train: step: 600; ce: 1.0095195; steps/sec: 69.61; 
-    FastEstimator-Train: step: 700; ce: 0.89524543; steps/sec: 62.38; 
-    FastEstimator-Train: step: 800; ce: 0.9588021; steps/sec: 65.85; 
-    FastEstimator-Train: step: 900; ce: 0.8637023; steps/sec: 68.89; 
-    FastEstimator-Train: step: 1000; ce: 0.8811163; steps/sec: 73.99; 
-    FastEstimator-Train: step: 1100; ce: 0.991605; steps/sec: 71.69; 
-    FastEstimator-Train: step: 1200; ce: 1.2436669; steps/sec: 69.57; 
-    FastEstimator-Train: step: 1300; ce: 0.9296719; steps/sec: 69.97; 
-    FastEstimator-Train: step: 1400; ce: 0.8660065; steps/sec: 62.51; 
-    FastEstimator-Train: step: 1500; ce: 0.9682411; steps/sec: 61.42; 
-    FastEstimator-Train: step: 1600; ce: 0.73518944; steps/sec: 66.97; 
-    FastEstimator-Train: step: 1700; ce: 0.70487094; steps/sec: 64.46; 
-    FastEstimator-Train: step: 1800; ce: 0.7994304; steps/sec: 65.99; 
-    FastEstimator-Train: step: 1875; epoch: 1; epoch_time: 31.39 sec; 
-    FastEstimator-Eval: step: 1875; epoch: 1; ce: 0.17336462; min_ce: 0.17336462; since_best: 0; accuracy: 0.9462; 
-    FastEstimator-Finish: step: 1875; total_time: 34.09 sec; model_lr: 0.001; 
+    FastEstimator-Warn: No ModelSaver Trace detected. Models will not be saved.
+    FastEstimator-Start: step: 1; num_device: 0; logging_interval: 100; 
+    FastEstimator-Train: step: 1; ce: 2.3035316; 
+    FastEstimator-Train: step: 100; ce: 1.6618028; steps/sec: 146.74; 
+    FastEstimator-Train: step: 200; ce: 1.4808083; steps/sec: 151.68; 
+    FastEstimator-Train: step: 300; ce: 1.0872928; steps/sec: 150.25; 
+    FastEstimator-Train: step: 400; ce: 1.1683241; steps/sec: 144.47; 
+    FastEstimator-Train: step: 500; ce: 0.63509166; steps/sec: 142.96; 
+    FastEstimator-Train: step: 600; ce: 0.84414047; steps/sec: 137.78; 
+    FastEstimator-Train: step: 700; ce: 0.90303344; steps/sec: 141.27; 
+    FastEstimator-Train: step: 800; ce: 0.6876491; steps/sec: 130.39; 
+    FastEstimator-Train: step: 900; ce: 0.7615918; steps/sec: 134.94; 
+    FastEstimator-Train: step: 1000; ce: 0.7081696; steps/sec: 134.51; 
+    FastEstimator-Train: step: 1100; ce: 1.054371; steps/sec: 129.01; 
+    FastEstimator-Train: step: 1200; ce: 0.65663564; steps/sec: 125.8; 
+    FastEstimator-Train: step: 1300; ce: 0.80188024; steps/sec: 119.49; 
+    FastEstimator-Train: step: 1400; ce: 1.1256162; steps/sec: 115.14; 
+    FastEstimator-Train: step: 1500; ce: 1.4453554; steps/sec: 112.19; 
+    FastEstimator-Train: step: 1600; ce: 0.52970994; steps/sec: 106.5; 
+    FastEstimator-Train: step: 1700; ce: 0.48612577; steps/sec: 103.63; 
+    FastEstimator-Train: step: 1800; ce: 1.1535486; steps/sec: 106.13; 
+    FastEstimator-Train: step: 1875; epoch: 1; epoch_time: 17.0 sec; 
+    FastEstimator-Eval: step: 1875; epoch: 1; ce: 0.17459252; accuracy: 0.948; 
+    FastEstimator-Finish: step: 1875; total_time: 17.72 sec; model_lr: 0.001; 
 
 
-We create a customized function for the following showcase purpose. 
+Let's create a customized print function to showcase our inferencing easier:
 
 
 ```python
@@ -100,18 +103,20 @@ def print_dict_but_value(data):
             print("{}: {}".format(key, value))
 ```
 
-The following graph shows the complete workflow graph (consisting `Pipeline` and `Network`) of "infer" mode. 
+The following figure shows the complete execution graph (consisting `Pipeline` and `Network`) for the "infer" mode: 
 
 <img src="assets/branches/r1.0/tutorial/../resources/t09_infer_mode.PNG" alt="drawing" width="700"/>
 
-Our goal is to feed the node "x" with input image and get the prediction result from node "y_pred".
+Our goal is to provide an input image "x" and get the prediction result "y_pred".
+
+<a id='t09pipeline'></a>
 
 ### Pipeline.transform
-Pipeline object has a `transform` method that run the pipeline graph ("x" to "x_out") when inference data, a dictionary of keys being node names and values being data ({"x":image}), is inserted. The returned output will be the dictionary of computed results of all pipeline nodes in the type of Numpy array. 
+The `Pipeline` object has a `transform` method that runs the pipeline graph ("x" to "x_out") when inference data (a dictionary of keys and values like {"x":image}), is inserted. The returned output will be the dictionary of computed results after applying all `Pipeline` Ops, where the dictionary values will be Numpy arrays.
 
 <img src="assets/branches/r1.0/tutorial/../resources/t09_infer_mode2.PNG" alt="drawing" width="700"/>
 
-Here we take eval_data's first image, package it into a dictionary, and then call `pipeline.transform`. 
+Here we take eval_data's first image, package it into a dictionary, and then call `pipeline.transform`: 
 
 
 ```python
@@ -134,9 +139,11 @@ print_dict_but_value(infer_data)
     x_out: ndarray with shape (1, 28, 28, 1)
 
 
+<a id='t09network'></a>
+
 ### Network.transform
 
-We then use the network object to call `transform` method that run the netowrk graph("x_out" to "y_pred"). Much alike with `pipeline.transform`, it will generate all nodes' data in the `network` with all data in the type of Tensor. The data type depends on the backend of the network. it is `tf.Tensor` with Tensorflow backend and `torch.Tensor` with Pytorch. Please check out [tutorial 6](../tutorials/beginner/t06_network) for more detail about `Network` backend). 
+We then use the network object to call the `transform` method that runs the network graph ("x_out" to "y_pred"). Much like with `pipeline.transform`, it will return it's Op outputs, though this time in the form of a dictionary of Tensors. The data type of the returned values depends on the backend of the network. It is `tf.Tensor` when using the TensorFlow backend and `torch.Tensor` with PyTorch. Please check out [tutorial 6](./tutorials/beginner/t06_network) for more details about `Network` backends). 
 
 <img src="assets/branches/r1.0/tutorial/../resources/t09_infer_mode3.PNG" alt="drawing" width="700"/>
 
@@ -155,14 +162,22 @@ Now we can visualize the input image and compare with its prediction class.
 
 
 ```python
-import matplotlib.pyplot as plt 
-plt.imshow(np.squeeze(infer_data["x"]), cmap="gray")
-print("Prediction class is {}".format(np.argmax(infer_data["y_pred"])))
+print("Predicted class is {}".format(np.argmax(infer_data["y_pred"])))
+img = fe.util.ImgData(x=infer_data["x"])
+fig = img.paint_figure()
 ```
 
-    Prediction class is 1
+    Predicted class is 7
 
 
 
-![png](assets/branches/r1.0/tutorial/beginner/t09_inference_files/t09_inference_16_1.png)
+![png](assets/branches/r1.0/tutorial/beginner/t09_inference_files/t09_inference_19_1.png)
 
+
+<a id='t09apphub'></a>
+
+## Apphub Examples
+You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
+
+* [MNIST](./examples/image_classification/mnist)
+* [IMDB](./examples/NLP/imdb)

@@ -2,7 +2,7 @@
 
 ### show_image
 ```python
-show_image(im:Union[numpy.ndarray, ~Tensor], axis:matplotlib.axes._axes.Axes=None, fig:matplotlib.figure.Figure=None, title:Union[str, NoneType]=None, color_map:str='inferno') -> Union[matplotlib.figure.Figure, NoneType]
+show_image(im:Union[numpy.ndarray, ~Tensor], axis:matplotlib.axes._axes.Axes=None, fig:matplotlib.figure.Figure=None, title:Union[str, NoneType]=None, color_map:str='inferno', stack_depth:int=0) -> Union[matplotlib.figure.Figure, NoneType]
 ```
 Plots a given image onto an axis.
 
@@ -13,3 +13,4 @@ Plots a given image onto an axis.
 * **im** :  The image to display (width X height).
 * **title** :  A title for the image.
 * **color_map** :  Which colormap to use for greyscale images.
+* **stack_depth** :  Multiple images can be drawn onto the same axis. When stack depth is greater than zero, the `im`        will be alpha blended on top of a given axis.

@@ -2,22 +2,28 @@
 
 ## Overview
 
-In the beginner's tutorial of `Pipeline`, we learned how to build data pipeline that handles data loading and preprocessing tasks efficiently. Now that you have understood some basic operations in the `Pipeline`, we will demonstrate some advanced concepts and how to leverage them to create efficient `Pipeline` in this tutorial.
+In this tutorial, we will discuss the following topics:
 
-In this tutorial we will discuss following topics,
+* [Iterating Through Pipeline](#ta02itp)
+    * [Basic Concept](#ta02bc)
+    * [Example](#ta02example)
+* [Dropping Last Batch](#ta02dlb)
+* [Padding Batch Data](#ta02pbd)
+* [Benchmark Pipeline Speed](#ta02bps)
 
-* How to iterate through the pipeline data
-    * Basic concept
-    * Example use case
-* Dropping the last batch
-* Handling the batch padding
-* How to benchmark Pipeline performance
+In the [beginner tutorial 4](./tutorials/beginner/t04_pipeline), we learned how to build a data pipeline that handles data loading and preprocessing tasks efficiently. Now that you have understood some basic operations in the `Pipeline`, we will demonstrate some advanced concepts and how to leverage them to create efficient `Pipelines` in this tutorial.
 
-## How to iterate through the pipeline data
+<a id='ta02itp'></a>
 
-We will first see how to iterate through the pipeline batch data. For example if we want to calculate global mean of pixel value or standard deviation over the channels we could iterate through the batch data and compute them.
+## Iterating Through Pipeline
 
-First we will create sample NumpyDataset from the data dictionary and load it into `Pipeline`.
+In many deep learning tasks, the parameters for preprocessing tasks are precomputed by looping through the dataset. For example, in the `ImageNet` dataset, people usually use a precomputed global pixel average for each channel to normalize the images. 
+
+<a id='ta02bc'></a>
+
+### Basic Concept
+
+In this section, we will see how to iterate through the pipeline in FastEstimator. First we will create a sample NumpyDataset from the data dictionary and load it into a `Pipeline`:
 
 
 ```python
@@ -40,7 +46,7 @@ dataset_fe = NumpyDataset(train_data)
 pipeline_fe = fe.Pipeline(train_data=dataset_fe, batch_size=3)
 ```
 
-Let's get the loader object for the `Pipeline` we defined and iterate over the dataset that was loaded into the dataloader.
+Let's get the loader object for the `Pipeline`, then iterate through the loader with a for loop:
 
 
 ```python
@@ -50,27 +56,29 @@ for batch in loader_fe:
     print(batch)
 ```
 
-    {'x': tensor([[0.4575, 0.8058],
-            [0.8462, 0.1682],
-            [0.1016, 0.3228]], dtype=torch.float64), 'y': tensor([[0.8675],
-            [0.0056],
-            [0.3656]], dtype=torch.float64)}
-    {'x': tensor([[0.6502, 0.7932],
-            [0.5179, 0.5414],
-            [0.9607, 0.0284]], dtype=torch.float64), 'y': tensor([[0.6766],
-            [0.4403],
-            [0.3337]], dtype=torch.float64)}
-    {'x': tensor([[0.5675, 0.8176],
-            [0.9654, 0.8325],
-            [0.0961, 0.1680]], dtype=torch.float64), 'y': tensor([[0.8057],
-            [0.9169],
-            [0.2998]], dtype=torch.float64)}
-    {'x': tensor([[0.8078, 0.3384]], dtype=torch.float64), 'y': tensor([[0.2901]], dtype=torch.float64)}
+    {'x': tensor([[0.1288, 0.2118],
+            [0.9344, 0.5583],
+            [0.0879, 0.5939]], dtype=torch.float64), 'y': tensor([[0.8071],
+            [0.8469],
+            [0.9160]], dtype=torch.float64)}
+    {'x': tensor([[0.7866, 0.8248],
+            [0.3285, 0.9311],
+            [0.7637, 0.9474]], dtype=torch.float64), 'y': tensor([[0.5504],
+            [0.8430],
+            [0.7415]], dtype=torch.float64)}
+    {'x': tensor([[0.3689, 0.3373],
+            [0.3407, 0.0571],
+            [0.2216, 0.1906]], dtype=torch.float64), 'y': tensor([[0.6517],
+            [0.4824],
+            [0.5171]], dtype=torch.float64)}
+    {'x': tensor([[0.6018, 0.4306]], dtype=torch.float64), 'y': tensor([[0.0023]], dtype=torch.float64)}
 
 
-### Example use case
+<a id='ta02example'></a>
 
-Let's say we have CIFAR-10 dataset and we want to find global average pixel value over three channels then we can loop through the batch data and quickly compute the value.
+### Example
+
+Let's say we have CIFAR-10 dataset and we want to find global average pixel value over three channels:
 
 
 ```python
@@ -99,27 +107,31 @@ mean_arr = mean_arr / (i+1)
 
 
 ```python
-print("Mean pixel value over the channels: ", mean_arr)
+print("Mean pixel value over the channels are: ", mean_arr)
 ```
 
-    Mean pixel value over the channels:  [125.32287898 122.96682199 113.8856495 ]
+    Mean pixel value over the channels are:  [125.32287898 122.96682199 113.8856495 ]
 
 
-## Dropping the last batch
+<a id='ta02dlb'></a>
 
-When we specify `batch_size` in the `Pipeline`, it will combine consecutive number of tensors into a batch and resulting shape will be <br><b>batch_size * shape of input tensor</b><br> However, if `batch_size` does not divide the input data evenly then last batch could have different batch_size than other batches. To drop the last batch we can set `drop_last` to `True`. Therefore, if the last batch is incomplete it will be dropped.
+## Dropping Last Batch
+
+If the total number of dataset elements is not divisible by the `batch_size`, by default, the last batch will have less data than other batches.  To drop the last batch we can set `drop_last` to `True`. Therefore, if the last batch is incomplete it will be dropped.
 
 
 ```python
 pipeline_fe = fe.Pipeline(train_data=dataset_fe, batch_size=3, drop_last=True)
 ```
 
-## Handling the batch padding
+<a id='ta02pbd'></a>
 
-In the previous section we saw that if last batch has different shape than rest of the batches then we can drop the last batch. But there might be scenario where the input tensors that are batched have different dimensions i.e. In Natural language processing problems we can have input strings can have different lengths. For that the tensors are padded out to the maximum length of the all the tensors in the dataset.
+## Padding Batch Data
+
+There might be scenario where the input tensors have different dimensions within a batch. For example, in Natural Language Processing, we have input strings with different lengths. For that we need to pad the data to the maximum length within the batch.
 
 
-We will take numpy array that contains different shapes of array elements and load it into the `Pipeline`.
+To further illustrate in code, we will take numpy array that contains different shapes of array elements and load it into the `Pipeline`.
 
 
 ```python
@@ -134,14 +146,14 @@ train_data = {"x": x_train}
 dataset_fe = NumpyDataset(train_data)
 ```
 
-We will set any `pad_value` that we want to append at the end of the tensor data. `pad_value` must be either `int` or `float`
+We will set any `pad_value` that we want to append at the end of the tensor data. `pad_value` can be either `int` or `float`:
 
 
 ```python
 pipeline_fe = fe.Pipeline(train_data=dataset_fe, batch_size=3, pad_value=0)
 ```
 
-Now let's iterate over the batch data
+Now let's print the batch data after padding:
 
 
 ```python
@@ -154,12 +166,13 @@ for elem in iter(pipeline_fe.get_loader(mode='train', shuffle=False)):
             [3, 0, 0]])}
 
 
-## Benchmarking pipeline performance
+<a id='ta02bps'></a>
 
-In the ideal world, deep learning scientists would need to evaluate costs and speed in either in terms of data processing or model training before deploying. That makes benchmarking such tasks significant as we need good summary of the measures.<br>
-`Pipeline.benchmark` provides that important feature of benchmarking processing speed of pre-processing operations in the `Pipeline`
+## Benchmark Pipeline Speed
 
-We will create `Pipeline` for the CIFAR-10 dataset with list of numpy operators that expand dimensions, apply minmax scaler and finally rotate the input images. 
+It is often the case that the bottleneck of deep learning training is the data pipeline. As a result, the GPU may be underutilized. FastEstimator provides a method to check the speed of a `Pipeline` in order to help diagnose any potential problems. The way to benchmark `Pipeline` speed in FastEstimator is very simple: call `Pipeline.benchmark`.
+
+For illustration, we will create a `Pipeline` for the CIFAR-10 dataset with list of Numpy operators that expand dimensions, apply `Minmax` and finally `Rotate` the input images: 
 
 
 ```python
@@ -173,18 +186,18 @@ pipeline = fe.Pipeline(train_data=cifar_train,
                       batch_size=64)
 ```
 
-Let's benchmark the processing speed in the training mode.
+Let's benchmark the pre-processing speed for this pipeline in training mode:
 
 
 ```python
 pipeline_cifar.benchmark(mode="train")
 ```
 
-    FastEstimator: Step: 100, Epoch: 1, Steps/sec: 306.3574085435541
-    FastEstimator: Step: 200, Epoch: 1, Steps/sec: 440.5841906691682
-    FastEstimator: Step: 300, Epoch: 1, Steps/sec: 458.66033407201814
-    FastEstimator: Step: 400, Epoch: 1, Steps/sec: 423.8592310935567
-    FastEstimator: Step: 500, Epoch: 1, Steps/sec: 457.58897449238594
-    FastEstimator: Step: 600, Epoch: 1, Steps/sec: 439.4676858001863
-    FastEstimator: Step: 700, Epoch: 1, Steps/sec: 412.746418382437
+    FastEstimator: Step: 100, Epoch: 1, Steps/sec: 797.9008250605733
+    FastEstimator: Step: 200, Epoch: 1, Steps/sec: 2249.3393577839283
+    FastEstimator: Step: 300, Epoch: 1, Steps/sec: 2236.913774803168
+    FastEstimator: Step: 400, Epoch: 1, Steps/sec: 2244.6406454903963
+    FastEstimator: Step: 500, Epoch: 1, Steps/sec: 2303.2515324338206
+    FastEstimator: Step: 600, Epoch: 1, Steps/sec: 2250.139806811566
+    FastEstimator: Step: 700, Epoch: 1, Steps/sec: 2310.7264336983017
 
