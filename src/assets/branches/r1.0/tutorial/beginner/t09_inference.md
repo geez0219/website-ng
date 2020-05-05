@@ -1,10 +1,10 @@
 # Tutorial 9: Inference
 ## Overview
 In this tutorial we are going to cover:
-* [Running inference with the transform method](#t09inference)
-    * [Pipeline.transform](#t09pipeline)
-    * [Network.transform](#t09inference)
-* [Related Apphub Examples](#t09apphub)
+* [Running inference with the transform method](./tutorials/beginner/t09_inference#t09inference)
+    * [Pipeline.transform](./tutorials/beginner/t09_inference#t09pipeline)
+    * [Network.transform](./tutorials/beginner/t09_inference#t09inference)
+* [Related Apphub Examples](./tutorials/beginner/t09_inference#t09apphub)
 
 <a id='t09inference'></a>
 

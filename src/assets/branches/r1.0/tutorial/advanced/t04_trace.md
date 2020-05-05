@@ -2,16 +2,16 @@
 
 ## Overview
 In this tutorial, we will discuss:
-* [Customizing Traces](#ta04customize)
-    * [Example](#ta04example)
-* [More About Traces](#ta04more)
-    * [Inputs, Outputs, and Mode](#ta04iom)
-    * [Data](#ta04data)
-    * [System](#ta04system)
-* [Trace Communication](#ta04communication)
-* [Other Trace Usages](#ta04other)
-    * [Debugging/Monitoring](#ta04debug)
-* [Related Apphub Examples](#ta04apphub)
+* [Customizing Traces](./tutorials/advanced/t04_trace#ta04customize)
+    * [Example](./tutorials/advanced/t04_trace#ta04example)
+* [More About Traces](./tutorials/advanced/t04_trace#ta04more)
+    * [Inputs, Outputs, and Mode](./tutorials/advanced/t04_trace#ta04iom)
+    * [Data](./tutorials/advanced/t04_trace#ta04data)
+    * [System](./tutorials/advanced/t04_trace#ta04system)
+* [Trace Communication](./tutorials/advanced/t04_trace#ta04communication)
+* [Other Trace Usages](./tutorials/advanced/t04_trace#ta04other)
+    * [Debugging/Monitoring](./tutorials/advanced/t04_trace#ta04debug)
+* [Related Apphub Examples](./tutorials/advanced/t04_trace#ta04apphub)
 
 Let's create a function to generate a pipeline, model and network to be used for the tutorial:
 
@@ -161,7 +161,7 @@ Traces have access to the current `System` instance which has information about 
 * summary
 * experiment_time
 
-We will showcase `System` usage in the [other trace usages](#ta04other) section of this tutorial. 
+We will showcase `System` usage in the [other trace usages](./tutorials/advanced/t04_trace#ta04other) section of this tutorial. 
 
 <a id='ta04communication'></a>
 

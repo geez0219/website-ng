@@ -2,16 +2,16 @@
 
 ## Overview
 In this tutorial, we will discuss:
-* [Operator Mechanism](#ta03om)
-    * [data](#ta03data)
-    * [state](#ta03state)
-* [NumpyOp](#ta03no)
-    * [DeleteOp](#ta03do)
-    * [MetaOp](#ta03mo)
-    * [Customizing NumpyOps](#ta03cn)
-* [TensorOp](#ta03to)
-   * [Customizing TensorOps](#ta03ct)
-* [Related Apphub Examples](#ta03rae)
+* [Operator Mechanism](./tutorials/advanced/t03_operator#ta03om)
+    * [data](./tutorials/advanced/t03_operator#ta03data)
+    * [state](./tutorials/advanced/t03_operator#ta03state)
+* [NumpyOp](./tutorials/advanced/t03_operator#ta03no)
+    * [DeleteOp](./tutorials/advanced/t03_operator#ta03do)
+    * [MetaOp](./tutorials/advanced/t03_operator#ta03mo)
+    * [Customizing NumpyOps](./tutorials/advanced/t03_operator#ta03cn)
+* [TensorOp](./tutorials/advanced/t03_operator#ta03to)
+   * [Customizing TensorOps](./tutorials/advanced/t03_operator#ta03ct)
+* [Related Apphub Examples](./tutorials/advanced/t03_operator#ta03rae)
 
 <a id='ta03om'></a>
 

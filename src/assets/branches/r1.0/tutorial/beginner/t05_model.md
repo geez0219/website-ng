@@ -4,15 +4,15 @@
 
 In this tutorial we will cover:
 
-* [Instantiating and Compiling a Model](#t05compile)
-* [The Model Function](#t05model)
-    * [Custom Models](#t05custom)
-    * [FastEstimator Models](#t05fe)
-    * [Pre-Trained Models](#t05trained)
-* [The Optimizer Function](#t05optimizer)
-* [Loading Model Weights](#t05weights)
-* [Specifying a Model Name](#t05name)
-* [Related Apphub Examples](#t05apphub)
+* [Instantiating and Compiling a Model](./tutorials/beginner/t05_model#t05compile)
+* [The Model Function](./tutorials/beginner/t05_model#t05model)
+    * [Custom Models](./tutorials/beginner/t05_model#t05custom)
+    * [FastEstimator Models](./tutorials/beginner/t05_model#t05fe)
+    * [Pre-Trained Models](./tutorials/beginner/t05_model#t05trained)
+* [The Optimizer Function](./tutorials/beginner/t05_model#t05optimizer)
+* [Loading Model Weights](./tutorials/beginner/t05_model#t05weights)
+* [Specifying a Model Name](./tutorials/beginner/t05_model#t05name)
+* [Related Apphub Examples](./tutorials/beginner/t05_model#t05apphub)
 
 <a id='t05compile'></a>
 
@@ -68,9 +68,9 @@ import torch.nn.functional as fn
 class my_model_torch(nn.Module):
     def __init__(self, num_inputs=30, num_classes=2):
         super().__init__()
-        self.layers = nn.Sequential(nn.Linear(num_inputs, 32), 
-                                    nn.ReLU(inplace=True), 
-                                    nn.Linear(32, 8), 
+        self.layers = nn.Sequential(nn.Linear(num_inputs, 32),
+                                    nn.ReLU(inplace=True),
+                                    nn.Linear(32, 8),
                                     nn.ReLU(inplace=True),
                                     nn.Linear(8, num_classes))
 
@@ -79,7 +79,7 @@ class my_model_torch(nn.Module):
         x_label = torch.softmax(x, dim=-1)
         return x_label
 
-    
+
 model_torch = fe.build(model_fn=my_model_torch, optimizer_fn="adam")
 ```
 
@@ -87,7 +87,7 @@ model_torch = fe.build(model_fn=my_model_torch, optimizer_fn="adam")
 
 ### Importing model architecture from FastEstimator
 
-Below we import a PyTorch LeNet architecture from FastEstimator. See our [Architectures](../../fastestimator/architecture) folder for a full list of the architectures provided by FastEstimator.
+Below we import a PyTorch LeNet architecture from FastEstimator. See our [Architectures](./api/fe/architecture/pytorch/LeNet) folder for a full list of the architectures provided by FastEstimator.
 
 
 ```python
@@ -103,14 +103,14 @@ model = fe.build(model_fn=LeNet, optimizer_fn="adam")
 
 Below we show how to define a model function using a pre-trained resnet model provided by TensorFlow and PyTorch respectively. We load the pre-trained models using a lambda function.
 
-#### Pre-trained model from tf.keras.applications 
+#### Pre-trained model from tf.keras.applications
 
 
 ```python
 resnet50_tf = fe.build(model_fn=lambda: tf.keras.applications.ResNet50(weights='imagenet'), optimizer_fn="adam")
 ```
 
-#### Pre-trained model from torchvision 
+#### Pre-trained model from torchvision
 
 
 ```python
@@ -140,7 +140,7 @@ To specify specific values for the optimizer learning rate or other parameters, 
 
 
 ```python
-# TensorFlow 
+# TensorFlow
 model_tf = fe.build(model_fn=my_model_tf, optimizer_fn=lambda: tf.optimizers.Adam(1e-4))
 
 # PyTorch
@@ -184,16 +184,16 @@ fe.backend.save_model(resnet50_torch, save_dir=model_dir, model_name= "resnet50_
 
 ```python
 # TensorFlow
-resnet50_tf = fe.build(model_fn=lambda: tf.keras.applications.ResNet50(weights=None), 
-                       optimizer_fn="adam", 
+resnet50_tf = fe.build(model_fn=lambda: tf.keras.applications.ResNet50(weights=None),
+                       optimizer_fn="adam",
                        weights_path=os.path.join(model_dir, "resnet50_tf.h5"))
 ```
 
 
 ```python
 # PyTorch
-resnet50_torch = fe.build(model_fn=lambda: models.resnet50(pretrained=False), 
-                          optimizer_fn="adam", 
+resnet50_torch = fe.build(model_fn=lambda: models.resnet50(pretrained=False),
+                          optimizer_fn="adam",
                           weights_path=os.path.join(model_dir, "resnet50_torch.pt"))
 ```
 

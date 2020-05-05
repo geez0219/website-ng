@@ -2,17 +2,17 @@
 
 ## Overview
 In this tutorial, we will talk about:
-* [Estimator API](#t07estimator)
-    * [Reducing the number of training steps per epoch](#t07train)
-    * [Reducing the number of evaluation steps per epoch](#t07eval)
-    * [Changing logging behavior](#t07logging)
-    * [Monitoring intermediate results during training](#t07intermediate)
-* [Trace](#t07trace)
-    * [Concept](#t07concept)
-    * [Structure](#t07structure)
-    * [Usage](#t07usage)
-* [Model Testing](#t07testing)
-* [Related Apphub Examples](#t07apphub)
+* [Estimator API](./tutorials/beginner/t07_estimator#t07estimator)
+    * [Reducing the number of training steps per epoch](./tutorials/beginner/t07_estimator#t07train)
+    * [Reducing the number of evaluation steps per epoch](./tutorials/beginner/t07_estimator#t07eval)
+    * [Changing logging behavior](./tutorials/beginner/t07_estimator#t07logging)
+    * [Monitoring intermediate results during training](./tutorials/beginner/t07_estimator#t07intermediate)
+* [Trace](./tutorials/beginner/t07_estimator#t07trace)
+    * [Concept](./tutorials/beginner/t07_estimator#t07concept)
+    * [Structure](./tutorials/beginner/t07_estimator#t07structure)
+    * [Usage](./tutorials/beginner/t07_estimator#t07usage)
+* [Model Testing](./tutorials/beginner/t07_estimator#t07testing)
+* [Related Apphub Examples](./tutorials/beginner/t07_estimator#t07apphub)
 
 `Estimator` is the API that manages everything related to the training loop. It combines `Pipeline` and `Network` together and provides users with fine-grain control over the training loop. Before we demonstrate different ways to control the training loop let's define a template similar to [tutorial 1](./tutorials/beginner/t01_getting_started), but this time we will use a PyTorch model.
 

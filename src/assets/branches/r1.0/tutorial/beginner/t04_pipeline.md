@@ -4,17 +4,17 @@
 
 In this tutorial, we will talk about the following:
 
-* [Loading data into a `Pipeline`](#t04Loading)
-    * [Using tf.data.Dataset](#t04tf)
-    * [Using torch.Dataloader](#t04torch)
-    * [Using FastEstimator Datasets](#t04fe)
-* [Getting results from a `Pipeline`](#t04results)
-* [How to use Numpy Operators in a `Pipeline`](#t04numpy)
-    * [Univariate Numpy Operators](#t04univariate)
-    * [Multivariate Numpy Operators](#t04multivariate)
-    * [Customized Numpy Operators](#t04custom)
-    * [Visualizing `Pipeline` Output](#t04vis)
-* [Related Apphub Examples](#t04apphub)
+* [Loading data into a `Pipeline`](./tutorials/beginner/t04_pipeline#t04Loading)
+    * [Using tf.data.Dataset](./tutorials/beginner/t04_pipeline#t04tf)
+    * [Using torch.Dataloader](./tutorials/beginner/t04_pipeline#t04torch)
+    * [Using FastEstimator Datasets](./tutorials/beginner/t04_pipeline#t04fe)
+* [Getting results from a `Pipeline`](./tutorials/beginner/t04_pipeline#t04results)
+* [How to use Numpy Operators in a `Pipeline`](./tutorials/beginner/t04_pipeline#t04numpy)
+    * [Univariate Numpy Operators](./tutorials/beginner/t04_pipeline#t04univariate)
+    * [Multivariate Numpy Operators](./tutorials/beginner/t04_pipeline#t04multivariate)
+    * [Customized Numpy Operators](./tutorials/beginner/t04_pipeline#t04custom)
+    * [Visualizing `Pipeline` Output](./tutorials/beginner/t04_pipeline#t04vis)
+* [Related Apphub Examples](./tutorials/beginner/t04_pipeline#t04apphub)
 
 In deep learning, data preprocessing is a way of converting data from its raw form to a more usable or desired representation. It is one crucial step in model training as it directly impacts the ability of model to learn. In FastEstimator, the `Pipeline` API enables such preprocessing tasks in an efficient manner. The `Pipeline` manages everything from  extracting data from the disk up until it is fed into the model. `Pipeline` operations usually happen on the CPU.
 

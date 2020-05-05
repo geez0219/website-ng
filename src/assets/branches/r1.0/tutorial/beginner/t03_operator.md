@@ -3,10 +3,10 @@
 ## Overview
 In this tutorial we will introduce the `Operator` - a fundamental building block within FastEstimator. This tutorial is structured as follows:
 
-* [Operator Definition](#t03Def)
-* [Operator Structure](#t03Structure)
-* [Operator Expression](#t03Exp)
-* [Deep Learning Examples using Operators](#t03DL)
+* [Operator Definition](./tutorials/beginner/t03_operator#t03Def)
+* [Operator Structure](./tutorials/beginner/t03_operator#t03Structure)
+* [Operator Expression](./tutorials/beginner/t03_operator#t03Exp)
+* [Deep Learning Examples using Operators](./tutorials/beginner/t03_operator#t03DL)
 
 <a id='t03Def'></a>
 
