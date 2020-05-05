@@ -7,7 +7,7 @@ In this tutorial we are going to cover:
 
 ## Running inference with transform method
 
-Running inference means using a trained deep learning model to get the prediction of input data. Users can use `pipeline.transform` and `network.transform` to feed the data forward and get the computed result in any operation node. Here we are going to use an end-to-end example (the same example code of **Tutorial 8: Mode**) of MNIST image classification to demonstrate how to run inference.  
+Running inference means using a trained deep learning model to get the prediction of input data. Users can use `pipeline.transform` and `network.transform` to feed the data forward and get the computed result in any operation node. Here we are going to use an end-to-end example (the same example code of [tutorial 8](./tutorials/beginner/t08_mode)) of MNIST image classification to demonstrate how to run inference.  
 
 We first train a deep leaning model with the following code.
 
@@ -136,7 +136,7 @@ print_dict_but_value(infer_data)
 
 ### Network.transform
 
-We then use the network object to call `transform` method that run the netowrk graph("x_out" to "y_pred"). Much alike with `pipeline.transform`, it will generate all nodes' data in the `network` with all data in the type of Tensor. The data type depends on the backend of the network. it is `tf.Tensor` with Tensorflow backend and `torch.Tensor` with Pytorch. Please check out **Tutorial 7: Network** for more detail about `Network` backend). 
+We then use the network object to call `transform` method that run the netowrk graph("x_out" to "y_pred"). Much alike with `pipeline.transform`, it will generate all nodes' data in the `network` with all data in the type of Tensor. The data type depends on the backend of the network. it is `tf.Tensor` with Tensorflow backend and `torch.Tensor` with Pytorch. Please check out [tutorial 6](../tutorials/beginner/t06_network) for more detail about `Network` backend). 
 
 <img src="assets/branches/r1.0/tutorial/../resources/t09_infer_mode3.PNG" alt="drawing" width="700"/>
 

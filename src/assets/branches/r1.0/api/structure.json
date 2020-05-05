@@ -6,7 +6,7 @@
             {
                 "name": "fe/BaseNetwork.md",
                 "displayName": "BaseNetwork",
-                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/network.py#L33-L195"
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/network.py#L35-L197"
             },
             {
                 "name": "fe/Estimator.md",
@@ -16,7 +16,7 @@
             {
                 "name": "fe/Network.md",
                 "displayName": "Network",
-                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/network.py#L215-L249"
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/network.py#L217-L251"
             },
             {
                 "name": "fe/Pipeline.md",
@@ -26,17 +26,17 @@
             {
                 "name": "fe/TFNetwork.md",
                 "displayName": "TFNetwork",
-                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/network.py#L370-L510"
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/network.py#L427-L616"
             },
             {
                 "name": "fe/TorchNetwork.md",
                 "displayName": "TorchNetwork",
-                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/network.py#L252-L367"
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/network.py#L254-L424"
             },
             {
                 "name": "fe/build.md",
                 "displayName": "build",
-                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/network.py#L513-L588"
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/network.py#L619-L694"
             }
         ]
     },
@@ -51,12 +51,12 @@
                     {
                         "name": "architecture/pytorch/LeNet.md",
                         "displayName": "LeNet",
-                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/architecture/tensorflow/lenet.py#L22-L43"
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/architecture/pytorch/lenet.py#L22-L43"
                     },
                     {
                         "name": "architecture/pytorch/UNet.md",
                         "displayName": "UNet",
-                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/architecture/tensorflow/unet.py#L23-L77"
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/architecture/tensorflow/unet.py#L74-L114"
                     },
                     {
                         "name": "architecture/pytorch/UNetDecoderBlock.md",
@@ -200,7 +200,7 @@
             {
                 "name": "backend/save_model.md",
                 "displayName": "save_model",
-                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/backend/save_model.py#L23-L71"
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/backend/save_model.py#L23-L76"
             },
             {
                 "name": "backend/set_lr.md",
@@ -1094,7 +1094,7 @@
                     {
                         "name": "trace/io/RestoreWizard.md",
                         "displayName": "RestoreWizard",
-                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/trace/io/restore_wizard.py#L26-L93"
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/trace/io/restore_wizard.py#L26-L94"
                     },
                     {
                         "name": "trace/io/TensorBoard.md",
@@ -1189,12 +1189,12 @@
             {
                 "name": "util/DefaultKeyDict.md",
                 "displayName": "DefaultKeyDict",
-                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/util/util.py#L486-L505"
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/util/util.py#L454-L473"
             },
             {
                 "name": "util/ImgData.md",
                 "displayName": "ImgData",
-                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/util/img_data.py#L30-L308"
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/util/img_data.py#L30-L335"
             },
             {
                 "name": "util/NonContext.md",
@@ -1229,52 +1229,47 @@
             {
                 "name": "util/get_batch_size.md",
                 "displayName": "get_batch_size",
-                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/util/util.py#L587-L599"
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/util/util.py#L589-L601"
             },
             {
                 "name": "util/get_num_devices.md",
                 "displayName": "get_num_devices",
-                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/util/util.py#L508-L514"
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/util/util.py#L476-L482"
             },
             {
                 "name": "util/get_shape.md",
                 "displayName": "get_shape",
-                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/util/util.py#L347-L384"
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/util/util.py#L315-L352"
             },
             {
                 "name": "util/get_type.md",
                 "displayName": "get_type",
-                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/util/util.py#L318-L344"
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/util/util.py#L286-L312"
             },
             {
                 "name": "util/is_number.md",
                 "displayName": "is_number",
-                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/util/util.py#L465-L483"
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/util/util.py#L433-L451"
             },
             {
                 "name": "util/pad_batch.md",
                 "displayName": "pad_batch",
-                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/util/util.py#L418-L440"
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/util/util.py#L386-L408"
             },
             {
                 "name": "util/pad_data.md",
                 "displayName": "pad_data",
-                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/util/util.py#L443-L462"
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/util/util.py#L411-L430"
             },
             {
                 "name": "util/parse_modes.md",
                 "displayName": "parse_modes",
-                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/util/util.py#L387-L415"
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/util/util.py#L355-L383"
             },
             {
                 "name": "util/parse_string_to_python.md",
                 "displayName": "parse_string_to_python",
                 "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/util/util.py#L57-L80"
-            },
-            {
-                "name": "util/per_replica_to_global.md",
-                "displayName": "per_replica_to_global",
-                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/util/util.py#L286-L315"
             },
             {
                 "name": "util/prettify_metric_name.md",
@@ -1284,7 +1279,7 @@
             {
                 "name": "util/show_image.md",
                 "displayName": "show_image",
-                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/util/util.py#L517-L584"
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/util/util.py#L485-L586"
             },
             {
                 "name": "util/strip_prefix.md",

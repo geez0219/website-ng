@@ -273,7 +273,7 @@ As we can see from the illustration above, training process is essentially a nes
 
 
 ### Structure
-If you are familiar with Keras, you will notice that the structure of `Trace` is very similar to the `Callback` in keras.  Despite the similarity on structure, `Trace` has a lot more capabilities and we will talk about it in depth in [advanced tutorial 4](./t04_pipeline.ipynb).  Implementation-wise, `Trace` is implemented as a python class with structure like this:
+If you are familiar with Keras, you will notice that the structure of `Trace` is very similar to the `Callback` in keras.  Despite the similarity on structure, `Trace` has a lot more capabilities and we will talk about it in depth in [tutorial 4](./tutorials/advanced/t04_trace) in advanced section.  Implementation-wise, `Trace` is implemented as a python class with structure like this:
 
 
 ```python

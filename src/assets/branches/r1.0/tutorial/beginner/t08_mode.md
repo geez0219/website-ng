@@ -101,6 +101,6 @@ Everything of "test" mode is the same as "eval" mode except that the data source
 <img src="assets/branches/r1.0/tutorial/../resources/t08_test_mode.PNG" alt="drawing" width="700"/>
 
 ### Infer mode
-"Infer" mode only has the minimum operations that model inference needs. Data source is not defined yet at this time point because input data will not be passed until calling the inference function. The detail of running model inference is covered in **Tutorial 9: Inference**. 
+"Infer" mode only has the minimum operations that model inference needs. Data source is not defined yet at this time point because input data will not be passed until calling the inference function. The detail of running model inference is covered in [tutorial 9](./tutorials/beginner/t09_inference). 
 
 <img src="assets/branches/r1.0/tutorial/../resources/t08_infer_mode.PNG" alt="drawing" width="700"/>

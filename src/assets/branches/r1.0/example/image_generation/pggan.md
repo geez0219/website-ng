@@ -5,18 +5,18 @@ We will train a PGGAN to produce synthetic frontal chest X-ray images where both
 ### Progressive Growing Strategy
 [Karras et al.](https://arxiv.org/pdf/1710.10196.pdf) propose a training scheme in which both the generator and the discriminator progressively grow from a low resolution to a high resolution.
 Both networks first start out training based on images of $4\times4$ as illustrated below.
-![4x4](./Figure/pggan_4x4.png)
+![4x4](assets/branches/r1.0/example/image_generation/Figure/pggan_4x4.png)
 Then, both networks progress from $4\times4$ to $8\times8$ by an adding additional block that contains a couple of convolutional layers.
-![8x8](./Figure/pggan_8x8.png)
+![8x8](assets/branches/r1.0/example/image_generation/Figure/pggan_8x8.png)
 Both the generator and the discriminator progressively grow until reaching the desired resolution of $1024\times 1024$.
-![1024x1024](./Figure/pggan_1024x1024.png)
+![1024x1024](assets/branches/r1.0/example/image_generation/Figure/pggan_1024x1024.png)
 *Image Credit: [Presentation slide](https://drive.google.com/open?id=1jYlrX4DgTs2VAfRcyl3pcNI4ONkBg3-g)*
 
 ### Smooth Transition between Resolutions
 However, when growing the networks, the new blocks are slowly faded into the networks in order to smoothly transition between different resolutions.
 For example, when growing the generator from $16\times16$ to $32\times32$, the newly added block of $32\times32$ is slowly faded into the already well trained $16\times16$ network by linearly increasing $\alpha$ from $0$ to $1$.
 Once the network is fully transitioned to $32\times32$, the network is trained on a bit further to stabilize before growing to $64\times64$.
-![grow](./Figure/pggan_smooth_grow.png)
+![grow](assets/branches/r1.0/example/image_generation/Figure/pggan_smooth_grow.png)
 *Image Credit: [PGGAN Paper](https://arxiv.org/pdf/1710.10196.pdf)*
 
 With this progressive training strategy, PGGAN has achieved the state-of-the-art in producing synthetic images of high fidelity.
