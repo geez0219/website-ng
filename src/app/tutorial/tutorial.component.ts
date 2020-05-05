@@ -23,6 +23,9 @@ export class TutorialComponent implements OnInit {
 
   segments: UrlSegment[];
 
+  fragment: string;
+  firstLoad: boolean;
+
   treeControl: NestedTreeControl<Example>;
   dataSource: MatTreeNestedDataSource<Example>;
   minWidth: number = 640;
@@ -62,7 +65,9 @@ export class TutorialComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private title: Title,
-    private globalService: GlobalService) { }
+    private globalService: GlobalService) {
+    this.firstLoad = true;
+  }
 
   ngOnInit() {
     this.treeControl = new NestedTreeControl<Example>(node => node.children);
@@ -73,10 +78,23 @@ export class TutorialComponent implements OnInit {
       this.segments = segments;
       this.getExampleStructure();
     });
+    this.route.fragment.subscribe((fragment: string) => {
+      this.fragment = fragment;
+      console.log("My hash fragment is here => ", fragment);
+    })
 
     this.screenWidth$.subscribe(width => {
       this.screenWidth = width;
     });
+  }
+
+  ngAfterViewChecked(): void {
+    try {
+      if(this.fragment && this.firstLoad) {
+          document.querySelector('#' + this.fragment).scrollIntoView();
+          this.firstLoad = false;
+      }
+    } catch (e) { }
   }
 
   hasChild = (_: number, node: Example) => !!node.children && node.children.length > 0;
