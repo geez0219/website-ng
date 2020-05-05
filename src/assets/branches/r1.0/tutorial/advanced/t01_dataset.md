@@ -2,17 +2,17 @@
 
 ## Overview
 In this tutorial, we will talk about the following topics:
-* [Dataset Summary](#ta01summary)
-* [Dataset Splitting](#ta01splitting)
-    * [Random Fraction Split](#ta01rfs)
-    * [Random Count Split](#ta01rcs)
-    * [Index Split](#ta01is)
-* [Global Dataset Editing](#ta01gde)
-* [BatchDataset](#ta01bd)
-    * [Deterministic Batching](#ta01deterministic)
-    * [Distribution Batching](#ta01distribution)
-    * [Unpaired Dataset](#ta01ud)
-* [Related Apphub Examples](#ta01rae)
+* [Dataset Summary](./tutorials/advanced/t01_dataset#ta01summary)
+* [Dataset Splitting](./tutorials/advanced/t01_dataset#ta01splitting)
+    * [Random Fraction Split](./tutorials/advanced/t01_dataset#ta01rfs)
+    * [Random Count Split](./tutorials/advanced/t01_dataset#ta01rcs)
+    * [Index Split](./tutorials/advanced/t01_dataset#ta01is)
+* [Global Dataset Editing](./tutorials/advanced/t01_dataset#ta01gde)
+* [BatchDataset](./tutorials/advanced/t01_dataset#ta01bd)
+    * [Deterministic Batching](./tutorials/advanced/t01_dataset#ta01deterministic)
+    * [Distribution Batching](./tutorials/advanced/t01_dataset#ta01distribution)
+    * [Unpaired Dataset](./tutorials/advanced/t01_dataset#ta01ud)
+* [Related Apphub Examples](./tutorials/advanced/t01_dataset#ta01rae)
 
 Before going through the tutorial, it is recommended to check [beginner tutorial 02](./tutorials/beginner/t02_dataset) for basic understanding of `dataset` from PyTorch and FastEstimator. We will talk about more details about `fe.dataset` API in this tutorial.
 

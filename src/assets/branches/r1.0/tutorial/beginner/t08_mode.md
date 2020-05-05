@@ -2,11 +2,11 @@
 
 ## Overview
 In this tutorial we are going to cover:
-* [Modes](#t08mode)
-* [When Modes are Activated](#t08when)
-* [How to Set Modes](#t08how)
-* [A Code Example](#t08code)
-* [Related Apphub Examples](#t08apphub)
+* [Modes](./tutorials/beginner/t08_mode#t08mode)
+* [When Modes are Activated](./tutorials/beginner/t08_mode#t08when)
+* [How to Set Modes](./tutorials/beginner/t08_mode#t08how)
+* [A Code Example](./tutorials/beginner/t08_mode#t08code)
+* [Related Apphub Examples](./tutorials/beginner/t08_mode#t08apphub)
 
 <a id='t08mode'></a>
 

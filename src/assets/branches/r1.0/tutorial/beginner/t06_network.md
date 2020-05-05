@@ -2,13 +2,13 @@
 
 ## Overview
 In this tutorial we are going to cover:
-* [`Network` Scope](#t06network)
-* [`TensorOp` and its Children](#t06tensorop)
-* [How to Customize a `TensorOp`](#t06customize)
-    * [TensorFlow](#t06tf)
-    * [PyTorch](#t06torch)
-    * [fe.backend](#t06backend)
-* [Related Apphub Examples](#t06apphub)
+* [`Network` Scope](./tutorials/beginner/t06_network#t06network)
+* [`TensorOp` and its Children](./tutorials/beginner/t06_network#t06tensorop)
+* [How to Customize a `TensorOp`](./tutorials/beginner/t06_network#t06customize)
+    * [TensorFlow](./tutorials/beginner/t06_network#t06tf)
+    * [PyTorch](./tutorials/beginner/t06_network#t06torch)
+    * [fe.backend](./tutorials/beginner/t06_network#t06backend)
+* [Related Apphub Examples](./tutorials/beginner/t06_network#t06apphub)
 
 <a id='t06network'></a>
 

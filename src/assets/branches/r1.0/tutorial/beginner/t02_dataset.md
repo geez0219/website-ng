@@ -3,15 +3,15 @@
 ## Overview
 In this tutorial we are going to cover three different ways to create a Dataset using FastEstimator. This tutorial is structured as follows:
 
-* [Torch Dataset Recap](#t02Recap)
-* [FastEstimator Dataset](#t02FEDS)
-    * [Dataset from disk](#t02Disk)
-        * [LabeledDirDataset](#t02LDirDs)
-        * [CSVDataset](#t02CSVDS)
-    * [Dataset from memory](#t02Memory)
-        * [NumpyDataset](#t02Numpy)
-    * [Dataset from generator](#t02Generator)
-* [Related Apphub Examples](#t02Apphub)
+* [Torch Dataset Recap](./tutorials/beginner/t02_dataset#t02Recap)
+* [FastEstimator Dataset](./tutorials/beginner/t02_dataset#t02FEDS)
+    * [Dataset from disk](./tutorials/beginner/t02_dataset#t02Disk)
+        * [LabeledDirDataset](./tutorials/beginner/t02_dataset#t02LDirDs)
+        * [CSVDataset](./tutorials/beginner/t02_dataset#t02CSVDS)
+    * [Dataset from memory](./tutorials/beginner/t02_dataset#t02Memory)
+        * [NumpyDataset](./tutorials/beginner/t02_dataset#t02Numpy)
+    * [Dataset from generator](./tutorials/beginner/t02_dataset#t02Generator)
+* [Related Apphub Examples](./tutorials/beginner/t02_dataset#t02Apphub)
 
 <a id='t02Recap'></a>
 

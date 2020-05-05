@@ -4,12 +4,12 @@
 
 In this tutorial, we will discuss:
 
-* [Customizing a Learning Rate Schedule Function](#ta07customize)
-    * [epoch-wise](#ta07epoch)
-    * [step-wise](#ta07step)
-* [Using a Built-In lr_schedule Function](#ta07builtin)
-    * [cosine decay](#ta07cosine)
-* [Related Apphub Examples](#ta07apphub)
+* [Customizing a Learning Rate Schedule Function](./tutorials/advanced/t07_learning_rate_scheduling#ta07customize)
+    * [epoch-wise](./tutorials/advanced/t07_learning_rate_scheduling#ta07epoch)
+    * [step-wise](./tutorials/advanced/t07_learning_rate_scheduling#ta07step)
+* [Using a Built-In lr_schedule Function](./tutorials/advanced/t07_learning_rate_scheduling#ta07builtin)
+    * [cosine decay](./tutorials/advanced/t07_learning_rate_scheduling#ta07cosine)
+* [Related Apphub Examples](./tutorials/advanced/t07_learning_rate_scheduling#ta07apphub)
 
 Learning rate schedules can be implemented using the `LRScheduler` `Trace`. `LRScheduler` takes the model and learning schedule through the **lr_fn** parameter. **lr_fn** should be a function/lambda function with 'step' or 'epoch' as its input parameter. This determines whether the learning schedule will be applied at a step or epoch level.
 
