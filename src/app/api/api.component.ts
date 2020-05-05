@@ -143,13 +143,21 @@ export class ApiComponent implements OnInit {
   }
 
   private loadSelectedAPI() {
+    /* this might not be used ever cause segments always have the url components */
     if (this.segments.length == 0) {
       this.updateAPIContent(this.apiList[0].children[0]);
       this.treeControl.expand(this.treeControl.dataNodes[0]);
     }
+    /* END COMMENTS */
     else {
-      var a: API[] = this.flatten(this.apiList)
-        .filter(api => this.segments[this.segments.length - 1].toString() === api.displayName);
+      console.log(this.flatten(this.apiList));
+      var searchString: string;
+      if (this.segments.length === 2) {
+        searchString = this.segments.join("/") + ".md";
+      } else {
+        searchString = this.segments.slice(1, this.segments.length).join("/") + ".md";
+      }
+      var a: API[] = this.flatten(this.apiList).filter(api => searchString === api.name);
 
       if (a.length > 0) {
         this.updateAPIContent(a[0]);
@@ -193,7 +201,7 @@ export class ApiComponent implements OnInit {
 
     var ret = ['/api'];
 
-    return ret.concat(components);;
+    return ret.concat(components);
   }
 
   checkSidebar() {
