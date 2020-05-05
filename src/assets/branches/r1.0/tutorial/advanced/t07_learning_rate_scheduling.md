@@ -10,7 +10,7 @@ In this tutorial we will talk about:
 
 Learning rate schedules can be implemented using **LRScheduler** trace. LRScheduler takes the model and learning schedule through the **lr_fn** parameter. **lr_fn** should be a function/lambda function with step or epoch as parameter. This determines whether learning schedule will be applied at a step or epoch level.
 
-For more details on traces, you can visit [tutorial 7](./tutorials/t07_estimator.ipynb) in beginner section and [tutorial 4](./t04_trace) in the advanced section. 
+For more details on traces, you can visit [tutorial 7](./tutorials/beginner/t07_estimator) in beginner section and [tutorial 4](./tutorials/advanced/t04_trace) in the advanced section. 
 
 Let's create a function to generate pipeline, model and network to be used for the tutorial
 

@@ -12,7 +12,7 @@ Welcome to FastEstimator Application Hub! Here we showcase different end-to-end 
 ## Why not just learn from official implementation
 If you ever spent time reading AI research papers, you will often find yourself asking: did I just spent 3 hours reading a paper where the underlying idea can be expressed in 3 minutes?
 
-Similarly, people may use 5000+ lines of code or 500+ lines of code to implement the same idea using different AI frameworks. In FastEstimator, we strive to make things simpler and more intuitive while preserving the flexibility. As a result, many state-of-the-art AI implementations can be simplified greatly such that the code directly reflects the ideas. As an example, the [official implementation](https://github.com/tkarras/progressive_growing_of_gans) of [PGGAN](https://arxiv.org/abs/1710.10196) include 5000+ lines of code whereas [our implementation](https://github.com/fastestimator/fastestimator/tree/master/apphub/image_generation/pggan_nihchestxray) only uses 500+ lines.
+Similarly, people may use 5000+ lines of code or 500+ lines of code to implement the same idea using different AI frameworks. In FastEstimator, we strive to make things simpler and more intuitive while preserving the flexibility. As a result, many state-of-the-art AI implementations can be simplified greatly such that the code directly reflects the ideas. As an example, the [official implementation](https://github.com/tkarras/progressive_growing_of_gans) of [PGGAN](https://arxiv.org/abs/1710.10196) include 5000+ lines of code whereas [our implementation](https://github.com/fastestimator/fastestimator/blob/master/apphub/image_generation/pggan/pggan_tf.py) only uses 500+ lines.
 
 To summarize, we spent time learning from the official implementation, so you can save time by learning from us!
 
@@ -27,20 +27,21 @@ Each example contains two files:
 ## How do I run each example
 
 One can simply execute the python file of any example:
-```
-$ python lenet_mnist.py
+
+``` python
+python lenet_mnist.py
 ```
 
 or use our Command-Line Interface(CLI):
 
-```
-$ fastestimator train lenet_mnist.py
+``` python
+fastestimator train lenet_mnist.py
 ```
 
 The benefit of CLI is allowing users to configure input args of `get_estimator`:
 
-```
-$ fastestimator train lenet_mnist.py --batch_size 64 --epochs 4
+``` python
+fastestimator train lenet_mnist.py --batch_size 64 --epochs 4
 ```
 
 ## Contributions
