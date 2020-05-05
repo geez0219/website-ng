@@ -7,112 +7,92 @@
         <div class="python">
           <div class="pip">
             <ul class="bullet">
-              <li> Python >= 3.5 </li>
-              <li> TensorFlow2
-                <ul>
-                  <li>
-                    <p> GPU </p>
-                    <figure class="codeblock">
-                      <button ngxClipboard [cbContent]="'pip install tensorflow-gpu==2.0.0'" (cbOnSuccess)="copied($event)" class="material-icons copy-button no-print copy-btn" title="Copy code snippet" aria-label="">
-                        <span aria-hidden="true">content_copy</span>
-                      </button>
-                      <pre><code data-lang="bash">$ pip install tensorflow-gpu==2.0.0 </code></pre>
-                    </figure>
-                  </li>
-                  <li>
-                    <p> CPU </p>
-                    <figure class="codeblock">
-                      <button ngxClipboard [cbContent]="'pip install tensorflow==2.0.0'" (cbOnSuccess)="copied($event)" class="material-icons copy-button no-print copy-btn" title="Copy code snippet" aria-label="">
-                        <span aria-hidden="true">content_copy</span>
-                      </button>
-                      <pre><code data-lang="bash">$ pip install tensorflow==2.0.0 </code></pre>
-                    </figure>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <p> Pytorch backend is coming soon!</p>
-              </li>
+              <li> Python >= 3.6 </li>
             </ul>
           </div>
         </div>
       </div>
-      <h2>Install FastEstimator</h2>
+      <h2>Installation:</h2>
       <hr/>
       <div class="install-content">
         <div class="python">
           <div class="pip">
-            <p>Please choose one:</p>
+            <h3>1. Install Dependencies</h3>
             <ul class="bullet">
               <li>
-                <p> I have no idea what FastEstimator is about:</p>
+                <p> Windows(CPU):</p>
                   <figure class="codeblock">
-                    <button ngxClipboard [cbContent]="'pip install fastestimator==1.0b2'" (cbOnSuccess)="copied($event)" class="material-icons copy-button no-print copy-btn" title="Copy code snippet" aria-label="">
-                      <span aria-hidden="true">content_copy</span>
-                    </button>
-                    <pre><code data-lang="bash">$ pip install fastestimator==1.0b2 </code></pre>
+                    <pre><code data-lang="bash">pip install torch==1.4.0+cpu torchvision==0.5.0+cpu -f https://download.pytorch.org/whl/torch_stable.html </code></pre>
                   </figure>
               </li>
 
               <li>
-                <p> I want to keep up to date with the latest:</p>
+                <p>Linux (CPU/GPU):</p>
                   <figure class="codeblock">
-                    <button ngxClipboard [cbContent]="'pip install fastestimator-nightly'" (cbOnSuccess)="copied($event)" class="material-icons copy-button no-print copy-btn" title="Copy code snippet" aria-label="">
-                      <span aria-hidden="true">content_copy</span>
-                    </button>
-                    <pre><code data-lang="bash">$ pip install fastestimator-nightly </code></pre>
+                    <pre><code data-lang="bash">apt-get install libglib2.0-0 libsm6 libxrender1 libxext6 </code></pre>
                   </figure>
               </li>
 
               <li>
-                <p> I'm here to play hardcore mode:</p>
+                <p>Mac (CPU):</p>
                   <figure class="codeblock">
-                    <button ngxClipboard [cbContent]="'git clone https://github.com/fastestimator/fastestimator.git'" (cbOnSuccess)="copied($event)" class="material-icons copy-button no-print copy-btn" title="Copy code snippet" aria-label="">
-                      <span aria-hidden="true">content_copy</span>
-                    </button>
-                    <pre><code data-lang="bash">$ git clone https://github.com/fastestimator/fastestimator.git </code></pre>
-                  </figure>
-                  <figure class="codeblock">
-                      <button ngxClipboard [cbContent]="'pip install -e fastestimator'" (cbOnSuccess)="copied($event)" class="material-icons copy-button no-print copy-btn" title="Copy code snippet" aria-label="">
-                        <span aria-hidden="true">content_copy</span>
-                      </button>
-                      <pre><code data-lang="bash">$ pip install -e fastestimator </code></pre>
+                    <pre><code data-lang="bash">echo No dependency needed ":)" </code></pre>
                   </figure>
               </li>
             </ul>
           </div>
         </div>
       </div>
-      <h2>Running FastEstimator Container</h2>
+      <div class="install-content">
+        <div class="python">
+          <div class="pip">
+            <h3>2. Install FastEstimator</h3>
+            <ul class="bullet">
+              <li>
+                <p> Stable:</p>
+                <figure class="codeblock">
+                  <pre><code data-lang="bash">pip install fastestimator==1.0.0 </code></pre>
+                </figure>
+              </li>
+
+              <li>
+                <p>Most Recent:</p>
+                <figure class="codeblock">
+                  <pre><code data-lang="bash">pip install fastestimator-nightly </code></pre>
+                </figure>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <h2>Docker Hub</h2>
       <hr/>
       <div class="install-container">
         <div class="python">
           <div class="pip">
-            <p>Docker container creates isolated virtual environment that shares resources with host machine. Docker
-                provides an easy
-                way to set up FastEstimator environment.</p>
-            <div>
-              <figure class="codeblock">
-                <button ngxClipboard [cbContent]="'docker pull fastestimator/fastestimator:1.0b2-gpu'" (cbOnSuccess)="copied($event)" class="material-icons copy-button no-print copy-btn" title="Copy code snippet" aria-label="">
-                  <span aria-hidden="true">content_copy</span>
-                </button>
-                <pre><code data-lang="bash"><span class="nv">$</span><span> docker pull fastestimator/fastestimator:1.0b2-gpu</span><span class="python-comments"># GPU docker image</span></code></pre>
-              </figure>
-            </div>
-            <div>
-              <figure class="codeblock">
-                <button ngxClipboard [cbContent]="'docker pull fastestimator/fastestimator:1.0b2-cpu'" (cbOnSuccess)="copied($event)" class="material-icons copy-button no-print copy-btn" title="Copy code snippet" aria-label="">
-                  <span aria-hidden="true">content_copy</span>
-                </button>
-                <pre><code data-lang="bash"><span class="nv">$</span><span> docker pull fastestimator/fastestimator:1.0b2-cpu</span><span class="python-comments"># CPU docker image</span></code></pre>
-              </figure>
-            </div>
+            <p>Docker container creates isolated virtual environment that shares resources with host machine. Docker provides an easy
+            way to set up FastEstimator environment, users can pull image from Docker Hub.</p>
+            <ul class="bullet">
+              <li>
+                <p>GPU:</p>
+                <figure class="codeblock">
+                  <pre><code data-lang="bash">docker pull fastestimator/fastestimator:1.0.0-gpu </code></pre>
+                </figure>
+              </li>
+
+              <li>
+                <p>CPU:</p>
+                <figure class="codeblock">
+                  <pre><code data-lang="bash">docker pull fastestimator/fastestimator:1.0.0-cpu </code></pre>
+                </figure>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
       <hr/>
       <div class="install-content">
-        <p>All done!!! To learn more about FastEstimator jump over to <a routerLink="/tutorials/t01_basic_usage">Tutorials</a> ...or take a look at the <a routerLink="/examples/overview">examples</a></p>
+        <p>All done!!! To learn more about FastEstimator jump over to <a routerLink="/tutorials/beginner/t01_getting_started">Tutorials</a> ...or take a look at the <a routerLink="/examples/overview">examples</a></p>
 
       </div>
     </div>
