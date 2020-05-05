@@ -152,20 +152,20 @@ mat-sidenav-content {
 markdown ::ng-deep h1 {
     font-size: 2.25rem;
     margin-top: 2rem;
-    margin-bottom: 3rem;
+    margin-bottom: 1.25rem;
     font-weight: bold;
 }
 
 markdown ::ng-deep h2{
-    font-size: 2em;
-    margin-top: 3rem;
-    margin-bottom: 1.5rem;
+    font-size: 1.75em;
+    margin-top: 2.25rem;
+    margin-bottom: 1.25rem;
     font-weight: bold;
 }
 
 markdown ::ng-deep h3 {
     font-size: 1.5rem;
-    margin-top: 2.5rem;
+    margin-top: 2.25rem;
     margin-bottom: 1.25rem;
     font-weight: bold;
 }
@@ -200,13 +200,13 @@ markdown ::ng-deep img {
 }
 
 markdown ::ng-deep .language-python{
-    margin: 2rem 0rem 1rem 0rem;
+    margin: 1.5rem 0rem 1.5rem 0rem;
 }
 
 markdown ::ng-deep .language-none{
     background-color: #757575;
     font-style: italic;
-    margin: 0rem 0rem 2rem 0rem;
+    margin: 1.5rem 0rem 1.5rem 0rem;
 }
 
 
