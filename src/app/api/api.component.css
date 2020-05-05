@@ -150,19 +150,31 @@ mat-sidenav-content {
 }
 
 markdown ::ng-deep h1 {
-    font-size: 2.25em;
+    font-size: 2.25rem;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    font-weight: bold;
 }
 
 markdown ::ng-deep h2{
     font-size: 2em;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
 }
 
 markdown ::ng-deep h3 {
-    font-size: 1.5em;
+    font-size: 1.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1.25rem;
+    font-weight: bold;
 }
 
 markdown ::ng-deep h4 {
     font-size: 1.25em;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
 }
 
 markdown ::ng-deep h1, markdown ::ng-deep h2, markdown ::ng-deep h3, markdown ::ng-deep h4 {
@@ -171,9 +183,9 @@ markdown ::ng-deep h1, markdown ::ng-deep h2, markdown ::ng-deep h3, markdown ::
     font-variant-caps: normal;
     font-variant-numeric: normal;
     font-variant-east-asian: normal;
-    font-weight: 400;
+    /* font-weight: 400; */
     font-stretch: normal;
-    line-height: 40px;
+    /* line-height: 40px; */
     font-family: "Google Sans", "Noto Sans", "Noto Sans JP", "Noto Sans KR", "Noto Naskh Arabic", "Noto Sans Thai", "Noto Sans Hebrew", "Noto Sans Bengali", sans-serif;
 }
 
@@ -183,10 +195,27 @@ markdown ::ng-deep table, markdown ::ng-deep th, markdown ::ng-deep td {
 }
 
 markdown ::ng-deep img {
+    margin: 1rem 0rem 1rem 0rem;
     max-width: 100%;
+}
+
+markdown ::ng-deep .language-python{
+    margin: 2rem 0rem 1rem 0rem;
+}
+
+markdown ::ng-deep .language-none{
+    background-color: #757575;
+    font-style: italic;
+    margin: 0rem 0rem 2rem 0rem;
+}
+
+
+markdown ::ng-deep code{
+    font-size:100%;
 }
 
 .git-button {
     background-color:#378de5;
     text-decoration: none;
 }
+
