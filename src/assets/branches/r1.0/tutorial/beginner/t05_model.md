@@ -1,30 +1,43 @@
 # Tutorial 5: Model
 
 ## Overview
-In this tutorial we will talk about:
-* Instantiating and Compiling the model
-* Model function
-* Optimizer function
-* Loading model weights
-* Specifying model name
 
-## Instantiating and Compiling the model
+In this tutorial we will cover:
 
-We need to specify two things to instantiate and compile the model:
+* [Instantiating and Compiling a Model](#t05compile)
+* [The Model Function](#t05model)
+    * [Custom Models](#t05custom)
+    * [FastEstimator Models](#t05fe)
+    * [Pre-Trained Models](#t05trained)
+* [The Optimizer Function](#t05optimizer)
+* [Loading Model Weights](#t05weights)
+* [Specifying a Model Name](#t05name)
+* [Related Apphub Examples](#t05apphub)
+
+<a id='t05compile'></a>
+
+## Instantiating and Compiling a model
+
+We need to specify two things to instantiate and compile a model:
 * model_fn
 * optimizer_fn
 
-Model definitions can be implemented in Tensorflow or Pytorch and instantiated by calling <B>`fe.build`</B> which associates the model with specified optimizer and compiles the model.
+Model definitions can be implemented in Tensorflow or Pytorch and instantiated by calling **`fe.build`** which constructs a model instance and associates it with the specified optimizer.
+
+<a id='t05model'></a>
 
 ## Model Function
 
-`model_fn` should be a function/lambda function which returns either a `tf.keras.Model` or `torch.nn.Module`. We can specify the model architecture through following ways in fastestimator:
+`model_fn` should be a function/lambda function which returns either a `tf.keras.Model` or `torch.nn.Module`. FastEstimator provides several ways to specify the model architecture:
+
 * Custom model architecture
-* Importing model architecture from fastestimator
-* Importing pre-trained models/architectures from pytorch or tensorflow
+* Importing a pre-built model architecture from FastEstimator
+* Importing pre-trained models/architectures from PyTorch or TensorFlow
+
+<a id='t05custom'></a>
 
 ### Custom model architecture
-Let's create a custom model in tensorflow and pytorch for demonstration.
+Let's create a custom model in TensorFlow and PyTorch for demonstration.
 
 #### tf.keras.Model
 
@@ -70,22 +83,25 @@ class my_model_torch(nn.Module):
 model_torch = fe.build(model_fn=my_model_torch, optimizer_fn="adam")
 ```
 
-### Importing model architecture from fastestimator
+<a id='t05fe'></a>
 
-Below we import a pytorch LeNet architecture from fastestimator. To view a list of all architectures available in fastestimator, go to [Architectures](https://github.com/fastestimator/fastestimator/tree/master/fastestimator/architecture).
+### Importing model architecture from FastEstimator
+
+Below we import a PyTorch LeNet architecture from FastEstimator. See our [Architectures](../../fastestimator/architecture) folder for a full list of the architectures provided by FastEstimator.
 
 
 ```python
 from fastestimator.architecture.pytorch import LeNet
-# from fastestimator.architecture.tensorflow import LeNet
-# one can also use tensorflow model
+# from fastestimator.architecture.tensorflow import LeNet  # One can also use a TensorFlow model
 
 model = fe.build(model_fn=LeNet, optimizer_fn="adam")
 ```
 
-### Importing pre-trained models/architectures from pytorch or tensorflow
+<a id='t05trained'></a>
 
-Below we show how to define a model function using pre-trained resnet model from tensorflow and pytorch respectively. We load the pre-trained models using a lambda function.
+### Importing pre-trained models/architectures from PyTorch or TensorFlow
+
+Below we show how to define a model function using a pre-trained resnet model provided by TensorFlow and PyTorch respectively. We load the pre-trained models using a lambda function.
 
 #### Pre-trained model from tf.keras.applications 
 
@@ -103,13 +119,14 @@ from torchvision import models
 resnet50_torch = fe.build(model_fn=lambda: models.resnet50(pretrained=True), optimizer_fn="adam")
 ```
 
+<a id='t05optimizer'></a>
+
 ## Optimizer function
 
 `optimizer_fn` can be a string or lambda function.
 
-### Optimizer from string
-Specifying string for `optimizer_fn` loads the optimizer with default parameters. 
-List of optimizers and their corresponding strings are listed below:
+### Optimizer from String
+Specifying a string for the `optimizer_fn` loads the optimizer with default parameters. The optimizer strings accepted by FastEstimator are as follows:
 - Adadelta: 'adadelta'
 - Adagrad: 'adagrad'
 - Adam: 'adam'
@@ -117,26 +134,29 @@ List of optimizers and their corresponding strings are listed below:
 - RMSprop: 'rmsprop'
 - SGD: 'sgd'
 
-### Optimizer from function
-To specify specific value of learning rate and other parameters, we need to use lambda function to define the optimizer function.
+### Optimizer from Function
+
+To specify specific values for the optimizer learning rate or other parameters, we need to pass a lambda function to the `optimizer_fn`.
 
 
 ```python
-# Tensorflow 
+# TensorFlow 
 model_tf = fe.build(model_fn=my_model_tf, optimizer_fn=lambda: tf.optimizers.Adam(1e-4))
 
-# Pytorch
+# PyTorch
 model_torch = fe.build(model_fn=my_model_torch, optimizer_fn=lambda x: torch.optim.Adam(params=x, lr=1e-4))
 ```
 
-If a model function returns multiple models, list of optimizers can be provided. You can go through **[pggan apphub](https://github.com/fastestimator/fastestimator/blob/master/apphub/image_generation/pggan/pggan.ipynb)** for an example with multiple models and optimizers.
+If a model function returns multiple models, a list of optimizers can be provided. See the **[pggan apphub](./examples/image_generation/pggan)** for an example with multiple models and optimizers.
+
+<a id='t05weights'></a>
 
 ## Loading model weights
 
-We often need to load the weights of a saved model. To achieve this, model weights can be loaded by specifying the path of the saved weights using `weights_path` parameter. Let's use resnet models created earlier to showcase this.
+We often need to load the weights of a saved model. Model weights can be loaded by specifying the path of the saved weights using the `weights_path` parameter. Let's use the resnet models created earlier to showcase this.
 
 #### Saving model weights
-Here, we create a temp directory and use fastestimator backend to save the weights of previously created resnet50 models  
+Here, we create a temporary directory and use FastEstimator backend to save the weights of our previously created resnet50 models:
 
 
 ```python
@@ -145,44 +165,43 @@ import tempfile
 
 model_dir = tempfile.mkdtemp()
 
-# Tensorflow
+# TensorFlow
 fe.backend.save_model(resnet50_tf, save_dir=model_dir, model_name= "resnet50_tf")
 
-# Pytorch
+# PyTorch
 fe.backend.save_model(resnet50_torch, save_dir=model_dir, model_name= "resnet50_torch")
 ```
 
-    FastEstimator-ModelSaver: saved model to /tmp/tmp_e4z9bh_/resnet50_tf.h5
-    FastEstimator-ModelSaver: saved model to /tmp/tmp_e4z9bh_/resnet50_torch.pt
 
 
-#### Loading weights for tensorflow and pytorch models
+
+    '/var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmpl70q0hk6/resnet50_torch.pt'
+
+
+
+#### Loading weights for TensorFlow and PyTorch models
 
 
 ```python
-# Tensorflow
+# TensorFlow
 resnet50_tf = fe.build(model_fn=lambda: tf.keras.applications.ResNet50(weights=None), 
                        optimizer_fn="adam", 
                        weights_path=os.path.join(model_dir, "resnet50_tf.h5"))
 ```
 
-    Loaded model weights from /tmp/tmp_e4z9bh_/resnet50_tf.h5
-
-
 
 ```python
-# Pytorch
+# PyTorch
 resnet50_torch = fe.build(model_fn=lambda: models.resnet50(pretrained=False), 
                           optimizer_fn="adam", 
                           weights_path=os.path.join(model_dir, "resnet50_torch.pt"))
 ```
 
-    Loaded model weights from /tmp/tmp_e4z9bh_/resnet50_torch.pt
+<a id='t05name'></a>
 
+## Specifying a Model Name
 
-## Specifying model name
-
-Name of the model can be specified using `model_name` parameter. The name of the model is helpful in distinguishing the model in presence of multiple models.
+The name of a model can be specified using the `model_name` parameter. The name of the model is helpful in distinguishing models when multiple are present.
 
 
 ```python
@@ -193,4 +212,12 @@ print("Model Name: ", model.model_name)
     Model Name:  LeNet
 
 
-If a model function returns multiple models, list of model_name can be given. You can go through **[pggan apphub](https://github.com/fastestimator/fastestimator/blob/master/apphub/image_generation/pggan/pggan.ipynb)** for an illustration with multiple models and model names.
+If a model function returns multiple models, a list of model_names can be given. See the **[pggan apphub](./examples/image_generation/pggan)** for an illustration with multiple models and model names.
+
+<a id='t05apphub'></a>
+
+## Apphub Examples
+You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
+
+* [PG-GAN](./examples/image_generation/pggan)
+* [Uncertainty Weighted Loss](./examples/multi_task_learning/uncertainty_loss)

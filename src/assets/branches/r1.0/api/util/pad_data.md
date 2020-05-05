@@ -4,7 +4,10 @@
 ```python
 pad_data(data:numpy.ndarray, target_shape:Tuple[int, ...], pad_value:Union[float, int]) -> numpy.ndarray
 ```
-Pad `data` by appending `pad_value`s along it's dimensions until the `target_shape` is reached.```pythonx = np.ones((1,2))x = fe.util.pad_data(x, target_shape=(3, 3), pad_value = -2)  # [[1, 1, -2], [-2, -2, -2], [-2, -2, -2]]```
+Pad `data` by appending `pad_value`s along it's dimensions until the `target_shape` is reached.
+```python
+x = np.ones((1,2))x = fe.util.pad_data(x, target_shape=(3, 3), pad_value = -2)  # [[1, 1, -2], [-2, -2, -2], [-2, -2, -2]]
+```
 
 #### Args:
 

@@ -1,18 +1,26 @@
 # Advanced Tutorial 3: Operator
 
 ## Overview
-In this tutorial, we will talk about:
-* **Operator mechanism**
-    * data
-    * state
-* **NumpyOp**
-    * Delete
-    * meta
-    * Customization
-* **TensorOp**
-   * Customization
+In this tutorial, we will discuss:
+* [Operator Mechanism](#ta03om)
+    * [data](#ta03data)
+    * [state](#ta03state)
+* [NumpyOp](#ta03no)
+    * [DeleteOp](#ta03do)
+    * [MetaOp](#ta03mo)
+    * [Customizing NumpyOps](#ta03cn)
+* [TensorOp](#ta03to)
+   * [Customizing TensorOps](#ta03ct)
+* [Related Apphub Examples](#ta03rae)
 
-Here's one simple example of an operator. We will talk about in detail about how this Opearator works.
+<a id='ta03om'></a>
+
+## Operator Mechanism
+We learned about the operator structure in [Beginner tutorial 3](./tutorials/beginner/t03_operator). Operators are used to build complex computation graphs in FastEstimator.
+
+In FastEstimator, all the available data is held in a data dictionary during execution. An `Op` runs when it's `mode` matches the current execution mode. For more information on mode, you can go through [Beginner tutorial 8](./tutorials/beginner/t08_mode).
+
+Here's one simple example of an operator:
 
 
 ```python
@@ -31,24 +39,29 @@ class AddOne(NumpyOp):
 AddOneOp = AddOne(inputs=("x", "y"), outputs=("x_out", "y_out"))
 ```
 
-## Operator Mechanism
-We learned about the operator structure in [tutorial 3](./tutorials/beginner/t03_operator) in beginner section. Operators are used to build complex computation graphs in Fastestimator.
-
-In Fastestimator, all the available data is held in a data dictionary during execution. An `Op` interacts with the required portion of this data using the keys specified through the `inputs` key, processes the data through the `forward` function and writes the values returned from the `forward` function to this data dictionary using the `outputs` key. An `Op` runs when it's `mode` matches the current execution mode. For more information on mode, you can go through [tutorial 8](./tutorials/beginner/t08_mode).
+An `Op` interacts with the required portion of this data using the keys specified through the `inputs` key, processes the data through the `forward` function and writes the values returned from the `forward` function to this data dictionary using the `outputs` key. The processes are illustrated in the diagram below:
 
 <img src="assets/branches/r1.0/tutorial/../resources/t03_advanced_operator_mechanism.png" alt="drawing" width="500"/>
 
+<a id='ta03data'></a>
+
 ### data
-The data argument passes the portion of data dictionary corresponding to the keys passed as `inputs` to the forward function. If multiple keys are provided as inputs, data is a list of corresponding values of those keys. 
+The data argument in the `forward` function passes the portion of data dictionary corresponding to the Operator's `inputs` into the forward function. If multiple keys are provided as `inputs`, the data will be a list of corresponding to the values of those keys. 
+
+<a id='ta03state'></a>
 
 ### state
-State stores meta information about training like mode, GradientTape for tensorflow etc. It is very unlikely that you would need to interact with it.
+The state argument in the `forward` function stores meta information about training like the current mode, GradientTape for tensorflow, etc. It is very unlikely that you would need to interact with it.
+
+<a id='ta03no'></a>
 
 ## NumpyOp
-NumpyOp is used in pipeline for data pre-processing and augmentation. You can go through [tutorial 4](./tutorials/beginner/t04_pipeline) in beginner section to get an overview of NumpyOp and their usage. Here, we will talk about some advanced NumpyOps.
+NumpyOp is used in `Pipeline` for data pre-processing and augmentation. You can go through [Beginner tutorial 4](./tutorials/beginner/t04_pipeline) to get an overview of NumpyOp and their usage. Here, we will talk about some advanced NumpyOps.
 
-### Delete
-Delete op is used to delete keys from the data dictionary which are no longer required by the user. This helps in improving processing speed as we are holding only the required data in the memory. Below, we show it's usage.
+<a id='ta03do'></a>
+
+### DeleteOp
+Delete op is used to delete keys from the data dictionary which are no longer required by the user. This helps in improving processing speed as we are holding only the required data in the memory. Let's see its usage:
 
 
 ```python
@@ -88,8 +101,10 @@ print("Keys in pipeline with Delete Op: ", data2.keys())
     Keys in pipeline with Delete Op:  dict_keys(['x', 'y'])
 
 
-### meta
-meta ops are NumpyOps which operate on other NumpyOps. For example: `Sometimes` is a meta op which applies a given NumpyOp with the specified probability. `OneOf` applies only one randomly selected NumpyOp from the given list of NumpyOps.   
+<a id='ta03mo'></a>
+
+### MetaOp
+Meta ops are NumpyOps which operate on other NumpyOps. For example: `Sometimes` is a meta op which applies a given NumpyOp with the specified probability. `OneOf` applies only one randomly selected NumpyOp from the given list of NumpyOps.   
 
 
 ```python
@@ -108,54 +123,28 @@ Plotting the results of the data pre-processing
 
 
 ```python
-from matplotlib import pyplot as plt
-import numpy as np
+from fastestimator.backend import to_number
 
 data3 = pipeline3.get_results()
-
-for i in range(4):
-    plt.subplot(131)
-    plt.axis("off")
-    plt.title("Input Image")
-    plt.imshow(np.squeeze(data3["x"][i]))
-
-    plt.subplot(132)
-    plt.axis("off")
-    plt.title("Sometimes Op")
-    plt.imshow(np.squeeze(data3["x_mid"][i]))
-    
-    plt.subplot(133)
-    plt.axis("off")
-    plt.title("OneOf Op")
-    plt.imshow(np.squeeze(data3["x_out"][i]))
-    
-    plt.show()
+img = fe.util.ImgData(Input_Image=to_number(data3["x"]), Sometimes_Op=to_number(data3["x_mid"]), OneOf_Op=to_number(data3["x_out"]))
+fig = img.paint_figure()
 ```
 
 
-![png](assets/branches/r1.0/tutorial/advanced/t03_operator_files/t03_operator_14_0.png)
+![png](assets/branches/r1.0/tutorial/advanced/t03_operator_files/t03_operator_21_0.png)
 
 
+As you can see, Sometimes Op horizontally flips the image with 50% probability and OneOf applies either a vertical flip, rotation, or blur augmentation randomly.
 
-![png](assets/branches/r1.0/tutorial/advanced/t03_operator_files/t03_operator_14_1.png)
+<a id='ta03cn'></a>
 
-
-
-![png](assets/branches/r1.0/tutorial/advanced/t03_operator_files/t03_operator_14_2.png)
-
-
-
-![png](assets/branches/r1.0/tutorial/advanced/t03_operator_files/t03_operator_14_3.png)
-
-
-As you can see, Sometimes Op horizontally flips the image with 50% probability and OneOf applies, vertical flip, rotation and blur augmentations randomly.
-
-### Customization
+### Customizing NumpyOps
 We can create a custom NumpyOp which suits our needs. Below, we showcase a custom NumpyOp which creates multiple random patches (crops) of images from each image.
 
 
 ```python
 from albumentations.augmentations.transforms import RandomCrop
+import numpy as np
 
 class Patch(NumpyOp):
     def __init__(self, height, width, inputs, outputs, mode = None, num_patch=2):
@@ -179,66 +168,39 @@ Let's create a pipeline and visualize the results.
 
 ```python
 pipeline4 = fe.Pipeline(train_data=train_data,
-                       eval_data=eval_data,
-                       batch_size=8,
-                       ops=[Minmax(inputs="x", outputs="x"),
-                            Patch(height=24, width=24, inputs=["x", "y"], outputs=["x_out", "y_out"], 
-                                  num_patch=4)])
+                        eval_data=eval_data,
+                        batch_size=8,
+                        ops=[Minmax(inputs="x", outputs="x"),
+                             Patch(height=24, width=24, inputs=["x", "y"], outputs=["x_out", "y_out"], 
+                                   num_patch=4)])
 ```
 
 
 ```python
+from fastestimator.backend import to_number
+
 data4 = pipeline4.get_results()
-for i in range(4):
-    plt.subplot(151)
-    plt.title("Input Image")
-    plt.axis("off")
-    plt.imshow(np.squeeze(data4["x"][i]))
-
-    plt.subplot(152)
-    plt.axis("off")
-    plt.title("Patch")
-    plt.imshow(np.squeeze(data4["x_out"][i][0]))
-    
-    plt.subplot(153)
-    plt.axis("off")
-    plt.title("Patch")
-    plt.imshow(np.squeeze(data4["x_out"][i][1]))
-    
-    plt.subplot(154)
-    plt.axis("off")
-    plt.title("Patch")
-    plt.imshow(np.squeeze(data4["x_out"][i][2]))
-    
-    plt.subplot(155)
-    plt.axis("off")
-    plt.title("Patch")
-    plt.imshow(np.squeeze(data4["x_out"][i][3]))
-
-    plt.show()
+img = fe.util.ImgData(Input_Image=to_number(data4["x"]), 
+                      Patch_0=to_number(data4["x_out"])[:,0,:,:,:], 
+                      Patch_1=to_number(data4["x_out"])[:,1,:,:,:], 
+                      Patch_2=to_number(data4["x_out"])[:,2,:,:,:], 
+                      Patch_3=to_number(data4["x_out"])[:,3,:,:,:])
+fig = img.paint_figure()
 ```
 
 
-![png](assets/branches/r1.0/tutorial/advanced/t03_operator_files/t03_operator_20_0.png)
+![png](assets/branches/r1.0/tutorial/advanced/t03_operator_files/t03_operator_28_0.png)
 
 
-
-![png](assets/branches/r1.0/tutorial/advanced/t03_operator_files/t03_operator_20_1.png)
-
-
-
-![png](assets/branches/r1.0/tutorial/advanced/t03_operator_files/t03_operator_20_2.png)
-
-
-
-![png](assets/branches/r1.0/tutorial/advanced/t03_operator_files/t03_operator_20_3.png)
-
+<a id='ta03to'></a>
 
 ## TensorOp
-TensorOp is used to process tensor data. It's used in `Network` for graph-based operations. You can go through [tutorial 6](./tutorials/beginner/t06_network) in beginner section to get an overview of TensorOp and their usage.
+`TensorOps` are used to process tensor data. They are used within a `Network` for graph-based operations. You can go through [Beginner tutorial 6](./tutorials/beginner/t06_network) to get an overview of `TensorOps` and their usages.
 
-### Customization
-We can create a custom TensorOp using TensorFlow or Pytorch library according to our requirements. Below, we showcase a custom TensorOp which reshapes the output of above Pipeline to make it compatible to the network.  
+<a id='ta03ct'></a>
+
+### Customizing TensorOps
+We can create a custom `TensorOp` using TensorFlow or Pytorch library calls according to our requirements. Below, we showcase a custom `TensorOp` which combines the batch dimension and patch dimension from the output of the above `Pipeline` to make it compatible to the `Network`.  
 
 
 ```python
@@ -282,17 +244,27 @@ network = fe.Network(ops=[
 ])
 ```
 
-Let's check the dimensions of Pipeline output and DimensionAdjustment TensorOp output.
+Let's check the dimensions the of Pipeline output and DimensionAdjustment TensorOp output.
 
 
 ```python
 data5 = pipeline5.get_results()
 result = network.transform(data5, mode="infer")
 
-print("Pipeline Output, Image Shape: ", data5["x"].shape, " Label Shape: ", data5["y"].shape)
-print("Result Image Shape: ", result["x"].shape, " Label Shape: ", result["y"].shape)
+print(f"Pipeline Output, Image Shape: {data5['x'].shape}, Label Shape: {data5['y'].shape}")
+print(f"Result Image Shape: {result['x'].shape}, Label Shape: {result['y'].shape}")
 ```
 
-    Pipeline Output, Image Shape:  torch.Size([8, 4, 24, 24, 3])  Label Shape:  torch.Size([8, 4, 1])
-    Result Image Shape:  (32, 24, 24, 3)  Label Shape:  (32, 1)
+    Pipeline Output, Image Shape: torch.Size([8, 4, 24, 24, 3]), Label Shape: torch.Size([8, 4, 1])
+    Result Image Shape: (32, 24, 24, 3), Label Shape: (32, 1)
 
+
+<a id='ta03rae'></a>
+
+## Apphub Examples 
+
+You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
+
+* [Fast Style Transfer](./examples/style_transfer/fst)
+* [Convolutional Variational AutoEncoder](./examples/image_generation/cvae)
+* [Semantic Segmentation](./examples/semantic_segmentation/unet)

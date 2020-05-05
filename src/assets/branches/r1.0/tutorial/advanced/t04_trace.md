@@ -1,18 +1,19 @@
 # Advanced Tutorial 4: Trace
 
 ## Overview
-In this tutorial, we will talk on:
-* **Customizing Trace**
-    * Example
-* **More about Trace**
-    * inputs, outputs and mode
-    * data
-    * system
-* **Trace communication**
-* **Other Trace usages**    
-    * Debugging/Monitoring
+In this tutorial, we will discuss:
+* [Customizing Traces](#ta04customize)
+    * [Example](#ta04example)
+* [More About Traces](#ta04more)
+    * [Inputs, Outputs, and Mode](#ta04iom)
+    * [Data](#ta04data)
+    * [System](#ta04system)
+* [Trace Communication](#ta04communication)
+* [Other Trace Usages](#ta04other)
+    * [Debugging/Monitoring](#ta04debug)
+* [Related Apphub Examples](#ta04apphub)
 
-Let's create a function to generate pipeline, model and network to be used for the tutorial.
+Let's create a function to generate a pipeline, model and network to be used for the tutorial:
 
 
 ```python
@@ -46,11 +47,15 @@ def get_pipeline_model_network(model_name="LeNet", batch_size=32):
     return pipeline, model, network
 ```
 
-## Customizing Trace
-In [tutorial 7](./tutorials/beginner/t07_estimator) in the beginner section, we talked about the basic concept and structure of trace and used few Traces from Fastestimator. We can also customize a Trace to suit our needs. Let's look at an example of a custom trace implementation.
+<a id='ta04customize'></a>
+
+## Customizing Traces
+In [tutorial 7](./tutorials/beginner/t07_estimator) in the beginner section, we talked about the basic concept and structure of `Traces` and used a few `Traces` provided by FastEstimator. We can also customize a Trace to suit our needs. Let's look at an example of a custom trace implementation:
+
+<a id='ta04example'></a>
 
 ### Example
-We can utilize traces to calculate any custom metric needed for mintoring or controlling training. Below, we implement a trace for calculating F-beta score of our model.
+We can utilize traces to calculate any custom metric needed for monitoring or controlling training. Below, we implement a trace for calculating the F-beta score of our model.
 
 
 ```python
@@ -83,7 +88,7 @@ class FBetaScore(Trace):
         data.write_with_log(self.outputs[0], score)
 ```
 
-Here we will calculate f2-score. f2-score gives more importance to recall.
+Now let's calculate the f2-score using our custom `Trace`. f2-score gives more importance to recall.
 
 
 ```python
@@ -95,7 +100,6 @@ estimator = fe.Estimator(pipeline=pipeline, network=network, epochs=4, traces=tr
 estimator.fit()
 ```
 
-    FastEstimator-Warn: No ModelSaver Trace detected. Models will not be saved.
         ______           __  ______     __  _                 __            
        / ____/___ ______/ /_/ ____/____/ /_(_)___ ___  ____ _/ /_____  _____
       / /_  / __ `/ ___/ __/ __/ / ___/ __/ / __ `__ \/ __ `/ __/ __ \/ ___/
@@ -103,38 +107,47 @@ estimator.fit()
     /_/    \__,_/____/\__/_____/____/\__/_/_/ /_/ /_/\__,_/\__/\____/_/     
                                                                             
     
-    FastEstimator-Start: step: 1; LeNet_lr: 0.001; 
-    FastEstimator-Train: step: 1; ce: 2.3143477; 
-    FastEstimator-Train: step: 1000; ce: 0.015297858; steps/sec: 254.94; 
-    FastEstimator-Train: step: 1875; epoch: 1; epoch_time: 10.92 sec; 
-    FastEstimator-Eval: step: 1875; epoch: 1; ce: 0.043765396; min_ce: 0.043765396; since_best: 0; f2_score: 0.9861824320950051; 
-    FastEstimator-Train: step: 2000; ce: 0.04872855; steps/sec: 229.85; 
-    FastEstimator-Train: step: 3000; ce: 0.044155814; steps/sec: 237.7; 
-    FastEstimator-Train: step: 3750; epoch: 2; epoch_time: 7.92 sec; 
-    FastEstimator-Eval: step: 3750; epoch: 2; ce: 0.03520065; min_ce: 0.03520065; since_best: 0; f2_score: 0.9885849350410258; 
-    FastEstimator-Train: step: 4000; ce: 0.0040340982; steps/sec: 243.72; 
-    FastEstimator-Train: step: 5000; ce: 0.07454432; steps/sec: 260.57; 
-    FastEstimator-Train: step: 5625; epoch: 3; epoch_time: 7.45 sec; 
-    FastEstimator-Eval: step: 5625; epoch: 3; ce: 0.028074268; min_ce: 0.028074268; since_best: 0; f2_score: 0.9897964154409412; 
-    FastEstimator-Train: step: 6000; ce: 0.0027767532; steps/sec: 246.12; 
-    FastEstimator-Train: step: 7000; ce: 0.14164165; steps/sec: 261.06; 
-    FastEstimator-Train: step: 7500; epoch: 4; epoch_time: 7.4 sec; 
-    FastEstimator-Eval: step: 7500; epoch: 4; ce: 0.030896071; min_ce: 0.028074268; since_best: 1; f2_score: 0.9909951775321262; 
-    FastEstimator-Finish: step: 7500; total_time: 37.18 sec; LeNet_lr: 0.001; 
+    FastEstimator-Warn: No ModelSaver Trace detected. Models will not be saved.
+    FastEstimator-Start: step: 1; num_device: 0; logging_interval: 1000; 
+    FastEstimator-Train: step: 1; ce: 2.3049126; 
+    FastEstimator-Train: step: 1000; ce: 0.18839744; steps/sec: 121.57; 
+    FastEstimator-Train: step: 1875; epoch: 1; epoch_time: 19.89 sec; 
+    FastEstimator-Eval: step: 1875; epoch: 1; ce: 0.04401617; f2_score: 0.9853780424409669; 
+    FastEstimator-Train: step: 2000; ce: 0.015927518; steps/sec: 95.05; 
+    FastEstimator-Train: step: 3000; ce: 0.07206129; steps/sec: 186.86; 
+    FastEstimator-Train: step: 3750; epoch: 2; epoch_time: 10.6 sec; 
+    FastEstimator-Eval: step: 3750; epoch: 2; ce: 0.04134067; f2_score: 0.9845700637368479; 
+    FastEstimator-Train: step: 4000; ce: 0.008171058; steps/sec: 169.0; 
+    FastEstimator-Train: step: 5000; ce: 0.0019764265; steps/sec: 180.37; 
+    FastEstimator-Train: step: 5625; epoch: 3; epoch_time: 10.88 sec; 
+    FastEstimator-Eval: step: 5625; epoch: 3; ce: 0.029307945; f2_score: 0.9900004384152095; 
+    FastEstimator-Train: step: 6000; ce: 0.0135234; steps/sec: 167.19; 
+    FastEstimator-Train: step: 7000; ce: 0.04989395; steps/sec: 183.41; 
+    FastEstimator-Train: step: 7500; epoch: 4; epoch_time: 10.4 sec; 
+    FastEstimator-Eval: step: 7500; epoch: 4; ce: 0.032727916; f2_score: 0.9897883746689528; 
+    FastEstimator-Finish: step: 7500; total_time: 54.32 sec; LeNet_lr: 0.001; 
 
 
-## More about Trace
-As we have now seen a custom Trace implementaion, let's delve deeper into the structure of Trace.
+<a id='ta04more'></a>
 
-### Inputs, Outputs and Mode
-These Trace arguments are similar to the Operator. To recap, the keys from the data dictionary which are required by the Trace can be specified using the `inputs` argument. The `outputs` argument is used to specify the keys which the Trace wants to write into the system buffer. `mode` is used to specify the mode(s) for trace execution.
+## More About Traces
+As we have now seen a custom Trace implementaion, let's delve deeper into the structure of `Traces`.
+
+<a id='ta04iom'></a>
+
+### Inputs, Outputs, and Mode
+These Trace arguments are similar to the Operator. To recap, the keys from the data dictionary which are required by the Trace can be specified using the `inputs` argument. The `outputs` argument is used to specify the keys which the Trace wants to write into the system buffer. Unlike with Ops, the Trace `inputs` and `outputs` are essentially on an honor system. FastEstimator will not check whether a Trace is really only reading values listed in its `inputs` and writing values listed in its `outputs`. If you are developing a new `Trace` and want your code to work well with the features provided by FastEstimator, it is important to use these fields correctly. The `mode` argument is used to specify the mode(s) for trace execution as with `Ops`. 
+
+<a id='ta04data'></a>
 
 ### Data
-Through the data argument, Trace has access to current data dictionary. You can use the keys passed through the `inputs` argument to access information from the data dictionary. 
-We can write the outputs into the `Data` dictionary with or without logging using `write_with_log` and `write_without_log` methods respectively.
+Through its data argument, Trace has access to the current data dictionary. You can use any keys which the Trace declared as its `inputs` to access information from the data dictionary. You can write the outputs into the `Data` dictionary with or without logging using the `write_with_log` and `write_without_log` methods respectively.
+
+<a id='ta04system'></a>
 
 ### System
-Trace has access to the current `System` instance which has information on network and training. The information provided by System is listed below:
+
+Traces have access to the current `System` instance which has information about the `Network` and training process. The information contained in `System` is listed below:
 * global_step
 * num_devices
 * log_steps
@@ -148,14 +161,16 @@ Trace has access to the current `System` instance which has information on netwo
 * summary
 * experiment_time
 
-We will showcase `System` usage in **Other Trace Usage** section in this tutorial. 
+We will showcase `System` usage in the [other trace usages](#ta04other) section of this tutorial. 
 
-## Trace communication
-We can have multiple traces in a network where the output of one trace is utilized by the other as depicted below: 
+<a id='ta04communication'></a>
+
+## Trace Communication
+We can have multiple traces in a network where the output of one trace is utilized as an input for another, as depicted below: 
 
 <img src="assets/branches/r1.0/tutorial/../resources/t04_advanced_trace_communication.png" alt="drawing" width="500"/>
 
-Below, we demonstrate an example where we utilize the outputs of Precision and Recall traces to generate f1-score
+Let's see an example where we utilize the outputs of the `Precision` and `Recall` `Traces` to generate f1-score:
 
 
 ```python
@@ -184,9 +199,6 @@ traces = [
 estimator = fe.Estimator(pipeline=pipeline, network=network, epochs=2, traces=traces, log_steps=1000)
 ```
 
-    FastEstimator-Warn: No ModelSaver Trace detected. Models will not be saved.
-
-
 
 ```python
 estimator.fit()
@@ -199,42 +211,47 @@ estimator.fit()
     /_/    \__,_/____/\__/_____/____/\__/_/_/ /_/ /_/\__,_/\__/\____/_/     
                                                                             
     
-    FastEstimator-Start: step: 1; LeNet_lr: 0.001; 
-    FastEstimator-Train: step: 1; ce: 2.2954829; 
-    FastEstimator-Train: step: 1000; ce: 0.02208437; steps/sec: 261.23; 
-    FastEstimator-Train: step: 1875; epoch: 1; epoch_time: 7.6 sec; 
-    FastEstimator-Eval: step: 1875; epoch: 1; ce: 0.04879124; min_ce: 0.04879124; since_best: 0; 
+    FastEstimator-Warn: No ModelSaver Trace detected. Models will not be saved.
+    FastEstimator-Start: step: 1; num_device: 0; logging_interval: 1000; 
+    FastEstimator-Train: step: 1; ce: 2.2952752; 
+    FastEstimator-Train: step: 1000; ce: 0.1313241; steps/sec: 179.84; 
+    FastEstimator-Train: step: 1875; epoch: 1; epoch_time: 10.96 sec; 
+    FastEstimator-Eval: step: 1875; epoch: 1; ce: 0.04599155; 
     precision:
-    [0.982     ,0.98813559,0.98452611,0.99804305,0.98807157,0.97550111,
-     0.98951782,0.98571429,0.96781116,0.99396378];
+    [0.98878505,0.99165275,0.98351648,0.99017682,0.99798793,0.98454746,
+     0.98198198,0.98294243,0.96296296,0.97402597];
     recall:
-    [0.99392713,0.99828767,0.97884615,0.96958175,0.994     ,0.98871332,
-     0.98128898,0.98773006,0.98471616,0.97821782];
+    [0.99249531,0.98181818,0.98713235,0.99212598,0.98023715,0.98454746,
+     0.98866213,0.96848739,0.98526316,0.98039216];
     f1_score:
-    [0.98792757,0.99318569,0.98167792,0.98360656,0.99102692,0.98206278,
-     0.98538622,0.98672114,0.97619048,0.98602794];
-    FastEstimator-Train: step: 2000; ce: 0.029476276; steps/sec: 244.28; 
-    FastEstimator-Train: step: 3000; ce: 0.0562297; steps/sec: 259.65; 
-    FastEstimator-Train: step: 3750; epoch: 2; epoch_time: 7.45 sec; 
-    FastEstimator-Eval: step: 3750; epoch: 2; ce: 0.037549634; min_ce: 0.037549634; since_best: 0; 
+    [0.9906367 ,0.98671096,0.9853211 ,0.99115044,0.9890329 ,0.98454746,
+     0.98531073,0.97566138,0.97398543,0.9771987 ];
+    FastEstimator-Train: step: 2000; ce: 0.0038511096; steps/sec: 164.72; 
+    FastEstimator-Train: step: 3000; ce: 0.004517486; steps/sec: 161.99; 
+    FastEstimator-Train: step: 3750; epoch: 2; epoch_time: 12.14 sec; 
+    FastEstimator-Eval: step: 3750; epoch: 2; ce: 0.034655295; 
     precision:
-    [0.98403194,0.99145299,0.99803536,0.97769517,0.98217822,0.98866213,
-     0.99154334,0.97983871,0.9954955 ,0.98425197];
+    [0.9906367 ,0.99505766,0.98899083,0.98635478,0.984375  ,0.98675497,
+     0.98868778,0.99353448,0.97717842,0.99107143];
     recall:
-    [0.99797571,0.99315068,0.97692308,1.        ,0.992     ,0.98419865,
-     0.97505198,0.99386503,0.9650655 ,0.99009901];
+    [0.99249531,0.99834711,0.99080882,0.99606299,0.99604743,0.98675497,
+     0.99092971,0.96848739,0.99157895,0.96732026];
     f1_score:
-    [0.99095477,0.99230111,0.98736638,0.9887218 ,0.98706468,0.98642534,
-     0.98322851,0.98680203,0.98004435,0.98716683];
-    FastEstimator-Finish: step: 3750; total_time: 16.78 sec; LeNet_lr: 0.001; 
+    [0.99156514,0.99669967,0.98989899,0.99118511,0.99017682,0.98675497,
+     0.98980747,0.98085106,0.98432602,0.97905182];
+    FastEstimator-Finish: step: 3750; total_time: 24.53 sec; LeNet_lr: 0.001; 
 
 
-`Note:` precision, recall and f1-score are displayed for each class
+`Note:` precision, recall, and f1-score are displayed for each class
 
-## Other Trace usages 
+<a id='ta04other'></a>
+
+## Other Trace Usages 
+
+<a id='ta04debug'></a>
 
 ### Debugging/Monitoring
-Here, we will implement a custom trace to monitor the predictions. Using this, any discrepancy from the expected behavior can be checked and the relevant corrections can be made. 
+Lets implement a custom trace to monitor a model's predictions. Using this, any discrepancy from the expected behavior can be checked and the relevant corrections can be made: 
 
 
 ```python
@@ -258,9 +275,6 @@ traces = MonitorPred(true_key="y", pred_key="y_pred")
 estimator = fe.Estimator(pipeline=pipeline, network=network, epochs=2, traces=traces, max_train_steps_per_epoch=2, log_steps=None)
 ```
 
-    FastEstimator-Warn: No ModelSaver Trace detected. Models will not be saved.
-
-
 
 ```python
 estimator.fit()
@@ -273,62 +287,70 @@ estimator.fit()
     /_/    \__,_/____/\__/_____/____/\__/_/_/ /_/ /_/\__,_/\__/\____/_/     
                                                                             
     
+    FastEstimator-Warn: No ModelSaver Trace detected. Models will not be saved.
     Global Step Index:  1
     Batch Index:  1
     Epoch:  1
-    Batch data has following keys:  ['ce', 'y_pred', 'y', 'x']
-    Batch true labels:  tf.Tensor([1 0 6 1], shape=(4,), dtype=uint8)
+    Batch data has following keys:  ['x', 'y', 'y_pred', 'ce']
+    Batch true labels:  tf.Tensor([4 6 6 0], shape=(4,), dtype=uint8)
     Batch predictictions:  tf.Tensor(
-    [[0.10357114 0.10485268 0.1035656  0.09670787 0.089131   0.10154787
-      0.1033091  0.10102929 0.09534299 0.10094254]
-     [0.09291946 0.09567764 0.11450008 0.0905508  0.08430735 0.09910616
-      0.11450168 0.10635708 0.09766228 0.10441744]
-     [0.09475411 0.10670866 0.11174129 0.08387841 0.0786593  0.09865108
-      0.12429795 0.10309361 0.09057966 0.10763595]
-     [0.10064501 0.10197185 0.10699889 0.09279956 0.09250849 0.09957764
-      0.10347461 0.1029356  0.0963361  0.10275227]], shape=(4, 10), dtype=float32)
+    [[0.10117384 0.09088749 0.09792296 0.09737834 0.09084693 0.08700039
+      0.11264212 0.10984743 0.10661378 0.10568672]
+     [0.0952943  0.09128962 0.10272249 0.10368769 0.09144977 0.08363624
+      0.1107841  0.11008291 0.10188652 0.10916632]
+     [0.10018928 0.08916146 0.10396809 0.10721539 0.0849424  0.08629669
+      0.11222021 0.10986723 0.09851621 0.10762308]
+     [0.09981812 0.09000086 0.10369569 0.09561141 0.09411818 0.08580256
+      0.11238981 0.10954484 0.10357945 0.10543918]], shape=(4, 10), dtype=float32)
     Global Step Index:  2
     Batch Index:  2
     Epoch:  1
-    Batch data has following keys:  ['ce', 'y_pred', 'y', 'x']
-    Batch true labels:  tf.Tensor([9 1 5 4], shape=(4,), dtype=uint8)
+    Batch data has following keys:  ['x', 'y', 'y_pred', 'ce']
+    Batch true labels:  tf.Tensor([4 4 9 1], shape=(4,), dtype=uint8)
     Batch predictictions:  tf.Tensor(
-    [[0.10539112 0.12841283 0.10276802 0.0906174  0.07294897 0.09887014
-      0.10985964 0.09353343 0.08761767 0.10998084]
-     [0.10813517 0.12318959 0.09688332 0.09578475 0.07818311 0.10289599
-      0.10992745 0.09717274 0.08684725 0.10098062]
-     [0.10764633 0.12101298 0.1079504  0.08947217 0.06668799 0.09578747
-      0.12210157 0.09181765 0.08330003 0.11422344]
-     [0.10115236 0.12633038 0.10354608 0.09306756 0.07296306 0.10216724
-      0.11569481 0.09559171 0.08550758 0.10397922]], shape=(4, 10), dtype=float32)
+    [[0.10240942 0.07996594 0.10190804 0.09579862 0.09545476 0.07724807
+      0.12645632 0.1047412  0.1043587  0.11165903]
+     [0.10151558 0.08773842 0.09836152 0.09669358 0.0958946  0.07577368
+      0.12727338 0.10294375 0.10158429 0.11222118]
+     [0.10219741 0.08286765 0.10365716 0.09298524 0.09625786 0.06968912
+      0.13070971 0.10312404 0.10423445 0.11427741]
+     [0.10077347 0.08387047 0.10196234 0.09324285 0.09473021 0.08261613
+      0.11878415 0.1059215  0.11001182 0.10808703]], shape=(4, 10), dtype=float32)
     Global Step Index:  3
     Batch Index:  1
     Epoch:  2
-    Batch data has following keys:  ['ce', 'y_pred', 'y', 'x']
-    Batch true labels:  tf.Tensor([9 8 2 4], shape=(4,), dtype=uint8)
+    Batch data has following keys:  ['x', 'y', 'y_pred', 'ce']
+    Batch true labels:  tf.Tensor([0 7 7 7], shape=(4,), dtype=uint8)
     Batch predictictions:  tf.Tensor(
-    [[0.09989747 0.1293322  0.09944849 0.08648327 0.0692056  0.11160093
-      0.12744734 0.08538151 0.07049793 0.12070523]
-     [0.10070158 0.13112241 0.09067103 0.09066574 0.07294965 0.11670754
-      0.1274325  0.0859609  0.07270757 0.11108113]
-     [0.10449941 0.12324855 0.09050508 0.07887118 0.06976768 0.11688479
-      0.14250492 0.08487938 0.0745289  0.11431014]
-     [0.10436421 0.12404525 0.09513812 0.0817266  0.06942387 0.10788278
-      0.13263398 0.08597295 0.07907981 0.1197325 ]], shape=(4, 10), dtype=float32)
+    [[0.10566284 0.07728784 0.10565729 0.08178721 0.10713114 0.06507431
+      0.13530098 0.09833021 0.10452496 0.11924319]
+     [0.10526433 0.08540256 0.0971095  0.08443997 0.1094939  0.06850007
+      0.12796785 0.09084202 0.10899913 0.12198068]
+     [0.10248369 0.0828173  0.10205018 0.0864138  0.10586432 0.07090016
+      0.1273839  0.09568971 0.10854369 0.1178532 ]
+     [0.10461577 0.08429881 0.09658652 0.08807645 0.10916384 0.07197928
+      0.12543353 0.09240671 0.10978852 0.11765066]], shape=(4, 10), dtype=float32)
     Global Step Index:  4
     Batch Index:  2
     Epoch:  2
-    Batch data has following keys:  ['ce', 'y_pred', 'y', 'x']
-    Batch true labels:  tf.Tensor([6 5 6 6], shape=(4,), dtype=uint8)
+    Batch data has following keys:  ['x', 'y', 'y_pred', 'ce']
+    Batch true labels:  tf.Tensor([0 5 3 7], shape=(4,), dtype=uint8)
     Batch predictictions:  tf.Tensor(
-    [[0.09452584 0.11557856 0.0994264  0.07691345 0.0780458  0.11294395
-      0.13567904 0.08279683 0.08053159 0.12355857]
-     [0.09919235 0.11813278 0.09881712 0.07796989 0.07886931 0.11273377
-      0.12555735 0.08612843 0.07918419 0.12341478]
-     [0.09563012 0.11937355 0.09857126 0.07469492 0.07846729 0.11610405
-      0.13567077 0.079809   0.07554168 0.12613735]
-     [0.09410203 0.1208031  0.09884479 0.08311246 0.08326188 0.11358377
-      0.11815131 0.08606358 0.08020364 0.12187345]], shape=(4, 10), dtype=float32)
+    [[0.09841534 0.0690296  0.10122424 0.07857155 0.11737346 0.05218776
+      0.13999611 0.10599035 0.11199971 0.12521197]
+     [0.10094637 0.07799206 0.10599674 0.08304708 0.11446269 0.060531
+      0.13092558 0.10104699 0.10494769 0.12010376]
+     [0.09200194 0.08393346 0.0990442  0.08482413 0.11270893 0.0664842
+      0.12764609 0.10573834 0.11171819 0.11590049]
+     [0.10079639 0.08117153 0.10319441 0.08249949 0.11676847 0.06465001
+      0.12598662 0.10077127 0.10564327 0.11851855]], shape=(4, 10), dtype=float32)
 
 
-As you can see, we can visualize information like the Global step, batch number, epoch, keys in the data dictionary, true labels, predictions at batch level etc. using our trace.
+As you can see, we can visualize information like the global step, batch number, epoch, keys in the data dictionary, true labels, and predictions at batch level using our `Trace`.
+
+<a id='ta04apphub'></a>
+
+## Apphub Examples
+You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
+
+* [CIFAR10](./examples/image_classification/cifar10_fast)

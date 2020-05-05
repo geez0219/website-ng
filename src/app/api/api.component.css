@@ -219,10 +219,7 @@ markdown ::ng-deep code{
     text-decoration: none;
 }
 
-<<<<<<< HEAD
-=======
 markdown ::ng-deep .language-none{
     background-color: #737272;
     font-style: italic;
 }
->>>>>>> 2023f1b9789f5fbb31df87cd43115ac27dc3085b

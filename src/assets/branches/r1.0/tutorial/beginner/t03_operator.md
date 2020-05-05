@@ -1,29 +1,34 @@
 # Tutorial 3: Operator
 
 ## Overview
-In this tutorial we will talk about the following:
-* operator concept
-* operator structure
-* operator expression
-* deep learning examples using operators
+In this tutorial we will introduce the `Operator` - a fundamental building block within FastEstimator. This tutorial is structured as follows:
 
-## Operator Concept
+* [Operator Definition](#t03Def)
+* [Operator Structure](#t03Structure)
+* [Operator Expression](#t03Exp)
+* [Deep Learning Examples using Operators](#t03DL)
 
-In [tutorial 1](./tutorials/beginner/t01_getting_started), we know that the preprocessing in `Pipeline` and the training in `Network` can be divided into several sub-tasks:
+<a id='t03Def'></a>
+
+## Operator Definition
+
+From [tutorial 1](./tutorials/beginner/t01_getting_started), we know that the preprocessing in `Pipeline` and the training in `Network` can be divided into several sub-tasks:
 
 * **Pipeline**: `Expand_dim` -> `Minmax`
 * **Network**: `ModelOp` -> `CrossEntropy` -> `UpdateOp`
 
-Each sub-task is a modular unit that takes inputs, performs an operation then produces outputs. As a result, we call them `Operator`, it is building block of `Pipeline` and `Network` API.
+Each sub-task is a modular unit that takes inputs, performs an operation, and then produces outputs. We therefore call these sub-tasks `Operator`s, and they form the building blocks of the FastEstimator `Pipeline` and `Network` APIs.
+
+<a id='t03Structure'></a>
 
 ## Operator Structure
 
-An Operator has 3 main components:
+An Operator has 3 main components: 
 * **inputs**: the key(s) of input data
 * **outputs**: the key(s) of output data
-* **forward function**: the transformation
+* **forward function**: the transformation to be applied
 
-Implementation-wise, `Operator` is implemented as python class. Ignore `mode` for now as we will talk about `mode` extensively in [tutorial 9](./tutorials/beginner/t09_inference).
+The base class constructor also takes a `mode` argument, but for now we will ignore it since `mode` will be discussed extensively in [tutorial 9](./tutorials/beginner/t09_inference).
 
 
 ```python
@@ -32,52 +37,56 @@ class Op:
         self.inputs = inputs
         self.outputs = outputs
         self.mode = mode
-
+    
     def forward(self, data, state):
         return data
 ```
 
+<a id='t03Exp'></a>
+
 ## Operator Expression
 
-In this section, we will demonstrate how different tasks can be concisely expressed in operators.
+In this section, we will demonstrate how different tasks can be concisely expressed in operators. 
 
 ### Single Operator
-If the task only requires taking one feature then transform and overwrite the feature (e.g, `Minmax`), it can be expressed as:
+If the task only requires taking one feature as input and transforming it to overwrite the old feature (e.g, `Minmax`), it can be expressed as:
+
 <img src="assets/branches/r1.0/tutorial/../resources/t03_op_single1.png" alt="drawing" width="500"/>
 
-If the task involves taking multiple features then overwrite them respectively (e.g, rotation of both image & mask), it can be expressed as:
+If the task involves taking multiple features and overwriting them respectively (e.g, rotation of both an image and its mask), it can be expressed as:
+
 <img src="assets/branches/r1.0/tutorial/../resources/t03_op_single2.png" alt="drawing" width="500"/>
 
 ### Multiple Operators
-If there are two operators executing in sequential manner (e.g, `Minmax` followed by `Transpose`), it can be expressed as:
+If there are two `Operator`s executing in a sequential manner (e.g, `Minmax` followed by `Transpose`), it can be expressed as:
+
 <img src="assets/branches/r1.0/tutorial/../resources/t03_op_multi1.png" alt="drawing" width="500"/>
 
-Operator can easily handle more complicated data flows:
+`Operator`s can also easily handle more complicated data flows:
+
 <img src="assets/branches/r1.0/tutorial/../resources/t03_op_multi2.png" alt="drawing" width="500"/>
 
 <img src="assets/branches/r1.0/tutorial/../resources/t03_op_multi3.png" alt="drawing" width="500"/>
 
 
-## Deep learning with operator
-In this section, we will show you how deep learning tasks can be modularized into combination of operators. Please note that the operator expression we provide in this section is simplified as pseudo-code, we will provide link to the actual python code for your reference.
+<a id='t03DL'></a>
 
-### Image Classification:
-[source](https://github.com/fastestimator/fastestimator/tree/master/apphub/image_classification/mnist)
+## Deep Learning Examples using Operators
+
+In this section, we will show you how deep learning tasks can be modularized into combinations of `Operator`s. Please note that the `Operator` expressions we provide in this section are essentially pseudo-code. Links to full python examples are also provided.
+
+### Image Classification:                                                                
+[MNIST](./examples/image_classification/mnist)
 
 <img src="assets/branches/r1.0/tutorial/../resources/t03_op_cls.png" alt="drawing" width="800"/>
 
-### DC-GAN:
-[source](https://github.com/fastestimator/fastestimator/tree/master/apphub/image_generation/dcgan)
+### DC-GAN:                                                                                  
+[DC-GAN](./examples/image_generation/dcgan)
 
 <img src="assets/branches/r1.0/tutorial/../resources/t03_op_dcgan.png" alt="drawing" width="900"/>
 
-### Adversarial Hardening:
-[source](https://github.com/fastestimator/fastestimator/tree/master/apphub/adversarial_training/fgsm)
+### Adversarial Hardening:                                                                                  
+[FGSM](./examples/adversarial_training/fgsm)
 
 <img src="assets/branches/r1.0/tutorial/../resources/t03_op_adversarial.png" alt="drawing" width="900"/>
 
-
-
-```python
-
-```

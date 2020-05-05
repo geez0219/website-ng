@@ -4,37 +4,42 @@
 
 In this tutorial, we will talk about the following:
 
-* Loading data into Pipeline
-    * Using tf.data.Dataset
-    * Using torch.Dataloader
-    * Using FastEstimator dataset
-* Getting results in Pipeline
-* How to use Numpy operators in Pipeline
-    * Basic concepts about operators
-    * Univariate and Multivariate Numpy operators
-    * Customized Numpy operators
-    * Load Numpy operators into Pipeline and visualize results
+* [Loading data into a `Pipeline`](#t04Loading)
+    * [Using tf.data.Dataset](#t04tf)
+    * [Using torch.Dataloader](#t04torch)
+    * [Using FastEstimator Datasets](#t04fe)
+* [Getting results from a `Pipeline`](#t04results)
+* [How to use Numpy Operators in a `Pipeline`](#t04numpy)
+    * [Univariate Numpy Operators](#t04univariate)
+    * [Multivariate Numpy Operators](#t04multivariate)
+    * [Customized Numpy Operators](#t04custom)
+    * [Visualizing `Pipeline` Output](#t04vis)
+* [Related Apphub Examples](#t04apphub)
 
-In deep learning, data preprocessing is a way of converting data from the raw form to a much more usable or desired form. It is one crucial step in the model training as it directly affects the ability of model to learn. <br>
-`Pipeline` API operates by enabling such tasks in efficient manner. It takes care of extracting data from the disk and preprocessing before feeding it to the model. `Pipeline` operations usually happen on CPU.
+In deep learning, data preprocessing is a way of converting data from its raw form to a more usable or desired representation. It is one crucial step in model training as it directly impacts the ability of model to learn. In FastEstimator, the `Pipeline` API enables such preprocessing tasks in an efficient manner. The `Pipeline` manages everything from  extracting data from the disk up until it is fed into the model. `Pipeline` operations usually happen on the CPU.
 
-## Loading data in Pipeline
+<a id='t04Loading'></a>
 
-In tutorial 2, we demonstrated the different types of datasets. We will see how datasets can be loaded in the `Pipeline` and various operations can be applied to the data. `fe.Pipeline` handles three different type of datasets,
+## Loading data into a Pipeline
+
+In [tutorial 2](./tutorials/beginner/t02_dataset) we demonstrated different ways to construct FastEstimator datasets. Here we will see how datasets can be loaded in the `Pipeline` and how various operations can then be applied to the data. `fe.Pipeline` handles three different types of datasets:
+
 * tf.data.Dataset
 * torch.data.Dataloader
 * fe.dataset
 
-Let's create a sample datasets `tf.data.Dataset` and `torch.data.Dataloader` from numpy array and we will load them into `Pipeline`<br>
+Let's create an example `tf.data.Dataset` and `torch.data.Dataloader` from numpy arrays and we will load them into a `Pipeline`:
 
 
 ```python
 import numpy as np
 
-# sample numpy array to later create datasets from them
+# Make some random data to serve as the source for our datasets
 x_train, y_train = (np.random.sample((100, 2)), np.random.sample((100, 1)))
 train_data = {"x": x_train, "y": y_train}
 ```
+
+<a id='t04tf'></a>
 
 ### Using tf.data.Dataset
 
@@ -43,17 +48,19 @@ train_data = {"x": x_train, "y": y_train}
 import fastestimator as fe
 import tensorflow as tf
 
-# create tf.data.Datasets from sample data
+# Create a tf.data.Dataset from sample data
 dataset_tf = tf.data.Dataset.from_tensor_slices(train_data)
 dataset_tf = dataset_tf.batch(4)
 
-# load data into pipeline
+# Load data into the pipeline
 pipeline_tf = fe.Pipeline(dataset_tf)
 ```
 
+<a id='t04torch'></a>
+
 ### Using torch.data.Dataloader
 
-We will create custom dataset class to load our train data into torch dataloader.
+We will create a custom dataset class to load our train data into a PyTorch DataLoader.
 
 
 ```python
@@ -74,31 +81,35 @@ class TorchCustomDataset(Dataset):
 import torch
 from torch.utils import data
 
-# create torch.data.Dataloader from sample data
+# Create a torch.data.Dataloader from sample data
 dataset_torch = TorchCustomDataset(train_data)
 dataloader_torch = data.DataLoader(dataset_torch, batch_size=4)
 
-# load dataloader instance into pipeline
+# Load data into the pipeline
 pipeline_torch = fe.Pipeline(dataloader_torch)
 ```
 
-### Using FastEstimator Dataset
+<a id='t04fe'></a>
 
-Next, we will see how to use one of the Fastestimator Dataset in the `Pipeline`. We will create `fe.dataset.NumpyDataset` and load it into pipeline. As we saw in tutorial 2, `NumpyDataset` takes dictionary with keys for <b>Input data</b> and <b>Ground truth label</b>.
+### Using a FastEstimator Dataset
+
+Next, we will see how to use one of the Fastestimator Datasets in the `Pipeline`. We will create `fe.dataset.NumpyDataset` and load it into our pipeline. As we saw in [tutorial 2](./tutorials/beginner/t02_dataset), `NumpyDataset` takes a dictionary with keys for the <b>input data</b> and <b>ground truth labels</b>.
 
 
 ```python
 from fastestimator.dataset.numpy_dataset import NumpyDataset
 
-# create NumpyDataset from the sample data
+# Create a NumpyDataset from the sample data
 dataset_fe = NumpyDataset(train_data)
 
 pipeline_fe = fe.Pipeline(train_data=dataset_fe, batch_size=1)
 ```
 
-## Getting results in Pipeline
+<a id='t04results'></a>
 
-After loading the data or performing preprocessing tasks, you might want to inspect the data in the `Pipeline` and ensure the output of the `Pipeline` is as you expected. `fe.Pipeline.get_results` provides this feature and is built to access such data in the `Pipeline`.
+## Getting results from a Pipeline
+
+After loading the data or performing preprocessing tasks, you might want to inspect the data in the `Pipeline` and ensure the output of the `Pipeline` is as you expected. `fe.Pipeline.get_results` provides this feature:
 
 
 ```python
@@ -109,32 +120,34 @@ pipeline_tf.get_results(num_steps=1)
 
 
     {'x': <tf.Tensor: shape=(4, 2), dtype=float64, numpy=
-     array([[0.53428703, 0.69525494],
-            [0.92603312, 0.24693308],
-            [0.34052838, 0.63157394],
-            [0.63737816, 0.25101075]])>,
+     array([[0.25898835, 0.23625184],
+            [0.70300216, 0.63624074],
+            [0.79369219, 0.62362004],
+            [0.93831427, 0.87692817]])>,
      'y': <tf.Tensor: shape=(4, 1), dtype=float64, numpy=
-     array([[0.29718931],
-            [0.26778784],
-            [0.16523936],
-            [0.42751092]])>}
+     array([[0.95529881],
+            [0.41207025],
+            [0.46023815],
+            [0.18431654]])>}
 
 
 
-## How to use Numpy operators in Pipeline
+<a id='t04numpy'></a>
 
-In tutorial 3, we learned about the `Operators` and their structures. They are used in FastEstimator for constructing workflow graphs. Here we will talk about Numpy Operator (NumpyOp) and how to use them in `Pipeline`.
+## Using Numpy Operators in Pipeline
 
-`NumpyOp` is the building block of the `Pipeline` and inherits base class `Op`. It performs preprocessing and augmentation tasks on non-Tensor data. With the list of `NumpyOp`, preprocessing tasks become considerably easier in just few lines of code. Many of the augmentation operations leverages the image augmentation library [albumentations](https://github.com/albumentations-team/albumentations). <br>
-`NumpyOp` can be further classified in three main classes:
-   * Univariate NumpyOp
-   * Multivariate NumpyOp
-   * Meta NumpyOp
+In [tutorial 3](./tutorials/beginner/t03_operator), we learned about `Operators` and their structure. They are used in FastEstimator for constructing workflow graphs. Here we will talk specifically about Numpy Operators (`NumpyOp`s) and how to use them in `Pipeline`.
+
+`NumpyOp`s form the foundation of FastEstimator data augmentation within the `Pipeline`, and inherit from the `Op` base class. They perform preprocessing and augmentation tasks on non-Tensor data. With a list of `NumpyOp`s, even complicated preprocessing tasks can be implemented in only a few lines of code. Many of the augmentation operations in FastEstimator leverage the image augmentation library [albumentations](https://github.com/albumentations-team/albumentations).
+
+`NumpyOp` can be further subdivided into three main categories:
+   * Univariate `NumpyOp`s
+   * Multivariate `NumpyOp`s
+   * Meta `NumpyOp`s
    
-In addition to that, we can customize the `NumpyOp` to perform our own operations on the data. Inheriting `fe.op.numpyop` we can create custom `NumpyOp` and use it in `Pipeline`.<br>
-In this tutorial, we will learn about Univariate, Multivariate and Custom numpy operators. We will discuss Meta NumpyOp in the advanced tutorial of the `Pipeline`.
+In addition to the pre-built offerings, we can customize the `NumpyOp` to perform our own operations on the data. By inheriting `fe.op.numpyop` we can create custom `NumpyOp`s and use them in our `Pipeline`. In this tutorial, we will learn about Univariate, Multivariate and Custom Numpy Operators. We will discuss Meta NumpyOp's an [advanced tutorial](../advanced/t03_operator.ipynb).
 
-To demonstrate use of operators, we will first load Fashion MNIST dataset in the Pipeline and then will define list of numpy operators for preprocessing data. We will then visualize `Pipeline` Inputs and Outputs.
+To demonstrate use of operators, we will first load the Fashion MNIST dataset in our Pipeline and then will define list of Numpy Operators for preprocessing data. We will then visualize the `Pipeline`s inputs and outputs.
 
 
 ```python
@@ -143,10 +156,13 @@ from fastestimator.dataset.data import mnist
 mnist_train, mnist_eval = mnist.load_data()
 ```
 
+<a id='t04univariate'></a>
+
 ### Univariate NumpyOp
 
-Univariate numpy operators perform the same operation for all features. It takes single/multiple input(s) and return single/multiple output(s). For example, `Minmax` is an univariate numpy operator, no matter what feature it is it will perform<br>
-data = (data - min) / (max - min)<br>
+Univariate Numpy Operators perform the same operation for all input features. They take one or more input(s) and return an equal number of outputs, applying the same transformation to each input/output pair. For example, `Minmax` is an univariate Numpy Operator. No matter what feature it is given, it will perform:
+
+data = (data - min) / (max - min)
 
 
 ```python
@@ -155,11 +171,11 @@ from fastestimator.op.numpyop.univariate import Minmax
 minmax_op = Minmax(inputs="x", outputs="x_out")
 ```
 
+<a id='t04multivariate'></a>
+
 ### Multivariate NumpyOp
 
-Multivariate numpy operators perform different operations based on the nature of features. For example, bounding box and mask of the same input image require different operations.
-
-We will define Rotate numpy operator that will rotate the images 180 degrees.
+Multivariate Numpy Operators perform different operations based on the nature of the input features. For example, if you have an image with an associated mask as well as bounding boxes, rotating all three of these objects together requires the backend code to know which of the inputs is an image and which is a bounding box. Here we will demonstrate the `Rotate` Numpy Operator which will rotate images randomly by some angle in the range (-180, 180) degrees.
 
 
 ```python
@@ -168,9 +184,11 @@ from fastestimator.op.numpyop.multivariate import Rotate
 rotation_op = Rotate(image_in="x_out", image_out="x_out", limit=180)
 ```
 
+<a id='t04custom'></a>
+
 ### Custom NumpyOp
 
-Let's create custom Numpy operator that add random noise to the input images.
+Let's create custom Numpy Operator that adds random noise to the input images.
 
 
 ```python
@@ -186,48 +204,33 @@ class AddRandomNoise(NumpyOp):
 random_noise_op = AddRandomNoise(inputs="x_out", outputs="x_out")
 ```
 
-### Putting them all together
+<a id='t04vis'></a>
 
-Now, We will add the list of operaters, that we defined earlier, in the `Pipeline`. 
+### Visualizing Pipeline Outputs
+
+Now, let's add our `NumpyOp`s into the `Pipeline` and visualize the results. 
 
 
 ```python
 pipeline = fe.Pipeline(train_data=mnist_train,
                        eval_data=mnist_eval,
                        ops=[minmax_op, rotation_op, random_noise_op],
-                      batch_size=2)
-```
+                       batch_size=3)
 
-Let's get the `Pipeline` results and visualize the input and output images
-
-
-```python
-import matplotlib.pyplot as plt
-
-sample_num = 3
-
-# get the pipeline results
 data = pipeline.get_results()
-data_xin = data["x"]
-data_xout = data["x_out"]
-
-# define subplots 
-fig, axs = plt.subplots(sample_num, 2, figsize=(15,15))
-
-axs[0,0].set_title("Original Image")
-axs[0,1].set_title("Pipeline Output")
-
-plt.setp(axs, xticks=[], yticks=[])
-
-# iterate over sample to plot the results
-for i, j in enumerate(np.random.randint(low=0, high=2, size=sample_num)):
-    img_in = data_xin.numpy()[j]
-    axs[i,0].imshow(img_in, cmap="gray")
-    
-    img_out = data_xout.numpy()[j]
-    axs[i,1].imshow(img_out, cmap="gray")
+img = fe.util.ImgData(original_image=data["x"], pipeline_output=data["x_out"])
+fig = img.paint_figure()
 ```
 
 
-![png](assets/branches/r1.0/tutorial/beginner/t04_pipeline_files/t04_pipeline_39_0.png)
+![png](assets/branches/r1.0/tutorial/beginner/t04_pipeline_files/t04_pipeline_41_0.png)
 
+
+<a id='t04apphub'></a>
+
+## Apphub Examples
+You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
+
+* [CIFAR10](./examples/image_classification/cifar10_fast)
+* [Bert](../../apphub/NLP/named_entity_recognition/bert_tf.py)
+* [FGSM](./examples/adversarial_training/fgsm)

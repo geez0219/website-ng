@@ -17,13 +17,14 @@ One class to rule them all.    Estimator is the highest level class within FastE
 
 ### fit
 ```python
-fit(self, summary:Union[str, NoneType]=None, warmup=True) -> Union[fastestimator.summary.summary.Summary, NoneType]
+fit(self, summary:Union[str, NoneType]=None, warmup:bool=True) -> Union[fastestimator.summary.summary.Summary, NoneType]
 ```
 Train the network for the number of epochs specified by the estimator's constructor.
 
 #### Args:
 
 * **summary** :  A name for the experiment. If provided, the log history will be recorded in-memory and returned as                a summary object at the end of training.
+* **warmup** :  Whether to perform warmup before training begins. The warmup procedure will test one step at every                epoch where schedulers cause the execution graph to change. This can take some time up front, but can                also save significant heartache on epoch 300 when the training unexpectedly fails due to a tensor size                mismatch.
 
 #### Returns:
             A summary object containing the training history for this session iff a `summary` name was provided.        
