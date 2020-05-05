@@ -18,10 +18,10 @@ Each sub-task is a modular unit that takes inputs, performs an operation then pr
 
 ## Operator Structure
 
-An Operator has 3 main components: 
+An Operator has 3 main components:
 * **inputs**: the key(s) of input data
 * **outputs**: the key(s) of output data
-* **forward function**: the transformation 
+* **forward function**: the transformation
 
 Implementation-wise, `Operator` is implemented as python class. Ignore `mode` for now as we will talk about `mode` extensively in [tutorial 9](./tutorials/beginner/t09_inference).
 
@@ -32,14 +32,14 @@ class Op:
         self.inputs = inputs
         self.outputs = outputs
         self.mode = mode
-    
+
     def forward(self, data, state):
         return data
 ```
 
 ## Operator Expression
 
-In this section, we will demonstrate how different tasks can be concisely expressed in operators. 
+In this section, we will demonstrate how different tasks can be concisely expressed in operators.
 
 ### Single Operator
 If the task only requires taking one feature then transform and overwrite the feature (e.g, `Minmax`), it can be expressed as:
@@ -61,18 +61,18 @@ Operator can easily handle more complicated data flows:
 ## Deep learning with operator
 In this section, we will show you how deep learning tasks can be modularized into combination of operators. Please note that the operator expression we provide in this section is simplified as pseudo-code, we will provide link to the actual python code for your reference.
 
-### Image Classification:                                                                
-[source](https://github.com/fastestimator/fastestimator/tree/1.0dev/apphub/image_classification/mnist)
+### Image Classification:
+[source](https://github.com/fastestimator/fastestimator/tree/master/apphub/image_classification/mnist)
 
 <img src="assets/branches/r1.0/tutorial/../resources/t03_op_cls.png" alt="drawing" width="800"/>
 
-### DC-GAN:                                                                                  
-[source](https://github.com/fastestimator/fastestimator/tree/1.0dev/apphub/image_generation/dcgan)
+### DC-GAN:
+[source](https://github.com/fastestimator/fastestimator/tree/master/apphub/image_generation/dcgan)
 
 <img src="assets/branches/r1.0/tutorial/../resources/t03_op_dcgan.png" alt="drawing" width="900"/>
 
-### Adversarial Hardening:                                                                                  
-[source](https://github.com/fastestimator/fastestimator/tree/1.0dev/apphub/adversarial_training/fgsm)
+### Adversarial Hardening:
+[source](https://github.com/fastestimator/fastestimator/tree/master/apphub/adversarial_training/fgsm)
 
 <img src="assets/branches/r1.0/tutorial/../resources/t03_op_adversarial.png" alt="drawing" width="900"/>
 
