@@ -56,7 +56,11 @@
                     {
                         "name": "architecture/pytorch/UNet.md",
                         "displayName": "UNet",
+<<<<<<< HEAD
                         "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/architecture/pytorch/unet.py#L74-L114"
+=======
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/architecture/pytorch/unet.py#L23-L77"
+>>>>>>> 2023f1b9789f5fbb31df87cd43115ac27dc3085b
                     },
                     {
                         "name": "architecture/pytorch/UNetDecoderBlock.md",
@@ -1031,6 +1035,11 @@
                 "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/summary/system.py#L25-L168"
             }
         ]
+    },
+    {
+        "name": "test",
+        "displayName": "fe.test",
+        "children": []
     },
     {
         "name": "trace",
