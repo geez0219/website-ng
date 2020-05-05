@@ -56,7 +56,7 @@
                     {
                         "name": "architecture/pytorch/UNet.md",
                         "displayName": "UNet",
-                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/architecture/tensorflow/unet.py#L74-L114"
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/master/fastestimator/architecture/pytorch/unet.py#L74-L114"
                     },
                     {
                         "name": "architecture/pytorch/UNetDecoderBlock.md",
