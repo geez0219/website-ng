@@ -47,7 +47,7 @@ def get_pipeline_model_network(model_name="LeNet", batch_size=32):
 ```
 
 ## Customizing Trace
-In [Tutorial 7](https://github.com/TortoiseHam/fastestimator/blob/tutorials/summary/tutorial/beginner/t07_estimator.ipynb) in the beginner section, we talked about the basic concept and structure of trace and used few Traces from Fastestimator. We can also customize a Trace to suit our needs. Let's look at an example of a custom trace implementation.
+In [tutorial 7](./tutorials/beginner/t07_estimator) in the beginner section, we talked about the basic concept and structure of trace and used few Traces from Fastestimator. We can also customize a Trace to suit our needs. Let's look at an example of a custom trace implementation.
 
 ### Example
 We can utilize traces to calculate any custom metric needed for mintoring or controlling training. Below, we implement a trace for calculating F-beta score of our model.

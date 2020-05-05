@@ -107,8 +107,7 @@ print("Mean pixel value over the channels: ", mean_arr)
 
 ## Dropping the last batch
 
-When we specify `batch_size` in the `Pipeline`, it will combine consecutive number of tensors into a batch and resulting shape will be <br><b>batch_size * shape of input tensor</b><br> However, if `batch_size` does not divide the input data evenly then last batch could have different batch_size than other batches.<br>
-To drop the last batch we can set `drop_last` to `True`. Therefore, if the last batch is incomplete it will be dropped.
+When we specify `batch_size` in the `Pipeline`, it will combine consecutive number of tensors into a batch and resulting shape will be <br><b>batch_size * shape of input tensor</b><br> However, if `batch_size` does not divide the input data evenly then last batch could have different batch_size than other batches. To drop the last batch we can set `drop_last` to `True`. Therefore, if the last batch is incomplete it will be dropped.
 
 
 ```python
