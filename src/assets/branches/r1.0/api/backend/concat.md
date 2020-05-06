@@ -8,21 +8,24 @@ Concatenate a list of `tensors` along a given `axis`.
 
 This method can be used with Numpy data:
 ```python
-n = [np.array([[0, 1]]), np.array([[2, 3]]), np.array([[4, 5]])]b = fe.backend.concat(n, axis=0)  # [[0, 1], [2, 3], [4, 5]]b = fe.backend.concat(n, axis=1)  # [[0, 1, 2, 3, 4, 5]]
+n = [np.array([[0, 1]]), np.array([[2, 3]]), np.array([[4, 5]])]
+b = fe.backend.concat(n, axis=0)  # [[0, 1], [2, 3], [4, 5]]
+b = fe.backend.concat(n, axis=1)  # [[0, 1, 2, 3, 4, 5]]
 ```
-
 
 This method can be used with TensorFlow tensors:
 ```python
-t = [tf.constant([[0, 1]]), tf.constant([[2, 3]]), tf.constant([[4, 5]])]b = fe.backend.concat(t, axis=0)  # [[0, 1], [2, 3], [4, 5]]b = fe.backend.concat(t, axis=1)  # [[0, 1, 2, 3, 4, 5]]
+t = [tf.constant([[0, 1]]), tf.constant([[2, 3]]), tf.constant([[4, 5]])]
+b = fe.backend.concat(t, axis=0)  # [[0, 1], [2, 3], [4, 5]]
+b = fe.backend.concat(t, axis=1)  # [[0, 1, 2, 3, 4, 5]]
 ```
-
 
 This method can be used with PyTorch tensors:
 ```python
-p = [torch.tensor([[0, 1]]), torch.tensor([[2, 3]]), torch.tensor([[4, 5]])]b = fe.backend.concat(p, axis=0)  # [[0, 1], [2, 3], [4, 5]]b = fe.backend.concat(p, axis=1)  # [[0, 1, 2, 3, 4, 5]]
+p = [torch.tensor([[0, 1]]), torch.tensor([[2, 3]]), torch.tensor([[4, 5]])]
+b = fe.backend.concat(p, axis=0)  # [[0, 1], [2, 3], [4, 5]]
+b = fe.backend.concat(p, axis=1)  # [[0, 1, 2, 3, 4, 5]]
 ```
-
 
 
 

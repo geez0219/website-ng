@@ -8,9 +8,14 @@ This can be useful for making networks grow over time, or to use more challengin
 
 
 ```python
-s = fe.schedule.EpochScheduler({1:"a", 3:"b", 4:None, 100: "c"})s.get_current_value(epoch=1)  # "a"s.get_current_value(epoch=2)  # "a"s.get_current_value(epoch=3)  # "b"s.get_current_value(epoch=4)  # Nones.get_current_value(epoch=99)  # Nones.get_current_value(epoch=100)  # "c"
-```
-
+    s = fe.schedule.EpochScheduler({1:"a", 3:"b", 4:None, 100: "c"})
+    s.get_current_value(epoch=1)  # "a"
+    s.get_current_value(epoch=2)  # "a"
+    s.get_current_value(epoch=3)  # "b"
+    s.get_current_value(epoch=4)  # None
+    s.get_current_value(epoch=99)  # None
+    s.get_current_value(epoch=100)  # "c"
+    ```
 
 
 

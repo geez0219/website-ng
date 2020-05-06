@@ -8,21 +8,30 @@ Compute the mean value along a given `axis` of a `tensor`.
 
 This method can be used with Numpy data:
 ```python
-n = np.array([[[1.0, 2.0], [3.0, 4.0]], [[5.0, 6.0], [7.0, 8.0]]])b = fe.backend.reduce_mean(n)  # 4.5b = fe.backend.reduce_mean(n, axis=0)  # [[3, 4], [5, 6]]b = fe.backend.reduce_mean(n, axis=1)  # [[2, 3], [6, 7]]b = fe.backend.reduce_mean(n, axis=[0,2])  # [3.5, 5.5]
+n = np.array([[[1.0, 2.0], [3.0, 4.0]], [[5.0, 6.0], [7.0, 8.0]]])
+b = fe.backend.reduce_mean(n)  # 4.5
+b = fe.backend.reduce_mean(n, axis=0)  # [[3, 4], [5, 6]]
+b = fe.backend.reduce_mean(n, axis=1)  # [[2, 3], [6, 7]]
+b = fe.backend.reduce_mean(n, axis=[0,2])  # [3.5, 5.5]
 ```
-
 
 This method can be used with TensorFlow tensors:
 ```python
-t = tf.constant([[[1.0, 2.0], [3.0, 4.0]], [[5.0, 6.0], [7.0, 8.0]]])b = fe.backend.reduce_mean(t)  # 4.5b = fe.backend.reduce_mean(t, axis=0)  # [[3, 4], [5, 6]]b = fe.backend.reduce_mean(t, axis=1)  # [[2, 3], [3, 7]]b = fe.backend.reduce_mean(t, axis=[0,2])  # [3.5, 5.5]
+t = tf.constant([[[1.0, 2.0], [3.0, 4.0]], [[5.0, 6.0], [7.0, 8.0]]])
+b = fe.backend.reduce_mean(t)  # 4.5
+b = fe.backend.reduce_mean(t, axis=0)  # [[3, 4], [5, 6]]
+b = fe.backend.reduce_mean(t, axis=1)  # [[2, 3], [3, 7]]
+b = fe.backend.reduce_mean(t, axis=[0,2])  # [3.5, 5.5]
 ```
-
 
 This method can be used with PyTorch tensors:
 ```python
-p = torch.tensor([[[1.0, 2.0], [3.0, 4.0]], [[5.0, 6.0], [7.0, 8.0]]])b = fe.backend.reduce_mean(p)  # 4.5b = fe.backend.reduce_mean(p, axis=0)  # [[3, 4], [5, 6]]b = fe.backend.reduce_mean(p, axis=1)  # [[2, 3], [6, 7]]b = fe.backend.reduce_mean(p, axis=[0,2])  # [3.5, 5.5]
+p = torch.tensor([[[1.0, 2.0], [3.0, 4.0]], [[5.0, 6.0], [7.0, 8.0]]])
+b = fe.backend.reduce_mean(p)  # 4.5
+b = fe.backend.reduce_mean(p, axis=0)  # [[3, 4], [5, 6]]
+b = fe.backend.reduce_mean(p, axis=1)  # [[2, 3], [6, 7]]
+b = fe.backend.reduce_mean(p, axis=[0,2])  # [3.5, 5.5]
 ```
-
 
 
 

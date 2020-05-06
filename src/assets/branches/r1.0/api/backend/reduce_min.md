@@ -8,21 +8,30 @@ Compute the min value along a given `axis` of a `tensor`.
 
 This method can be used with Numpy data:
 ```python
-n = np.array([[[1.0, 2.0], [3.0, 4.0]], [[5.0, 6.0], [7.0, 8.0]]])b = fe.backend.reduce_min(n)  # 1b = fe.backend.reduce_min(n, axis=0)  # [[1, 2], [3, 4]]b = fe.backend.reduce_min(n, axis=1)  # [[1, 2], [5, 6]]b = fe.backend.reduce_min(n, axis=[0,2])  # [1, 3]
+n = np.array([[[1.0, 2.0], [3.0, 4.0]], [[5.0, 6.0], [7.0, 8.0]]])
+b = fe.backend.reduce_min(n)  # 1
+b = fe.backend.reduce_min(n, axis=0)  # [[1, 2], [3, 4]]
+b = fe.backend.reduce_min(n, axis=1)  # [[1, 2], [5, 6]]
+b = fe.backend.reduce_min(n, axis=[0,2])  # [1, 3]
 ```
-
 
 This method can be used with TensorFlow tensors:
 ```python
-t = tf.constant([[[1.0, 2.0], [3.0, 4.0]], [[5.0, 6.0], [7.0, 8.0]]])b = fe.backend.reduce_min(t)  # 1b = fe.backend.reduce_min(t, axis=0)  # [[1, 2], [3, 4]]b = fe.backend.reduce_min(t, axis=1)  # [[1, 2], [5, 6]]b = fe.backend.reduce_min(t, axis=[0,2])  # [1, 3]
+t = tf.constant([[[1.0, 2.0], [3.0, 4.0]], [[5.0, 6.0], [7.0, 8.0]]])
+b = fe.backend.reduce_min(t)  # 1
+b = fe.backend.reduce_min(t, axis=0)  # [[1, 2], [3, 4]]
+b = fe.backend.reduce_min(t, axis=1)  # [[1, 2], [5, 6]]
+b = fe.backend.reduce_min(t, axis=[0,2])  # [1, 3]
 ```
-
 
 This method can be used with PyTorch tensors:
 ```python
-p = torch.tensor([[[1.0, 2.0], [3.0, 4.0]], [[5.0, 6.0], [7.0, 8.0]]])b = fe.backend.reduce_min(p)  # 1b = fe.backend.reduce_min(p, axis=0)  # [[1, 2], [3, 4]]b = fe.backend.reduce_min(p, axis=1)  # [[1, 2], [5, 6]]b = fe.backend.reduce_min(p, axis=[0,2])  # [1, 3]
+p = torch.tensor([[[1.0, 2.0], [3.0, 4.0]], [[5.0, 6.0], [7.0, 8.0]]])
+b = fe.backend.reduce_min(p)  # 1
+b = fe.backend.reduce_min(p, axis=0)  # [[1, 2], [3, 4]]
+b = fe.backend.reduce_min(p, axis=1)  # [[1, 2], [5, 6]]
+b = fe.backend.reduce_min(p, axis=[0,2])  # [1, 3]
 ```
-
 
 
 

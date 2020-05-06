@@ -6,8 +6,12 @@ A class which can be used to silence output of function calls.
 
 
 ```python
-x = lambda: print("hello")x()  # "hello"with fe.util.Suppressor():x()  #x()  # "hello"
-```
+    x = lambda: print("hello")
+    x()  # "hello"
+    with fe.util.Suppressor():
+        x()  #
+    x()  # "hello"
+    ```
 
 
 ### write

@@ -8,9 +8,14 @@ Data objects can be interacted with as if they are regular dictionaries. They ar
 
 
 ```python
-d = fe.util.Data({"a":0, "b":1, "c":2})a = d["a"]  # 0d.write_with_log("d", 3)d.write_without_log("e", 5)d.write_with_log("a", 4)a = d["a"]  # 4r = d.read_logs(extra_keys={"c"})  # {"c":2, "d":3, "a":4}
-```
-
+    d = fe.util.Data({"a":0, "b":1, "c":2})
+    a = d["a"]  # 0
+    d.write_with_log("d", 3)
+    d.write_without_log("e", 5)
+    d.write_with_log("a", 4)
+    a = d["a"]  # 4
+    r = d.read_logs(extra_keys={"c"})  # {"c":2, "d":3, "a":4}
+    ```
 
 
 

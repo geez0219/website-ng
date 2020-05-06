@@ -8,9 +8,9 @@ Pad `data` by appending `pad_value`s along it's dimensions until the `target_sha
 
 
 ```python
-x = np.ones((1,2))x = fe.util.pad_data(x, target_shape=(3, 3), pad_value = -2)  # [[1, 1, -2], [-2, -2, -2], [-2, -2, -2]]
+x = np.ones((1,2))
+x = fe.util.pad_data(x, target_shape=(3, 3), pad_value = -2)  # [[1, 1, -2], [-2, -2, -2], [-2, -2, -2]]
 ```
-
 
 
 

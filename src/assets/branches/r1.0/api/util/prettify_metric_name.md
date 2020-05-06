@@ -13,7 +13,6 @@ x = fe.util.prettify_metric_name("myUgly_loss")  # "My Ugly Loss"
 
 
 
-
 #### Args:
 
 * **metric** :  A string to be formatted.
