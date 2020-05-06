@@ -10,21 +10,30 @@ This method can be useful if you need to compute gradients based on a specific s
 
 This method can be used with Numpy data:
 ```python
-ind = np.array([1, 0, 1])n = np.array([[0, 1], [2, 3], [4, 5]])b = fe.backend.gather_from_batch(n, ind)  # [1, 2, 5]n = np.array([[[0, 1], [2, 3]], [[4, 5], [6, 7]], [[8, 9], [10, 11]]])b = fe.backend.gather_from_batch(n, ind)  # [[2, 3], [4, 5], [10, 11]]
+ind = np.array([1, 0, 1])
+n = np.array([[0, 1], [2, 3], [4, 5]])
+b = fe.backend.gather_from_batch(n, ind)  # [1, 2, 5]
+n = np.array([[[0, 1], [2, 3]], [[4, 5], [6, 7]], [[8, 9], [10, 11]]])
+b = fe.backend.gather_from_batch(n, ind)  # [[2, 3], [4, 5], [10, 11]]
 ```
-
 
 This method can be used with TensorFlow tensors:
 ```python
-ind = tf.constant([1, 0, 1])t = tf.constant([[0, 1], [2, 3], [4, 5]])b = fe.backend.gather_from_batch(t, ind)  # [1, 2, 5]t = tf.constant([[[0, 1], [2, 3]], [[4, 5], [6, 7]], [[8, 9], [10, 11]]])b = fe.backend.gather_from_batch(t, ind)  # [[2, 3], [4, 5], [10, 11]]
+ind = tf.constant([1, 0, 1])
+t = tf.constant([[0, 1], [2, 3], [4, 5]])
+b = fe.backend.gather_from_batch(t, ind)  # [1, 2, 5]
+t = tf.constant([[[0, 1], [2, 3]], [[4, 5], [6, 7]], [[8, 9], [10, 11]]])
+b = fe.backend.gather_from_batch(t, ind)  # [[2, 3], [4, 5], [10, 11]]
 ```
-
 
 This method can be used with PyTorch tensors:
 ```python
-ind = torch.tensor([1, 0, 1])p = torch.tensor([[0, 1], [2, 3], [4, 5]])b = fe.backend.gather_from_batch(p, ind)  # [1, 2, 5]p = torch.tensor([[[0, 1], [2, 3]], [[4, 5], [6, 7]], [[8, 9], [10, 11]]])b = fe.backend.gather_from_batch(p, ind)  # [[2, 3], [4, 5], [10, 11]]
+ind = torch.tensor([1, 0, 1])
+p = torch.tensor([[0, 1], [2, 3], [4, 5]])
+b = fe.backend.gather_from_batch(p, ind)  # [1, 2, 5]
+p = torch.tensor([[[0, 1], [2, 3]], [[4, 5], [6, 7]], [[8, 9], [10, 11]]])
+b = fe.backend.gather_from_batch(p, ind)  # [[2, 3], [4, 5], [10, 11]]
 ```
-
 
 
 

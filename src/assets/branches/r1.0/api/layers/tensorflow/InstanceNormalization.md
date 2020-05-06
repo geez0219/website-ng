@@ -8,9 +8,11 @@ This layer assumes that you are using the a tensor shaped like (Batch, Height, W
 
 
 ```python
-n = tfp.distributions.Normal(loc=10, scale=2)x = n.sample(sample_shape=(1, 100, 100, 1))  # mean ~= 10, stddev ~= 2m = fe.layers.tensorflow.InstanceNormalization()y = m(x)  # mean ~= 0, stddev ~= 0
-```
-
+    n = tfp.distributions.Normal(loc=10, scale=2)
+    x = n.sample(sample_shape=(1, 100, 100, 1))  # mean ~= 10, stddev ~= 2
+    m = fe.layers.tensorflow.InstanceNormalization()
+    y = m(x)  # mean ~= 0, stddev ~= 0
+    ```
 
 
 

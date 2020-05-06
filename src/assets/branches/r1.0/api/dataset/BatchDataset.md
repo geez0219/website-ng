@@ -6,17 +6,25 @@ BatchDataset extracts a list (batch) of data from a single dataset or multiple d
 
 This dataset helps to enable several use-cases:1. Creating an unpaired dataset from two or more completely disjoint (no common keys) datasets.
 ```python
-ds1 = fe.dataset.DirDataset(...)  # {"a": <32x32>}ds2 = fe.dataset.DirDataset(...)  # {"b": <28x28>}unpaired_ds = fe.dataset.BatchDataset(datasets=[ds1, ds2], num_samples=[4, 4])# {"a": <4x32x32>, "b": <4x28x28>}
-```
-2. Deterministic class balanced sampling from two or more similar (all keys in common) datasets.
+            ds1 = fe.dataset.DirDataset(...)  # {"a": <32x32>}
+            ds2 = fe.dataset.DirDataset(...)  # {"b": <28x28>}
+            unpaired_ds = fe.dataset.BatchDataset(datasets=[ds1, ds2], num_samples=[4, 4])
+            # {"a": <4x32x32>, "b": <4x28x28>}
+            ```
+. Deterministic class balanced sampling from two or more similar (all keys in common) datasets.
 ```python
-class1_ds = fe.dataset.DirDataset(...)  # {"x": <32x32>, "y": <>}class2_ds = fe.dataset.DirDataset(...)  # {"x": <32x32>, "y": <>}ds = fe.dataset.BatchDataset(datasets=[ds1, ds2], num_samples=[3, 5])# {"x": <8x32x32>, "y": <8>}  (3 of the samples are from class1_ds, 5 of the samples from class2_ds)
-```
-3. Probabilistic class balanced sampling from two or more similar (all keys in common) datasets.
+            class1_ds = fe.dataset.DirDataset(...)  # {"x": <32x32>, "y": <>}
+            class2_ds = fe.dataset.DirDataset(...)  # {"x": <32x32>, "y": <>}
+            ds = fe.dataset.BatchDataset(datasets=[ds1, ds2], num_samples=[3, 5])
+            # {"x": <8x32x32>, "y": <8>}  (3 of the samples are from class1_ds, 5 of the samples from class2_ds)
+            ```
+. Probabilistic class balanced sampling from two or more similar (all keys in common) datasets.
 ```python
-class1_ds = fe.dataset.DirDataset(...)  # {"x": <32x32>, "y": <>}class2_ds = fe.dataset.DirDataset(...)  # {"x": <32x32>, "y": <>}ds = fe.dataset.BatchDataset(datasets=[ds1, ds2], num_samples=8, probability=[0.7, 0.3])# {"x": <8x32x32>, "y": <8>}  (~70% of the samples are from class1_ds, ~30% of the samples from class2_ds)
-```
-
+            class1_ds = fe.dataset.DirDataset(...)  # {"x": <32x32>, "y": <>}
+            class2_ds = fe.dataset.DirDataset(...)  # {"x": <32x32>, "y": <>}
+            ds = fe.dataset.BatchDataset(datasets=[ds1, ds2], num_samples=8, probability=[0.7, 0.3])
+            # {"x": <8x32x32>, "y": <8>}  (~70% of the samples are from class1_ds, ~30% of the samples from class2_ds)
+            ```
 
 
 
@@ -42,13 +50,17 @@ Split this dataset into multiple smaller datasets.
 
 This function enables several types of splitting:1. Splitting by fractions.
 ```python
-ds = fe.dataset.FEDataset(...)  # len(ds) == 1000ds2 = ds.split(0.1)  # len(ds) == 900, len(ds2) == 100ds3, ds4 = ds.split(0.1, 0.2)  # len(ds) == 630, len(ds3) == 90, len(ds4) == 180
-```
-2. Splitting by counts.
+                ds = fe.dataset.FEDataset(...)  # len(ds) == 1000
+                ds2 = ds.split(0.1)  # len(ds) == 900, len(ds2) == 100
+                ds3, ds4 = ds.split(0.1, 0.2)  # len(ds) == 630, len(ds3) == 90, len(ds4) == 180
+                ```
+. Splitting by counts.
 ```python
-ds = fe.dataset.FEDataset(...)  # len(ds) == 1000ds2 = ds.split(100)  # len(ds) == 900, len(ds2) == 100ds3, ds4 = ds.split(90, 180)  # len(ds) == 630, len(ds3) == 90, len(ds4) == 180
-```
-3. Splitting by indices.``pythonds = fe.dataset.FEDataset(...)  # len(ds) == 1000ds2 = ds.split([87,2,3,100,121,158])  # len(ds) == 994, len(ds2) == 6ds3 = ds.split(range(100))  # len(ds) == 894, len(ds3) == 100```
+                ds = fe.dataset.FEDataset(...)  # len(ds) == 1000
+                ds2 = ds.split(100)  # len(ds) == 900, len(ds2) == 100
+                ds3, ds4 = ds.split(90, 180)  # len(ds) == 630, len(ds3) == 90, len(ds4) == 180
+                ```
+. Splitting by indices.``pythonds = fe.dataset.FEDataset(...)  # len(ds) == 1000ds2 = ds.split([87,2,3,100,121,158])  # len(ds) == 994, len(ds2) == 6ds3 = ds.split(range(100))  # len(ds) == 894, len(ds3) == 100```
 
 
 

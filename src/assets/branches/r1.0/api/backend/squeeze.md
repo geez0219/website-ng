@@ -8,21 +8,27 @@ Remove an `axis` from a `tensor` if that axis has length 1.
 
 This method can be used with Numpy data:
 ```python
-n = np.array([[[[1],[2]]],[[[3],[4]]],[[[5],[6]]]])  # shape == (3, 1, 2, 1)b = fe.backend.squeeze(n)  # [[1, 2], [3, 4], [5, 6]]b = fe.backend.squeeze(n, axis=1)  # [[[1], [2]], [[3], [4]], [[5], [6]]]b = fe.backend.squeeze(n, axis=3)  # [[[1, 2]], [[3, 4]], [[5, 6]]]
+n = np.array([[[[1],[2]]],[[[3],[4]]],[[[5],[6]]]])  # shape == (3, 1, 2, 1)
+b = fe.backend.squeeze(n)  # [[1, 2], [3, 4], [5, 6]]
+b = fe.backend.squeeze(n, axis=1)  # [[[1], [2]], [[3], [4]], [[5], [6]]]
+b = fe.backend.squeeze(n, axis=3)  # [[[1, 2]], [[3, 4]], [[5, 6]]]
 ```
-
 
 This method can be used with TensorFlow tensors:
 ```python
-t = tf.constant([[[[1],[2]]],[[[3],[4]]],[[[5],[6]]]])  # shape == (3, 1, 2, 1)b = fe.backend.squeeze(t)  # [[1, 2], [3, 4], [5, 6]]b = fe.backend.squeeze(t, axis=1)  # [[[1], [2]], [[3], [4]], [[5], [6]]]b = fe.backend.squeeze(t, axis=3)  # [[[1, 2]], [[3, 4]], [[5, 6]]]
+t = tf.constant([[[[1],[2]]],[[[3],[4]]],[[[5],[6]]]])  # shape == (3, 1, 2, 1)
+b = fe.backend.squeeze(t)  # [[1, 2], [3, 4], [5, 6]]
+b = fe.backend.squeeze(t, axis=1)  # [[[1], [2]], [[3], [4]], [[5], [6]]]
+b = fe.backend.squeeze(t, axis=3)  # [[[1, 2]], [[3, 4]], [[5, 6]]]
 ```
-
 
 This method can be used with PyTorch tensors:
 ```python
-p = torch.tensor([[[[1],[2]]],[[[3],[4]]],[[[5],[6]]]])  # shape == (3, 1, 2, 1)b = fe.backend.squeeze(p)  # [[1, 2], [3, 4], [5, 6]]b = fe.backend.squeeze(p, axis=1)  # [[[1], [2]], [[3], [4]], [[5], [6]]]b = fe.backend.squeeze(p, axis=3)  # [[[1, 2]], [[3, 4]], [[5, 6]]]
+p = torch.tensor([[[[1],[2]]],[[[3],[4]]],[[[5],[6]]]])  # shape == (3, 1, 2, 1)
+b = fe.backend.squeeze(p)  # [[1, 2], [3, 4], [5, 6]]
+b = fe.backend.squeeze(p, axis=1)  # [[[1], [2]], [[3], [4]], [[5], [6]]]
+b = fe.backend.squeeze(p, axis=3)  # [[[1, 2]], [[3, 4]], [[5, 6]]]
 ```
-
 
 
 

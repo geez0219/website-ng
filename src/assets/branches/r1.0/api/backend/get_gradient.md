@@ -8,23 +8,28 @@ Calculate gradients of a target w.r.t sources.
 
 This method can be used with TensorFlow tensors:
 ```python
-x = tf.Variable([1.0, 2.0, 3.0])with tf.GradientTape(persistent=True) as tape:y = x * x
+x = tf.Variable([1.0, 2.0, 3.0])
+with tf.GradientTape(persistent=True) as tape:
+    y = x * x
 
-b = fe.backend.get_gradient(target=y, sources=x, tape=tape)  # [2.0, 4.0, 6.0]b = fe.backend.get_gradient(target=b, sources=x, tape=tape)  # None
+    b = fe.backend.get_gradient(target=y, sources=x, tape=tape)  # [2.0, 4.0, 6.0]
+    b = fe.backend.get_gradient(target=b, sources=x, tape=tape)  # None
 
-b = fe.backend.get_gradient(target=y, sources=x, tape=tape, higher_order=True)  # [2.0, 4.0, 6.0]b = fe.backend.get_gradient(target=b, sources=x, tape=tape)  # [2.0, 2.0, 2.0]
+    b = fe.backend.get_gradient(target=y, sources=x, tape=tape, higher_order=True)  # [2.0, 4.0, 6.0]
+    b = fe.backend.get_gradient(target=b, sources=x, tape=tape)  # [2.0, 2.0, 2.0]
 ```
-
 
 This method can be used with PyTorch tensors:
 ```python
-x = torch.tensor([1.0, 2.0, 3.0], requires_grad=True)y = x * x
+x = torch.tensor([1.0, 2.0, 3.0], requires_grad=True)
+y = x * x
 
-b = fe.backend.get_gradient(target=y, sources=x)  # [2.0, 4.0, 6.0]b = fe.backend.get_gradient(target=b, sources=x)  # Error - b does not have a backwards function
+b = fe.backend.get_gradient(target=y, sources=x)  # [2.0, 4.0, 6.0]
+b = fe.backend.get_gradient(target=b, sources=x)  # Error - b does not have a backwards function
 
-b = fe.backend.get_gradient(target=y, sources=x, higher_order=True)  # [2.0, 4.0, 6.0]b = fe.backend.get_gradient(target=b, sources=x)  # [2.0, 2.0, 2.0]
+b = fe.backend.get_gradient(target=y, sources=x, higher_order=True)  # [2.0, 4.0, 6.0]
+b = fe.backend.get_gradient(target=b, sources=x)  # [2.0, 2.0, 2.0]
 ```
-
 
 
 

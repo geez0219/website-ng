@@ -6,5 +6,8 @@ A class which is used to make nothing unusual happen.
 
 
 ```python
-a = 5with fe.util.NonContext():a = a + 37print(a)  # 42
-```
+    a = 5
+    with fe.util.NonContext():
+        a = a + 37
+    print(a)  # 42
+    ```

@@ -23,7 +23,6 @@ wget.download('http://url.com', '/save/dir', bar=fe.util.bar_custom)
 
 
 
-
 #### Args:
 
 * **current** :  The current amount of progress.

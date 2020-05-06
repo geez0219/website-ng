@@ -8,9 +8,10 @@ Convert a string into a python object.
 
 
 ```python
-x = fe.util.parse_string_to_python("5")  # 5x = fe.util.parse_string_to_python("[5, 4, 0.3]")  # [5, 4, 0.3]x = fe.util.parse_string_to_python("{'a':5, 'b':7}")  # {'a':5, 'b':7}
+x = fe.util.parse_string_to_python("5")  # 5
+x = fe.util.parse_string_to_python("[5, 4, 0.3]")  # [5, 4, 0.3]
+x = fe.util.parse_string_to_python("{'a':5, 'b':7}")  # {'a':5, 'b':7}
 ```
-
 
 
 

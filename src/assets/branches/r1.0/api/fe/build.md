@@ -8,15 +8,19 @@ Build model instances and associate them with optimizers.
 
 This method can be used with TensorFlow models / optimizers:
 ```python
-model_def = fe.architecture.tensorflow.LeNetmodel = fe.build(model_fn = model_def, optimizer_fn="adam")model = fe.build(model_fn = model_def, optimizer_fn=lambda: tf.optimizers.Adam(lr=0.1))model = fe.build(model_fn = model_def, optimizer_fn="adam", weights_path="~/weights.h5")
+model_def = fe.architecture.tensorflow.LeNet
+model = fe.build(model_fn = model_def, optimizer_fn="adam")
+model = fe.build(model_fn = model_def, optimizer_fn=lambda: tf.optimizers.Adam(lr=0.1))
+model = fe.build(model_fn = model_def, optimizer_fn="adam", weights_path="~/weights.h5")
 ```
-
 
 This method can be used with PyTorch models / optimizers:
 ```python
-model_def = fe.architecture.pytorch.LeNetmodel = fe.build(model_fn = model_def, optimizer_fn="adam")model = fe.build(model_fn = model_def, optimizer_fn=lambda x: torch.optim.Adam(params=x, lr=0.1))model = fe.build(model_fn = model_def, optimizer_fn="adam", weights_path="~/weights.pt)
+model_def = fe.architecture.pytorch.LeNet
+model = fe.build(model_fn = model_def, optimizer_fn="adam")
+model = fe.build(model_fn = model_def, optimizer_fn=lambda x: torch.optim.Adam(params=x, lr=0.1))
+model = fe.build(model_fn = model_def, optimizer_fn="adam", weights_path="~/weights.pt)
 ```
-
 
 
 

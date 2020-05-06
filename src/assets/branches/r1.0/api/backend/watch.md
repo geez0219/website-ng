@@ -8,15 +8,16 @@ Monitor the given `tensor` for later gradient computations.
 
 This method can be used with TensorFlow tensors:
 ```python
-x = tf.ones((3,28,28,1))with tf.GradientTape(persistent=True) as tape:x = fe.backend.watch(x, tape=tape)
+x = tf.ones((3,28,28,1))
+with tf.GradientTape(persistent=True) as tape:
+    x = fe.backend.watch(x, tape=tape)
 ```
-
 
 This method can be used with PyTorch tensors:
 ```python
-x = torch.ones((3,1,28,28))  # x.requires_grad == Falsex = fe.backend.watch(x)  # x.requires_grad == True
+x = torch.ones((3,1,28,28))  # x.requires_grad == False
+x = fe.backend.watch(x)  # x.requires_grad == True
 ```
-
 
 
 

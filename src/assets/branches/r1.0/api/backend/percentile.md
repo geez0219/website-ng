@@ -10,21 +10,27 @@ The n-th percentile of `tensor` is the value n/100 of the way from the minimum t
 
 This method can be used with Numpy data:
 ```python
-n = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])b = fe.backend.percentile(n, percentiles=[66])  # [[[6]]]b = fe.backend.percentile(n, percentiles=[66], axis=0)  # [[[4, 5, 6]]]b = fe.backend.percentile(n, percentiles=[66], axis=1)  # [[[2], [5], [8]]]
+n = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+b = fe.backend.percentile(n, percentiles=[66])  # [[[6]]]
+b = fe.backend.percentile(n, percentiles=[66], axis=0)  # [[[4, 5, 6]]]
+b = fe.backend.percentile(n, percentiles=[66], axis=1)  # [[[2], [5], [8]]]
 ```
-
 
 This method can be used with TensorFlow tensors:
 ```python
-t = tf.constant([[1, 2, 3], [4, 5, 6], [7, 8, 9]])b = fe.backend.percentile(t, percentiles=[66])  # [[[6]]]b = fe.backend.percentile(t, percentiles=[66], axis=0)  # [[[4, 5, 6]]]b = fe.backend.percentile(t, percentiles=[66], axis=1)  # [[[2], [5], [8]]]
+t = tf.constant([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+b = fe.backend.percentile(t, percentiles=[66])  # [[[6]]]
+b = fe.backend.percentile(t, percentiles=[66], axis=0)  # [[[4, 5, 6]]]
+b = fe.backend.percentile(t, percentiles=[66], axis=1)  # [[[2], [5], [8]]]
 ```
-
 
 This method can be used with PyTorch tensors:
 ```python
-p = tf.constant([[1, 2, 3], [4, 5, 6], [7, 8, 9]])b = fe.backend.percentile(p, percentiles=[66])  # [[[6]]]b = fe.backend.percentile(p, percentiles=[66], axis=0)  # [[[4, 5, 6]]]b = fe.backend.percentile(p, percentiles=[66], axis=1)  # [[[2], [5], [8]]]
+p = tf.constant([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+b = fe.backend.percentile(p, percentiles=[66])  # [[[6]]]
+b = fe.backend.percentile(p, percentiles=[66], axis=0)  # [[[4, 5, 6]]]
+b = fe.backend.percentile(p, percentiles=[66], axis=1)  # [[[2], [5], [8]]]
 ```
-
 
 
 

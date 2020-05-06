@@ -10,15 +10,19 @@ Note that if any of the `y_pred` values are exactly 0, this will result in a NaN
 
 This method can be used with TensorFlow tensors:
 ```python
-true = tf.constant([[0, 1, 0], [1, 0, 0], [0, 0, 1]])pred = tf.constant([[0.1, 0.8, 0.1], [0.9, 0.05, 0.05], [0.1, 0.2, 0.7]])b = fe.backend.categorical_crossentropy(y_pred=pred, y_true=true)  # 0.228b = fe.backend.categorical_crossentropy(y_pred=pred, y_true=true, average_loss=False)  # [0.223, 0.105, 0.356]
+true = tf.constant([[0, 1, 0], [1, 0, 0], [0, 0, 1]])
+pred = tf.constant([[0.1, 0.8, 0.1], [0.9, 0.05, 0.05], [0.1, 0.2, 0.7]])
+b = fe.backend.categorical_crossentropy(y_pred=pred, y_true=true)  # 0.228
+b = fe.backend.categorical_crossentropy(y_pred=pred, y_true=true, average_loss=False)  # [0.223, 0.105, 0.356]
 ```
-
 
 This method can be used with PyTorch tensors:
 ```python
-true = torch.tensor([[0, 1, 0], [1, 0, 0], [0, 0, 1]])pred = torch.tensor([[0.1, 0.8, 0.1], [0.9, 0.05, 0.05], [0.1, 0.2, 0.7]])b = fe.backend.categorical_crossentropy(y_pred=pred, y_true=true)  # 0.228b = fe.backend.categorical_crossentropy(y_pred=pred, y_true=true, average_loss=False)  # [0.223, 0.105, 0.356]
+true = torch.tensor([[0, 1, 0], [1, 0, 0], [0, 0, 1]])
+pred = torch.tensor([[0.1, 0.8, 0.1], [0.9, 0.05, 0.05], [0.1, 0.2, 0.7]])
+b = fe.backend.categorical_crossentropy(y_pred=pred, y_true=true)  # 0.228
+b = fe.backend.categorical_crossentropy(y_pred=pred, y_true=true, average_loss=False)  # [0.223, 0.105, 0.356]
 ```
-
 
 
 
