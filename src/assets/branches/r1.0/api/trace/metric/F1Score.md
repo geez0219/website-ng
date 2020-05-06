@@ -3,7 +3,10 @@
 F1Score(true_key:str, pred_key:str, mode:Union[str, Set[str]]=('eval', 'test'), output_name:str='f1_score') -> None
 ```
 Calculate the F1 score for a classification task and report it back to the logger.
-* **Consider using MCC instead** :  https//www.ncbi.nlm.nih.gov/pmc/articles/PMC6941312/
+
+Consider using MCC instead: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6941312/
+
+
 
 #### Args:
 

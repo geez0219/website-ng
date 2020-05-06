@@ -4,6 +4,8 @@ RandomBrightnessContrast(inputs:Union[str, Iterable[str], Callable], outputs:Uni
 ```
 Randomly change the brightness and contrast of an image.
 
+
+
 #### Args:
 
 * **inputs** :  Key(s) of images to be modified.

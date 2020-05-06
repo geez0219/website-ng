@@ -5,14 +5,20 @@
 get_lr(model:Union[tensorflow.python.keras.engine.training.Model, torch.nn.modules.module.Module]) -> float
 ```
 Get the learning rate of a given model.
-* **This method can be used with TensorFlow models** : 
+
+This method can be used with TensorFlow models:
 ```python
 m = fe.build(fe.architecture.tensorflow.LeNet, optimizer_fn="adam")b = fe.backend.get_lr(model=m)  # 0.001
 ```
-* **This method can be used with PyTorch models** : 
+
+
+This method can be used with PyTorch models:
 ```python
 m = fe.build(fe.architecture.pytorch.LeNet, optimizer_fn="adam")b = fe.backend.get_lr(model=m)  # 0.001
 ```
+
+
+
 
 #### Args:
 

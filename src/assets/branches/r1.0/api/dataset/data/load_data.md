@@ -6,6 +6,8 @@ load_data(image_key:str='x', label_key:str='y') -> Tuple[fastestimator.dataset.n
 ```
 Load and return the MNIST dataset.
 
+
+
 #### Args:
 
 * **image_key** :  The key for image.

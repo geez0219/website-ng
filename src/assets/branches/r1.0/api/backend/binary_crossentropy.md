@@ -4,15 +4,23 @@
 ```python
 binary_crossentropy(y_pred:~Tensor, y_true:~Tensor, from_logits:bool=False, average_loss:bool=True) -> ~Tensor
 ```
-Compute binary crossentropy.This method is applicable when there are only two label classes (zero and one). There should be a single floatingpoint prediction per example.
-* **This method can be used with TensorFlow tensors** : 
+Compute binary crossentropy.
+
+This method is applicable when there are only two label classes (zero and one). There should be a single floatingpoint prediction per example.
+
+This method can be used with TensorFlow tensors:
 ```python
 true = tf.constant([[1], [0], [1], [0]])pred = tf.constant([[0.9], [0.3], [0.8], [0.1]])b = fe.backend.binary_crossentropy(y_pred=pred, y_true=true)  # 0.197b = fe.backend.binary_crossentropy(y_pred=pred, y_true=true, average_loss=False)  # [0.105, 0.356, 0.223, 0.105]
 ```
-* **This method can be used with PyTorch tensors** : 
+
+
+This method can be used with PyTorch tensors:
 ```python
 true = torch.tensor([[1], [0], [1], [0]])pred = torch.tensor([[0.9], [0.3], [0.8], [0.1]])b = fe.backend.binary_crossentropy(y_pred=pred, y_true=true)  # 0.197b = fe.backend.binary_crossentropy(y_pred=pred, y_true=true, average_loss=False)  # [0.105, 0.356, 0.223, 0.105]
 ```
+
+
+
 
 #### Args:
 

@@ -4,6 +4,8 @@ ElasticTransform(alpha:float=34.0, sigma:float=4.0, alpha_affine:float=50.0, int
 ```
 Elastic deformation of images.
 
+
+
 #### Args:
 
 * **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute            regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument            like "!infer" or "!train".

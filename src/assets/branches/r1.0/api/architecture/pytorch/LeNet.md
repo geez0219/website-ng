@@ -2,7 +2,11 @@
 ```python
 LeNet(input_shape:Tuple[int, int, int]=(1, 28, 28), classes:int=10) -> None
 ```
-A standard LeNet implementation in pytorch.    The LeNet model has 3 convolution layers and 2 dense layers.
+A standard LeNet implementation in pytorch.
+
+The LeNet model has 3 convolution layers and 2 dense layers.
+
+
 
 #### Args:
 

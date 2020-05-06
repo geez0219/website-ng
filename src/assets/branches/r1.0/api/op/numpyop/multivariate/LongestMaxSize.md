@@ -4,6 +4,8 @@ LongestMaxSize(max_size:int=1024, interpolation:int=1, mode:Union[str, NoneType]
 ```
 Rescale an image so that maximum side is equal to max_size, keeping the aspect ratio of the initial image.
 
+
+
 #### Args:
 
 * **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute            regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument            like "!infer" or "!train".

@@ -4,6 +4,8 @@ RandomShadow(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iter
 ```
 Add shadows to an image
 
+
+
 #### Args:
 
 * **inputs** :  Key(s) of images to be modified.

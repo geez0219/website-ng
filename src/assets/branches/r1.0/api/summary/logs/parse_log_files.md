@@ -4,7 +4,11 @@
 ```python
 parse_log_files(file_paths:List[str], log_extension:Union[str, NoneType]='.txt', smooth_factor:float=0, save:bool=False, save_path:Union[str, NoneType]=None, ignore_metrics:Union[Set[str], NoneType]=None, share_legend:bool=True, pretty_names:bool=False) -> None
 ```
-Parse one or more log files for graphing.This function which will iterate through the given log file paths, parse them to extract metrics, remove anymetrics which are blacklisted, and then pass the necessary information on the graphing function.
+Parse one or more log files for graphing.
+
+This function which will iterate through the given log file paths, parse them to extract metrics, remove anymetrics which are blacklisted, and then pass the necessary information on the graphing function.
+
+
 
 #### Args:
 

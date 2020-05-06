@@ -4,6 +4,8 @@ RandomSnow(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterab
 ```
 Bleach out some pixels to simulate snow.
 
+
+
 #### Args:
 
 * **inputs** :  Key(s) of images to be modified.

@@ -4,6 +4,8 @@ Downscale(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterabl
 ```
 Decrease image quality by downscaling and then upscaling.
 
+
+
 #### Args:
 
 * **inputs** :  Key(s) of images to be modified.

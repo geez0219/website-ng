@@ -4,6 +4,8 @@ Argmax(inputs:Union[str, List[str]], outputs:Union[str, List[str]], axis:int=0, 
 ```
 Get the argmax from a tensor.
 
+
+
 #### Args:
 
 * **inputs** :  The tensor(s) to gather values from.

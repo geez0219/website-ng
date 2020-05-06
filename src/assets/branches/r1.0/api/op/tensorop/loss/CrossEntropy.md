@@ -4,6 +4,8 @@ CrossEntropy(inputs:Union[NoneType, str, Iterable[str], Callable]=None, outputs:
 ```
 Calculate Element-Wise CrossEntropy (binary, categorical or sparse categorical).
 
+
+
 #### Args:
 
 * **inputs** :  A tuple or list like [<y_pred>, <y_true>].

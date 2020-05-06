@@ -2,7 +2,11 @@
 ```python
 CSVDataset(file_path:str, delimiter:str=',', **kwargs) -> None
 ```
-A dataset from a CSV file.    CSVDataset reads entries from a CSV file, where the first row is the header. The root directory of the csv file    may be accessed using dataset.parent_path. This may be useful if the csv contains relative path information    that you want to feed into, say, an ImageReader Op.
+A dataset from a CSV file.
+
+CSVDataset reads entries from a CSV file, where the first row is the header. The root directory of the csv filemay be accessed using dataset.parent_path. This may be useful if the csv contains relative path informationthat you want to feed into, say, an ImageReader Op.
+
+
 
 #### Args:
 

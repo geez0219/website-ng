@@ -4,6 +4,8 @@ GeneratorDataset(generator:Generator[Dict[str, Any], int, NoneType], samples_per
 ```
 A dataset from a generator function.
 
+
+
 #### Args:
 
 * **generator** :  The generator function to invoke in order to get a data sample.

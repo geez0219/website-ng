@@ -4,6 +4,8 @@ EarlyStopping(monitor:str='loss', min_delta:float=0.0, patience:int=0, compare:s
 ```
 Stop training when a monitored quantity has stopped improving.
 
+
+
 #### Args:
 
 * **monitor** :  Quantity to be monitored.

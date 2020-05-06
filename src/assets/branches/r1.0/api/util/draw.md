@@ -4,4 +4,4 @@
 ```python
 draw() -> None
 ```
-Print our name.    
+Print our name.

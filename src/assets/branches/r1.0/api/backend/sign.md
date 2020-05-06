@@ -5,18 +5,26 @@
 sign(tensor:~Tensor) -> ~Tensor
 ```
 Compute the sign of a tensor.
-* **This method can be used with Numpy data** : 
+
+This method can be used with Numpy data:
 ```python
 n = np.array([-2, 7, -19])b = fe.backend.sign(n)  # [-1, 1, -1]
 ```
-* **This method can be used with TensorFlow tensors** : 
+
+
+This method can be used with TensorFlow tensors:
 ```python
 t = tf.constant([-2, 7, -19])b = fe.backend.sign(t)  # [-1, 1, -1]
 ```
-* **This method can be used with PyTorch tensors** : 
+
+
+This method can be used with PyTorch tensors:
 ```python
 p = torch.tensor([-2, 7, -19])b = fe.backend.sign(p)  # [-1, 1, -1]
 ```
+
+
+
 
 #### Args:
 

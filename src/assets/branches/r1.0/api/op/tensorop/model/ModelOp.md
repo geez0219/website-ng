@@ -4,6 +4,8 @@ ModelOp(model:Union[tensorflow.python.keras.engine.training.Model, torch.nn.modu
 ```
 This class performs forward passes of a neural network over batch data to generate predictions.
 
+
+
 #### Args:
 
 * **model** :  A model compiled by fe.build.

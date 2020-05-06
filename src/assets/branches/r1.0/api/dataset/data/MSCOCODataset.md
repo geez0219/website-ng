@@ -2,7 +2,11 @@
 ```python
 MSCOCODataset(image_dir:str, annotation_file:str, caption_file:str, include_bboxes:bool=True, include_masks:bool=False, include_captions:bool=False, min_bbox_area=1.0) -> None
 ```
-A specialized DirDataset to handle MSCOCO data.    This dataset combines images from the MSCOCO data directory with their corresponding bboxes, masks, and captions.
+A specialized DirDataset to handle MSCOCO data.
+
+This dataset combines images from the MSCOCO data directory with their corresponding bboxes, masks, and captions.
+
+
 
 #### Args:
 

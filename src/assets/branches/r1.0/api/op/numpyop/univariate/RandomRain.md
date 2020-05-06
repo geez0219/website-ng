@@ -4,6 +4,8 @@ RandomRain(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterab
 ```
 Add rain to an image
 
+
+
 #### Args:
 
 * **inputs** :  Key(s) of images to be modified.

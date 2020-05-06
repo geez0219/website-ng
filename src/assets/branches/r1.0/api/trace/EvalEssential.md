@@ -2,7 +2,11 @@
 ```python
 EvalEssential(monitor_names:Set[str]) -> None
 ```
-A trace to collect important information during evaluation.    Please don't add this trace into an estimator manually. FastEstimator will add it automatically.
+A trace to collect important information during evaluation.
+
+Please don't add this trace into an estimator manually. FastEstimator will add it automatically.
+
+
 
 #### Args:
 
@@ -14,6 +18,8 @@ on_batch_begin(self, data:fastestimator.util.data.Data) -> None
 ```
 Runs at the beginning of each batch.
 
+
+
 #### Args:
 
 * **data** :  A dictionary through which traces can communicate with each other or write values for logging.        
@@ -24,6 +30,8 @@ on_begin(self, data:fastestimator.util.data.Data) -> None
 ```
 Runs once at the beginning of training or testing.
 
+
+
 #### Args:
 
 * **data** :  A dictionary through which traces can communicate with each other or write values for logging.        
@@ -33,6 +41,8 @@ Runs once at the beginning of training or testing.
 on_end(self, data:fastestimator.util.data.Data) -> None
 ```
 Runs once at the end training.
+
+
 
 #### Args:
 

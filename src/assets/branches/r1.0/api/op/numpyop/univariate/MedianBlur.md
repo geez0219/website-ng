@@ -4,6 +4,8 @@ MedianBlur(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterab
 ```
 Blur the image with median filter of random aperture size.
 
+
+
 #### Args:
 
 * **inputs** :  Key(s) of images to be modified.

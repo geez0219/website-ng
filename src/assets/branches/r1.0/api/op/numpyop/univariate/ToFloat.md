@@ -4,6 +4,8 @@ ToFloat(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterable[
 ```
 Divides an input by max_value to give a float image in range [0,1].
 
+
+
 #### Args:
 
 * **inputs** :  Key(s) of images to be converted to floating point representation.

@@ -4,6 +4,8 @@ Solarize(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterable
 ```
 Invert all pixel values above a threshold.
 
+
+
 #### Args:
 
 * **inputs** :  Key(s) of images to be solarized.

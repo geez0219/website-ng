@@ -3,9 +3,10 @@
 ImageOnlyAlbumentation(func:albumentations.core.transforms_interface.ImageOnlyTransform, inputs:Union[str, List[str], Callable], outputs:Union[str, List[str]], mode:Union[NoneType, str, Iterable[str]]=None)
 ```
 Operators which apply to single images (as opposed to images + masks or images + bounding boxes).
-* **This is a wrapper for functionality provided by the Albumentations library** : 
-* **https** : //github.com/albumentations-team/albumentations. A useful visualization tool for many of the possible effects
-* **it provides is available at https** : //albumentations-demo.herokuapp.com.
+
+This is a wrapper for functionality provided by the Albumentations library:https://github.com/albumentations-team/albumentations. A useful visualization tool for many of the possible effectsit provides is available at https://albumentations-demo.herokuapp.com.
+
+
 
 #### Args:
 

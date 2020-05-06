@@ -4,6 +4,8 @@ MeanAveragePrecision(num_classes:int, true_key='bbox', pred_key:str='pred', mode
 ```
 Calculate COCO mean average precision.
 
+
+
 #### Args:
 
 * **num_classes** :  Maximum `int` value for your class label. In COCO dataset we only used 80 classes, but the maxium            value of the class label is `90`. In this case `num_classes` should be `90`.
@@ -21,7 +23,11 @@ Generate precision-recall curve.
 ```python
 compute_iou(self, det:numpy.ndarray, gt:numpy.ndarray) -> numpy.ndarray
 ```
-Compute intersection over union.        We leverage `maskUtils.iou`.
+Compute intersection over union.
+
+We leverage `maskUtils.iou`.
+
+
 
 #### Args:
 
@@ -36,6 +42,8 @@ Compute intersection over union.        We leverage `maskUtils.iou`.
 evaluate_img(self, cat_id:int, img_id:int) -> Dict
 ```
 Find gt matches for det given one image and one category.
+
+
 
 #### Args:
 
@@ -62,6 +70,8 @@ Reset instance variables.
 summarize(self, iou:float=None) -> float
 ```
 Compute average precision given one intersection union threshold.
+
+
 
 #### Args:
 

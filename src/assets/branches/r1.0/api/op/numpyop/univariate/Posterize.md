@@ -4,6 +4,8 @@ Posterize(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterabl
 ```
 Reduce the number of bits for each color channel
 
+
+
 #### Args:
 
 * **inputs** :  Key(s) of images to be modified.

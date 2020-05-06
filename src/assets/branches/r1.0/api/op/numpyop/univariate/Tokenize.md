@@ -2,7 +2,11 @@
 ```python
 Tokenize(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterable[str]], mode:Union[NoneType, str, Iterable[str]]=None, tokenize_fn:Union[NoneType, Callable[[str], List[str]]]=None, to_lower_case:bool=False) -> None
 ```
-Split the sequences into tokens.    Tokenize split the document/sequence into tokens and at the same time perform additional operations on tokens if    defined in the passed function object. By default, tokenize only splits the sequences into tokens.
+Split the sequences into tokens.
+
+Tokenize split the document/sequence into tokens and at the same time perform additional operations on tokens ifdefined in the passed function object. By default, tokenize only splits the sequences into tokens.
+
+
 
 #### Args:
 
