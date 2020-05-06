@@ -4,6 +4,8 @@ OneOf(*numpy_ops:fastestimator.op.numpyop.numpyop.NumpyOp) -> None
 ```
 Perform one of several possible NumpyOps.
 
+
+
 #### Args:
 
 * **numpy_ops** :  A list of ops to choose between with uniform probability.    
@@ -13,6 +15,8 @@ Perform one of several possible NumpyOps.
 forward(self, data:Union[numpy.ndarray, List[numpy.ndarray]], state:Dict[str, Any]) -> Union[numpy.ndarray, List[numpy.ndarray]]
 ```
 Execute a randomly selected op from the list of `numpy_ops`.
+
+
 
 #### Args:
 

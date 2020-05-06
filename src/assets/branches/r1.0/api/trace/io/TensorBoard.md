@@ -2,9 +2,11 @@
 ```python
 TensorBoard(log_dir:str='logs', update_freq:Union[NoneType, int, str]=100, write_graph:bool=True, write_images:Union[NoneType, str, List[str]]=None, weight_histogram_freq:Union[NoneType, int, str]=None, paint_weights:bool=False, write_embeddings:Union[NoneType, str, List[str]]=None, embedding_labels:Union[NoneType, str, List[str]]=None, embedding_images:Union[NoneType, str, List[str]]=None) -> None
 ```
-Output data for use in TensorBoard.    Note that if you plan to run a tensorboard server simultaneous to training, you may want to consider using the
-* **--reload_multifile=true flag until their multi-writer use case is finished** : 
-* **https** : //github.com/tensorflow/tensorboard/issues/1063
+Output data for use in TensorBoard.
+
+Note that if you plan to run a tensorboard server simultaneous to training, you may want to consider using the--reload_multifile=true flag until their multi-writer use case is finished:https://github.com/tensorflow/tensorboard/issues/1063
+
+
 
 #### Args:
 

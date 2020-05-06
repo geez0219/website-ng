@@ -4,6 +4,8 @@ Recall(true_key:str, pred_key:str, mode:Union[str, Set[str]]=('eval', 'test'), o
 ```
 Compute recall for a classification task and report it back to the logger.
 
+
+
 #### Args:
 
 * **true_key** :  Name of the key that corresponds to ground truth in the batch dictionary.

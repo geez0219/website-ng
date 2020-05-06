@@ -2,12 +2,19 @@
 ```python
 ImgData(colormap:str='Greys', **kwargs:Union[~Tensor, List[~Tensor]]) -> None
 ```
-A container for image related data.    This class is useful for automatically laying out collections of images for comparison and visualization.    
+A container for image related data.
+
+This class is useful for automatically laying out collections of images for comparison and visualization.
+
+
 ```python
-    d = fe.util.ImgData(y=tf.ones((4,)), x=0.5*tf.ones((4, 32, 32, 3)))    fig = d.paint_figure()    plt.show()    img = 0.5*np.ones((4, 32, 32, 3))    mask = np.zeros_like(img)
-* **mask[0, 10** : 20, 1030, ] = [1, 0, 0]
-* **mask[1, 5** : 15, 520, ] = [0, 1, 0]    bbox = np.array([[[3,7,10,6,'box1'], [20,20,8,8,'box2']]]*4)    d = fe.util.ImgData(y=tf.ones((4,)), x=[img, mask, bbox])    fig = d.paint_figure()    plt.show()    
+d = fe.util.ImgData(y=tf.ones((4,)), x=0.5*tf.ones((4, 32, 32, 3)))fig = d.paint_figure()plt.show()
+
+img = 0.5*np.ones((4, 32, 32, 3))mask = np.zeros_like(img)mask[0, 10:20, 10:30, :] = [1, 0, 0]mask[1, 5:15, 5:20, :] = [0, 1, 0]bbox = np.array([[[3,7,10,6,'box1'], [20,20,8,8,'box2']]]*4)d = fe.util.ImgData(y=tf.ones((4,)), x=[img, mask, bbox])fig = d.paint_figure()plt.show()
 ```
+
+
+
 
 #### Args:
 
@@ -22,10 +29,15 @@ A container for image related data.    This class is useful for automatically la
 ```python
 paint_figure(self, height_gap:int=100, min_height:int=200, width_gap:int=50, min_width:int=200, dpi:int=96, save_path:Union[str, NoneType]=None) -> matplotlib.figure.Figure
 ```
-Visualize the current ImgData entries in a matplotlib figure.        
+Visualize the current ImgData entries in a matplotlib figure.
+
+
 ```python
-        d = fe.util.ImgData(y=tf.ones((4,)), x=0.5*tf.ones((4, 32, 32, 3)))        fig = d.paint_figure()        plt.show()        
+d = fe.util.ImgData(y=tf.ones((4,)), x=0.5*tf.ones((4, 32, 32, 3)))fig = d.paint_figure()plt.show()
 ```
+
+
+
 
 #### Args:
 
@@ -43,10 +55,15 @@ Visualize the current ImgData entries in a matplotlib figure.
 ```python
 paint_numpy(self, height_gap:int=100, min_height:int=200, width_gap:int=50, min_width:int=200, dpi:int=96) -> numpy.ndarray
 ```
-Visualize the current ImgData entries into an image stored in a numpy array.        
+Visualize the current ImgData entries into an image stored in a numpy array.
+
+
 ```python
-        d = fe.util.ImgData(y=tf.ones((4,)), x=0.5*tf.ones((4, 32, 32, 3)))        img = d.paint_numpy()        plt.imshow(img[0])        plt.show()        
+d = fe.util.ImgData(y=tf.ones((4,)), x=0.5*tf.ones((4, 32, 32, 3)))img = d.paint_numpy()plt.imshow(img[0])plt.show()
 ```
+
+
+
 
 #### Args:
 

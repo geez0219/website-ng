@@ -4,6 +4,8 @@ CSVLogger(filename:str, monitor_names:Union[List[str], str, NoneType]=None, mode
 ```
 Log monitored quantities in a CSV file.
 
+
+
 #### Args:
 
 * **filename** :  Output filename.

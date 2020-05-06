@@ -2,7 +2,11 @@
 ```python
 MaskDropout(max_objects:Union[int, Tuple[int, int]]=1, image_fill_value:Union[int, float, str]=0, mask_fill_value:Union[int, float]=0, mode:Union[str, NoneType]=None, image_in:Union[str, NoneType]=None, mask_in:Union[str, NoneType]=None, masks_in:Union[str, NoneType]=None, image_out:Union[str, NoneType]=None, mask_out:Union[str, NoneType]=None, masks_out:Union[str, NoneType]=None)
 ```
-Zero out objects from an image + mask pair.    An image & mask augmentation that zero out mask and image regions corresponding to randomly chosen object instance    from mask. The mask must be single-channel image, with zero values treated as background. The image can be any    number of channels.
+Zero out objects from an image + mask pair.
+
+An image & mask augmentation that zero out mask and image regions corresponding to randomly chosen object instancefrom mask. The mask must be single-channel image, with zero values treated as background. The image can be anynumber of channels.
+
+
 
 #### Args:
 

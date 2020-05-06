@@ -6,6 +6,8 @@ visualize_logs(experiments:List[fastestimator.summary.summary.Summary], save_pat
 ```
 A function which will save or display experiment histories for comparison viewing / analysis.
 
+
+
 #### Args:
 
 * **experiments** :  Experiment(s) to plot.

@@ -4,6 +4,8 @@ Normalize(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterabl
 ```
 Divide pixel values by a maximum value, subtract mean per channel and divide by std per channel.
 
+
+
 #### Args:
 
 * **inputs** :  Key(s) of images to be modified.

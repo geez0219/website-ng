@@ -2,7 +2,11 @@
 ```python
 SiameseDirDataset(root_dir:str, data_key_left:str='x_a', data_key_right:str='x_b', label_key:str='y', percent_matching_data:float=0.5, label_mapping:Union[Dict[str, Any], NoneType]=None, file_extension:Union[str, NoneType]=None)
 ```
-A dataset which returns pairs of data.    This dataset reads files from a folder hierarchy like root/class(/es)/data.file. Data is returned in pairs,    where the label value is 1 if the data are drawn from the same class, and 0 otherwise. One epoch is defined as    the time it takes to visit every data point exactly once as the 'data_key_left'. Each data point may occur zero    or many times as 'data_key_right' within the same epoch. SiameseDirDataset.split() will split by class index    rather than by data instance index.
+A dataset which returns pairs of data.
+
+This dataset reads files from a folder hierarchy like root/class(/es)/data.file. Data is returned in pairs,where the label value is 1 if the data are drawn from the same class, and 0 otherwise. One epoch is defined asthe time it takes to visit every data point exactly once as the 'data_key_left'. Each data point may occur zeroor many times as 'data_key_right' within the same epoch. SiameseDirDataset.split() will split by class indexrather than by data instance index.
+
+
 
 #### Args:
 
@@ -18,7 +22,11 @@ A dataset which returns pairs of data.    This dataset reads files from a folder
 ```python
 one_shot_trial(self, n:int) -> Tuple[List[str], List[str]]
 ```
-Generate one-shot trial data.        The similarity should be highest between the index 0 elements of the arrays.
+Generate one-shot trial data.
+
+The similarity should be highest between the index 0 elements of the arrays.
+
+
 
 #### Args:
 

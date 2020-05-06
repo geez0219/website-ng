@@ -6,6 +6,8 @@ parse_log_dir(dir_path:str, log_extension:str='.txt', recursive_search:bool=Fals
 ```
 A function which will gather all log files within a given folder and pass them along for visualization.
 
+
+
 #### Args:
 
 * **dir_path** :  The path to a directory containing log files.

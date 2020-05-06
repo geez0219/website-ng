@@ -4,6 +4,8 @@ MotionBlur(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterab
 ```
 Motion Blur the image with a randomly-sized kernel.
 
+
+
 #### Args:
 
 * **inputs** :  Key(s) of images to be modified.

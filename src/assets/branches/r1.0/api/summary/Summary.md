@@ -4,6 +4,8 @@ Summary(name:Union[str, NoneType]) -> None
 ```
 A summary object that records training history.
 
+
+
 #### Args:
 
 * **name** :  Name of the experiment. If None then experiment results will be ignored.    
@@ -13,6 +15,8 @@ A summary object that records training history.
 merge(self, other:'Summary')
 ```
 Merge another `Summary` into this one.
+
+
 
 #### Args:
 

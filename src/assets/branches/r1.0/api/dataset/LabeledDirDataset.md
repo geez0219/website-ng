@@ -4,6 +4,8 @@ LabeledDirDataset(root_dir:str, data_key:str='x', label_key:str='y', label_mappi
 ```
 A dataset which reads files from a folder hierarchy like root/class(/es)/data.file.
 
+
+
 #### Args:
 
 * **root_dir** :  The path to the directory containing data sorted by folders.

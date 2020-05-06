@@ -4,6 +4,8 @@ ToSepia(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterable[
 ```
 Convert an RGB image to sepia.
 
+
+
 #### Args:
 
 * **inputs** :  Key(s) of images to be converted to sepia.

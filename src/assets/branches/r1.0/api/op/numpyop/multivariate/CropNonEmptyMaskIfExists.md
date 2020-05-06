@@ -4,6 +4,8 @@ CropNonEmptyMaskIfExists(height:int, width:int, ignore_values:Union[List[int], N
 ```
 Crop an area with mask if mask is non-empty, otherwise crop randomly.
 
+
+
 #### Args:
 
 * **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute            regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument            like "!infer" or "!train".

@@ -4,6 +4,8 @@ GaussianBlur(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iter
 ```
 Blur the image with a Gaussian filter of random kernel size.
 
+
+
 #### Args:
 
 * **inputs** :  Key(s) of images to be modified.

@@ -2,8 +2,11 @@
 ```python
 MCC(true_key:str, pred_key:str, mode:Union[str, Set[str]]=('eval', 'test'), output_name:str='mcc') -> None
 ```
-A trace which computes the Matthews Correlation Coefficient for a given set of predictions.    This is a preferable metric to accuracy or F1 score since it automatically corrects for class imbalances and does
-* **not depend on the choice of target class (https** : //www.ncbi.nlm.nih.gov/pmc/articles/PMC6941312/). Ideal value is 1,     a value of 0 means your predictions are completely uncorrelated with the true data. A value less than zero implies    anti-correlation (you should invert your classifier predictions in order to do better).
+A trace which computes the Matthews Correlation Coefficient for a given set of predictions.
+
+This is a preferable metric to accuracy or F1 score since it automatically corrects for class imbalances and doesnot depend on the choice of target class (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6941312/). Ideal value is 1,a value of 0 means your predictions are completely uncorrelated with the true data. A value less than zero impliesanti-correlation (you should invert your classifier predictions in order to do better).
+
+
 
 #### Args:
 

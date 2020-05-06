@@ -4,6 +4,8 @@ WordtoId(mapping:Union[Dict[str, int], Callable[[List[str]], List[int]]], inputs
 ```
 Converts words to their corresponding id using mapper function or dictionary.
 
+
+
 #### Args:
 
 * **mapping** :  Mapper function or dictionary

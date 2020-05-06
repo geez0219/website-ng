@@ -4,11 +4,19 @@
 ```python
 callback_progress(blocks:int, block_size:int, total_size:int, bar_function:Callable[[int, int, int], str]) -> None
 ```
-Callback function for urlretrieve that is called when a connection is created and then once for each block.Draws adaptive progress bar in terminal/console.Use sys.stdout.write() instead of "print", because it allows one more symbols at the line end without triggering alinefeed on Windows.
+Callback function for urlretrieve that is called when a connection is created and then once for each block.
+
+Draws adaptive progress bar in terminal/console.
+
+Use sys.stdout.write() instead of "print", because it allows one more symbols at the line end without triggering alinefeed on Windows.
+
+
 ```python
-import wgetwget.callback_progress = fe.util.callback_progress
-* **wget.download('http** : //url.com', '/save/dir', bar=fe.util.bar_custom)
+import wgetwget.callback_progress = fe.util.callback_progresswget.download('http://url.com', '/save/dir', bar=fe.util.bar_custom)
 ```
+
+
+
 
 #### Args:
 

@@ -4,6 +4,8 @@ Average(inputs:Union[str, Iterable[str]], outputs:str, mode:Union[NoneType, str,
 ```
 Compute the average across tensors.
 
+
+
 #### Args:
 
 * **inputs** :  Keys of tensors to be averaged.

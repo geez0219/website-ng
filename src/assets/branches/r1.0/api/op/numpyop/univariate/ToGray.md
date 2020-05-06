@@ -4,6 +4,8 @@ ToGray(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterable[s
 ```
 Convert an RGB image to grayscale. If the mean pixel value of the result is > 127, the image is inverted.
 
+
+
 #### Args:
 
 * **inputs** :  Key(s) of images to be converted to grayscale.

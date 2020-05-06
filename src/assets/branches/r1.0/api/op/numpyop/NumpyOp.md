@@ -2,13 +2,19 @@
 ```python
 NumpyOp(inputs:Union[NoneType, str, Iterable[str], Callable]=None, outputs:Union[NoneType, str, Iterable[str]]=None, mode:Union[NoneType, str, Iterable[str]]=None) -> None
 ```
-An Operator class which takes and returns numpy data.    These Operators are used in fe.Pipeline to perform data pre-processing / augmentation.    
+An Operator class which takes and returns numpy data.
+
+These Operators are used in fe.Pipeline to perform data pre-processing / augmentation.
 
 ### forward
 ```python
 forward(self, data:Union[numpy.ndarray, List[numpy.ndarray]], state:Dict[str, Any]) -> Union[numpy.ndarray, List[numpy.ndarray]]
 ```
-A method which will be invoked in order to transform data.        This method will be invoked on individual elements of data before any batching / axis expansion is performed.
+A method which will be invoked in order to transform data.
+
+This method will be invoked on individual elements of data before any batching / axis expansion is performed.
+
+
 
 #### Args:
 

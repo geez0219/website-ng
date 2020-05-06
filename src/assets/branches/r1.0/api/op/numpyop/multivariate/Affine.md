@@ -4,6 +4,8 @@ Affine(rotate:Union[~Number, Tuple[~Number, ~Number]]=0, scale:Union[float, Tupl
 ```
 Perform affine transformations on an image.
 
+
+
 #### Args:
 
 * **rotate** :  How much to rotate an image (in degrees). If a single value is given then images will be rotated by                a value sampled from the range [-n, n]. If a tuple (a, b) is given then each image will be rotated                by a value sampled from the range [a, b].

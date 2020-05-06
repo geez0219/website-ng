@@ -4,6 +4,8 @@ Binarize(threshold:float, inputs:Union[str, Iterable[str], Callable], outputs:Un
 ```
 Binarize the input data such that all elements >= threshold become 1 otherwise 0.
 
+
+
 #### Args:
 
 * **threshold** :  Binarization threshold.

@@ -4,6 +4,8 @@ ImageCompression(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, 
 ```
 Decrease compression of an image.
 
+
+
 #### Args:
 
 * **inputs** :  Key(s) of images to be modified.

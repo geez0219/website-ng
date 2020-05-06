@@ -4,6 +4,8 @@ SaliencyNet(model:~Model, model_inputs:Union[str, Sequence[str]], model_outputs:
 ```
 A class to generate saliency masks from a given model.
 
+
+
 #### Args:
 
 * **model** :  The model, compiled with fe.build, which is to be inspected.
@@ -16,7 +18,10 @@ A class to generate saliency masks from a given model.
 get_integrated_masks(self, batch:Dict[str, Any], nsamples:int=25) -> Dict[str, Union[~Tensor, numpy.ndarray]]
 ```
 Generates integrated greyscale saliency mask(s) from a given `batch` of data.
-* **See https** : //arxiv.org/abs/1703.01365 for background on the IntegratedGradient method.
+
+See https://arxiv.org/abs/1703.01365 for background on the IntegratedGradient method.
+
+
 
 #### Args:
 
@@ -32,6 +37,8 @@ get_masks(self, batch:Dict[str, Any]) -> Dict[str, Union[~Tensor, numpy.ndarray]
 ```
 Generates greyscale saliency mask(s) from a given `batch` of data.
 
+
+
 #### Args:
 
 * **batch** :  A batch of input data to be fed to the model.
@@ -44,6 +51,8 @@ Generates greyscale saliency mask(s) from a given `batch` of data.
 get_smoothed_masks(self, batch:Dict[str, Any], stdev_spread:float=0.15, nsamples:int=25, nintegration:Union[int, NoneType]=None, magnitude:bool=True) -> Dict[str, Union[~Tensor, numpy.ndarray]]
 ```
 Generates smoothed greyscale saliency mask(s) from a given `batch` of data.
+
+
 
 #### Args:
 

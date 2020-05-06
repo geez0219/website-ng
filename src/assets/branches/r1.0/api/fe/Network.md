@@ -6,6 +6,8 @@ Network(ops:Iterable[Union[fastestimator.op.tensorop.tensorop.TensorOp, fastesti
 ```
 A function to automatically instantiate the correct Network derived class based on the given `ops`.
 
+
+
 #### Args:
 
 * **ops** :  A collection of Ops defining the graph for this Network. It should contain at least one ModelOp, and all        models should be either TensorFlow or Pytorch. We currently do not support mixing TensorFlow and Pytorch        models within the same network.

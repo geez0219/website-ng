@@ -4,6 +4,8 @@ MeanSquaredError(inputs:Union[NoneType, str, Iterable[str], Callable]=None, outp
 ```
 Calculate the mean squared error loss between two tensors.
 
+
+
 #### Args:
 
 * **inputs** :  A tuple or list like [<y_true>, <y_pred>].

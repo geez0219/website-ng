@@ -4,6 +4,8 @@ NumpyDataset(data:Dict[str, numpy.ndarray]) -> None
 ```
 A dataset constructed from a dictionary of Numpy data.
 
+
+
 #### Args:
 
 * **data** :  A dictionary of data like {"key" <numpy array>}.

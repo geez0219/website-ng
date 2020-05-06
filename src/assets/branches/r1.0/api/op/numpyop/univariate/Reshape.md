@@ -4,6 +4,8 @@ Reshape(shape:Union[int, Tuple[int, ...]], inputs:Union[str, Iterable[str], Call
 ```
 An Op which re-shapes data to a target shape.
 
+
+
 #### Args:
 
 * **shape** :  The desired output shape. At most one value may be -1 to put all of the leftover elements into that axis.

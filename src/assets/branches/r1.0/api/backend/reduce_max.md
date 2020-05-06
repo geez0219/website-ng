@@ -5,18 +5,26 @@
 reduce_max(tensor:~Tensor, axis:Union[NoneType, int, Sequence[int]]=None, keepdims:bool=False) -> ~Tensor
 ```
 Compute the maximum value along a given `axis` of a `tensor`.
-* **This method can be used with Numpy data** : 
+
+This method can be used with Numpy data:
 ```python
 n = np.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]])b = fe.backend.reduce_max(n)  # 8b = fe.backend.reduce_max(n, axis=0)  # [[5, 6], [7, 8]]b = fe.backend.reduce_max(n, axis=1)  # [[3, 4], [7, 8]]b = fe.backend.reduce_max(n, axis=[0,2])  # [6, 8]
 ```
-* **This method can be used with TensorFlow tensors** : 
+
+
+This method can be used with TensorFlow tensors:
 ```python
 t = tf.constant([[[1, 2], [3, 4]], [[5, 6], [7, 8]]])b = fe.backend.reduce_max(t)  # 8b = fe.backend.reduce_max(t, axis=0)  # [[5, 6], [7, 8]]b = fe.backend.reduce_max(t, axis=1)  # [[3, 4], [7, 8]]b = fe.backend.reduce_max(t, axis=[0,2])  # [6, 8]
 ```
-* **This method can be used with PyTorch tensors** : 
+
+
+This method can be used with PyTorch tensors:
 ```python
 p = torch.tensor([[[1, 2], [3, 4]], [[5, 6], [7, 8]]])b = fe.backend.reduce_max(p)  # 8b = fe.backend.reduce_max(p, axis=0)  # [[5, 6], [7, 8]]b = fe.backend.reduce_max(p, axis=1)  # [[3, 4], [7, 8]]b = fe.backend.reduce_max(p, axis=[0,2])  # [6, 8]
 ```
+
+
+
 
 #### Args:
 

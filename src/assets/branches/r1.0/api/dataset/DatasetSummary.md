@@ -4,6 +4,8 @@ DatasetSummary(num_instances:int, keys:Dict[str, dataset.dataset.KeySummary], nu
 ```
 This class contains information summarizing a dataset object.
 
+
+
 #### Args:
 
 * **num_instances** :  The number of data instances within the dataset (influences the size of an epoch).

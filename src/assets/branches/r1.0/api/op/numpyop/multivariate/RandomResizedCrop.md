@@ -4,6 +4,8 @@ RandomResizedCrop(height:int, width:int, scale:Tuple[float, float]=(0.08, 1.0), 
 ```
 Crop a random part of the input and rescale it to some size.
 
+
+
 #### Args:
 
 * **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute            regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument            like "!infer" or "!train".

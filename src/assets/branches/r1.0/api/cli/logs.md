@@ -6,6 +6,8 @@ logs(args:Dict[str, Any], unknown:List[str]) -> None
 ```
 A method to invoke the FE logging function using CLI-provided arguments.
 
+
+
 #### Args:
 
 * **args** :  The arguments to be fed to the parse_log_dir() method.

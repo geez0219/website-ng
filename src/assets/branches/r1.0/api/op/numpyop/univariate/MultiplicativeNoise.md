@@ -4,6 +4,8 @@ MultiplicativeNoise(inputs:Union[str, Iterable[str], Callable], outputs:Union[st
 ```
 Multiply an image with random perturbations.
 
+
+
 #### Args:
 
 * **inputs** :  Key(s) of images to be modified.
