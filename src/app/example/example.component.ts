@@ -118,7 +118,6 @@ export class ExampleComponent implements OnInit {
       error => {
         console.error(error);
         this.globalService.resetLoading();
-        this.router.navigate(['PageNotFound'], {replaceUrl:true})
       });
     }
   }
