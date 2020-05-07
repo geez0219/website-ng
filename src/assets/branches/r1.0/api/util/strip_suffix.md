@@ -8,9 +8,9 @@ Remove the given `suffix` from the `target` if it is present there.
 
 
 ```python
-x = fe.util.strip_suffix("astring.json", ".json")  # "astring"x = fe.util.strip_suffix("astring.json", ".yson")  # "astring.json"
+x = fe.util.strip_suffix("astring.json", ".json")  # "astring"
+x = fe.util.strip_suffix("astring.json", ".yson")  # "astring.json"
 ```
-
 
 
 

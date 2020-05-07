@@ -8,9 +8,13 @@ One case where this class would be useful is if you want to perform one version 
 
 
 ```python
-s = fe.schedule.RepeatScheduler(["a", "b", "c"])s.get_current_value(epoch=1)  # "a"s.get_current_value(epoch=2)  # "b"s.get_current_value(epoch=3)  # "c"s.get_current_value(epoch=4)  # "a"s.get_current_value(epoch=5)  # "b"
-```
-
+    s = fe.schedule.RepeatScheduler(["a", "b", "c"])
+    s.get_current_value(epoch=1)  # "a"
+    s.get_current_value(epoch=2)  # "b"
+    s.get_current_value(epoch=3)  # "c"
+    s.get_current_value(epoch=4)  # "a"
+    s.get_current_value(epoch=5)  # "b"
+    ```
 
 
 

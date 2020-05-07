@@ -12,9 +12,10 @@ Use sys.stdout.write() instead of "print", because it allows one more symbols at
 
 
 ```python
-import wgetwget.callback_progress = fe.util.callback_progresswget.download('http://url.com', '/save/dir', bar=fe.util.bar_custom)
+import wget
+wget.callback_progress = fe.util.callback_progress
+wget.download('http://url.com', '/save/dir', bar=fe.util.bar_custom)
 ```
-
 
 
 

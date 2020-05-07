@@ -30,7 +30,7 @@ The similarity should be highest between the index 0 elements of the arrays.
 
 #### Args:
 
-* **n** :  The number of samples to draw for computing one shot accuracy. Should be <= the number of total classes.
+* **n** :  The number of samples to draw for computing one shot accuracy. Should be &lt;= the number of total classes.
 
 #### Returns:
             ([class_a_instance_x, class_a_instance_x, class_a_instance_x, ...],            [class_a_instance_w, class_b_instance_y, class_c_instance_z, ...])        

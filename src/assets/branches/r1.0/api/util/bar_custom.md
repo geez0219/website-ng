@@ -10,7 +10,7 @@ This function was modified from wget source code at https://bitbucket.org/techto
 
 The bar will be one of the following formats depending on available width:[..  ] downloaded / totaldownloaded / total[.. ]
 
-If total width is unknown or <= 0, the bar will show a bytes counter using two adaptive styles:%s / unknown%s
+If total width is unknown or &lt;= 0, the bar will show a bytes counter using two adaptive styles:%s / unknown%s
 
 If there is not enough space on the screen, do not display anything. The returned string doesn't include controlcharacters like  used to place cursor at the beginning of the line to erase previous content.
 
@@ -20,7 +20,6 @@ This function leaves one free character at the end of the string to avoid automa
 ```python
 wget.download('http://url.com', '/save/dir', bar=fe.util.bar_custom)
 ```
-
 
 
 

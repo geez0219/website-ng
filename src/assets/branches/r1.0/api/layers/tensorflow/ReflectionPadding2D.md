@@ -8,9 +8,12 @@ This layer assumes that you are using the a tensor shaped like (Batch, Height, W
 
 
 ```python
-x = tf.reshape(tf.convert_to_tensor(list(range(9))), (1,3,3,1))  # ~ [[0, 1, 2], [3, 4, 5], [6, 7, 8]]m = fe.layers.tensorflow.ReflectionPadding2D((1, 1))y = m(x)  # ~ [[4, 3, 4, 5, 4], [1, 0, 1, 2, 1], [4, 3, 4, 5, 4], [7, 6, 7, 8, 7], [4, 3, 4, 5, 4]]m = fe.layers.tensorflow.ReflectionPadding2D((1, 0))y = m(x)  # ~ [[1, 0, 1, 2, 1], [4, 3, 4, 5, 4], [7, 6, 7, 8, 7]]
-```
-
+    x = tf.reshape(tf.convert_to_tensor(list(range(9))), (1,3,3,1))  # ~ [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
+    m = fe.layers.tensorflow.ReflectionPadding2D((1, 1))
+    y = m(x)  # ~ [[4, 3, 4, 5, 4], [1, 0, 1, 2, 1], [4, 3, 4, 5, 4], [7, 6, 7, 8, 7], [4, 3, 4, 5, 4]]
+    m = fe.layers.tensorflow.ReflectionPadding2D((1, 0))
+    y = m(x)  # ~ [[1, 0, 1, 2, 1], [4, 3, 4, 5, 4], [7, 6, 7, 8, 7]]
+    ```
 
 
 

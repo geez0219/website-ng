@@ -6,9 +6,14 @@ A layer for cropping along height and width dimensions
 
 
 ```python
-x = torch.tensor(list(range(100))).view((1,1,10,10))m = fe.layers.pytorch.Cropping2D(3)y = m.forward(x)  # [[[[33, 34, 35, 36], [43, 44, 45, 46], [53, 54, 55, 56], [63, 64, 65, 66]]]]m = fe.layers.pytorch.Cropping2D((3, 4))y = m.forward(x)  # [[[[34, 35], [44, 45], [54, 55], [64, 65]]]]m = fe.layers.pytorch.Cropping2D(((1, 4), 4))y = m.forward(x)  # [[[[14, 15], [24, 25], [34, 35], [44, 45], [54, 55]]]]
-```
-
+    x = torch.tensor(list(range(100))).view((1,1,10,10))
+    m = fe.layers.pytorch.Cropping2D(3)
+    y = m.forward(x)  # [[[[33, 34, 35, 36], [43, 44, 45, 46], [53, 54, 55, 56], [63, 64, 65, 66]]]]
+    m = fe.layers.pytorch.Cropping2D((3, 4))
+    y = m.forward(x)  # [[[[34, 35], [44, 45], [54, 55], [64, 65]]]]
+    m = fe.layers.pytorch.Cropping2D(((1, 4), 4))
+    y = m.forward(x)  # [[[[14, 15], [24, 25], [34, 35], [44, 45], [54, 55]]]]
+    ```
 
 
 

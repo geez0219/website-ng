@@ -8,9 +8,9 @@ Learning rate cosine decay function (using half of cosine curve).
 
 This method is useful for scheduling learning rates which oscillate over time:
 ```python
-s = fe.schedule.LRScheduler(model=model, lr_fn=lambda step: cosine_decay(step, cycle_length=3750, init_lr=1e-3))fe.Estimator(..., traces=[s])
+s = fe.schedule.LRScheduler(model=model, lr_fn=lambda step: cosine_decay(step, cycle_length=3750, init_lr=1e-3))
+fe.Estimator(..., traces=[s])
 ```
-
 
 
 

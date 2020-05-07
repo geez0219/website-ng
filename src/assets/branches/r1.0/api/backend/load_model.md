@@ -8,15 +8,17 @@ Load saved weights for a given model.
 
 This method can be used with TensorFlow models:
 ```python
-m = fe.build(fe.architecture.tensorflow.LeNet, optimizer_fn="adam")fe.backend.save_model(m, save_dir="tmp", model_name="test")fe.backend.load_model(m, weights_path="tmp/test.h5")
+m = fe.build(fe.architecture.tensorflow.LeNet, optimizer_fn="adam")
+fe.backend.save_model(m, save_dir="tmp", model_name="test")
+fe.backend.load_model(m, weights_path="tmp/test.h5")
 ```
-
 
 This method can be used with PyTorch models:
 ```python
-m = fe.build(fe.architecture.pytorch.LeNet, optimizer_fn="adam")fe.backend.save_model(m, save_dir="tmp", model_name="test")fe.backend.load_model(m, weights_path="tmp/test.pt")
+m = fe.build(fe.architecture.pytorch.LeNet, optimizer_fn="adam")
+fe.backend.save_model(m, save_dir="tmp", model_name="test")
+fe.backend.load_model(m, weights_path="tmp/test.pt")
 ```
-
 
 
 
@@ -24,7 +26,7 @@ m = fe.build(fe.architecture.pytorch.LeNet, optimizer_fn="adam")fe.backend.save_
 
 * **model** :  A neural network instance to load.
 * **weights_path** :  Path to the `model` weights.
-* **load_optimizer** :  Whether to load optimizer. If True, then it will load <weights_opt> file in the path.
+* **load_optimizer** :  Whether to load optimizer. If True, then it will load &lt;weights_opt&gt; file in the path.
 
 #### Raises:
 
