@@ -22,9 +22,7 @@ export class TutorialComponent implements OnInit {
   currentExampleText: string;
 
   segments: UrlSegment[];
-
   fragment: string;
-  firstLoad: boolean;
 
   treeControl: NestedTreeControl<Example>;
   dataSource: MatTreeNestedDataSource<Example>;
@@ -65,9 +63,7 @@ export class TutorialComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private title: Title,
-    private globalService: GlobalService) {
-    this.firstLoad = true;
-  }
+    private globalService: GlobalService) {}
 
   ngOnInit() {
     this.treeControl = new NestedTreeControl<Example>(node => node.children);
@@ -86,15 +82,6 @@ export class TutorialComponent implements OnInit {
     this.screenWidth$.subscribe(width => {
       this.screenWidth = width;
     });
-  }
-
-  ngAfterViewChecked(): void {
-    try {
-      if(this.fragment && this.firstLoad) {
-          document.querySelector('#' + this.fragment).scrollIntoView();
-          this.firstLoad = false;
-      }
-    } catch (e) { }
   }
 
   hasChild = (_: number, node: Example) => !!node.children && node.children.length > 0;
@@ -212,5 +199,13 @@ export class TutorialComponent implements OnInit {
     var ret = ['/tutorials'];
 
     return ret.concat(components);
+  }
+
+  textReady(){
+    var element = document.querySelector('#' + this.fragment);
+    if (this.fragment && element!=null){
+      document.querySelector('#' + this.fragment).scrollIntoView();
+      window.scrollBy(0, -90); // the offset of navbar height
+    }
   }
 }

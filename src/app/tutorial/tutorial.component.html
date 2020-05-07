@@ -39,7 +39,7 @@
     <div #grippy [style.background-image]="getImageUrl()" class="grippy" (click)="toggleMenu()"></div>
     <div class="content-wrapper">
       <div class="content">
-        <markdown [data]="currentExampleText" katex></markdown>
+        <markdown [data]="currentExampleText" (ready)="textReady()"katex></markdown>
       </div>
     </div>
     <div *ngIf="currentExampleText">
