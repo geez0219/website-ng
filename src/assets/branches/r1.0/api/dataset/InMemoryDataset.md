@@ -8,7 +8,7 @@ A dataset abstraction to simplify the implementation of datasets which hold thei
 
 #### Args:
 
-* **data** :  A dictionary like {data_index {<instance dictionary>}}.    
+* **data** :  A dictionary like {data_index {&lt;instance dictionary&gt;}}.    
 
 ### split
 ```python

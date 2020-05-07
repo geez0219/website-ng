@@ -4,7 +4,7 @@
 ```python
 clip_by_value(tensor:~Tensor, min_value:Union[int, float, ~Tensor], max_value:Union[int, float, ~Tensor]) -> ~Tensor
 ```
-Clip a tensor such that `min_value` <= tensor <= `max_value`.
+Clip a tensor such that `min_value` &lt;= tensor &lt;= `max_value`.
 
 This method can be used with Numpy data:
 ```python
