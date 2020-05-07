@@ -4,6 +4,8 @@ Equalize(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterable
 ```
 Equalize the image histogram.
 
+
+
 #### Args:
 
 * **inputs** :  Key(s) of images to be modified.

@@ -4,6 +4,8 @@ ConfusionMatrix(true_key:str, pred_key:str, num_classes:int, mode:Union[str, Set
 ```
 Computes the confusion matrix between y_true and y_predicted.
 
+
+
 #### Args:
 
 * **true_key** :  Name of the key that corresponds to ground truth in the batch dictionary.

@@ -3,8 +3,10 @@
 Onehot(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterable[str]], num_classes:int, label_smoothing:float=0.0, mode:Union[NoneType, str, Iterable[str]]=None)
 ```
 Transform an integer label to one-hot-encoding.
-* **This can be desirable for increasing robustness against incorrect labels** : 
-* **https** : //towardsdatascience.com/label-smoothing-making-model-robust-to-incorrect-labels-2fae037ffbd0
+
+This can be desirable for increasing robustness against incorrect labels:https://towardsdatascience.com/label-smoothing-making-model-robust-to-incorrect-labels-2fae037ffbd0
+
+
 
 #### Args:
 

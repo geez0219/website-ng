@@ -2,11 +2,11 @@
 
 ## Overview
 In this tutorial, we will discuss the following topics:
-* [Experiment Logging](#ta06logging)
-* [Experiment Summaries](#ta06summaries)
-* [Log Parsing](#ta06parsing)
-* [Summary Visualization](#ta06visualization)
-* [TensorBoard Visualization](#ta06tboard)
+* [Experiment Logging](./tutorials/advanced/t06_summary#ta06logging)
+* [Experiment Summaries](./tutorials/advanced/t06_summary#ta06summaries)
+* [Log Parsing](./tutorials/advanced/t06_summary#ta06parsing)
+* [Summary Visualization](./tutorials/advanced/t06_summary#ta06visualization)
+* [TensorBoard Visualization](./tutorials/advanced/t06_summary#ta06tboard)
 
 ## Preliminary Setup
 

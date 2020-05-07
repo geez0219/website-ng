@@ -1,17 +1,17 @@
 # Advanced Tutorial 5: Scheduler
 In this tutorial, we will talk about:
-* [Scheduler](#ta05scheduler)
-    * [Concept](#ta05concept)
-    * [EpochScheduler](#ta05epoch)
-    * [RepeatScheduler](#ta05repeat)
-* [Things You Can Schedule](#ta05things)
-    * [Datasets](#ta05dataset)
-    * [Batch Size](#ta05batch)
-    * [NumpyOps](#ta05numpy)
-    * [Optimizers](#ta05optimizer)
-    * [TensorOps](#ta05tensor)
-    * [Traces](#ta05trace)
-* [Related Apphub Examples](#ta05apphub)
+* [Scheduler](./tutorials/advanced/t05_scheduler#ta05scheduler)
+    * [Concept](./tutorials/advanced/t05_scheduler#ta05concept)
+    * [EpochScheduler](./tutorials/advanced/t05_scheduler#ta05epoch)
+    * [RepeatScheduler](./tutorials/advanced/t05_scheduler#ta05repeat)
+* [Things You Can Schedule](./tutorials/advanced/t05_scheduler#ta05things)
+    * [Datasets](./tutorials/advanced/t05_scheduler#ta05dataset)
+    * [Batch Size](./tutorials/advanced/t05_scheduler#ta05batch)
+    * [NumpyOps](./tutorials/advanced/t05_scheduler#ta05numpy)
+    * [Optimizers](./tutorials/advanced/t05_scheduler#ta05optimizer)
+    * [TensorOps](./tutorials/advanced/t05_scheduler#ta05tensor)
+    * [Traces](./tutorials/advanced/t05_scheduler#ta05trace)
+* [Related Apphub Examples](./tutorials/advanced/t05_scheduler#ta05apphub)
 
 <a id='ta05scheduler'></a>
 

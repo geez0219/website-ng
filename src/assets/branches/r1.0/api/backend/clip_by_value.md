@@ -4,19 +4,27 @@
 ```python
 clip_by_value(tensor:~Tensor, min_value:Union[int, float, ~Tensor], max_value:Union[int, float, ~Tensor]) -> ~Tensor
 ```
-Clip a tensor such that `min_value` <= tensor <= `max_value`.
-* **This method can be used with Numpy data** : 
+Clip a tensor such that `min_value` &lt;= tensor &lt;= `max_value`.
+
+This method can be used with Numpy data:
 ```python
-n = np.array([-5, 4, 2, 0, 9, -2])b = fe.backend.clip_by_value(n, min_value=-2, max_value=3)  # [-2, 3, 2, 0, 3, -2]
+n = np.array([-5, 4, 2, 0, 9, -2])
+b = fe.backend.clip_by_value(n, min_value=-2, max_value=3)  # [-2, 3, 2, 0, 3, -2]
 ```
-* **This method can be used with TensorFlow tensors** : 
+
+This method can be used with TensorFlow tensors:
 ```python
-t = tf.constant([-5, 4, 2, 0, 9, -2])b = fe.backend.clip_by_value(t, min_value=-2, max_value=3)  # [-2, 3, 2, 0, 3, -2]
+t = tf.constant([-5, 4, 2, 0, 9, -2])
+b = fe.backend.clip_by_value(t, min_value=-2, max_value=3)  # [-2, 3, 2, 0, 3, -2]
 ```
-* **This method can be used with PyTorch tensors** : 
+
+This method can be used with PyTorch tensors:
 ```python
-p = torch.tensor([-5, 4, 2, 0, 9, -2])b = fe.backend.clip_by_value(p, min_value=-2, max_value=3)  # [-2, 3, 2, 0, 3, -2]
+p = torch.tensor([-5, 4, 2, 0, 9, -2])
+b = fe.backend.clip_by_value(p, min_value=-2, max_value=3)  # [-2, 3, 2, 0, 3, -2]
 ```
+
+
 
 #### Args:
 

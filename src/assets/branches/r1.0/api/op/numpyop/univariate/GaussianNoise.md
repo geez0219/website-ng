@@ -4,6 +4,8 @@ GaussianNoise(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Ite
 ```
 Apply gaussian noise to the image
 
+
+
 #### Args:
 
 * **inputs** :  Key(s) of images to be modified.

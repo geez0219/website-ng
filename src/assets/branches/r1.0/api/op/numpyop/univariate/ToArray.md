@@ -4,6 +4,8 @@ ToArray(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterable[
 ```
 Convert data to a numpy array.
 
+
+
 #### Args:
 
 * **inputs** :  Key(s) of the data to be converted.

@@ -2,10 +2,13 @@
 ```python
 MultiVariateAlbumentation(func:albumentations.core.transforms_interface.DualTransform, mode:Union[str, NoneType]=None, image_in:Union[str, NoneType]=None, mask_in:Union[str, NoneType]=None, masks_in:Union[str, NoneType]=None, bbox_in:Union[str, NoneType]=None, keypoints_in:Union[str, NoneType]=None, image_out:Union[str, NoneType]=None, mask_out:Union[str, NoneType]=None, masks_out:Union[str, NoneType]=None, bbox_out:Union[str, NoneType]=None, keypoints_out:Union[str, NoneType]=None, bbox_params:Union[albumentations.core.composition.BboxParams, str, NoneType]=None, keypoint_params:Union[albumentations.core.composition.KeypointParams, str, NoneType]=None)
 ```
-A base class for the DualTransform albumentation functions.     DualTransforms are functions which apply simultaneously to images and corresponding information such as masks     and/or bounding boxes.
-* **This is a wrapper for functionality provided by the Albumentations library** : 
-* **https** : //github.com/albumentations-team/albumentations. A useful visualization tool for many of the possible effects
-* **it provides is available at https** : //albumentations-demo.herokuapp.com.
+A base class for the DualTransform albumentation functions.
+
+DualTransforms are functions which apply simultaneously to images and corresponding information such as masksand/or bounding boxes.
+
+This is a wrapper for functionality provided by the Albumentations library:https://github.com/albumentations-team/albumentations. A useful visualization tool for many of the possible effectsit provides is available at https://albumentations-demo.herokuapp.com.
+
+
 
 #### Args:
 

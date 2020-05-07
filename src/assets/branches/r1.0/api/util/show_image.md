@@ -6,6 +6,8 @@ show_image(im:Union[numpy.ndarray, ~Tensor], axis:matplotlib.axes._axes.Axes=Non
 ```
 Plots a given image onto an axis.
 
+
+
 #### Args:
 
 * **axis** :  The matplotlib axis to plot on, or None for a new plot.

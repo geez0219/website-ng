@@ -5,14 +5,20 @@
 set_lr(model:Union[tensorflow.python.keras.engine.training.Model, torch.nn.modules.module.Module], lr:float)
 ```
 Set the learning rate of a given `model`.
-* **This method can be used with TensorFlow models** : 
+
+This method can be used with TensorFlow models:
 ```python
-m = fe.build(fe.architecture.tensorflow.LeNet, optimizer_fn="adam")  # m.optimizer.lr == 0.001fe.backend.set_lr(m, lr=0.8)  # m.optimizer.lr == 0.8
+m = fe.build(fe.architecture.tensorflow.LeNet, optimizer_fn="adam")  # m.optimizer.lr == 0.001
+fe.backend.set_lr(m, lr=0.8)  # m.optimizer.lr == 0.8
 ```
-* **This method can be used with PyTorch models** : 
+
+This method can be used with PyTorch models:
 ```python
-m = fe.build(fe.architecture.pytorch.LeNet, optimizer_fn="adam")  # m.optimizer.param_groups[-1]['lr'] == 0.001fe.backend.set_lr(m, lr=0.8)  # m.optimizer.param_groups[-1]['lr'] == 0.8
+m = fe.build(fe.architecture.pytorch.LeNet, optimizer_fn="adam")  # m.optimizer.param_groups[-1]['lr'] == 0.001
+fe.backend.set_lr(m, lr=0.8)  # m.optimizer.param_groups[-1]['lr'] == 0.8
 ```
+
+
 
 #### Args:
 

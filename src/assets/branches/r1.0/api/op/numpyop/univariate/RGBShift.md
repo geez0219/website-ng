@@ -4,6 +4,8 @@ RGBShift(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterable
 ```
 Randomly shift the channel values for an input RGB image.
 
+
+
 #### Args:
 
 * **inputs** :  Key(s) of images to be normalized.

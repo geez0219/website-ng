@@ -4,6 +4,8 @@ UpdateOp(model:Union[tensorflow.python.keras.engine.training.Model, torch.nn.mod
 ```
 This class performs updates to a model's weights based on the loss.
 
+
+
 #### Args:
 
 * **model** :  Model instance compiled by fe.build.

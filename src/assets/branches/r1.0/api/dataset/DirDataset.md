@@ -4,6 +4,8 @@ DirDataset(root_dir:str, data_key:str='x', file_extension:Union[str, NoneType]=N
 ```
 A dataset which reads files from a folder hierarchy like root/data.file.
 
+
+
 #### Args:
 
 * **root_dir** :  The path to the directory containing data.

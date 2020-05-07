@@ -2,7 +2,11 @@
 ```python
 Estimator(pipeline:fastestimator.pipeline.Pipeline, network:fastestimator.network.BaseNetwork, epochs:int, max_train_steps_per_epoch:Union[int, NoneType]=None, max_eval_steps_per_epoch:Union[int, NoneType]=None, traces:Union[NoneType, fastestimator.trace.trace.Trace, fastestimator.schedule.schedule.Scheduler[fastestimator.trace.trace.Trace], Iterable[Union[fastestimator.trace.trace.Trace, fastestimator.schedule.schedule.Scheduler[fastestimator.trace.trace.Trace]]]]=None, log_steps:Union[int, NoneType]=100, monitor_names:Union[NoneType, str, Iterable[str]]=None)
 ```
-One class to rule them all.    Estimator is the highest level class within FastEstimator. It is the class which is invoked to actually train    (estimator.fit) or test (estimator.test) models. It wraps `Pipeline`, `Network`, `Trace` objects together and    defines the whole optimization process.
+One class to rule them all.
+
+Estimator is the highest level class within FastEstimator. It is the class which is invoked to actually train(estimator.fit) or test (estimator.test) models. It wraps `Pipeline`, `Network`, `Trace` objects together anddefines the whole optimization process.
+
+
 
 #### Args:
 
@@ -21,6 +25,8 @@ fit(self, summary:Union[str, NoneType]=None, warmup:bool=True) -> Union[fastesti
 ```
 Train the network for the number of epochs specified by the estimator's constructor.
 
+
+
 #### Args:
 
 * **summary** :  A name for the experiment. If provided, the log history will be recorded in-memory and returned as                a summary object at the end of training.
@@ -35,6 +41,8 @@ get_scheduled_items(self, mode:str) -> List[Any]
 ```
 Get a list of items considered for scheduling.
 
+
+
 #### Args:
 
 * **mode** :  Current execution mode.
@@ -47,6 +55,8 @@ Get a list of items considered for scheduling.
 test(self, summary:Union[str, NoneType]=None) -> Union[fastestimator.summary.summary.Summary, NoneType]
 ```
 Run the pipeline / network in test mode for one epoch.
+
+
 
 #### Args:
 

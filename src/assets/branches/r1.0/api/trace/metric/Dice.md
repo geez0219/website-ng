@@ -4,6 +4,8 @@ Dice(true_key:str, pred_key:str, threshold:float=0.5, mode:Union[NoneType, str, 
 ```
 Dice score for binary classification between y_true and y_predicted.
 
+
+
 #### Args:
 
 * **true_key** :  The key of the ground truth mask.

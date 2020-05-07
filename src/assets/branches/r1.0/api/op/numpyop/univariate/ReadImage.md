@@ -4,6 +4,8 @@ ReadImage(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterabl
 ```
 A class for reading png or jpg images from disk.
 
+
+
 #### Args:
 
 * **inputs** :  Key(s) of paths to images to be loaded.

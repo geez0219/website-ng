@@ -2,14 +2,14 @@
 
 ## Overview
 Welcome to FastEstimator! In this tutorial we are going to cover:
-* [The three main APIs of FastEstimator: `Pipeline`, `Network`, `Estimator`](#t01ThreeMain)
-* [An image classification example](#t01ImageClassification)
-    * [Pipeline](#t01Pipeline)
-    * [Network](#t01Network)
-    * [Estimator](#t01Estimator)
-    * [Training](#t01Training)
-    * [Inferencing](#t01Inferencing)
-* [Related Apphub Examples](#t01Apphub)
+* [The three main APIs of FastEstimator: `Pipeline`, `Network`, `Estimator`](./tutorials/beginner/t01_getting_started#t01ThreeMain)
+* [An image classification example](./tutorials/beginner/t01_getting_started#t01ImageClassification)
+    * [Pipeline](./tutorials/beginner/t01_getting_started#t01Pipeline)
+    * [Network](./tutorials/beginner/t01_getting_started#t01Network)
+    * [Estimator](./tutorials/beginner/t01_getting_started#t01Estimator)
+    * [Training](./tutorials/beginner/t01_getting_started#t01Training)
+    * [Inferencing](./tutorials/beginner/t01_getting_started#t01Inferencing)
+* [Related Apphub Examples](./tutorials/beginner/t01_getting_started#t01Apphub)
 
 <a id='t01ThreeMain'></a>
 

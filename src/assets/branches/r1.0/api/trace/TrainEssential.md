@@ -2,7 +2,11 @@
 ```python
 TrainEssential(monitor_names:Set[str]) -> None
 ```
-A trace to collect important information during training.    Please don't add this trace into an estimator manually. FastEstimator will add it automatically.
+A trace to collect important information during training.
+
+Please don't add this trace into an estimator manually. FastEstimator will add it automatically.
+
+
 
 #### Args:
 
@@ -13,6 +17,8 @@ A trace to collect important information during training.    Please don't add th
 on_batch_begin(self, data:fastestimator.util.data.Data) -> None
 ```
 Runs at the beginning of each batch.
+
+
 
 #### Args:
 

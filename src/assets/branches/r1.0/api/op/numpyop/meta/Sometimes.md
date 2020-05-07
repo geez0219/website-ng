@@ -4,6 +4,8 @@ Sometimes(numpy_op:fastestimator.op.numpyop.numpyop.NumpyOp, prob:float=0.5) -> 
 ```
 Perform a NumpyOp with a given probability.
 
+
+
 #### Args:
 
 * **numpy_op** :  The operator to be performed.
@@ -14,6 +16,8 @@ Perform a NumpyOp with a given probability.
 forward(self, data:Union[numpy.ndarray, List[numpy.ndarray]], state:Dict[str, Any]) -> Union[numpy.ndarray, List[numpy.ndarray]]
 ```
 Execute the wrapped operator a certain fraction of the time.
+
+
 
 #### Args:
 

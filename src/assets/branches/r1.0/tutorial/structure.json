@@ -368,6 +368,11 @@
             "displayName": "Network.transform"
           }
         ]
+      },
+      {
+          "name": "beginner/t10_cli.md",
+          "displayName": " Tutorial 10: How to use FastEstimator Command Line Interface (CLI)",
+          "toc":[]
       }
     ]
   },

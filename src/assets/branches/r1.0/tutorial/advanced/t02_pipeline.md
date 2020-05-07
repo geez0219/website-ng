@@ -4,12 +4,12 @@
 
 In this tutorial, we will discuss the following topics:
 
-* [Iterating Through Pipeline](#ta02itp)
-    * [Basic Concept](#ta02bc)
-    * [Example](#ta02example)
-* [Dropping Last Batch](#ta02dlb)
-* [Padding Batch Data](#ta02pbd)
-* [Benchmark Pipeline Speed](#ta02bps)
+* [Iterating Through Pipeline](./tutorials/advanced/t02_pipeline#ta02itp)
+    * [Basic Concept](./tutorials/advanced/t02_pipeline#ta02bc)
+    * [Example](./tutorials/advanced/t02_pipeline#ta02example)
+* [Dropping Last Batch](./tutorials/advanced/t02_pipeline#ta02dlb)
+* [Padding Batch Data](./tutorials/advanced/t02_pipeline#ta02pbd)
+* [Benchmark Pipeline Speed](./tutorials/advanced/t02_pipeline#ta02bps)
 
 In the [beginner tutorial 4](./tutorials/beginner/t04_pipeline), we learned how to build a data pipeline that handles data loading and preprocessing tasks efficiently. Now that you have understood some basic operations in the `Pipeline`, we will demonstrate some advanced concepts and how to leverage them to create efficient `Pipelines` in this tutorial.
 

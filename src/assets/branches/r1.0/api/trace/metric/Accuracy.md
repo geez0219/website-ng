@@ -3,7 +3,10 @@
 Accuracy(true_key:str, pred_key:str, mode:Union[str, Set[str]]=('eval', 'test'), output_name:str='accuracy') -> None
 ```
 A trace which computes the accuracy for a given set of predictions.
-* **Consider using MCC instead** :  https//www.ncbi.nlm.nih.gov/pmc/articles/PMC6941312/
+
+Consider using MCC instead: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6941312/
+
+
 
 #### Args:
 

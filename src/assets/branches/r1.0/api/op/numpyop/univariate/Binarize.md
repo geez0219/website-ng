@@ -2,7 +2,9 @@
 ```python
 Binarize(threshold:float, inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterable[str]], mode:Union[NoneType, str, Iterable[str]]=None)
 ```
-Binarize the input data such that all elements >= threshold become 1 otherwise 0.
+Binarize the input data such that all elements &gt;= threshold become 1 otherwise 0.
+
+
 
 #### Args:
 

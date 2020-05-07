@@ -5,18 +5,35 @@
 reduce_sum(tensor:~Tensor, axis:Union[NoneType, int, Sequence[int]]=None, keepdims:bool=False) -> ~Tensor
 ```
 Compute the sum along a given `axis` of a `tensor`.
-* **This method can be used with Numpy data** : 
+
+This method can be used with Numpy data:
 ```python
-n = np.array([[[1.0, 2.0], [3.0, 4.0]], [[5.0, 6.0], [7.0, 8.0]]])b = fe.backend.reduce_sum(n)  # 36b = fe.backend.reduce_sum(n, axis=0)  # [[6, 8], [10, 12]]b = fe.backend.reduce_sum(n, axis=1)  # [[4, 6], [12, 14]]b = fe.backend.reduce_sum(n, axis=[0,2])  # [14, 22]
+n = np.array([[[1.0, 2.0], [3.0, 4.0]], [[5.0, 6.0], [7.0, 8.0]]])
+b = fe.backend.reduce_sum(n)  # 36
+b = fe.backend.reduce_sum(n, axis=0)  # [[6, 8], [10, 12]]
+b = fe.backend.reduce_sum(n, axis=1)  # [[4, 6], [12, 14]]
+b = fe.backend.reduce_sum(n, axis=[0,2])  # [14, 22]
 ```
-* **This method can be used with TensorFlow tensors** : 
+
+This method can be used with TensorFlow tensors:
 ```python
-t = tf.constant([[[1.0, 2.0], [3.0, 4.0]], [[5.0, 6.0], [7.0, 8.0]]])b = fe.backend.reduce_sum(t)  # 36b = fe.backend.reduce_sum(t, axis=0)  # [[6, 8], [10, 12]]b = fe.backend.reduce_sum(t, axis=1)  # [[4, 6], [12, 14]]b = fe.backend.reduce_sum(t, axis=[0,2])  # [14, 22]
+t = tf.constant([[[1.0, 2.0], [3.0, 4.0]], [[5.0, 6.0], [7.0, 8.0]]])
+b = fe.backend.reduce_sum(t)  # 36
+b = fe.backend.reduce_sum(t, axis=0)  # [[6, 8], [10, 12]]
+b = fe.backend.reduce_sum(t, axis=1)  # [[4, 6], [12, 14]]
+b = fe.backend.reduce_sum(t, axis=[0,2])  # [14, 22]
 ```
-* **This method can be used with PyTorch tensors** : 
+
+This method can be used with PyTorch tensors:
 ```python
-p = torch.tensor([[[1.0, 2.0], [3.0, 4.0]], [[5.0, 6.0], [7.0, 8.0]]])b = fe.backend.reduce_sum(p)  # 36b = fe.backend.reduce_sum(p, axis=0)  # [[6, 8], [10, 12]]b = fe.backend.reduce_sum(p, axis=1)  # [[4, 6], [12, 14]]b = fe.backend.reduce_sum(p, axis=[0,2])  # [14, 22]
+p = torch.tensor([[[1.0, 2.0], [3.0, 4.0]], [[5.0, 6.0], [7.0, 8.0]]])
+b = fe.backend.reduce_sum(p)  # 36
+b = fe.backend.reduce_sum(p, axis=0)  # [[6, 8], [10, 12]]
+b = fe.backend.reduce_sum(p, axis=1)  # [[4, 6], [12, 14]]
+b = fe.backend.reduce_sum(p, axis=[0,2])  # [14, 22]
 ```
+
+
 
 #### Args:
 

@@ -4,6 +4,8 @@ Minmax(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterable[s
 ```
 Normalize data using the minmax method.
 
+
+
 #### Args:
 
 * **inputs** :  Key(s) of images to be modified.

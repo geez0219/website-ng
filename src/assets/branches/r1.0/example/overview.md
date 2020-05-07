@@ -45,4 +45,4 @@ fastestimator train lenet_mnist.py --batch_size 64 --epochs 4
 ```
 
 ## Contributions
-If you have implementations that we haven't done yet and want to join our efforts of making state-of-the-art AI easier, please consider contribute to us. We would really appreciate it! :smiley:
+If you have implementations that we haven't done yet and want to join our efforts of making state-of-the-art AI easier, please consider contribute to us. We would really appreciate it!

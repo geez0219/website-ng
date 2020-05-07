@@ -4,6 +4,8 @@ ImageSaver(inputs:Union[str, Sequence[str]], save_dir:str='/home/ubuntu/vivek/fa
 ```
 A trace that saves images to the disk.
 
+
+
 #### Args:
 
 * **inputs** :  Key(s) of images to be saved.

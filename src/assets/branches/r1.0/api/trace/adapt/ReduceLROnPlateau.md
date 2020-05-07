@@ -4,6 +4,8 @@ ReduceLROnPlateau(model:Union[tensorflow.python.keras.engine.training.Model, tor
 ```
 Reduce learning rate based on evaluation results.
 
+
+
 #### Args:
 
 * **model** :  A model instance compiled with fe.build.

@@ -4,6 +4,8 @@ FromFloat(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterabl
 ```
 Takes an input float image in range [0, 1.0] and then multiplies by `max_value` to get an int image.
 
+
+
 #### Args:
 
 * **inputs** :  Key(s) of images to be modified.

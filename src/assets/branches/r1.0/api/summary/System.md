@@ -4,6 +4,8 @@ System(network:fastestimator.network.BaseNetwork, mode:Union[str, NoneType]=None
 ```
 A class which tracks state information while the fe.Estimator is running.
 
+
+
 #### Args:
 
 * **network** :  The network instance being used by the current fe.Estimator.
@@ -33,6 +35,8 @@ load_state(self, json_path) -> None
 ```
 Load training state.
 
+
+
 #### Args:
 
 * **json_path** :  The json file path to load from.        
@@ -42,6 +46,8 @@ Load training state.
 reset(self, summary_name:Union[str, NoneType]=None) -> None
 ```
 Reset the current `System` for a new round of training, including a new `Summary` object.
+
+
 
 #### Args:
 
@@ -53,6 +59,8 @@ reset_for_test(self, summary_name:Union[str, NoneType]=None) -> None
 ```
 Partially reset the current `System` object for a new round of testing.
 
+
+
 #### Args:
 
 * **summary_name** :  The name of the experiment. If not provided, the system will re-use the previous summary name.        
@@ -63,6 +71,8 @@ save_state(self, json_path) -> None
 ```
 Load training state.
 
+
+
 #### Args:
 
 * **json_path** :  The json file path to save to.        
@@ -71,19 +81,21 @@ Load training state.
 ```python
 update_batch_idx(self) -> None
 ```
-Increment the current `batch_idx`.        
+Increment the current `batch_idx`.
 
 ### update_global_step
 ```python
 update_global_step(self) -> None
 ```
-Increment the current `global_step`.        
+Increment the current `global_step`.
 
 ### write_summary
 ```python
 write_summary(self, key:str, value:Any) -> None
 ```
 Write an entry into the `Summary` object (iff the experiment was named).
+
+
 
 #### Args:
 

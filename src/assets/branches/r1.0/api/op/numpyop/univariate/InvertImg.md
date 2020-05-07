@@ -4,6 +4,8 @@ InvertImg(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterabl
 ```
 Invert an image by subtracting its pixel values from 255.
 
+
+
 #### Args:
 
 * **inputs** :  Key(s) of images to be modified.

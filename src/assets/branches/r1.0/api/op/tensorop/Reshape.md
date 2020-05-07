@@ -4,6 +4,8 @@ Reshape(inputs:Union[str, List[str]], outputs:Union[str, List[str]], shape:Union
 ```
 Reshape a input tensor to conform to a given shape.
 
+
+
 #### Args:
 
 * **inputs** :  Key of the input tensor that is to be reshaped.

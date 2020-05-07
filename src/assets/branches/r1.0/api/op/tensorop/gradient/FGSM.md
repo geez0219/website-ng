@@ -3,7 +3,10 @@
 FGSM(data:str, loss:str, outputs:str, epsilon:float=0.01, clip_low:Union[float, NoneType]=None, clip_high:Union[float, NoneType]=None, mode:Union[NoneType, str, Iterable[str]]=None)
 ```
 Create an adversarial sample from input data using the Fast Gradient Sign Method.
-* **See https** : //arxiv.org/abs/1412.6572 for an explanation of adversarial attacks.
+
+See https://arxiv.org/abs/1412.6572 for an explanation of adversarial attacks.
+
+
 
 #### Args:
 

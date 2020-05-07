@@ -4,6 +4,8 @@ CLAHE(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterable[st
 ```
 Apply contrast limited adaptive histogram equalization to the image.
 
+
+
 #### Args:
 
 * **inputs** :  Key(s) of images to be modified.

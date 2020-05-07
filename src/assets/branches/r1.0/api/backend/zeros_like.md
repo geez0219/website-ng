@@ -5,18 +5,29 @@
 zeros_like(tensor:~Tensor, dtype:Union[NoneType, str]=None) -> ~Tensor
 ```
 Generate zeros shaped like `tensor` with a specified `dtype`.
-* **This method can be used with Numpy data** : 
+
+This method can be used with Numpy data:
 ```python
-n = np.array([[0,1],[2,3]])b = fe.backend.zeros_like(n)  # [[0, 0], [0, 0]]b = fe.backend.zeros_like(n, dtype="float32")  # [[0.0, 0.0], [0.0, 0.0]]
+n = np.array([[0,1],[2,3]])
+b = fe.backend.zeros_like(n)  # [[0, 0], [0, 0]]
+b = fe.backend.zeros_like(n, dtype="float32")  # [[0.0, 0.0], [0.0, 0.0]]
 ```
-* **This method can be used with TensorFlow tensors** : 
+
+This method can be used with TensorFlow tensors:
 ```python
-t = tf.constant([[0,1],[2,3]])b = fe.backend.zeros_like(t)  # [[0, 0], [0, 0]]b = fe.backend.zeros_like(t, dtype="float32")  # [[0.0, 0.0], [0.0, 0.0]]
+t = tf.constant([[0,1],[2,3]])
+b = fe.backend.zeros_like(t)  # [[0, 0], [0, 0]]
+b = fe.backend.zeros_like(t, dtype="float32")  # [[0.0, 0.0], [0.0, 0.0]]
 ```
-* **This method can be used with PyTorch tensors** : 
+
+This method can be used with PyTorch tensors:
 ```python
-p = torch.tensor([[0,1],[2,3]])b = fe.backend.zeros_like(p)  # [[0, 0], [0, 0]]b = fe.backend.zeros_like(p, dtype="float32")  # [[0.0, 0.0], [0.0, 0.0]]
+p = torch.tensor([[0,1],[2,3]])
+b = fe.backend.zeros_like(p)  # [[0, 0], [0, 0]]
+b = fe.backend.zeros_like(p, dtype="float32")  # [[0.0, 0.0], [0.0, 0.0]]
 ```
+
+
 
 #### Args:
 

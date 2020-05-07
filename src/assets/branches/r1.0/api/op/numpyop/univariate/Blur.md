@@ -4,6 +4,8 @@ Blur(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterable[str
 ```
 Blur the image with a randomly-sized kernel
 
+
+
 #### Args:
 
 * **inputs** :  Key(s) of images to be modified.
