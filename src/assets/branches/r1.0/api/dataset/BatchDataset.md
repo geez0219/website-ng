@@ -6,24 +6,24 @@ BatchDataset extracts a list (batch) of data from a single dataset or multiple d
 
 This dataset helps to enable several use-cases:1. Creating an unpaired dataset from two or more completely disjoint (no common keys) datasets.
 ```python
-            ds1 = fe.dataset.DirDataset(...)  # {"a": <32x32>}
-            ds2 = fe.dataset.DirDataset(...)  # {"b": <28x28>}
+            ds1 = fe.dataset.DirDataset(...)  # {"a": &lt;32x32&gt;}
+            ds2 = fe.dataset.DirDataset(...)  # {"b": &lt;28x28&gt;}
             unpaired_ds = fe.dataset.BatchDataset(datasets=[ds1, ds2], num_samples=[4, 4])
-            # {"a": <4x32x32>, "b": <4x28x28>}
+            # {"a": &lt;4x32x32&gt;, "b": &lt;4x28x28&gt;}
             ```
 . Deterministic class balanced sampling from two or more similar (all keys in common) datasets.
 ```python
-            class1_ds = fe.dataset.DirDataset(...)  # {"x": <32x32>, "y": <>}
-            class2_ds = fe.dataset.DirDataset(...)  # {"x": <32x32>, "y": <>}
+            class1_ds = fe.dataset.DirDataset(...)  # {"x": &lt;32x32&gt;, "y": &lt;&gt;}
+            class2_ds = fe.dataset.DirDataset(...)  # {"x": &lt;32x32&gt;, "y": &lt;&gt;}
             ds = fe.dataset.BatchDataset(datasets=[ds1, ds2], num_samples=[3, 5])
-            # {"x": <8x32x32>, "y": <8>}  (3 of the samples are from class1_ds, 5 of the samples from class2_ds)
+            # {"x": &lt;8x32x32&gt;, "y": &lt;8&gt;}  (3 of the samples are from class1_ds, 5 of the samples from class2_ds)
             ```
 . Probabilistic class balanced sampling from two or more similar (all keys in common) datasets.
 ```python
-            class1_ds = fe.dataset.DirDataset(...)  # {"x": <32x32>, "y": <>}
-            class2_ds = fe.dataset.DirDataset(...)  # {"x": <32x32>, "y": <>}
+            class1_ds = fe.dataset.DirDataset(...)  # {"x": &lt;32x32&gt;, "y": &lt;&gt;}
+            class2_ds = fe.dataset.DirDataset(...)  # {"x": &lt;32x32&gt;, "y": &lt;&gt;}
             ds = fe.dataset.BatchDataset(datasets=[ds1, ds2], num_samples=8, probability=[0.7, 0.3])
-            # {"x": <8x32x32>, "y": <8>}  (~70% of the samples are from class1_ds, ~30% of the samples from class2_ds)
+            # {"x": &lt;8x32x32&gt;, "y": &lt;8&gt;}  (~70% of the samples are from class1_ds, ~30% of the samples from class2_ds)
             ```
 
 

@@ -21,7 +21,7 @@ This can be useful for making networks grow over time, or to use more challengin
 
 #### Args:
 
-* **epoch_dict** :  A mapping from epoch -> element. For epochs in between keys in the dictionary, the closest prior key            will be used to determine which element to return. None values may be used to cause nothing to happen for a            particular epoch.
+* **epoch_dict** :  A mapping from epoch -&gt; element. For epochs in between keys in the dictionary, the closest prior key            will be used to determine which element to return. None values may be used to cause nothing to happen for a            particular epoch.
 
 #### Raises:
 
