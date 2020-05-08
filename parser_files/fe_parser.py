@@ -196,7 +196,7 @@ def generatedocs(repo_dir, save_dir):
     main_repo = os.path.join(repo_dir, 'fastestimator')
     head = Repository(repo_dir).head
     branch_name = head.name.split(sep)[-1]
-    fe_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), main_repo)
+    fe_path = os.path.abspath(main_repo)
     save_dir = os.path.join(save_dir, 'fe')
     #insert project path to system path to later detect the modules in project
     sys.path.insert(0, fe_path)
