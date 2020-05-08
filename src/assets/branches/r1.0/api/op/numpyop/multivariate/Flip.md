@@ -5,10 +5,9 @@ Flip(mode:Union[str, NoneType]=None, image_in:Union[str, NoneType]=None, mask_in
 Flip an image either horizontally, vertically, or both.
 
 
-
 #### Args:
 
-* **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute            regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument            like "!infer" or "!train".
+* **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
 * **image_in** :  The key of an image to be modified.
 * **mask_in** :  The key of a mask to be modified (with the same random factors as the image).
 * **masks_in** :  The key of masks to be modified (with the same random factors as the image).
@@ -21,4 +20,4 @@ Flip an image either horizontally, vertically, or both.
 * **keypoints_out** :  The key to write the modified keypoints (defaults to `keypoints_in` if None).
 * **bbox_params** :  Parameters defining the type of bounding box ('coco', 'pascal_voc', 'albumentations' or 'yolo').
 * **keypoint_params** :  Parameters defining the type of keypoints ('xy', 'yx', 'xya', 'xys', 'xyas', 'xysa').
-* **Image types** :         uint8, float32    
+* **Image types** :     uint8, float32

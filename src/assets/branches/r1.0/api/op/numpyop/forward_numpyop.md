@@ -7,7 +7,6 @@ forward_numpyop(ops:List[op.numpyop.numpyop.NumpyOp], data:MutableMapping[str, A
 Call the forward function for list of NumpyOps, and modify the data dictionary in place.
 
 
-
 #### Args:
 
 * **ops** :  A list of NumpyOps to execute.

@@ -10,7 +10,7 @@ In this tutorial we are going to cover:
 
 ## Running inference with transform method
 
-Running inference means using a trained deep learning model to get a prediction from some input data. Users can use `pipeline.transform` and `network.transform` to feed the data forward and get the computed result in any operation mode. Here we are going to use an end-to-end example (the same example code from [tutorial 8](t08_mode.ipynb)) on MNIST image classification to demonstrate how to run inference.
+Running inference means using a trained deep learning model to get a prediction from some input data. Users can use `pipeline.transform` and `network.transform` to feed the data forward and get the computed result in any operation mode. Here we are going to use an end-to-end example (the same example code from [tutorial 8](./tutorials/beginner/t08_mode)) on MNIST image classification to demonstrate how to run inference.
 
 We first train a deep leaning model with the following code:
 

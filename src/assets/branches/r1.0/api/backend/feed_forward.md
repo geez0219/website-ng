@@ -21,7 +21,6 @@ b = fe.backend.feed_forward(m, x)  # [[~0.5, ~0.5], [~0.5, ~0.5], [~0.5, ~0.5]]
 ```
 
 
-
 #### Args:
 
 * **model** :  A neural network to run the forward step through.

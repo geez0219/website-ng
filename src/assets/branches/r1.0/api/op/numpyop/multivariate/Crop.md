@@ -5,10 +5,9 @@ Crop(x_min:int=0, y_min:int=0, x_max:int=1024, y_max:int=1024, mode:Union[str, N
 Crop a region from the input.
 
 
-
 #### Args:
 
-* **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute            regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument            like "!infer" or "!train".
+* **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
 * **image_in** :  The key of an image to be modified.
 * **mask_in** :  The key of a mask to be modified (with the same random factors as the image).
 * **masks_in** :  The key of masks to be modified (with the same random factors as the image).
@@ -25,4 +24,4 @@ Crop a region from the input.
 * **y_min** :  Minimum upper left y coordinate.
 * **x_max** :  Maximum lower right x coordinate.
 * **y_max** :  Maximum lower right y coordinate.
-* **Image types** :         uint8, float32    
+* **Image types** :     uint8, float32

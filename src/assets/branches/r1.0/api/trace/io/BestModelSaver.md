@@ -5,7 +5,6 @@ BestModelSaver(model:Union[tensorflow.python.keras.engine.training.Model, torch.
 Save the weights of best model based on a given evaluation metric.
 
 
-
 #### Args:
 
 * **model** :  A model instance compiled with fe.build.
@@ -16,4 +15,4 @@ Save the weights of best model based on a given evaluation metric.
 #### Raises:
 
 * **AssertionError** :  If a `metric` is not provided and it cannot be inferred from the `model`.
-* **ValueError** :  If `save_best_mode` is an unacceptable string.    
+* **ValueError** :  If `save_best_mode` is an unacceptable string.

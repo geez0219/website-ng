@@ -6,12 +6,10 @@ strip_prefix(target:Union[str, NoneType], prefix:Union[str, NoneType]) -> Union[
 ```
 Remove the given `prefix` from the `target` if it is present there.
 
-
 ```python
 x = fe.util.strip_prefix("astring.json", "ast")  # "ring.json"
 x = fe.util.strip_prefix("astring.json", "asa")  # "astring.json"
 ```
-
 
 
 #### Args:

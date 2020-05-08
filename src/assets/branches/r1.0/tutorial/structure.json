@@ -370,9 +370,34 @@
         ]
       },
       {
-          "name": "beginner/t10_cli.md",
-          "displayName": " Tutorial 10: How to use FastEstimator Command Line Interface (CLI)",
-          "toc":[]
+        "name": "beginner/t10_cli.md",
+        "displayName": " Tutorial 10: How to use FastEstimator Command Line Interface CLI",
+        "toc": [
+          {
+            "id": "overview",
+            "displayName": "Overview"
+          },
+          {
+            "id": "how-does-the-cli-work",
+            "displayName": "How Does the CLI Work"
+          },
+          {
+            "id": "cli-usage",
+            "displayName": "CLI Usage"
+          },
+          {
+            "id": "sending-input-args-to-getestimator",
+            "displayName": "Sending Input Args to getestimator"
+          },
+          {
+            "id": "using-arg",
+            "displayName": "Using arg"
+          },
+          {
+            "id": "using-a-json-file",
+            "displayName": "Using a JSON file"
+          }
+        ]
       }
     ]
   },
@@ -434,32 +459,32 @@
         "name": "advanced/t02_pipeline.md",
         "displayName": " Advanced Tutorial 2: Pipeline",
         "toc": [
-            {
-                "id": "overview",
-                "displayName": "Overview"
-            },
-            {
-                "id": "how-to-iterate-through-the-pipeline-data",
-                "displayName": "How to iterate through the pipeline data"
-            },
-            {
-                "id": "example-use-case",
-                "displayName": "Example use case"
-            },
-            {
-                "id": "dropping-the-last-batch",
-                "displayName": "Dropping the last batch"
-            },
-            {
-                "id": "handling-the-batch-padding",
-                "displayName": "Handling the batch padding"
-            },
-            {
-                "id": "benchmarking-pipeline-performance",
-                "displayName": "Benchmarking pipeline performance"
-            }
+          {
+            "id": "overview",
+            "displayName": "Overview"
+          },
+          {
+            "id": "how-to-iterate-through-the-pipeline-data",
+            "displayName": "How to iterate through the pipeline data"
+          },
+          {
+            "id": "example-use-case",
+            "displayName": "Example use case"
+          },
+          {
+            "id": "dropping-the-last-batch",
+            "displayName": "Dropping the last batch"
+          },
+          {
+            "id": "handling-the-batch-padding",
+            "displayName": "Handling the batch padding"
+          },
+          {
+            "id": "benchmarking-pipeline-performance",
+            "displayName": "Benchmarking pipeline performance"
+          }
         ]
-    },
+      },
       {
         "name": "advanced/t03_operator.md",
         "displayName": " Advanced Tutorial 3: Operator",

@@ -28,7 +28,6 @@ b = fe.backend.argmax(p, axis=1)  # [1, 0, 1]
 ```
 
 
-
 #### Args:
 
 * **tensor** :  The input value.

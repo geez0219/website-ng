@@ -43,7 +43,8 @@ from fastestimator.trace.metric import Accuracy, Dice
 #parameters
 epochs = 25
 batch_size = 8
-max_steps_per_epoch = None
+max_train_steps_per_epoch = None
+max_eval_steps_per_epoch = None
 save_dir = tempfile.mkdtemp()
 data_dir = None
 ```
@@ -299,10 +300,10 @@ class ReduceLoss(TensorOp):
 
 ```python
 resunet50 = fe.build(model_fn=ResUnet50,
-                     model_names="resunet50",
+                     model_name="resunet50",
                      optimizer_fn=lambda x: torch.optim.Adam(x, lr=1e-4))
 uncertainty = fe.build(model_fn=UncertaintyLossNet,
-                       model_names="uncertainty",
+                       model_name="uncertainty",
                        optimizer_fn=lambda x: torch.optim.Adam(x, lr=1e-5))
 
 network = fe.Network(ops=[
@@ -347,7 +348,8 @@ estimator = fe.Estimator(network=network,
                          pipeline=pipeline,
                          traces=traces,
                          epochs=epochs,
-                         max_steps_per_epoch=max_steps_per_epoch,
+                         max_train_steps_per_epoch=max_train_steps_per_epoch,
+                         max_eval_steps_per_epoch=max_eval_steps_per_epoch,
                          log_steps=500)
 ```
 

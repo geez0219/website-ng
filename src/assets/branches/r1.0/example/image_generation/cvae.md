@@ -1,7 +1,7 @@
 # Convolutional Variational Autoencoder example using MNIST dataset (Tensorflow backend)
 ## Introduction to CVAE
 CVAE are Convolutional Variational Autoencoder. They are composed by two models using convolutions: an encoder to represent the input in a latent dimension, and a eecoder that will generate data from the latent dimension to the input space. The figure below illustrates the main idea of CVAE. <br> <br> In this example, we will use CVAE to generate data similar to MNIST dataset with Tensorflow backend. All training details including model structure, data preprocessing, loss calculation ... etc come from the reference of Tensorflow CVAE tutorial (https://www.tensorflow.org/tutorials/generative/cvae)
-<img src="assets/branches/r1.0/example/image_generation/VAE_complete.png"> [img source: https://mlexplained.com/2017/12/28/an-intuitive-explanation-of-variational-autoencoders-vaes-part-1/]
+![cvae](./VAE_complete.png)[img source: https://mlexplained.com/2017/12/28/an-intuitive-explanation-of-variational-autoencoders-vaes-part-1]
 
 ## Import the required libraries
 
@@ -20,7 +20,7 @@ from typing import Any, Dict, Tuple
 #training parameters
 epochs = 20
 batch_size = 100
-max_steps_per_epoch = None
+max_train_steps_per_epoch = None
 save_dir = tempfile.mkdtemp()
 ```
 
@@ -130,8 +130,8 @@ def decoder_net():
     generative_model.add(tf.keras.layers.Conv2DTranspose(filters=1, kernel_size=3, strides=(1, 1), padding="SAME", activation='sigmoid'))
     return generative_model
 
-encode_model = fe.build(model_fn=encoder_net, optimizer_fn="adam", model_names="encoder")
-decode_model = fe.build(model_fn=decoder_net, optimizer_fn="adam", model_names="decoder")
+encode_model = fe.build(model_fn=encoder_net, optimizer_fn="adam", model_name="encoder")
+decode_model = fe.build(model_fn=decoder_net, optimizer_fn="adam", model_name="decoder")
 ```
 
 ### Customize `Ops` 
@@ -221,7 +221,7 @@ estimator = fe.Estimator(pipeline=pipeline,
                          network=network,
                          epochs=epochs,
                          traces=traces,
-                         max_steps_per_epoch=max_steps_per_epoch,
+                         max_train_steps_per_epoch=max_train_steps_per_epoch,
                          log_steps=600)
 
 estimator.fit() # start the training process

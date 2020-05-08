@@ -8,15 +8,14 @@ Callback function for urlretrieve that is called when a connection is created an
 
 Draws adaptive progress bar in terminal/console.
 
-Use sys.stdout.write() instead of "print", because it allows one more symbols at the line end without triggering alinefeed on Windows.
-
+Use sys.stdout.write() instead of "print", because it allows one more symbols at the line end without triggering a
+linefeed on Windows.
 
 ```python
 import wget
 wget.callback_progress = fe.util.callback_progress
 wget.download('http://url.com', '/save/dir', bar=fe.util.bar_custom)
 ```
-
 
 
 #### Args:

@@ -25,7 +25,6 @@ b = fe.backend.sign(p)  # [-1, 1, -1]
 ```
 
 
-
 #### Args:
 
 * **tensor** :  The input value.

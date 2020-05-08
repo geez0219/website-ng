@@ -34,7 +34,6 @@ b = fe.backend.reduce_max(p, axis=[0,2])  # [6, 8]
 ```
 
 
-
 #### Args:
 
 * **tensor** :  The input value.

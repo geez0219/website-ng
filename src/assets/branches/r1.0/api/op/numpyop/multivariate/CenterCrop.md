@@ -5,10 +5,9 @@ CenterCrop(height:int, width:int, mode:Union[str, NoneType]=None, image_in:Union
 Crop the center of the input.
 
 
-
 #### Args:
 
-* **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute            regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument            like "!infer" or "!train".
+* **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
 * **image_in** :  The key of an image to be modified.
 * **mask_in** :  The key of a mask to be modified (with the same random factors as the image).
 * **masks_in** :  The key of masks to be modified (with the same random factors as the image).
@@ -23,4 +22,4 @@ Crop the center of the input.
 * **keypoint_params** :  Parameters defining the type of keypoints ('xy', 'yx', 'xya', 'xys', 'xyas', 'xysa').
 * **height** :  Height of the crop.
 * **width** :  Width of the crop.
-* **Image types** :         uint8, float32 (but uint8 is more efficient)    
+* **Image types** :     uint8, float32 (but uint8 is more efficient)

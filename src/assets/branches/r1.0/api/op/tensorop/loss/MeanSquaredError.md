@@ -5,9 +5,8 @@ MeanSquaredError(inputs:Union[NoneType, str, Iterable[str], Callable]=None, outp
 Calculate the mean squared error loss between two tensors.
 
 
-
 #### Args:
 
-* **inputs** :  A tuple or list like [&lt;y_true&gt;, &lt;y_pred&gt;].
+* **inputs** :  A tuple or list like [<y_pred>, <y_true>].
 * **outputs** :  String key under which to store the computed loss.
-* **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute            regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument            like "!infer" or "!train".    
+* **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".

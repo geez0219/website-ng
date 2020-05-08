@@ -7,7 +7,6 @@ plot_logs(experiments:List[fastestimator.summary.summary.Summary], smooth_factor
 A function which will plot experiment histories for comparison viewing / analysis.
 
 
-
 #### Args:
 
 * **experiments** :  Experiment(s) to plot.

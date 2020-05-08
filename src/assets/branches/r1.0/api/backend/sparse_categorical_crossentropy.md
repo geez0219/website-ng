@@ -6,7 +6,9 @@ sparse_categorical_crossentropy(y_pred:~Tensor, y_true:~Tensor, from_logits:bool
 ```
 Compute sparse categorical crossentropy.
 
-Note that if any of the `y_pred` values are exactly 0, this will result in a NaN output. If `from_logits` isFalse, then each entry of `y_pred` should sum to 1. If they don't sum to 1 then tf and torch backends willresult in different numerical values.
+Note that if any of the `y_pred` values are exactly 0, this will result in a NaN output. If `from_logits` is
+False, then each entry of `y_pred` should sum to 1. If they don't sum to 1 then tf and torch backends will
+result in different numerical values.
 
 This method can be used with TensorFlow tensors:
 ```python
@@ -23,7 +25,6 @@ pred = torch.tensor([[0.1, 0.8, 0.1], [0.9, 0.05, 0.05], [0.1, 0.2, 0.7]])
 b = fe.backend.sparse_categorical_crossentropy(y_pred=pred, y_true=true)  # 0.228
 b = fe.backend.sparse_categorical_crossentropy(y_pred=pred, y_true=true, average_loss=False)  # [0.22, 0.11, 0.36]
 ```
-
 
 
 #### Args:

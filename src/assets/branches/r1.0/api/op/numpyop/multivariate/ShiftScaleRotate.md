@@ -5,10 +5,9 @@ ShiftScaleRotate(shift_limit:Union[float, Tuple[float, float]]=0.0625, scale_lim
 Randomly apply affine transforms: translate, scale and rotate the input.
 
 
-
 #### Args:
 
-* **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute            regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument            like "!infer" or "!train".
+* **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
 * **image_in** :  The key of an image to be modified.
 * **mask_in** :  The key of a mask to be modified (with the same random factors as the image).
 * **masks_in** :  The key of masks to be modified (with the same random factors as the image).
@@ -21,11 +20,11 @@ Randomly apply affine transforms: translate, scale and rotate the input.
 * **keypoints_out** :  The key to write the modified keypoints (defaults to `keypoints_in` if None).
 * **bbox_params** :  Parameters defining the type of bounding box ('coco', 'pascal_voc', 'albumentations' or 'yolo').
 * **keypoint_params** :  Parameters defining the type of keypoints ('xy', 'yx', 'xya', 'xys', 'xyas', 'xysa').
-* **shift_limit** :  Shift factor range for both height and width. If shift_limit is a single float value, the range            will be (-shift_limit, shift_limit). Absolute values for lower and upper bounds should lie in range [0, 1].
-* **scale_limit** :  Scaling factor range. If scale_limit is a single float value, the range will be            (-scale_limit, scale_limit).
-* **rotate_limit** :  Rotation range. If rotate_limit is a single int value, the range will be            (-rotate_limit, rotate_limit).
-* **interpolation** :  Flag that is used to specify the interpolation algorithm. Should be one of            cv2.INTER_NEAREST, cv2.INTER_LINEAR, cv2.INTER_CUBIC, cv2.INTER_AREA, cv2.INTER_LANCZOS4.
-* **border_mode** :  Flag that is used to specify the pixel extrapolation method. Should be one of            cv2.BORDER_CONSTANT, cv2.BORDER_REPLICATE, cv2.BORDER_REFLECT, cv2.BORDER_WRAP, cv2.BORDER_REFLECT_101.
+* **shift_limit** :  Shift factor range for both height and width. If shift_limit is a single float value, the range        will be (-shift_limit, shift_limit). Absolute values for lower and upper bounds should lie in range [0, 1].
+* **scale_limit** :  Scaling factor range. If scale_limit is a single float value, the range will be        (-scale_limit, scale_limit).
+* **rotate_limit** :  Rotation range. If rotate_limit is a single int value, the range will be        (-rotate_limit, rotate_limit).
+* **interpolation** :  Flag that is used to specify the interpolation algorithm. Should be one of        cv2.INTER_NEAREST, cv2.INTER_LINEAR, cv2.INTER_CUBIC, cv2.INTER_AREA, cv2.INTER_LANCZOS4.
+* **border_mode** :  Flag that is used to specify the pixel extrapolation method. Should be one of        cv2.BORDER_CONSTANT, cv2.BORDER_REPLICATE, cv2.BORDER_REFLECT, cv2.BORDER_WRAP, cv2.BORDER_REFLECT_101.
 * **value** :  Padding value if border_mode is cv2.BORDER_CONSTANT.
 * **mask_value** :  Padding value if border_mode is cv2.BORDER_CONSTANT applied for masks.
-* **Image types** :         uint8, float32    
+* **Image types** :     uint8, float32

@@ -28,7 +28,6 @@ b = fe.backend.random_normal_like(P, mean=5.0)  # [[3.7, 5.7], [5.6, 3.6]]
 ```
 
 
-
 #### Args:
 
 * **tensor** :  The tensor whose shape will be copied.

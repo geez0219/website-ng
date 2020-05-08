@@ -34,7 +34,6 @@ b = fe.backend.reduce_min(p, axis=[0,2])  # [1, 3]
 ```
 
 
-
 #### Args:
 
 * **tensor** :  The input value.
