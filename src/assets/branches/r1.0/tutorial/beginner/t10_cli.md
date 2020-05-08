@@ -37,15 +37,23 @@ def get_estimator(epochs=2, batch_size=32, ...):
     ...
 ```
 
+<<<<<<< HEAD
 Next, we try to change these arguments in two ways:
+=======
+Next, we try to change two of these arguments:
+>>>>>>> ac4809b6e488e198eb6fe4c2469fc71675ca79a4
 
 <a id='t10arg'></a>
 ### Using --arg
 To pass the arguments directly from the CLI we can use the `--arg` format. The following shows an example of how we can set the number of epochs to 3 and batch_size to 64:
 
+<<<<<<< HEAD
 ```
 $ fastestimator train mnist_tf.py --epochs 3 --batch_size 64
 ```
+=======
+`fastestimator train apphub/image_classification/mnist/mnist_tf.py --epochs 3 --batch_size 64`
+>>>>>>> ac4809b6e488e198eb6fe4c2469fc71675ca79a4
 
 <a id='t10json'></a>
 ### Using a JSON file
@@ -57,6 +65,10 @@ JSON:
     "batch_size": 64
 }
 ```
+<<<<<<< HEAD
 ```
 $ fastestimator train mnist_tf.py --hyperparameters hp.json
 ```
+=======
+`fastestimator train apphub/image_classification/mnist/mnist_tf.py --hyperparameters hp.json`
+>>>>>>> ac4809b6e488e198eb6fe4c2469fc71675ca79a4
