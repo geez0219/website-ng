@@ -52,6 +52,8 @@ def formatDocstring(docstr):
     """
     res = []
     formatteddoc = ''
+    print(docstr)
+    print("--------------------")
     if docstr != None:
         docstr = docstr.replace('<', '&lt;').replace('>', '&gt;') # html espace characters to be replaced
         # find all python code blocks and save them in list
@@ -196,7 +198,7 @@ def generatedocs(repo_dir, save_dir):
     main_repo = os.path.join(repo_dir, 'fastestimator')
     head = Repository(repo_dir).head
     branch_name = head.name.split(sep)[-1]
-    fe_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), main_repo)
+    fe_path = os.path.abspath(main_repo)
     save_dir = os.path.join(save_dir, 'fe')
     #insert project path to system path to later detect the modules in project
     sys.path.insert(0, fe_path)
@@ -206,17 +208,17 @@ def generatedocs(repo_dir, save_dir):
         for f in files:
             fname, ext = os.path.splitext(os.path.basename(f))
             if not f.startswith('_') and ext == '.py':
-                #if f == 'schedule.py':
-                f_path = os.path.join(subdirs, f)
-                mod_dir = os.path.relpath(f_path, fe_path)
-                mod = mod_dir.replace(sep, '.')
-                if subdirs == fe_path:
-                    save_path = os.path.join(*[save_dir, 'fe'])
-                else:
-                    save_path = os.path.join(*[save_dir, os.path.relpath(subdirs, fe_path)])
-                if not os.path.exists(save_path):
-                    os.makedirs(save_path)
-                mdtexts = extractmarkdown(mod, save_path, mod_dir, branch_name)
+                if f == 'schedule.py':
+                    f_path = os.path.join(subdirs, f)
+                    mod_dir = os.path.relpath(f_path, fe_path)
+                    mod = mod_dir.replace(sep, '.')
+                    if subdirs == fe_path:
+                        save_path = os.path.join(*[save_dir, 'fe'])
+                    else:
+                        save_path = os.path.join(*[save_dir, os.path.relpath(subdirs, fe_path)])
+                    if not os.path.exists(save_path):
+                        os.makedirs(save_path)
+                    mdtexts = extractmarkdown(mod, save_path, mod_dir, branch_name)
     return save_dir
 
 
