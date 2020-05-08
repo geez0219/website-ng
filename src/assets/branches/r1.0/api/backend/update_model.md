@@ -28,7 +28,6 @@ fe.backend.update_model(m, loss=loss)
 ```
 
 
-
 #### Args:
 
 * **model** :  A neural network instance to update.

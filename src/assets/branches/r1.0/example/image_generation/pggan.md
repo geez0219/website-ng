@@ -5,18 +5,18 @@ We will train a PGGAN to produce synthetic frontal chest X-ray images where both
 ### Progressive Growing Strategy
 [Karras et al.](https://arxiv.org/pdf/1710.10196.pdf) propose a training scheme in which both the generator and the discriminator progressively grow from a low resolution to a high resolution.
 Both networks first start out training based on images of $4\times4$ as illustrated below.
-![4x4](assets/branches/r1.0/example/image_generation/Figure/pggan_4x4.png)
+![4x4](./Figure/pggan_4x4.png)
 Then, both networks progress from $4\times4$ to $8\times8$ by an adding additional block that contains a couple of convolutional layers.
-![8x8](assets/branches/r1.0/example/image_generation/Figure/pggan_8x8.png)
+![8x8](./Figure/pggan_8x8.png)
 Both the generator and the discriminator progressively grow until reaching the desired resolution of $1024\times 1024$.
-![1024x1024](assets/branches/r1.0/example/image_generation/Figure/pggan_1024x1024.png)
+![1024x1024](./Figure/pggan_1024x1024.png)
 *Image Credit: [Presentation slide](https://drive.google.com/open?id=1jYlrX4DgTs2VAfRcyl3pcNI4ONkBg3-g)*
 
 ### Smooth Transition between Resolutions
 However, when growing the networks, the new blocks are slowly faded into the networks in order to smoothly transition between different resolutions.
 For example, when growing the generator from $16\times16$ to $32\times32$, the newly added block of $32\times32$ is slowly faded into the already well trained $16\times16$ network by linearly increasing $\alpha$ from $0$ to $1$.
 Once the network is fully transitioned to $32\times32$, the network is trained on a bit further to stabilize before growing to $64\times64$.
-![grow](assets/branches/r1.0/example/image_generation/Figure/pggan_smooth_grow.png)
+![grow](./Figure/pggan_smooth_grow.png)
 *Image Credit: [PGGAN Paper](https://arxiv.org/pdf/1710.10196.pdf)*
 
 With this progressive training strategy, PGGAN has achieved the state-of-the-art in producing synthetic images of high fidelity.
@@ -63,7 +63,7 @@ from fastestimator.util import get_num_devices
 target_size=128
 epochs=55
 save_dir=tempfile.mkdtemp()
-max_steps_per_epoch=None
+max_train_steps_per_epoch=None
 data_dir=None
 ```
 
@@ -131,7 +131,7 @@ pipeline = fe.Pipeline(
     train_data=dataset,
     drop_last=True,
     ops=[
-        ReadImage(inputs="x", outputs="x", grey_scale=True),
+        ReadImage(inputs="x", outputs="x", color_flag="gray"),
         EpochScheduler(epoch_dict=resize_map),
         EpochScheduler(epoch_dict=resize_low_res_map1),
         EpochScheduler(epoch_dict=resize_low_res_map2),
@@ -427,12 +427,12 @@ fade_in_alpha = torch.tensor(1.0)
 d_models = fe.build(
     model_fn=lambda: build_D(fade_in_alpha, target_resolution=int(np.log2(target_size)), num_channels=1),
     optimizer_fn=[lambda x: Adam(x, lr=0.001, betas=(0.0, 0.99), eps=1e-8)] * len(event_size),
-    model_names=["d_{}".format(size) for size in event_size])
+    model_name=["d_{}".format(size) for size in event_size])
 
 g_models = fe.build(
     model_fn=lambda: build_G(fade_in_alpha, target_resolution=int(np.log2(target_size)), num_channels=1),
     optimizer_fn=[lambda x: Adam(x, lr=0.001, betas=(0.0, 0.99), eps=1e-8)] * len(event_size) + [None],
-    model_names=["g_{}".format(size) for size in event_size] + ["G"])
+    model_name=["g_{}".format(size) for size in event_size] + ["G"])
 ```
 
 ## Following operations will happen on Network:
@@ -596,7 +596,7 @@ estimator = fe.Estimator(pipeline=pipeline,
                          network=network,
                          epochs=epochs,
                          traces=traces,
-                         max_steps_per_epoch=max_steps_per_epoch)
+                         max_train_steps_per_epoch=max_train_steps_per_epoch)
 ```
 
 ## Start Training

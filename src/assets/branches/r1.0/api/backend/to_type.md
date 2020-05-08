@@ -31,7 +31,6 @@ types = fe.backend.to_type(data)
 ```
 
 
-
 #### Args:
 
 * **data** :  A tensor or possibly nested collection of tensors.

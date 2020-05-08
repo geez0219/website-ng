@@ -19,7 +19,6 @@ fe.backend.set_lr(m, lr=0.8)  # m.optimizer.param_groups[-1]['lr'] == 0.8
 ```
 
 
-
 #### Args:
 
 * **model** :  A neural network instance to modify.

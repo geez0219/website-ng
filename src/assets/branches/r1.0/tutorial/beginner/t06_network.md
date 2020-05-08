@@ -29,7 +29,7 @@ As the figure shows, models (orange) are only piece of a `Network`. It also incl
 
 A `Network` is composed of basic units called `TensorOps`. All of the building blocks inside a `Network` should derive from the `TensorOp` base class. A `TensorOp` is a kind of `Op` and therefore follows the same rules described in [tutorial 3](./tutorials/beginner/t03_operator). 
 
-<img src="assets/branches/r1.0/tutorial/../resources/t06_tensorop_class.PNG" alt="drawing" width="500"/>
+<img src="assets/branches/r1.0/tutorial/../resources/t06_tensorop_class.png" alt="drawing" width="500"/>
 
 There are some common `TensorOp` classes we would like to specially mention because of their prevalence:
 

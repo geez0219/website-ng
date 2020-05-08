@@ -5,10 +5,9 @@ RandomCropNearBBox(max_part_shift:float=0.3, mode:Union[str, NoneType]=None, ima
 Crop bbox from an image with random shift by x,y coordinates.
 
 
-
 #### Args:
 
-* **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute            regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument            like "!infer" or "!train".
+* **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
 * **image_in** :  The key of an image to be modified.
 * **mask_in** :  The key of a mask to be modified (with the same random factors as the image).
 * **masks_in** :  The key of masks to be modified (with the same random factors as the image).
@@ -22,4 +21,4 @@ Crop bbox from an image with random shift by x,y coordinates.
 * **bbox_params** :  Parameters defining the type of bounding box ('coco', 'pascal_voc', 'albumentations' or 'yolo').
 * **keypoint_params** :  Parameters defining the type of keypoints ('xy', 'yx', 'xya', 'xys', 'xyas', 'xysa').
 * **max_part_shift** :  Float value in the range (0.0, 1.0).
-* **Image types** :         uint8, float32    
+* **Image types** :     uint8, float32

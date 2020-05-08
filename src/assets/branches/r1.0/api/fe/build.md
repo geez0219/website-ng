@@ -23,7 +23,6 @@ model = fe.build(model_fn = model_def, optimizer_fn="adam", weights_path="~/weig
 ```
 
 
-
 #### Args:
 
 * **model_fn** :  A function that define model(s).

@@ -9,7 +9,6 @@ A standard LeNet implementation in TensorFlow.
 The LeNet model has 3 convolution layers and 2 dense layers.
 
 
-
 #### Args:
 
 * **input_shape** :  shape of the input data (height, width, channels).

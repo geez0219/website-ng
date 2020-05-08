@@ -34,7 +34,6 @@ b = fe.backend.reduce_sum(p, axis=[0,2])  # [14, 22]
 ```
 
 
-
 #### Args:
 
 * **tensor** :  The input value.

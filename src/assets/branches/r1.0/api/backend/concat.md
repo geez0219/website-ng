@@ -28,7 +28,6 @@ b = fe.backend.concat(p, axis=1)  # [[0, 1, 2, 3, 4, 5]]
 ```
 
 
-
 #### Args:
 
 * **tensors** :  A list of tensors to be concatenated.

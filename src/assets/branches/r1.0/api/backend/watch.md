@@ -20,7 +20,6 @@ x = fe.backend.watch(x)  # x.requires_grad == True
 ```
 
 
-
 #### Args:
 
 * **tensor** :  The tensor to be monitored.

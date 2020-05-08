@@ -34,7 +34,6 @@ b = fe.backend.reduce_mean(p, axis=[0,2])  # [3.5, 5.5]
 ```
 
 
-
 #### Args:
 
 * **tensor** :  The input value.

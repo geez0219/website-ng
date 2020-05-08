@@ -7,7 +7,6 @@ get_current_items(items:Iterable[Union[~T, schedule.schedule.Scheduler[~T]]], ru
 Select items which should be executed for given mode and epoch.
 
 
-
 #### Args:
 
 * **items** :  A list of possible items or Schedulers of items to choose from.

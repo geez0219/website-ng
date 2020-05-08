@@ -30,7 +30,6 @@ t = fe.backend.to_tensor(data, target_type='tf')
 ```
 
 
-
 #### Args:
 
 * **data** :  A tensor or possibly nested collection of tensors.
