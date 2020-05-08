@@ -126,8 +126,6 @@
 }
 
 
-
-
 .card-image{
     display: block;
     max-width:250px;
@@ -165,3 +163,10 @@ mat-card:hover{
     font-weight: bold;
 }
 
+.animation{
+    position: absolute;
+    width: 100%;
+    height: 450px;
+    background-repeat: no-repeat;
+    background-color: #23153c;
+}

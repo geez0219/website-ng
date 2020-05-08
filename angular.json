@@ -37,9 +37,9 @@
               "node_modules/prismjs/components/prism-python.min.js",
               "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js",
               "node_modules/prismjs/plugins/line-highlight/prism-line-highlight.js",
-              "src/assets/js/particle.js",
               "node_modules/marked/lib/marked.js",
-              "node_modules/katex/dist/katex.min.js"
+              "node_modules/katex/dist/katex.min.js",
+              "node_modules/tsparticles/dist/tsparticles.min.js"
             ]
           },
           "configurations": {
