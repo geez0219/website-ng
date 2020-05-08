@@ -15,18 +15,18 @@ Given a python file, the FastEstimator CLI looks for a `get_estimator` function 
 
 <a id='t10usage'></a>
 ## CLI Usage
-In this section we will show the actual commands that we can use to train and test our models. We will use [MNIST](https://github.com/fastestimator/fastestimator/tree/r1.0/apphub/image_classification/mnist/mnist_tf.py) for illustration.
+In this section we will show the actual commands that we can use to train and test our models. We will use [MNIST](https://github.com/fastestimator/fastestimator/tree/r1.0/https://github.com/fastestimator/fastestimator/tree/r1.0/apphub/image_classification/mnist/mnist_tf.py) for illustration.
 
   To call `estimator.fit()` and start the training on terminal:
 
 ```
-$ fastestimator train mnist_tf.py
+fastestimator train mnist_tf.py
 ```
 
 To call `estimator.test()` and start testing on terminal:
 
 ```
-$ fastestimator test mnist_tf.py
+fastestimator test mnist_tf.py
 ```
 
 <a id='t10args'></a>
@@ -37,23 +37,15 @@ def get_estimator(epochs=2, batch_size=32, ...):
     ...
 ```
 
-<<<<<<< HEAD
 Next, we try to change these arguments in two ways:
-=======
-Next, we try to change two of these arguments:
->>>>>>> ac4809b6e488e198eb6fe4c2469fc71675ca79a4
 
 <a id='t10arg'></a>
 ### Using --arg
 To pass the arguments directly from the CLI we can use the `--arg` format. The following shows an example of how we can set the number of epochs to 3 and batch_size to 64:
 
-<<<<<<< HEAD
 ```
-$ fastestimator train mnist_tf.py --epochs 3 --batch_size 64
+fastestimator train mnist_tf.py --epochs 3 --batch_size 64
 ```
-=======
-`fastestimator train apphub/image_classification/mnist/mnist_tf.py --epochs 3 --batch_size 64`
->>>>>>> ac4809b6e488e198eb6fe4c2469fc71675ca79a4
 
 <a id='t10json'></a>
 ### Using a JSON file
@@ -65,10 +57,6 @@ JSON:
     "batch_size": 64
 }
 ```
-<<<<<<< HEAD
 ```
-$ fastestimator train mnist_tf.py --hyperparameters hp.json
+fastestimator train mnist_tf.py --hyperparameters hp.json
 ```
-=======
-`fastestimator train apphub/image_classification/mnist/mnist_tf.py --hyperparameters hp.json`
->>>>>>> ac4809b6e488e198eb6fe4c2469fc71675ca79a4

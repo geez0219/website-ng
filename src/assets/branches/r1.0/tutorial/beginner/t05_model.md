@@ -87,7 +87,7 @@ model_torch = fe.build(model_fn=my_model_torch, optimizer_fn="adam")
 
 ### Importing model architecture from FastEstimator
 
-Below we import a PyTorch LeNet architecture from FastEstimator. See our [Architectures](../../fastestimator/architecture) folder for a full list of the architectures provided by FastEstimator.
+Below we import a PyTorch LeNet architecture from FastEstimator. See our [Architectures](https://github.com/fastestimator/fastestimator/tree/r1.0/fastestimator/architecture) folder for a full list of the architectures provided by FastEstimator.
 
 
 ```python
