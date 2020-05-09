@@ -7,27 +7,30 @@ Trace controls the training loop. Users can use the `Trace` base class to custom
 Traces are invoked by the fe.Estimator periodically as it runs. In addition to the current data dictionary, they are
 also given a pointer to the current `System` instance which allows access to more information as well as giving the
 ability to modify or even cancel training. The order of function invocations is as follows:
+
+```plot
         Training:                                       Testing:
 
     on_begin                                            on_begin
         |                                                   |
-    on_epoch_begin (train)  &lt;------&lt;                    on_epoch_begin (test)  &lt;------&lt;
+    on_epoch_begin (train)  <------<                    on_epoch_begin (test)  <------<
         |                          |                        |                         |
-    on_batch_begin (train) &lt;----&lt;  |                    on_batch_begin (test) &lt;----&lt;  |
+    on_batch_begin (train) <----<  |                    on_batch_begin (test) <----<  |
         |                       |  |                        |                      |  |
-    on_batch_end (train) &gt;-----^   |                    on_batch_end (test) &gt;------^  |
+    on_batch_end (train) >-----^   |                    on_batch_end (test) >------^  |
         |                          ^                        |                         |
-    on_epoch_end (train)           |                    on_epoch_end (test) &gt;---------^
+    on_epoch_end (train)           |                    on_epoch_end (test) >---------^
         |                          |                        |
     on_epoch_begin (eval)          |                    on_end
         |                          ^
-    on_batch_begin (eval) &lt;----&lt;   |
+    on_batch_begin (eval) <----<   |
         |                      |   |
-    on_batch_end (eval) &gt;-----^    |
+    on_batch_end (eval) >-----^    |
         |                          |
-    on_epoch_end (eval) &gt;----------^
+    on_epoch_end (eval) >----------^
         |
     on_end
+```
 
 
 #### Args:
