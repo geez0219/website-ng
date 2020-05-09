@@ -232,5 +232,5 @@ fig = img.paint_figure()
 You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
 
 * [CIFAR10](./examples/image_classification/cifar10_fast)
-* [Bert](https://github.com/fastestimator/fastestimator/tree/r1.0/apphub/NLP/named_entity_recognition/bert_tf.py)
+* [Bert](./examples/NLP/bert)
 * [FGSM](./examples/adversarial_training/fgsm)
