@@ -20,8 +20,10 @@ export class ExampleComponent implements OnInit {
   selectedExample: string;
   currentSelection: string;
   currentExampleText: string;
-
+  scrollCounter: number=0;
+  scrollThreshold: number=20;
   segments: UrlSegment[];
+  fragment: string;
 
   treeControl: NestedTreeControl<Example>;
   dataSource: MatTreeNestedDataSource<Example>;
@@ -58,6 +60,13 @@ export class ExampleComponent implements OnInit {
     this.screenWidth$.next(event.target.innerWidth);
   }
 
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event) {
+    if (this.scrollCounter < this.scrollThreshold) {
+      this.scrollCounter += 1;
+    }
+  }
+
   constructor(private http: HttpClient,
               private router: Router,
               private route: ActivatedRoute,
@@ -75,9 +84,29 @@ export class ExampleComponent implements OnInit {
       this.getExampleStructure();
     });
 
+    this.route.fragment.subscribe((fragment: string) => {
+      this.fragment = fragment;
+    })
+
     this.screenWidth$.subscribe(width => {
       this.screenWidth = width;
     });
+  }
+
+  ngAfterViewChecked() {
+    /* Scroll to the fragment postition.
+       The reason for adding a scroll threshold is to scroll to the fragment position after image loaded.
+       Before the counter goes to scollThreshold, the scrolling postion will stick to fragment.
+       This wook will trigger the onScroll event and trigger back to this funtion again.
+       So the counter will goes extremely fast.
+    */
+
+    if (this.fragment && this.scrollCounter < this.scrollThreshold){
+      if (document.querySelector('#' + this.fragment) != null){
+        document.querySelector('#' + this.fragment).scrollIntoView();
+        window.scrollBy(0, -90); // the offset of navbar height
+      }
+    }
   }
 
   hasChild = (_: number, node: Example) => !!node.children && node.children.length > 0;

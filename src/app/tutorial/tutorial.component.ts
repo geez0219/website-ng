@@ -1,7 +1,7 @@
 import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, ObjectUnsubscribedError } from 'rxjs';
 import { Title } from '@angular/platform-browser';
 
 import { NestedTreeControl } from '@angular/cdk/tree';
@@ -20,7 +20,8 @@ export class TutorialComponent implements OnInit {
   selectedExample: string;
   currentSelection: string;
   currentExampleText: string;
-
+  scrollCounter: number=0;
+  scrollThreshold: number=20;
   segments: UrlSegment[];
   fragment: string;
 
@@ -30,6 +31,8 @@ export class TutorialComponent implements OnInit {
   screenWidth: number;
   private screenWidth$ = new BehaviorSubject<number>(window.innerWidth);
 
+  subscribeTimer: number=-1;
+  timeLeft: number=10;
   structureHeaderDict = {
     'Content-Type': 'application/json',
     'Accept': "application/json, text/plain",
@@ -59,6 +62,13 @@ export class TutorialComponent implements OnInit {
     this.screenWidth$.next(event.target.innerWidth);
   }
 
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event){
+    if(this.scrollCounter < this.scrollThreshold){
+      this.scrollCounter += 1;
+    }
+  }
+
   constructor(private http: HttpClient,
     private router: Router,
     private route: ActivatedRoute,
@@ -76,7 +86,6 @@ export class TutorialComponent implements OnInit {
     });
     this.route.fragment.subscribe((fragment: string) => {
       this.fragment = fragment;
-      console.log("My hash fragment is here => ", fragment);
     })
 
     this.screenWidth$.subscribe(width => {
@@ -84,6 +93,21 @@ export class TutorialComponent implements OnInit {
     });
   }
 
+  ngAfterViewChecked() {
+    /* Scroll to the fragment postition.
+       The reason for adding a scroll threshold is to scroll to the fragment position after image loaded.
+       Before the counter goes to scollThreshold, the scrolling postion will stick to fragment.
+       This wook will trigger the onScroll event and trigger back to this funtion again.
+       So the counter will goes extremely fast.
+    */
+
+    if (this.fragment && this.scrollCounter < this.scrollThreshold) {
+      if (document.querySelector('#' + this.fragment) != null) {
+        document.querySelector('#' + this.fragment).scrollIntoView();
+        window.scrollBy(0, -90); // the offset of navbar height
+      }
+    }
+  }
   hasChild = (_: number, node: Example) => !!node.children && node.children.length > 0;
 
   flatten(arr) {
@@ -198,13 +222,5 @@ export class TutorialComponent implements OnInit {
     var ret = ['/tutorials'];
 
     return ret.concat(components);
-  }
-
-  textReady(){
-    var element = document.querySelector('#' + this.fragment);
-    if (this.fragment && element!=null){
-      document.querySelector('#' + this.fragment).scrollIntoView();
-      window.scrollBy(0, -90); // the offset of navbar height
-    }
   }
 }
