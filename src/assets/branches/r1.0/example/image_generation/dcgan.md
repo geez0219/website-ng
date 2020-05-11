@@ -22,7 +22,7 @@ from fastestimator.trace.io import ModelSaver
 ```python
 batch_size = 256
 epochs = 50
-max_steps_per_epoch = None
+max_train_steps_per_epoch = None
 save_dir = tempfile.mkdtemp()
 model_name = 'model_epoch_50.h5'
 ```
@@ -143,7 +143,7 @@ estimator = fe.Estimator(pipeline=pipeline,
                          network=network,
                          epochs=epochs,
                          traces=traces,
-                         max_steps_per_epoch=max_steps_per_epoch)
+                         max_train_steps_per_epoch=max_train_steps_per_epoch)
 ```
 
 <h2>Training</h2>

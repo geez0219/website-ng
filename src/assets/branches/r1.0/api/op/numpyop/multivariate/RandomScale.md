@@ -5,10 +5,9 @@ RandomScale(scale_limit:Union[float, Tuple[float, float]]=0.1, interpolation:int
 Randomly resize the input. Output image size is different from the input image size.
 
 
-
 #### Args:
 
-* **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute            regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument            like "!infer" or "!train".
+* **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
 * **image_in** :  The key of an image to be modified.
 * **mask_in** :  The key of a mask to be modified (with the same random factors as the image).
 * **masks_in** :  The key of masks to be modified (with the same random factors as the image).
@@ -21,6 +20,6 @@ Randomly resize the input. Output image size is different from the input image s
 * **keypoints_out** :  The key to write the modified keypoints (defaults to `keypoints_in` if None).
 * **bbox_params** :  Parameters defining the type of bounding box ('coco', 'pascal_voc', 'albumentations' or 'yolo').
 * **keypoint_params** :  Parameters defining the type of keypoints ('xy', 'yx', 'xya', 'xys', 'xyas', 'xysa').
-* **scale_limit** :  Scaling factor range. If scale_limit is a single float value, the range will be            (1 - scale_limit, 1 + scale_limit).
-* **interpolation** :  Flag that is used to specify the interpolation algorithm. Should be one of            cv2.INTER_NEAREST, cv2.INTER_LINEAR, cv2.INTER_CUBIC, cv2.INTER_AREA, cv2.INTER_LANCZOS4.
-* **Image types** :         uint8, float32    
+* **scale_limit** :  Scaling factor range. If scale_limit is a single float value, the range will be        (1 - scale_limit, 1 + scale_limit).
+* **interpolation** :  Flag that is used to specify the interpolation algorithm. Should be one of        cv2.INTER_NEAREST, cv2.INTER_LINEAR, cv2.INTER_CUBIC, cv2.INTER_AREA, cv2.INTER_LANCZOS4.
+* **Image types** :     uint8, float32

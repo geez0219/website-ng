@@ -19,7 +19,6 @@ b = fe.backend.get_lr(model=m)  # 0.001
 ```
 
 
-
 #### Args:
 
 * **model** :  A neural network instance to inspect.

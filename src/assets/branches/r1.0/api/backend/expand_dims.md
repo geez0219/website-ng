@@ -28,7 +28,6 @@ b = fe.backend.expand_dims(p, axis=1)  # [[2], [5], [7]]
 ```
 
 
-
 #### Args:
 
 * **tensor** :  The input to be modified, having n dimensions.

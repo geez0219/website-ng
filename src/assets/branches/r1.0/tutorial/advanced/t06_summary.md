@@ -50,7 +50,7 @@ traces = [
 
 ## Experiment Logging
 
-As you may have noticed if you have used FastEstimator, log messages are printed to the screen during training. If you want to persist these log messages for later records, you can simply pipe them into a file when launching training from the command line, or else just copy and paste the messages from the console into a persistent file on the disk. FastEstimator allows logging to be controlled via arguments passed to the `Estimator` class, as described in the [estimator tutorial](../beginner/t07_estimator.ipynb). Let's see an example logging every 120 steps:
+As you may have noticed if you have used FastEstimator, log messages are printed to the screen during training. If you want to persist these log messages for later records, you can simply pipe them into a file when launching training from the command line, or else just copy and paste the messages from the console into a persistent file on the disk. FastEstimator allows logging to be controlled via arguments passed to the `Estimator` class, as described in the [tutorial 7](./tutorials/beginner/t07_estimator) in the beginner section. Let's see an example logging every 120 steps:
 
 
 ```python

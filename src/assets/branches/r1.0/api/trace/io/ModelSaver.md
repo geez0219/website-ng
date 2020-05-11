@@ -5,9 +5,8 @@ ModelSaver(model:Union[tensorflow.python.keras.engine.training.Model, torch.nn.m
 Save model weights based on epoch frequency during training.
 
 
-
 #### Args:
 
 * **model** :  A model instance compiled with fe.build.
 * **save_dir** :  Folder path into which to save the `model`.
-* **frequency** :  Model saving frequency in epoch(s).    
+* **frequency** :  Model saving frequency in epoch(s).

@@ -33,7 +33,8 @@ from fastestimator.backend import feed_forward
 max_len = 20
 batch_size = 64
 epochs = 10
-max_steps_per_epoch = None
+max_train_steps_per_epoch = None
+max_eval_steps_per_epoch = None
 save_dir = tempfile.mkdtemp()
 data_dir = None
 ```
@@ -139,7 +140,8 @@ estimator = fe.Estimator(network=network,
                          pipeline=pipeline,
                          epochs=epochs,
                          traces=traces, 
-                         max_steps_per_epoch=max_steps_per_epoch)
+                         max_train_steps_per_epoch=max_train_steps_per_epoch,
+                         max_eval_steps_per_epoch=max_eval_steps_per_epoch)
 ```
 
 <h2>Training</h2>

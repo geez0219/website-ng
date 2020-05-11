@@ -28,7 +28,6 @@ b = fe.backend.zeros_like(p, dtype="float32")  # [[0.0, 0.0], [0.0, 0.0]]
 ```
 
 
-
 #### Args:
 
 * **tensor** :  The tensor whose shape will be copied.

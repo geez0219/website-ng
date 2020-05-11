@@ -24,7 +24,8 @@ MAX_WORDS = 10000
 MAX_LEN = 500
 batch_size = 64
 epochs = 10
-max_steps_per_epoch = None
+max_train_steps_per_epoch = None
+max_eval_steps_per_epoch = None
 ```
 
 <h2>Building components</h2>
@@ -100,7 +101,8 @@ estimator = fe.Estimator(network=network,
                          pipeline=pipeline,
                          epochs=epochs,
                          traces=traces,
-                         max_steps_per_epoch=max_steps_per_epoch)
+                         max_train_steps_per_epoch=max_train_steps_per_epoch,
+                         max_eval_steps_per_epoch=max_eval_steps_per_epoch)
 ```
 
 <h2>Training</h2>

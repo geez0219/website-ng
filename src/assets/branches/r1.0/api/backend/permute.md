@@ -28,7 +28,6 @@ b = fe.backend.permute(P, [0, 2, 1])  # [[[0, 2], [1, 3]], [[4, 6], [5, 7]], [[8
 ```
 
 
-
 #### Args:
 
 * **tensor** :  The tensor to permute.

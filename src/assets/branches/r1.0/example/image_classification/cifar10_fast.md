@@ -16,7 +16,8 @@ import tempfile
 #training parameters
 epochs = 24
 batch_size = 512
-max_steps_per_epoch = None
+max_train_steps_per_epoch = None
+max_eval_steps_per_epoch = None
 save_dir = tempfile.mkdtemp()
 ```
 
@@ -245,7 +246,8 @@ estimator = fe.Estimator(pipeline=pipeline,
                          network=network,
                          epochs=epochs,
                          traces=traces,
-                         max_steps_per_epoch=max_steps_per_epoch)
+                         max_train_steps_per_epoch=max_train_steps_per_epoch,
+                         max_eval_steps_per_epoch=max_eval_steps_per_epoch)
 
 estimator.fit() # start the training 
 ```

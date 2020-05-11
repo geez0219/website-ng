@@ -9,7 +9,6 @@ Combines tokens into sentences and create vocab set for train data and labels.
 For simplicity tokens with 'O' entity are omitted.
 
 
-
 #### Args:
 
 * **path** :  Path to the downloaded dataset file.

@@ -32,7 +32,6 @@ b = fe.backend.get_gradient(target=b, sources=x)  # [2.0, 2.0, 2.0]
 ```
 
 
-
 #### Args:
 
 * **target** :  The target (final) tensor.

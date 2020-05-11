@@ -4,16 +4,18 @@ MultiVariateAlbumentation(func:albumentations.core.transforms_interface.DualTran
 ```
 A base class for the DualTransform albumentation functions.
 
-DualTransforms are functions which apply simultaneously to images and corresponding information such as masksand/or bounding boxes.
+ DualTransforms are functions which apply simultaneously to images and corresponding information such as masks
+ and/or bounding boxes.
 
-This is a wrapper for functionality provided by the Albumentations library:https://github.com/albumentations-team/albumentations. A useful visualization tool for many of the possible effectsit provides is available at https://albumentations-demo.herokuapp.com.
-
+This is a wrapper for functionality provided by the Albumentations library:
+https://github.com/albumentations-team/albumentations. A useful visualization tool for many of the possible effects
+it provides is available at https://albumentations-demo.herokuapp.com.
 
 
 #### Args:
 
 * **func** :  An Albumentation function to be invoked.
-* **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute            regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument            like "!infer" or "!train".
+* **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
 * **image_in** :  The key of an image to be modified.
 * **mask_in** :  The key of a mask to be modified (with the same random factors as the image).
 * **masks_in** :  The key of masks to be modified (with the same random factors as the image).
@@ -29,4 +31,4 @@ This is a wrapper for functionality provided by the Albumentations library:https
 
 #### Raises:
 
-* **AssertionError** :  If none of the various inputs such as `image_in` or `mask_in` are provided.    
+* **AssertionError** :  If none of the various inputs such as `image_in` or `mask_in` are provided.

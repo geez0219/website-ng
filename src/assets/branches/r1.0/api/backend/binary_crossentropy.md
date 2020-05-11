@@ -6,7 +6,8 @@ binary_crossentropy(y_pred:~Tensor, y_true:~Tensor, from_logits:bool=False, aver
 ```
 Compute binary crossentropy.
 
-This method is applicable when there are only two label classes (zero and one). There should be a single floatingpoint prediction per example.
+This method is applicable when there are only two label classes (zero and one). There should be a single floating
+point prediction per example.
 
 This method can be used with TensorFlow tensors:
 ```python
@@ -23,7 +24,6 @@ pred = torch.tensor([[0.9], [0.3], [0.8], [0.1]])
 b = fe.backend.binary_crossentropy(y_pred=pred, y_true=true)  # 0.197
 b = fe.backend.binary_crossentropy(y_pred=pred, y_true=true, average_loss=False)  # [0.105, 0.356, 0.223, 0.105]
 ```
-
 
 
 #### Args:

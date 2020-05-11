@@ -21,7 +21,6 @@ fe.backend.load_model(m, weights_path="tmp/test.pt")
 ```
 
 
-
 #### Args:
 
 * **model** :  A neural network instance to load.

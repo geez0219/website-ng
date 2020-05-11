@@ -6,8 +6,8 @@ parse_log_files(file_paths:List[str], log_extension:Union[str, NoneType]='.txt',
 ```
 Parse one or more log files for graphing.
 
-This function which will iterate through the given log file paths, parse them to extract metrics, remove anymetrics which are blacklisted, and then pass the necessary information on the graphing function.
-
+This function which will iterate through the given log file paths, parse them to extract metrics, remove any
+metrics which are blacklisted, and then pass the necessary information on the graphing function.
 
 
 #### Args:

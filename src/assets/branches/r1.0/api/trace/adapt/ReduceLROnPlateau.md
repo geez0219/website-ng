@@ -5,7 +5,6 @@ ReduceLROnPlateau(model:Union[tensorflow.python.keras.engine.training.Model, tor
 Reduce learning rate based on evaluation results.
 
 
-
 #### Args:
 
 * **model** :  A model instance compiled with fe.build.
@@ -17,4 +16,4 @@ Reduce learning rate based on evaluation results.
 
 #### Raises:
 
-* **AssertionError** :  If the loss cannot be inferred from the `model` and a `metric` was not provided.    
+* **AssertionError** :  If the loss cannot be inferred from the `model` and a `metric` was not provided.

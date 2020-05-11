@@ -19,7 +19,6 @@ fe.backend.save_model(m, save_dir="/tmp", model_name="test")  # Generates 'test.
 ```
 
 
-
 #### Args:
 
 * **model** :  A neural network instance to save.

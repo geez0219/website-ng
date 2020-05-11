@@ -17,7 +17,8 @@ import tempfile
 #training parameters
 epochs = 2
 batch_size = 32
-max_steps_per_epoch = None
+max_train_steps_per_epoch = None
+max_eval_steps_per_epoch = None
 save_dir = tempfile.mkdtemp()
 ```
 
@@ -75,20 +76,12 @@ print("the minimum pixel value of output image: {}".format(np.min(data_xout.nump
 
 
 ```python
-sample_num = 5
-
-fig, axs = plt.subplots(sample_num, 2, figsize=(12,12))
-
-axs[0,0].set_title("pipeline input")
-axs[0,1].set_title("pipeline output")
-
-
-for i, j in enumerate(np.random.randint(low=0, high=batch_size-1, size=sample_num)):
-    img_in = data_xin.numpy()[j]
-    axs[i,0].imshow(img_in, cmap="gray")
-    
-    img_out = data_xout.numpy()[j,:,:,0]
-    axs[i,1].imshow(img_out, cmap="gray")
+num_samples = 5
+indices = np.random.choice(batch_size, size=num_samples, replace=False)
+inputs = tf.gather(data_xin.numpy(), indices)
+outputs = tf.gather(data_xout.numpy(), indices)
+img = fe.util.ImgData(pipeline_input=inputs, pipeline_output=outputs)
+fig = img.paint_figure()
 ```
 
 
@@ -146,7 +139,8 @@ estimator = fe.Estimator(pipeline=pipeline,
                          network=network,
                          epochs=epochs,
                          traces=traces,
-                         max_steps_per_epoch=max_steps_per_epoch)
+                         max_train_steps_per_epoch=max_train_steps_per_epoch,
+                         max_eval_steps_per_epoch=max_eval_steps_per_epoch)
 
 estimator.fit() # start the training process
 ```
@@ -158,52 +152,52 @@ estimator.fit() # start the training process
     /_/    \__,_/____/\__/_____/____/\__/_/_/ /_/ /_/\__,_/\__/\____/_/     
                                                                             
     
-    FastEstimator-Start: step: 1; model_lr: 0.001; 
-    FastEstimator-Train: step: 1; ce: 2.2952478; model_lr: 0.001; 
-    FastEstimator-Train: step: 100; ce: 0.3141091; steps/sec: 331.75; model_lr: 0.000998283; 
-    FastEstimator-Train: step: 200; ce: 0.2921242; steps/sec: 327.33; model_lr: 0.0009930746; 
-    FastEstimator-Train: step: 300; ce: 0.030078162; steps/sec: 339.11; model_lr: 0.0009844112; 
-    FastEstimator-Train: step: 400; ce: 0.37753928; steps/sec: 339.46; model_lr: 0.00097235345; 
-    FastEstimator-Train: step: 500; ce: 0.014425077; steps/sec: 328.28; model_lr: 0.000956986; 
-    FastEstimator-Train: step: 600; ce: 0.061481424; steps/sec: 337.15; model_lr: 0.00093841663; 
-    FastEstimator-Train: step: 700; ce: 0.18871143; steps/sec: 330.63; model_lr: 0.0009167756; 
-    FastEstimator-Train: step: 800; ce: 0.04665528; steps/sec: 336.71; model_lr: 0.00089221465; 
-    FastEstimator-Train: step: 900; ce: 0.16318482; steps/sec: 335.27; model_lr: 0.0008649062; 
-    FastEstimator-Train: step: 1000; ce: 0.17174809; steps/sec: 339.01; model_lr: 0.0008350416; 
-    FastEstimator-Train: step: 1100; ce: 0.072015464; steps/sec: 336.46; model_lr: 0.00080283044; 
-    FastEstimator-Train: step: 1200; ce: 0.0038511527; steps/sec: 334.32; model_lr: 0.0007684987; 
-    FastEstimator-Train: step: 1300; ce: 0.13038625; steps/sec: 338.65; model_lr: 0.0007322871; 
-    FastEstimator-Train: step: 1400; ce: 0.001873189; steps/sec: 335.34; model_lr: 0.00069444976; 
-    FastEstimator-Train: step: 1500; ce: 0.003812432; steps/sec: 341.54; model_lr: 0.0006552519; 
-    FastEstimator-Train: step: 1600; ce: 0.118942365; steps/sec: 328.41; model_lr: 0.00061496865; 
-    FastEstimator-Train: step: 1700; ce: 0.012451285; steps/sec: 335.49; model_lr: 0.0005738824; 
-    FastEstimator-Train: step: 1800; ce: 0.082549796; steps/sec: 334.01; model_lr: 0.00053228147; 
-    FastEstimator-Train: step: 1875; epoch: 1; epoch_time: 8.51 sec; 
-    Saved model to /tmp/tmp6rwicno6/model_best_accuracy.h5
-    FastEstimator-Eval: step: 1875; epoch: 1; ce: 0.044308867; min_ce: 0.044308867; since_best: 0; accuracy: 0.985; 
-    FastEstimator-Train: step: 1900; ce: 0.046987697; steps/sec: 136.47; model_lr: 0.00049045763; 
-    FastEstimator-Train: step: 2000; ce: 0.02985252; steps/sec: 331.95; model_lr: 0.00044870423; 
-    FastEstimator-Train: step: 2100; ce: 0.06913616; steps/sec: 332.27; model_lr: 0.0004073141; 
-    FastEstimator-Train: step: 2200; ce: 0.031003162; steps/sec: 339.06; model_lr: 0.00036657765; 
-    FastEstimator-Train: step: 2300; ce: 0.020062737; steps/sec: 338.79; model_lr: 0.00032678054; 
-    FastEstimator-Train: step: 2400; ce: 0.039522864; steps/sec: 341.69; model_lr: 0.00028820196; 
-    FastEstimator-Train: step: 2500; ce: 0.041544776; steps/sec: 347.78; model_lr: 0.00025111248; 
-    FastEstimator-Train: step: 2600; ce: 0.0073616905; steps/sec: 330.83; model_lr: 0.00021577229; 
-    FastEstimator-Train: step: 2700; ce: 0.0032872492; steps/sec: 340.04; model_lr: 0.00018242926; 
-    FastEstimator-Train: step: 2800; ce: 0.021862563; steps/sec: 333.89; model_lr: 0.00015131726; 
-    FastEstimator-Train: step: 2900; ce: 0.10750027; steps/sec: 339.62; model_lr: 0.00012265453; 
-    FastEstimator-Train: step: 3000; ce: 0.041685883; steps/sec: 336.79; model_lr: 9.664212e-05; 
-    FastEstimator-Train: step: 3100; ce: 0.008866243; steps/sec: 339.07; model_lr: 7.346248e-05; 
-    FastEstimator-Train: step: 3200; ce: 0.09189169; steps/sec: 338.88; model_lr: 5.3278196e-05; 
-    FastEstimator-Train: step: 3300; ce: 0.08884057; steps/sec: 331.95; model_lr: 3.6230853e-05; 
-    FastEstimator-Train: step: 3400; ce: 0.1302068; steps/sec: 342.97; model_lr: 2.2440026e-05; 
-    FastEstimator-Train: step: 3500; ce: 0.112514116; steps/sec: 333.27; model_lr: 1.2002448e-05; 
-    FastEstimator-Train: step: 3600; ce: 0.0024552555; steps/sec: 338.11; model_lr: 4.9913274e-06; 
-    FastEstimator-Train: step: 3700; ce: 0.05180082; steps/sec: 334.38; model_lr: 1.4558448e-06; 
-    FastEstimator-Train: step: 3750; epoch: 2; epoch_time: 6.0 sec; 
-    Saved model to /tmp/tmp6rwicno6/model_best_accuracy.h5
-    FastEstimator-Eval: step: 3750; epoch: 2; ce: 0.01713336; min_ce: 0.01713336; since_best: 0; accuracy: 0.9948; 
-    FastEstimator-Finish: step: 3750; total_time: 16.72 sec; model_lr: 1.0001753e-06; 
+    FastEstimator-Start: step: 1; num_device: 0; logging_interval: 100; 
+    FastEstimator-Train: step: 1; ce: 2.3120923; model_lr: 0.001; 
+    FastEstimator-Train: step: 100; ce: 0.3962714; steps/sec: 130.51; model_lr: 0.000998283; 
+    FastEstimator-Train: step: 200; ce: 0.1641247; steps/sec: 128.14; model_lr: 0.0009930746; 
+    FastEstimator-Train: step: 300; ce: 0.20016384; steps/sec: 123.16; model_lr: 0.0009844112; 
+    FastEstimator-Train: step: 400; ce: 0.139256; steps/sec: 118.37; model_lr: 0.00097235345; 
+    FastEstimator-Train: step: 500; ce: 0.20949002; steps/sec: 116.86; model_lr: 0.000956986; 
+    FastEstimator-Train: step: 600; ce: 0.08091536; steps/sec: 115.89; model_lr: 0.00093841663; 
+    FastEstimator-Train: step: 700; ce: 0.069529384; steps/sec: 112.6; model_lr: 0.0009167756; 
+    FastEstimator-Train: step: 800; ce: 0.02633699; steps/sec: 109.37; model_lr: 0.00089221465; 
+    FastEstimator-Train: step: 900; ce: 0.12905718; steps/sec: 104.44; model_lr: 0.0008649062; 
+    FastEstimator-Train: step: 1000; ce: 0.018508099; steps/sec: 108.77; model_lr: 0.0008350416; 
+    FastEstimator-Train: step: 1100; ce: 0.10962237; steps/sec: 106.61; model_lr: 0.00080283044; 
+    FastEstimator-Train: step: 1200; ce: 0.047606118; steps/sec: 101.79; model_lr: 0.0007684987; 
+    FastEstimator-Train: step: 1300; ce: 0.13268313; steps/sec: 97.41; model_lr: 0.0007322871; 
+    FastEstimator-Train: step: 1400; ce: 0.026097888; steps/sec: 94.08; model_lr: 0.00069444976; 
+    FastEstimator-Train: step: 1500; ce: 0.020507228; steps/sec: 92.03; model_lr: 0.0006552519; 
+    FastEstimator-Train: step: 1600; ce: 0.0048278654; steps/sec: 92.14; model_lr: 0.00061496865; 
+    FastEstimator-Train: step: 1700; ce: 0.01370596; steps/sec: 88.92; model_lr: 0.0005738824; 
+    FastEstimator-Train: step: 1800; ce: 0.15647383; steps/sec: 89.46; model_lr: 0.00053228147; 
+    FastEstimator-Train: step: 1875; epoch: 1; epoch_time: 19.9 sec; 
+    FastEstimator-BestModelSaver: Saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmp_19zst_o/model_best_accuracy
+    FastEstimator-Eval: step: 1875; epoch: 1; ce: 0.048851434; accuracy: 0.985; since_best_accuracy: 0; max_accuracy: 0.985; 
+    FastEstimator-Train: step: 1900; ce: 0.0039410545; steps/sec: 87.28; model_lr: 0.00049045763; 
+    FastEstimator-Train: step: 2000; ce: 0.017347965; steps/sec: 86.28; model_lr: 0.00044870423; 
+    FastEstimator-Train: step: 2100; ce: 0.0798438; steps/sec: 89.34; model_lr: 0.0004073141; 
+    FastEstimator-Train: step: 2200; ce: 0.17821585; steps/sec: 86.08; model_lr: 0.00036657765; 
+    FastEstimator-Train: step: 2300; ce: 0.002756747; steps/sec: 86.16; model_lr: 0.00032678054; 
+    FastEstimator-Train: step: 2400; ce: 0.00071113696; steps/sec: 85.27; model_lr: 0.00028820196; 
+    FastEstimator-Train: step: 2500; ce: 0.0027370513; steps/sec: 80.7; model_lr: 0.00025111248; 
+    FastEstimator-Train: step: 2600; ce: 0.0123588; steps/sec: 84.42; model_lr: 0.00021577229; 
+    FastEstimator-Train: step: 2700; ce: 0.0069204723; steps/sec: 81.53; model_lr: 0.00018242926; 
+    FastEstimator-Train: step: 2800; ce: 0.00642678; steps/sec: 77.9; model_lr: 0.00015131726; 
+    FastEstimator-Train: step: 2900; ce: 0.008096467; steps/sec: 81.94; model_lr: 0.00012265453; 
+    FastEstimator-Train: step: 3000; ce: 0.0023379987; steps/sec: 79.61; model_lr: 9.664212e-05; 
+    FastEstimator-Train: step: 3100; ce: 0.104631886; steps/sec: 79.75; model_lr: 7.346248e-05; 
+    FastEstimator-Train: step: 3200; ce: 0.003903159; steps/sec: 78.32; model_lr: 5.3278196e-05; 
+    FastEstimator-Train: step: 3300; ce: 0.024989499; steps/sec: 79.65; model_lr: 3.6230853e-05; 
+    FastEstimator-Train: step: 3400; ce: 0.02124865; steps/sec: 81.16; model_lr: 2.2440026e-05; 
+    FastEstimator-Train: step: 3500; ce: 0.008722213; steps/sec: 77.56; model_lr: 1.2002448e-05; 
+    FastEstimator-Train: step: 3600; ce: 0.18177237; steps/sec: 77.0; model_lr: 4.9913274e-06; 
+    FastEstimator-Train: step: 3700; ce: 0.005134264; steps/sec: 79.63; model_lr: 1.4558448e-06; 
+    FastEstimator-Train: step: 3750; epoch: 2; epoch_time: 22.99 sec; 
+    FastEstimator-BestModelSaver: Saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmp_19zst_o/model_best_accuracy
+    FastEstimator-Eval: step: 3750; epoch: 2; ce: 0.021919494; accuracy: 0.994; since_best_accuracy: 0; max_accuracy: 0.994; 
+    FastEstimator-Finish: step: 3750; total_time: 46.88 sec; model_lr: 1.0001753e-06; 
 
 
 ## Model testing
@@ -214,7 +208,7 @@ estimator.fit() # start the training process
 estimator.test()
 ```
 
-    FastEstimator-Test: epoch: 2; accuracy: 0.9892; 
+    FastEstimator-Test: step: 3750; epoch: 2; accuracy: 0.9908; 
 
 
 ## Images inference 
@@ -223,31 +217,34 @@ We randomly select 5 images from testing dataset and infer them image by image w
 
 
 ```python
-sample_num = 5
+num_samples = 5
+indices = np.random.choice(batch_size, size=num_samples, replace=False)
 
-fig, axs = plt.subplots(sample_num, 3, figsize=(12,12))
+inputs = []
+outputs = []
+predictions = []
 
-axs[0,0].set_title("pipeline input")
-axs[0,1].set_title("pipeline output")
-axs[0,2].set_title("predict result")
-
-for i, j in enumerate(np.random.randint(low=0, high=batch_size-1, size=sample_num)):
-    data = {"x": test_data["x"][j]}
-    axs[i,0].imshow(data["x"], cmap="gray")
+for idx in indices:
+    inputs.append(test_data["x"][idx])
+    data = {"x": inputs[-1]}
     
     # run the pipeline
     data = pipeline.transform(data, mode="infer") 
-    img = data["x_out"].squeeze(axis=(0,3))
-    axs[i,1].imshow(img, cmap="gray")
+    outputs.append(data["x_out"].squeeze(axis=(0,3)))
     
     # run the network
     data = network.transform(data, mode="infer")
-    predict = data["y_pred"].numpy().squeeze(axis=(0))
-    axs[i,2].text(0.2, 0.5, "predicted number: {}".format(np.argmax(predict)))
-    axs[i,2].get_xaxis().set_visible(False)
-    axs[i,2].get_yaxis().set_visible(False)
+    predictions.append(np.argmax(data["y_pred"].numpy().squeeze(axis=(0))))
+
+img = fe.util.ImgData(pipeline_input=np.stack(inputs), pipeline_output=np.stack(outputs), predictions=np.stack(predictions))
+fig = img.paint_figure()
 ```
 
 
 ![png](assets/branches/r1.0/example/image_classification/mnist_files/mnist_20_0.png)
 
+
+
+```python
+
+```

@@ -7,7 +7,6 @@ write_outputs_by_op(op:op.op.Op, store:MutableMapping[str, Any], outputs:Any) ->
 Write `outputs` from an `op` forward function into the data dictionary.
 
 
-
 #### Args:
 
 * **op** :  The Op which generated `outputs`.
