@@ -195,7 +195,7 @@ export class ExampleComponent implements OnInit {
 
   getImageUrl() {
     if (this.sidenav.opened) {
-      this.grippy.nativeElement.style.left = "20rem"
+      this.grippy.nativeElement.style.left = "19rem"
       return "url(../../assets/images/sidebar-grippy-hide.png)"
     } else {
       this.grippy.nativeElement.style.left = "0rem"
@@ -206,7 +206,7 @@ export class ExampleComponent implements OnInit {
   checkSidebar() {
     if (this.sidenav.opened) {
       this.grippy.nativeElement.style.backgroundImage = "url(../../assets/images/sidebar-grippy-hide.png)"
-      this.grippy.nativeElement.style.left = "20rem"
+      this.grippy.nativeElement.style.left = "19rem"
     } else {
       this.grippy.nativeElement.style.backgroundImage = "url(../../assets/images/sidebar-grippy-show.png)"
       this.grippy.nativeElement.style.left = "0rem"

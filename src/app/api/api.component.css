@@ -18,8 +18,8 @@
 }
 
 .sidebar-api {
-    width: 20rem;
-    padding-top: 10px;
+    width: 19rem;
+    padding-top:10px;
     background: #fff;
 }
 
@@ -56,6 +56,11 @@
     line-height: 1.5em;
     padding:6px 18px;
 }
+
+.sidebar-api .items ul{
+    padding-inline-start: 1em;
+}
+
 
 .selected, .not-selected {
     color: rgb(97, 97, 97);
@@ -112,7 +117,7 @@ button { outline: none; }
 
 .grippy {
     position: fixed;
-    left: 20rem;
+    left: 19rem;
     width: 11px;
     height: 100%;
     background-repeat: no-repeat;
