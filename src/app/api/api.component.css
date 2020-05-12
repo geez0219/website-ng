@@ -204,16 +204,19 @@ markdown ::ng-deep img {
     max-width: 100%;
 }
 
-markdown ::ng-deep .language-python{
-    margin: 1.5rem 0rem 1.5rem 0rem;
-}
-
 markdown ::ng-deep .language-none{
     background-color: #757575;
     font-style: italic;
     margin: 1.5rem 0rem 1.5rem 0rem;
 }
 
+markdown ::ng-deep .language-plot{
+    background-color: #FAFAFA;
+    color: rgba(0, 0, 0, 0.87);
+    margin: 1.5rem 0rem 1.5rem 0rem;
+    text-shadow: none;
+    font-weight: 400;
+}
 
 markdown ::ng-deep code{
     font-size:100%;
