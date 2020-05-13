@@ -25,7 +25,6 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
 import { ExampleComponent } from './example/example.component';
 import { SearchComponent } from './search/search.component';
 import { FooterComponent } from './footer/footer.component';
-import { ParticlesModule } from 'angular-particle';
 import { SlackFormComponent } from './slack-form/slack-form.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 
@@ -57,7 +56,6 @@ import { SearchResultComponent } from './search-result/search-result.component';
     NgbModule,
     MarkdownModule.forRoot(),
     BrowserAnimationsModule,
-    ParticlesModule,
 
     MatToolbarModule,
     MatSidenavModule,
