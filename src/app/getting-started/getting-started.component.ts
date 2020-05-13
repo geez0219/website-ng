@@ -1,15 +1,12 @@
 import { Component, OnInit} from '@angular/core';
 import { Title } from '@angular/platform-browser';
-
-declare function startAnimation(): void;
-declare function stopAnimation(): void;
+import { Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-getting-started',
   templateUrl: './getting-started.component.html',
   styleUrls: ['./getting-started.component.css']
 })
-
 export class GettingStartedComponent implements OnInit {
   particleStyle: object = {};
   particleParams: object = {};
@@ -21,13 +18,14 @@ export class GettingStartedComponent implements OnInit {
     name: "FastEstimator"
   }
 
-  constructor(private title: Title) {}
+  constructor(private title: Title,
+              private renderer2: Renderer2) {}
 
   ngOnInit() {
-    startAnimation();
-  }
-
-  ngOnDestroy(){
-    stopAnimation();
+    this.title.setTitle(this.data.name);
+    const s2 = this.renderer2.createElement('script');
+    s2.type = 'text/javascript';
+    s2.src = './assets/js/tsparticles.js';
+    this.renderer2.appendChild(document.body, s2);
   }
 }
