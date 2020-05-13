@@ -33,7 +33,8 @@ from fastestimator.util import ImgData
 epsilon=0.04  # The strength of the adversarial attack
 epochs=10
 batch_size=50
-max_steps_per_epoch=None
+max_train_steps_per_epoch=None
+max_eval_steps_per_epoch=None
 save_dir=tempfile.mkdtemp()
 ```
 
@@ -73,7 +74,7 @@ Here we will leverage the LeNet implementation built in to FastEstimator
 
 
 ```python
-model = fe.build(model_fn=lambda: LeNet(input_shape=(32, 32, 3)), optimizer_fn="adam", model_names="adv_model")
+model = fe.build(model_fn=lambda: LeNet(input_shape=(32, 32, 3)), optimizer_fn="adam", model_name="adv_model")
 ```
 
 ### `Network` defintion
@@ -107,7 +108,8 @@ estimator = fe.Estimator(pipeline=pipeline,
                          network=network,
                          epochs=epochs,
                          traces=traces,
-                         max_steps_per_epoch=max_steps_per_epoch,
+                         max_train_steps_per_epoch=max_train_steps_per_epoch,
+                         max_eval_steps_per_epoch=max_eval_steps_per_epoch,
                          monitor_names=["base_ce", "adv_ce"],
                          log_steps=1000)
 ```
@@ -193,7 +195,7 @@ To see whether training using adversarial hardening was actually useful, we will
 
 
 ```python
-clean_model = fe.build(model_fn=lambda: LeNet(input_shape=(32, 32, 3)), optimizer_fn="adam", model_names="clean_model")
+clean_model = fe.build(model_fn=lambda: LeNet(input_shape=(32, 32, 3)), optimizer_fn="adam", model_name="clean_model")
 clean_network = fe.Network(ops=[
         Watch(inputs="x"),
         ModelOp(model=clean_model, inputs="x", outputs="y_pred"),
@@ -211,7 +213,8 @@ clean_estimator = fe.Estimator(pipeline=pipeline,
                          network=clean_network,
                          epochs=epochs,
                          traces=clean_traces,
-                         max_steps_per_epoch=max_steps_per_epoch,
+                         max_train_steps_per_epoch=max_train_steps_per_epoch,
+                         max_eval_steps_per_epoch=max_eval_steps_per_epoch,
                          log_steps=1000)
 clean_estimator.fit()
 ```

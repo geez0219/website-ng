@@ -6,7 +6,8 @@ gather_from_batch(tensor:~Tensor, indices:~Tensor) -> ~Tensor
 ```
 Gather specific indices from a batch of data.
 
-This method can be useful if you need to compute gradients based on a specific subset of a tensor's output values.The `indices` will automatically be cast to the correct type (tf, torch, np) based on the type of the `tensor`.
+This method can be useful if you need to compute gradients based on a specific subset of a tensor's output values.
+The `indices` will automatically be cast to the correct type (tf, torch, np) based on the type of the `tensor`.
 
 This method can be used with Numpy data:
 ```python
@@ -34,7 +35,6 @@ b = fe.backend.gather_from_batch(p, ind)  # [1, 2, 5]
 p = torch.tensor([[[0, 1], [2, 3]], [[4, 5], [6, 7]], [[8, 9], [10, 11]]])
 b = fe.backend.gather_from_batch(p, ind)  # [[2, 3], [4, 5], [10, 11]]
 ```
-
 
 
 #### Args:

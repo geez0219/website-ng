@@ -27,7 +27,6 @@ b = fe.backend.mean_squared_error(y_pred=pred, y_true=true)  # [1.0, 9.0, 0.0, 1
 ```
 
 
-
 #### Args:
 
 * **y_true** :  Ground truth class labels with a shape like (batch) or (batch, n_classes). dtype int or float32.

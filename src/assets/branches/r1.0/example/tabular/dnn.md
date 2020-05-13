@@ -24,7 +24,8 @@ from fastestimator.trace.metric import Accuracy
 batch_size = 4
 epochs = 10
 save_dir = tempfile.mkdtemp()
-max_steps_per_epoch = None
+max_train_steps_per_epoch = None
+max_eval_steps_per_epoch = None
 ```
 
 # Download data
@@ -162,7 +163,8 @@ estimator = fe.Estimator(pipeline=pipeline,
                          epochs=epochs,
                          log_steps=10,
                          traces=traces,
-                         max_steps_per_epoch=max_steps_per_epoch)
+                         max_train_steps_per_epoch=max_train_steps_per_epoch,
+                         max_eval_steps_per_epoch=max_eval_steps_per_epoch)
 ```
 
 # Training

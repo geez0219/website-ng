@@ -25,7 +25,6 @@ b = fe.backend.clip_by_value(p, min_value=-2, max_value=3)  # [-2, 3, 2, 0, 3, -
 ```
 
 
-
 #### Args:
 
 * **tensor** :  The input value.

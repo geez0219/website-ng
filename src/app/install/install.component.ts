@@ -3,13 +3,28 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Title, Meta } from '@angular/platform-browser';
 
 import { SnackbarComponent } from '../snackbar/snackbar.component';
+import { GlobalService } from '../global.service';
+import { Router, ActivatedRoute } from '@angular/router'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 
 @Component({
   selector: 'app-install',
   templateUrl: './install.component.html',
-  styleUrls: ['./install.component.css']
+  styleUrls: ['../api/api.component.css']
 })
 export class InstallComponent implements OnInit {
+  installText: string;
+
+  contentHeaderDict = {
+    'Accept': "application/json, text/plain",
+    'Access-Control-Allow-Origin': '*'
+  }
+
+  contentRequestOptions = {
+    responseType: 'text' as 'text',
+    headers: new HttpHeaders(this.contentHeaderDict)
+  };
+
   data = {
     name: 'Installing FastEstimator',
     bio: 'Installing FastEstimator',
@@ -17,7 +32,13 @@ export class InstallComponent implements OnInit {
 
   durationInSeconds = 3;
 
-  constructor(private _snackBar: MatSnackBar, private title: Title, private meta: Meta) { }
+  constructor(private _snackBar: MatSnackBar,
+              private title: Title,
+              private meta: Meta,
+              private http: HttpClient,
+              private router: Router,
+              private route: ActivatedRoute,
+              private globalService: GlobalService) { }
 
   ngOnInit() {
     this.title.setTitle(this.data.name);
@@ -26,6 +47,18 @@ export class InstallComponent implements OnInit {
       { name: 'og:title', content: this.data.name },
       { name: 'og:description', content: this.data.bio },
     ]);
+    this.getInstallText();
+  }
+
+  getInstallText() {
+    this.http.get('assets/branches/r1.0/install.md', this.contentRequestOptions).subscribe(data => {
+      this.installText = data;
+      this.globalService.resetLoading();
+    },
+      error => {
+        console.error(error);
+        this.globalService.resetLoading();
+      });
   }
 
   copied(event: any) {

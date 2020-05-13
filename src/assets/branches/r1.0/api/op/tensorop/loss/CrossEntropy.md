@@ -5,12 +5,11 @@ CrossEntropy(inputs:Union[NoneType, str, Iterable[str], Callable]=None, outputs:
 Calculate Element-Wise CrossEntropy (binary, categorical or sparse categorical).
 
 
-
 #### Args:
 
 * **inputs** :  A tuple or list like [&lt;y_pred&gt;, &lt;y_true&gt;].
 * **outputs** :  String key under which to store the computed loss value.
-* **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute            regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument            like "!infer" or "!train".
+* **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
 * **from_logits** :  Whether y_pred is logits (without softmax).
 * **average_loss** :  Whether to average the element-wise loss after the Loss Op.
-* **form** :  What form of cross entropy should be performed ('binary', 'categorical', 'sparse', or None). None will            automatically infer the correct form based on tensor shape.    
+* **form** :  What form of cross entropy should be performed ('binary', 'categorical', 'sparse', or None). None will        automatically infer the correct form based on tensor shape.

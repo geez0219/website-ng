@@ -27,7 +27,6 @@ b = fe.backend.to_number(p)  # [1, 2, 3] (type==np.ndarray)
 ```
 
 
-
 #### Args:
 
 * **data** :  The value to be converted into a np.ndarray.

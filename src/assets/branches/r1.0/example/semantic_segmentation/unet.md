@@ -34,7 +34,8 @@ pd.set_option('display.max_colwidth', 500)
 ```python
 batch_size = 4
 epochs = 25
-max_steps_per_epoch = None
+max_train_steps_per_epoch = None
+max_eval_steps_per_epoch = None
 save_dir = tempfile.mkdtemp()
 data_dir = None
 ```
@@ -145,12 +146,12 @@ pipeline = fe.Pipeline(
     eval_data=csv.split(0.2),
     batch_size=batch_size,
     ops=[
-        ReadImage(inputs="image", parent_path=csv.parent_path, outputs="image", grey_scale=True),
-        ReadImage(inputs="mask_left", parent_path=csv.parent_path, outputs="mask_left", grey_scale=True, mode='!infer'),
+        ReadImage(inputs="image", parent_path=csv.parent_path, outputs="image", color_flag="gray"),
+        ReadImage(inputs="mask_left", parent_path=csv.parent_path, outputs="mask_left", color_flag="gray", mode='!infer'),
         ReadImage(inputs="mask_right",
                   parent_path=csv.parent_path,
                   outputs="mask_right",
-                  grey_scale=True,
+                  color_flag="gray",
                   mode='!infer'),
         CombineLeftRightMask(inputs=("mask_left", "mask_right"), outputs="mask", mode='!infer'),
         Delete(keys=["mask_left", "mask_right"], mode='!infer'),
@@ -199,7 +200,7 @@ ax[1].imshow(np.squeeze(batch_data['mask'][batch_index]), cmap='gray')
 model = fe.build(
     model_fn=lambda: UNet(input_size=(1, 512, 512)),
     optimizer_fn=lambda x: torch.optim.Adam(params=x, lr=0.0001),
-    model_names="lung_segmentation"
+    model_name="lung_segmentation"
 )
 ```
 
@@ -229,7 +230,8 @@ estimator = fe.Estimator(network=network,
                          epochs=epochs,
                          log_steps=20,
                          traces=traces,
-                         max_steps_per_epoch=max_steps_per_epoch)
+                         max_train_steps_per_epoch=max_train_steps_per_epoch,
+                         max_eval_steps_per_epoch=max_eval_steps_per_epoch)
 ```
 
 # Training
@@ -377,7 +379,7 @@ weights_path = os.path.join(save_dir, "lung_segmentation_best_Dice.pt") # your m
 
 model = fe.build(model_fn=lambda: UNet(input_size=(1, 512, 512)),
                  optimizer_fn=lambda x: torch.optim.Adam(params=x, lr=0.0001),
-                 model_names="lung_segmentation",
+                 model_name="lung_segmentation",
                  weights_path=weights_path)
 ```
 

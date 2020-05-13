@@ -6,7 +6,8 @@ percentile(tensor:~Tensor, percentiles:Union[int, List[int]], axis:Union[NoneTyp
 ```
 Compute the `percentiles` of a `tensor`.
 
-The n-th percentile of `tensor` is the value n/100 of the way from the minimum to the maximum in a sorted copy of`tensor`. If the percentile falls in between two values, the nearest of the two values will be used.
+The n-th percentile of `tensor` is the value n/100 of the way from the minimum to the maximum in a sorted copy of
+`tensor`. If the percentile falls in between two values, the nearest of the two values will be used.
 
 This method can be used with Numpy data:
 ```python
@@ -31,7 +32,6 @@ b = fe.backend.percentile(p, percentiles=[66])  # [[[6]]]
 b = fe.backend.percentile(p, percentiles=[66], axis=0)  # [[[4, 5, 6]]]
 b = fe.backend.percentile(p, percentiles=[66], axis=1)  # [[[2], [5], [8]]]
 ```
-
 
 
 #### Args:

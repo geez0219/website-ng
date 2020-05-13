@@ -37,7 +37,6 @@ shape = fe.backend.to_shape(data, exact_shape=False)
 ```
 
 
-
 #### Args:
 
 * **data** :  A tensor or possibly nested collection of tensors.

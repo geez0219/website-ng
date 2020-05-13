@@ -13,7 +13,6 @@ fe.Estimator(..., traces=[s])
 ```
 
 
-
 #### Args:
 
 * **time** :  The current step or epoch during training starting from 1.

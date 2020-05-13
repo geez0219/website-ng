@@ -21,7 +21,7 @@
             </mat-icon>
             {{node.displayName}}
           </button>
-          <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">
+          <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)" class="items-ul">
             <ng-container matTreeNodeOutlet></ng-container>
           </ul>
         </li>

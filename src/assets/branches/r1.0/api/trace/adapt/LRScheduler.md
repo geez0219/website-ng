@@ -6,12 +6,11 @@ Learning rate scheduler trace that changes the learning rate while training.
 
 This class requires an input function which takes either 'epoch' or 'step' as input:
 ```python
-    s = LRScheduler(model=model, lr_fn=lambda step: fe.schedule.cosine_decay(step, cycle_length=3750, init_lr=1e-3))
-    fe.Estimator(..., traces=[s])  # Learning rate will change based on step
-    s = LRScheduler(model=model, lr_fn=lambda epoch: fe.schedule.cosine_decay(epoch, cycle_length=3750, init_lr=1e-3))
-    fe.Estimator(..., traces=[s])  # Learning rate will change based on epoch
-    ```
-
+s = LRScheduler(model=model, lr_fn=lambda step: fe.schedule.cosine_decay(step, cycle_length=3750, init_lr=1e-3))
+fe.Estimator(..., traces=[s])  # Learning rate will change based on step
+s = LRScheduler(model=model, lr_fn=lambda epoch: fe.schedule.cosine_decay(epoch, cycle_length=3750, init_lr=1e-3))
+fe.Estimator(..., traces=[s])  # Learning rate will change based on epoch
+```
 
 
 #### Args:
@@ -21,4 +20,4 @@ This class requires an input function which takes either 'epoch' or 'step' as in
 
 #### Raises:
 
-* **AssertionError** :  If the `lr_fn` is not configured properly.    
+* **AssertionError** :  If the `lr_fn` is not configured properly.

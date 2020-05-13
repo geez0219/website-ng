@@ -5,10 +5,9 @@ Resize(height:int, width:int, interpolation:int=1, mode:Union[str, NoneType]=Non
 Resize the input to the given height and width.
 
 
-
 #### Args:
 
-* **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute            regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument            like "!infer" or "!train".
+* **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
 * **image_in** :  The key of an image to be modified.
 * **mask_in** :  The key of a mask to be modified (with the same random factors as the image).
 * **masks_in** :  The key of masks to be modified (with the same random factors as the image).
@@ -23,5 +22,5 @@ Resize the input to the given height and width.
 * **keypoint_params** :  Parameters defining the type of keypoints ('xy', 'yx', 'xya', 'xys', 'xyas', 'xysa').
 * **height** :  Desired height of the output.
 * **width** :  Desired width of the output.
-* **interpolation** :  Flag that is used to specify the interpolation algorithm. Should be one of            cv2.INTER_NEAREST, cv2.INTER_LINEAR, cv2.INTER_CUBIC, cv2.INTER_AREA, cv2.INTER_LANCZOS4.
-* **Image types** :         uint8, float32    
+* **interpolation** :  Flag that is used to specify the interpolation algorithm. Should be one of        cv2.INTER_NEAREST, cv2.INTER_LINEAR, cv2.INTER_CUBIC, cv2.INTER_AREA, cv2.INTER_LANCZOS4.
+* **Image types** :     uint8, float32

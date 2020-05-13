@@ -5,13 +5,12 @@ MeanAveragePrecision(num_classes:int, true_key='bbox', pred_key:str='pred', mode
 Calculate COCO mean average precision.
 
 
-
 #### Args:
 
-* **num_classes** :  Maximum `int` value for your class label. In COCO dataset we only used 80 classes, but the maxium            value of the class label is `90`. In this case `num_classes` should be `90`.
+* **num_classes** :  Maximum `int` value for your class label. In COCO dataset we only used 80 classes, but the maxium        value of the class label is `90`. In this case `num_classes` should be `90`.
 
 #### Returns:
-        Mean Average Precision.    
+    Mean Average Precision.
 
 ### accumulate
 ```python
@@ -28,14 +27,13 @@ Compute intersection over union.
 We leverage `maskUtils.iou`.
 
 
-
 #### Args:
 
 * **det** :  Detection array.
 * **gt** :  Ground truth array.
 
 #### Returns:
-            Intersection of union array.        
+    Intersection of union array.
 
 ### evaluate_img
 ```python
@@ -44,14 +42,13 @@ evaluate_img(self, cat_id:int, img_id:int) -> Dict
 Find gt matches for det given one image and one category.
 
 
-
 #### Args:
 
 * **cat_id** : 
 * **img_id** : 
 
 #### Returns:
-        
+
 
 ### on_batch_begin
 ```python
@@ -72,10 +69,9 @@ summarize(self, iou:float=None) -> float
 Compute average precision given one intersection union threshold.
 
 
-
 #### Args:
 
-* **iou** :  Intersection over union threshold. If this value is `None`, then average all iou thresholds. The result                is the mean average precision.
+* **iou** :  Intersection over union threshold. If this value is `None`, then average all iou thresholds. The result        is the mean average precision.
 
 #### Returns:
-            Average precision.        
+    Average precision.

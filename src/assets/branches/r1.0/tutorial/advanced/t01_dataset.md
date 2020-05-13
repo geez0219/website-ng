@@ -115,7 +115,7 @@ test_data7, test_data8 = eval_data.split([0, 1 ,2], [3, 4, 5])
 
 <a id='ta01gde'></a>
 
-## Global Dataset Editting
+## Global Dataset Editing
 In deep learning, we usually process the dataset batch by batch. However, when we are handling tabular data, we might need to apply some transformation globally before the training. For example, we may want to standardize the tabular data using `sklearn`:
 
 

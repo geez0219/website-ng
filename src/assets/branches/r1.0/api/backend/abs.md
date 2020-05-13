@@ -25,7 +25,6 @@ b = fe.backend.abs(p)  # [2, 7, 19]
 ```
 
 
-
 #### Args:
 
 * **tensor** :  The input value.

@@ -23,8 +23,10 @@ export class ApiComponent implements OnInit {
   currentSelection: string;
   currentAPIText: string;
   currentAPILink: string;
-
+  scrollCounter:number=0;
+  scrollThreshold:number=20;
   segments: UrlSegment[];
+  fragment: string;
 
   treeControl: NestedTreeControl<API>;
   dataSource: MatTreeNestedDataSource<API>;
@@ -56,6 +58,13 @@ export class ApiComponent implements OnInit {
     this.screenWidth$.next(event.target.innerWidth);
   }
 
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event) {
+    if (this.scrollCounter < this.scrollThreshold) {
+      this.scrollCounter += 1;
+    }
+  }
+
   @ViewChild('sidenav', { static: true })
   sidenav: MatSidenav;
 
@@ -74,15 +83,33 @@ export class ApiComponent implements OnInit {
 
     this.route.url.subscribe((segments: UrlSegment[]) => {
       this.globalService.setLoading();
-      console.log(segments)
-
       this.segments = segments;
       this.getAPIStructure();
     });
 
+    this.route.fragment.subscribe((fragment: string) => {
+      this.fragment = fragment;
+    })
+
     this.screenWidth$.subscribe(width => {
       this.screenWidth = width;
     });
+  }
+
+  ngAfterViewChecked() {
+    /* Scroll to the fragment postition.
+       The reason for adding a scroll threshold is to scroll to the fragment position after image loaded.
+       Before the counter goes to scollThreshold, the scrolling postion will stick to fragment.
+       This wook will trigger the onScroll event and trigger back to this funtion again.
+       So the counter will goes extremely fast.
+    */
+
+    if (this.fragment && this.scrollCounter < this.scrollThreshold) {
+      if (document.querySelector('#' + this.fragment) != null) {
+        document.querySelector('#' + this.fragment).scrollIntoView();
+        window.scrollBy(0, -90); // the offset of navbar height
+      }
+    }
   }
 
   hasChild = (_: number, node: API) => !!node.children && node.children.length > 0;
@@ -136,8 +163,6 @@ export class ApiComponent implements OnInit {
       error => {
         console.error(error);
         this.globalService.resetLoading();
-
-        this.router.navigate(['PageNotFound'], {replaceUrl: true})
       });
     }
   }
@@ -150,7 +175,6 @@ export class ApiComponent implements OnInit {
     }
     /* END COMMENTS */
     else {
-      console.log(this.flatten(this.apiList));
       var searchString: string;
       if (this.segments.length === 2) {
         searchString = this.segments.join("/") + ".md";
@@ -207,7 +231,7 @@ export class ApiComponent implements OnInit {
   checkSidebar() {
     if (this.sidenav.opened) {
       this.grippy.nativeElement.style.backgroundImage = "url(../../assets/images/sidebar-grippy-hide.png)"
-      this.grippy.nativeElement.style.left = "20rem"
+      this.grippy.nativeElement.style.left = "19rem"
     } else {
       this.grippy.nativeElement.style.backgroundImage = "url(../../assets/images/sidebar-grippy-show.png)"
       this.grippy.nativeElement.style.left = "0rem"
@@ -216,7 +240,7 @@ export class ApiComponent implements OnInit {
 
   getImageUrl() {
     if (this.sidenav.opened) {
-      this.grippy.nativeElement.style.left = "20rem"
+      this.grippy.nativeElement.style.left = "19rem"
       return "url(../../assets/images/sidebar-grippy-hide.png)"
     } else {
       this.grippy.nativeElement.style.left = "0rem"

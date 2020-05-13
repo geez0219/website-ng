@@ -27,7 +27,8 @@ from matplotlib import pyplot as plt
 # Parameters
 epochs = 200
 batch_size = 128
-max_steps_per_epoch = None
+max_train_steps_per_epoch = None
+max_eval_steps_per_epoch = None
 save_dir = tempfile.mkdtemp()
 data_dir = None
 ```
@@ -56,8 +57,8 @@ pipeline = fe.Pipeline(
     test_data=test_data,
     batch_size=batch_size,
     ops=[
-        ReadImage(inputs="x_a", outputs="x_a", grey_scale=True),
-        ReadImage(inputs="x_b", outputs="x_b", grey_scale=True),
+        ReadImage(inputs="x_a", outputs="x_a", color_flag="gray"),
+        ReadImage(inputs="x_b", outputs="x_b", color_flag="gray"),
         Sometimes(
             ShiftScaleRotate(image_in="x_a",
                              image_out="x_a",
@@ -224,7 +225,7 @@ from fastestimator.op.tensorop.loss import CrossEntropy
 from fastestimator.op.tensorop.model import ModelOp, UpdateOp
 
 
-model = fe.build(model_fn=siamese_network, model_names="siamese_net", optimizer_fn="adam")
+model = fe.build(model_fn=siamese_network, model_name="siamese_net", optimizer_fn="adam")
 
 network = fe.Network(ops=[
     ModelOp(inputs=["x_a", "x_b"], model=model, outputs="y_pred"),
@@ -307,7 +308,8 @@ estimator = fe.Estimator(network=network,
                          pipeline=pipeline,
                          epochs=epochs,
                          traces=traces, 
-                         max_steps_per_epoch=max_steps_per_epoch)
+                         max_train_steps_per_epoch=max_train_steps_per_epoch,
+                         max_eval_steps_per_epoch=max_eval_steps_per_epoch)
 ```
 
 ## Training and Testing
