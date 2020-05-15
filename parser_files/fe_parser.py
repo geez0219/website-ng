@@ -13,8 +13,8 @@ from pygit2 import Repository
 titles = ['Args', 'Raises', 'Returns']
 fe_url = 'https://github.com/fastestimator/fastestimator/blob'
 sourcelines_dict = {}
-regex_python_block = r'```python[^```]+```'
 html_char_regex = r'([\<\>])'
+args_regex = r'(Args|Returns|Raises):\n'
 
 
 def extractmarkdown(module, save_path, mod_dir, branch_name):
@@ -26,20 +26,6 @@ def extractmarkdown(module, save_path, mod_dir, branch_name):
     getfunctions(mod, save_path, mod_dir, branch_name)
     return "".join(output)
 
-def replacePythonBlock(inputstring, python_blocks, startpos=0):
-    output = ''+inputstring
-    pattern = re.compile(regex_python_block)
-    if len(python_blocks) != 0:
-        code = pattern.search(inputstring, startpos)
-        start = code.start(0)
-        end = code.end(0)
-        # replace python code block with original one
-        output_content = inputstring[:start] + '\n'+python_blocks[0].lstrip()+'\n' + inputstring[end+1:]
-        python_blocks.pop(0)
-        return replacePythonBlock(output_content, python_blocks, startpos=end+1)
-    else:
-        return output
-
 
 def formatDocstring(docstr):
     """It format the docstring in markdown form and append it to the list
@@ -50,46 +36,41 @@ def formatDocstring(docstr):
     Returns:
         [str]: markdown string converted from docstring
     """
-    res = []
-    formatteddoc = ''
+    docstr_output = ''
     if docstr != None:
-        docstr = docstr.replace('<', '&lt;').replace('>', '&gt;') # html espace characters to be replaced
-        # find all python code blocks and save them in list
-        python_blocks = re.findall(regex_python_block, docstr)
-        docstr = docstr.split('\n')
-        new_docstr = docstr.copy()
-        for i in range(len(docstr)):
-            if docstr[i] == '':
-                docstr[i] = docstr[i]+'\n\n'
-            if (docstr[i].replace(" ", "").split(':')[0] not in titles):
-                res.append(docstr[i])
-                new_docstr.pop(0)
-            else:
-                break
-        if len(new_docstr) != 0:
-            for idx in range(len(new_docstr)):
-                if ':' in new_docstr[idx]:
-                    elements = new_docstr[idx].split(':')
-                    if elements[0].strip() in titles:
-                        title = '#### ' + elements[0].strip()
-                        res.append('\n\n' + title + ':\n')
-                    else:
-                        res.append('\n')
-                        param = elements[0].strip()
-                        if param[0] in ['*']:
-                            param = ' ' + param
+        docstr_output = inspect.cleandoc(docstr)
+        docstr_output = docstr_output.replace('<', '&lt;').replace('>', '&gt;')  # html espace characters to be replaced
+        args = re.search(args_regex, docstr_output)
+        if args != None:
+            pos = args.start(0)
+            doc_arg = docstr_output[pos:]
+            docstr_output = docstr_output[:pos - 1]
+            print(docstr_output)
+            new_docstr = doc_arg.split('\n')
+            res = []
+            if len(new_docstr) != 0:
+                for idx in range(len(new_docstr)):
+                    if ':' in new_docstr[idx]:
+                        elements = new_docstr[idx].split(':')
+                        if elements[0].strip() in titles:
+                            title = '#### ' + elements[0].strip()
+                            res.append('\n\n' + title + ':\n')
                         else:
-                            param = '* **' + param + '**'
-                        res.append(param)
-                        res.append(' : ')
-                        for i in range(1, len(elements)):
-                            res.append(elements[i])
-                else:
-                    res.append(new_docstr[idx])
-        formatteddoc = "".join(res)
-        outputstr = replacePythonBlock(formatteddoc, python_blocks)
-        return outputstr
-    return formatteddoc
+                            res.append('\n')
+                            param = elements[0].strip()
+                            if param[0] in ['*']:
+                                param = ' ' + param
+                            else:
+                                param = '* **' + param + '**'
+                            res.append(param)
+                            res.append(' : ')
+                            for i in range(1, len(elements)):
+                                res.append(elements[i])
+                    else:
+                        res.append(new_docstr[idx])
+            docstr_output = docstr_output + ''.join(res)
+        return docstr_output
+    return docstr_output
 
 
 def addSourceLines(mod_def, mod_name, mod_dir, branch_name):
@@ -195,7 +176,8 @@ def generatedocs(repo_dir, save_dir):
     """
     main_repo = os.path.join(repo_dir, 'fastestimator')
     head = Repository(repo_dir).head
-    branch_name = head.name.split(sep)[-1]
+    #branch_name = head.name.split(sep)[-1]
+    branch_name = 'r1.0'
     fe_path = os.path.abspath(main_repo)
     save_dir = os.path.join(save_dir, 'fe')
     #insert project path to system path to later detect the modules in project
@@ -206,7 +188,7 @@ def generatedocs(repo_dir, save_dir):
         for f in files:
             fname, ext = os.path.splitext(os.path.basename(f))
             if not f.startswith('_') and ext == '.py':
-                #if f == 'schedule.py':
+                #if f == 'cross_entropy.py':
                 f_path = os.path.join(subdirs, f)
                 mod_dir = os.path.relpath(f_path, fe_path)
                 mod = mod_dir.replace(sep, '.')
