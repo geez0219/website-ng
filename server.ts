@@ -20,6 +20,7 @@ import * as cors from 'cors';
 import * as express from 'express';
 import {join} from 'path';
 import * as nodemailer from 'nodemailer'
+// import {tsParticles} from 'tsparticles'
 
 // fix window is not defined error
 const domino = require('domino');
@@ -28,6 +29,7 @@ const template = fs.readFileSync(join('dist', 'browser', 'index.html')).toString
 const win = domino.createWindow(template);
 global['window'] = win;
 global['document'] = win.document;
+global['tsParticles'] = require("tsparticles");
 
 
 // Express server

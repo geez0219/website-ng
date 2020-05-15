@@ -39,8 +39,7 @@
               "node_modules/prismjs/plugins/line-highlight/prism-line-highlight.js",
               "node_modules/marked/lib/marked.js",
               "node_modules/katex/dist/katex.min.js",
-              "node_modules/tsparticles/dist/tsparticles.slim.min.js",
-              "src/assets/js/tsparticles.js"
+              "node_modules/tsparticles/dist/tsparticles.min.js"
             ]
           },
           "configurations": {
