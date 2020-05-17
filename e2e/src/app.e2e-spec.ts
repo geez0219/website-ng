@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to fastestimator-web!');
+    expect(page.getTitleText()).toEqual('fe-website app is running!');
   });
 
   afterEach(async () => {

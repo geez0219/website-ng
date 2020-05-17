@@ -7,7 +7,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MarkdownModule } from 'ngx-markdown';
 import { ClipboardModule } from 'ngx-clipboard';
-import { MatMenuModule, MatProgressBarModule, MatNativeDateModule, MatCardModule, MatDialogModule, MatSnackBarModule, MatTreeModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from  '@angular/material';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatToolbarModule} from '@angular/material/toolbar';
+import { MatSidenavModule} from '@angular/material/sidenav';
+import { MatListModule} from '@angular/material/list';
+import { MatButtonModule} from '@angular/material/button';
+import { MatIconModule} from '@angular/material/icon';
+import {MatTreeModule} from '@angular/material/tree';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatCardModule} from '@angular/material/card';
 
 import { WINDOW_PROVIDERS } from './window-provider/window-provider.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -27,6 +37,7 @@ import { SearchComponent } from './search/search.component';
 import { FooterComponent } from './footer/footer.component';
 import { SlackFormComponent } from './slack-form/slack-form.component';
 import { SearchResultComponent } from './search-result/search-result.component';
+import { SecurityContext } from '@angular/core'
 
 @NgModule({
   declarations: [
@@ -54,7 +65,7 @@ import { SearchResultComponent } from './search-result/search-result.component';
     FormsModule,
 
     NgbModule,
-    MarkdownModule.forRoot(),
+    MarkdownModule.forRoot({ sanitize: SecurityContext.NONE }), // for all tag has id
     BrowserAnimationsModule,
 
     MatToolbarModule,
@@ -62,7 +73,6 @@ import { SearchResultComponent } from './search-result/search-result.component';
     MatListModule,
     MatButtonModule,
     MatIconModule,
-    MatNativeDateModule,
     MatTreeModule,
     ClipboardModule,
     MatSnackBarModule,

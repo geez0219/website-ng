@@ -5,10 +5,10 @@ import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
 import { NestedTreeControl } from '@angular/cdk/tree';
+import { MatSidenav} from '@angular/material/sidenav';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 
 import { API } from '../api';
-import { MatSidenav } from '@angular/material';
 import { Title } from '@angular/platform-browser';
 import { GlobalService } from '../global.service';
 
