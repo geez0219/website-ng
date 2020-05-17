@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Renderer2 } from '@angular/core';
+
+declare var tsParticles;
 
 @Component({
   selector: 'app-getting-started',
@@ -18,14 +19,31 @@ export class GettingStartedComponent implements OnInit {
     name: "FastEstimator"
   }
 
-  constructor(private title: Title,
-              private renderer2: Renderer2) {}
+  constructor(private title: Title) {}
 
   ngOnInit() {
     this.title.setTitle(this.data.name);
-    const s2 = this.renderer2.createElement('script');
-    s2.type = 'text/javascript';
-    s2.src = './assets/js/tsparticles.js';
-    this.renderer2.appendChild(document.body, s2);
+    tsParticles
+    .loadJSON("tsparticles", "./assets/tsparticles.json")
+    .then((container) => {
+        console.log("callback - tsparticles config loaded");
+    })
+    .catch((error) => {
+        console.error(error);
+    });
+  }
+
+
+  ngOnDestroy(){
+    tsParticles
+    .loadJSON("tsparticles", "./assets/tsparticles.json")
+    .then((container) => {
+        const particles = tsParticles.domItem(0);
+        particles.pause();
+        console.log("callback - tsparticles config loaded");
+    })
+    .catch((error) => {
+        console.error(error);
+    });
   }
 }

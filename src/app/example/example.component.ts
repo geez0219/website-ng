@@ -5,7 +5,8 @@ import { BehaviorSubject } from 'rxjs';
 import { Title } from '@angular/platform-browser';
 
 import { NestedTreeControl } from '@angular/cdk/tree';
-import { MatSidenav, MatTreeNestedDataSource } from '@angular/material';
+import { MatSidenav} from '@angular/material/sidenav';
+import { MatTreeNestedDataSource } from '@angular/material/tree';
 
 import { Example } from '../example';
 import { GlobalService } from '../global.service';

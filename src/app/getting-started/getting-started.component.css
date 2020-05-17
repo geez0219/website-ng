@@ -2,6 +2,8 @@
     min-height: calc(100vh - 6rem);
     display: flex;
     flex-direction: column;
+    font-size: 1rem;
+    line-height: 1.5;
 }
 
 .container {
@@ -30,7 +32,8 @@
     position: relative;
     text-align: center;
     top: 40%;
-    font-size: 2.3em;
+    font-size: 2.3rem;
+    font-weight: 500;
     color: rgb(255, 255, 255);
     transform: translateY(-50%);
 }
@@ -42,7 +45,7 @@
 }
 
 .sub-button{
-    font-size: 1.2em;
+    font-size: 1.2rem;
     background-color: #df6c3f;
     text-decoration: none;
 }
@@ -58,13 +61,13 @@
 }
 .section-heading {
     color: chocolate;
-    font-size: 2.2em;
+    font-size: 2.2rem;
     margin-top: 2rem;
 }
 
 .section-content {
     color: darkslategray;
-    font-size: 1.25em;
+    font-size: 1.25rem;
     margin: 5px 10% 5px 10%;
 }
 
@@ -106,7 +109,6 @@
 .myButton {
     background-color:#378de5;
     text-decoration: none;
-    /* font-size: 1.2em; */
 }
 
 .myButton:hover{
