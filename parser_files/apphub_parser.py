@@ -15,13 +15,6 @@ re_sidebar_title = '[^A-Za-z0-9:!,$%.() ]+'
 re_route_title = '[^A-Za-z0-9 ]+'
 re_url = '\[notebook\]\((.*)\)'
 
-apphub_md_dir = 'apphub_md'
-tmp_dir = '/home/ubuntu/vivek/output/'
-tmp_markdown = os.path.join(tmp_dir, 'example')
-struct_json_path = os.path.join(tmp_markdown, 'structure.json')
-apphub_toc_path = os.path.join(tmp_markdown, 'apphub_toc.md')
-apphub_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../apphub/')
-
 
 def splitall(path):
     allparts = []
@@ -81,12 +74,13 @@ def extractTitle(md_path, fname):
             return title
 
 
-def extractReadMe(apphub_path):
+def extractReadMe(output_path, apphub_path):
     readmefile = os.path.join(apphub_path, 'README.md')
     content = open(readmefile).readlines()
     toc = []
     startidx = 0
     endidx = len(content) - 1
+    apphub_toc_path = os.path.join(output_path, 'overview.md')
     for i, line in enumerate(content):
         idx = line.find('Table of Contents:')
         if idx != -1:
@@ -94,11 +88,14 @@ def extractReadMe(apphub_path):
         elif line.split(' ')[0] == '##' and startidx != 0:
             endidx = i
             break
+
+    overview = content[:startidx-1]
     toc = content[startidx:endidx]
 
-    #write table of content to the file
+    # write table of content to the file
     with open(apphub_toc_path, 'w') as f:
-        f.write("".join(toc))
+        f.write("".join(overview))
+
     ex_list = []
     title_dict = {}
     child, files_list = [], []
@@ -127,30 +124,37 @@ def extractReadMe(apphub_path):
     return files_list
 
 
-def generateMarkdowns(fe_path, output_path):
-    apphub_path = os.path.join(fe_path, 'apphub')
-    output_path = os.path.join(output_path, 'example')
+def generateMarkdowns(apphub_path, output_path):
     json_struct = []
     exclude_prefixes = ['_', '.']
     for subdirs, dirs, files in os.walk(apphub_path, topdown=True):
         dirs[:] = [d for d in dirs if not d[0] in exclude_prefixes]
         for f in files:
             fname, ext = os.path.splitext(os.path.basename(f))
+            example_type = splitall(os.path.relpath(subdirs, apphub_path))[0]
+            save_dir = os.path.join(output_path, example_type)
             if ext == '.ipynb' and f[0] != '.':
-                example_type = splitall(os.path.relpath(subdirs, apphub_path))[0]
-                save_dir = os.path.join(output_path, example_type)
                 if not os.path.exists(save_dir):
                     os.makedirs(save_dir)
                 subprocess.run(
                     ['jupyter', 'nbconvert', '--to', 'markdown', os.path.join(subdirs, f), '--output-dir', save_dir])
             elif f.endswith(('png', 'jpeg', 'jpg')):
-                copy(os.path.join(subdirs, f), save_dir)
+                filepath = os.path.join(subdirs, f)
+                rel_filepath = os.path.relpath(filepath, apphub_path)
+                image_subdir_elem = rel_filepath.split(os.path.sep)[2:-1]
+                if len(image_subdir_elem) >= 1:
+                    image_subdir = os.path.join(*image_subdir_elem)
+                    output_image_path = os.path.join(save_dir, image_subdir)
+                    if not os.path.exists(output_image_path):
+                        os.makedirs(output_image_path)
+                    copy(filepath, output_image_path)
+                else:
+                    if not os.path.exists(save_dir):
+                        os.makedirs(save_dir)
+                    copy(filepath, save_dir)
 
 
 def getNameTitle(namedict, fname):
-    #print(namedict)
-    #print(fname)
-    #print('\n')
     for obj in namedict:
         if fname in obj.keys():
             title = obj[fname]['title']
@@ -158,24 +162,24 @@ def getNameTitle(namedict, fname):
             return title, name
 
 
-def create_json(path):
+def create_json(output_path, apphub_path):
     json_dict = {}
     json_struct = []
     json_struct.append({'displayName': 'Overview', 'name': 'overview.md'})
     exclude_prefixes = ['_', '.']
-    namedict = extractReadMe(apphub_path)
-    for d in os.listdir(path):
+    namedict = extractReadMe(output_path, apphub_path)
+    for d in os.listdir(output_path):
         child_list = []
         parent_json_obj = {}
-        if os.path.isdir(os.path.join(path, d)):
+        if os.path.isdir(os.path.join(output_path, d)):
             files = [
-                f for f in os.listdir(os.path.join(path, d)) if os.path.isfile(os.path.join(*[tmp_markdown, d, f]))
+                f for f in os.listdir(os.path.join(output_path, d)) if os.path.isfile(os.path.join(*[output_path, d, f]))
             ]
             for f in files:
                 file_json_obj = {}
                 fname, ext = os.path.splitext(os.path.basename(f))
-                title, name = getNameTitle(namedict, fname)
                 if ext == '.md' and f[0] != '.':
+                    title, name = getNameTitle(namedict, fname)
                     file_json_obj['name'] = os.path.join(d, fname + ext)
                     file_json_obj['displayName'] = name
                     child_list.append(file_json_obj)
@@ -190,16 +194,17 @@ if __name__ == '__main__':
     # take fastestimator dir path and output dir
     FE_DIR = sys.argv[1]
     OUTPUT_PATH = sys.argv[2]
-
-    generateMarkdowns(FE_DIR, OUTPUT_PATH)
     example_output_path = os.path.join(OUTPUT_PATH, 'example')
+    apphub_path = os.path.join(FE_DIR, 'apphub')
 
+    generateMarkdowns(apphub_path, example_output_path)
     for subdirs, dirs, files in os.walk(example_output_path, topdown=True):
         for f in files:
             if f.endswith('.md'):
                 d = subdirs.split(os.path.sep)[-1]
                 replaceImagePath(os.path.join(subdirs, f), d)
 
-    #write to json file
+    struct_json_path = os.path.join(example_output_path, 'structure.json')
+    # write to json file
     with open(struct_json_path, 'w') as f:
-        f.write(json.dumps(create_json(tmp_markdown)))
+        f.write(json.dumps(create_json(example_output_path, apphub_path)))
