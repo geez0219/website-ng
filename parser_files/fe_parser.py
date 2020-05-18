@@ -27,6 +27,20 @@ def extractmarkdown(module, save_path, mod_dir, branch_name):
     return "".join(output)
 
 
+def replaceEscapeChar(input, startpos=0):
+    re_plot = r'(```\s*plot[^```]+```)'
+    pattern = re.compile(re_plot)
+    res = pattern.search(input, startpos)
+    if res is not None:
+        startidx = res.start()
+        endidx = res.end()
+        output = input[startpos:startidx].replace('<', '&lt;').replace('>', '&gt;')
+        output = output + res.group(0) + input[endidx+1:]
+        return replaceEscapeChar(output, startpos=endidx+1)
+    else:
+        return input
+
+
 def formatDocstring(docstr):
     """It format the docstring in markdown form and append it to the list
 
@@ -39,7 +53,8 @@ def formatDocstring(docstr):
     docstr_output = ''
     if docstr != None:
         docstr_output = inspect.cleandoc(docstr)
-        docstr_output = docstr_output.replace('<', '&lt;').replace('>', '&gt;')  # html espace characters to be replaced
+        #docstr_output = docstr_output.replace('<', '&lt;').replace('>', '&gt;')  # html espace characters to be replaced
+        docstr_output = replaceEscapeChar(docstr_output)
         args = re.search(args_regex, docstr_output)
         if args != None:
             pos = args.start(0)
@@ -73,11 +88,15 @@ def formatDocstring(docstr):
     return docstr_output
 
 
-def addSourceLines(mod_def, mod_name, mod_dir, branch_name):
+def addSourceLines(mod_def, mod_name, mod_dir, branch_name, save_dir):
     sourcelines = inspect.getsourcelines(mod_def)
     start = sourcelines[1]
     end = start + len(sourcelines[0]) - 1
-    sourcelines_dict[mod_name] = os.path.join(
+    key = mod_dir.split('.')[:-1]
+    key = key[0].split('/')[:-1]
+    key.append(mod_name)
+    key = os.path.join(*key)
+    sourcelines_dict[key] = os.path.join(
         *[fe_url, branch_name, 'fastestimator', mod_dir + '#L' + str(start) + '-L' + str(end)])
 
 
@@ -95,8 +114,8 @@ def getclasses(item, save_path, mod_dir, branch_name):
                 output.append('```')
                 output.append('\n')
                 output.append(formatDocstring(cl[1].__doc__))
-                output.extend(getClassFunctions(cl[1], mod_dir, branch_name))
-                addSourceLines(cl[1], cl[0], mod_dir, branch_name)
+                output.extend(getClassFunctions(cl[1], mod_dir, branch_name, save_dir))
+                addSourceLines(cl[1], cl[0], mod_dir, branch_name, save_dir)
                 with open(os.path.join(save_path, cl[0]) + '.md', 'w') as f:
                     f.write("".join(output))
             except ValueError:
@@ -127,7 +146,7 @@ def getfunctions(item, save_path, mod_dir, branch_name):
                 output.append('```')
                 output.append('\n')
                 output.append(formatDocstring(inspect.getdoc(f[1])))
-                addSourceLines(f[1], f[0], mod_dir, branch_name)
+                addSourceLines(f[1], f[0], mod_dir, branch_name, save_dir)
                 with open(os.path.join(save_path, f[0]) + '.md', 'w') as f:
                     f.write("".join(output))
 
@@ -139,7 +158,7 @@ def isDoc(obj):
     return False
 
 
-def getClassFunctions(item, mod_dir, branch_name):
+def getClassFunctions(item, mod_dir, branch_name, save_dir):
     """It extracts the functions which are functions of the current class that is being
 
     Returns:
@@ -159,7 +178,7 @@ def getClassFunctions(item, mod_dir, branch_name):
                 output.append('```')
                 output.append('\n')
                 output.append(formatDocstring(f[1].__doc__))
-                addSourceLines(f[1], f[0], mod_dir, branch_name)
+                addSourceLines(f[1], f[0], mod_dir, branch_name, save_dir)
 
     return output
 
@@ -188,7 +207,7 @@ def generatedocs(repo_dir, save_dir):
         for f in files:
             fname, ext = os.path.splitext(os.path.basename(f))
             if not f.startswith('_') and ext == '.py':
-                #if f == 'cross_entropy.py':
+                #if f == 'lenet.py':
                 f_path = os.path.join(subdirs, f)
                 mod_dir = os.path.relpath(f_path, fe_path)
                 mod = mod_dir.replace(sep, '.')
@@ -217,6 +236,10 @@ def generate_json(path):
 
     def createlist(path):
         name = os.path.relpath(path, doc_path)
+        key_name = name.split('.')[0]
+        key_seg = key_name.split(sep)
+        if key_seg[0] == 'fe' and key_name != 'fe':
+            key_name = os.path.join(*key_name.split(sep)[1:])
         displayname = os.path.basename(name).split('.')[0]
         json_dict = {'name': name.strip('.,')}
         prefix = 'fe.'
@@ -238,7 +261,7 @@ def generate_json(path):
             json_dict['children'] = subfield
         else:
             json_dict['displayName'] = displayname
-            json_dict['sourceurl'] = sourcelines_dict[displayname]
+            json_dict['sourceurl'] = sourcelines_dict[key_name]
         return json_dict
 
     if os.path.isdir(path):
