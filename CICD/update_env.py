@@ -48,7 +48,7 @@ def deploy_app(config, deploy_config_path):
 
         app_version_segments = app_version_label.split('.')
         cur_version = int(app_version_segments[-1]) + 1
-        app_version_segments[-1] = cur_version
+        app_version_segments[-1] = str(cur_version)
         app_version_label = '.'.join(app_version_segments)
 
         new_app_version = os.path.join(S3_APP_DIR, app_version_label)
