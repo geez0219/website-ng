@@ -4,6 +4,7 @@ import shutil
 import subprocess
 import time
 import zipfile
+import sys
 from datetime import datetime
 
 import boto3
