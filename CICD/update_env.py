@@ -15,8 +15,8 @@ EB_ENV_ID = 'e-k4uvwzr86r'
 EB_APP_VERSION_LABEL = 'fe-stage-v2'  #currently set to stage env
 
 #s3 parameters
-S3_APP_DIR = 'fe_web'
-S3_BUCKET = 'fastestimator-public-data'
+S3_APP_DIR = 'FE_Web'
+S3_BUCKET = 'fastestimator-public'
 
 APP_PACKAGE = 'fe_web_v1'
 WEB_DIR = 'website-ng'
