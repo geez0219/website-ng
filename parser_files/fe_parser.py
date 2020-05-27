@@ -6,6 +6,8 @@ import pydoc
 import re
 import sys
 import tempfile
+import shutil
+from distutils.dir_util import copy_tree
 from os import sep
 
 from pygit2 import Repository
@@ -270,6 +272,11 @@ def generate_json(path):
         return json_list
 
 
+def copydirs(src, dst):
+    copy_tree(src, dst)
+    shutil.rmtree(src)
+
+
 if __name__ == '__main__':
 
     tmp_output = sys.argv[2]
@@ -280,3 +287,4 @@ if __name__ == '__main__':
     with open(struct_json, 'w') as f:
         fe_json = json.dumps(generate_json(docs_path))
         f.write(fe_json)
+    copydirs(os.path.join(save_dir, 'fe'), save_dir)

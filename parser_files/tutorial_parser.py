@@ -133,7 +133,7 @@ def createJson(output_dir):
                         sentence_tokens = sentence.split(' ')
                         sidebar_val_dict = {}
                         if flag and sentence_tokens[0] in headers:
-                            f_obj['name'] = os.path.join(f.name, filename.split('.')[0])
+                            f_obj['name'] = os.path.join(f.name, filename)
                             f_obj['displayName'] = re.sub(RE_SIDEBAR_TITLE, '', sentence)
                             flag = False
                         elif sentence_tokens[0] in subheaders:
