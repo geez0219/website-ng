@@ -175,8 +175,6 @@ def getClassFunctions(item, mod_dir, branch_name, save_dir):
         [list]: It returns the markdown string with object signature appended in the list
     """
     output = list()
-    #print('\n\n')
-    #print('item ------',item.__qualname__)
     funcs = inspect.getmembers(item, inspect.isfunction)
     for f in funcs:
         if f[1].__qualname__.split('.')[0] == item.__qualname__:
@@ -213,13 +211,13 @@ def generatedocs(repo_dir, save_dir):
     save_dir = os.path.join(save_dir, 'fe')
     #insert project path to system path to later detect the modules in project
     sys.path.insert(0, fe_path)
-    #parent directory where all the markdown files will be stored
-
+    # directories that needs to be excluded
+    exclude = set(['test'])
     for subdirs, dirs, files in os.walk(fe_path, topdown=True):
+        dirs[:] = [d for d in dirs if d not in exclude]
         for f in files:
             fname, ext = os.path.splitext(os.path.basename(f))
             if not f.startswith('_') and ext == '.py':
-                #if f == 'dataset.py':
                 f_path = os.path.join(subdirs, f)
                 mod_dir = os.path.relpath(f_path, fe_path)
                 mod = mod_dir.replace(sep, '.')
@@ -291,8 +289,11 @@ def generate_json(path):
 
 
 def copydirs(src, dst):
-    copy_tree(src, dst)
-    shutil.rmtree(src)
+    base_dir = os.path.join(*src.split(os.path.sep)[:-1])
+    old_dir = os.path.join(base_dir, 'fe_old')
+    os.rename(src, old_dir)
+    copy_tree(old_dir, dst)
+    shutil.rmtree(old_dir)
 
 
 if __name__ == '__main__':
@@ -300,7 +301,6 @@ if __name__ == '__main__':
     tmp_output = sys.argv[2]
     save_dir = os.path.join(tmp_output, 'api')
     docs_path = generatedocs(sys.argv[1], save_dir)
-    #print(sourcelines_dict)
     struct_json = os.path.join(save_dir, 'structure.json')
     with open(struct_json, 'w') as f:
         fe_json = json.dumps(generate_json(docs_path))
