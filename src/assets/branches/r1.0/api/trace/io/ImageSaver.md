@@ -1,6 +1,6 @@
 ## ImageSaver
 ```python
-ImageSaver(inputs:Union[str, Sequence[str]], save_dir:str='/home/ubuntu/vivek/fastestimator/fastestimator/docs', dpi:int=300, mode:Union[str, Set[str]]=('eval', 'test')) -> None
+ImageSaver(inputs:Union[str, Sequence[str]], save_dir:str='/home/vivek/work/fe/website-ng/parser_files', dpi:int=300, mode:Union[str, Set[str]]=('eval', 'test')) -> None
 ```
 A trace that saves images to the disk.
 

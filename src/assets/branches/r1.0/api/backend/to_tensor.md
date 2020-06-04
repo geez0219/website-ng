@@ -10,23 +10,23 @@ This method can be used with Numpy data:
 ```python
 data = {"x": np.ones((10,15)), "y":[np.ones((4)), np.ones((5, 3))], "z":{"key":np.ones((2,2))}}
 t = fe.backend.to_tensor(data, target_type='tf')
-# {"x": &lt;tf.Tensor&gt;, "y":[&lt;tf.Tensor&gt;, &lt;tf.Tensor&gt;], "z": {"key": &lt;tf.Tensor&gt;}}
+# {"x": <tf.Tensor>, "y":[<tf.Tensor>, <tf.Tensor>], "z": {"key": <tf.Tensor>}}
 p = fe.backend.to_tensor(data, target_type='torch')
-# {"x": &lt;torch.Tensor&gt;, "y":[&lt;torch.Tensor&gt;, &lt;torch.Tensor&gt;], "z": {"key": &lt;torch.Tensor&gt;}}
+# {"x": <torch.Tensor>, "y":[<torch.Tensor>, <torch.Tensor>], "z": {"key": <torch.Tensor>}}
 ```
 
 This method can be used with TensorFlow tensors:
 ```python
 data = {"x": tf.ones((10,15)), "y":[tf.ones((4)), tf.ones((5, 3))], "z":{"key":tf.ones((2,2))}}
 p = fe.backend.to_tensor(data, target_type='torch')
-# {"x": &lt;torch.Tensor&gt;, "y":[&lt;torch.Tensor&gt;, &lt;torch.Tensor&gt;], "z": {"key": &lt;torch.Tensor&gt;}}
+# {"x": <torch.Tensor>, "y":[<torch.Tensor>, <torch.Tensor>], "z": {"key": <torch.Tensor>}}
 ```
 
 This method can be used with PyTorch tensors:
 ```python
 data = {"x": torch.ones((10,15)), "y":[torch.ones((4)), torch.ones((5, 3))], "z":{"key":torch.ones((2,2))}}
 t = fe.backend.to_tensor(data, target_type='tf')
-# {"x": &lt;tf.Tensor&gt;, "y":[&lt;tf.Tensor&gt;, &lt;tf.Tensor&gt;], "z": {"key": &lt;tf.Tensor&gt;}}
+# {"x": <tf.Tensor>, "y":[<tf.Tensor>, <tf.Tensor>], "z": {"key": <tf.Tensor>}}
 ```
 
 

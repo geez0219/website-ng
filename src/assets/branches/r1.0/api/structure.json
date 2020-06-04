@@ -11,7 +11,7 @@
             {
                 "name": "fe/Estimator.md",
                 "displayName": "Estimator",
-                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/estimator.py#L37-L461"
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/estimator.py#L41-L465"
             },
             {
                 "name": "fe/Network.md",
@@ -21,7 +21,7 @@
             {
                 "name": "fe/Pipeline.md",
                 "displayName": "Pipeline",
-                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/pipeline.py#L35-L296"
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/pipeline.py#L36-L296"
             },
             {
                 "name": "fe/TFNetwork.md",
@@ -37,6 +37,11 @@
                 "name": "fe/build.md",
                 "displayName": "build",
                 "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/network.py#L619-L694"
+            },
+            {
+                "name": "fe/enable_deterministic.md",
+                "displayName": "enable_deterministic",
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/estimator.py#L473-L479"
             }
         ]
     },
@@ -51,7 +56,7 @@
                     {
                         "name": "architecture/pytorch/LeNet.md",
                         "displayName": "LeNet",
-                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/architecture/pytorch/lenet.py#L22-L43"
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/architecture/pytorch/lenet.py#L22-L54"
                     },
                     {
                         "name": "architecture/pytorch/UNet.md",
@@ -276,12 +281,12 @@
             {
                 "name": "cli/configure_test_parser.md",
                 "displayName": "configure_test_parser",
-                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/cli/train.py#L96-L116"
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/cli/train.py#L97-L118"
             },
             {
                 "name": "cli/configure_train_parser.md",
                 "displayName": "configure_train_parser",
-                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/cli/train.py#L73-L93"
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/cli/train.py#L73-L94"
             },
             {
                 "name": "cli/logs.md",
@@ -331,7 +336,7 @@
                     {
                         "name": "dataset/data/load_data.md",
                         "displayName": "load_data",
-                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/dataset/data/mnist.py#L22-L35"
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/dataset/data/omniglot.py#L28-L63"
                     },
                     {
                         "name": "dataset/data/pad.md",
@@ -343,7 +348,7 @@
             {
                 "name": "dataset/BatchDataset.md",
                 "displayName": "BatchDataset",
-                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/dataset/batch_dataset.py#L25-L212"
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/dataset/batch_dataset.py#L25-L220"
             },
             {
                 "name": "dataset/CSVDataset.md",
@@ -388,12 +393,12 @@
             {
                 "name": "dataset/NumpyDataset.md",
                 "displayName": "NumpyDataset",
-                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/dataset/numpy_dataset.py#L22-L41"
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/dataset/numpy_dataset.py#L22-L44"
             },
             {
                 "name": "dataset/OpDataset.md",
                 "displayName": "OpDataset",
-                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/dataset/op_dataset.py#L26-L65"
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/dataset/op_dataset.py#L26-L68"
             },
             {
                 "name": "dataset/PickleDataset.md",
@@ -792,7 +797,7 @@
                             {
                                 "name": "op/numpyop/univariate/Reshape.md",
                                 "displayName": "Reshape",
-                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/op/tensorop/reshape.py#L25-L52"
+                                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/op/numpyop/univariate/reshape.py#L22-L47"
                             },
                             {
                                 "name": "op/numpyop/univariate/Solarize.md",
@@ -1064,7 +1069,7 @@
                     {
                         "name": "trace/io/BestModelSaver.md",
                         "displayName": "BestModelSaver",
-                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/trace/io/best_model_saver.py#L27-L80"
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/trace/io/best_model_saver.py#L26-L79"
                     },
                     {
                         "name": "trace/io/CSVLogger.md",
@@ -1084,7 +1089,7 @@
                     {
                         "name": "trace/io/ModelSaver.md",
                         "displayName": "ModelSaver",
-                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/trace/io/model_saver.py#L26-L45"
+                        "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/trace/io/model_saver.py#L25-L44"
                     },
                     {
                         "name": "trace/io/QMSTest.md",
@@ -1163,22 +1168,22 @@
             {
                 "name": "trace/EvalEssential.md",
                 "displayName": "EvalEssential",
-                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/trace/trace.py#L173-L198"
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/trace/trace.py#L176-L201"
             },
             {
                 "name": "trace/Logger.md",
                 "displayName": "Logger",
-                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/trace/trace.py#L201-L250"
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/trace/trace.py#L204-L253"
             },
             {
                 "name": "trace/Trace.md",
                 "displayName": "Trace",
-                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/trace/trace.py#L27-L121"
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/trace/trace.py#L27-L124"
             },
             {
                 "name": "trace/TrainEssential.md",
                 "displayName": "TrainEssential",
-                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/trace/trace.py#L124-L170"
+                "sourceurl": "https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/trace/trace.py#L127-L173"
             }
         ]
     },

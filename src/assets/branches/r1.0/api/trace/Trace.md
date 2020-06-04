@@ -8,7 +8,7 @@ Traces are invoked by the fe.Estimator periodically as it runs. In addition to t
 also given a pointer to the current `System` instance which allows access to more information as well as giving the
 ability to modify or even cancel training. The order of function invocations is as follows:
 
-```plot
+``` plot
         Training:                                       Testing:
 
     on_begin                                            on_begin
