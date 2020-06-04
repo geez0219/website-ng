@@ -2,15 +2,14 @@
 
 ### load_data
 ```python
-load_data(image_key:str='x', label_key:str='y') -> Tuple[fastestimator.dataset.numpy_dataset.NumpyDataset, fastestimator.dataset.numpy_dataset.NumpyDataset]
+load_data(root_dir:Union[str, NoneType]=None) -> Tuple[fastestimator.dataset.siamese_dir_dataset.SiameseDirDataset, fastestimator.dataset.siamese_dir_dataset.SiameseDirDataset]
 ```
-Load and return the MNIST dataset.
+Load and return the Omniglot dataset.
 
 
 #### Args:
 
-* **image_key** :  The key for image.
-* **label_key** :  The key for label.
+* **root_dir** :  The path to store the downloaded data. When `path` is not provided, the data will be saved into        `fastestimator_data` under the user's home directory.
 
 #### Returns:
     (train_data, eval_data)

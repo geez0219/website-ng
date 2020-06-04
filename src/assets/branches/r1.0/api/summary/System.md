@@ -1,6 +1,6 @@
 ## System
 ```python
-System(network:fastestimator.network.BaseNetwork, mode:Union[str, NoneType]=None, num_devices:int=1, log_steps:Union[int, NoneType]=None, total_epochs:int=0, max_train_steps_per_epoch:Union[int, NoneType]=None, max_eval_steps_per_epoch:Union[int, NoneType]=None) -> None
+System(network:fastestimator.network.BaseNetwork, mode:Union[str, NoneType]=None, num_devices:int=0, log_steps:Union[int, NoneType]=None, total_epochs:int=0, max_train_steps_per_epoch:Union[int, NoneType]=None, max_eval_steps_per_epoch:Union[int, NoneType]=None) -> None
 ```
 A class which tracks state information while the fe.Estimator is running.
 

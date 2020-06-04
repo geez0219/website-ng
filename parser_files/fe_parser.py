@@ -4,9 +4,9 @@ import json
 import os
 import pydoc
 import re
+import shutil
 import sys
 import tempfile
-import shutil
 from distutils.dir_util import copy_tree
 from os import sep
 
@@ -17,6 +17,7 @@ fe_url = 'https://github.com/fastestimator/fastestimator/blob'
 sourcelines_dict = {}
 html_char_regex = r'([\<\>])'
 args_regex = r'(Args|Returns|Raises):\n'
+re_url = r'(?:(?:http|https)\:\/\/)?[a-zA-Z0-9\.\/\?\:@\-_=#]+\.(?:[a-zA-Z]){2,6}(?:[a-zA-Z0-9\.\&\/\?\:@\-_=#])*'
 
 
 def extractmarkdown(module, save_path, mod_dir, branch_name):
@@ -30,15 +31,20 @@ def extractmarkdown(module, save_path, mod_dir, branch_name):
 
 
 def replaceEscapeChar(input, startpos=0):
-    re_plot = r'(```\s*plot[^```]+```)'
+    re_plot = r'```\s*(plot|python)([^```]+)```'
     pattern = re.compile(re_plot)
     res = pattern.search(input, startpos)
     if res is not None:
         startidx = res.start()
         endidx = res.end()
-        output = input[startpos:startidx].replace('<', '&lt;').replace('>', '&gt;')
-        output = output + res.group(0) + input[endidx+1:]
-        return replaceEscapeChar(output, startpos=endidx+1)
+        if startpos != 0:
+            output = input[0:startpos] + input[startpos:startidx].replace(
+                '<', '&lt;').replace('>', '&gt;')
+        else:
+            output = input[startpos:startidx].replace('<', '&lt;').replace(
+                '>', '&gt;')
+        output = '{}{}\n{}'.format(output, res.group(0), input[endidx + 1:])
+        return replaceEscapeChar(output, startpos=endidx)
     else:
         return input
 
@@ -55,19 +61,18 @@ def formatDocstring(docstr):
     docstr_output = ''
     if docstr != None:
         docstr_output = inspect.cleandoc(docstr)
-        #docstr_output = docstr_output.replace('<', '&lt;').replace('>', '&gt;')  # html espace characters to be replaced
         docstr_output = replaceEscapeChar(docstr_output)
         args = re.search(args_regex, docstr_output)
         if args != None:
             pos = args.start(0)
             doc_arg = docstr_output[pos:]
             docstr_output = docstr_output[:pos - 1]
-            print(docstr_output)
+            urls = re.findall(re_url, doc_arg)
             new_docstr = doc_arg.split('\n')
             res = []
             if len(new_docstr) != 0:
                 for idx in range(len(new_docstr)):
-                    if ':' in new_docstr[idx]:
+                    if ':' in new_docstr[idx] and new_docstr[idx].strip() not in urls:
                         elements = new_docstr[idx].split(':')
                         if elements[0].strip() in titles:
                             title = '#### ' + elements[0].strip()
@@ -98,8 +103,10 @@ def addSourceLines(mod_def, mod_name, mod_dir, branch_name, save_dir):
     key = key[0].split('/')[:-1]
     key.append(mod_name)
     key = os.path.join(*key)
-    sourcelines_dict[key] = os.path.join(
-        *[fe_url, branch_name, 'fastestimator', mod_dir + '#L' + str(start) + '-L' + str(end)])
+    sourcelines_dict[key] = os.path.join(*[
+        fe_url, branch_name, 'fastestimator', mod_dir + '#L' + str(start) +
+        '-L' + str(end)
+    ])
 
 
 def getclasses(item, save_path, mod_dir, branch_name):
@@ -116,7 +123,8 @@ def getclasses(item, save_path, mod_dir, branch_name):
                 output.append('```')
                 output.append('\n')
                 output.append(formatDocstring(cl[1].__doc__))
-                output.extend(getClassFunctions(cl[1], mod_dir, branch_name, save_dir))
+                output.extend(
+                    getClassFunctions(cl[1], mod_dir, branch_name, save_dir))
                 addSourceLines(cl[1], cl[0], mod_dir, branch_name, save_dir)
                 with open(os.path.join(save_path, cl[0]) + '.md', 'w') as f:
                     f.write("".join(output))
@@ -169,7 +177,7 @@ def getClassFunctions(item, mod_dir, branch_name, save_dir):
     output = list()
     funcs = inspect.getmembers(item, inspect.isfunction)
     for f in funcs:
-        if inspect.getmodule(f[1]) == inspect.getmodule(item):
+        if f[1].__qualname__.split('.')[0] == item.__qualname__:
             if not f[0].startswith("_") and not isDoc(f[1]):
                 output.append('\n\n')
                 output.append('### ' + f[0])
@@ -203,23 +211,26 @@ def generatedocs(repo_dir, save_dir):
     save_dir = os.path.join(save_dir, 'fe')
     #insert project path to system path to later detect the modules in project
     sys.path.insert(0, fe_path)
-    #parent directory where all the markdown files will be stored
-
+    # directories that needs to be excluded
+    exclude = set(['test'])
     for subdirs, dirs, files in os.walk(fe_path, topdown=True):
+        dirs[:] = [d for d in dirs if d not in exclude]
         for f in files:
             fname, ext = os.path.splitext(os.path.basename(f))
             if not f.startswith('_') and ext == '.py':
-                #if f == 'lenet.py':
                 f_path = os.path.join(subdirs, f)
                 mod_dir = os.path.relpath(f_path, fe_path)
                 mod = mod_dir.replace(sep, '.')
                 if subdirs == fe_path:
                     save_path = os.path.join(*[save_dir, 'fe'])
                 else:
-                    save_path = os.path.join(*[save_dir, os.path.relpath(subdirs, fe_path)])
+                    save_path = os.path.join(
+                        *[save_dir,
+                            os.path.relpath(subdirs, fe_path)])
                 if not os.path.exists(save_path):
                     os.makedirs(save_path)
-                mdtexts = extractmarkdown(mod, save_path, mod_dir, branch_name)
+                mdtexts = extractmarkdown(mod, save_path, mod_dir,
+                                            branch_name)
     return save_dir
 
 
@@ -250,7 +261,10 @@ def generate_json(path):
             json_dict['displayName'] = 'fe'
             if displayname != '' and name != 'fe':
                 json_dict['displayName'] = prefix + name
-            children = [createlist(os.path.join(path, x)) for x in sorted(os.listdir(path))]
+            children = [
+                createlist(os.path.join(path, x))
+                for x in sorted(os.listdir(path))
+            ]
 
             subfield, field = [], []
             for x in children:
@@ -267,14 +281,19 @@ def generate_json(path):
         return json_dict
 
     if os.path.isdir(path):
-        json_list = [createlist(os.path.join(path, x)) for x in os.listdir(path)]
+        json_list = [
+            createlist(os.path.join(path, x)) for x in os.listdir(path)
+        ]
         json_list = sorted(json_list, key=lambda x: x['displayName'])
         return json_list
 
 
 def copydirs(src, dst):
-    copy_tree(src, dst)
-    shutil.rmtree(src)
+    base_dir = os.path.join(*src.split(os.path.sep)[:-1])
+    old_dir = os.path.join(base_dir, 'fe_old')
+    os.rename(src, old_dir)
+    copy_tree(old_dir, dst)
+    shutil.rmtree(old_dir)
 
 
 if __name__ == '__main__':
@@ -282,7 +301,6 @@ if __name__ == '__main__':
     tmp_output = sys.argv[2]
     save_dir = os.path.join(tmp_output, 'api')
     docs_path = generatedocs(sys.argv[1], save_dir)
-    #print(sourcelines_dict)
     struct_json = os.path.join(save_dir, 'structure.json')
     with open(struct_json, 'w') as f:
         fe_json = json.dumps(generate_json(docs_path))
