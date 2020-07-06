@@ -2,7 +2,7 @@
 
 <nav class="navbar navbar-light fixed-top head-container">
   <a #logoDOM class="navbar-brand" routerLink="/"><img class="logo" src="assets/images/logo2.png" [hidden]="isSearchExpanded"></a>
-  <div style="display:flex; flex-flow: row nowrap; width:100%">
+  <div style="display:flex; flex-flow: row nowrap; width:100%; height: 100%;">
     <ul class="navbar-nav mr-auto">
       <li *ngFor="let tab of tabList" class="nav-item">
         <a #tabDOM (click)="preRoute(tab.preRoute)" [ngClass]="{'selected-title': selected===tab.preRoute}"

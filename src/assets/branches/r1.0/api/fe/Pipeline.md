@@ -1,6 +1,6 @@
 ## Pipeline
 ```python
-Pipeline(train_data:Union[NoneType, ~DataSource, fastestimator.schedule.schedule.Scheduler[~DataSource]]=None, eval_data:Union[NoneType, ~DataSource, fastestimator.schedule.schedule.Scheduler[~DataSource]]=None, test_data:Union[NoneType, ~DataSource, fastestimator.schedule.schedule.Scheduler[~DataSource]]=None, batch_size:Union[NoneType, int, fastestimator.schedule.schedule.Scheduler[int]]=None, ops:Union[NoneType, fastestimator.op.numpyop.numpyop.NumpyOp, fastestimator.schedule.schedule.Scheduler[fastestimator.op.numpyop.numpyop.NumpyOp], List[Union[fastestimator.op.numpyop.numpyop.NumpyOp, fastestimator.schedule.schedule.Scheduler[fastestimator.op.numpyop.numpyop.NumpyOp]]]]=None, num_process:Union[int, NoneType]=None, drop_last:bool=False, pad_value:Union[int, float, NoneType]=None)
+Pipeline(train_data:Union[NoneType, ~DataSource, fastestimator.schedule.schedule.Scheduler[~DataSource]]=None, eval_data:Union[NoneType, ~DataSource, fastestimator.schedule.schedule.Scheduler[~DataSource]]=None, test_data:Union[NoneType, ~DataSource, fastestimator.schedule.schedule.Scheduler[~DataSource]]=None, batch_size:Union[NoneType, int, fastestimator.schedule.schedule.Scheduler[int]]=None, ops:Union[NoneType, fastestimator.op.numpyop.numpyop.NumpyOp, fastestimator.schedule.schedule.Scheduler[fastestimator.op.numpyop.numpyop.NumpyOp], List[Union[fastestimator.op.numpyop.numpyop.NumpyOp, fastestimator.schedule.schedule.Scheduler[fastestimator.op.numpyop.numpyop.NumpyOp]]]]=None, num_process:Union[int, NoneType]=None, drop_last:bool=False, pad_value:Union[int, float, NoneType]=None, collate_fn:Union[Callable, NoneType]=None)
 ```
 A data pipeline class that takes care of data pre-processing.
 
@@ -15,6 +15,7 @@ A data pipeline class that takes care of data pre-processing.
 * **num_process** :  Number of CPU threads to use for data pre-processing. NOTE This argument is only applicable when        using a FastEstimator Dataset. None will default to the system CPU count. Multiprocessing can be disabled by        passing 0 here, which can be useful for debugging.
 * **drop_last** :  Whether to drop the last batch if the last batch is incomplete.
 * **pad_value** :  The padding value if batch padding is needed. None indicates that no padding is needed. NOTE This        argument is only applicable when using a FastEstimator Dataset.
+* **collate_fn** :  Function to merge data into one batch with input being list of elements.
 
 ### benchmark
 ```python

@@ -28,19 +28,19 @@ Each example contains two files:
 
 One can simply execute the python file of any example:
 
-``` python
+``` bash
 $ python lenet_mnist.py
 ```
 
 or use our Command-Line Interface(CLI):
 
-``` python
+``` bash
 $ fastestimator train lenet_mnist.py
 ```
 
 The benefit of CLI is allowing users to configure input args of `get_estimator`:
 
-``` python
+``` bash
 $ fastestimator train lenet_mnist.py --batch_size 64 --epochs 4
 ```
 

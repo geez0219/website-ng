@@ -42,7 +42,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   errorPixel:number = 25;
   searchBreak:number;
   searchInMoreBreak:number;
-  searchbarMinWidth:number = 200;
+  searchbarMinWidth:number = 170;
 
   structureHeaderDict = {
     'Content-Type': 'application/json',
