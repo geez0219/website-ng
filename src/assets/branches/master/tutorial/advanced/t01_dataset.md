@@ -14,7 +14,7 @@ In this tutorial, we will talk about the following topics:
     * [Unpaired Dataset](./tutorials/advanced/t01_dataset#ta01ud)
 * [Related Apphub Examples](./tutorials/advanced/t01_dataset#ta01rae)
 
-Before going through the tutorial, it is recommended to check [beginner tutorial 02](https://github.com/fastestimator/fastestimator/tree/r1.0/tutorials/beginner/t02_dataset) for basic understanding of `dataset` from PyTorch and FastEstimator. We will talk about more details about `fe.dataset` API in this tutorial.
+Before going through the tutorial, it is recommended to check [beginner tutorial 02](https://github.com/fastestimator/fastestimator/tree/master/tutorials/beginner/t02_dataset) for basic understanding of `dataset` from PyTorch and FastEstimator. We will talk about more details about `fe.dataset` API in this tutorial.
 
 <a id='ta01summary'></a>
 
@@ -194,4 +194,4 @@ dataset_unpaired = BatchDataset(datasets=[mnist_data, cifar_data], num_samples=[
 ## Apphub Examples
 You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
 
-* [DNN](https://github.com/fastestimator/fastestimator/tree/r1.0/examples/tabular/dnn)
+* [DNN](https://github.com/fastestimator/fastestimator/tree/master/examples/tabular/dnn)

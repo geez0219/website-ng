@@ -58,7 +58,7 @@ def replaceAnchorLink(match, tutorial_type, fname):
 def replaceRepoLink(match):
     name = match.group(1)
     url = match.group(2)
-    fe_url = 'https://github.com/fastestimator/fastestimator/tree/r1.0/'
+    fe_url = 'https://github.com/fastestimator/fastestimator/tree/master/'
     return '[{}]({})'.format(name, os.path.join(fe_url, url))
 
 
@@ -88,8 +88,8 @@ def replaceImagePath(mdfile, tutorial_type):
     mdcontent = open(mdfile).readlines()
     png_tag = '![png]('
     html_img_tag = '<img src="'
-    path_prefix = 'assets/branches/r1.0/tutorial'
-    png_path_prefix = 'assets/branches/r1.0/tutorial/' + tutorial_type
+    path_prefix = 'assets/branches/master/tutorial'
+    png_path_prefix = 'assets/branches/master/tutorial/' + tutorial_type
     mdfile_updated = []
     for line in mdcontent:
         line = updateLinks(line, tutorial_type, mdfile)

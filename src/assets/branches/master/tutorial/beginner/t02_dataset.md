@@ -70,7 +70,7 @@ In this tutorial we will showcase two ways to create a Dataset from disk:
 
 To showcase this we will first have to create a dummy directory structure representing the two classes. Then we create a few files in each of the directories. The following image shows the hierarchy of our temporary data directory:
 
-<img src="assets/branches/r1.0/tutorial/../resources/t02_dataset_folder_structure.png" alt="drawing" width="200"/>
+<img src="assets/branches/master/tutorial/../resources/t02_dataset_folder_structure.png" alt="drawing" width="200"/>
 
 Let's prepare the data according to the directory structure:
 
@@ -208,6 +208,6 @@ print(len(dataset))
 ## Apphub Examples
 You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
 
-* [UNET](https://github.com/fastestimator/fastestimator/tree/r1.0/examples/semantic_segmentation/unet)
-* [DCGAN](https://github.com/fastestimator/fastestimator/tree/r1.0/examples/image_generation/dcgan)
-* [Siamese Networks](https://github.com/fastestimator/fastestimator/tree/r1.0/examples/one_shot_learning/siamese)
+* [UNET](https://github.com/fastestimator/fastestimator/tree/master/examples/semantic_segmentation/unet)
+* [DCGAN](https://github.com/fastestimator/fastestimator/tree/master/examples/image_generation/dcgan)
+* [Siamese Networks](https://github.com/fastestimator/fastestimator/tree/master/examples/one_shot_learning/siamese)

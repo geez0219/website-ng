@@ -56,7 +56,7 @@ plt.axis('off');
 ```
 
 
-![png](assets/branches/r1.0/example/style_transfer/fst_files/fst_4_0.png)
+![png](assets/branches/master/example/style_transfer/fst_files/fst_4_0.png)
 
 
 ## Building Components
@@ -106,7 +106,7 @@ plt.show()
 ```
 
 
-![png](assets/branches/r1.0/example/style_transfer/fst_files/fst_10_0.png)
+![png](assets/branches/master/example/style_transfer/fst_files/fst_10_0.png)
 
 
 ### Step 2: Create `Network`
@@ -434,5 +434,5 @@ plt.axis('off');
 ```
 
 
-![png](assets/branches/r1.0/example/style_transfer/fst_files/fst_25_0.png)
+![png](assets/branches/master/example/style_transfer/fst_files/fst_25_0.png)
 

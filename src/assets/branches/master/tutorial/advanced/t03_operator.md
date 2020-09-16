@@ -16,9 +16,9 @@ In this tutorial, we will discuss:
 <a id='ta03om'></a>
 
 ## Operator Mechanism
-We learned about the operator structure in [Beginner tutorial 3](https://github.com/fastestimator/fastestimator/tree/r1.0/tutorials/beginner/t03_operator). Operators are used to build complex computation graphs in FastEstimator.
+We learned about the operator structure in [Beginner tutorial 3](https://github.com/fastestimator/fastestimator/tree/master/tutorials/beginner/t03_operator). Operators are used to build complex computation graphs in FastEstimator.
 
-In FastEstimator, all the available data is held in a data dictionary during execution. An `Op` runs when it's `mode` matches the current execution mode. For more information on mode, you can go through [Beginner tutorial 8](https://github.com/fastestimator/fastestimator/tree/r1.0/tutorials/beginner/t08_mode).
+In FastEstimator, all the available data is held in a data dictionary during execution. An `Op` runs when it's `mode` matches the current execution mode. For more information on mode, you can go through [Beginner tutorial 8](https://github.com/fastestimator/fastestimator/tree/master/tutorials/beginner/t08_mode).
 
 Here's one simple example of an operator:
 
@@ -41,7 +41,7 @@ AddOneOp = AddOne(inputs=("x", "y"), outputs=("x_out", "y_out"))
 
 An `Op` interacts with the required portion of this data using the keys specified through the `inputs` key, processes the data through the `forward` function and writes the values returned from the `forward` function to this data dictionary using the `outputs` key. The processes are illustrated in the diagram below:
 
-<img src="assets/branches/r1.0/tutorial/../resources/t03_advanced_operator_mechanism.png" alt="drawing" width="500"/>
+<img src="assets/branches/master/tutorial/../resources/t03_advanced_operator_mechanism.png" alt="drawing" width="500"/>
 
 <a id='ta03data'></a>
 
@@ -56,7 +56,7 @@ The state argument in the `forward` function stores meta information about train
 <a id='ta03no'></a>
 
 ## NumpyOp
-NumpyOp is used in `Pipeline` for data pre-processing and augmentation. You can go through [Beginner tutorial 4](https://github.com/fastestimator/fastestimator/tree/r1.0/tutorials/beginner/t04_pipeline) to get an overview of NumpyOp and their usage. Here, we will talk about some advanced NumpyOps.
+NumpyOp is used in `Pipeline` for data pre-processing and augmentation. You can go through [Beginner tutorial 4](https://github.com/fastestimator/fastestimator/tree/master/tutorials/beginner/t04_pipeline) to get an overview of NumpyOp and their usage. Here, we will talk about some advanced NumpyOps.
 
 <a id='ta03do'></a>
 
@@ -131,7 +131,7 @@ fig = img.paint_figure()
 ```
 
 
-![png](assets/branches/r1.0/tutorial/advanced/t03_operator_files/t03_operator_21_0.png)
+![png](assets/branches/master/tutorial/advanced/t03_operator_files/t03_operator_21_0.png)
 
 
 As you can see, Sometimes Op horizontally flips the image with 50% probability and OneOf applies either a vertical flip, rotation, or blur augmentation randomly.
@@ -189,13 +189,13 @@ fig = img.paint_figure()
 ```
 
 
-![png](assets/branches/r1.0/tutorial/advanced/t03_operator_files/t03_operator_28_0.png)
+![png](assets/branches/master/tutorial/advanced/t03_operator_files/t03_operator_28_0.png)
 
 
 <a id='ta03to'></a>
 
 ## TensorOp
-`TensorOps` are used to process tensor data. They are used within a `Network` for graph-based operations. You can go through [Beginner tutorial 6](https://github.com/fastestimator/fastestimator/tree/r1.0/tutorials/beginner/t06_network) to get an overview of `TensorOps` and their usages.
+`TensorOps` are used to process tensor data. They are used within a `Network` for graph-based operations. You can go through [Beginner tutorial 6](https://github.com/fastestimator/fastestimator/tree/master/tutorials/beginner/t06_network) to get an overview of `TensorOps` and their usages.
 
 <a id='ta03ct'></a>
 
@@ -265,6 +265,6 @@ print(f"Result Image Shape: {result['x'].shape}, Label Shape: {result['y'].shape
 
 You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
 
-* [Fast Style Transfer](https://github.com/fastestimator/fastestimator/tree/r1.0/examples/style_transfer/fst)
-* [Convolutional Variational AutoEncoder](https://github.com/fastestimator/fastestimator/tree/r1.0/examples/image_generation/cvae)
-* [Semantic Segmentation](https://github.com/fastestimator/fastestimator/tree/r1.0/examples/semantic_segmentation/unet)
+* [Fast Style Transfer](https://github.com/fastestimator/fastestimator/tree/master/examples/style_transfer/fst)
+* [Convolutional Variational AutoEncoder](https://github.com/fastestimator/fastestimator/tree/master/examples/image_generation/cvae)
+* [Semantic Segmentation](https://github.com/fastestimator/fastestimator/tree/master/examples/semantic_segmentation/unet)

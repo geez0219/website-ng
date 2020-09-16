@@ -87,7 +87,7 @@ model_torch = fe.build(model_fn=my_model_torch, optimizer_fn="adam")
 
 ### Importing model architecture from FastEstimator
 
-Below we import a PyTorch LeNet architecture from FastEstimator. See our [Architectures](https://github.com/fastestimator/fastestimator/tree/r1.0/fastestimator/architecture) folder for a full list of the architectures provided by FastEstimator.
+Below we import a PyTorch LeNet architecture from FastEstimator. See our [Architectures](https://github.com/fastestimator/fastestimator/tree/master/fastestimator/architecture) folder for a full list of the architectures provided by FastEstimator.
 
 
 ```python
@@ -147,7 +147,7 @@ model_tf = fe.build(model_fn=my_model_tf, optimizer_fn=lambda: tf.optimizers.Ada
 model_torch = fe.build(model_fn=my_model_torch, optimizer_fn=lambda x: torch.optim.Adam(params=x, lr=1e-4))
 ```
 
-If a model function returns multiple models, a list of optimizers can be provided. See the **[pggan apphub](https://github.com/fastestimator/fastestimator/tree/r1.0/examples/image_generation/pggan)** for an example with multiple models and optimizers.
+If a model function returns multiple models, a list of optimizers can be provided. See the **[pggan apphub](https://github.com/fastestimator/fastestimator/tree/master/examples/image_generation/pggan)** for an example with multiple models and optimizers.
 
 <a id='t05weights'></a>
 
@@ -212,7 +212,7 @@ print("Model Name: ", model.model_name)
     Model Name:  LeNet
 
 
-If a model function returns multiple models, a list of model_names can be given. See the **[pggan apphub](https://github.com/fastestimator/fastestimator/tree/r1.0/examples/image_generation/pggan)** for an illustration with multiple models and model names.
+If a model function returns multiple models, a list of model_names can be given. See the **[pggan apphub](https://github.com/fastestimator/fastestimator/tree/master/examples/image_generation/pggan)** for an illustration with multiple models and model names.
 
 <a id='t05apphub'></a>
 
@@ -220,4 +220,4 @@ If a model function returns multiple models, a list of model_names can be given.
 You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
 
 * [PG-GAN](./examples/image_generation/pggan)
-* [Uncertainty Weighted Loss](https://github.com/fastestimator/fastestimator/tree/r1.0/examples/multi_task_learning/uncertainty_loss)
+* [Uncertainty Weighted Loss](https://github.com/fastestimator/fastestimator/tree/master/examples/multi_task_learning/uncertainty_loss)

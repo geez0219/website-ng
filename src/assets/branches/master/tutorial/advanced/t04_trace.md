@@ -50,7 +50,7 @@ def get_pipeline_model_network(model_name="LeNet", batch_size=32):
 <a id='ta04customize'></a>
 
 ## Customizing Traces
-In [tutorial 7](https://github.com/fastestimator/fastestimator/tree/r1.0/tutorials/beginner/t07_estimator) in the beginner section, we talked about the basic concept and structure of `Traces` and used a few `Traces` provided by FastEstimator. We can also customize a Trace to suit our needs. Let's look at an example of a custom trace implementation:
+In [tutorial 7](https://github.com/fastestimator/fastestimator/tree/master/tutorials/beginner/t07_estimator) in the beginner section, we talked about the basic concept and structure of `Traces` and used a few `Traces` provided by FastEstimator. We can also customize a Trace to suit our needs. Let's look at an example of a custom trace implementation:
 
 <a id='ta04example'></a>
 
@@ -168,7 +168,7 @@ We will showcase `System` usage in the [other trace usages](./tutorials/advanced
 ## Trace Communication
 We can have multiple traces in a network where the output of one trace is utilized as an input for another, as depicted below: 
 
-<img src="assets/branches/r1.0/tutorial/../resources/t04_advanced_trace_communication.png" alt="drawing" width="500"/>
+<img src="assets/branches/master/tutorial/../resources/t04_advanced_trace_communication.png" alt="drawing" width="500"/>
 
 Let's see an example where we utilize the outputs of the `Precision` and `Recall` `Traces` to generate f1-score:
 
@@ -353,4 +353,4 @@ As you can see, we can visualize information like the global step, batch number,
 ## Apphub Examples
 You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
 
-* [CIFAR10](https://github.com/fastestimator/fastestimator/tree/r1.0/examples/image_classification/cifar10_fast)
+* [CIFAR10](https://github.com/fastestimator/fastestimator/tree/master/examples/image_classification/cifar10_fast)

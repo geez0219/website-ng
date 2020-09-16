@@ -46,7 +46,7 @@ def replaceImagePath(mdfile, d):
     re_image_path = r'!\[(.+)\]\((?!http)[\./]*(.+)\)'
     png_tag = '![png]('
     html_img_tag = '<img src="'
-    path_prefix = os.path.join('assets/branches/r1.0/example', d)
+    path_prefix = os.path.join('assets/branches/master/example', d)
     mdfile_updated = []
 
     for line in mdcontent:
