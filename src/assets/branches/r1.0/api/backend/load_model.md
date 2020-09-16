@@ -25,7 +25,7 @@ fe.backend.load_model(m, weights_path="tmp/test.pt")
 
 * **model** :  A neural network instance to load.
 * **weights_path** :  Path to the `model` weights.
-* **load_optimizer** :  Whether to load optimizer. If True, then it will load &lt;weights_opt&gt; file in the path.
+* **load_optimizer** :  Whether to load optimizer. If True, then it will load <weights_opt> file in the path.
 
 #### Raises:
 

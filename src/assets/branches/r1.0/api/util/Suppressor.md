@@ -12,6 +12,7 @@ with fe.util.Suppressor():
 x()  # "hello"
 ```
 
+
 ### write
 ```python
 write(self, dummy:str) -> None

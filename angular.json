@@ -183,5 +183,8 @@
       }
     }
   },
-  "defaultProject": "fe-website"
+  "defaultProject": "fe-website",
+  "cli": {
+    "analytics": false
+  }
 }
