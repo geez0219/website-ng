@@ -27,6 +27,7 @@ export class ApiComponent implements OnInit {
   scrollThreshold:number=20;
   segments: UrlSegment[];
   fragment: string;
+  selectedBranch: string;
 
   treeControl: NestedTreeControl<API>;
   dataSource: MatTreeNestedDataSource<API>;
@@ -78,6 +79,7 @@ export class ApiComponent implements OnInit {
               private globalService: GlobalService) { }
 
   ngOnInit() {
+    this.selectedBranch = this.globalService.getSelectedBranch();
     this.treeControl = new NestedTreeControl<API>(node => node.children);
     this.dataSource = new MatTreeNestedDataSource<API>();
 
@@ -153,7 +155,7 @@ export class ApiComponent implements OnInit {
     if (this.apiList) {
       this.loadSelectedAPI();
     } else {
-      this.http.get('assets/branches/r1.0/api/structure.json', this.structureRequestOptions).subscribe(data => {
+      this.http.get('assets/branches/' + this.selectedBranch + '/api/structure.json', this.structureRequestOptions).subscribe(data => {
         this.apiList = <API[]>(data);
         this.dataSource.data = this.apiList;
         this.treeControl.dataNodes = this.apiList;
@@ -197,7 +199,7 @@ export class ApiComponent implements OnInit {
     window.scroll(0, 0);
 
     this.selectedAPI = api.name;
-    this.currentSelection = 'assets/branches/r1.0/api/' + api.name;
+    this.currentSelection = 'assets/branches/' + this.selectedBranch + '/api/' + api.name;
     this.currentAPILink = api.sourceurl;
 
     this.getSelectedAPIText();

@@ -1,0 +1,10 @@
+[
+  {
+    "name": "r1.0",
+    "latest": true
+  },
+  {
+    "name": "r2.0",
+    "latest": false
+  }
+]
