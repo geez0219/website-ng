@@ -11,7 +11,7 @@ In this tutorial, we will discuss the following topics:
 * [Padding Batch Data](./tutorials/advanced/t02_pipeline#ta02pbd)
 * [Benchmark Pipeline Speed](./tutorials/advanced/t02_pipeline#ta02bps)
 
-In the [beginner tutorial 4](https://github.com/fastestimator/fastestimator/tree/r1.0/tutorials/beginner/t04_pipeline), we learned how to build a data pipeline that handles data loading and preprocessing tasks efficiently. Now that you have understood some basic operations in the `Pipeline`, we will demonstrate some advanced concepts and how to leverage them to create efficient `Pipelines` in this tutorial.
+In the [beginner tutorial 4](https://github.com/fastestimator/fastestimator/tree/master/tutorials/beginner/t04_pipeline), we learned how to build a data pipeline that handles data loading and preprocessing tasks efficiently. Now that you have understood some basic operations in the `Pipeline`, we will demonstrate some advanced concepts and how to leverage them to create efficient `Pipelines` in this tutorial.
 
 <a id='ta02itp'></a>
 

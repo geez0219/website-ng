@@ -120,7 +120,7 @@ for i, j in enumerate(np.random.randint(low=0, high=batch_size-1, size=sample_nu
 
 
 
-![png](assets/branches/r1.0/example/image_classification/cifar10_fast_files/cifar10_fast_10_2.png)
+![png](assets/branches/master/example/image_classification/cifar10_fast_files/cifar10_fast_10_2.png)
 
 
 ## Step 2 - `Network` construction
@@ -399,5 +399,5 @@ for i, j in enumerate(np.random.randint(low=0, high=batch_size-1, size=sample_nu
 ```
 
 
-![png](assets/branches/r1.0/example/image_classification/cifar10_fast_files/cifar10_fast_20_0.png)
+![png](assets/branches/master/example/image_classification/cifar10_fast_files/cifar10_fast_20_0.png)
 

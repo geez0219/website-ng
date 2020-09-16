@@ -378,5 +378,5 @@ for i in range(images.shape[0]):
 ```
 
 
-![png](assets/branches/r1.0/example/image_generation/dcgan_files/dcgan_28_0.png)
+![png](assets/branches/master/example/image_generation/dcgan_files/dcgan_28_0.png)
 

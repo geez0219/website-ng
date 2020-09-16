@@ -237,4 +237,4 @@ estimator.fit()
 ## Apphub Examples
 You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
 
-* [PGGAN](https://github.com/fastestimator/fastestimator/tree/r1.0/examples/image_generation/pggan)
+* [PGGAN](https://github.com/fastestimator/fastestimator/tree/master/examples/image_generation/pggan)

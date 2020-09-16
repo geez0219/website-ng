@@ -10,7 +10,7 @@ In this tutorial we are going to cover:
 
 ## Running inference with transform method
 
-Running inference means using a trained deep learning model to get a prediction from some input data. Users can use `pipeline.transform` and `network.transform` to feed the data forward and get the computed result in any operation mode. Here we are going to use an end-to-end example (the same example code from [tutorial 8](https://github.com/fastestimator/fastestimator/tree/r1.0/tutorials/beginner/t08_mode)) on MNIST image classification to demonstrate how to run inference.  
+Running inference means using a trained deep learning model to get a prediction from some input data. Users can use `pipeline.transform` and `network.transform` to feed the data forward and get the computed result in any operation mode. Here we are going to use an end-to-end example (the same example code from [tutorial 8](https://github.com/fastestimator/fastestimator/tree/master/tutorials/beginner/t08_mode)) on MNIST image classification to demonstrate how to run inference.  
 
 We first train a deep leaning model with the following code:
 
@@ -105,7 +105,7 @@ def print_dict_but_value(data):
 
 The following figure shows the complete execution graph (consisting `Pipeline` and `Network`) for the "infer" mode: 
 
-<img src="assets/branches/r1.0/tutorial/../resources/t09_infer_mode.PNG" alt="drawing" width="700"/>
+<img src="assets/branches/master/tutorial/../resources/t09_infer_mode.PNG" alt="drawing" width="700"/>
 
 Our goal is to provide an input image "x" and get the prediction result "y_pred".
 
@@ -114,7 +114,7 @@ Our goal is to provide an input image "x" and get the prediction result "y_pred"
 ### Pipeline.transform
 The `Pipeline` object has a `transform` method that runs the pipeline graph ("x" to "x_out") when inference data (a dictionary of keys and values like {"x":image}), is inserted. The returned output will be the dictionary of computed results after applying all `Pipeline` Ops, where the dictionary values will be Numpy arrays.
 
-<img src="assets/branches/r1.0/tutorial/../resources/t09_infer_mode2.PNG" alt="drawing" width="700"/>
+<img src="assets/branches/master/tutorial/../resources/t09_infer_mode2.PNG" alt="drawing" width="700"/>
 
 Here we take eval_data's first image, package it into a dictionary, and then call `pipeline.transform`: 
 
@@ -143,9 +143,9 @@ print_dict_but_value(infer_data)
 
 ### Network.transform
 
-We then use the network object to call the `transform` method that runs the network graph ("x_out" to "y_pred"). Much like with `pipeline.transform`, it will return it's Op outputs, though this time in the form of a dictionary of Tensors. The data type of the returned values depends on the backend of the network. It is `tf.Tensor` when using the TensorFlow backend and `torch.Tensor` with PyTorch. Please check out [tutorial 6](https://github.com/fastestimator/fastestimator/tree/r1.0/tutorials/beginner/t06_network) for more details about `Network` backends). 
+We then use the network object to call the `transform` method that runs the network graph ("x_out" to "y_pred"). Much like with `pipeline.transform`, it will return it's Op outputs, though this time in the form of a dictionary of Tensors. The data type of the returned values depends on the backend of the network. It is `tf.Tensor` when using the TensorFlow backend and `torch.Tensor` with PyTorch. Please check out [tutorial 6](https://github.com/fastestimator/fastestimator/tree/master/tutorials/beginner/t06_network) for more details about `Network` backends). 
 
-<img src="assets/branches/r1.0/tutorial/../resources/t09_infer_mode3.PNG" alt="drawing" width="700"/>
+<img src="assets/branches/master/tutorial/../resources/t09_infer_mode3.PNG" alt="drawing" width="700"/>
 
 
 ```python
@@ -171,7 +171,7 @@ fig = img.paint_figure()
 
 
 
-![png](assets/branches/r1.0/tutorial/beginner/t09_inference_files/t09_inference_19_1.png)
+![png](assets/branches/master/tutorial/beginner/t09_inference_files/t09_inference_19_1.png)
 
 
 <a id='t09apphub'></a>
@@ -179,5 +179,5 @@ fig = img.paint_figure()
 ## Apphub Examples
 You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
 
-* [MNIST](https://github.com/fastestimator/fastestimator/tree/r1.0/examples/image_classification/mnist)
-* [IMDB](https://github.com/fastestimator/fastestimator/tree/r1.0/examples/NLP/imdb)
+* [MNIST](https://github.com/fastestimator/fastestimator/tree/master/examples/image_classification/mnist)
+* [IMDB](https://github.com/fastestimator/fastestimator/tree/master/examples/NLP/imdb)

@@ -535,7 +535,7 @@ logs = visualize_logs(experiments=[softmax_results, ecc_results, hydra_results],
 ```
 
 
-![png](assets/branches/r1.0/example/adversarial_training/ecc_files/ecc_22_0.png)
+![png](assets/branches/master/example/adversarial_training/ecc_files/ecc_22_0.png)
 
 
 As you can see, the conventional network using softmax to convert logits to class probabilities actually gets more and more vulnerable to adversarial attacks as training progresses. It also quickly overfits to the data, reaching an optimal performance around epoch 7. By simply switching the softmax layer for an error-correcting-code, the network is able to train for around 16 epochs before starting to cap out, and even then continuing to train it results in better and better adversarial performance. Creating a multi-headed ecc output layer allows still more training and higher peak performances. If you were to run the experiment out to 160 epochs you would find that the adversarial accuracy can reach between 60-70% with only a slight accuracy degradation on clean samples (performance still above 70%). This is significantly better performance than networks trained specifically to combat this attack, shown in the [FGSM](../fgsm/fgsm.ipynb) notebook. Note also that their is virtually no additional cost to training using ECC as opposed to softmax in terms of steps/sec. This is a big benefit over FGSM, where the training time for each step is doubled. With these benefits in mind, you may want to consider never using softmax again.

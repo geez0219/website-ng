@@ -190,7 +190,7 @@ ax[1].imshow(np.squeeze(batch_data['mask'][batch_index]), cmap='gray')
 
 
 
-![png](assets/branches/r1.0/example/semantic_segmentation/unet_files/unet_17_1.png)
+![png](assets/branches/master/example/semantic_segmentation/unet_files/unet_17_1.png)
 
 
 ## Step 2: Create `Network`
@@ -433,5 +433,5 @@ plt.show()
 ```
 
 
-![png](assets/branches/r1.0/example/semantic_segmentation/unet_files/unet_40_0.png)
+![png](assets/branches/master/example/semantic_segmentation/unet_files/unet_40_0.png)
 

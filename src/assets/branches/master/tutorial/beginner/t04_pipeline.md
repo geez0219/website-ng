@@ -22,7 +22,7 @@ In deep learning, data preprocessing is a way of converting data from its raw fo
 
 ## Loading data into a Pipeline
 
-In [tutorial 2](https://github.com/fastestimator/fastestimator/tree/r1.0/tutorials/beginner/t02_dataset) we demonstrated different ways to construct FastEstimator datasets. Here we will see how datasets can be loaded in the `Pipeline` and how various operations can then be applied to the data. `fe.Pipeline` handles three different types of datasets:
+In [tutorial 2](https://github.com/fastestimator/fastestimator/tree/master/tutorials/beginner/t02_dataset) we demonstrated different ways to construct FastEstimator datasets. Here we will see how datasets can be loaded in the `Pipeline` and how various operations can then be applied to the data. `fe.Pipeline` handles three different types of datasets:
 
 * tf.data.Dataset
 * torch.data.Dataloader
@@ -93,7 +93,7 @@ pipeline_torch = fe.Pipeline(dataloader_torch)
 
 ### Using a FastEstimator Dataset
 
-Next, we will see how to use one of the Fastestimator Datasets in the `Pipeline`. We will create `fe.dataset.NumpyDataset` and load it into our pipeline. As we saw in [tutorial 2](https://github.com/fastestimator/fastestimator/tree/r1.0/tutorials/beginner/t02_dataset), `NumpyDataset` takes a dictionary with keys for the <b>input data</b> and <b>ground truth labels</b>.
+Next, we will see how to use one of the Fastestimator Datasets in the `Pipeline`. We will create `fe.dataset.NumpyDataset` and load it into our pipeline. As we saw in [tutorial 2](https://github.com/fastestimator/fastestimator/tree/master/tutorials/beginner/t02_dataset), `NumpyDataset` takes a dictionary with keys for the <b>input data</b> and <b>ground truth labels</b>.
 
 
 ```python
@@ -136,7 +136,7 @@ pipeline_tf.get_results(num_steps=1)
 
 ## Using Numpy Operators in Pipeline
 
-In [tutorial 3](https://github.com/fastestimator/fastestimator/tree/r1.0/tutorials/beginner/t03_operator), we learned about `Operators` and their structure. They are used in FastEstimator for constructing workflow graphs. Here we will talk specifically about Numpy Operators (`NumpyOp`s) and how to use them in `Pipeline`.
+In [tutorial 3](https://github.com/fastestimator/fastestimator/tree/master/tutorials/beginner/t03_operator), we learned about `Operators` and their structure. They are used in FastEstimator for constructing workflow graphs. Here we will talk specifically about Numpy Operators (`NumpyOp`s) and how to use them in `Pipeline`.
 
 `NumpyOp`s form the foundation of FastEstimator data augmentation within the `Pipeline`, and inherit from the `Op` base class. They perform preprocessing and augmentation tasks on non-Tensor data. With a list of `NumpyOp`s, even complicated preprocessing tasks can be implemented in only a few lines of code. Many of the augmentation operations in FastEstimator leverage the image augmentation library [albumentations](https://github.com/albumentations-team/albumentations).
 
@@ -223,7 +223,7 @@ fig = img.paint_figure()
 ```
 
 
-![png](assets/branches/r1.0/tutorial/beginner/t04_pipeline_files/t04_pipeline_41_0.png)
+![png](assets/branches/master/tutorial/beginner/t04_pipeline_files/t04_pipeline_41_0.png)
 
 
 <a id='t04apphub'></a>
@@ -231,6 +231,6 @@ fig = img.paint_figure()
 ## Apphub Examples
 You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
 
-* [CIFAR10](https://github.com/fastestimator/fastestimator/tree/r1.0/examples/image_classification/cifar10_fast)
-* [Bert](https://github.com/fastestimator/fastestimator/tree/r1.0/examples/NLP/bert)
-* [FGSM](https://github.com/fastestimator/fastestimator/tree/r1.0/examples/adversarial_training/fgsm)
+* [CIFAR10](https://github.com/fastestimator/fastestimator/tree/master/examples/image_classification/cifar10_fast)
+* [Bert](https://github.com/fastestimator/fastestimator/tree/master/examples/NLP/bert)
+* [FGSM](https://github.com/fastestimator/fastestimator/tree/master/examples/adversarial_training/fgsm)

@@ -325,7 +325,7 @@ fig = img.paint_figure()
 ```
 
 
-![png](assets/branches/r1.0/example/adversarial_training/fgsm_files/fgsm_29_0.png)
+![png](assets/branches/master/example/adversarial_training/fgsm_files/fgsm_29_0.png)
 
 
 As you can see, the adversarial images appear very similar to the unmodified images, and yet they are often able to modify the class predictions of the network. Note that if a network's prediction is already wrong, the attack is unlikely to change the incorrect prediction, but rather to increase the model's confidence in its incorrect prediction. 

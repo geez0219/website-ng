@@ -94,7 +94,7 @@ fig = img.paint_figure()
 ```
 
 
-![png](assets/branches/r1.0/example/image_generation/cyclegan_files/cyclegan_11_0.png)
+![png](assets/branches/master/example/image_generation/cyclegan_files/cyclegan_11_0.png)
 
 
 ### Step 2: Create Network
@@ -434,11 +434,11 @@ fig2 = img2.paint_figure()
 ```
 
 
-![png](assets/branches/r1.0/example/image_generation/cyclegan_files/cyclegan_34_0.png)
+![png](assets/branches/master/example/image_generation/cyclegan_files/cyclegan_34_0.png)
 
 
 
-![png](assets/branches/r1.0/example/image_generation/cyclegan_files/cyclegan_34_1.png)
+![png](assets/branches/master/example/image_generation/cyclegan_files/cyclegan_34_1.png)
 
 
 Note the addition of zebra-like stripe texture on top of horses when translating from horses to zebras.
