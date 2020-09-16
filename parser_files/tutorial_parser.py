@@ -10,14 +10,13 @@ from functools import partial
 RE_SIDEBAR_TITLE = '[^A-Za-z0-9:!,$%. ]+'
 RE_ROUTE_TITLE = '[^A-Za-z0-9 ]+'
 
-
 def generateMarkdowns(output_dir, tutorial_type, fe_path):
     # form a input files path
     tutorial_sub_dir = os.path.join('tutorial', tutorial_type)
     tutorial_path = os.path.join(fe_path, tutorial_sub_dir)
-
     # invoke subprocess to run nbconvert command on notebook files
     output_sub_dir = os.path.join(*[output_dir, 'tutorial', tutorial_type])
+    os.makedirs(output_sub_dir, exist_ok=True)
     for filename in os.listdir(tutorial_path):
         if filename.endswith('.ipynb'):
             filepath = os.path.join(tutorial_path, filename)
