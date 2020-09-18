@@ -18,9 +18,17 @@
       <mat-menu #menu="matMenu">
         <button  *ngFor="let tab of tabList" mat-menu-item [routerLink]="tab.routerLink" [hidden]="!tab.hidden"
         (click)="preRoute(tab.preRoute)" style="outline:none"> {{tab.name}}</button>
-        <button  mat-menu-item [hidden]="!(isSearchIconHidden && isSearchHidden)"
-        (click)="expandSearch()" style="outline:none"> Search</button>
+        <!-- <button  mat-menu-item [hidden]="!(isSearchIconHidden && isSearchHidden)"
+        (click)="expandSearch()" style="outline:none"> Search</button> -->
       </mat-menu>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Select an option</mat-label>
+        <mat-select [(value)]="selected">
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let version of versionList" value="version.name">{{version.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
 
       <button (click)="closeSearch()" style="background-color: transparent; border:none; outline:none; padding-top:10px">
         <mat-icon aria-hidden="true" role="img" class="mat-icon notranslate material-icons mat-icon-no-color"

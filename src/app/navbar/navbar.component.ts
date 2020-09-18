@@ -7,6 +7,7 @@ import { DialogComponent} from '../dialog/dialog.component'
 import { GlobalService } from '../global.service';
 import { BehaviorSubject } from 'rxjs';
 import { DOCUMENT } from '@angular/common'
+import { Branch } from '../branch';
 
 @Component({
   selector: 'app-navbar',
@@ -25,7 +26,9 @@ export class NavbarComponent implements OnInit, AfterViewInit {
              {name: "Examples", routerLink: "/examples/overview", preRoute: "examples", hidden:false},
              {name: "API", routerLink: "/api/fe/Estimator", preRoute: "api", hidden:false},
              {name: "Community", routerLink: "/community", preRoute: "community", hidden:false}]
-
+  // versionList = [{name: "master"},
+  //                {name: "r1.0"}]
+  versionList: Branch[];
   @ViewChildren('tabDOM') tabDOMs: QueryList<ElementRef>;
   @ViewChild('logoDOM', {static:true}) logoDOM: ElementRef;
   @ViewChild('moreDOM', {read:ElementRef, static:true}) moreDOM: ElementRef;
@@ -75,7 +78,8 @@ export class NavbarComponent implements OnInit, AfterViewInit {
               private globalService: GlobalService,
               @Inject(DOCUMENT) private _document,
               private cd: ChangeDetectorRef) {
-
+    this.versionList = this.globalService.getBranch();
+    console.log(this.versionList);
     this.screenWidth$.subscribe(width => {
       this.screenWidth = width;
     });
