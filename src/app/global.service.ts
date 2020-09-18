@@ -53,4 +53,8 @@ export class GlobalService {
   setCurrentBranch(selectedBranch: string) {
     this.selectedBranch = selectedBranch;
   }
+
+  getBranch(){
+    return this.branches;
+  }
 }

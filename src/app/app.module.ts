@@ -18,7 +18,7 @@ import {MatTreeModule} from '@angular/material/tree';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatCardModule} from '@angular/material/card';
-
+import { MatSelectModule } from '@angular/material/select';
 import { WINDOW_PROVIDERS } from './window-provider/window-provider.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -67,7 +67,7 @@ import { SecurityContext } from '@angular/core'
     NgbModule,
     MarkdownModule.forRoot({ sanitize: SecurityContext.NONE }), // for all tag has id
     BrowserAnimationsModule,
-
+    MatSelectModule,
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
