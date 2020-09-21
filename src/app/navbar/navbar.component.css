@@ -86,3 +86,8 @@ nav div ul li a {
     z-index: 1050;
     /* background-color: #2A7BBA; */
 }
+
+.version-select {
+    margin-top: auto;
+    margin-bottom: auto;
+}
