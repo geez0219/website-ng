@@ -30,8 +30,8 @@
         </mat-icon>
       </button>
     </ul>
-    <select #versionDOM matNativeControl required class="version-select" [hidden]="isSearchExpanded">
-      <option *ngFor="let version of versionList" value="version.name" > {{version.name}}</option>
+    <select #versionDOM class="version-select" [(ngModel)]="current_version" (change)="onChange()" [hidden]="isSearchExpanded" >
+      <option *ngFor="let version of versionList" [value]="version.name"> {{version.name}}</option>
     </select>
     <button #searchIconDOM (click)="expandSearch()" [hidden]="isSearchIconHidden || isSearchExpanded">
       style="background-color: transparent; border:none; outline:none; padding: 10px 10px 0 10px">
