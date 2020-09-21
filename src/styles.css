@@ -1,8 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
-body { 
-    margin: 0; 
-    font-family: Roboto, "Helvetica Neue", sans-serif; 
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
     height: 100%;
 }
 
@@ -13,14 +13,14 @@ html{
 button.gsc-search-button
 {
     padding:0px !important;
-    height:0px !important; 
+    height:0px !important;
     width:0px !important;
     visibility: hidden;
 	background-color:transparent !important;
 }
 
-.cdk-overlay-container { 
-    z-index: 1050; 
+.cdk-overlay-container {
+    z-index: 1050;
 }
 
 mat-progress-bar .mat-progress-bar-buffer {
@@ -28,7 +28,7 @@ mat-progress-bar .mat-progress-bar-buffer {
 }
 
 .collapse.show{
-    overflow-y: auto; 
+    overflow-y: auto;
     max-height: 70vh;
 }
 

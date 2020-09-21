@@ -1,7 +1,8 @@
 <mat-progress-bar class="mat-progress-bar-buffer highest" *ngIf="loading" mode="indeterminate"></mat-progress-bar>
 
 <nav class="navbar navbar-light fixed-top head-container">
-  <a #logoDOM class="navbar-brand" routerLink="/"><img class="logo" src="assets/images/logo2.png" [hidden]="isSearchExpanded"></a>
+  <a #logoDOM class="navbar-brand" routerLink="/"><img class="logo" src="assets/images/logo2.png"
+      [hidden]="isSearchExpanded"></a>
   <div style="display:flex; flex-flow: row nowrap; width:100%; height: 100%;">
     <ul class="navbar-nav mr-auto">
       <li *ngFor="let tab of tabList" class="nav-item">
@@ -18,32 +19,27 @@
       <mat-menu #menu="matMenu">
         <button  *ngFor="let tab of tabList" mat-menu-item [routerLink]="tab.routerLink" [hidden]="!tab.hidden"
         (click)="preRoute(tab.preRoute)" style="outline:none"> {{tab.name}}</button>
-        <!-- <button  mat-menu-item [hidden]="!(isSearchIconHidden && isSearchHidden)"
-        (click)="expandSearch()" style="outline:none"> Search</button> -->
+        <button  mat-menu-item [hidden]="!(isSearchIconHidden && isSearchHidden)"
+        (click)="expandSearch()" style="outline:none"> Search</button>
       </mat-menu>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Select an option</mat-label>
-        <mat-select [(value)]="selected">
-          <mat-option>None</mat-option>
-          <mat-option *ngFor="let version of versionList" value="version.name">{{version.name}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <button (click)="closeSearch()" style="background-color: transparent; border:none; outline:none; padding-top:10px">
+      <button (click)="closeSearch()" style="background-color: transparent; border:none; outline:none; padding-top:10px" [hidden]="!isSearchExpanded">
         <mat-icon aria-hidden="true" role="img" class="mat-icon notranslate material-icons mat-icon-no-color"
-          style="font-size: 2rem; width:inherit; height:inherit" [hidden]="!isSearchExpanded">
+          style="font-size: 2rem; width:inherit; height:inherit" >
            arrow_back_ios
         </mat-icon>
       </button>
-
-      <button #searchIconDOM (click)="expandSearch()" style="background-color: transparent; border:none; outline:none; padding-top:10px">
-        <mat-icon aria-hidden="true" role="img" class="mat-icon notranslate material-icons mat-icon-no-color"
-          style="font-size: 2rem; width:inherit; height:inherit" [hidden]="isSearchIconHidden || isSearchExpanded">
-            search
-        </mat-icon>
-      </button>
     </ul>
+    <select #versionDOM matNativeControl required class="version-select" [hidden]="isSearchExpanded">
+      <option *ngFor="let version of versionList" value="version.name" > {{version.name}}</option>
+    </select>
+    <button #searchIconDOM (click)="expandSearch()" [hidden]="isSearchIconHidden || isSearchExpanded">
+      style="background-color: transparent; border:none; outline:none; padding: 10px 10px 0 10px">
+      <mat-icon aria-hidden="true" role="img" class="mat-icon notranslate material-icons mat-icon-no-color"
+        style="font-size: 2rem; width:inherit; height:inherit" >
+        search
+      </mat-icon>
+    </button>
     <form #searchDOM class="form-inline .hidden-xs-down" style="width:100%; max-width: 500px;" [hidden]="isSearchHidden && !isSearchExpanded">
       <app-search style="width:100%"></app-search>
     </form>
