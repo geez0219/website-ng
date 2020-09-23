@@ -52,6 +52,8 @@ export class GlobalService {
 
   setCurrentBranch(selectedBranch: string) {
     this.selectedBranch = selectedBranch;
+    this.branches.filter(this.isLatest)[0].latest = false;
+    this.branches.find(branch => branch.name === selectedBranch).latest = true;
   }
 
   getBranch(){

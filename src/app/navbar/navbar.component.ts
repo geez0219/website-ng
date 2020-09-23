@@ -1,9 +1,8 @@
 import { Component, OnInit,
   HostBinding, HostListener, ElementRef, QueryList, ViewChildren, ViewChild, AfterViewInit, ChangeDetectorRef, Inject} from '@angular/core';
-import { NavigationStart, Router } from '@angular/router';
+import { NavigationStart, NavigationEnd, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatDialog} from '@angular/material/dialog';
-import { DialogComponent} from '../dialog/dialog.component'
 import { GlobalService } from '../global.service';
 import { BehaviorSubject } from 'rxjs';
 import { DOCUMENT } from '@angular/common'
@@ -22,9 +21,9 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   searchContent: any;
   dialogRef: any = null;
   tabList = [{name: "Install", routerLink: "/install", preRoute: "install", hidden:false},
-             {name: "Tutorials", routerLink: "/tutorials/beginner/t01_getting_started", preRoute: "tutorials", hidden:false},
-             {name: "Examples", routerLink: "/examples/overview", preRoute: "examples", hidden:false},
-             {name: "API", routerLink: "/api/fe/Estimator", preRoute: "api", hidden:false},
+             {name: "Tutorials", routerLink: "/tutorials/r1.0/beginner/t01_getting_started", preRoute: "tutorials", hidden:false},
+             {name: "Examples", routerLink: "/examples/r1.0/overview", preRoute: "examples", hidden:false},
+             {name: "API", routerLink: "/api/r1.0/fe/Estimator", preRoute: "api", hidden:false},
              {name: "Community", routerLink: "/community", preRoute: "community", hidden:false}]
   versionList: Branch[];
 
@@ -124,12 +123,6 @@ export class NavbarComponent implements OnInit, AfterViewInit {
                            this.errorPixel +
                            tabArray[0].nativeElement.offsetWidth;
 
-    for (var i = 0; i < tabArray.length; i++){
-      console.log(i, tabArray[i].nativeElement.offsetWidth);
-    }
-
-    console.log(this.versionDOM.nativeElement.offsetWidth);
-
     for (var i=1;i<tabArray.length;i++){
       this.tabBreakList[i] = this.tabBreakList[i-1] + tabArray[i].nativeElement.offsetWidth;
     }
@@ -137,7 +130,6 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     this.tabBreakList[tabArray.length-1] = this.tabBreakList[tabArray.length-1] - this.moreDOM.nativeElement.offsetWidth;
     this.searchBreak = this.searchbarMinWidth + this.tabBreakList[tabArray.length-1] + this.searchIconDOM.nativeElement.offsetWidth;
     this.searchInMoreBreak = this.logoDOM.nativeElement.offsetWidth + this.moreDOM.nativeElement.offsetWidth + this.searchIconDOM.nativeElement.offsetWidth + this.versionDOM.nativeElement.offsetWidth + this.errorPixel;
-    console.log("searchInMoreBreak", this.searchInMoreBreak);
   }
 
   checkBreaking(){
@@ -194,5 +186,10 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
   closeSearch(){
     this.isSearchExpanded = false;
+  }
+
+  versionChanged(event) {
+    this.globalService.setCurrentBranch(event.target.value);
+    this.router.navigate(['Your actualComponent']);
   }
 }

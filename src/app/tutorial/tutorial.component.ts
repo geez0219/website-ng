@@ -17,14 +17,15 @@ import { GlobalService } from '../global.service';
   styleUrls: ['../api/api.component.css']
 })
 export class TutorialComponent implements OnInit {
-  exampleList: Example[];
-  selectedExample: string;
+  tutorialList: Example[];
+  selectedTutorial: string;
   currentSelection: string;
-  currentExampleText: string;
+  currentTutorialText: string;
   scrollCounter: number=0;
   scrollThreshold: number=20;
   segments: UrlSegment[];
   fragment: string;
+  currentVersion: string;
 
   treeControl: NestedTreeControl<Example>;
   dataSource: MatTreeNestedDataSource<Example>;
@@ -83,8 +84,11 @@ export class TutorialComponent implements OnInit {
     this.route.url.subscribe((segments: UrlSegment[]) => {
       this.globalService.setLoading();
       this.segments = segments;
-      this.getExampleStructure();
+
+      this.currentVersion = this.segments[0].toString();
+      this.getTutorialStructure();
     });
+
     this.route.fragment.subscribe((fragment: string) => {
       this.fragment = fragment;
     })
@@ -124,25 +128,25 @@ export class TutorialComponent implements OnInit {
     return ret;
   }
 
-  expandNodes(exampleName: string) {
-    var exampleParts: Array<string> = exampleName.split("/");
-    exampleParts.pop();
+  expandNodes(tutorialName: string) {
+    var tutorialParts: Array<string> = tutorialName.split("/");
+    tutorialParts.pop();
 
-    var expandNode = this.exampleList.filter(example => example.name === exampleParts[0])[0];
+    var expandNode = this.tutorialList.filter(tutorial => tutorial.name === tutorialParts[0])[0];
     this.treeControl.expand(expandNode);
   }
 
-  getExampleStructure() {
-    if (this.exampleList) {
-      this.loadSelectedExample();
+  getTutorialStructure() {
+    if (this.tutorialList) {
+      this.loadSelectedTutorial();
     } else {
-      this.http.get('assets/branches/r1.0/tutorial/structure.json', this.structureRequestOptions).subscribe(data => {
-        this.exampleList = <Example[]>(data);
+      this.http.get('assets/branches/' + this.currentVersion + '/tutorial/structure.json', this.structureRequestOptions).subscribe(data => {
+        this.tutorialList = <Example[]>(data);
 
-        this.dataSource.data = this.exampleList;
-        this.treeControl.dataNodes = this.exampleList;
+        this.dataSource.data = this.tutorialList;
+        this.treeControl.dataNodes = this.tutorialList;
 
-        this.loadSelectedExample();
+        this.loadSelectedTutorial();
       },
         error => {
           console.error(error);
@@ -151,18 +155,18 @@ export class TutorialComponent implements OnInit {
     }
   }
 
-  private loadSelectedExample() {
+  private loadSelectedTutorial() {
     if (this.segments.length == 0) {
-      this.updateExampleContent(this.exampleList[0].children[0]);
+      this.updateTutorialContent(this.tutorialList[0].children[0]);
       this.treeControl.expand(this.treeControl.dataNodes[0]);
     }
     else {
-      var e: Example[] = this.flatten(this.exampleList)
-        .filter(example =>
-          (this.segments.map(segment => segment.toString()).join('/') + ".md") === example.name);
+      var e: Example[] = this.flatten(this.tutorialList)
+        .filter(tutorial =>
+          (this.segments.map(segment => segment.toString()).slice(1, this.segments.length).join('/') + ".md") === tutorial.name);
 
       if (e.length > 0) {
-        this.updateExampleContent(e[0]);
+        this.updateTutorialContent(e[0]);
         this.expandNodes(e[0].name);
       } else {
         this.globalService.resetLoading();
@@ -171,19 +175,19 @@ export class TutorialComponent implements OnInit {
     }
   }
 
-  private updateExampleContent(example: Example) {
+  private updateTutorialContent(tutorial: Example) {
     window.scroll(0, 0);
 
-    this.selectedExample = example.name;
-    this.currentSelection = 'assets/branches/r1.0/tutorial/' + example.name;
+    this.selectedTutorial = tutorial.name;
+    this.currentSelection = 'assets/branches/' + this.currentVersion + '/tutorial/' + tutorial.name;
 
-    this.getSelectedExampleText();
-    this.title.setTitle(example.displayName + " | Fastestimator");
+    this.getSelectedTutorialText();
+    this.title.setTitle(tutorial.displayName + " | Fastestimator");
   }
 
-  getSelectedExampleText() {
+  getSelectedTutorialText() {
     this.http.get(this.currentSelection, this.contentRequestOptions).subscribe(data => {
-      this.currentExampleText = data;
+      this.currentTutorialText = data;
       this.globalService.resetLoading();
     },
       error => {
@@ -220,7 +224,7 @@ export class TutorialComponent implements OnInit {
 
   createRouterLink(url: string) {
     var components: Array<string> = url.substring(0, url.length - 3).split('/');
-    var ret = ['/tutorials'];
+    var ret = ['/tutorials', this.currentVersion];
 
     return ret.concat(components);
   }

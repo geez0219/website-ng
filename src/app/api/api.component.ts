@@ -27,7 +27,7 @@ export class ApiComponent implements OnInit {
   scrollThreshold:number=20;
   segments: UrlSegment[];
   fragment: string;
-  selectedBranch: string;
+  currentVersion: string;
 
   treeControl: NestedTreeControl<API>;
   dataSource: MatTreeNestedDataSource<API>;
@@ -79,13 +79,14 @@ export class ApiComponent implements OnInit {
               private globalService: GlobalService) { }
 
   ngOnInit() {
-    this.selectedBranch = this.globalService.getSelectedBranch();
     this.treeControl = new NestedTreeControl<API>(node => node.children);
     this.dataSource = new MatTreeNestedDataSource<API>();
 
     this.route.url.subscribe((segments: UrlSegment[]) => {
       this.globalService.setLoading();
       this.segments = segments;
+
+      this.currentVersion = this.segments[0].toString();
       this.getAPIStructure();
     });
 
@@ -155,7 +156,7 @@ export class ApiComponent implements OnInit {
     if (this.apiList) {
       this.loadSelectedAPI();
     } else {
-      this.http.get('assets/branches/' + this.selectedBranch + '/api/structure.json', this.structureRequestOptions).subscribe(data => {
+      this.http.get('assets/branches/' + this.currentVersion + '/api/structure.json', this.structureRequestOptions).subscribe(data => {
         this.apiList = <API[]>(data);
         this.dataSource.data = this.apiList;
         this.treeControl.dataNodes = this.apiList;
@@ -178,11 +179,12 @@ export class ApiComponent implements OnInit {
     /* END COMMENTS */
     else {
       var searchString: string;
-      if (this.segments.length === 2) {
-        searchString = this.segments.join("/") + ".md";
-      } else {
+      if (this.segments.length === 3) {
         searchString = this.segments.slice(1, this.segments.length).join("/") + ".md";
+      } else {
+        searchString = this.segments.slice(2, this.segments.length).join("/") + ".md";
       }
+
       var a: API[] = this.flatten(this.apiList).filter(api => searchString === api.name);
 
       if (a.length > 0) {
@@ -199,7 +201,7 @@ export class ApiComponent implements OnInit {
     window.scroll(0, 0);
 
     this.selectedAPI = api.name;
-    this.currentSelection = 'assets/branches/' + this.selectedBranch + '/api/' + api.name;
+    this.currentSelection = 'assets/branches/' + this.currentVersion + '/api/' + api.name;
     this.currentAPILink = api.sourceurl;
 
     this.getSelectedAPIText();
@@ -225,7 +227,7 @@ export class ApiComponent implements OnInit {
     if (components[0] != 'fe')
       components = ['fe'].concat(components);
 
-    var ret = ['/api'];
+    var ret = ['/api', this.currentVersion];
 
     return ret.concat(components);
   }

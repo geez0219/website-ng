@@ -1,14 +1,13 @@
 <mat-sidenav-container class="example-container" (click)="checkSidebar()">
   <mat-sidenav #sidenav [mode]="screenWidth < minWidth ? 'over':'side'" [opened]="screenWidth > minWidth"
     class="sidebar-api" [opened]="screenWidth > 640" [fixedInViewport]="true" [fixedTopGap]="100">
-    <!-- <a class="overview" [routerLink]="">Overview</a> -->
     <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
       <!-- This is the tree node template for leaf nodes -->
       <mat-tree-node #examplenode *matTreeNodeDef="let node" matTreeNodeToggle>
         <!-- use a disabled button to provide padding for tree leaf -->
 
         <button class="hide" mat-icon-button disabled></button>
-        <a [ngClass]="{'overview': node.name==='overview.md', 'selected': selectedExample === node.name, 'not-selected': selectedExample != node.name}"
+        <a [ngClass]="{'overview': node.name==='overview.md', 'selected': selectedTutorial === node.name, 'not-selected': selectedTutorial != node.name}"
           [routerLink]="createRouterLink(node.name)">
           {{node.displayName}}
         </a>
@@ -39,10 +38,10 @@
     <div #grippy [style.background-image]="getImageUrl()" class="grippy" (click)="toggleMenu()"></div>
     <div class="content-wrapper">
       <div class="content">
-        <markdown [data]="currentExampleText" katex></markdown>
+        <markdown [data]="currentTutorialText" katex></markdown>
       </div>
     </div>
-    <div *ngIf="currentExampleText">
+    <div *ngIf="currentTutorialText">
       <app-footer></app-footer>
     </div>
   </mat-sidenav-content>
