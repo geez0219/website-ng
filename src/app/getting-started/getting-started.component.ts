@@ -26,7 +26,6 @@ export class GettingStartedComponent implements OnInit {
     tsParticles
     .loadJSON("tsparticles", "./assets/tsparticles.json")
     .then((container) => {
-        console.log("callback - tsparticles config loaded");
     })
     .catch((error) => {
         console.error(error);
@@ -40,7 +39,6 @@ export class GettingStartedComponent implements OnInit {
     .then((container) => {
         const particles = tsParticles.domItem(0);
         particles.pause();
-        console.log("callback - tsparticles config loaded");
     })
     .catch((error) => {
         console.error(error);

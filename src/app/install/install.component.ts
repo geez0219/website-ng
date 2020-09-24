@@ -14,9 +14,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 })
 export class InstallComponent implements OnInit {
   installText: string;
+  selectedVersion: string;
 
   contentHeaderDict = {
-    'Accept': "application/json, text/plain",
+    'Accept': 'application/json, text/plain',
     'Access-Control-Allow-Origin': '*'
   }
 
@@ -47,11 +48,14 @@ export class InstallComponent implements OnInit {
       { name: 'og:title', content: this.data.name },
       { name: 'og:description', content: this.data.bio },
     ]);
+
+    this.selectedVersion = this.route.snapshot.paramMap.get('version');
     this.getInstallText();
   }
 
   getInstallText() {
-    this.http.get('assets/branches/r1.0/install.md', this.contentRequestOptions).subscribe(data => {
+    this.http.get(
+      'assets/branches/' + this.selectedVersion + '/install.md', this.contentRequestOptions).subscribe(data => {
       this.installText = data;
       this.globalService.resetLoading();
     },

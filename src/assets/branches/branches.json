@@ -1,10 +1,10 @@
 [
   {
     "name": "r1.0",
-    "latest": true
+    "latest": false
   },
   {
-    "name": "r2.0",
-    "latest": false
+    "name": "master",
+    "latest": true
   }
 ]

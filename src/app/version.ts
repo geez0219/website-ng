@@ -1,4 +1,4 @@
-export interface Branch {
+export interface Version {
   name: string;
   latest: boolean;
 }

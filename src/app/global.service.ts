@@ -1,17 +1,17 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Branch } from './branch';
+import { Version } from './version';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GlobalService {
 
-  examples_url: string = 'https://api.github.com/repos/fastestimator/fastestimator/contents/apphub?Accept=application/vnd.github.v3+json';
+  examplesURL: string = 'https://api.github.com/repos/fastestimator/fastestimator/contents/apphub?Accept=application/vnd.github.v3+json';
 
-  branches: Branch[];
-  selectedBranch: string;
+  versions: Version[];
+  selectedVersion: string;
 
   loading: boolean;
   @Output() change: EventEmitter<boolean> = new EventEmitter();
@@ -19,7 +19,7 @@ export class GlobalService {
   constructor(private http: HttpClient) { }
 
   getExampleList() {
-    return this.http.get(this.examples_url);
+    return this.http.get(this.examplesURL);
   }
 
   toggleLoading() {
@@ -37,26 +37,30 @@ export class GlobalService {
     this.change.emit(this.loading);
   }
 
-  isLatest(element: Branch, index: number, array: Branch[]) {
-    return (element.latest == true);
+  isLatest(element: Version, index: number, array: Version[]) {
+    return (element.latest === true);
   }
 
-  setBranches(branches: Branch[]) {
-    this.branches = branches;
-    this.selectedBranch = this.branches.filter(this.isLatest)[0].name;
+  setVersions(version: Version[]) {
+    this.versions = version;
+    this.selectedVersion = this.versions.filter(this.isLatest)[0].name;
   }
 
-  getSelectedBranch() {
-    return this.selectedBranch;
+  getSelectedVersion() {
+    return this.selectedVersion;
   }
 
-  setCurrentBranch(selectedBranch: string) {
-    this.selectedBranch = selectedBranch;
-    this.branches.filter(this.isLatest)[0].latest = false;
-    this.branches.find(branch => branch.name === selectedBranch).latest = true;
+  setCurrentVersion(selectedVersion: string) {
+    this.selectedVersion = selectedVersion;
+    this.versions.filter(this.isLatest)[0].latest = false;
+    this.versions.find(version => version.name === selectedVersion).latest = true;
   }
 
-  getBranch(){
-    return this.branches;
+  getVersions(){
+    return this.versions;
+  }
+
+  setSelectedVersion(selectedVersion: Version) {
+    this.selectedVersion = selectedVersion.name;
   }
 }

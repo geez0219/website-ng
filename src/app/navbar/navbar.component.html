@@ -7,39 +7,47 @@
     <ul class="navbar-nav mr-auto">
       <li *ngFor="let tab of tabList" class="nav-item">
         <a #tabDOM (click)="preRoute(tab.preRoute)" [ngClass]="{'selected-title': selected===tab.preRoute}"
-          class="nav-item nav-link active" [routerLink]="tab.routerLink" [hidden]="tab.hidden || isSearchExpanded "> {{tab.name}}</a>
+          class="nav-item nav-link active" [routerLink]="tab.routerLink" [hidden]="tab.hidden || isSearchExpanded ">
+          {{tab.name}}</a>
         <div class="rise-block"> </div>
       </li>
-      <button #moreDOM mat-button [matMenuTriggerFor]="menu" style="outline:none; font-size:1rem; font-weight:400" [hidden]="isMoreHidden || isSearchExpanded">
+      <button #moreDOM mat-button [matMenuTriggerFor]="menu" style="outline:none; font-size:1rem; font-weight:400"
+        [hidden]="isMoreHidden || isSearchExpanded">
         More
         <mat-icon aria-hidden="true" role="img" class="mat-icon notranslate material-icons mat-icon-no-color">
           arrow_drop_down
         </mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <button  *ngFor="let tab of tabList" mat-menu-item [routerLink]="tab.routerLink" [hidden]="!tab.hidden"
-        (click)="preRoute(tab.preRoute)" style="outline:none"> {{tab.name}}</button>
-        <button  mat-menu-item [hidden]="!(isSearchIconHidden && isSearchHidden)"
-        (click)="expandSearch()" style="outline:none"> Search</button>
+        <button *ngFor="let tab of tabList" mat-menu-item [routerLink]="tab.routerLink" [hidden]="!tab.hidden"
+          (click)="preRoute(tab.preRoute)" style="outline:none"> {{tab.name}}</button>
+        <button mat-menu-item [hidden]="!(isSearchIconHidden && isSearchHidden)" (click)="expandSearch()"
+          style="outline:none"> Search</button>
       </mat-menu>
 
-      <button (click)="closeSearch()" style="background-color: transparent; border:none; outline:none; padding-top:10px" [hidden]="!isSearchExpanded">
+      <button (click)="closeSearch()" style="background-color: transparent; border:none; outline:none; padding-top:10px"
+        [hidden]="!isSearchExpanded">
         <mat-icon aria-hidden="true" role="img" class="mat-icon notranslate material-icons mat-icon-no-color"
-          style="font-size: 2rem; width:inherit; height:inherit" >
-           arrow_back_ios
+          style="font-size: 2rem; width:inherit; height:inherit">
+          arrow_back_ios
         </mat-icon>
       </button>
     </ul>
-    <select #versionDOM matNativeControl required class="version-select" [hidden]="isSearchExpanded" (change)="versionChanged($event)">
+
+    <select #versionDOM matNativeControl required class="version-select" [hidden]="isSearchExpanded"
+      (change)="versionChanged($event)" [(ngModel)]="defaultVersion">
       <option *ngFor="let version of versionList"> {{version.name}}</option>
     </select>
-    <button #searchIconDOM (click)="expandSearch()" [hidden]="isSearchIconHidden || isSearchExpanded" style="background-color: transparent; border:none; outline:none; padding: 10px 10px 0 10px">
+
+    <button #searchIconDOM (click)="expandSearch()" [hidden]="isSearchIconHidden || isSearchExpanded"
+      style="background-color: transparent; border:none; outline:none; padding: 10px 10px 0 10px">
       <mat-icon aria-hidden="true" role="img" class="mat-icon notranslate material-icons mat-icon-no-color"
-        style="font-size: 2rem; width:inherit; height:inherit" >
+        style="font-size: 2rem; width:inherit; height:inherit">
         search
       </mat-icon>
     </button>
-    <form #searchDOM class="form-inline .hidden-xs-down" style="width:100%; max-width: 500px;" [hidden]="isSearchHidden && !isSearchExpanded">
+    <form #searchDOM class="form-inline .hidden-xs-down" style="width:100%; max-width: 500px;"
+      [hidden]="isSearchHidden && !isSearchExpanded">
       <app-search style="width:100%"></app-search>
     </form>
   </div>
