@@ -15,25 +15,25 @@ const routes: Routes = [
   { path: '', component: GettingStartedComponent },
   { path: 'tutorials', children: [
       {
-        path: "**",
+        path: '**',
         component: TutorialComponent
       }
     ]},
   { path: 'api', children: [
       {
-          path: "**",
+          path: '**',
           component: ApiComponent
       }
     ]},
   { path: 'examples',
     children: [
       {
-        path: "**",
+        path: '**',
         component: ExampleComponent
       },
     ],
-    runGuardsAndResolvers: "always" },
-  { path: 'install', component: InstallComponent},
+    runGuardsAndResolvers: 'always' },
+  { path: 'install/:version', component: InstallComponent},
   { path: 'community', component: CommunityComponent},
   { path: 'community/slack', component: SlackFormComponent},
   { path: 'searchresult', component: SearchResultComponent },
