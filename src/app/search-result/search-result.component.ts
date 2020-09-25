@@ -12,12 +12,14 @@ import { GlobalService } from '../global.service';
 export class SearchResultComponent implements OnInit {
   data: any;
   searchText: string;
+  selectedVersion: string;
 
   structureHeaderDict = {
     'Content-Type': 'application/json',
-    'Accept': "application/json, text/plain",
+    'Accept': 'application/json, text/plain',
     'Access-Control-Allow-Origin': '*'
-  }
+  };
+
   structureRequestOptions = {
     headers: new HttpHeaders(this.structureHeaderDict),
   };
@@ -32,12 +34,13 @@ export class SearchResultComponent implements OnInit {
         console.log(params.query);
         this.searchText = params.query;
 
+        this.selectedVersion = this.globalService.getSelectedVersion();
         this.getSearchResults();
     });
   }
 
   getSearchResults() {
-    var searchURL = "https://search.fastestimator.org:3200/search/1.0/" + this.searchText;
+    const searchURL = 'https://search.fastestimator.org:3200/search/1.0/' + this.searchText;
 
     this.http.get(searchURL).subscribe(data => {
       console.log(data);
@@ -49,6 +52,7 @@ export class SearchResultComponent implements OnInit {
       this.router.navigate(['PageNotFound'], {replaceUrl:true})
     });
   }
+
   onNoClick(): void {
 
   }
