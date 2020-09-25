@@ -278,15 +278,21 @@ export class NavbarComponent implements OnInit, AfterViewInit {
       case 'api': {
         return this.getAPIBaseURL(selectedVersion);
       }
+      case 'community': {
+        return '/community';
+      }
+      case '': {
+        return '';
+      }
     }
   }
 
   versionChanged(event) {
+    this.globalService.version.next(event.target.value);
     this.globalService.setCurrentVersion(event.target.value);
     this.setTabLinks();
 
-    this.router.navigate([
-      this.getCurrentRoute(this.router.url.split('/')[1], event.target.value),
-    ]);
+    const newRoute = this.getCurrentRoute(this.router.url.split('/')[1], event.target.value);
+    this.router.navigate([newRoute]);
   }
 }

@@ -1,11 +1,11 @@
-import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
 import { NestedTreeControl } from '@angular/cdk/tree';
-import { MatSidenav} from '@angular/material/sidenav';
+import { MatSidenav } from '@angular/material/sidenav';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 
 import { API } from '../api';
@@ -17,14 +17,14 @@ import { GlobalService } from '../global.service';
   templateUrl: './api.component.html',
   styleUrls: ['./api.component.css']
 })
-export class ApiComponent implements OnInit {
+export class ApiComponent implements OnInit, AfterViewChecked {
   apiList: API[];
   selectedAPI: string;
   currentSelection: string;
   currentAPIText: string;
   currentAPILink: string;
-  scrollCounter:number=0;
-  scrollThreshold:number=20;
+  scrollCounter: number = 0;
+  scrollThreshold: number = 20;
   segments: UrlSegment[];
   fragment: string;
   currentVersion: string;
@@ -36,9 +36,16 @@ export class ApiComponent implements OnInit {
   screenWidth: number;
   private screenWidth$ = new BehaviorSubject<number>(window.innerWidth);
 
+
+  @ViewChild('sidenav', { static: true })
+  sidenav: MatSidenav;
+
+  @ViewChild('grippy', { static: true })
+  grippy: ElementRef;
+
   structureHeaderDict = {
     'Content-Type': 'application/json',
-    'Accept': "application/json, text/plain",
+    'Accept': 'application/json, text/plain',
     'Access-Control-Allow-Origin': '*'
   }
   structureRequestOptions = {
@@ -46,7 +53,7 @@ export class ApiComponent implements OnInit {
   };
 
   contentHeaderDict = {
-    'Accept': "application/json, text/plain",
+    'Accept': 'application/json, text/plain',
     'Access-Control-Allow-Origin': '*'
   }
   contentRequestOptions = {
@@ -66,12 +73,6 @@ export class ApiComponent implements OnInit {
     }
   }
 
-  @ViewChild('sidenav', { static: true })
-  sidenav: MatSidenav;
-
-  @ViewChild('grippy', { static: true })
-  grippy: ElementRef;
-
   constructor(private http: HttpClient,
               private router: Router,
               private route: ActivatedRoute,
@@ -83,6 +84,7 @@ export class ApiComponent implements OnInit {
     this.dataSource = new MatTreeNestedDataSource<API>();
 
     this.route.url.subscribe((segments: UrlSegment[]) => {
+      this.apiList = undefined;
       this.globalService.setLoading();
       this.segments = segments;
 
@@ -92,7 +94,7 @@ export class ApiComponent implements OnInit {
 
     this.route.fragment.subscribe((fragment: string) => {
       this.fragment = fragment;
-    })
+    });
 
     this.screenWidth$.subscribe(width => {
       this.screenWidth = width;
@@ -118,7 +120,7 @@ export class ApiComponent implements OnInit {
   hasChild = (_: number, node: API) => !!node.children && node.children.length > 0;
 
   flatten(arr) {
-    var ret: API[] = [];
+    let ret: API[] = [];
     for (let a of arr) {
       if (a.children) {
         ret = ret.concat(this.flatten(a.children));
@@ -131,20 +133,21 @@ export class ApiComponent implements OnInit {
   }
 
   expandNodes(apiName: string) {
-    var apiParts: Array<string> = apiName.split("/");
+    let apiParts: Array<string> = apiName.split('/');
     apiParts.pop();
-    if (apiParts[0] != "fe")
+    if (apiParts[0] !== 'fe') {
       apiParts = ['fe'].concat(apiParts);
+    }
 
-    if (apiParts.length == 1) {
+    if (apiParts.length === 1) {
       this.treeControl.expand(this.apiList[0]);
     } else {
-      var searchRange = this.apiList;
-      var searchName = apiParts[0];
-      for (var i: number = 0; i < apiParts.length - 1; i++) {
-        searchName = searchName + "." + apiParts[i + 1];
+      let searchRange = this.apiList;
+      let searchName = apiParts[0];
+      for (let i = 0; i < apiParts.length - 1; i++) {
+        searchName = searchName + '.' + apiParts[i + 1];
 
-        var expandNode = searchRange.filter(api => api.displayName === searchName)[0];
+        const expandNode = searchRange.filter(api => api.displayName === searchName)[0];
         this.treeControl.expand(expandNode);
 
         searchRange = expandNode.children;
@@ -156,48 +159,52 @@ export class ApiComponent implements OnInit {
     if (this.apiList) {
       this.loadSelectedAPI();
     } else {
-      this.http.get('assets/branches/' + this.currentVersion + '/api/structure.json', this.structureRequestOptions).subscribe(data => {
-        this.apiList = <API[]>(data);
-        this.dataSource.data = this.apiList;
-        this.treeControl.dataNodes = this.apiList;
+      this.fetchAPIStructure();
+    }
+  }
 
-        this.loadSelectedAPI();
-      },
+  fetchAPIStructure() {
+    this.http.get('assets/branches/' + this.currentVersion + '/api/structure.json', this.structureRequestOptions).subscribe(data => {
+      this.apiList = data as API[];
+      this.dataSource.data = this.apiList;
+      this.treeControl.dataNodes = this.apiList;
+
+      this.loadSelectedAPI();
+    },
       error => {
         console.error(error);
         this.globalService.resetLoading();
       });
-    }
   }
-
   private loadSelectedAPI() {
     /* this might not be used ever cause segments always have the url components */
-    if (this.segments.length == 0) {
+    if (this.segments.length === 0) {
       this.updateAPIContent(this.apiList[0].children[0]);
       this.treeControl.expand(this.treeControl.dataNodes[0]);
     }
     /* END COMMENTS */
     else {
-      var searchString: string;
+      let searchString: string;
       if (this.segments.length === 3) {
-        searchString = this.segments.slice(1, this.segments.length).join("/") + ".md";
+        searchString = this.segments.slice(1, this.segments.length).join('/') + '.md';
       } else {
-        searchString = this.segments.slice(2, this.segments.length).join("/") + ".md";
+        searchString = this.segments.slice(2, this.segments.length).join('/') + '.md';
       }
 
-      var a: API[] = this.flatten(this.apiList).filter(api => searchString === api.name);
+      let a: API[] = this.flatten(this.apiList).filter(api => searchString === api.name);
 
       if (a.length > 0) {
         this.updateAPIContent(a[0]);
         this.expandNodes(a[0].name);
       } else {
         this.globalService.resetLoading();
-        this.router.navigate(['PageNotFound'], {replaceUrl: true});
+        this.router.navigate(['PageNotFound'], { replaceUrl: true });
       }
     }
   }
 
   private updateAPIContent(api: API) {
+    console.log('here ' + api.sourceurl);
     window.scroll(0, 0);
 
     this.selectedAPI = api.name;
@@ -205,7 +212,7 @@ export class ApiComponent implements OnInit {
     this.currentAPILink = api.sourceurl;
 
     this.getSelectedAPIText();
-    this.title.setTitle(api.displayName + " | Fastestimator");
+    this.title.setTitle(api.displayName + ' | Fastestimator');
   }
 
   getSelectedAPIText() {
@@ -214,41 +221,42 @@ export class ApiComponent implements OnInit {
 
       this.globalService.resetLoading();
     },
-    error => {
-      console.error(error);
-      this.globalService.resetLoading();
+      error => {
+        console.error(error);
+        this.globalService.resetLoading();
 
-      this.router.navigate(['PageNotFound'], {replaceUrl: true})
-    });
+        this.router.navigate(['PageNotFound'], { replaceUrl: true })
+      });
   }
 
   createRouterLink(url: string) {
-    var components: Array<string> = url.substring(0, url.length - 3).split('/');
-    if (components[0] != 'fe')
+    let components: Array<string> = url.substring(0, url.length - 3).split('/');
+    if (components[0] !== 'fe') {
       components = ['fe'].concat(components);
+    }
 
-    var ret = ['/api', this.currentVersion];
+    const ret = ['/api', this.currentVersion];
 
     return ret.concat(components);
   }
 
   checkSidebar() {
     if (this.sidenav.opened) {
-      this.grippy.nativeElement.style.backgroundImage = "url(../../assets/images/sidebar-grippy-hide.png)"
-      this.grippy.nativeElement.style.left = "19rem"
+      this.grippy.nativeElement.style.backgroundImage = 'url(../../assets/images/sidebar-grippy-hide.png)';
+      this.grippy.nativeElement.style.left = '19rem';
     } else {
-      this.grippy.nativeElement.style.backgroundImage = "url(../../assets/images/sidebar-grippy-show.png)"
-      this.grippy.nativeElement.style.left = "0rem"
+      this.grippy.nativeElement.style.backgroundImage = 'url(../../assets/images/sidebar-grippy-show.png)';
+      this.grippy.nativeElement.style.left = '0rem';
     }
   }
 
   getImageUrl() {
     if (this.sidenav.opened) {
-      this.grippy.nativeElement.style.left = "19rem"
-      return "url(../../assets/images/sidebar-grippy-hide.png)"
+      this.grippy.nativeElement.style.left = '19rem';
+      return 'url(../../assets/images/sidebar-grippy-hide.png)';
     } else {
-      this.grippy.nativeElement.style.left = "0rem"
-      return "url(../../assets/images/sidebar-grippy-show.png)"
+      this.grippy.nativeElement.style.left = '0rem';
+      return 'url(../../assets/images/sidebar-grippy-show.png)';
     }
   }
 
