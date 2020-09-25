@@ -16,6 +16,8 @@ export class InstallComponent implements OnInit {
   installText: string;
   selectedVersion: string;
 
+  VERSION = 'version';
+
   contentHeaderDict = {
     'Accept': 'application/json, text/plain',
     'Access-Control-Allow-Origin': '*'
@@ -42,14 +44,18 @@ export class InstallComponent implements OnInit {
               private globalService: GlobalService) { }
 
   ngOnInit() {
+    this.route.params.subscribe(params => this.handleRouteChange(params));
+
     this.title.setTitle(this.data.name);
     this.meta.addTags([
-      { name: 'og:url', content: '/install' },
+      { name: 'og:url', content: '/install' + this.selectedVersion },
       { name: 'og:title', content: this.data.name },
       { name: 'og:description', content: this.data.bio },
     ]);
+  }
 
-    this.selectedVersion = this.route.snapshot.paramMap.get('version');
+  handleRouteChange(params) {
+    this.selectedVersion = params[this.VERSION];
     this.getInstallText();
   }
 
