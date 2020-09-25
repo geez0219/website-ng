@@ -1,7 +1,12 @@
-# Convolutional Variational Autoencoder example using MNIST dataset (Tensorflow backend)
+# Convolutional Variational Autoencoder using the MNIST dataset (TensorFlow backend)
+
 ## Introduction to CVAE
-CVAE are Convolutional Variational Autoencoder. They are composed by two models using convolutions: an encoder to represent the input in a latent dimension, and a eecoder that will generate data from the latent dimension to the input space. The figure below illustrates the main idea of CVAE. <br> <br> In this example, we will use CVAE to generate data similar to MNIST dataset with Tensorflow backend. All training details including model structure, data preprocessing, loss calculation ... etc come from the reference of Tensorflow CVAE tutorial (https://www.tensorflow.org/tutorials/generative/cvae)
-![cvae](./assets/branches/r1.0/example/image_generation/VAE_complete.png)[img source: https://mlexplained.com/2017/12/28/an-intuitive-explanation-of-variational-autoencoders-vaes-part-1]
+
+CVAEs are Convolutional Variational Autoencoders. They are composed of two models using convolutions: an encoder to cast the input into a latent dimension, and a decoder that will move data from the latent dimension back to the input space. The figure below illustrates the main idea behind CVAEs. 
+
+
+In this example, we will use a CVAE to generate data similar to the MNIST dataset using the TensorFlow backend. All training details including model structure, data preprocessing, loss calculation, etc. come from the [TensorFlow CVAE tutorial](https://www.tensorflow.org/tutorials/generative/cvae)
+![cvae](assets/branches/r1.0/example/image_generation/VAE_complete.png)[img source: https://mlexplained.com/2017/12/28/an-intuitive-explanation-of-variational-autoencoders-vaes-part-1]
 
 ## Import the required libraries
 
@@ -25,10 +30,10 @@ save_dir = tempfile.mkdtemp()
 ```
 
 ## Step 1 - Data and `Pipeline` preparation
-In this step, we will load MNIST training and validation dataset and prepare FastEstimator's data pipeline.
+In this step, we will load MNIST training and validation dataset and prepare FastEstimator's data `Pipeline`.
 
 ### Load dataset 
-Using FastEstimator API to load the MNIST dataset. 
+Let's use a FastEstimator API to load the MNIST dataset: 
 
 
 ```python
@@ -37,8 +42,8 @@ from fastestimator.dataset.data.mnist import load_data
 train_data, test_data = load_data()
 ```
 
-### Set up preprocess pipline
-In this example, the data preprocessing steps include expanding image dimension and normalizing the pixel value to range [0, 1], and binarizing pixel value. We set up those processing steps using `Ops` and meanwhile define the data source (loaded dataset) and batch size. 
+### Set up the preprocessing `Pipline`
+In this example, the data preprocessing steps include expanding image dimension, normalizing the image pixel values to the range [0, 1], and binarizing pixel values. We set up these processing steps using `Ops`, while also defining the data source and batch size for the `Pipeline`.
 
 
 ```python
@@ -55,9 +60,7 @@ pipeline = fe.Pipeline(
 ```
 
 ### Validate `Pipeline`
-In order to make sure the pipeline works as expected, we need to visualize the output of pipeline image and check its size.
-`Pipeline.get_results` will return a batch data of pipeline output.  
-
+In order to make sure the pipeline works as expected, we need to visualize its output. `Pipeline.get_results` will return a batch of data for this purpose:  
 
 
 ```python
@@ -72,7 +75,7 @@ print("the pipeline output data size: {}".format(data_xout.numpy().shape))
     the pipeline output data size: (100, 28, 28, 1)
 
 
-Randomly select 5 sample and visualize the difference between pipeline input and output.
+Let's randomly select 5 samples and visualize the differences between the `Pipeline` input and output.
 
 
 ```python
@@ -98,11 +101,11 @@ for i, j in enumerate(np.random.randint(low=0, high=batch_size-1, size=sample_nu
 
 
 ## Step 2 - `Network` construction
-**FastEstimator supports both Pytorch and Tensorlfow, so this section can use both backend to implement.** <br>
-We are going to only demonstate the Tensorflow way in this example.
+**FastEstimator supports both PyTorch and TensorFlow, so this section could use either backend.** <br>
+We are going to only demonstrate the TensorFlow backend in this example.
 
 ### Model construction
-Both models' definition are implemented in Tensorflow and intantiated by calling `fe.build` which also associates the model with specific optimizers.
+Both of our models' definitions are implemented in TensorFlow and instantiated by calling `fe.build` (which also associates the model with specific optimizers).
 
 
 ```python
@@ -135,10 +138,10 @@ decode_model = fe.build(model_fn=decoder_net, optimizer_fn="adam", model_name="d
 ```
 
 ### Customize `Ops` 
-`Ops` are the basic components of `Network`. They can be logic for loss calculation, model update units, and even model itself is also considered as an `Op`. Some `Ops` are pre-defined in FastEstimator like cross entropy, but for the logic that is not there yet, users need to define their own `Ops`. **Please keep all `Ops` backend consistent with model backend**. (All `Ops`need to be implemented in Tensorflow if the model is built from Tensorflow. Same for Pytorch.)      
+`Ops` are the basic components of a `Network`. They can be logic for loss calculation, model update units, or even the model itself. Some `Ops` such as cross entropy are pre-defined in FastEstimator, but for any logic that is not there yet, users need to define their own `Ops`. **Please keep all custom `Ops` backend-consistent with your model backend**. In this case all `Ops` need to be implemented in TensorFlow since our model is built from Tensorflow.      
 
 #### Customize Ops - SplitOp
-Because the encoder output serves as mean and log of variance, we need to split them into two outputs. 
+Because the encoder output contains both mean and log of variance, we need to split them into two outputs: 
 
 
 ```python
@@ -152,7 +155,7 @@ class SplitOp(TensorOp):
 ```
 
 #### Customize Ops - ReparameterizeOp
-In this example case, the input of the decoder is the random sample from the normal distiribution that both mean and vairation are the output of the encoder. Therefore we are going to build a `Op` called "ReparameterizeOp" to do this jobs.
+In this example case, the input to the decoder is a random sample from a normal distribution whose mean and variation are the output of the encoder. We are going to build an `Op` called "ReparameterizeOp" to accomplish this:
 
 
 ```python
@@ -208,7 +211,7 @@ network = fe.Network(ops=[
 ```
 
 ## Step 3 - `Estimator` definition and training
-In this step, we define the `Estimator` to compile the `Network` and `Pipeline` and indicate in `traces` that we want to save the best models. At the end, using `estimator.fit` method function to start the training process
+In this step, we define the `Estimator` to compile the `Network` and `Pipeline` and indicate in `traces` that we want to save the best models. We can then use `estimator.fit()` to start the training process:
 
 
 ```python
@@ -281,8 +284,9 @@ estimator.fit() # start the training process
     FastEstimator-Finish: step: 12000; total_time: 65.35 sec; encoder_lr: 0.001; decoder_lr: 0.001; 
 
 
-## Inference the image
-Once finishing model training, we will try to run those models on some testing data. We randomly select 5 images from testing dataset and infer them image by image.
+## Inferencing
+
+Once the model is trained, we will try to run our models on some testing data. We randomly select 5 images from the testing dataset and infer them image by image:
 
 
 ```python

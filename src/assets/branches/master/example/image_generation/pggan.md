@@ -102,7 +102,7 @@ dataset = nih_chestxray.load_data(root_dir=data_dir)
 
 
 ```python
-from fastestimator.op import LambdaOp
+from fastestimator.op.numpyop import LambdaOp
 from fastestimator.op.numpyop.multivariate import Resize
 from fastestimator.op.numpyop.univariate import ChannelTranspose, Normalize, ReadImage
 

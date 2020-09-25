@@ -14,7 +14,7 @@ import numpy as np
 
 import fastestimator as fe
 from fastestimator.backend import reduce_mean
-from fastestimator.op import LambdaOp
+from fastestimator.op.numpyop import LambdaOp
 from fastestimator.op.numpyop.multivariate import Resize
 from fastestimator.op.numpyop.univariate import Normalize, ReadImage
 from fastestimator.trace.io import ModelSaver

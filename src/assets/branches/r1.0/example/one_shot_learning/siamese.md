@@ -1,10 +1,10 @@
-# One-Shot Learning using Siamese Network in FastEstimator
+# One-Shot Learning using a Siamese Network in FastEstimator
 
-This notebook demonstrates how to perform one-shot learning using Siamese Network in FastEstimator.
+This notebook demonstrates how to perform one-shot learning using a Siamese Network in FastEstimator.
 
-In one-shot learning we classify based on only a single example of each class. This ability of being able to learn from very little data could be useful in many machine learning problems.
-The details of the method are present in [Siamese neural networks for one-shot image recognition](https://www.cs.cmu.edu/~rsalakhu/papers/oneshot1.pdf).
-We will use Omniglot dataset for training and evaluation. The Omniglot dataset consists of 50 different alphabets split into background(30 alphabets) and evaluation(20 alphabets) sets.Each alphabet has a number of characters and each character has 20 images each.
+In one-shot learning we classify based on only a single example of each class. This ability to learn from very little data could be useful in many machine learning problems. The details of the method are presented in [Siamese neural networks for one-shot image recognition](https://www.cs.cmu.edu/~rsalakhu/papers/oneshot1.pdf).
+
+We will use the Omniglot dataset for training and evaluation. The Omniglot dataset consists of 50 different alphabets split into background (30 alphabets) and evaluation (20 alphabets) sets. Each alphabet has a number of characters, with 20 images for each character.
 
 
 ```python
@@ -33,7 +33,7 @@ save_dir = tempfile.mkdtemp()
 data_dir = None
 ```
 
-### Step1: Create pipeline
+### Step 1: Create `Pipeline`
 
 
 ```python
@@ -43,7 +43,7 @@ train_data, eval_data = omniglot.load_data()
 test_data = eval_data.split(0.5)
 ```
 
-For training, batches of data are created with half of the batch consisting of image pair from the same character and other half consiting of image pair from different characters. The target label is 1 for image pair from the same character and 0 otherwise. The aim is to learn similarity between any given pair of images.
+For training, batches of data are created with half of the batch consisting of image pairs drawn from the same character, and the other half consisting of image pairs drawn from different characters. The target label is 1 for image pairs from the same character and 0 otherwise. The aim is to learn to quantify similarity between any given pair of images.
 
 
 ```python
@@ -80,7 +80,7 @@ pipeline = fe.Pipeline(
     ])
 ```
 
-We can visualize sample images from the ``pipeline`` using ``get_results`` method.
+We can visualize sample images from the `Pipeline` using the `get_results` method:
 
 
 ```python
@@ -133,9 +133,9 @@ plt.show()
 ![png](assets/branches/r1.0/example/one_shot_learning/siamese_files/siamese_10_3.png)
 
 
-### Step2: Create network
+### Step 2: Create `Network`
 
-Siamese network has two convolutional arms which accept distinct inputs. However, the weights on both these convolutional arms are shared. Each convolutional arm works as a feature extractor which produces a feature vector. L1 component-wise distance between these vectors is computed which is used to classify whether the image pair belongs to same or different classes. 
+Our siamese network has two convolutional arms which accept distinct inputs. However, the weights on both these convolutional arms are shared. Each convolutional arm works as a feature extractor which produces a feature vector. L1 component-wise distance between these vectors is computed which is used to classify whether the image pair belongs to the same or different classes (characters). 
 
 
 ```python
@@ -236,10 +236,10 @@ network = fe.Network(ops=[
 
 In this example we will also use the following traces:
 1. LRScheduler with a constant decay schedule as described in the [paper](https://www.cs.cmu.edu/~rsalakhu/papers/oneshot1.pdf).
-2. BestModelSaver for saving the best model. For illustration purpose, we will save these models in temporary directory.
-3. EarlyStopping for stopping training if the monitored metric doesn't improve within specified number of epochs.
-4. Custom trace to calculate one shot classification accuracy as described in the [paper](https://www.cs.cmu.edu/~rsalakhu/papers/oneshot1.pdf).
-It's a 20-way within-alphabet classiﬁcation task in which an alphabet is ﬁrst chosen from among those reserved for the evaluation set. Then, nineteen other characters are taken uniformly at random from the alphabet. The first charcter's image is compared with another image of the same character and with images of the other nineteen characters. This is called a one-shot trial. The trial is considered a success if the network outputs highest similarity (probability) for the image pair belonging to same character. 
+2. BestModelSaver for saving the best model. For illustration purpose, we will save these models in a temporary directory.
+3. EarlyStopping for stopping training if the monitored metric doesn't improve within a specified number of epochs.
+4. A custom trace to calculate one shot classification accuracy as described in the [paper](https://www.cs.cmu.edu/~rsalakhu/papers/oneshot1.pdf).
+This trace performs a 20-way within-alphabet classification task in which an alphabet is first chosen from among those reserved for the evaluation set. Then, nineteen other characters are taken uniformly at random from the alphabet. The first character's image is compared with another image of the same character and with images of the other nineteen characters. This is called a one-shot trial. The trial is considered a success if the network outputs the highest similarity (probability) score for the image pair belonging to same character. 
 
 
 ```python
@@ -300,7 +300,7 @@ traces = [
 ]
 ```
 
-### Step3: Create estimator
+### Step 3: Create `Estimator`
 
 
 ```python
@@ -320,7 +320,7 @@ estimator = fe.Estimator(network=network,
 estimator.fit()
 ```
 
-Now, we can load the best model to check the one shot accuracy on test set
+Now, we can load the best model to check its one-shot accuracy on the test set:
 
 
 ```python
@@ -335,7 +335,7 @@ estimator.test()
 
 ## Inferencing
 
-Below, we are inferring results on the test dataset. Here, we generate 5-way one shot trial for demo purposes.
+Let's perform inferencing on some elements in the test dataset. Here, we generate a 5-way one shot trial for demo purposes.
 
 
 ```python

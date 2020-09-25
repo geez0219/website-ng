@@ -2,14 +2,14 @@
 
 ## Overview
 Welcome to FastEstimator! In this tutorial we are going to cover:
-* [The three main APIs of FastEstimator: `Pipeline`, `Network`, `Estimator`](./tutorials/beginner/t01_getting_started#t01ThreeMain)
-* [An image classification example](./tutorials/beginner/t01_getting_started#t01ImageClassification)
-    * [Pipeline](./tutorials/beginner/t01_getting_started#t01Pipeline)
-    * [Network](./tutorials/beginner/t01_getting_started#t01Network)
-    * [Estimator](./tutorials/beginner/t01_getting_started#t01Estimator)
-    * [Training](./tutorials/beginner/t01_getting_started#t01Training)
-    * [Inferencing](./tutorials/beginner/t01_getting_started#t01Inferencing)
-* [Related Apphub Examples](./tutorials/beginner/t01_getting_started#t01Apphub)
+* [The three main APIs of FastEstimator: `Pipeline`, `Network`, `Estimator`](./tutorials/master/beginner/t01_getting_started#t01ThreeMain)
+* [An image classification example](./tutorials/master/beginner/t01_getting_started#t01ImageClassification)
+    * [Pipeline](./tutorials/master/beginner/t01_getting_started#t01Pipeline)
+    * [Network](./tutorials/master/beginner/t01_getting_started#t01Network)
+    * [Estimator](./tutorials/master/beginner/t01_getting_started#t01Estimator)
+    * [Training](./tutorials/master/beginner/t01_getting_started#t01Training)
+    * [Inferencing](./tutorials/master/beginner/t01_getting_started#t01Inferencing)
+* [Related Apphub Examples](./tutorials/master/beginner/t01_getting_started#t01Apphub)
 
 <a id='t01ThreeMain'></a>
 
@@ -36,11 +36,11 @@ Any deep learning task can be constructed by following the 3 main steps:
 <a id='t01Pipeline'></a>
 
 ### Step 1 - Pipeline
-We use FastEstimator dataset API to load the MNIST dataset. Please check out [tutorial 2](https://github.com/fastestimator/fastestimator/tree/master/tutorials/beginner/t02_dataset) for more details about the dataset API. In this case our data preprocessing involves: 
+We use FastEstimator dataset API to load the MNIST dataset. Please check out [tutorial 2](./tutorials/master/beginner/t02_dataset) for more details about the dataset API. In this case our data preprocessing involves: 
 1. Expand image dimension from (28,28) to (28, 28, 1) for convenience during convolution operations.
 2. Rescale pixel values from [0, 255] to [0, 1].
 
-Please check out [tutorial 3](https://github.com/fastestimator/fastestimator/tree/master/tutorials/beginner/t03_operator) for details about `Operator` and [tutorial 4](https://github.com/fastestimator/fastestimator/tree/master/tutorials/beginner/t04_pipeline) for `Pipeline`.
+Please check out [tutorial 3](./tutorials/master/beginner/t03_operator) for details about `Operator` and [tutorial 4](./tutorials/master/beginner/t04_pipeline) for `Pipeline`.
 
 
 ```python
@@ -60,13 +60,13 @@ pipeline = fe.Pipeline(train_data=train_data,
 
 ### Step 2 - Network
 
-The model definition can be either from `tf.keras.Model` or `torch.nn.Module`, for more info about network definitions, check out [tutorial 5](https://github.com/fastestimator/fastestimator/tree/master/tutorials/beginner/t05_model). The differentiable operations during training are listed as follows:
+The model definition can be either from `tf.keras.Model` or `torch.nn.Module`, for more info about network definitions, check out [tutorial 5](./tutorials/master/beginner/t05_model). The differentiable operations during training are listed as follows:
 
 1. Feed the preprocessed images to the network and get prediction scores.
 2. Calculate `CrossEntropy` (loss) between prediction scores and ground truth.
 3. Update the model by minimizing `CrossEntropy`.
 
-For more info about `Network` and its operators, check out [tutorial 6](https://github.com/fastestimator/fastestimator/tree/master/tutorials/beginner/t06_network).
+For more info about `Network` and its operators, check out [tutorial 6](./tutorials/master/beginner/t06_network).
 
 
 ```python
@@ -88,7 +88,7 @@ network = fe.Network(ops=[
 <a id='t01Estimator'></a>
 
 ### Step 3 - Estimator
-We define the `Estimator` to connect the `Network` to the `Pipeline`, and compute accuracy as a validation metric. Please see [tutorial 7](https://github.com/fastestimator/fastestimator/tree/master/tutorials/beginner/t07_estimator) for more about `Estimator` and `Traces`.
+We define the `Estimator` to connect the `Network` to the `Pipeline`, and compute accuracy as a validation metric. Please see [tutorial 7](./tutorials/master/beginner/t07_estimator) for more about `Estimator` and `Traces`.
 
 
 ```python
@@ -172,7 +172,7 @@ estimator.fit()
 <a id='t01Inferencing'></a>
 
 ### Inferencing
-After training, we can do inferencing on new data with `Pipeline.transform` and `Netowork.transform`. Please checkout [tutorial 8](https://github.com/fastestimator/fastestimator/tree/master/tutorials/beginner/t08_mode) for more details. 
+After training, we can do inferencing on new data with `Pipeline.transform` and `Netowork.transform`. Please checkout [tutorial 8](./tutorials/master/beginner/t08_mode) for more details. 
 
 
 ```python
@@ -201,5 +201,5 @@ fig = img.paint_figure()
 ## Apphub Examples
 You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
 
-* [MNIST](https://github.com/fastestimator/fastestimator/tree/master/examples/image_classification/mnist)
-* [DNN](https://github.com/fastestimator/fastestimator/tree/master/examples/tabular/dnn)
+* [MNIST](./examples/master/image_classification/mnist)
+* [DNN](./examples/master/tabular/dnn)

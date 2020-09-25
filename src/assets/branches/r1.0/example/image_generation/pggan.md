@@ -1,35 +1,34 @@
-# Proggressive Growing GAN
-In this notebook, we will demonstrate the functionality of ``Scheduler`` which enables advanced training schemes such as a progressive training method as described in [Karras et al.](https://arxiv.org/pdf/1710.10196.pdf). 
-We will train a PGGAN to produce synthetic frontal chest X-ray images where both the generator and the discriminator grows from $4\times4$ to $128\times128$.
+# Progressive Growing GAN (PGGAN)
+In this notebook, we will demonstrate the functionality of ``Scheduler`` which enables advanced training schemes such as the progressive training method described in [Karras et al.](https://arxiv.org/pdf/1710.10196.pdf). 
+We will train a PGGAN to produce synthetic frontal chest X-ray images where both the generator and the discriminator grow from $4\times4$ to $128\times128$.
 
 ### Progressive Growing Strategy
 [Karras et al.](https://arxiv.org/pdf/1710.10196.pdf) propose a training scheme in which both the generator and the discriminator progressively grow from a low resolution to a high resolution.
-Both networks first start out training based on images of $4\times4$ as illustrated below.
-![4x4](./assets/branches/r1.0/example/image_generation/Figure/pggan_4x4.png)
-Then, both networks progress from $4\times4$ to $8\times8$ by an adding additional block that contains a couple of convolutional layers.
-![8x8](./assets/branches/r1.0/example/image_generation/Figure/pggan_8x8.png)
+Both networks begin their training based on $4\times4$ images as illustrated below.
+![4x4](assets/branches/r1.0/example/image_generation/Figure/pggan_4x4.png)
+Then, both networks progress from $4\times4$ to $8\times8$ by an adding an additional block that contains a couple of convolutional layers.
+![8x8](assets/branches/r1.0/example/image_generation/Figure/pggan_8x8.png)
 Both the generator and the discriminator progressively grow until reaching the desired resolution of $1024\times 1024$.
-![1024x1024](./assets/branches/r1.0/example/image_generation/Figure/pggan_1024x1024.png)
+![1024x1024](assets/branches/r1.0/example/image_generation/Figure/pggan_1024x1024.png)
 *Image Credit: [Presentation slide](https://drive.google.com/open?id=1jYlrX4DgTs2VAfRcyl3pcNI4ONkBg3-g)*
 
 ### Smooth Transition between Resolutions
-However, when growing the networks, the new blocks are slowly faded into the networks in order to smoothly transition between different resolutions.
-For example, when growing the generator from $16\times16$ to $32\times32$, the newly added block of $32\times32$ is slowly faded into the already well trained $16\times16$ network by linearly increasing $\alpha$ from $0$ to $1$.
-Once the network is fully transitioned to $32\times32$, the network is trained on a bit further to stabilize before growing to $64\times64$.
-![grow](./assets/branches/r1.0/example/image_generation/Figure/pggan_smooth_grow.png)
+However, when growing the networks, the new blocks must be slowly faded into the networks in order to smoothly transition between different resolutions.
+For example, when growing the generator from $16\times16$ to $32\times32$, the newly added block of $32\times32$ is slowly faded into the already well trained $16\times16$ network by linearly increasing a fade-factor $\alpha$ from $0$ to $1$.
+Once the network is fully transitioned to $32\times32$, the network is trained a bit further to stabilize before growing to $64\times64$.
+![grow](assets/branches/r1.0/example/image_generation/Figure/pggan_smooth_grow.png)
 *Image Credit: [PGGAN Paper](https://arxiv.org/pdf/1710.10196.pdf)*
 
-With this progressive training strategy, PGGAN has achieved the state-of-the-art in producing synthetic images of high fidelity.
+With this progressive training strategy, PGGAN has achieved the state-of-the-art results in producing high fidelity synthetic images.
 
 ## Problem Setting
-In this PGGAN example, we decide the following:
+In this PGGAN example, we decided the following:
 * 560K images will be used when transitioning from a lower resolution to a higher resolution.
 * 560K images will be used when stabilizing the fully transitioned network.
 * Initial resolution will be $4\times4$.
 * Final resolution will be $128\times128$.
 
-The number of images for both transitioning and stabilizing is equivalent to 5 epochs; the networks would smoothly grow over 5 epochs and would stabilize for 5 epochs.
-This yields the following schedule of growing both networks:
+The number of images for both transitioning and stabilizing is equivalent to 5 epochs; the networks would smoothly grow over 5 epochs and would stabilize for 5 epochs. This yields the following schedule for growing both networks:
 
 * From $1^{st}$ epoch to $5^{th}$ epoch: train $4\times4$ resolution
 * From $6^{th}$ epoch to $10^{th}$ epoch: transition from $4\times4$ to $8\times8$
@@ -80,11 +79,9 @@ event_epoch = [1, 1 + phase_length] + [phase_length * (2 * i + 1) + 1 for i in r
 event_size = [4] + [2**(i + 3) for i in range(num_grow)]
 ```
 
-## Defining Input Pipeline
+## Defining Input `Pipeline`
 
-First, we need to download chest frontal X-ray dataset from the National Institute of Health (NIH); the dataset has over 112,000 images of $1024\times1024$. 
-We use the prebuilt ``fastestimator.dataset.nih_chestxray`` API to download images.
-A detailed description of the dataset is available [here](https://www.nih.gov/news-events/news-releases/nih-clinical-center-provides-one-largest-publicly-available-chest-x-ray-datasets-scientific-community).
+First, we need to download the chest frontal X-ray dataset from the National Institute of Health (NIH); the dataset has over 112,000 images with resolution $1024\times1024$. We use the pre-built ``fastestimator.dataset.nih_chestxray`` API to download these images. A detailed description of the dataset is available [here](https://www.nih.gov/news-events/news-releases/nih-clinical-center-provides-one-largest-publicly-available-chest-x-ray-datasets-scientific-community).
 
 ### Note: Please make sure to have a stable internet connection when downloading the dataset for the first time since the size of the dataset is over 40GB.
 
@@ -97,11 +94,11 @@ dataset = nih_chestxray.load_data(root_dir=data_dir)
 
 ### Given the images, we need the following preprocessing operations to execute dynamically for every batch:
 1. Read the image.
-2. Resize the image to the correct size based on different epoch.
+2. Resize the image to the correct size based on the current epoch.
 3. Create a lower resolution of the image, which is accomplished by downsampling by a factor of 2 then upsampling by a factor of 2.
-4. Rescale the pixel of both original image and lower resolution image to [-1, 1]
-5. Convert both original image and lower resolution image from channel last to channel first
-6. Create the latent vector used by generator
+4. Rescale the pixels of both the original image and lower resolution image to the range [-1, 1]
+5. Convert both the original image and lower resolution image from channel last to channel first
+6. Create the latent vector used by the generator
 
 
 ```python
@@ -141,9 +138,7 @@ pipeline = fe.Pipeline(
     ])
 ```
 
-Let's visualize how ``Pipeline``s change image resolutions at different epochs we specified in ``Scheduler``.
-We provide ``get_results`` methods to visaulize the resulting images of ``Pipeline``.
-In order to correctly visualize the output of ``Pipeline``, we need to provide epoch numbers to ``get_results`` 
+Let's visualize how our `Pipeline` changes image resolution at the different epochs we specified using `Schedulers`. FastEstimator as a ``get_results`` method to aid in this. In order to correctly visualize the output of the `Pipeline`, we need to provide epoch numbers to the `get_results` method: 
 
 
 ```python
@@ -159,11 +154,9 @@ for i, epoch in enumerate(event_epoch):
 ![png](assets/branches/r1.0/example/image_generation/pggan_files/pggan_10_0.png)
 
 
-## Defining Network
+## Defining `Network`
 ### Defining the generator and the discriminator
-To express the progressive growing of networks, we return a list of models that progressively grow from $4 \times 4$ to $1024 \times 1024$ such that $i^{th}$ model in the list is the superset previous models.
-We define a ``fade_in_alpha`` to control the smoothness of growth.
-``fe.build`` bundles each model, optimizer, the name of the model, and the associated loss name.
+To express the progressive growing of networks, we return a list of models that progressively grow from $4 \times 4$ to $1024 \times 1024$ such that $i^{th}$ model in the list is a superset of the previous models. We define a ``fade_in_alpha`` to control the smoothness of growth. ``fe.build`` then bundles each model, optimizer, and model name together for use.
 
 
 ```python
@@ -435,7 +428,7 @@ g_models = fe.build(
     model_name=["g_{}".format(size) for size in event_size] + ["G"])
 ```
 
-## Following operations will happen on Network:
+## The Following operations will happen in our `Network`:
 1. random vector -> generator -> fake images 
 2. fake images -> discriminator -> fake scores
 3. real image, low resolution real image -> blender -> blended real images
@@ -541,7 +534,7 @@ network = fe.Network(ops=[
 
 ## Defining Estimator
 
-Given that ``Pipeline`` and ``Network`` are properly defined, we need to define the ``AlphaController`` Trace to help both the generator and the discriminator to smoothly grow by controlling the value of ``fade_in_alpha`` tensor created previously.  We will also use `ModelSaver` to save our model during every training phase.
+Given that ``Pipeline`` and ``Network`` are properly defined, we need to define an `AlphaController` `Trace` to help both the generator and the discriminator smoothly grow by controlling the value of the `fade_in_alpha` tensor created previously.  We will also use `ModelSaver` to save our model during every training phase.
 
 
 ```python

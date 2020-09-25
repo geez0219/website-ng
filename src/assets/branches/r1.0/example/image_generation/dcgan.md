@@ -1,4 +1,4 @@
-<h1>DCGAN Example with MNIST Dataset</h1>
+# DCGAN on the MNIST Dataset
 
 
 ```python
@@ -29,9 +29,9 @@ model_name = 'model_epoch_50.h5'
 
 <h2>Building components</h2>
 
-<h3>Step 1: Prepare training and define pipeline</h3>
+### Step 1: Prepare training and define a `Pipeline`
 
-We are loading data from tf.keras.datasets.mnist and defining series of operations to perform on the data before the training
+We are loading data from tf.keras.datasets.mnist and defining a series of operations to perform on the data before the training:
 
 
 ```python
@@ -46,9 +46,9 @@ pipeline = fe.Pipeline(
     ])
 ```
 
-<h3>Step 2: Create model and FastEstimator network</h3>
+### Step 2: Create a `model` and FastEstimator `Network`
 
-First, we have to define the network architecture for both <b>Generator</b> and <b>Discriminator</b>. After defining the architecture, users are expected to feed the architecture definition, its associated model name and optimizer to fe.build.
+First, we have to define the network architecture for both our <b>Generator</b> and <b>Discriminator</b>. After defining the architecture, users are expected to feed the architecture definition, along with associated model names and optimizers, to fe.build.
 
 
 ```python
@@ -89,7 +89,7 @@ gen_model = fe.build(model_fn=generator, optimizer_fn=lambda: tf.optimizers.Adam
 disc_model = fe.build(model_fn=discriminator, optimizer_fn=lambda: tf.optimizers.Adam(1e-4))
 ```
 
-We define the generator and discriminator loss. Loss can have multiple inputs and outputs.
+We define the generator and discriminator losses. These can have multiple inputs and outputs.
 
 
 ```python
@@ -111,7 +111,7 @@ class DLoss(TensorOp):
         return total_loss
 ```
 
-Here, <i>fe.Network</i> takes series of operators and here we feed our model in the ModelOp with inputs and outputs. Also, group our model with the loss functions that we defined earlier
+`fe.Network` takes series of operators. Here we pass our models wrapped into `ModelOps` along with our loss functions and some update rules:
 
 
 ```python
@@ -126,11 +126,9 @@ network = fe.Network(ops=[
     ])
 ```
 
-<h3>Step 3: Prepare estimator and configure the training loop</h3>
+### Step 3: Prepare `Estimator` and configure the training loop
 
-We will define Estimator that has four arguments network, pipeline, epochs and traces. Network and Pipeline objects are passed here as an argument along with number of epochs and traces.
-
-We will define traces to save the model with frequency of five that mean it will save the model at every 5 epochs.
+We will define an `Estimator` that has four notable arguments: network, pipeline, epochs and traces. Our `Network` and `Pipeline` objects are passed here as an argument along with the number of epochs and a `Trace`, in this case one designed to save our model every 5 epochs.
 
 
 ```python
@@ -355,7 +353,7 @@ trained_model = fe.build(model_fn=generator, weights_path=model_path, optimizer_
     Loaded model weights from /tmp/tmpspul4xo8/model_epoch_50.h5
 
 
-We will generate the images from the random noise.
+We will the generate some images from random noise:
 
 
 ```python
@@ -380,10 +378,5 @@ for i in range(images.shape[0]):
 ```
 
 
-![png](assets/branches/r1.0/example/image_generation/dcgan_files/dcgan_29_0.png)
+![png](assets/branches/r1.0/example/image_generation/dcgan_files/dcgan_28_0.png)
 
-
-
-```python
-
-```

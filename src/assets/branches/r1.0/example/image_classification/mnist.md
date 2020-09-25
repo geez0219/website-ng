@@ -1,5 +1,5 @@
-# MNIST Image Classification example using LeNet (Tensorflow backend)
-In this example, we are going to demonstrate how to train a MNIST image classification model using LeNet model architeture with Tesnorflow backend. 
+# MNIST Image Classification Using LeNet (Tensorflow Backend)
+In this example, we are going to demonstrate how to train an MNIST image classification model using a LeNet model architecture and TensorFlow backend. 
 
 ## Import the required libraries
 
@@ -26,7 +26,7 @@ save_dir = tempfile.mkdtemp()
 In this step, we will load MNIST training and validation datasets and prepare FastEstimator's pipeline.
 
 ### Load dataset 
-We use fastestimator API to load the MNIST dataset and get the test set by splitting 50% evaluation set. 
+We use a FastEstimator API to load the MNIST dataset and then get a test set by splitting 50% of the data off of the evaluation set. 
 
 
 ```python
@@ -36,8 +36,8 @@ train_data, eval_data = mnist.load_data()
 test_data = eval_data.split(0.5)
 ```
 
-### Set up preprocessing pipline
-In this example, the data preprocessing steps include expanding image dimension and normalizing the pixel value to range [0, 1]. We set up those processing step using `Ops` and meanwhile define the data source (loaded dataset) and batch size. 
+### Set up a preprocessing pipeline
+In this example, the data preprocessing steps include adding a channel to the images (since they are grey-scale) and normalizing the image pixel values to the range [0, 1]. We set up these processing steps using `Ops`. The `Pipeline` also takes our data sources and batch size as inputs. 
 
 
 ```python
@@ -52,9 +52,7 @@ pipeline = fe.Pipeline(train_data=train_data,
 ```
 
 ### Validate `Pipeline`
-In order to make sure the pipeline works as expected, we need to visualize the output of pipeline image and check its size.
-`Pipeline.get_results` will return a batch data of pipeline output. 
- 
+In order to make sure the pipeline works as expected, we need to visualize its output. `Pipeline.get_results` will return a batch  of pipeline output to enable this:  
 
 
 ```python
@@ -89,11 +87,11 @@ fig = img.paint_figure()
 
 
 ## Step 2 - `Network` construction
-**FastEstimator supports both Pytorch and Tensorflow, so this section can use both backend to implement.** <br>
-We are going to only demonstate the Tensorflow way in this example.
+**FastEstimator supports both PyTorch and TensorFlow, so this section could use either backend.** <br>
+We are going to only demonstrate the TensorFlow backend in this example.
 
 ### Model construction
-Here the model definition is going to be imported from the FastEstimator pre-defined architecture that is implemented in Tensorflow, and we create model instance by compiling it with specific model optimizer.
+Here we are going to import one of FastEstimator's pre-defined model architectures, which was written in TensorFlow. We create a model instance by compiling our model definition function along with a specific model optimizer.
 
 
 ```python
@@ -103,7 +101,7 @@ model = fe.build(model_fn=LeNet, optimizer_fn="adam")
 ```
 
 ### `Network` definition
-We are going to connect the model and `Ops` together into a `Network`. `Ops` are the basic component of `Network`. They can be logic for loss calculation, model update units, and even model itself is also considered as an `Op`. 
+We are going to connect the model and `Ops` together into a `Network`. `Ops` are the basic components of a `Network`. They can be logic for loss calculation, model update rules, or even models themselves. 
 
 
 ```python
@@ -119,7 +117,7 @@ network = fe.Network(ops=[
 ```
 
 ## Step 3 - `Estimator` definition and training
-In this step, we define the `Estimator` to connect the `Network` with `Pipeline` and set the `traces` which compute accuracy (Accuracy), save best model (BestModelSaver), and change learning rate (LRScheduler) 
+In this step, we define an `Estimator` to connect our `Network` with our `Pipeline` and set the `traces` which compute accuracy (`Accuracy`), save the best model (`BestModelSaver`), and change the model learning rate over time (`LRScheduler`).
 
 
 ```python
@@ -201,7 +199,7 @@ estimator.fit() # start the training process
 
 
 ## Model testing
-`Estimator.test` triggers model testing with test dataset that specified in `Pipeline`. We can evaluate the model performance in the classification accuracy. 
+`Estimator.test` triggers model testing using the test dataset that was specified in `Pipeline`. We can evaluate the model's accuracy on this previously unseen data. 
 
 
 ```python
@@ -211,9 +209,9 @@ estimator.test()
     FastEstimator-Test: step: 3750; epoch: 2; accuracy: 0.9908; 
 
 
-## Images inference 
-In this step we run image inference directly using the model that just trained. 
-We randomly select 5 images from testing dataset and infer them image by image with `Pipeline.transform` and `Netowork.transform`
+## Inferencing
+Now let's run inferencing on several images directly using the model that we just trained. 
+We randomly select 5 images from the testing dataset and infer them image by image by leveraging `Pipeline.transform` and `Netowork.transform`:
 
 
 ```python
@@ -243,8 +241,3 @@ fig = img.paint_figure()
 
 ![png](assets/branches/r1.0/example/image_classification/mnist_files/mnist_20_0.png)
 
-
-
-```python
-
-```

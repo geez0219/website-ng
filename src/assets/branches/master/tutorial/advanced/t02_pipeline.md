@@ -4,14 +4,14 @@
 
 In this tutorial, we will discuss the following topics:
 
-* [Iterating Through Pipeline](./tutorials/advanced/t02_pipeline#ta02itp)
-    * [Basic Concept](./tutorials/advanced/t02_pipeline#ta02bc)
-    * [Example](./tutorials/advanced/t02_pipeline#ta02example)
-* [Dropping Last Batch](./tutorials/advanced/t02_pipeline#ta02dlb)
-* [Padding Batch Data](./tutorials/advanced/t02_pipeline#ta02pbd)
-* [Benchmark Pipeline Speed](./tutorials/advanced/t02_pipeline#ta02bps)
+* [Iterating Through Pipeline](./tutorials/master/advanced/t02_pipeline#ta02itp)
+    * [Basic Concept](./tutorials/master/advanced/t02_pipeline#ta02bc)
+    * [Example](./tutorials/master/advanced/t02_pipeline#ta02example)
+* [Dropping Last Batch](./tutorials/master/advanced/t02_pipeline#ta02dlb)
+* [Padding Batch Data](./tutorials/master/advanced/t02_pipeline#ta02pbd)
+* [Benchmark Pipeline Speed](./tutorials/master/advanced/t02_pipeline#ta02bps)
 
-In the [beginner tutorial 4](https://github.com/fastestimator/fastestimator/tree/master/tutorials/beginner/t04_pipeline), we learned how to build a data pipeline that handles data loading and preprocessing tasks efficiently. Now that you have understood some basic operations in the `Pipeline`, we will demonstrate some advanced concepts and how to leverage them to create efficient `Pipelines` in this tutorial.
+In the [beginner tutorial 4](./tutorials/master/beginner/t04_pipeline), we learned how to build a data pipeline that handles data loading and preprocessing tasks efficiently. Now that you have understood some basic operations in the `Pipeline`, we will demonstrate some advanced concepts and how to leverage them to create efficient `Pipelines` in this tutorial.
 
 <a id='ta02itp'></a>
 

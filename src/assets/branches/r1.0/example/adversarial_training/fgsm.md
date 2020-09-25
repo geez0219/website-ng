@@ -39,10 +39,10 @@ save_dir=tempfile.mkdtemp()
 ```
 
 ## Step 1 - Data and `Pipeline` preparation
-In this step, we will load Cifar10 training and validation datasets and prepare FastEstimator's pipeline.
+In this step, we will load CIFAR10 training and validation datasets and prepare FastEstimator's pipeline.
 
 ### Load dataset 
-We use fastestimator API to load the Cifar10 dataset and get the test set by splitting 50% evaluation set. 
+We use a FastEstimator API to load the CIFAR10 dataset and then get a test set by splitting 50% of the data off of the evaluation set. 
 
 
 ```python
@@ -78,7 +78,7 @@ model = fe.build(model_fn=lambda: LeNet(input_shape=(32, 32, 3)), optimizer_fn="
 ```
 
 ### `Network` defintion
-This is where the adversarial attack will be implemented. To perform an FGSM attack, we first need to monitor gradients with respect to the input image. This can be accomplished in FastEstimator using the `Watch` TensorOp. We then will run the model forward once, compute the loss, and then pass the loss value into the `FGSM` tensorOp in order to create an adversarial image. We will then run the adversarial image through the model, compute the loss again, and average the two results together in order to update the model. 
+This is where the adversarial attack will be implemented. To perform an FGSM attack, we first need to monitor gradients with respect to the input image. This can be accomplished in FastEstimator using the `Watch` TensorOp. We then will run the model forward once, compute the loss, and then pass the loss value into the `FGSM` TensorOp in order to create an adversarial image. We will then run the adversarial image through the model, compute the loss again, and average the two results together in order to update the model. 
 
 
 ```python
@@ -95,7 +95,7 @@ network = fe.Network(ops=[
 ```
 
 ## Step 3 - `Estimator` definition and training
-In this step, we define the `Estimator` to connect the `Network` with `Pipeline` and set the `traces` which will compute accuracy (Accuracy), and save the best model (BestModelSaver) along the way. We will compute accuracy both with respect to the clean input images ('clean accuracy') as well as with respect to the adversarial input images ('adversarial accuracy'). At the end, we use `Estimator.fit` to trigger the training.
+In this step, we define the `Estimator` to connect the `Network` with the `Pipeline` and set the `traces` which will compute accuracy (`Accuracy`) and save the best model (`BestModelSaver`) along the way. We will compute accuracy both with respect to the clean input images ('clean accuracy') as well as with respect to the adversarial input images ('adversarial accuracy'). At the end, we use `Estimator.fit` to trigger the training.
 
 
 ```python
@@ -126,49 +126,48 @@ estimator.fit()
     /_/    \__,_/____/\__/_____/____/\__/_/_/ /_/ /_/\__,_/\__/\____/_/     
                                                                             
     
-    FastEstimator-Start: step: 1; adv_model_lr: 0.001; 
-    FastEstimator-Train: step: 1; adv_ce: 2.4914558; base_ce: 2.3271847; avg_ce: 2.4093204; 
-    FastEstimator-Train: step: 1000; adv_ce: 1.6937535; base_ce: 1.29402; avg_ce: 1.4938867; steps/sec: 21.3; 
-    FastEstimator-Train: step: 1000; epoch: 1; epoch_time: 50.27 sec; 
-    FastEstimator-ModelSaver: saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmpddgcxg9j/adv_model_best_base_ce.h5
-    FastEstimator-Eval: step: 1000; epoch: 1; avg_ce: 1.4610062; base_ce: 1.2934717; adv_ce: 1.6285404; min_avg_ce: 1.4610062; since_best: 0; clean_accuracy: 0.534; adversarial_accuracy: 0.3746; 
-    FastEstimator-Train: step: 2000; adv_ce: 1.5694242; base_ce: 1.1551845; avg_ce: 1.3623043; steps/sec: 31.16; 
-    FastEstimator-Train: step: 2000; epoch: 2; epoch_time: 32.09 sec; 
-    FastEstimator-ModelSaver: saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmpddgcxg9j/adv_model_best_base_ce.h5
-    FastEstimator-Eval: step: 2000; epoch: 2; avg_ce: 1.336678; base_ce: 1.138487; adv_ce: 1.5348687; min_avg_ce: 1.336678; since_best: 0; clean_accuracy: 0.6036; adversarial_accuracy: 0.4276; 
-    FastEstimator-Train: step: 3000; adv_ce: 1.6407557; base_ce: 1.1609461; avg_ce: 1.4008509; steps/sec: 32.0; 
-    FastEstimator-Train: step: 3000; epoch: 3; epoch_time: 31.25 sec; 
-    FastEstimator-ModelSaver: saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmpddgcxg9j/adv_model_best_base_ce.h5
-    FastEstimator-Eval: step: 3000; epoch: 3; avg_ce: 1.3007246; base_ce: 1.0795952; adv_ce: 1.5218539; min_avg_ce: 1.3007246; since_best: 0; clean_accuracy: 0.6182; adversarial_accuracy: 0.4392; 
-    FastEstimator-Train: step: 4000; adv_ce: 1.6417248; base_ce: 1.1229622; avg_ce: 1.3823435; steps/sec: 33.29; 
-    FastEstimator-Train: step: 4000; epoch: 4; epoch_time: 30.04 sec; 
-    FastEstimator-ModelSaver: saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmpddgcxg9j/adv_model_best_base_ce.h5
-    FastEstimator-Eval: step: 4000; epoch: 4; avg_ce: 1.2547151; base_ce: 1.0172701; adv_ce: 1.4921603; min_avg_ce: 1.2547151; since_best: 0; clean_accuracy: 0.6396; adversarial_accuracy: 0.4416; 
-    FastEstimator-Train: step: 5000; adv_ce: 1.4567461; base_ce: 0.9144764; avg_ce: 1.1856112; steps/sec: 30.18; 
-    FastEstimator-Train: step: 5000; epoch: 5; epoch_time: 33.14 sec; 
-    FastEstimator-ModelSaver: saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmpddgcxg9j/adv_model_best_base_ce.h5
-    FastEstimator-Eval: step: 5000; epoch: 5; avg_ce: 1.2455269; base_ce: 0.9953368; adv_ce: 1.495717; min_avg_ce: 1.2455269; since_best: 0; clean_accuracy: 0.6548; adversarial_accuracy: 0.4488; 
-    FastEstimator-Train: step: 6000; adv_ce: 1.194348; base_ce: 0.7395498; avg_ce: 0.96694887; steps/sec: 30.23; 
-    FastEstimator-Train: step: 6000; epoch: 6; epoch_time: 33.08 sec; 
-    FastEstimator-ModelSaver: saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmpddgcxg9j/adv_model_best_base_ce.h5
-    FastEstimator-Eval: step: 6000; epoch: 6; avg_ce: 1.2079716; base_ce: 0.9540632; adv_ce: 1.4618802; min_avg_ce: 1.2079716; since_best: 0; clean_accuracy: 0.6722; adversarial_accuracy: 0.4594; 
-    FastEstimator-Train: step: 7000; adv_ce: 1.5178115; base_ce: 1.0440608; avg_ce: 1.2809362; steps/sec: 28.51; 
-    FastEstimator-Train: step: 7000; epoch: 7; epoch_time: 35.07 sec; 
-    FastEstimator-ModelSaver: saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmpddgcxg9j/adv_model_best_base_ce.h5
-    FastEstimator-Eval: step: 7000; epoch: 7; avg_ce: 1.1914748; base_ce: 0.936576; adv_ce: 1.4463739; min_avg_ce: 1.1914748; since_best: 0; clean_accuracy: 0.6804; adversarial_accuracy: 0.4718; 
-    FastEstimator-Train: step: 8000; adv_ce: 1.4089589; base_ce: 0.87968165; avg_ce: 1.1443202; steps/sec: 28.66; 
-    FastEstimator-Train: step: 8000; epoch: 8; epoch_time: 34.9 sec; 
-    FastEstimator-ModelSaver: saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmpddgcxg9j/adv_model_best_base_ce.h5
-    FastEstimator-Eval: step: 8000; epoch: 8; avg_ce: 1.1998512; base_ce: 0.9261531; adv_ce: 1.473549; min_avg_ce: 1.1914748; since_best: 1; clean_accuracy: 0.6838; adversarial_accuracy: 0.4634; 
-    FastEstimator-Train: step: 9000; adv_ce: 1.412882; base_ce: 0.9263946; avg_ce: 1.1696383; steps/sec: 29.12; 
-    FastEstimator-Train: step: 9000; epoch: 9; epoch_time: 34.35 sec; 
-    FastEstimator-ModelSaver: saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmpddgcxg9j/adv_model_best_base_ce.h5
-    FastEstimator-Eval: step: 9000; epoch: 9; avg_ce: 1.17942; base_ce: 0.90814054; adv_ce: 1.4506993; min_avg_ce: 1.17942; since_best: 0; clean_accuracy: 0.6832; adversarial_accuracy: 0.4738; 
-    FastEstimator-Train: step: 10000; adv_ce: 1.5417409; base_ce: 0.9920763; avg_ce: 1.2669086; steps/sec: 29.69; 
-    FastEstimator-Train: step: 10000; epoch: 10; epoch_time: 33.68 sec; 
-    FastEstimator-ModelSaver: saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmpddgcxg9j/adv_model_best_base_ce.h5
-    FastEstimator-Eval: step: 10000; epoch: 10; avg_ce: 1.1849567; base_ce: 0.90033144; adv_ce: 1.4695816; min_avg_ce: 1.17942; since_best: 1; clean_accuracy: 0.6868; adversarial_accuracy: 0.4618; 
-    FastEstimator-Finish: step: 10000; total_time: 365.98 sec; adv_model_lr: 0.001; 
+    FastEstimator-Start: step: 1; num_device: 0; logging_interval: 1000; 
+    FastEstimator-Train: step: 1; avg_ce: 2.3945074; adv_ce: 2.4872663; base_ce: 2.3017485; 
+    FastEstimator-Train: step: 1000; avg_ce: 1.3094263; adv_ce: 1.4686574; base_ce: 1.1501954; steps/sec: 25.77; 
+    FastEstimator-Train: step: 1000; epoch: 1; epoch_time: 42.87 sec; 
+    FastEstimator-BestModelSaver: Saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmpmwpkk98d/adv_model_best_base_ce.h5
+    FastEstimator-Eval: step: 1000; epoch: 1; avg_ce: 1.4899004; adv_ce: 1.6584656; base_ce: 1.3213345; clean_accuracy: 0.5408; adversarial_accuracy: 0.3734; since_best_base_ce: 0; min_base_ce: 1.3213345; 
+    FastEstimator-Train: step: 2000; avg_ce: 1.143224; adv_ce: 1.3376933; base_ce: 0.9487548; steps/sec: 34.22; 
+    FastEstimator-Train: step: 2000; epoch: 2; epoch_time: 29.22 sec; 
+    FastEstimator-BestModelSaver: Saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmpmwpkk98d/adv_model_best_base_ce.h5
+    FastEstimator-Eval: step: 2000; epoch: 2; avg_ce: 1.3468871; adv_ce: 1.5618094; base_ce: 1.1319652; clean_accuracy: 0.5928; adversarial_accuracy: 0.412; since_best_base_ce: 0; min_base_ce: 1.1319652; 
+    FastEstimator-Train: step: 3000; avg_ce: 1.379614; adv_ce: 1.6073439; base_ce: 1.1518841; steps/sec: 36.24; 
+    FastEstimator-Train: step: 3000; epoch: 3; epoch_time: 27.6 sec; 
+    FastEstimator-BestModelSaver: Saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmpmwpkk98d/adv_model_best_base_ce.h5
+    FastEstimator-Eval: step: 3000; epoch: 3; avg_ce: 1.3020732; adv_ce: 1.5298728; base_ce: 1.074274; clean_accuracy: 0.622; adversarial_accuracy: 0.4274; since_best_base_ce: 0; min_base_ce: 1.074274; 
+    FastEstimator-Train: step: 4000; avg_ce: 1.2436087; adv_ce: 1.4758196; base_ce: 1.0113977; steps/sec: 33.11; 
+    FastEstimator-Train: step: 4000; epoch: 4; epoch_time: 30.2 sec; 
+    FastEstimator-BestModelSaver: Saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmpmwpkk98d/adv_model_best_base_ce.h5
+    FastEstimator-Eval: step: 4000; epoch: 4; avg_ce: 1.2154673; adv_ce: 1.4576334; base_ce: 0.9733012; clean_accuracy: 0.665; adversarial_accuracy: 0.4618; since_best_base_ce: 0; min_base_ce: 0.9733012; 
+    FastEstimator-Train: step: 5000; avg_ce: 1.154286; adv_ce: 1.3962423; base_ce: 0.9123298; steps/sec: 32.78; 
+    FastEstimator-Train: step: 5000; epoch: 5; epoch_time: 30.51 sec; 
+    FastEstimator-BestModelSaver: Saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmpmwpkk98d/adv_model_best_base_ce.h5
+    FastEstimator-Eval: step: 5000; epoch: 5; avg_ce: 1.2138638; adv_ce: 1.4704447; base_ce: 0.9572834; clean_accuracy: 0.6696; adversarial_accuracy: 0.4552; since_best_base_ce: 0; min_base_ce: 0.9572834; 
+    FastEstimator-Train: step: 6000; avg_ce: 1.1946353; adv_ce: 1.4845756; base_ce: 0.904695; steps/sec: 33.34; 
+    FastEstimator-Train: step: 6000; epoch: 6; epoch_time: 29.99 sec; 
+    FastEstimator-BestModelSaver: Saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmpmwpkk98d/adv_model_best_base_ce.h5
+    FastEstimator-Eval: step: 6000; epoch: 6; avg_ce: 1.1873512; adv_ce: 1.4471037; base_ce: 0.9275986; clean_accuracy: 0.6784; adversarial_accuracy: 0.4648; since_best_base_ce: 0; min_base_ce: 0.9275986; 
+    FastEstimator-Train: step: 7000; avg_ce: 1.3036005; adv_ce: 1.5895638; base_ce: 1.0176373; steps/sec: 32.39; 
+    FastEstimator-Train: step: 7000; epoch: 7; epoch_time: 30.87 sec; 
+    FastEstimator-BestModelSaver: Saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmpmwpkk98d/adv_model_best_base_ce.h5
+    FastEstimator-Eval: step: 7000; epoch: 7; avg_ce: 1.1750631; adv_ce: 1.4450079; base_ce: 0.9051186; clean_accuracy: 0.6934; adversarial_accuracy: 0.4764; since_best_base_ce: 0; min_base_ce: 0.9051186; 
+    FastEstimator-Train: step: 8000; avg_ce: 1.1723398; adv_ce: 1.4465908; base_ce: 0.89808875; steps/sec: 32.64; 
+    FastEstimator-Train: step: 8000; epoch: 8; epoch_time: 30.64 sec; 
+    FastEstimator-BestModelSaver: Saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmpmwpkk98d/adv_model_best_base_ce.h5
+    FastEstimator-Eval: step: 8000; epoch: 8; avg_ce: 1.1422093; adv_ce: 1.4145594; base_ce: 0.869859; clean_accuracy: 0.702; adversarial_accuracy: 0.477; since_best_base_ce: 0; min_base_ce: 0.869859; 
+    FastEstimator-Train: step: 9000; avg_ce: 1.0794711; adv_ce: 1.3604188; base_ce: 0.7985235; steps/sec: 32.8; 
+    FastEstimator-Train: step: 9000; epoch: 9; epoch_time: 30.49 sec; 
+    FastEstimator-Eval: step: 9000; epoch: 9; avg_ce: 1.1585152; adv_ce: 1.4406301; base_ce: 0.8764003; clean_accuracy: 0.7014; adversarial_accuracy: 0.4746; since_best_base_ce: 1; min_base_ce: 0.869859; 
+    FastEstimator-Train: step: 10000; avg_ce: 1.2206926; adv_ce: 1.5394913; base_ce: 0.901894; steps/sec: 33.19; 
+    FastEstimator-Train: step: 10000; epoch: 10; epoch_time: 30.13 sec; 
+    FastEstimator-BestModelSaver: Saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmpmwpkk98d/adv_model_best_base_ce.h5
+    FastEstimator-Eval: step: 10000; epoch: 10; avg_ce: 1.1538234; adv_ce: 1.4526846; base_ce: 0.85496193; clean_accuracy: 0.7084; adversarial_accuracy: 0.4792; since_best_base_ce: 0; min_base_ce: 0.85496193; 
+    FastEstimator-Finish: step: 10000; total_time: 330.22 sec; adv_model_lr: 0.001; 
 
 
 ## Model Testing
@@ -185,7 +184,7 @@ model.load_weights(os.path.join(save_dir, "adv_model_best_base_ce.h5"))
 estimator.test()
 ```
 
-    FastEstimator-Test: epoch: 10; clean_accuracy: 0.6932; adversarial_accuracy: 0.4674; 
+    FastEstimator-Test: step: 10000; epoch: 10; clean_accuracy: 0.6962; adversarial_accuracy: 0.4758; 
 
 
 In spite of our training the network using adversarially crafted images, the adversarial attack is still effective at reducing the accuracy of the network. This does not, however, mean that the efforts were wasted. 
@@ -226,45 +225,44 @@ clean_estimator.fit()
     /_/    \__,_/____/\__/_____/____/\__/_/_/ /_/ /_/\__,_/\__/\____/_/     
                                                                             
     
-    FastEstimator-Start: step: 1; clean_model_lr: 0.001; 
-    FastEstimator-Train: step: 1; base_ce: 2.3439963; 
-    FastEstimator-Train: step: 1000; base_ce: 1.3183937; steps/sec: 76.8; 
-    FastEstimator-Train: step: 1000; epoch: 1; epoch_time: 13.41 sec; 
-    FastEstimator-ModelSaver: saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmpddgcxg9j/clean_model_best_base_ce.h5
-    FastEstimator-Eval: step: 1000; epoch: 1; base_ce: 1.152839; min_base_ce: 1.152839; since_best: 0; clean_accuracy: 0.5848; adversarial_accuracy: 0.283; 
-    FastEstimator-Train: step: 2000; base_ce: 0.8904332; steps/sec: 74.57; 
-    FastEstimator-Train: step: 2000; epoch: 2; epoch_time: 13.41 sec; 
-    FastEstimator-ModelSaver: saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmpddgcxg9j/clean_model_best_base_ce.h5
-    FastEstimator-Eval: step: 2000; epoch: 2; base_ce: 0.94625115; min_base_ce: 0.94625115; since_best: 0; clean_accuracy: 0.6774; adversarial_accuracy: 0.2842; 
-    FastEstimator-Train: step: 3000; base_ce: 1.0784993; steps/sec: 71.43; 
-    FastEstimator-Train: step: 3000; epoch: 3; epoch_time: 14.01 sec; 
-    FastEstimator-ModelSaver: saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmpddgcxg9j/clean_model_best_base_ce.h5
-    FastEstimator-Eval: step: 3000; epoch: 3; base_ce: 0.8710386; min_base_ce: 0.8710386; since_best: 0; clean_accuracy: 0.7002; adversarial_accuracy: 0.2942; 
-    FastEstimator-Train: step: 4000; base_ce: 0.765074; steps/sec: 68.29; 
-    FastEstimator-Train: step: 4000; epoch: 4; epoch_time: 14.64 sec; 
-    FastEstimator-ModelSaver: saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmpddgcxg9j/clean_model_best_base_ce.h5
-    FastEstimator-Eval: step: 4000; epoch: 4; base_ce: 0.84777266; min_base_ce: 0.84777266; since_best: 0; clean_accuracy: 0.711; adversarial_accuracy: 0.2786; 
-    FastEstimator-Train: step: 5000; base_ce: 0.60268235; steps/sec: 69.28; 
-    FastEstimator-Train: step: 5000; epoch: 5; epoch_time: 14.43 sec; 
-    FastEstimator-ModelSaver: saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmpddgcxg9j/clean_model_best_base_ce.h5
-    FastEstimator-Eval: step: 5000; epoch: 5; base_ce: 0.79990387; min_base_ce: 0.79990387; since_best: 0; clean_accuracy: 0.7258; adversarial_accuracy: 0.2724; 
-    FastEstimator-Train: step: 6000; base_ce: 0.5229054; steps/sec: 74.48; 
-    FastEstimator-Train: step: 6000; epoch: 6; epoch_time: 13.43 sec; 
-    FastEstimator-Eval: step: 6000; epoch: 6; base_ce: 0.8224955; min_base_ce: 0.79990387; since_best: 1; clean_accuracy: 0.723; adversarial_accuracy: 0.2574; 
-    FastEstimator-Train: step: 7000; base_ce: 0.73349226; steps/sec: 74.23; 
-    FastEstimator-Train: step: 7000; epoch: 7; epoch_time: 13.47 sec; 
-    FastEstimator-ModelSaver: saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmpddgcxg9j/clean_model_best_base_ce.h5
-    FastEstimator-Eval: step: 7000; epoch: 7; base_ce: 0.78509855; min_base_ce: 0.78509855; since_best: 0; clean_accuracy: 0.7368; adversarial_accuracy: 0.2574; 
-    FastEstimator-Train: step: 8000; base_ce: 0.5768247; steps/sec: 74.07; 
-    FastEstimator-Train: step: 8000; epoch: 8; epoch_time: 13.5 sec; 
-    FastEstimator-Eval: step: 8000; epoch: 8; base_ce: 0.82012117; min_base_ce: 0.78509855; since_best: 1; clean_accuracy: 0.7278; adversarial_accuracy: 0.256; 
-    FastEstimator-Train: step: 9000; base_ce: 0.4964206; steps/sec: 70.89; 
-    FastEstimator-Train: step: 9000; epoch: 9; epoch_time: 14.11 sec; 
-    FastEstimator-Eval: step: 9000; epoch: 9; base_ce: 0.81251466; min_base_ce: 0.78509855; since_best: 2; clean_accuracy: 0.7358; adversarial_accuracy: 0.234; 
-    FastEstimator-Train: step: 10000; base_ce: 0.61384237; steps/sec: 70.51; 
-    FastEstimator-Train: step: 10000; epoch: 10; epoch_time: 14.19 sec; 
-    FastEstimator-Eval: step: 10000; epoch: 10; base_ce: 0.88168806; min_base_ce: 0.78509855; since_best: 3; clean_accuracy: 0.7332; adversarial_accuracy: 0.2268; 
-    FastEstimator-Finish: step: 10000; total_time: 157.43 sec; clean_model_lr: 0.001; 
+    FastEstimator-Start: step: 1; num_device: 0; logging_interval: 1000; 
+    FastEstimator-Train: step: 1; base_ce: 2.3599913; 
+    FastEstimator-Train: step: 1000; base_ce: 1.2336738; steps/sec: 81.68; 
+    FastEstimator-Train: step: 1000; epoch: 1; epoch_time: 12.53 sec; 
+    FastEstimator-BestModelSaver: Saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmpmwpkk98d/clean_model_best_base_ce.h5
+    FastEstimator-Eval: step: 1000; epoch: 1; base_ce: 1.1847152; clean_accuracy: 0.5684; adversarial_accuracy: 0.2694; since_best_base_ce: 0; min_base_ce: 1.1847152; 
+    FastEstimator-Train: step: 2000; base_ce: 0.81964266; steps/sec: 78.27; 
+    FastEstimator-Train: step: 2000; epoch: 2; epoch_time: 12.78 sec; 
+    FastEstimator-BestModelSaver: Saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmpmwpkk98d/clean_model_best_base_ce.h5
+    FastEstimator-Eval: step: 2000; epoch: 2; base_ce: 0.95957977; clean_accuracy: 0.6652; adversarial_accuracy: 0.2778; since_best_base_ce: 0; min_base_ce: 0.95957977; 
+    FastEstimator-Train: step: 3000; base_ce: 0.9629886; steps/sec: 78.25; 
+    FastEstimator-Train: step: 3000; epoch: 3; epoch_time: 12.78 sec; 
+    FastEstimator-BestModelSaver: Saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmpmwpkk98d/clean_model_best_base_ce.h5
+    FastEstimator-Eval: step: 3000; epoch: 3; base_ce: 0.8996327; clean_accuracy: 0.6946; adversarial_accuracy: 0.263; since_best_base_ce: 0; min_base_ce: 0.8996327; 
+    FastEstimator-Train: step: 4000; base_ce: 0.7768238; steps/sec: 77.71; 
+    FastEstimator-Train: step: 4000; epoch: 4; epoch_time: 12.87 sec; 
+    FastEstimator-BestModelSaver: Saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmpmwpkk98d/clean_model_best_base_ce.h5
+    FastEstimator-Eval: step: 4000; epoch: 4; base_ce: 0.86543256; clean_accuracy: 0.702; adversarial_accuracy: 0.2576; since_best_base_ce: 0; min_base_ce: 0.86543256; 
+    FastEstimator-Train: step: 5000; base_ce: 0.7760873; steps/sec: 77.93; 
+    FastEstimator-Train: step: 5000; epoch: 5; epoch_time: 12.83 sec; 
+    FastEstimator-BestModelSaver: Saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmpmwpkk98d/clean_model_best_base_ce.h5
+    FastEstimator-Eval: step: 5000; epoch: 5; base_ce: 0.7983937; clean_accuracy: 0.727; adversarial_accuracy: 0.2664; since_best_base_ce: 0; min_base_ce: 0.7983937; 
+    FastEstimator-Train: step: 6000; base_ce: 0.56715065; steps/sec: 78.43; 
+    FastEstimator-Train: step: 6000; epoch: 6; epoch_time: 12.75 sec; 
+    FastEstimator-Eval: step: 6000; epoch: 6; base_ce: 0.79985946; clean_accuracy: 0.7318; adversarial_accuracy: 0.2704; since_best_base_ce: 1; min_base_ce: 0.7983937; 
+    FastEstimator-Train: step: 7000; base_ce: 0.7633059; steps/sec: 72.81; 
+    FastEstimator-Train: step: 7000; epoch: 7; epoch_time: 13.74 sec; 
+    FastEstimator-Eval: step: 7000; epoch: 7; base_ce: 0.80506575; clean_accuracy: 0.73; adversarial_accuracy: 0.2464; since_best_base_ce: 2; min_base_ce: 0.7983937; 
+    FastEstimator-Train: step: 8000; base_ce: 0.57881784; steps/sec: 76.72; 
+    FastEstimator-Train: step: 8000; epoch: 8; epoch_time: 13.03 sec; 
+    FastEstimator-Eval: step: 8000; epoch: 8; base_ce: 0.8497379; clean_accuracy: 0.733; adversarial_accuracy: 0.214; since_best_base_ce: 3; min_base_ce: 0.7983937; 
+    FastEstimator-Train: step: 9000; base_ce: 0.61386603; steps/sec: 78.1; 
+    FastEstimator-Train: step: 9000; epoch: 9; epoch_time: 12.81 sec; 
+    FastEstimator-Eval: step: 9000; epoch: 9; base_ce: 0.84185517; clean_accuracy: 0.731; adversarial_accuracy: 0.2206; since_best_base_ce: 4; min_base_ce: 0.7983937; 
+    FastEstimator-Train: step: 10000; base_ce: 0.6447299; steps/sec: 77.0; 
+    FastEstimator-Train: step: 10000; epoch: 10; epoch_time: 12.99 sec; 
+    FastEstimator-Eval: step: 10000; epoch: 10; base_ce: 0.8941338; clean_accuracy: 0.7278; adversarial_accuracy: 0.1848; since_best_base_ce: 5; min_base_ce: 0.7983937; 
+    FastEstimator-Finish: step: 10000; total_time: 148.17 sec; clean_model_lr: 0.001; 
 
 
 As before, we will reload the best weights and the test the model
@@ -287,12 +285,12 @@ print("-----------")
 ```
 
     Normal Network:
-    FastEstimator-Test: epoch: 10; clean_accuracy: 0.7318; adversarial_accuracy: 0.2434; 
-    The whitebox FGSM attack reduced accuracy by 0.49
+    FastEstimator-Test: step: 10000; epoch: 10; clean_accuracy: 0.7178; adversarial_accuracy: 0.2674; 
+    The whitebox FGSM attack reduced accuracy by 0.45
     -----------
     Adversarially Trained Network:
-    FastEstimator-Test: epoch: 10; clean_accuracy: 0.6932; adversarial_accuracy: 0.4674; 
-    The whitebox FGSM attack reduced accuracy by 0.23
+    FastEstimator-Test: step: 10000; epoch: 10; clean_accuracy: 0.6962; adversarial_accuracy: 0.4758; 
+    The whitebox FGSM attack reduced accuracy by 0.22
     -----------
 
 

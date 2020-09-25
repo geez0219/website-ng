@@ -3,11 +3,11 @@
 ## Overview
 FastEstimator comes with a set of CLI commands that can help users train and test their models quickly. In this tutorial, we will go through the CLI usage and the arguments these CLI commands take. This tutorial is divided into the following sections:
 
-* [How Does the CLI Work](./tutorials/beginner/t10_cli#t10intro)
-* [CLI Usage](./tutorials/beginner/t10_cli#t10usage)
-* [Sending Input Args to `get_estimator`](./tutorials/beginner/t10_cli#t10args)
-    * [Using --arg](./tutorials/beginner/t10_cli#t10arg)
-    * [Using a JSON file](./tutorials/beginner/t10_cli#t10json)
+* [How Does the CLI Work](./tutorials/r1.0/beginner/t10_cli#t10intro)
+* [CLI Usage](./tutorials/r1.0/beginner/t10_cli#t10usage)
+* [Sending Input Args to `get_estimator`](./tutorials/r1.0/beginner/t10_cli#t10args)
+    * [Using --arg](./tutorials/r1.0/beginner/t10_cli#t10arg)
+    * [Using a JSON file](./tutorials/r1.0/beginner/t10_cli#t10json)
 
 <a id='t10intro'></a>
 ## How Does the CLI Work
@@ -15,7 +15,7 @@ Given a python file, the FastEstimator CLI looks for a `get_estimator` function 
 
 <a id='t10usage'></a>
 ## CLI Usage
-In this section we will show the actual commands that we can use to train and test our models. We will use [MNIST](https://github.com/fastestimator/fastestimator/tree/r1.0/https://github.com/fastestimator/fastestimator/tree/r1.0/apphub/image_classification/mnist/mnist_tf.py) for illustration.
+In this section we will show the actual commands that we can use to train and test our models. We will use [mnist_tf.py](https://github.com/fastestimator/fastestimator/blob/master/apphub/image_classification/mnist/mnist_tf.py) for illustration.
 
   To call `estimator.fit()` and start the training on terminal:
 

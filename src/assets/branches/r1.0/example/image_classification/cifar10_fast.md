@@ -1,5 +1,5 @@
-# Cifar-10 Image Classification Example Using ResNet (Pytorch Backend)
-In this example we are going to demonstrate how to train a Cifar-10 image classification model using ResNet architecture with Pytorch backend. All training details including model structure, data preprocessing, learning rate control ... etc comes from the reference of https://github.com/davidcpage/cifar10-fast.
+# CIFAR-10 Image Classification Using ResNet (PyTorch Backend)
+In this example we are going to demonstrate how to train a CIFAR-10 image classification model using a ResNet architecture on the PyTorch backend. All training details including model structure, data preprocessing, learning rate control, etc. come from https://github.com/davidcpage/cifar10-fast.
 
 ## Import the required libraries
 
@@ -22,10 +22,10 @@ save_dir = tempfile.mkdtemp()
 ```
 
 ## Step 1 - Data and `Pipeline` preparation
-In this step, we will load Cifar-10 training and validation datasets and prepare FastEstimator's pipeline.
+In this step, we will load CIFAR-10 training and validation datasets and prepare FastEstimator's pipeline.
 
 ### Load dataset 
-We use fastestimator API to load the Cifar-10 dataset and get the test set by splitting 50% evaluation set. 
+We use a FastEstimator API to load the CIFAR-10 dataset and then get a test set by splitting 50% of the data off of the evaluation set. 
 
 
 ```python
@@ -35,8 +35,8 @@ train_data, eval_data = cifar10.load_data()
 test_data = eval_data.split(0.5)
 ```
 
-### Set up preprocess pipeline
-Here we start to set up the data pipeline which in this case needs data augmentation including randomly cropping, horizontal flipping, image obscuration and one-hot encoding for label. Beside the image channel need to be transpose to CHW due to Pytorch convention. We set up those processing step using `Ops` and meanwhile define the data source (loaded dataset) and batch size. 
+### Set up a pre-processing `Pipeline`
+Here we set up the data pipeline. This will involve a variety of data augmentation including: random cropping, horizontal flipping, image obscuration, and smoothed one-hot label encoding. Beside all of this, the image channels need to be transposed from HWC to CHW format due to PyTorch conventions. We set up these processing steps using `Ops` and also bundle the data sources and batch_size together into our `Pipeline`.
 
 
 ```python
@@ -61,8 +61,7 @@ pipeline = fe.Pipeline(
 ```
 
 ### Validate `Pipeline`
-In order to make sure the pipeline works as expected, we need to visualize the output of pipeline image and check its size.
-`Pipeline.get_results` will return a batch data of pipeline output.
+In order to make sure the `Pipeline` works as expected, let's visualize the output and check its size. `Pipeline.get_results` will return a batch data of pipeline output for this purpose:
 
 
 ```python
@@ -125,11 +124,11 @@ for i, j in enumerate(np.random.randint(low=0, high=batch_size-1, size=sample_nu
 
 
 ## Step 2 - `Network` construction
-**FastEstimator supports both Pytorch and Tensorflow, so this section can use both backend to implement.** <br>
-We are going to only demonstate the Pytorch way in this example.
+**FastEstimator supports both PyTorch and TensorFlow, so this section could use either backend.** <br>
+We are going to only demonstrate the PyTorch way in this example.
 
 ### Model construction
-The model definitions are implemented in Pytorch and instantiated by calling `fe.build` which also associates the model with specific optimizer.
+The model definitions are implemented in PyTorch and instantiated by calling `fe.build` which also associates the model with a specific optimizer.
 
 
 ```python
@@ -204,8 +203,8 @@ class Residual(nn.Module):
 model = fe.build(model_fn=FastCifar, optimizer_fn="adam")
 ```
 
-### `Network` defintion
-`Ops` are the basic components of a network that include models, loss calculation units, posprocessing units. In this step we are going to combine those pieces togethers into `Network`   
+### `Network` definition
+`Ops` are the basic components of a network that include models, loss calculation units, and post-processing units. In this step we are going to combine those pieces together into a `Network`:  
 
 
 ```python
@@ -221,7 +220,7 @@ network = fe.Network(ops=[
 ```
 
 ## Step 3 - `Estimator` definition and training
-In this step, we define the `Estimator` to connect the `Network` with `Pipeline` and set the `traces` which will compute accuracy (Accuracy), save best model (BestModelSaver), and change learning rate (LRScheduler). At the end, we use `Estimator.fit` to trigger the training.
+In this step, we define an `Estimator` to connect our `Network` with our `Pipeline` and set the `traces` which will compute accuracy (`Accuracy`), save our best model (`BestModelSaver`), and change the learning rate (`LRScheduler`) of our optimizer over time. We will then use `Estimator.fit` to trigger the training.
 
 
 ```python
@@ -356,7 +355,7 @@ estimator.fit() # start the training
 
 
 ## Model testing
-`Estimator.test` will trigger model testing and runs model on test data that defined in `Pipeline`. Here we only setup the accuracy as evaluate
+`Estimator.test` will trigger model testing using all of the test data defined in the `Pipeline`. This will allow us to check our accuracy on previously unseen data.
 
 
 ```python
@@ -366,8 +365,8 @@ estimator.test()
     FastEstimator-Test: epoch: 24; accuracy: 0.9362; 
 
 
-## Images inference
-In this step we run image inference directly using the model that just trained. We randomly select 5 images from testing dataset and infer them image by image with `Pipeline.transform` and `Netowork.transform`. Please be aware that the pipeline is no longer the same as it did in training, because we don't want to have data augmentation during inference. This detail was already defined in the `Pipeline` (mode = "!infer"). 
+## Inferencing
+In this step we run image inference directly using the model that we just trained. We randomly select 5 images from testing dataset and infer them image by image using `Pipeline.transform` and `Network.transform`. Please be aware that the `Pipeline` is no longer the same as it was during training, because we don't want to use data augmentation during inference. This detail was already defined in the `Pipeline` (mode = "!infer"). 
 
 
 ```python

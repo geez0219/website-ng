@@ -30,7 +30,7 @@ This dataset helps to enable several use-cases:
 
 #### Args:
 
-* **datasets** :  The dataset(s) to use for batch sampling.
+* **datasets** :  The dataset(s) to use for batch sampling. While these should be FEDatasets, pytorch datasets will        technically also work. If you use them, however, you will lose the .split() and .summary() methods.
 * **num_samples** :  Number of samples to draw from the `datasets`. May be a single int if used in conjunction with        `probability`, otherwise a list of ints of len(`datasets`) is required.
 * **probability** :  Probability to draw from each dataset. Only allowed if `num_samples` is an integer.
 
@@ -76,6 +76,10 @@ This function enables several types of splitting:
 
 #### Returns:
     One or more new datasets which are created by removing elements from the current dataset. The number of    datasets returned will be equal to the number of `fractions` provided. If only a single value is provided    then the return will be a single dataset rather than a list of datasets.
+
+#### Raises:
+
+* **NotImplementedError** :  If the user created this dataset using one or more non-FEDataset inputs.
 
 ### summary
 ```python

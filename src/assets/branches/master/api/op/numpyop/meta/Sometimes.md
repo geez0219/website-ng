@@ -4,6 +4,11 @@ Sometimes(*args, **kwargs)
 ```
 Perform a NumpyOp with a given probability.
 
+Note that Sometimes should not be used to wrap an op whose output key(s) do not already exist in the data
+dictionary. This would result in a problem when future ops / traces attempt to reference the output key, but
+Sometimes declined to generate it. If you want to create a default value for a new key, simply use a LambdaOp before
+invoking the Sometimes.
+
 
 #### Args:
 
@@ -12,7 +17,7 @@ Perform a NumpyOp with a given probability.
 
 ### forward
 ```python
-forward(self, data:Union[numpy.ndarray, List[numpy.ndarray]], state:Dict[str, Any]) -> Union[numpy.ndarray, List[numpy.ndarray]]
+forward(self, data:List[numpy.ndarray], state:Dict[str, Any]) -> List[numpy.ndarray]
 ```
 Execute the wrapped operator a certain fraction of the time.
 

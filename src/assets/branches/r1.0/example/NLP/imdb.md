@@ -1,4 +1,4 @@
-<h1>IMDB Reviews sentiments prediction using LSTM</h1>
+# Sentiment Prediction in IMDB Reviews using an LSTM
 
 
 ```python
@@ -30,9 +30,9 @@ max_eval_steps_per_epoch = None
 
 <h2>Building components</h2>
 
-<h3>Step 1: Prepare training & evaluation data and define Pipeline</h3>
+### Step 1: Prepare training & evaluation data and define a `Pipeline`
 
-We are loading the dataset from the tf.keras.datasets.imdb which contains movie reviews and sentiment scores. All the words have been replaced with the integers that specifies the popularity of the word in corpus. To ensure all the sequences are of same length we need to pad the input sequences before defining the Pipeline.
+We are loading the dataset from tf.keras.datasets.imdb which contains movie reviews and sentiment scores. All the words have been replaced with the integers that specifies the popularity of the word in corpus. To ensure all the sequences are of same length we need to pad the input sequences before defining the `Pipeline`.
 
 
 ```python
@@ -43,9 +43,9 @@ pipeline = fe.Pipeline(train_data=train_data,
                        ops=Reshape(1, inputs="y", outputs="y"))
 ```
 
-<h3>Step 2: Create model and FastEstimator network</h3>
+### Step 2: Create a `model` and FastEstimator `Network`
 
-First, we have to define the network architecture and after defining the architecture, users are expected to feed the architecture definition, its associated model name and optimizer to fe.build.
+First, we have to define the neural network architecture, and then pass the definition, associated model name, and optimizer into fe.build:
 
 
 ```python
@@ -75,7 +75,7 @@ class ReviewSentiment(nn.Module):
         return x
 ```
 
-Network is the object that define the whole logic of neural network, including models, loss functions, optimizers etc. A Network can have several different models and loss funcitons (like GAN). <b>fe.Network</b> takes series of operators and here we feed our model in the ModelOp with inputs and outputs. It should be noted that the y_pred is the key in the data dictionary which will store the predictions.
+`Network` is the object that defines the whole training graph, including models, loss functions, optimizers etc. A `Network` can have several different models and loss functions (ex. GANs). `fe.Network` takes a series of operators, in this case just the basic `ModelOp`, loss op, and `UpdateOp` will suffice. It should be noted that "y_pred" is the key in the data dictionary which will store the predictions.
 
 
 ```python
@@ -87,11 +87,11 @@ network = fe.Network(ops=[
 ])
 ```
 
-<h3>Step 3: Prepare estimator and configure the training loop</h3>
+### Step 3: Prepare `Estimator` and configure the training loop
 
-<b>Estimator</b> is the API that wrap up the Pipeline, Network and other training metadata together. Estimator basically has four arguments network, pipeline, epochs and traces. Network and Pipeline objects are passed here as an argument. Traces are similar to the callbacks of Keras. The trace object will be called on specific timing during the training.
+`Estimator` is the API that wraps the `Pipeline`, `Network` and other training metadata together. `Estimator` also contains `Traces`, which are similar to the callbacks of Keras.
 
-In the training loop, we want to measure the validation loss and save the model that has the minimum loss. BestModelSaver and Accuracy in the Trace class provide this convenient feature of storing the model.
+In the training loop, we want to measure the validation loss and save the model that has the minimum loss. `BestModelSaver` is a convenient `Trace` to achieve this. Let's also measure accuracy over time using another `Trace`:
 
 
 ```python
@@ -196,7 +196,7 @@ estimator.fit()
 
 <h2>Inferencing</h2>
 
-For inferencing, first we have to load the trained model weights. We saved model weights with minimum loss and we will load the weights using <i>load_model</i>
+For inferencing, first we have to load the trained model weights. We previously saved model weights corresponding to our minimum loss, and now we will load the weights using `load_model()`:
 
 
 ```python
@@ -208,7 +208,7 @@ load_model(model, model_path)
     Loaded model weights from /tmp/tmp69qyfzvm/model_best_loss.pt
 
 
-Get any random sequence and compare the prediction with the ground truth.
+Let's get some random sequence and compare the prediction with the ground truth:
 
 
 ```python
@@ -219,7 +219,7 @@ print("Ground truth is: ",eval_data[selected_idx]['y'])
     Ground truth is:  0
 
 
-Create data dictionary for the inference. <i>Transform()</i> function in Pipeline and Network applies all the operations on the given data.
+Create data dictionary for the inference. The `Transform()` function in Pipeline and Network applies all the operations on the given data:
 
 
 ```python

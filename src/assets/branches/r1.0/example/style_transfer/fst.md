@@ -1,8 +1,8 @@
 # Fast Style Transfer with FastEstimator
 
 In this notebook we will demonstrate how to do a neural image style transfer with perceptual loss as described in [Perceptual Losses for Real-Time Style Transfer and Super-Resolution](https://cs.stanford.edu/people/jcjohns/papers/eccv16/JohnsonECCV16.pdf).
-Typical neural style transfer involves two images, an image containing semantics that you want to preserve and another image serving as a reference style; the first image is often referred as *content image* and the other image as *style image*.
-In [paper](https://cs.stanford.edu/people/jcjohns/papers/eccv16/JohnsonECCV16.pdf) training images of COCO2014 dataset are used to learn the style transfer from any content image.
+Typical neural style transfer involves two images: an image containing semantics that you want to preserve, and another image serving as a reference style. The first image is often referred as the *content image* and the other image as the *style image*.
+In [this paper](https://cs.stanford.edu/people/jcjohns/papers/eccv16/JohnsonECCV16.pdf) training images from the COCO2014 dataset are used to learn style transfer from any content image.
 
 
 ```python
@@ -63,7 +63,7 @@ plt.axis('off');
 
 ### Downloading the data
 
-First, we will download training images of COCO2014 dataset via our dataset API. Downloading the images will take awhile.
+First, we will download training images from the COCO2014 dataset via our dataset API. Downloading the images will take a while.
 
 
 ```python
@@ -71,7 +71,7 @@ from fastestimator.dataset.data import mscoco
 train_data, _ = mscoco.load_data(root_dir=data_dir, load_bboxes=False, load_masks=False, load_captions=False)
 ```
 
-### Step 1: Create pipeline
+### Step 1: Create `Pipeline`
 
 
 ```python
@@ -85,7 +85,7 @@ pipeline = fe.Pipeline(
     ])
 ```
 
-We can visualize sample images from pipeline using get_results method.
+We can visualize sample images from our `Pipeline` using the 'get_results' method:
 
 
 ```python
@@ -108,9 +108,9 @@ plt.show()
 ![png](assets/branches/r1.0/example/style_transfer/fst_files/fst_10_0.png)
 
 
-### Step 2: Create network
+### Step 2: Create `Network`
 
-The architecture of the model is a modified resnet.
+The architecture of our model is a modified ResNet:
 
 
 ```python
@@ -227,13 +227,14 @@ model = fe.build(model_fn=StyleTransferNet,
 ### Defining Loss
 
 The perceptual loss described in the [paper](https://cs.stanford.edu/people/jcjohns/papers/eccv16/JohnsonECCV16.pdf) is computed based on intermediate layers of VGG16 pretrained on ImageNet; specifically, `relu1_2`, `relu2_2`, `relu3_3`, and `relu4_3` of VGG16 are used.
-The *style* loss term is computed as the squared l2 norm of the difference in Gram Matrix of these feature maps between an input image and the reference stlye image.
-The *content* loss is simply l2 norm of the difference in `relu3_3` of the input image and the reference style image.
-In addition, the method also uses total variation loss to enforce spatial smoothness in the output image.
-The final loss is weighted sum of the style loss term, the content loss term (feature reconstruction term in the [paper](https://cs.stanford.edu/people/jcjohns/papers/eccv16/JohnsonECCV16.pdf)), and the total variation term.
 
-We first define a custom `TensorOp` that outputs intermediate layers of VGG16.
-Given these intermediate layers returned by the loss network as a dictionary, we define a custom `StyleContentLoss` class that encapsulates all the logic of the loss calculation.
+The *style* loss term is computed as the squared l2 norm of the difference in Gram Matrix of these feature maps between an input image and the reference style image.
+
+The *content* loss is simply the l2 norm of the difference in `relu3_3` of the input image and the reference style image. In addition, the method also uses total variation loss to enforce spatial smoothness in the output image.
+
+The final loss is a weighted sum of the style loss term, the content loss term (feature reconstruction term in the [paper](https://cs.stanford.edu/people/jcjohns/papers/eccv16/JohnsonECCV16.pdf)), and the total variation term.
+
+We first define a custom `TensorOp` that outputs intermediate layers of VGG16. Given these intermediate layers returned by the loss network as a dictionary, we define a custom `StyleContentLoss` class that encapsulates all the logic of the loss calculation.
 
 
 ```python
@@ -302,7 +303,7 @@ class StyleContentLoss(TensorOp):
         return loss
 ```
 
-We now define the network object
+We now define the `Network` object:
 
 
 ```python
@@ -324,7 +325,7 @@ network = fe.Network(ops=[
 
 ### Step 3: Estimator
 
-We can now define `Estimator`. We will use `Trace` to save intermediate models.
+We can now define the `Estimator`. We will use `Trace` to save intermediate models:
 
 
 ```python
@@ -390,7 +391,7 @@ estimator.fit()
 
 ## Inferencing
 
-Once the training is finished, we will apply the model to perform the style transfer on arbitrary images. Here we use a photo of a panda.
+Once the training is finished, we will apply the model to perform style transfer on arbitrary images. Here we use a photo of a panda.
 
 
 ```python

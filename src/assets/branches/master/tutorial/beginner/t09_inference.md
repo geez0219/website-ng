@@ -1,16 +1,16 @@
 # Tutorial 9: Inference
 ## Overview
 In this tutorial we are going to cover:
-* [Running inference with the transform method](./tutorials/beginner/t09_inference#t09inference)
-    * [Pipeline.transform](./tutorials/beginner/t09_inference#t09pipeline)
-    * [Network.transform](./tutorials/beginner/t09_inference#t09network)
-* [Related Apphub Examples](./tutorials/beginner/t09_inference#t09apphub)
+* [Running inference with the transform method](./tutorials/master/beginner/t09_inference#t09inference)
+    * [Pipeline.transform](./tutorials/master/beginner/t09_inference#t09pipeline)
+    * [Network.transform](./tutorials/master/beginner/t09_inference#t09network)
+* [Related Apphub Examples](./tutorials/master/beginner/t09_inference#t09apphub)
 
 <a id='t09inference'></a>
 
 ## Running inference with transform method
 
-Running inference means using a trained deep learning model to get a prediction from some input data. Users can use `pipeline.transform` and `network.transform` to feed the data forward and get the computed result in any operation mode. Here we are going to use an end-to-end example (the same example code from [tutorial 8](https://github.com/fastestimator/fastestimator/tree/master/tutorials/beginner/t08_mode)) on MNIST image classification to demonstrate how to run inference.  
+Running inference means using a trained deep learning model to get a prediction from some input data. Users can use `pipeline.transform` and `network.transform` to feed the data forward and get the computed result in any operation mode. Here we are going to use an end-to-end example (the same example code from [tutorial 8](./tutorials/master/beginner/t08_mode)) on MNIST image classification to demonstrate how to run inference.  
 
 We first train a deep leaning model with the following code:
 
@@ -143,7 +143,7 @@ print_dict_but_value(infer_data)
 
 ### Network.transform
 
-We then use the network object to call the `transform` method that runs the network graph ("x_out" to "y_pred"). Much like with `pipeline.transform`, it will return it's Op outputs, though this time in the form of a dictionary of Tensors. The data type of the returned values depends on the backend of the network. It is `tf.Tensor` when using the TensorFlow backend and `torch.Tensor` with PyTorch. Please check out [tutorial 6](https://github.com/fastestimator/fastestimator/tree/master/tutorials/beginner/t06_network) for more details about `Network` backends). 
+We then use the network object to call the `transform` method that runs the network graph ("x_out" to "y_pred"). Much like with `pipeline.transform`, it will return it's Op outputs, though this time in the form of a dictionary of Tensors. The data type of the returned values depends on the backend of the network. It is `tf.Tensor` when using the TensorFlow backend and `torch.Tensor` with PyTorch. Please check out [tutorial 6](./tutorials/master/beginner/t06_network) for more details about `Network` backends). 
 
 <img src="assets/branches/master/tutorial/../resources/t09_infer_mode3.PNG" alt="drawing" width="700"/>
 
@@ -179,5 +179,5 @@ fig = img.paint_figure()
 ## Apphub Examples
 You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
 
-* [MNIST](https://github.com/fastestimator/fastestimator/tree/master/examples/image_classification/mnist)
-* [IMDB](https://github.com/fastestimator/fastestimator/tree/master/examples/NLP/imdb)
+* [MNIST](./examples/master/image_classification/mnist)
+* [IMDB](./examples/master/NLP/imdb)

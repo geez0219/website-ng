@@ -1,17 +1,17 @@
 # Advanced Tutorial 5: Scheduler
 In this tutorial, we will talk about:
-* [Scheduler](./tutorials/advanced/t05_scheduler#ta05scheduler)
-    * [Concept](./tutorials/advanced/t05_scheduler#ta05concept)
-    * [EpochScheduler](./tutorials/advanced/t05_scheduler#ta05epoch)
-    * [RepeatScheduler](./tutorials/advanced/t05_scheduler#ta05repeat)
-* [Things You Can Schedule](./tutorials/advanced/t05_scheduler#ta05things)
-    * [Datasets](./tutorials/advanced/t05_scheduler#ta05dataset)
-    * [Batch Size](./tutorials/advanced/t05_scheduler#ta05batch)
-    * [NumpyOps](./tutorials/advanced/t05_scheduler#ta05numpy)
-    * [Optimizers](./tutorials/advanced/t05_scheduler#ta05optimizer)
-    * [TensorOps](./tutorials/advanced/t05_scheduler#ta05tensor)
-    * [Traces](./tutorials/advanced/t05_scheduler#ta05trace)
-* [Related Apphub Examples](./tutorials/advanced/t05_scheduler#ta05apphub)
+* [Scheduler](./tutorials/master/advanced/t05_scheduler#ta05scheduler)
+    * [Concept](./tutorials/master/advanced/t05_scheduler#ta05concept)
+    * [EpochScheduler](./tutorials/master/advanced/t05_scheduler#ta05epoch)
+    * [RepeatScheduler](./tutorials/master/advanced/t05_scheduler#ta05repeat)
+* [Things You Can Schedule](./tutorials/master/advanced/t05_scheduler#ta05things)
+    * [Datasets](./tutorials/master/advanced/t05_scheduler#ta05dataset)
+    * [Batch Size](./tutorials/master/advanced/t05_scheduler#ta05batch)
+    * [NumpyOps](./tutorials/master/advanced/t05_scheduler#ta05numpy)
+    * [Optimizers](./tutorials/master/advanced/t05_scheduler#ta05optimizer)
+    * [TensorOps](./tutorials/master/advanced/t05_scheduler#ta05tensor)
+    * [Traces](./tutorials/master/advanced/t05_scheduler#ta05trace)
+* [Related Apphub Examples](./tutorials/master/advanced/t05_scheduler#ta05apphub)
 
 <a id='ta05scheduler'></a>
 
@@ -237,4 +237,4 @@ estimator.fit()
 ## Apphub Examples
 You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
 
-* [PGGAN](https://github.com/fastestimator/fastestimator/tree/master/examples/image_generation/pggan)
+* [PGGAN](./examples/master/image_generation/pggan)

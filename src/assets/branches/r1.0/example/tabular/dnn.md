@@ -1,6 +1,6 @@
-# Breast cancer detection example
+# Breast Cancer Detection
 
-Import the required libraries
+## Import the required libraries
 
 
 ```python
@@ -30,7 +30,7 @@ max_eval_steps_per_epoch = None
 
 # Download data
 
-This downloads the tabular data with different features stored in numerical format as a table. We then split the data into train, test and eval data sets.
+This downloads some tabular data with different features stored in numerical format in a table. We then split the data into train, evaluation, and testing data sets.
 
 
 ```python
@@ -113,18 +113,18 @@ test_data["x"] = scaler.transform(test_data["x"])
 
 # Building Components
 
-## Step 1: Create Pipeline
+## Step 1: Create `Pipeline`
 
-We create the pipeline with the usual train, test and eval data alongwith the batch size
+We create the `Pipeline` with the usual train, eval, and test data along with the batch size:
 
 
 ```python
 pipeline = fe.Pipeline(train_data=train_data, eval_data=eval_data, test_data=test_data, batch_size=batch_size)
 ```
 
-## Step 2: Create Network
+## Step 2: Create `Network`
 
-We first define the network in a function that can later be passed on to the network
+We first define the neural network in a function that can then be passed on to the FastEstimator `Network`:
 
 
 ```python
@@ -150,7 +150,7 @@ network = fe.Network(ops=[
 ])
 ```
 
-## Step 3: Create Estimator
+## Step 3: Create `Estimator`
 
 
 ```python
@@ -323,7 +323,7 @@ estimator.fit()
 
 
 ## Model testing
-`Estimator.test` triggers model testing with test dataset that specified in `Pipeline`. We can evaluate the model performance in the classification accuracy. 
+`Estimator.test` triggers model testing with the test dataset that was specified in our `Pipeline`. We can use this to evaluate our model's accuracy on previously unseen data:
 
 
 ```python

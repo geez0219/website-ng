@@ -2,11 +2,11 @@
 
 ## Overview
 In this tutorial, we will discuss the following topics:
-* [Experiment Logging](./tutorials/advanced/t06_summary#ta06logging)
-* [Experiment Summaries](./tutorials/advanced/t06_summary#ta06summaries)
-* [Log Parsing](./tutorials/advanced/t06_summary#ta06parsing)
-* [Summary Visualization](./tutorials/advanced/t06_summary#ta06visualization)
-* [TensorBoard Visualization](./tutorials/advanced/t06_summary#ta06tboard)
+* [Experiment Logging](./tutorials/master/advanced/t06_summary#ta06logging)
+* [Experiment Summaries](./tutorials/master/advanced/t06_summary#ta06summaries)
+* [Log Parsing](./tutorials/master/advanced/t06_summary#ta06parsing)
+* [Summary Visualization](./tutorials/master/advanced/t06_summary#ta06visualization)
+* [TensorBoard Visualization](./tutorials/master/advanced/t06_summary#ta06tboard)
 
 ## Preliminary Setup
 
@@ -50,7 +50,7 @@ traces = [
 
 ## Experiment Logging
 
-As you may have noticed if you have used FastEstimator, log messages are printed to the screen during training. If you want to persist these log messages for later records, you can simply pipe them into a file when launching training from the command line, or else just copy and paste the messages from the console into a persistent file on the disk. FastEstimator allows logging to be controlled via arguments passed to the `Estimator` class, as described in the [tutorial 7](https://github.com/fastestimator/fastestimator/tree/master/tutorials/beginner/t07_estimator) in the beginner section. Let's see an example logging every 120 steps:
+As you may have noticed if you have used FastEstimator, log messages are printed to the screen during training. If you want to persist these log messages for later records, you can simply pipe them into a file when launching training from the command line, or else just copy and paste the messages from the console into a persistent file on the disk. FastEstimator allows logging to be controlled via arguments passed to the `Estimator` class, as described in the [tutorial 7](./tutorials/master/beginner/t07_estimator) in the beginner section. Let's see an example logging every 120 steps:
 
 
 ```python
