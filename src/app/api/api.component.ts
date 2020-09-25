@@ -83,8 +83,11 @@ export class ApiComponent implements OnInit, AfterViewChecked {
     this.treeControl = new NestedTreeControl<API>(node => node.children);
     this.dataSource = new MatTreeNestedDataSource<API>();
 
-    this.route.url.subscribe((segments: UrlSegment[]) => {
+    this.globalService.version.subscribe((version: string) => {
       this.apiList = undefined;
+    });
+
+    this.route.url.subscribe((segments: UrlSegment[]) => {
       this.globalService.setLoading();
       this.segments = segments;
 
@@ -204,7 +207,6 @@ export class ApiComponent implements OnInit, AfterViewChecked {
   }
 
   private updateAPIContent(api: API) {
-    console.log('here ' + api.sourceurl);
     window.scroll(0, 0);
 
     this.selectedAPI = api.name;
