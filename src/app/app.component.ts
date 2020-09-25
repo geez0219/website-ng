@@ -26,9 +26,12 @@ export class AppComponent implements OnInit {
       (data) => {
         this.globalService.setVersions(data as Version[]);
 
+        /* check if URL contains a versioned link already or not */
         const urlFragments: string[] = this.router.url.split('/');
         if (urlFragments.length >= 3) {
-          this.globalService.setSelectedVersion((data as Version[]).find(d => d.name === urlFragments[2]));
+          const version = (data as Version[]).find(d => d.name === urlFragments[2]);
+          this.globalService.setSelectedVersion(version);
+          this.globalService.version.next(version.name);
         }
 
         this.branchesLoaded = true;

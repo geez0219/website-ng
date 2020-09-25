@@ -2,16 +2,19 @@ import { Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Version } from './version';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GlobalService {
 
-  examplesURL: string = 'https://api.github.com/repos/fastestimator/fastestimator/contents/apphub?Accept=application/vnd.github.v3+json';
+  examplesURL = 'https://api.github.com/repos/fastestimator/fastestimator/contents/apphub?Accept=application/vnd.github.v3+json';
 
   versions: Version[];
   selectedVersion: string;
+
+  version = new Subject();
 
   loading: boolean;
   @Output() change: EventEmitter<boolean> = new EventEmitter();
