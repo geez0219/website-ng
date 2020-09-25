@@ -41,12 +41,12 @@ def replacePath(match, path_prefix):
     return output
 
 
-def replaceImagePath(mdfile, d):
+def replaceImagePath(mdfile, d, branch):
     mdcontent = open(mdfile).readlines()
     re_image_path = r'!\[(.+)\]\((?!http)[\./]*(.+)\)'
     png_tag = '![png]('
     html_img_tag = '<img src="'
-    path_prefix = os.path.join('assets/branches/master/example', d)
+    path_prefix = os.path.join(f'assets/branches/{branch}/example', d)
     mdfile_updated = []
 
     for line in mdcontent:
@@ -194,6 +194,8 @@ if __name__ == '__main__':
     # take fastestimator dir path and output dir
     FE_DIR = sys.argv[1]
     OUTPUT_PATH = sys.argv[2]
+    branch = sys.argv[3]
+
     example_output_path = os.path.join(OUTPUT_PATH, 'example')
     apphub_path = os.path.join(FE_DIR, 'apphub')
 
@@ -202,7 +204,7 @@ if __name__ == '__main__':
         for f in files:
             if f.endswith('.md'):
                 d = subdirs.split(os.path.sep)[-1]
-                replaceImagePath(os.path.join(subdirs, f), d)
+                replaceImagePath(os.path.join(subdirs, f), d, branch)
 
     struct_json_path = os.path.join(example_output_path, 'structure.json')
     # write to json file
