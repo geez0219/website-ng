@@ -2,23 +2,23 @@
 
 ## Overview
 In this tutorial, we will discuss:
-* [Operator Mechanism](./tutorials/advanced/t03_operator#ta03om)
-    * [data](./tutorials/advanced/t03_operator#ta03data)
-    * [state](./tutorials/advanced/t03_operator#ta03state)
-* [NumpyOp](./tutorials/advanced/t03_operator#ta03no)
-    * [DeleteOp](./tutorials/advanced/t03_operator#ta03do)
-    * [MetaOp](./tutorials/advanced/t03_operator#ta03mo)
-    * [Customizing NumpyOps](./tutorials/advanced/t03_operator#ta03cn)
-* [TensorOp](./tutorials/advanced/t03_operator#ta03to)
-   * [Customizing TensorOps](./tutorials/advanced/t03_operator#ta03ct)
-* [Related Apphub Examples](./tutorials/advanced/t03_operator#ta03rae)
+* [Operator Mechanism](./tutorials/r1.0/advanced/t03_operator#ta03om)
+    * [data](./tutorials/r1.0/advanced/t03_operator#ta03data)
+    * [state](./tutorials/r1.0/advanced/t03_operator#ta03state)
+* [NumpyOp](./tutorials/r1.0/advanced/t03_operator#ta03no)
+    * [DeleteOp](./tutorials/r1.0/advanced/t03_operator#ta03do)
+    * [MetaOp](./tutorials/r1.0/advanced/t03_operator#ta03mo)
+    * [Customizing NumpyOps](./tutorials/r1.0/advanced/t03_operator#ta03cn)
+* [TensorOp](./tutorials/r1.0/advanced/t03_operator#ta03to)
+   * [Customizing TensorOps](./tutorials/r1.0/advanced/t03_operator#ta03ct)
+* [Related Apphub Examples](./tutorials/r1.0/advanced/t03_operator#ta03rae)
 
 <a id='ta03om'></a>
 
 ## Operator Mechanism
-We learned about the operator structure in [Beginner tutorial 3](./tutorials/beginner/t03_operator). Operators are used to build complex computation graphs in FastEstimator.
+We learned about the operator structure in [Beginner tutorial 3](./tutorials/r1.0/beginner/t03_operator). Operators are used to build complex computation graphs in FastEstimator.
 
-In FastEstimator, all the available data is held in a data dictionary during execution. An `Op` runs when it's `mode` matches the current execution mode. For more information on mode, you can go through [Beginner tutorial 8](./tutorials/beginner/t08_mode).
+In FastEstimator, all the available data is held in a data dictionary during execution. An `Op` runs when it's `mode` matches the current execution mode. For more information on mode, you can go through [Beginner tutorial 8](./tutorials/r1.0/beginner/t08_mode).
 
 Here's one simple example of an operator:
 
@@ -56,7 +56,7 @@ The state argument in the `forward` function stores meta information about train
 <a id='ta03no'></a>
 
 ## NumpyOp
-NumpyOp is used in `Pipeline` for data pre-processing and augmentation. You can go through [Beginner tutorial 4](./tutorials/beginner/t04_pipeline) to get an overview of NumpyOp and their usage. Here, we will talk about some advanced NumpyOps.
+NumpyOp is used in `Pipeline` for data pre-processing and augmentation. You can go through [Beginner tutorial 4](./tutorials/r1.0/beginner/t04_pipeline) to get an overview of NumpyOp and their usage. Here, we will talk about some advanced NumpyOps.
 
 <a id='ta03do'></a>
 
@@ -195,7 +195,7 @@ fig = img.paint_figure()
 <a id='ta03to'></a>
 
 ## TensorOp
-`TensorOps` are used to process tensor data. They are used within a `Network` for graph-based operations. You can go through [Beginner tutorial 6](./tutorials/beginner/t06_network) to get an overview of `TensorOps` and their usages.
+`TensorOps` are used to process tensor data. They are used within a `Network` for graph-based operations. You can go through [Beginner tutorial 6](./tutorials/r1.0/beginner/t06_network) to get an overview of `TensorOps` and their usages.
 
 <a id='ta03ct'></a>
 
@@ -265,6 +265,6 @@ print(f"Result Image Shape: {result['x'].shape}, Label Shape: {result['y'].shape
 
 You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
 
-* [Fast Style Transfer](./examples/style_transfer/fst)
-* [Convolutional Variational AutoEncoder](./examples/image_generation/cvae)
-* [Semantic Segmentation](./examples/semantic_segmentation/unet)
+* [Fast Style Transfer](./examples/r1.0/style_transfer/fst)
+* [Convolutional Variational AutoEncoder](./examples/r1.0/image_generation/cvae)
+* [Semantic Segmentation](./examples/r1.0/semantic_segmentation/unet)

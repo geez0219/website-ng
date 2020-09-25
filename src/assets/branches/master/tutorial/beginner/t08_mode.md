@@ -2,11 +2,11 @@
 
 ## Overview
 In this tutorial we are going to cover:
-* [Modes](./tutorials/beginner/t08_mode#t08mode)
-* [When Modes are Activated](./tutorials/beginner/t08_mode#t08when)
-* [How to Set Modes](./tutorials/beginner/t08_mode#t08how)
-* [A Code Example](./tutorials/beginner/t08_mode#t08code)
-* [Related Apphub Examples](./tutorials/beginner/t08_mode#t08apphub)
+* [Modes](./tutorials/master/beginner/t08_mode#t08mode)
+* [When Modes are Activated](./tutorials/master/beginner/t08_mode#t08when)
+* [How to Set Modes](./tutorials/master/beginner/t08_mode#t08how)
+* [A Code Example](./tutorials/master/beginner/t08_mode#t08code)
+* [Related Apphub Examples](./tutorials/master/beginner/t08_mode#t08apphub)
 
 <a id='t08mode'></a>
 
@@ -20,7 +20,7 @@ FastEstimator provides 4 corresponding modes: `train`, `eval`, `test`, and `infe
 * train: `estimator.fit()` being called, during training cycle
 * eval: `estimator.fit()` being called, during evaluation cycle
 * test: `estimator.test()` being called
-* infer: `pipeline.transform(mode="infer")` or `network.transform(mode="infer")` being called (inference will be covered in [tutorial 9](https://github.com/fastestimator/fastestimator/tree/master/tutorials/beginner/t09_inference))
+* infer: `pipeline.transform(mode="infer")` or `network.transform(mode="infer")` being called (inference will be covered in [tutorial 9](./tutorials/master/beginner/t09_inference))
 
 <a id='t08how'></a>
 
@@ -106,7 +106,7 @@ Everything in the "test" mode is the same as the "eval" mode, except that the da
 <img src="assets/branches/master/tutorial/../resources/t08_test_mode.PNG" alt="drawing" width="700"/>
 
 ### Infer Mode
-"Infer" mode only has the minimum operations that model inference requires. The data source is not defined yet because input data will not be passed until the inference function is invoked. See [tutorial 9](https://github.com/fastestimator/fastestimator/tree/master/tutorials/beginner/t09_inference) for more details.
+"Infer" mode only has the minimum operations that model inference requires. The data source is not defined yet because input data will not be passed until the inference function is invoked. See [tutorial 9](./tutorials/master/beginner/t09_inference) for more details.
 
 <img src="assets/branches/master/tutorial/../resources/t08_infer_mode.PNG" alt="drawing" width="700"/>
 
@@ -115,4 +115,4 @@ Everything in the "test" mode is the same as the "eval" mode, except that the da
 ## Apphub Examples
 You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
 
-* [CIFAR10](https://github.com/fastestimator/fastestimator/tree/master/examples/image_classification/cifar10_fast)
+* [CIFAR10](./examples/master/image_classification/cifar10_fast)

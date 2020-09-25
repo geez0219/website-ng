@@ -2,16 +2,16 @@
 
 ## Overview
 In this tutorial, we will discuss:
-* [Customizing Traces](./tutorials/advanced/t04_trace#ta04customize)
-    * [Example](./tutorials/advanced/t04_trace#ta04example)
-* [More About Traces](./tutorials/advanced/t04_trace#ta04more)
-    * [Inputs, Outputs, and Mode](./tutorials/advanced/t04_trace#ta04iom)
-    * [Data](./tutorials/advanced/t04_trace#ta04data)
-    * [System](./tutorials/advanced/t04_trace#ta04system)
-* [Trace Communication](./tutorials/advanced/t04_trace#ta04communication)
-* [Other Trace Usages](./tutorials/advanced/t04_trace#ta04other)
-    * [Debugging/Monitoring](./tutorials/advanced/t04_trace#ta04debug)
-* [Related Apphub Examples](./tutorials/advanced/t04_trace#ta04apphub)
+* [Customizing Traces](./tutorials/r1.0/advanced/t04_trace#ta04customize)
+    * [Example](./tutorials/r1.0/advanced/t04_trace#ta04example)
+* [More About Traces](./tutorials/r1.0/advanced/t04_trace#ta04more)
+    * [Inputs, Outputs, and Mode](./tutorials/r1.0/advanced/t04_trace#ta04iom)
+    * [Data](./tutorials/r1.0/advanced/t04_trace#ta04data)
+    * [System](./tutorials/r1.0/advanced/t04_trace#ta04system)
+* [Trace Communication](./tutorials/r1.0/advanced/t04_trace#ta04communication)
+* [Other Trace Usages](./tutorials/r1.0/advanced/t04_trace#ta04other)
+    * [Debugging/Monitoring](./tutorials/r1.0/advanced/t04_trace#ta04debug)
+* [Related Apphub Examples](./tutorials/r1.0/advanced/t04_trace#ta04apphub)
 
 Let's create a function to generate a pipeline, model and network to be used for the tutorial:
 
@@ -50,7 +50,7 @@ def get_pipeline_model_network(model_name="LeNet", batch_size=32):
 <a id='ta04customize'></a>
 
 ## Customizing Traces
-In [tutorial 7](./tutorials/beginner/t07_estimator) in the beginner section, we talked about the basic concept and structure of `Traces` and used a few `Traces` provided by FastEstimator. We can also customize a Trace to suit our needs. Let's look at an example of a custom trace implementation:
+In [tutorial 7](./tutorials/r1.0/beginner/t07_estimator) in the beginner section, we talked about the basic concept and structure of `Traces` and used a few `Traces` provided by FastEstimator. We can also customize a Trace to suit our needs. Let's look at an example of a custom trace implementation:
 
 <a id='ta04example'></a>
 
@@ -161,7 +161,7 @@ Traces have access to the current `System` instance which has information about 
 * summary
 * experiment_time
 
-We will showcase `System` usage in the [other trace usages](./tutorials/advanced/t04_trace#ta04other) section of this tutorial. 
+We will showcase `System` usage in the [other trace usages](./tutorials/r1.0/advanced/t04_trace#ta04other) section of this tutorial. 
 
 <a id='ta04communication'></a>
 
@@ -353,4 +353,4 @@ As you can see, we can visualize information like the global step, batch number,
 ## Apphub Examples
 You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
 
-* [CIFAR10](./examples/image_classification/cifar10_fast)
+* [CIFAR10](./examples/r1.0/image_classification/cifar10_fast)

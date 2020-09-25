@@ -9,6 +9,8 @@ from functools import partial
 
 RE_SIDEBAR_TITLE = '[^A-Za-z0-9:!,$%. ]+'
 RE_ROUTE_TITLE = '[^A-Za-z0-9 ]+'
+BRANCH = None
+
 
 def generateMarkdowns(output_dir, tutorial_type, fe_path):
     # form a input files path
@@ -31,34 +33,36 @@ def replaceRefLink(match, tutorial_type):
     ref_tutorial_type = match.group(1)
     tutorial_no = match.group(2)
     tutorial_name = match.group(3).split('/')
+    # import pdb
+    # pdb.set_trace()
     if ref_tutorial_type != '':
         tutorial = '[{} tutorial {}]'.format(ref_tutorial_type, tutorial_no)
     else:
         tutorial = '[tutorial {}]'.format(tutorial_no)
     if len(tutorial_name) > 1:
-        return '{}(./tutorials/{}/{})'.format(tutorial, tutorial_name[-2], tutorial_name[-1])
+        return f'{tutorial}(./tutorials/{BRANCH}/{tutorial_name[-2]}/{tutorial_name[-1]})'
     else:
-        return '{}(./tutorials/{}/{})'.format(tutorial, tutorial_type, tutorial_name[-1])
+        return f'{tutorial}(./tutorials/{BRANCH}/{tutorial_type}/{tutorial_name[-1]})'
 
 
 def replaceApphubLink(match):
     apphub_link_segments = match.group(3).strip().split('/')
     dir_name = apphub_link_segments[1]
     name = apphub_link_segments[-1]
-    return '[{}](./examples/{}/{})'.format(match.group(1), dir_name, name)
+    return f'[{match.group(1)}](./examples/{BRANCH}/{dir_name}/{name})'
 
 
 def replaceAnchorLink(match, tutorial_type, fname):
     anchor_text = match.group(1)
     anchor_link = match.group(2)
     fname = fname.split('/')[-1].split('.')[0]
-    return '[{}](./tutorials/{}/{}#{})'.format(anchor_text, tutorial_type, fname, anchor_link)
+    return f'[{anchor_text}](./tutorials/{BRANCH}/{tutorial_type}/{fname}#{anchor_link})'
 
 
 def replaceRepoLink(match):
     name = match.group(1)
     url = match.group(2)
-    fe_url = 'https://github.com/fastestimator/fastestimator/tree/master/'
+    fe_url = f'https://github.com/fastestimator/fastestimator/tree/{BRANCH}/'
     return '[{}]({})'.format(name, os.path.join(fe_url, url))
 
 
@@ -68,11 +72,14 @@ def updateLinks(line, tutorial_type, fname):
     re_anchortag_link = r'\[([^\]]+)\]\(#([^)]+)\)'
     re_repo_link = r'\[([\w|\d|\s]*)\]\([\./]*([^\)\.#]*)(?:\.py|)\)'
 
-    output_line = re.sub(re_ref_link, partial(replaceRefLink, tutorial_type=tutorial_type), line)
+    output_line = re.sub(re_repo_link, replaceRepoLink, line)
+    output_line = re.sub(re_ref_link,
+                         partial(replaceRefLink, tutorial_type=tutorial_type),
+                         output_line)
     output_line = re.sub(re_apphub_link, replaceApphubLink, output_line)
     output_line = re.sub(re_anchortag_link, partial(replaceAnchorLink, tutorial_type=tutorial_type,
                                                     fname=fname), output_line)
-    output_line = re.sub(re_repo_link, replaceRepoLink, output_line)
+
 
     return output_line
 
@@ -88,8 +95,8 @@ def replaceImagePath(mdfile, tutorial_type):
     mdcontent = open(mdfile).readlines()
     png_tag = '![png]('
     html_img_tag = '<img src="'
-    path_prefix = 'assets/branches/master/tutorial'
-    png_path_prefix = 'assets/branches/master/tutorial/' + tutorial_type
+    path_prefix = f'assets/branches/{BRANCH}/tutorial'
+    png_path_prefix = f'assets/branches/{BRANCH}/tutorial/{tutorial_type}'
     mdfile_updated = []
     for line in mdcontent:
         line = updateLinks(line, tutorial_type, mdfile)
@@ -156,6 +163,7 @@ if __name__ == '__main__':
     # take fastestimator dir path and output dir
     FE_DIR = sys.argv[1]
     OUTPUT_PATH = sys.argv[2]
+    BRANCH = sys.argv[3]
 
     # generate markdown to temp dir
     beginner_output_path = generateMarkdowns(OUTPUT_PATH, 'beginner', FE_DIR)

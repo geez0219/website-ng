@@ -2,13 +2,13 @@
 
 ## Overview
 In this tutorial we are going to cover:
-* [`Network` Scope](./tutorials/beginner/t06_network#t06network)
-* [`TensorOp` and its Children](./tutorials/beginner/t06_network#t06tensorop)
-* [How to Customize a `TensorOp`](./tutorials/beginner/t06_network#t06customize)
-    * [TensorFlow](./tutorials/beginner/t06_network#t06tf)
-    * [PyTorch](./tutorials/beginner/t06_network#t06torch)
-    * [fe.backend](./tutorials/beginner/t06_network#t06backend)
-* [Related Apphub Examples](./tutorials/beginner/t06_network#t06apphub)
+* [`Network` Scope](./tutorials/master/beginner/t06_network#t06network)
+* [`TensorOp` and its Children](./tutorials/master/beginner/t06_network#t06tensorop)
+* [How to Customize a `TensorOp`](./tutorials/master/beginner/t06_network#t06customize)
+    * [TensorFlow](./tutorials/master/beginner/t06_network#t06tf)
+    * [PyTorch](./tutorials/master/beginner/t06_network#t06torch)
+    * [fe.backend](./tutorials/master/beginner/t06_network#t06backend)
+* [Related Apphub Examples](./tutorials/master/beginner/t06_network#t06apphub)
 
 <a id='t06network'></a>
 
@@ -27,14 +27,14 @@ As the figure shows, models (orange) are only piece of a `Network`. It also incl
 
 ## TensorOp and its Children
 
-A `Network` is composed of basic units called `TensorOps`. All of the building blocks inside a `Network` should derive from the `TensorOp` base class. A `TensorOp` is a kind of `Op` and therefore follows the same rules described in [tutorial 3](https://github.com/fastestimator/fastestimator/tree/master/tutorials/beginner/t03_operator). 
+A `Network` is composed of basic units called `TensorOps`. All of the building blocks inside a `Network` should derive from the `TensorOp` base class. A `TensorOp` is a kind of `Op` and therefore follows the same rules described in [tutorial 3](./tutorials/master/beginner/t03_operator). 
 
 <img src="assets/branches/master/tutorial/../resources/t06_tensorop_class.png" alt="drawing" width="500"/>
 
 There are some common `TensorOp` classes we would like to specially mention because of their prevalence:
 
 ### ModelOp
-Any model instance created from `fe.build` (see [tutorial 5](https://github.com/fastestimator/fastestimator/tree/master/tutorials/beginner/t05_model)) needs to be packaged as a `ModelOp` such that it can interact with other components inside the `Network` API. The orange blocks in the first figure are `ModelOps`.
+Any model instance created from `fe.build` (see [tutorial 5](./tutorials/master/beginner/t05_model)) needs to be packaged as a `ModelOp` such that it can interact with other components inside the `Network` API. The orange blocks in the first figure are `ModelOps`.
 
 ### UpdateOp
 FastEstimator use `UpdateOp` to associate the model with its loss. Unlike other `Ops` that use `inputs` and `outputs` for expressing their connections, `UpdateOp` uses the arguments `loss`, and `model` instead. The green blocks in the first figure are `UpdateOps`.
@@ -100,5 +100,5 @@ class ReduceMean(TensorOp):
 ## Apphub Examples
 You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
 
-* [Fast Style Transfer](https://github.com/fastestimator/fastestimator/tree/master/examples/style_transfer/fst)
-* [DC-GAN](./examples/image_generation/dcgan)
+* [Fast Style Transfer](./examples/master/style_transfer/fst)
+* [DC-GAN](./examples/master/image_generation/dcgan)

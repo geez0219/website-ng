@@ -1,4 +1,3 @@
-
 ## Prerequisites:
 * Python >= 3.6
 
@@ -35,9 +34,9 @@ Docker containers create isolated virtual environments that share resources with
 
 * GPU:
     ``` bash
-    $ docker pull fastestimator/fastestimator:latest-gpu
+    docker pull fastestimator/fastestimator:latest-gpu
     ```
 * CPU:
     ``` bash
-    $ docker pull fastestimator/fastestimator:latest-cpu
+    docker pull fastestimator/fastestimator:latest-cpu
     ```

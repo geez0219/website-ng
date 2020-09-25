@@ -2,9 +2,9 @@
 
 ## Overview
 In this tutorial, we will discuss the following topics:
-* [Saliency Maps](./tutorials/advanced/t08_xai#ta08saliency)
-    * [With Traces](./tutorials/advanced/t08_xai#ta08with)
-    * [Without Traces](./tutorials/advanced/t08_xai#ta08without)
+* [Saliency Maps](./tutorials/master/advanced/t08_xai#ta08saliency)
+    * [With Traces](./tutorials/master/advanced/t08_xai#ta08with)
+    * [Without Traces](./tutorials/master/advanced/t08_xai#ta08without)
 
 <a id='ta08saliency'></a>
 

@@ -2,23 +2,23 @@
 
 ## Overview
 In this tutorial, we will discuss:
-* [Operator Mechanism](./tutorials/advanced/t03_operator#ta03om)
-    * [data](./tutorials/advanced/t03_operator#ta03data)
-    * [state](./tutorials/advanced/t03_operator#ta03state)
-* [NumpyOp](./tutorials/advanced/t03_operator#ta03no)
-    * [DeleteOp](./tutorials/advanced/t03_operator#ta03do)
-    * [MetaOp](./tutorials/advanced/t03_operator#ta03mo)
-    * [Customizing NumpyOps](./tutorials/advanced/t03_operator#ta03cn)
-* [TensorOp](./tutorials/advanced/t03_operator#ta03to)
-   * [Customizing TensorOps](./tutorials/advanced/t03_operator#ta03ct)
-* [Related Apphub Examples](./tutorials/advanced/t03_operator#ta03rae)
+* [Operator Mechanism](./tutorials/master/advanced/t03_operator#ta03om)
+    * [data](./tutorials/master/advanced/t03_operator#ta03data)
+    * [state](./tutorials/master/advanced/t03_operator#ta03state)
+* [NumpyOp](./tutorials/master/advanced/t03_operator#ta03no)
+    * [DeleteOp](./tutorials/master/advanced/t03_operator#ta03do)
+    * [MetaOp](./tutorials/master/advanced/t03_operator#ta03mo)
+    * [Customizing NumpyOps](./tutorials/master/advanced/t03_operator#ta03cn)
+* [TensorOp](./tutorials/master/advanced/t03_operator#ta03to)
+   * [Customizing TensorOps](./tutorials/master/advanced/t03_operator#ta03ct)
+* [Related Apphub Examples](./tutorials/master/advanced/t03_operator#ta03rae)
 
 <a id='ta03om'></a>
 
 ## Operator Mechanism
-We learned about the operator structure in [Beginner tutorial 3](https://github.com/fastestimator/fastestimator/tree/master/tutorials/beginner/t03_operator). Operators are used to build complex computation graphs in FastEstimator.
+We learned about the operator structure in [Beginner tutorial 3](./tutorials/master/beginner/t03_operator). Operators are used to build complex computation graphs in FastEstimator.
 
-In FastEstimator, all the available data is held in a data dictionary during execution. An `Op` runs when it's `mode` matches the current execution mode. For more information on mode, you can go through [Beginner tutorial 8](https://github.com/fastestimator/fastestimator/tree/master/tutorials/beginner/t08_mode).
+In FastEstimator, all the available data is held in a data dictionary during execution. An `Op` runs when it's `mode` matches the current execution mode. For more information on mode, you can go through [Beginner tutorial 8](./tutorials/master/beginner/t08_mode).
 
 Here's one simple example of an operator:
 
@@ -56,7 +56,7 @@ The state argument in the `forward` function stores meta information about train
 <a id='ta03no'></a>
 
 ## NumpyOp
-NumpyOp is used in `Pipeline` for data pre-processing and augmentation. You can go through [Beginner tutorial 4](https://github.com/fastestimator/fastestimator/tree/master/tutorials/beginner/t04_pipeline) to get an overview of NumpyOp and their usage. Here, we will talk about some advanced NumpyOps.
+NumpyOp is used in `Pipeline` for data pre-processing and augmentation. You can go through [Beginner tutorial 4](./tutorials/master/beginner/t04_pipeline) to get an overview of NumpyOp and their usage. Here, we will talk about some advanced NumpyOps.
 
 <a id='ta03do'></a>
 
@@ -67,7 +67,7 @@ Delete op is used to delete keys from the data dictionary which are no longer re
 ```python
 import fastestimator as fe
 from fastestimator.dataset.data import cifar10
-from fastestimator.op.numpyop import Delete
+from fastestimator.op.numpyop import Delete, LambdaOp
 from fastestimator.op.numpyop.meta import OneOf, Sometimes
 from fastestimator.op.numpyop.multivariate import HorizontalFlip, Rotate, VerticalFlip
 from fastestimator.op.numpyop.univariate import Blur, Minmax, ChannelTranspose
@@ -111,7 +111,8 @@ Meta ops are NumpyOps which operate on other NumpyOps. For example: `Sometimes` 
 pipeline3 = fe.Pipeline(train_data=train_data,
                         eval_data=eval_data,
                         batch_size=4,
-                        ops = [Sometimes(HorizontalFlip(image_in="x", 
+                        ops = [LambdaOp(fn=lambda x: x, inputs="x", outputs="x_mid"), #create intermediate key
+                               Sometimes(HorizontalFlip(image_in="x", 
                                                         image_out="x_mid",
                                                         mode="train"), prob=0.5), 
                                OneOf(Rotate(image_in="x_mid", image_out="x_out", mode="train", limit=45), 
@@ -195,7 +196,7 @@ fig = img.paint_figure()
 <a id='ta03to'></a>
 
 ## TensorOp
-`TensorOps` are used to process tensor data. They are used within a `Network` for graph-based operations. You can go through [Beginner tutorial 6](https://github.com/fastestimator/fastestimator/tree/master/tutorials/beginner/t06_network) to get an overview of `TensorOps` and their usages.
+`TensorOps` are used to process tensor data. They are used within a `Network` for graph-based operations. You can go through [Beginner tutorial 6](./tutorials/master/beginner/t06_network) to get an overview of `TensorOps` and their usages.
 
 <a id='ta03ct'></a>
 
@@ -265,6 +266,6 @@ print(f"Result Image Shape: {result['x'].shape}, Label Shape: {result['y'].shape
 
 You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
 
-* [Fast Style Transfer](https://github.com/fastestimator/fastestimator/tree/master/examples/style_transfer/fst)
-* [Convolutional Variational AutoEncoder](https://github.com/fastestimator/fastestimator/tree/master/examples/image_generation/cvae)
-* [Semantic Segmentation](https://github.com/fastestimator/fastestimator/tree/master/examples/semantic_segmentation/unet)
+* [Fast Style Transfer](./examples/master/style_transfer/fst)
+* [Convolutional Variational AutoEncoder](./examples/master/image_generation/cvae)
+* [Semantic Segmentation](./examples/master/semantic_segmentation/unet)

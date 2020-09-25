@@ -1,4 +1,4 @@
-<h1>Lung segmentation using montgomery dataset</h1>
+# Lung Segmentation Using the Montgomery Dataset
 
 
 ```python
@@ -49,7 +49,7 @@ We download the Montgomery data first:
 csv = montgomery.load_data(root_dir=data_dir)
 ```
 
-This creates a `CSVDataset`, let's see what is inside:
+This creates a `CSVDataset`. Let's see what is inside:
 
 
 ```python
@@ -126,9 +126,9 @@ df.head()
 
 # Building Components
 
-We are going to setup the stage for training. 
+Now let's set the stage for training:
 
-## Step 1: Create Pipeline
+## Step 1: Create `Pipeline`
 
 
 ```python
@@ -193,7 +193,7 @@ ax[1].imshow(np.squeeze(batch_data['mask'][batch_index]), cmap='gray')
 ![png](assets/branches/r1.0/example/semantic_segmentation/unet_files/unet_17_1.png)
 
 
-## Step 2: Create Network
+## Step 2: Create `Network`
 
 
 ```python
@@ -213,7 +213,7 @@ network = fe.Network(ops=[
 ])
 ```
 
-## Step 3: Create Estimator
+## Step 3: Create `Estimator`
 
 
 ```python
@@ -354,14 +354,14 @@ estimator.fit()
 
 # Inferencing
 
-Let's visualize the prediction from the neural network. We select a radom image from the dataset.
+Let's visualize the prediction from the neural network. We select a random image from the dataset:
 
 
 ```python
 image_path = df['image'].sample(random_state=3).values[0]
 ```
 
-## Pass Image through Pipeline and Network
+## Pass the image through `Pipeline` and `Network`
 
 We create a data dict, and call `Pipeline.transform()`.
 
@@ -371,7 +371,7 @@ data = {'image': image_path}
 data = pipeline.transform(data, mode="infer")
 ```
 
-After the pipeline, we rebuild the model by providing the trained weights path and a new network.
+After the `Pipeline`, we rebuild our model by providing the trained weights path and pass it to a new `Network`:
 
 
 ```python
@@ -391,7 +391,7 @@ model = fe.build(model_fn=lambda: UNet(input_size=(1, 512, 512)),
 network = fe.Network(ops=[ModelOp(inputs="image", model=model, outputs="pred_segment")])
 ```
 
-We call `Network.transform()` to get outputs from our network.
+We call `Network.transform()` to get outputs from our `Network`:
 
 
 ```python

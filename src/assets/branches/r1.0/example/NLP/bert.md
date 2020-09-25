@@ -1,8 +1,8 @@
-<h1>Named Entity Recognition using BERT Fine tuning</h1>
+# Named Entity Recognition using BERT Fine-Tuning
 
-For the downstream NLP tasks such as question answering, named entity recognition, and language inference, pre-trained word representations tend to perform better. BERT which fine tunes deep bi-directional representation on series of tasks achieves state-of-the-art results. Unlike traditional Tranformer, BERT is trained on “masked language modeling,” which means that it is allowed to see the whole sentence and does not limit the context it can take into account.
+For downstream NLP tasks such as question answering, named entity recognition, and language inference, models built on pre-trained word representations tend to perform better. BERT, which fine tunes a deep bi-directional representation on a series of tasks, achieves state-of-the-art results. Unlike traditional transformers, BERT is trained on "masked language modeling," which means that it is allowed to see the whole sentence and does not limit the context it can take into account.
 
-For this example, we are leveraging transformers library to load BERT model and other config files
+For this example, we are leveraging the transformers library to load a BERT model, along with some config files:
 
 
 ```python
@@ -39,7 +39,7 @@ save_dir = tempfile.mkdtemp()
 data_dir = None
 ```
 
-Custom NumpyOp that constructs attention masks for input sequences
+We will need a custom `NumpyOp` that constructs attention masks for input sequences:
 
 
 ```python
@@ -49,7 +49,7 @@ class AttentionMask(NumpyOp):
         return np.array(masks)
 ```
 
-char2idx function creates look-up table for the corresponding ids for the labels
+Our `char2idx` function creates a look-up table to match ids and labels:
 
 
 ```python
@@ -60,16 +60,16 @@ def char2idx(data):
 
 <h2>Building components</h2>
 
-<h3>Step 1: Prepare training & evaluation data and define pipeline</h3>
+### Step 1: Prepare training & evaluation data and define a `Pipeline`
 
-NER dataset from GermEval contains sequences and entity tags from german wikipedia and news corpora. We are loading train and eval sequences dataset along with data and label vocabulary. For this example other nouns are omitted for the simplicity.
+The NER dataset from GermEval contains sequences and entity tags from german wikipedia and news corpora. We are loading train and eval sequences as datasets, along with data and label vocabulary. For this example other nouns are omitted for the simplicity.
 
 
 ```python
 train_data, eval_data, data_vocab, label_vocab = german_ner.load_data(root_dir=data_dir)
 ```
 
-Define a pipeline to tokenize and pad the input sequences and construct attention masks. Attention masks are used to avoid performing attention operation on padded tokens. We are using BERT tokenizer for input sequences tokenization and max length 50 for this example.
+Define a pipeline to tokenize and pad the input sequences and construct attention masks. Attention masks are used to avoid performing attention operations on padded tokens. We are using the BERT tokenizer for input sequence tokenization, and limiting our sequences to a max length of 50 for this example.
 
 
 ```python
@@ -89,9 +89,9 @@ pipeline = fe.Pipeline(
     ])
 ```
 
-<h3>Step 2: Create model and FastEstimator network</h3>
+### Step 2: Create `model` and FastEstimator `Network`
 
-Network architecture has pretrained weights as initialization for downsteam task. Whole network is then trained during the fine tuning.
+Our neural network architecture leverages pre-trained weights as initialization for downstream tasks. The whole network is then trained during the fine-tuning.
 
 
 ```python
@@ -105,14 +105,14 @@ def ner_model():
     return model
 ```
 
-Model definition is then intantiated by calling fe.build which also associates the model with specific optimizers.
+After defining the model, it is then instantiated by calling fe.build which also associates the model with a specific optimizer:
 
 
 ```python
 model = fe.build(model_fn=ner_model, optimizer_fn=lambda: tf.optimizers.Adam(1e-5))
 ```
 
-fe.Network takes series of operators and here we feed our model in the ModelOp with inputs and outputs. Here, ReshapeOp transforms the prediction and ground truth to scalar or two dimensional vector before feeding it to loss calculation.
+`fe.Network` takes a series of operators. In this case we use a `ModelOp` to run forward passes through the neural network. The `ReshapeOp` is then used to transform the prediction and ground truth to a two dimensional vector or scalar respectively before feeding them to the loss calculation.
 
 
 ```python
@@ -125,9 +125,9 @@ network = fe.Network(ops=[
     ])
 ```
 
-<h3>Step 3: Prepare Estimator and configure the training loop</h3>
+### Step 3: Prepare `Estimator` and configure the training loop
 
-Estimator basically has four arguments network, pipeline, epochs and traces. During the training, we want the accuracy metric and save the model with minimum loss, we will define that in Trace class.
+The `Estimator` takes four important arguments: network, pipeline, epochs, and traces. During the training, we want to compute accuracy as well as to save the model with the minimum loss. This can be done using `Traces`.
 
 
 ```python
@@ -229,7 +229,7 @@ print("Ground truth is: ",eval_data[selected_idx]['y'])
     Ground truth is:  ['B-PER', 'I-PER', 'I-PER', 'I-PER']
 
 
-Create data dictionary for the inference. Transform() function in Pipeline and Network applies all the operations on the given data.
+Create a data dictionary for the inference. The `transform()` function in `Pipeline` and `Network` applies all their operations on the given data:
 
 
 ```python

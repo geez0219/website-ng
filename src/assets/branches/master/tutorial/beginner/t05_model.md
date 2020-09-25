@@ -4,15 +4,15 @@
 
 In this tutorial we will cover:
 
-* [Instantiating and Compiling a Model](./tutorials/beginner/t05_model#t05compile)
-* [The Model Function](./tutorials/beginner/t05_model#t05model)
-    * [Custom Models](./tutorials/beginner/t05_model#t05custom)
-    * [FastEstimator Models](./tutorials/beginner/t05_model#t05fe)
-    * [Pre-Trained Models](./tutorials/beginner/t05_model#t05trained)
-* [The Optimizer Function](./tutorials/beginner/t05_model#t05optimizer)
-* [Loading Model Weights](./tutorials/beginner/t05_model#t05weights)
-* [Specifying a Model Name](./tutorials/beginner/t05_model#t05name)
-* [Related Apphub Examples](./tutorials/beginner/t05_model#t05apphub)
+* [Instantiating and Compiling a Model](./tutorials/master/beginner/t05_model#t05compile)
+* [The Model Function](./tutorials/master/beginner/t05_model#t05model)
+    * [Custom Models](./tutorials/master/beginner/t05_model#t05custom)
+    * [FastEstimator Models](./tutorials/master/beginner/t05_model#t05fe)
+    * [Pre-Trained Models](./tutorials/master/beginner/t05_model#t05trained)
+* [The Optimizer Function](./tutorials/master/beginner/t05_model#t05optimizer)
+* [Loading Model Weights](./tutorials/master/beginner/t05_model#t05weights)
+* [Specifying a Model Name](./tutorials/master/beginner/t05_model#t05name)
+* [Related Apphub Examples](./tutorials/master/beginner/t05_model#t05apphub)
 
 <a id='t05compile'></a>
 
@@ -147,7 +147,7 @@ model_tf = fe.build(model_fn=my_model_tf, optimizer_fn=lambda: tf.optimizers.Ada
 model_torch = fe.build(model_fn=my_model_torch, optimizer_fn=lambda x: torch.optim.Adam(params=x, lr=1e-4))
 ```
 
-If a model function returns multiple models, a list of optimizers can be provided. See the **[pggan apphub](https://github.com/fastestimator/fastestimator/tree/master/examples/image_generation/pggan)** for an example with multiple models and optimizers.
+If a model function returns multiple models, a list of optimizers can be provided. See the **[pggan apphub](./examples/master/image_generation/pggan)** for an example with multiple models and optimizers.
 
 <a id='t05weights'></a>
 
@@ -212,12 +212,12 @@ print("Model Name: ", model.model_name)
     Model Name:  LeNet
 
 
-If a model function returns multiple models, a list of model_names can be given. See the **[pggan apphub](https://github.com/fastestimator/fastestimator/tree/master/examples/image_generation/pggan)** for an illustration with multiple models and model names.
+If a model function returns multiple models, a list of model_names can be given. See the **[pggan apphub](./examples/master/image_generation/pggan)** for an illustration with multiple models and model names.
 
 <a id='t05apphub'></a>
 
 ## Apphub Examples
 You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
 
-* [PG-GAN](./examples/image_generation/pggan)
-* [Uncertainty Weighted Loss](https://github.com/fastestimator/fastestimator/tree/master/examples/multi_task_learning/uncertainty_loss)
+* [PG-GAN](./examples/master/image_generation/pggan)
+* [Uncertainty Weighted Loss](./examples/master/multi_task_learning/uncertainty_loss)

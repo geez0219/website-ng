@@ -3,16 +3,16 @@
 ## Overview
 In this tutorial we will introduce the `Operator` - a fundamental building block within FastEstimator. This tutorial is structured as follows:
 
-* [Operator Definition](./tutorials/beginner/t03_operator#t03Def)
-* [Operator Structure](./tutorials/beginner/t03_operator#t03Structure)
-* [Operator Expression](./tutorials/beginner/t03_operator#t03Exp)
-* [Deep Learning Examples using Operators](./tutorials/beginner/t03_operator#t03DL)
+* [Operator Definition](./tutorials/master/beginner/t03_operator#t03Def)
+* [Operator Structure](./tutorials/master/beginner/t03_operator#t03Structure)
+* [Operator Expression](./tutorials/master/beginner/t03_operator#t03Exp)
+* [Deep Learning Examples using Operators](./tutorials/master/beginner/t03_operator#t03DL)
 
 <a id='t03Def'></a>
 
 ## Operator Definition
 
-From [tutorial 1](https://github.com/fastestimator/fastestimator/tree/master/tutorials/beginner/t01_getting_started), we know that the preprocessing in `Pipeline` and the training in `Network` can be divided into several sub-tasks:
+From [tutorial 1](./tutorials/master/beginner/t01_getting_started), we know that the preprocessing in `Pipeline` and the training in `Network` can be divided into several sub-tasks:
 
 * **Pipeline**: `Expand_dim` -> `Minmax`
 * **Network**: `ModelOp` -> `CrossEntropy` -> `UpdateOp`
@@ -28,7 +28,7 @@ An Operator has 3 main components:
 * **outputs**: the key(s) of output data
 * **forward function**: the transformation to be applied
 
-The base class constructor also takes a `mode` argument, but for now we will ignore it since `mode` will be discussed extensively in [tutorial 9](https://github.com/fastestimator/fastestimator/tree/master/tutorials/beginner/t09_inference).
+The base class constructor also takes a `mode` argument, but for now we will ignore it since `mode` will be discussed extensively in [tutorial 9](./tutorials/master/beginner/t09_inference).
 
 
 ```python
@@ -76,17 +76,17 @@ If there are two `Operator`s executing in a sequential manner (e.g, `Minmax` fol
 In this section, we will show you how deep learning tasks can be modularized into combinations of `Operator`s. Please note that the `Operator` expressions we provide in this section are essentially pseudo-code. Links to full python examples are also provided.
 
 ### Image Classification:                                                                
-[MNIST](https://github.com/fastestimator/fastestimator/tree/master/examples/image_classification/mnist)
+[MNIST](./examples/master/image_classification/mnist)
 
 <img src="assets/branches/master/tutorial/../resources/t03_op_cls.png" alt="drawing" width="800"/>
 
 ### DC-GAN:                                                                                  
-[DC-GAN](./examples/image_generation/dcgan)
+[DC-GAN](./examples/master/image_generation/dcgan)
 
 <img src="assets/branches/master/tutorial/../resources/t03_op_dcgan.png" alt="drawing" width="900"/>
 
 ### Adversarial Hardening:                                                                                  
-[FGSM](https://github.com/fastestimator/fastestimator/tree/master/examples/adversarial_training/fgsm)
+[FGSM](./examples/master/adversarial_training/fgsm)
 
 <img src="assets/branches/master/tutorial/../resources/t03_op_adversarial.png" alt="drawing" width="900"/>
 

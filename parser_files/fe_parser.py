@@ -193,7 +193,7 @@ def getClassFunctions(item, mod_dir, branch_name, save_dir):
     return output
 
 
-def generatedocs(repo_dir, save_dir):
+def generatedocs(repo_dir, save_dir, branch):
     """This function loop through files and sub-directories in project directory in top down approach and get python code
     files to extract markdowns. It also prepares path to save markdown file for corresponding python file.
 
@@ -206,7 +206,6 @@ def generatedocs(repo_dir, save_dir):
     main_repo = os.path.join(repo_dir, 'fastestimator')
     head = Repository(repo_dir).head
     #branch_name = head.name.split(sep)[-1]
-    branch_name = 'master'
     fe_path = os.path.abspath(main_repo)
     save_dir = os.path.join(save_dir, 'fe')
     #insert project path to system path to later detect the modules in project
@@ -230,7 +229,7 @@ def generatedocs(repo_dir, save_dir):
                 if not os.path.exists(save_path):
                     os.makedirs(save_path)
                 mdtexts = extractmarkdown(mod, save_path, mod_dir,
-                                            branch_name)
+                                            branch)
     return save_dir
 
 
@@ -299,8 +298,9 @@ def copydirs(src, dst):
 if __name__ == '__main__':
 
     tmp_output = sys.argv[2]
+    branch = sys.argv[3]
     save_dir = os.path.join(tmp_output, 'api')
-    docs_path = generatedocs(sys.argv[1], save_dir)
+    docs_path = generatedocs(sys.argv[1], save_dir, branch)
     struct_json = os.path.join(save_dir, 'structure.json')
     with open(struct_json, 'w') as f:
         fe_json = json.dumps(generate_json(docs_path))
