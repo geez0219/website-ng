@@ -284,6 +284,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   versionChanged(event) {
     this.globalService.setCurrentVersion(event.target.value);
     this.setTabLinks();
+
     this.router.navigate([
       this.getCurrentRoute(this.router.url.split('/')[1], event.target.value),
     ]);

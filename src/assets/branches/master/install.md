@@ -1,5 +1,5 @@
 ## Prerequisites:
-* Python >= 3.6
+* Python >= 3.6XXXXXX
 
 ## Installation:
 ### 1. Install Dependencies:
