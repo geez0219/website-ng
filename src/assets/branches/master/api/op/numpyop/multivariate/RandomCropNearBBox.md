@@ -1,6 +1,22 @@
 ## RandomCropNearBBox
 ```python
-RandomCropNearBBox(*args, **kwargs)
+RandomCropNearBBox(
+	cropping_bbox_in: str,
+	max_part_shift: float=0.3,
+	mode: Union[str, NoneType]=None,
+	image_in: Union[str, NoneType]=None,
+	mask_in: Union[str, NoneType]=None,
+	masks_in: Union[str, NoneType]=None,
+	bbox_in: Union[str, NoneType]=None,
+	keypoints_in: Union[str, NoneType]=None,
+	image_out: Union[str, NoneType]=None,
+	mask_out: Union[str, NoneType]=None,
+	masks_out: Union[str, NoneType]=None,
+	bbox_out: Union[str, NoneType]=None,
+	keypoints_out: Union[str, NoneType]=None,
+	bbox_params: Union[albumentations.core.composition.BboxParams, str, NoneType]=None,
+	keypoint_params: Union[albumentations.core.composition.KeypointParams, str, NoneType]=None
+)
 ```
 Crop bbox from an image with random shift by x,y coordinates.
 

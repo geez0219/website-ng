@@ -1,6 +1,11 @@
 ## TensorOp
 ```python
-TensorOp(inputs:Union[NoneType, str, Iterable[str], Callable]=None, outputs:Union[NoneType, str, Iterable[str]]=None, mode:Union[NoneType, str, Iterable[str]]=None) -> None
+TensorOp(
+	inputs: Union[NoneType, str, Iterable[str], Callable]=None,
+	outputs: Union[NoneType, str, Iterable[str]]=None,
+	mode: Union[NoneType, str, Iterable[str]]=None
+)
+-> None
 ```
 An Operator class which takes and returns tensor data.
 
@@ -8,7 +13,12 @@ These Operators are used in fe.Network to perform graph-based operations like ne
 
 ### forward
 ```python
-forward(self, data:Union[~Tensor, List[~Tensor]], state:Dict[str, Any]) -> Union[~Tensor, List[~Tensor]]
+forward(
+	self,
+	data: Union[~Tensor, List[~Tensor]],
+	state: Dict[str, Any]
+)
+-> Union[~Tensor, List[~Tensor]]
 ```
 A method which will be invoked in order to transform data.
 

@@ -1,6 +1,14 @@
 ## Equalize
 ```python
-Equalize(*args, **kwargs)
+Equalize(
+	inputs: Union[str, Iterable[str]],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	eq_mode: str='cv',
+	by_channels: bool=True,
+	mask: Union[NoneType, numpy.ndarray]=None,
+	mask_params: List[str]=()
+)
 ```
 Equalize the image histogram.
 

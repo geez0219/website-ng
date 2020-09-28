@@ -1,6 +1,10 @@
 ## Repeat
 ```python
-Repeat(*args, **kwargs)
+Repeat(
+	op: fastestimator.op.numpyop.numpyop.NumpyOp,
+	repeat: Union[int, Callable[..., bool]]=1
+)
+-> None
 ```
 Repeat a NumpyOp several times in a row.
 

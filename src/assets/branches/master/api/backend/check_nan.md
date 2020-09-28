@@ -2,7 +2,10 @@
 
 ### check_nan
 ```python
-check_nan(val:Union[int, float, numpy.ndarray, tensorflow.python.framework.ops.Tensor, torch.Tensor]) -> bool
+check_nan(
+	val: Union[int, float, numpy.ndarray, tensorflow.python.framework.ops.Tensor, torch.Tensor]
+)
+-> bool
 ```
 Checks if the input contains NaN values.
 

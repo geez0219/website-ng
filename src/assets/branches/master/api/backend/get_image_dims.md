@@ -2,7 +2,10 @@
 
 ### get_image_dims
 ```python
-get_image_dims(tensor:~Tensor) -> ~Tensor
+get_image_dims(
+	tensor: ~Tensor
+)
+-> ~Tensor
 ```
 Get the `tensor` height, width and channels.
 

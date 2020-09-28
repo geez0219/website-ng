@@ -1,6 +1,9 @@
 ## Traceability
 ```python
-Traceability(*args, **kwargs)
+Traceability(
+	save_path: str,
+	extra_objects: Any=None
+)
 ```
 Automatically generate summary reports of the training.
 

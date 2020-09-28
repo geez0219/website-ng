@@ -2,7 +2,11 @@
 
 ### sort_traces
 ```python
-sort_traces(traces:List[trace.trace.Trace], available_outputs:Union[Set[str], NoneType]=None) -> List[trace.trace.Trace]
+sort_traces(
+	traces: List[trace.trace.Trace],
+	available_outputs: Union[Set[str], NoneType]=None
+)
+-> List[trace.trace.Trace]
 ```
 Sort traces to attempt to resolve any dependency issues.
 

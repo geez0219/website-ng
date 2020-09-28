@@ -1,6 +1,9 @@
 ## Fuse
 ```python
-Fuse(*args, **kwargs)
+Fuse(
+	ops: Union[fastestimator.op.tensorop.tensorop.TensorOp, List[fastestimator.op.tensorop.tensorop.TensorOp]]
+)
+-> None
 ```
 Run a sequence of TensorOps as a single Op.
 

@@ -2,7 +2,14 @@
 
 ### cosine_decay
 ```python
-cosine_decay(time:int, cycle_length:int, init_lr:float, min_lr:float=1e-06, start:int=1, cycle_multiplier:int=1)
+cosine_decay(
+	time: int,
+	cycle_length: int,
+	init_lr: float,
+	min_lr: float=1e-06,
+	start: int=1,
+	cycle_multiplier: int=1
+)
 ```
 Learning rate cosine decay function (using half of cosine curve).
 

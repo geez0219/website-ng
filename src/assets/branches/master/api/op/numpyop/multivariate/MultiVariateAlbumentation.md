@@ -1,6 +1,23 @@
 ## MultiVariateAlbumentation
 ```python
-MultiVariateAlbumentation(*args, **kwargs)
+MultiVariateAlbumentation(
+	func: albumentations.core.transforms_interface.DualTransform,
+	mode: Union[str, NoneType]=None,
+	image_in: Union[str, NoneType]=None,
+	mask_in: Union[str, NoneType]=None,
+	masks_in: Union[str, NoneType]=None,
+	bbox_in: Union[str, NoneType]=None,
+	keypoints_in: Union[str, NoneType]=None,
+	image_out: Union[str, NoneType]=None,
+	mask_out: Union[str, NoneType]=None,
+	masks_out: Union[str, NoneType]=None,
+	bbox_out: Union[str, NoneType]=None,
+	keypoints_out: Union[str, NoneType]=None,
+	bbox_params: Union[albumentations.core.composition.BboxParams, str, NoneType]=None,
+	keypoint_params: Union[albumentations.core.composition.KeypointParams, str, NoneType]=None,
+	extra_in_keys: Union[Dict[str, str], NoneType]=None,
+	extra_out_keys: Union[Dict[str, str], NoneType]=None
+)
 ```
 A base class for the DualTransform albumentation functions.
 

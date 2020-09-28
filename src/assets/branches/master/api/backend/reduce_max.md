@@ -2,7 +2,12 @@
 
 ### reduce_max
 ```python
-reduce_max(tensor:~Tensor, axis:Union[NoneType, int, Sequence[int]]=None, keepdims:bool=False) -> ~Tensor
+reduce_max(
+	tensor: ~Tensor,
+	axis: Union[NoneType, int, Sequence[int]]=None,
+	keepdims: bool=False
+)
+-> ~Tensor
 ```
 Compute the maximum value along a given `axis` of a `tensor`.
 

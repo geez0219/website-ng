@@ -1,6 +1,13 @@
 ## BestModelSaver
 ```python
-BestModelSaver(*args, **kwargs)
+BestModelSaver(
+	model: Union[tensorflow.python.keras.engine.training.Model, torch.nn.modules.module.Module],
+	save_dir: str,
+	metric: Union[str, NoneType]=None,
+	save_best_mode: str='min',
+	load_best_final: bool=False
+)
+-> None
 ```
 Save the weights of best model based on a given evaluation metric.
 

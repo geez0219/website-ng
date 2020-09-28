@@ -1,6 +1,14 @@
 ## RandomShadow
 ```python
-RandomShadow(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterable[str]], mode:Union[NoneType, str, Iterable[str]]=None, shadow_roi:Tuple[float, float, float, float]=(0.0, 0.5, 1.0, 1.0), num_shadows_lower:int=1, num_shadows_upper:int=2, shadow_dimension:int=5)
+RandomShadow(
+	inputs: Union[str, Iterable[str], Callable],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	shadow_roi: Tuple[float, float, float, float]=(0.0, 0.5, 1.0, 1.0),
+	num_shadows_lower: int=1,
+	num_shadows_upper: int=2,
+	shadow_dimension: int=5
+)
 ```
 Add shadows to an image
 

@@ -1,6 +1,12 @@
 ## TestCase
 ```python
-TestCase(*args, **kwargs)
+TestCase(
+	description: str,
+	criteria: Callable[..., Union[bool, numpy.ndarray]],
+	aggregate: bool=True,
+	fail_threshold: int=0
+)
+-> None
 ```
 This class defines the test case that the TestReport trace will take to perform auto-testing.
 
@@ -18,7 +24,10 @@ This class defines the test case that the TestReport trace will take to perform 
 
 ### init_result
 ```python
-init_result(self) -> None
+init_result(
+	self
+)
+-> None
 ```
 Reset the test result.
         

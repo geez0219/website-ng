@@ -2,5 +2,6 @@
 
 ### main
 ```python
-main() -> None
+main()
+-> None
 ```

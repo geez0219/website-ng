@@ -1,6 +1,9 @@
 ## TrainEssential
 ```python
-TrainEssential(*args, **kwargs)
+TrainEssential(
+	monitor_names: Set[str]
+)
+-> None
 ```
 A trace to collect important information during training.
 

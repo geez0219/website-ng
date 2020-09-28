@@ -2,7 +2,12 @@
 
 ### roll
 ```python
-roll(tensor:~Tensor, shift:Union[int, List[int]], axis:Union[int, List[int]]) -> ~Tensor
+roll(
+	tensor: ~Tensor,
+	shift: Union[int, List[int]],
+	axis: Union[int, List[int]]
+)
+-> ~Tensor
 ```
 Roll a `tensor` elements along a given axis.
 

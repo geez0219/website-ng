@@ -1,6 +1,11 @@
 ## ExpandDims
 ```python
-ExpandDims(*args, **kwargs)
+ExpandDims(
+	inputs: Union[str, Iterable[str]],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	axis: int=-1
+)
 ```
 Transpose the data (for example to make it channel-width-height instead of width-height-channel)
 

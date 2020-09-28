@@ -2,7 +2,15 @@
 
 ### plot_logs
 ```python
-plot_logs(experiments:List[fastestimator.summary.summary.Summary], smooth_factor:float=0, share_legend:bool=True, ignore_metrics:Union[Set[str], NoneType]=None, pretty_names:bool=False, include_metrics:Union[Set[str], NoneType]=None) -> matplotlib.figure.Figure
+plot_logs(
+	experiments: List[fastestimator.summary.summary.Summary],
+	smooth_factor: float=0,
+	share_legend: bool=True,
+	ignore_metrics: Union[Set[str], NoneType]=None,
+	pretty_names: bool=False,
+	include_metrics: Union[Set[str], NoneType]=None
+)
+-> matplotlib.figure.Figure
 ```
 A function which will plot experiment histories for comparison viewing / analysis.
 

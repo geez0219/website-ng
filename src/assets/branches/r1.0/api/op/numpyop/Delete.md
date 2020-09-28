@@ -1,6 +1,10 @@
 ## Delete
 ```python
-Delete(keys:Union[str, List[str]], mode:Union[NoneType, str, Iterable[str]]=None) -> None
+Delete(
+	keys: Union[str, List[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None
+)
+-> None
 ```
 Delete key(s) and their associated values from the data dictionary.
 

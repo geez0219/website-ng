@@ -1,6 +1,11 @@
 ## CSVLogger
 ```python
-CSVLogger(filename:str, monitor_names:Union[List[str], str, NoneType]=None, mode:Union[str, Set[str]]=('eval', 'test')) -> None
+CSVLogger(
+	filename: str,
+	monitor_names: Union[List[str], str, NoneType]=None,
+	mode: Union[str, Set[str]]=('eval', 'test')
+)
+-> None
 ```
 Log monitored quantities in a CSV file.
 

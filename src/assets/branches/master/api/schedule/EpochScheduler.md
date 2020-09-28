@@ -1,6 +1,8 @@
 ## EpochScheduler
 ```python
-EpochScheduler(*args, **kwds)
+EpochScheduler(
+	*args, **kwds
+)
 ```
 A scheduler which selects entries based on a specified epoch mapping.
 

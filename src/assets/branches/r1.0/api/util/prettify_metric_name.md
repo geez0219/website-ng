@@ -2,7 +2,10 @@
 
 ### prettify_metric_name
 ```python
-prettify_metric_name(metric:str) -> str
+prettify_metric_name(
+	metric: str
+)
+-> str
 ```
 Add spaces to camel case words, then swap _ for space, and capitalize each word.
 

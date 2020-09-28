@@ -2,7 +2,11 @@
 
 ### pad_batch
 ```python
-pad_batch(batch:List[MutableMapping[str, Any]], pad_value:Union[float, int]) -> None
+pad_batch(
+	batch: List[MutableMapping[str, Any]],
+	pad_value: Union[float, int]
+)
+-> None
 ```
 A function to pad a batch of data in-place by appending to the ends of the tensors.
 

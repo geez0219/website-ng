@@ -2,7 +2,10 @@
 
 ### configure_test_parser
 ```python
-configure_test_parser(subparsers:'A...') -> None
+configure_test_parser(
+	subparsers: 'A...'
+)
+-> None
 ```
 Add a testing parser to an existing argparser.
 

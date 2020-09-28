@@ -1,6 +1,10 @@
 ## CSVDataset
 ```python
-CSVDataset(file_path:str, delimiter:str=',', **kwargs) -> None
+CSVDataset(
+	file_path: str,
+	delimiter: str=',', **kwargs
+)
+-> None
 ```
 A dataset from a CSV file.
 

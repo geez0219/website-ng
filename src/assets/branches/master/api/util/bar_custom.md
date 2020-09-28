@@ -2,7 +2,12 @@
 
 ### bar_custom
 ```python
-bar_custom(current:float, total:float, width:int=80) -> str
+bar_custom(
+	current: float,
+	total: float,
+	width: int=80
+)
+-> str
 ```
 Return progress bar string for given values in one of three styles depending on available width.
 

@@ -2,7 +2,11 @@
 
 ### matmul
 ```python
-matmul(a:~Tensor, b:~Tensor) -> ~Tensor
+matmul(
+	a: ~Tensor,
+	b: ~Tensor
+)
+-> ~Tensor
 ```
 Perform matrix multiplication on `a` and `b`.
 

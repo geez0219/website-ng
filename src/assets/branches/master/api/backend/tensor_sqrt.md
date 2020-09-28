@@ -2,7 +2,10 @@
 
 ### tensor_sqrt
 ```python
-tensor_sqrt(tensor:~Tensor) -> ~Tensor
+tensor_sqrt(
+	tensor: ~Tensor
+)
+-> ~Tensor
 ```
 Computes element-wise square root of tensor elements.
 

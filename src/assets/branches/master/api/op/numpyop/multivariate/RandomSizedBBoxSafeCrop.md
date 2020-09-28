@@ -1,6 +1,21 @@
 ## RandomSizedBBoxSafeCrop
 ```python
-RandomSizedBBoxSafeCrop(*args, **kwargs)
+RandomSizedBBoxSafeCrop(
+	height: int,
+	width: int,
+	erosion_rate: float=0.0,
+	interpolation: int=1,
+	mode: Union[str, NoneType]=None,
+	image_in: Union[str, NoneType]=None,
+	mask_in: Union[str, NoneType]=None,
+	masks_in: Union[str, NoneType]=None,
+	bbox_in: Union[str, NoneType]=None,
+	image_out: Union[str, NoneType]=None,
+	mask_out: Union[str, NoneType]=None,
+	masks_out: Union[str, NoneType]=None,
+	bbox_out: Union[str, NoneType]=None,
+	bbox_params: Union[albumentations.core.composition.BboxParams, str, NoneType]=None
+)
 ```
 Crop a random part of the input and rescale it to some size without loss of bboxes.
 

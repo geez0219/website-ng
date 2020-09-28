@@ -2,7 +2,12 @@
 
 ### update_model
 ```python
-update_model(model:Union[tensorflow.python.keras.engine.training.Model, torch.nn.modules.module.Module], loss:Union[tensorflow.python.framework.ops.Tensor, torch.Tensor], tape:Union[tensorflow.python.eager.backprop.GradientTape, NoneType]=None, retain_graph:bool=True)
+update_model(
+	model: Union[tensorflow.python.keras.engine.training.Model, torch.nn.modules.module.Module],
+	loss: Union[tensorflow.python.framework.ops.Tensor, torch.Tensor],
+	tape: Union[tensorflow.python.eager.backprop.GradientTape, NoneType]=None,
+	retain_graph: bool=True
+)
 ```
 Update `model` weights based on a given `loss`.
 

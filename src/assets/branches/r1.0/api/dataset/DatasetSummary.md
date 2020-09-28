@@ -1,6 +1,12 @@
 ## DatasetSummary
 ```python
-DatasetSummary(num_instances:int, keys:Dict[str, dataset.dataset.KeySummary], num_classes:Union[int, NoneType]=None, class_key_mapping:Union[Dict[str, Any], NoneType]=None, class_key:Union[str, NoneType]=None)
+DatasetSummary(
+	num_instances: int,
+	keys: Dict[str, dataset.dataset.KeySummary],
+	num_classes: Union[int, NoneType]=None,
+	class_key_mapping: Union[Dict[str, Any], NoneType]=None,
+	class_key: Union[str, NoneType]=None
+)
 ```
 This class contains information summarizing a dataset object.
 

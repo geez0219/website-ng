@@ -1,6 +1,10 @@
 ## TerminateOnNaN
 ```python
-TerminateOnNaN(*args, **kwargs)
+TerminateOnNaN(
+	monitor_names: Union[NoneType, str, Iterable[str]]=None,
+	mode: Union[NoneType, str, Set[str]]=None
+)
+-> None
 ```
 End Training if a NaN value is detected.
 

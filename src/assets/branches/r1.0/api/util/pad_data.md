@@ -2,7 +2,12 @@
 
 ### pad_data
 ```python
-pad_data(data:numpy.ndarray, target_shape:Tuple[int, ...], pad_value:Union[float, int]) -> numpy.ndarray
+pad_data(
+	data: numpy.ndarray,
+	target_shape: Tuple[int, ...],
+	pad_value: Union[float, int]
+)
+-> numpy.ndarray
 ```
 Pad `data` by appending `pad_value`s along it's dimensions until the `target_shape` is reached.
 

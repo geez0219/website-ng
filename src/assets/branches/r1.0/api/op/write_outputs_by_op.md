@@ -2,7 +2,12 @@
 
 ### write_outputs_by_op
 ```python
-write_outputs_by_op(op:op.op.Op, store:MutableMapping[str, Any], outputs:Any) -> None
+write_outputs_by_op(
+	op: op.op.Op,
+	store: MutableMapping[str, Any],
+	outputs: Any
+)
+-> None
 ```
 Write `outputs` from an `op` forward function into the data dictionary.
 

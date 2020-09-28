@@ -1,6 +1,13 @@
 ## LabeledDirDataset
 ```python
-LabeledDirDataset(root_dir:str, data_key:str='x', label_key:str='y', label_mapping:Union[Dict[str, Any], NoneType]=None, file_extension:Union[str, NoneType]=None) -> None
+LabeledDirDataset(
+	root_dir: str,
+	data_key: str='x',
+	label_key: str='y',
+	label_mapping: Union[Dict[str, Any], NoneType]=None,
+	file_extension: Union[str, NoneType]=None
+)
+-> None
 ```
 A dataset which reads files from a folder hierarchy like root/class(/es)/data.file.
 
@@ -15,7 +22,10 @@ A dataset which reads files from a folder hierarchy like root/class(/es)/data.fi
 
 ### summary
 ```python
-summary(self) -> fastestimator.dataset.dataset.DatasetSummary
+summary(
+	self
+)
+-> fastestimator.dataset.dataset.DatasetSummary
 ```
 Generate a summary representation of this dataset.
 

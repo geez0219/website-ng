@@ -1,6 +1,11 @@
 ## Argmax
 ```python
-Argmax(inputs:Union[str, List[str]], outputs:Union[str, List[str]], axis:int=0, mode:Union[NoneType, str, Iterable[str]]='eval')
+Argmax(
+	inputs: Union[str, List[str]],
+	outputs: Union[str, List[str]],
+	axis: int=0,
+	mode: Union[NoneType, str, Iterable[str]]='eval'
+)
 ```
 Get the argmax from a tensor.
 

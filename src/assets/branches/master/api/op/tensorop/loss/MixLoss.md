@@ -1,6 +1,10 @@
 ## MixLoss
 ```python
-MixLoss(loss:fastestimator.op.tensorop.loss.loss.LossOp, lam:str, average_loss:bool=True)
+MixLoss(
+	loss: fastestimator.op.tensorop.loss.loss.LossOp,
+	lam: str,
+	average_loss: bool=True
+)
 ```
 Loss class to compute mixiup and cutmix losses.
 

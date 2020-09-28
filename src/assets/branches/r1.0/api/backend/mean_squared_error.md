@@ -2,7 +2,11 @@
 
 ### mean_squared_error
 ```python
-mean_squared_error(y_true:~Tensor, y_pred:~Tensor) -> ~Tensor
+mean_squared_error(
+	y_true: ~Tensor,
+	y_pred: ~Tensor
+)
+-> ~Tensor
 ```
 Calculate mean squared error between two tensors.
 

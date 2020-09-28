@@ -1,3 +1,4 @@
+
 # Named Entity Recognition using BERT Fine-Tuning
 
 For downstream NLP tasks such as question answering, named entity recognition, and language inference, models built on pre-trained word representations tend to perform better. BERT, which fine tunes a deep bi-directional representation on a series of tasks, achieves state-of-the-art results. Unlike traditional transformers, BERT is trained on "masked language modeling," which means that it is allowed to see the whole sentence and does not limit the context it can take into account.
@@ -267,8 +268,3 @@ print("Predictions: ", [get_key(pred) for pred in predictions])
 
     Predictions:  ['O', 'O', 'O', 'O', 'B-TITLE', 'I-TITLE', 'I-TITLE', None, None, None, None, None, None, None, None, None, None, None, None, None]
 
-
-
-```python
-
-```

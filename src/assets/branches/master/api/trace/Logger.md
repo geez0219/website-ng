@@ -1,6 +1,7 @@
 ## Logger
 ```python
-Logger(*args, **kwargs)
+Logger()
+-> None
 ```
 A Trace that prints log messages.
 

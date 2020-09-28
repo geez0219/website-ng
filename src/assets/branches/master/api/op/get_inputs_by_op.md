@@ -2,7 +2,11 @@
 
 ### get_inputs_by_op
 ```python
-get_inputs_by_op(op:op.op.Op, store:Mapping[str, Any]) -> Any
+get_inputs_by_op(
+	op: op.op.Op,
+	store: Mapping[str, Any]
+)
+-> Any
 ```
 Retrieve the necessary input data from the data dictionary in order to run an `op`.
 

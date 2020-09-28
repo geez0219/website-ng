@@ -1,6 +1,17 @@
 ## TensorBoard
 ```python
-TensorBoard(log_dir:str='logs', update_freq:Union[NoneType, int, str]=100, write_graph:bool=True, write_images:Union[NoneType, str, List[str]]=None, weight_histogram_freq:Union[NoneType, int, str]=None, paint_weights:bool=False, write_embeddings:Union[NoneType, str, List[str]]=None, embedding_labels:Union[NoneType, str, List[str]]=None, embedding_images:Union[NoneType, str, List[str]]=None) -> None
+TensorBoard(
+	log_dir: str='logs',
+	update_freq: Union[NoneType, int, str]=100,
+	write_graph: bool=True,
+	write_images: Union[NoneType, str, List[str]]=None,
+	weight_histogram_freq: Union[NoneType, int, str]=None,
+	paint_weights: bool=False,
+	write_embeddings: Union[NoneType, str, List[str]]=None,
+	embedding_labels: Union[NoneType, str, List[str]]=None,
+	embedding_images: Union[NoneType, str, List[str]]=None
+)
+-> None
 ```
 Output data for use in TensorBoard.
 

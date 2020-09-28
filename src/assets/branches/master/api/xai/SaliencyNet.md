@@ -1,6 +1,11 @@
 ## SaliencyNet
 ```python
-SaliencyNet(*args, **kwargs)
+SaliencyNet(
+	model: ~Model,
+	model_inputs: Union[str, Sequence[str]],
+	model_outputs: Union[str, Sequence[str]],
+	outputs: Union[str, List[str]]='saliency'
+)
 ```
 A class to generate saliency masks from a given model.
 
@@ -14,7 +19,12 @@ A class to generate saliency masks from a given model.
 
 ### get_integrated_masks
 ```python
-get_integrated_masks(self, batch:Dict[str, Any], nsamples:int=25) -> Dict[str, Union[~Tensor, numpy.ndarray]]
+get_integrated_masks(
+	self,
+	batch: Dict[str, Any],
+	nsamples: int=25
+)
+-> Dict[str, Union[~Tensor, numpy.ndarray]]
 ```
 Generates integrated greyscale saliency mask(s) from a given `batch` of data.
 
@@ -31,7 +41,11 @@ See https://arxiv.org/abs/1703.01365 for background on the IntegratedGradient me
 
 ### get_masks
 ```python
-get_masks(self, batch:Dict[str, Any]) -> Dict[str, Union[~Tensor, numpy.ndarray]]
+get_masks(
+	self,
+	batch: Dict[str, Any]
+)
+-> Dict[str, Union[~Tensor, numpy.ndarray]]
 ```
 Generates greyscale saliency mask(s) from a given `batch` of data.
 
@@ -45,7 +59,15 @@ Generates greyscale saliency mask(s) from a given `batch` of data.
 
 ### get_smoothed_masks
 ```python
-get_smoothed_masks(self, batch:Dict[str, Any], stdev_spread:float=0.15, nsamples:int=25, nintegration:Union[int, NoneType]=None, magnitude:bool=True) -> Dict[str, Union[~Tensor, numpy.ndarray]]
+get_smoothed_masks(
+	self,
+	batch: Dict[str, Any],
+	stdev_spread: float=0.15,
+	nsamples: int=25,
+	nintegration: Union[int, NoneType]=None,
+	magnitude: bool=True
+)
+-> Dict[str, Union[~Tensor, numpy.ndarray]]
 ```
 Generates smoothed greyscale saliency mask(s) from a given `batch` of data.
 

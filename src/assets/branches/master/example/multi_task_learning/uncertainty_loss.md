@@ -1,3 +1,4 @@
+
 # Multi-Task Learning using Uncertainty Weighted Loss 
 
 Multi-task learning is popular in many deep learning applications. For example, in object detection the network performs both classification and localization for each object. As a result, the final loss will be a combination of classification loss and regression loss. The most frequent way of combining two losses is by simply adding them together: 

@@ -1,6 +1,11 @@
 ## UNetDecoderBlock
 ```python
-UNetDecoderBlock(in_channels:int, mid_channels:int, out_channels:int) -> None
+UNetDecoderBlock(
+	in_channels: int,
+	mid_channels: int,
+	out_channels: int
+)
+-> None
 ```
 A UNet decoder block.
 

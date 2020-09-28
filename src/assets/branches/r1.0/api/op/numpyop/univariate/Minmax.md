@@ -1,6 +1,11 @@
 ## Minmax
 ```python
-Minmax(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterable[str]], mode:Union[NoneType, str, Iterable[str]]=None, epsilon:float=1e-07)
+Minmax(
+	inputs: Union[str, Iterable[str], Callable],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	epsilon: float=1e-07
+)
 ```
 Normalize data using the minmax method.
 

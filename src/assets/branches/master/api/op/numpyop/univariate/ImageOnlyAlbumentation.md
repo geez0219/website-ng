@@ -1,6 +1,11 @@
 ## ImageOnlyAlbumentation
 ```python
-ImageOnlyAlbumentation(*args, **kwargs)
+ImageOnlyAlbumentation(
+	func: albumentations.core.transforms_interface.ImageOnlyTransform,
+	inputs: Union[str, List[str]],
+	outputs: Union[str, List[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None
+)
 ```
 Operators which apply to single images (as opposed to images + masks or images + bounding boxes).
 

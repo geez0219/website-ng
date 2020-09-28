@@ -1,6 +1,12 @@
 ## MCC
 ```python
-MCC(true_key:str, pred_key:str, mode:Union[str, Set[str]]=('eval', 'test'), output_name:str='mcc') -> None
+MCC(
+	true_key: str,
+	pred_key: str,
+	mode: Union[str, Set[str]]=('eval', 'test'),
+	output_name: str='mcc'
+)
+-> None
 ```
 A trace which computes the Matthews Correlation Coefficient for a given set of predictions.
 

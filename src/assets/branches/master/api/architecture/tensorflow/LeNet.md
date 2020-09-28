@@ -2,7 +2,11 @@
 
 ### LeNet
 ```python
-LeNet(input_shape:Tuple[int, int, int]=(28, 28, 1), classes:int=10) -> tensorflow.python.keras.engine.training.Model
+LeNet(
+	input_shape: Tuple[int, int, int]=(28, 28, 1),
+	classes: int=10
+)
+-> tensorflow.python.keras.engine.training.Model
 ```
 A standard LeNet implementation in TensorFlow.
 

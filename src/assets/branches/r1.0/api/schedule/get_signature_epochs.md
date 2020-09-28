@@ -2,7 +2,12 @@
 
 ### get_signature_epochs
 ```python
-get_signature_epochs(items:List[Any], total_epochs:int, mode:Union[str, NoneType]=None) -> List[int]
+get_signature_epochs(
+	items: List[Any],
+	total_epochs: int,
+	mode: Union[str, NoneType]=None
+)
+-> List[int]
 ```
 Find all epochs of changes due to schedulers.
 

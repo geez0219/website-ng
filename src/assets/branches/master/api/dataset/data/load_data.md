@@ -2,7 +2,11 @@
 
 ### load_data
 ```python
-load_data(root_dir:Union[str, NoneType]=None, seq_length:int=100) -> Tuple[fastestimator.dataset.numpy_dataset.NumpyDataset, List[str]]
+load_data(
+	root_dir: Union[str, NoneType]=None,
+	seq_length: int=100
+)
+-> Tuple[fastestimator.dataset.numpy_dataset.NumpyDataset, List[str]]
 ```
 Load and return the Shakespeare dataset.
 

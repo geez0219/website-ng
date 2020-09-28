@@ -1,6 +1,8 @@
 ## Flag
 ```python
-Flag(val:bool=False)
+Flag(
+	val: bool=False
+)
 ```
 A mutable wrapper around a boolean.
 

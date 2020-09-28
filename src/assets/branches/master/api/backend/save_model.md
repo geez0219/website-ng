@@ -2,7 +2,12 @@
 
 ### save_model
 ```python
-save_model(model:Union[tensorflow.python.keras.engine.training.Model, torch.nn.modules.module.Module], save_dir:str, model_name:Union[str, NoneType]=None, save_optimizer:bool=False)
+save_model(
+	model: Union[tensorflow.python.keras.engine.training.Model, torch.nn.modules.module.Module],
+	save_dir: str,
+	model_name: Union[str, NoneType]=None,
+	save_optimizer: bool=False
+)
 ```
 Save `model` weights to a specific directory.
 

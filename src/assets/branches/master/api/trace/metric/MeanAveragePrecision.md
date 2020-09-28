@@ -1,6 +1,11 @@
 ## MeanAveragePrecision
 ```python
-MeanAveragePrecision(*args, **kwargs)
+MeanAveragePrecision(
+	num_classes: int, true_key='bbox',
+	pred_key: str='pred',
+	mode: str='eval', output_name=('mAP', 'AP50', 'AP75')
+)
+-> None
 ```
 Calculate COCO mean average precision.
 
@@ -18,13 +23,21 @@ The value of 'bbox' has shape (batch_size, num_bbox, 5). The 5 is [x1, y1, w, h,
 
 ### accumulate
 ```python
-accumulate(self) -> None
+accumulate(
+	self
+)
+-> None
 ```
 Generate precision-recall curve.
 
 ### compute_iou
 ```python
-compute_iou(self, det:numpy.ndarray, gt:numpy.ndarray) -> numpy.ndarray
+compute_iou(
+	self,
+	det: numpy.ndarray,
+	gt: numpy.ndarray
+)
+-> numpy.ndarray
 ```
 Compute intersection over union.
 
@@ -41,7 +54,12 @@ We leverage `maskUtils.iou`.
 
 ### evaluate_img
 ```python
-evaluate_img(self, cat_id:int, img_id:int) -> Dict
+evaluate_img(
+	self,
+	cat_id: int,
+	img_id: int
+)
+-> Dict
 ```
 Find gt matches for det given one image and one category.
 
@@ -56,19 +74,29 @@ Find gt matches for det given one image and one category.
 
 ### on_batch_begin
 ```python
-on_batch_begin(self, data:fastestimator.util.data.Data)
+on_batch_begin(
+	self,
+	data: fastestimator.util.data.Data
+)
 ```
 Reset instance variables.
 
 ### on_epoch_begin
 ```python
-on_epoch_begin(self, data:fastestimator.util.data.Data)
+on_epoch_begin(
+	self,
+	data: fastestimator.util.data.Data
+)
 ```
 Reset instance variables.
 
 ### summarize
 ```python
-summarize(self, iou:float=None) -> float
+summarize(
+	self,
+	iou: float=None
+)
+-> float
 ```
 Compute average precision given one intersection union threshold.
 

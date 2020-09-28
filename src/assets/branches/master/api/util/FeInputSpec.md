@@ -1,6 +1,9 @@
 ## FeInputSpec
 ```python
-FeInputSpec(model_input:Any, model:~Model)
+FeInputSpec(
+	model_input: Any,
+	model: ~Model
+)
 ```
 A class to keep track of a model's input so that fake inputs can be generated.
 
@@ -14,7 +17,10 @@ This class is intentionally not @traceable.
 
 ### get_dummy_input
 ```python
-get_dummy_input(self) -> Any
+get_dummy_input(
+	self
+)
+-> Any
 ```
 Get fake input for the model.
 

@@ -2,7 +2,11 @@
 
 ### cast
 ```python
-cast(data:Union[Collection, ~Tensor], dtype:str) -> Union[Collection, ~Tensor]
+cast(
+	data: Union[Collection, ~Tensor],
+	dtype: str
+)
+-> Union[Collection, ~Tensor]
 ```
 Cast the data to a specific data type recursively.
 

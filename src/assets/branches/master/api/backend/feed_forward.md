@@ -2,7 +2,12 @@
 
 ### feed_forward
 ```python
-feed_forward(model:Union[tensorflow.python.keras.engine.training.Model, torch.nn.modules.module.Module], x:Union[~Tensor, numpy.ndarray], training:bool=True) -> ~Tensor
+feed_forward(
+	model: Union[tensorflow.python.keras.engine.training.Model, torch.nn.modules.module.Module],
+	x: Union[~Tensor, numpy.ndarray],
+	training: bool=True
+)
+-> ~Tensor
 ```
 Run a forward step on a given model.
 

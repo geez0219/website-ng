@@ -1,6 +1,12 @@
 ## DirDataset
 ```python
-DirDataset(*args, **kwargs)
+DirDataset(
+	root_dir: str,
+	data_key: str='x',
+	file_extension: Union[str, NoneType]=None,
+	recursive_search: bool=True
+)
+-> None
 ```
 A dataset which reads files from a folder hierarchy like root/data.file.
 

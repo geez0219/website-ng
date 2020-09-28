@@ -1,6 +1,12 @@
 ## RandomGamma
 ```python
-RandomGamma(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterable[str]], mode:Union[NoneType, str, Iterable[str]]=None, gamma_limit:Union[float, Tuple[float, float]]=(80, 120), eps:float=1e-07)
+RandomGamma(
+	inputs: Union[str, Iterable[str], Callable],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	gamma_limit: Union[float, Tuple[float, float]]=(80, 120),
+	eps: float=1e-07
+)
 ```
 Apply a gamma transform to an image.
 

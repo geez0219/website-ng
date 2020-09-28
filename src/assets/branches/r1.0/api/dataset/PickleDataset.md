@@ -1,6 +1,9 @@
 ## PickleDataset
 ```python
-PickleDataset(file_path:str) -> None
+PickleDataset(
+	file_path: str
+)
+-> None
 ```
 A dataset from a pickle file.
 

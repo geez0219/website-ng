@@ -1,6 +1,18 @@
 ## RandomRain
 ```python
-RandomRain(*args, **kwargs)
+RandomRain(
+	inputs: Union[str, Iterable[str]],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	slant_lower: int=-10,
+	slant_upper: int=10,
+	drop_length: int=20,
+	drop_width: int=1,
+	drop_color: Tuple[int, int, int]=(200, 200, 200),
+	blur_value: int=7,
+	brightness_coefficient: float=0.7,
+	rain_type: Union[str, NoneType]=None
+)
 ```
 Add rain to an image
 

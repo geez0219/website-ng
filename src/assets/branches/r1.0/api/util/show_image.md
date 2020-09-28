@@ -2,7 +2,15 @@
 
 ### show_image
 ```python
-show_image(im:Union[numpy.ndarray, ~Tensor], axis:matplotlib.axes._axes.Axes=None, fig:matplotlib.figure.Figure=None, title:Union[str, NoneType]=None, color_map:str='inferno', stack_depth:int=0) -> Union[matplotlib.figure.Figure, NoneType]
+show_image(
+	im: Union[numpy.ndarray, ~Tensor],
+	axis: matplotlib.axes._axes.Axes=None,
+	fig: matplotlib.figure.Figure=None,
+	title: Union[str, NoneType]=None,
+	color_map: str='inferno',
+	stack_depth: int=0
+)
+-> Union[matplotlib.figure.Figure, NoneType]
 ```
 Plots a given image onto an axis.
 

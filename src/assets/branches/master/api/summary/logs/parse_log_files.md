@@ -2,7 +2,17 @@
 
 ### parse_log_files
 ```python
-parse_log_files(file_paths:List[str], log_extension:Union[str, NoneType]='.txt', smooth_factor:float=0, save:bool=False, save_path:Union[str, NoneType]=None, ignore_metrics:Union[Set[str], NoneType]=None, share_legend:bool=True, pretty_names:bool=False) -> None
+parse_log_files(
+	file_paths: List[str],
+	log_extension: Union[str, NoneType]='.txt',
+	smooth_factor: float=0,
+	save: bool=False,
+	save_path: Union[str, NoneType]=None,
+	ignore_metrics: Union[Set[str], NoneType]=None,
+	share_legend: bool=True,
+	pretty_names: bool=False
+)
+-> None
 ```
 Parse one or more log files for graphing.
 

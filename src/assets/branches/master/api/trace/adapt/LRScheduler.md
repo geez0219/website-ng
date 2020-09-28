@@ -1,6 +1,10 @@
 ## LRScheduler
 ```python
-LRScheduler(*args, **kwargs)
+LRScheduler(
+	model: Union[tensorflow.python.keras.engine.training.Model, torch.nn.modules.module.Module],
+	lr_fn: Callable[[int], float]
+)
+-> None
 ```
 Learning rate scheduler trace that changes the learning rate while training.
 

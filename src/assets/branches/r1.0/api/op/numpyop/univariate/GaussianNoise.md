@@ -1,6 +1,12 @@
 ## GaussianNoise
 ```python
-GaussianNoise(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterable[str]], mode:Union[NoneType, str, Iterable[str]]=None, var_limit:Union[float, Tuple[float, float]]=(10.0, 50.0), mean:float=0.0)
+GaussianNoise(
+	inputs: Union[str, Iterable[str], Callable],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	var_limit: Union[float, Tuple[float, float]]=(10.0, 50.0),
+	mean: float=0.0
+)
 ```
 Apply gaussian noise to the image
 

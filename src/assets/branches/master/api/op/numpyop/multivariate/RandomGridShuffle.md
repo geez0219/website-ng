@@ -1,6 +1,15 @@
 ## RandomGridShuffle
 ```python
-RandomGridShuffle(*args, **kwargs)
+RandomGridShuffle(
+	grid: Tuple[int, int]=(3, 3),
+	mode: Union[str, NoneType]=None,
+	image_in: Union[str, NoneType]=None,
+	mask_in: Union[str, NoneType]=None,
+	masks_in: Union[str, NoneType]=None,
+	image_out: Union[str, NoneType]=None,
+	mask_out: Union[str, NoneType]=None,
+	masks_out: Union[str, NoneType]=None
+)
 ```
 Divide an image into a grid and randomly shuffle the grid's cells.
 

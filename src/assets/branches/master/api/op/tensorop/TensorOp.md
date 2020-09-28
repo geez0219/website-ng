@@ -1,6 +1,11 @@
 ## TensorOp
 ```python
-TensorOp(*args, **kwargs)
+TensorOp(
+	inputs: Union[NoneType, str, Iterable[str]]=None,
+	outputs: Union[NoneType, str, Iterable[str]]=None,
+	mode: Union[NoneType, str, Iterable[str]]=None
+)
+-> None
 ```
 An Operator class which takes and returns tensor data.
 
@@ -8,7 +13,11 @@ These Operators are used in fe.Network to perform graph-based operations like ne
 
 ### build
 ```python
-build(self, framework:str) -> None
+build(
+	self,
+	framework: str
+)
+-> None
 ```
 A method which will be invoked during Network instantiation.
 
@@ -22,7 +31,11 @@ framework is known.
 
 ### fe_retain_graph
 ```python
-fe_retain_graph(self, retain:Union[bool, NoneType]=None) -> Union[bool, NoneType]
+fe_retain_graph(
+	self,
+	retain: Union[bool, NoneType]=None
+)
+-> Union[bool, NoneType]
 ```
 A method to get / set whether this Op should retain network gradients after computing them.
 
@@ -40,7 +53,12 @@ performed by this Op should retain or discard the graph respectively afterwards.
 
 ### forward
 ```python
-forward(self, data:Union[~Tensor, List[~Tensor]], state:Dict[str, Any]) -> Union[~Tensor, List[~Tensor]]
+forward(
+	self,
+	data: Union[~Tensor, List[~Tensor]],
+	state: Dict[str, Any]
+)
+-> Union[~Tensor, List[~Tensor]]
 ```
 A method which will be invoked in order to transform data.
 
@@ -57,7 +75,10 @@ This method will be invoked on batches of data.
 
 ### get_fe_loss_keys
 ```python
-get_fe_loss_keys(self) -> Set[str]
+get_fe_loss_keys(
+	self
+)
+-> Set[str]
 ```
 A method to get any loss keys held by this Op.
 
@@ -70,7 +91,10 @@ about losses, for example by the Network in get_loss_keys().
 
 ### get_fe_models
 ```python
-get_fe_models(self) -> Set[~Model]
+get_fe_models(
+	self
+)
+-> Set[~Model]
 ```
 A method to get any models held by this Op.
 

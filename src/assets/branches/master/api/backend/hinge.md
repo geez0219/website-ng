@@ -2,7 +2,11 @@
 
 ### hinge
 ```python
-hinge(y_true:~Tensor, y_pred:~Tensor) -> ~Tensor
+hinge(
+	y_true: ~Tensor,
+	y_pred: ~Tensor
+)
+-> ~Tensor
 ```
 Calculate the hinge loss between two tensors.
 

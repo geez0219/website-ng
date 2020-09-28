@@ -1,6 +1,13 @@
 ## HueSaturationValue
 ```python
-HueSaturationValue(*args, **kwargs)
+HueSaturationValue(
+	inputs: Union[str, Iterable[str]],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	hue_shift_limit: Union[int, Tuple[int, int]]=20,
+	sat_shift_limit: Union[int, Tuple[int, int]]=30,
+	val_shift_limit: Union[int, Tuple[int, int]]=20
+)
 ```
 Randomly modify the hue, saturation, and value of an image.
 

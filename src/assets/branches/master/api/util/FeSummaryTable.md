@@ -1,6 +1,12 @@
 ## FeSummaryTable
 ```python
-FeSummaryTable(name:str, fe_id:fastestimator.util.util.FEID, target_type:Type, path:Union[NoneType, str, pylatex.base_classes.latex_object.LatexObject]=None, kwargs:Union[Dict[str, Any], NoneType]=None, **fields:Any)
+FeSummaryTable(
+	name: str,
+	fe_id: fastestimator.util.util.FEID,
+	target_type: Type,
+	path: Union[NoneType, str, pylatex.base_classes.latex_object.LatexObject]=None,
+	kwargs: Union[Dict[str, Any], NoneType]=None, **fields: Any
+)
 ```
 A class containing summaries of traceability information.
 
@@ -18,7 +24,14 @@ This class is intentionally not @traceable.
 
 ### render_table
 ```python
-render_table(self, doc:pylatex.document.Document, name_override:Union[pylatex.base_classes.latex_object.LatexObject, NoneType]=None, toc_ref:Union[str, NoneType]=None, extra_rows:Union[List[Tuple[str, Any]], NoneType]=None) -> None
+render_table(
+	self,
+	doc: pylatex.document.Document,
+	name_override: Union[pylatex.base_classes.latex_object.LatexObject, NoneType]=None,
+	toc_ref: Union[str, NoneType]=None,
+	extra_rows: Union[List[Tuple[str, Any]], NoneType]=None
+)
+-> None
 ```
 Write this table into a LaTeX document.
 

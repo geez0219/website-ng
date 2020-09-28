@@ -1,6 +1,9 @@
 ## TorchNetwork
 ```python
-TorchNetwork(ops:Iterable[Union[fastestimator.op.tensorop.tensorop.TensorOp, fastestimator.schedule.schedule.Scheduler[fastestimator.op.tensorop.tensorop.TensorOp]]]) -> None
+TorchNetwork(
+	ops: Iterable[Union[fastestimator.op.tensorop.tensorop.TensorOp, fastestimator.schedule.schedule.Scheduler[fastestimator.op.tensorop.tensorop.TensorOp]]]
+)
+-> None
 ```
 An extension of BaseNetwork for PyTorch models.
 
@@ -11,7 +14,14 @@ An extension of BaseNetwork for PyTorch models.
 
 ### load_epoch
 ```python
-load_epoch(self, mode:str, epoch:int, output_keys:Union[Set[str], NoneType]=None, warmup:bool=False) -> None
+load_epoch(
+	self,
+	mode: str,
+	epoch: int,
+	output_keys: Union[Set[str], NoneType]=None,
+	warmup: bool=False
+)
+-> None
 ```
 Prepare the network to run a given epoch and mode.
 
@@ -28,7 +38,11 @@ every epoch. This also moves all of the necessary models from the CPU onto the G
 
 ### run_step
 ```python
-run_step(self, batch:Dict[str, Any]) -> Tuple[Dict[str, Any], Dict[str, Any]]
+run_step(
+	self,
+	batch: Dict[str, Any]
+)
+-> Tuple[Dict[str, Any], Dict[str, Any]]
 ```
 Run a forward step through the Network on a batch of data.
 
@@ -45,7 +59,13 @@ Implementations of this method within derived classes should handle bringing the
 
 ### transform
 ```python
-transform(self, data:Dict[str, Any], mode:str, epoch:int=1) -> Dict[str, Any]
+transform(
+	self,
+	data: Dict[str, Any],
+	mode: str,
+	epoch: int=1
+)
+-> Dict[str, Any]
 ```
 Run a forward step through the Network on an element of data.
 
@@ -61,7 +81,10 @@ Run a forward step through the Network on an element of data.
 
 ### unload_epoch
 ```python
-unload_epoch(self) -> None
+unload_epoch(
+	self
+)
+-> None
 ```
 Clean up the network after running an epoch.
 

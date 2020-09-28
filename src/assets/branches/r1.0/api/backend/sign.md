@@ -2,7 +2,10 @@
 
 ### sign
 ```python
-sign(tensor:~Tensor) -> ~Tensor
+sign(
+	tensor: ~Tensor
+)
+-> ~Tensor
 ```
 Compute the sign of a tensor.
 

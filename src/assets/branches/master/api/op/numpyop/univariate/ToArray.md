@@ -1,6 +1,11 @@
 ## ToArray
 ```python
-ToArray(*args, **kwargs)
+ToArray(
+	inputs: Union[str, Iterable[str]],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	dtype: Union[str, NoneType]=None
+)
 ```
 Convert data to a numpy array.
 

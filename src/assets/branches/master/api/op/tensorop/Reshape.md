@@ -1,6 +1,12 @@
 ## Reshape
 ```python
-Reshape(*args, **kwargs)
+Reshape(
+	inputs: Union[str, List[str]],
+	outputs: Union[str, List[str]],
+	shape: Union[int, Tuple[int, ...]],
+	mode: Union[NoneType, str, Iterable[str]]='!infer'
+)
+-> None
 ```
 Reshape a input tensor to conform to a given shape.
 

@@ -1,6 +1,12 @@
 ## MixUpBatch
 ```python
-MixUpBatch(inputs:Union[str, Iterable[str]], outputs:Iterable[str], mode:Union[NoneType, str, Iterable[str]]='train', alpha:float=1.0, shared_beta:bool=True)
+MixUpBatch(
+	inputs: Union[str, Iterable[str]],
+	outputs: Iterable[str],
+	mode: Union[NoneType, str, Iterable[str]]='train',
+	alpha: float=1.0,
+	shared_beta: bool=True
+)
 ```
 MixUp augmentation for tensors.
 

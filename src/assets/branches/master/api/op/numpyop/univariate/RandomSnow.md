@@ -1,6 +1,13 @@
 ## RandomSnow
 ```python
-RandomSnow(*args, **kwargs)
+RandomSnow(
+	inputs: Union[str, Iterable[str]],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	snow_point_lower: float=0.1,
+	snow_point_upper: float=0.3,
+	brightness_coeff: float=2.5
+)
 ```
 Bleach out some pixels to simulate snow.
 

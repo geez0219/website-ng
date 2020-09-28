@@ -1,6 +1,14 @@
 ## SiameseDirDataset
 ```python
-SiameseDirDataset(*args, **kwargs)
+SiameseDirDataset(
+	root_dir: str,
+	data_key_left: str='x_a',
+	data_key_right: str='x_b',
+	label_key: str='y',
+	percent_matching_data: float=0.5,
+	label_mapping: Union[Dict[str, Any], NoneType]=None,
+	file_extension: Union[str, NoneType]=None
+)
 ```
 A dataset which returns pairs of data.
 
@@ -23,7 +31,11 @@ rather than by data instance index.
 
 ### one_shot_trial
 ```python
-one_shot_trial(self, n:int) -> Tuple[List[str], List[str]]
+one_shot_trial(
+	self,
+	n: int
+)
+-> Tuple[List[str], List[str]]
 ```
 Generate one-shot trial data.
 
@@ -39,7 +51,10 @@ The similarity should be highest between the index 0 elements of the arrays.
 
 ### summary
 ```python
-summary(self) -> fastestimator.dataset.dataset.DatasetSummary
+summary(
+	self
+)
+-> fastestimator.dataset.dataset.DatasetSummary
 ```
 Generate a summary representation of this dataset.
 

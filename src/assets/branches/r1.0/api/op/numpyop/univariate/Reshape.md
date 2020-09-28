@@ -1,6 +1,11 @@
 ## Reshape
 ```python
-Reshape(shape:Union[int, Tuple[int, ...]], inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterable[str]], mode:Union[NoneType, str, Iterable[str]]=None)
+Reshape(
+	shape: Union[int, Tuple[int, ...]],
+	inputs: Union[str, Iterable[str], Callable],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None
+)
 ```
 An Op which re-shapes data to a target shape.
 

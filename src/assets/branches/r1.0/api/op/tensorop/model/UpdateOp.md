@@ -1,6 +1,10 @@
 ## UpdateOp
 ```python
-UpdateOp(model:Union[tensorflow.python.keras.engine.training.Model, torch.nn.modules.module.Module], loss_name:str, mode:Union[NoneType, str, Iterable[str]]='train')
+UpdateOp(
+	model: Union[tensorflow.python.keras.engine.training.Model, torch.nn.modules.module.Module],
+	loss_name: str,
+	mode: Union[NoneType, str, Iterable[str]]='train'
+)
 ```
 This class performs updates to a model's weights based on the loss.
 

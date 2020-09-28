@@ -1,6 +1,8 @@
 ## ReflectionPadding2D
 ```python
-ReflectionPadding2D(padding:Tuple[int, int]=(1, 1)) -> None
+ReflectionPadding2D(
+	*args, **kwargs
+)
 ```
 A layer for performing Reflection Padding on 2D arrays.
 
@@ -24,6 +26,10 @@ y = m(x)  # ~ [[1, 0, 1, 2, 1], [4, 3, 4, 5, 4], [7, 6, 7, 8, 7]]
 
 ### compute_output_shape
 ```python
-compute_output_shape(self, s:Tuple[int, int, int, int]) -> Tuple[int, int, int, int]
+compute_output_shape(
+	self,
+	s: Tuple[int, int, int, int]
+)
+-> Tuple[int, int, int, int]
 ```
 If you are using "channels_last" configuration

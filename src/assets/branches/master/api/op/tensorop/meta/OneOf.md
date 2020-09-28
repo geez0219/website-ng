@@ -1,6 +1,9 @@
 ## OneOf
 ```python
-OneOf(*args, **kwargs)
+OneOf(
+	*tensor_ops: fastestimator.op.tensorop.tensorop.TensorOp
+)
+-> None
 ```
 Perform one of several possible NumpyOps.
 
@@ -11,7 +14,12 @@ Perform one of several possible NumpyOps.
 
 ### forward
 ```python
-forward(self, data:Union[~Tensor, List[~Tensor]], state:Dict[str, Any]) -> Union[~Tensor, List[~Tensor]]
+forward(
+	self,
+	data: Union[~Tensor, List[~Tensor]],
+	state: Dict[str, Any]
+)
+-> Union[~Tensor, List[~Tensor]]
 ```
 Execute a randomly selected op from the list of `numpy_ops`.
 

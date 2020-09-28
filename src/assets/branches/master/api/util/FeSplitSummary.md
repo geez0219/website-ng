@@ -8,7 +8,12 @@ This class is intentionally not @traceable.
 
 ### add_split
 ```python
-add_split(self, parent:Union[fastestimator.util.util.FEID, str], fraction:str) -> None
+add_split(
+	self,
+	parent: Union[fastestimator.util.util.FEID, str],
+	fraction: str
+)
+-> None
 ```
 Record another split on this dataset.
 
@@ -20,7 +25,10 @@ Record another split on this dataset.
 
 ### dumps
 ```python
-dumps(self) -> str
+dumps(
+	self
+)
+-> str
 ```
 Generate a LaTeX formatted representation of this object.
 

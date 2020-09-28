@@ -1,6 +1,10 @@
 ## ChannelShuffle
 ```python
-ChannelShuffle(*args, **kwargs)
+ChannelShuffle(
+	inputs: Union[str, Iterable[str]],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None
+)
 ```
 Randomly rearrange channels of an image.
 

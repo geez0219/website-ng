@@ -1,6 +1,9 @@
 ## DefaultKeyDict
 ```python
-DefaultKeyDict(default:Callable[[Any], Any], **kwargs) -> None
+DefaultKeyDict(
+	default: Callable[[Any], Any], **kwargs
+)
+-> None
 ```
 Like collections.defaultdict but it passes the key argument to the default function.
 

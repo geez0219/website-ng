@@ -1,6 +1,11 @@
 ## LossOp
 ```python
-LossOp(inputs:Union[str, List[str]]=None, outputs:List[str]=None, mode:Union[NoneType, str, Iterable[str]]=None, average_loss:bool=True)
+LossOp(
+	inputs: Union[str, List[str]]=None,
+	outputs: List[str]=None,
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	average_loss: bool=True
+)
 ```
 Abstract base LossOp class.
 

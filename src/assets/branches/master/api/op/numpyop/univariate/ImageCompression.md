@@ -1,6 +1,13 @@
 ## ImageCompression
 ```python
-ImageCompression(*args, **kwargs)
+ImageCompression(
+	inputs: Union[str, Iterable[str]],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	quality_lower: float=99,
+	quality_upper: float=100,
+	compression_type: albumentations.augmentations.transforms.ImageCompression.ImageCompressionType=<ImageCompressionType.JPEG:  0>
+)
 ```
 Decrease compression of an image.
 

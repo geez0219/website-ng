@@ -2,7 +2,10 @@
 
 ### tensor_round
 ```python
-tensor_round(tensor:~Tensor) -> ~Tensor
+tensor_round(
+	tensor: ~Tensor
+)
+-> ~Tensor
 ```
 Element-wise rounds the values of the `tensor` to nearest integer.
 

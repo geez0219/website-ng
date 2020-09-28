@@ -1,6 +1,11 @@
 ## BatchDataset
 ```python
-BatchDataset(*args, **kwargs)
+BatchDataset(
+	datasets: Union[fastestimator.dataset.dataset.FEDataset, Iterable[fastestimator.dataset.dataset.FEDataset]],
+	num_samples: Union[int, Iterable[int]],
+	probability: Union[Iterable[float], NoneType]=None
+)
+-> None
 ```
 BatchDataset extracts a list (batch) of data from a single dataset or multiple datasets.
 
@@ -36,7 +41,10 @@ This dataset helps to enable several use-cases:
 
 ### reset_index_maps
 ```python
-reset_index_maps(self) -> None
+reset_index_maps(
+	self
+)
+-> None
 ```
 Rearrange the index maps of this BatchDataset.
 
@@ -45,7 +53,10 @@ basis datasets.
 
 ### split
 ```python
-split(self, *fractions:Union[float, int, Iterable[int]]) -> Union[_ForwardRef('BatchDataset'), List[_ForwardRef('BatchDataset')]]
+split(
+	self, *fractions: Union[float, int, Iterable[int]])
+-> Union[_ForwardRef('BatchDataset'), List[_ForwardRef('BatchDataset'
+)]]
 ```
 Split this dataset into multiple smaller datasets.
 
@@ -83,7 +94,10 @@ This function enables several types of splitting:
 
 ### summary
 ```python
-summary(self) -> fastestimator.dataset.dataset.DatasetSummary
+summary(
+	self
+)
+-> fastestimator.dataset.dataset.DatasetSummary
 ```
 Generate a summary representation of this dataset.
 

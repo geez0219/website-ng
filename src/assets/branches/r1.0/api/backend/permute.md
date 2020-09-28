@@ -2,7 +2,11 @@
 
 ### permute
 ```python
-permute(tensor:~Tensor, permutation:List[int]) -> ~Tensor
+permute(
+	tensor: ~Tensor,
+	permutation: List[int]
+)
+-> ~Tensor
 ```
 Perform the specified `permutation` on the axes of a given `tensor`.
 

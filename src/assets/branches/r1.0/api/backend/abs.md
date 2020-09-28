@@ -2,7 +2,10 @@
 
 ### abs
 ```python
-abs(tensor:~Tensor) -> ~Tensor
+abs(
+	tensor: ~Tensor
+)
+-> ~Tensor
 ```
 Compute the absolute value of a tensor.
 

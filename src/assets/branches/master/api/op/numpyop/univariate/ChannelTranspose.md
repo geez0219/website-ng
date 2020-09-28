@@ -1,6 +1,11 @@
 ## ChannelTranspose
 ```python
-ChannelTranspose(*args, **kwargs)
+ChannelTranspose(
+	inputs: Union[str, Iterable[str]],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	axes: List[int]=(2, 0, 1)
+)
 ```
 Transpose the data (for example to make it channel-width-height instead of width-height-channel).
 

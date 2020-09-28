@@ -1,6 +1,10 @@
 ## Sometimes
 ```python
-Sometimes(*args, **kwargs)
+Sometimes(
+	numpy_op: fastestimator.op.numpyop.numpyop.NumpyOp,
+	prob: float=0.5
+)
+-> None
 ```
 Perform a NumpyOp with a given probability.
 
@@ -17,7 +21,12 @@ invoking the Sometimes.
 
 ### forward
 ```python
-forward(self, data:List[numpy.ndarray], state:Dict[str, Any]) -> List[numpy.ndarray]
+forward(
+	self,
+	data: List[numpy.ndarray],
+	state: Dict[str, Any]
+)
+-> List[numpy.ndarray]
 ```
 Execute the wrapped operator a certain fraction of the time.
 

@@ -1,6 +1,10 @@
 ## RestoreWizard
 ```python
-RestoreWizard(directory:str, frequency:int=1) -> None
+RestoreWizard(
+	directory: str,
+	frequency: int=1
+)
+-> None
 ```
 A trace that can backup and load your entire training status.
 

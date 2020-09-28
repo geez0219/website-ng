@@ -1,6 +1,11 @@
 ## Op
 ```python
-Op(*args, **kwargs)
+Op(
+	inputs: Union[NoneType, str, Iterable[str]]=None,
+	outputs: Union[NoneType, str, Iterable[str]]=None,
+	mode: Union[NoneType, str, Iterable[str]]=None
+)
+-> None
 ```
 A base class for FastEstimator Operators.
 

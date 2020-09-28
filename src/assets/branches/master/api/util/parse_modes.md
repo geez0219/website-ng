@@ -2,7 +2,10 @@
 
 ### parse_modes
 ```python
-parse_modes(modes:Set[str]) -> Set[str]
+parse_modes(
+	modes: Set[str]
+)
+-> Set[str]
 ```
 A function to determine which modes to run on based on a set of modes potentially containing blacklist values.
 

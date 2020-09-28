@@ -1,6 +1,11 @@
 ## MotionBlur
 ```python
-MotionBlur(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterable[str]], mode:Union[NoneType, str, Iterable[str]]=None, blur_limit:Union[int, Tuple[int, int]]=7)
+MotionBlur(
+	inputs: Union[str, Iterable[str], Callable],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	blur_limit: Union[int, Tuple[int, int]]=7
+)
 ```
 Motion Blur the image with a randomly-sized kernel.
 

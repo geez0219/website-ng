@@ -2,7 +2,14 @@
 
 ### get_gradient
 ```python
-get_gradient(target:~Tensor, sources:Union[Iterable[~Tensor], ~Tensor], higher_order:bool=False, tape:Union[tensorflow.python.eager.backprop.GradientTape, NoneType]=None, retain_graph:bool=True) -> Union[Iterable[~Tensor], ~Tensor]
+get_gradient(
+	target: ~Tensor,
+	sources: Union[Iterable[~Tensor], ~Tensor],
+	higher_order: bool=False,
+	tape: Union[tensorflow.python.eager.backprop.GradientTape, NoneType]=None,
+	retain_graph: bool=True
+)
+-> Union[Iterable[~Tensor], ~Tensor]
 ```
 Calculate gradients of a target w.r.t sources.
 

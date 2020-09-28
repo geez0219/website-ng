@@ -1,6 +1,9 @@
 ## InMemoryDataset
 ```python
-InMemoryDataset(*args, **kwargs)
+InMemoryDataset(
+	data: Dict[int, Dict[str, Any]]
+)
+-> None
 ```
 A dataset abstraction to simplify the implementation of datasets which hold their data in memory.
 
@@ -11,7 +14,10 @@ A dataset abstraction to simplify the implementation of datasets which hold thei
 
 ### summary
 ```python
-summary(self) -> dataset.dataset.DatasetSummary
+summary(
+	self
+)
+-> dataset.dataset.DatasetSummary
 ```
 Generate a summary representation of this dataset.
 

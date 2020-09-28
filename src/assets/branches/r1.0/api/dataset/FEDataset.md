@@ -1,12 +1,17 @@
 ## FEDataset
 ```python
-FEDataset()
+FEDataset(
+	
+)
 ```
 
 
 ### split
 ```python
-split(self, *fractions:Union[float, int, Iterable[int]]) -> Union[_ForwardRef('FEDataset'), List[_ForwardRef('FEDataset')]]
+split(
+	self, *fractions: Union[float, int, Iterable[int]])
+-> Union[_ForwardRef('FEDataset'), List[_ForwardRef('FEDataset'
+)]]
 ```
 Split this dataset into multiple smaller datasets.
 
@@ -40,7 +45,10 @@ This function enables several types of splitting:
 
 ### summary
 ```python
-summary(self) -> dataset.dataset.DatasetSummary
+summary(
+	self
+)
+-> dataset.dataset.DatasetSummary
 ```
 Generate a summary representation of this dataset.
 

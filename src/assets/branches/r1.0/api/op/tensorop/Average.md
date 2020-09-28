@@ -1,6 +1,11 @@
 ## Average
 ```python
-Average(inputs:Union[str, Iterable[str]], outputs:str, mode:Union[NoneType, str, Iterable[str]]=None) -> None
+Average(
+	inputs: Union[str, Iterable[str]],
+	outputs: str,
+	mode: Union[NoneType, str, Iterable[str]]=None
+)
+-> None
 ```
 Compute the average across tensors.
 

@@ -2,7 +2,11 @@
 
 ### gather_from_batch
 ```python
-gather_from_batch(tensor:~Tensor, indices:~Tensor) -> ~Tensor
+gather_from_batch(
+	tensor: ~Tensor,
+	indices: ~Tensor
+)
+-> ~Tensor
 ```
 Gather specific indices from a batch of data.
 

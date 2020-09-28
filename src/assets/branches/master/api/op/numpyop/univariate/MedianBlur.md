@@ -1,6 +1,11 @@
 ## MedianBlur
 ```python
-MedianBlur(*args, **kwargs)
+MedianBlur(
+	inputs: Union[str, Iterable[str]],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	blur_limit: Union[int, Tuple[int, int]]=5
+)
 ```
 Blur the image with median filter of random aperture size.
 

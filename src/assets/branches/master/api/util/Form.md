@@ -1,6 +1,8 @@
 ## Form
 ```python
-Form(*, options=None, arguments=None, start_arguments=None, **kwargs)
+Form(
+	*, options=None, arguments=None, start_arguments=None, **kwargs
+)
 ```
 A class to allow Form elements.
 

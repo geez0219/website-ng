@@ -1,6 +1,11 @@
 ## Gather
 ```python
-Gather(inputs:Union[str, List[str]], outputs:Union[str, List[str]], indices:Union[NoneType, str, List[str]]=None, mode:Union[NoneType, str, Iterable[str]]='eval')
+Gather(
+	inputs: Union[str, List[str]],
+	outputs: Union[str, List[str]],
+	indices: Union[NoneType, str, List[str]]=None,
+	mode: Union[NoneType, str, Iterable[str]]='eval'
+)
 ```
 Gather values from an input tensor.
 

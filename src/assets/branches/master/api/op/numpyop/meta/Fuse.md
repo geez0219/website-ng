@@ -1,6 +1,9 @@
 ## Fuse
 ```python
-Fuse(*args, **kwargs)
+Fuse(
+	ops: Union[fastestimator.op.numpyop.numpyop.NumpyOp, List[fastestimator.op.numpyop.numpyop.NumpyOp]]
+)
+-> None
 ```
 Run a sequence of NumpyOps as a single Op.
 

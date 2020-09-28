@@ -1,6 +1,12 @@
 ## TestReport
 ```python
-TestReport(*args, **kwargs)
+TestReport(
+	test_cases: Union[trace.io.test_report.TestCase, List[trace.io.test_report.TestCase]],
+	save_path: str,
+	test_title: Union[str, NoneType]=None,
+	data_id: str=None
+)
+-> None
 ```
 Automate testing and report generation.
 
@@ -16,7 +22,8 @@ This trace will evaluate all its `test_cases` during test mode and generate a PD
 
 ### check_pdf_dependency
 ```python
-check_pdf_dependency() -> None
+check_pdf_dependency()
+-> None
 ```
 Check dependency of PDF-generating packages.
 

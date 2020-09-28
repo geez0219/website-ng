@@ -1,6 +1,11 @@
 ## LambdaOp
 ```python
-LambdaOp(*args, **kwargs)
+LambdaOp(
+	fn: Callable,
+	inputs: Union[NoneType, str, Iterable[str]]=None,
+	outputs: Union[NoneType, str, Iterable[str]]=None,
+	mode: Union[NoneType, str, Iterable[str]]=None
+)
 ```
 An Operator that performs any specified function as forward function.
 

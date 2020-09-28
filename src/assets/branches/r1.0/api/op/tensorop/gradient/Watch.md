@@ -1,6 +1,10 @@
 ## Watch
 ```python
-Watch(inputs:Union[NoneType, str, Iterable[str]], mode:Union[NoneType, str, Iterable[str]]=None) -> None
+Watch(
+	inputs: Union[NoneType, str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None
+)
+-> None
 ```
 Watch one or more tensors for later gradient computation.
 

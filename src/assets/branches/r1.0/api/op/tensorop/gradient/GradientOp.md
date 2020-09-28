@@ -1,6 +1,11 @@
 ## GradientOp
 ```python
-GradientOp(inputs:Union[str, List[str]], finals:Union[str, List[str]], outputs:Union[str, List[str]], mode:Union[NoneType, str, Iterable[str]]='eval')
+GradientOp(
+	inputs: Union[str, List[str]],
+	finals: Union[str, List[str]],
+	outputs: Union[str, List[str]],
+	mode: Union[NoneType, str, Iterable[str]]='eval'
+)
 ```
 Return the gradients of finals w.r.t. inputs.
 

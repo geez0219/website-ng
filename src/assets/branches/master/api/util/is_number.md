@@ -2,7 +2,10 @@
 
 ### is_number
 ```python
-is_number(arg:str) -> bool
+is_number(
+	arg: str
+)
+-> bool
 ```
 Check if a given string can be converted into a number.
 

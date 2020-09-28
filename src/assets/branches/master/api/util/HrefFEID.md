@@ -1,6 +1,12 @@
 ## HrefFEID
 ```python
-HrefFEID(fe_id:fastestimator.util.util.FEID, name:str, link_prefix:str='tbl', id_in_name:bool=True, bold_name:bool=False)
+HrefFEID(
+	fe_id: fastestimator.util.util.FEID,
+	name: str,
+	link_prefix: str='tbl',
+	id_in_name: bool=True,
+	bold_name: bool=False
+)
 ```
 A class to represent a colored and underlined hyperref based on a given fe_id.
 

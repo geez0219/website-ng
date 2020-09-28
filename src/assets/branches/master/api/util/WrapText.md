@@ -1,6 +1,9 @@
 ## WrapText
 ```python
-WrapText(data:Union[str, int, float], threshold:int)
+WrapText(
+	data: Union[str, int, float],
+	threshold: int
+)
 ```
 A class to convert strings or numbers to wrappable latex representation.
 
@@ -19,7 +22,10 @@ long. This fixes an issue which prevents the first element placed into a latex X
 
 ### dumps
 ```python
-dumps(self) -> str
+dumps(
+	self
+)
+-> str
 ```
 Get a string representation of this cell.
 

@@ -1,6 +1,9 @@
 ## NumpyDataset
 ```python
-NumpyDataset(data:Dict[str, Union[numpy.ndarray, List]]) -> None
+NumpyDataset(
+	data: Dict[str, Union[numpy.ndarray, List]]
+)
+-> None
 ```
 A dataset constructed from a dictionary of Numpy data or list of data.
 

@@ -1,6 +1,12 @@
 ## Onehot
 ```python
-Onehot(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterable[str]], num_classes:int, label_smoothing:float=0.0, mode:Union[NoneType, str, Iterable[str]]=None)
+Onehot(
+	inputs: Union[str, Iterable[str], Callable],
+	outputs: Union[str, Iterable[str]],
+	num_classes: int,
+	label_smoothing: float=0.0,
+	mode: Union[NoneType, str, Iterable[str]]=None
+)
 ```
 Transform an integer label to one-hot-encoding.
 

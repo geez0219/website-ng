@@ -2,7 +2,11 @@
 
 ### to_tensor
 ```python
-to_tensor(data:Union[Collection, ~Tensor], target_type:str) -> Union[Collection, ~Tensor]
+to_tensor(
+	data: Union[Collection, ~Tensor],
+	target_type: str
+)
+-> Union[Collection, ~Tensor]
 ```
 Convert tensors within a collection of `data` to a given `target_type` recursively.
 

@@ -2,7 +2,11 @@
 
 ### reshape
 ```python
-reshape(tensor:~Tensor, shape:List[int]) -> ~Tensor
+reshape(
+	tensor: ~Tensor,
+	shape: List[int]
+)
+-> ~Tensor
 ```
 Reshape a `tensor` to conform to a given shape.
 

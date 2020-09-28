@@ -1,6 +1,11 @@
 ## Solarize
 ```python
-Solarize(*args, **kwargs)
+Solarize(
+	inputs: Union[str, Iterable[str]],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	threshold: Union[int, Tuple[int, int], float, Tuple[float, float]]=128
+)
 ```
 Invert all pixel values above a threshold.
 

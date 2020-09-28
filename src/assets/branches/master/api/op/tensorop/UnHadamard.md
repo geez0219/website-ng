@@ -1,6 +1,13 @@
 ## UnHadamard
 ```python
-UnHadamard(*args, **kwargs)
+UnHadamard(
+	inputs: Union[str, List[str]],
+	outputs: Union[str, List[str]],
+	n_classes: int,
+	code_length: Union[int, NoneType]=None,
+	mode: Union[NoneType, str, Iterable[str]]=None
+)
+-> None
 ```
 Convert hadamard encoded class representations into onehot probabilities.
 

@@ -1,6 +1,11 @@
 ## MeanSquaredError
 ```python
-MeanSquaredError(*args, **kwargs)
+MeanSquaredError(
+	inputs: Union[NoneType, str, Iterable[str]]=None,
+	outputs: Union[NoneType, str, Iterable[str]]=None,
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	average_loss: bool=True
+)
 ```
 Calculate the mean squared error loss between two tensors.
 

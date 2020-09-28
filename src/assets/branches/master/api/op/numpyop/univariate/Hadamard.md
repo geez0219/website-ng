@@ -1,6 +1,13 @@
 ## Hadamard
 ```python
-Hadamard(*args, **kwargs)
+Hadamard(
+	inputs: Union[str, List[str]],
+	outputs: Union[str, List[str]],
+	n_classes: int,
+	code_length: Union[int, NoneType]=None,
+	mode: Union[NoneType, str, Iterable[str]]=None
+)
+-> None
 ```
 Convert integer labels into hadamard code representations.
 

@@ -1,6 +1,10 @@
 ## Sometimes
 ```python
-Sometimes(*args, **kwargs)
+Sometimes(
+	tensor_op: fastestimator.op.tensorop.tensorop.TensorOp,
+	prob: float=0.5
+)
+-> None
 ```
 Perform a NumpyOp with a given probability.
 
@@ -17,7 +21,12 @@ invoking the Sometimes.
 
 ### forward
 ```python
-forward(self, data:List[~Tensor], state:Dict[str, Any]) -> List[~Tensor]
+forward(
+	self,
+	data: List[~Tensor],
+	state: Dict[str, Any]
+)
+-> List[~Tensor]
 ```
 Execute the wrapped operator a certain fraction of the time.
 

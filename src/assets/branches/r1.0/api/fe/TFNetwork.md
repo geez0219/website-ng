@@ -1,13 +1,20 @@
 ## TFNetwork
 ```python
-TFNetwork(ops:Iterable[Union[fastestimator.op.tensorop.tensorop.TensorOp, fastestimator.schedule.schedule.Scheduler[fastestimator.op.tensorop.tensorop.TensorOp]]]) -> None
+TFNetwork(
+	ops: Iterable[Union[fastestimator.op.tensorop.tensorop.TensorOp, fastestimator.schedule.schedule.Scheduler[fastestimator.op.tensorop.tensorop.TensorOp]]]
+)
+-> None
 ```
 An extension of BaseNetwork for TensorFlow models.
     
 
 ### run_step
 ```python
-run_step(self, batch:Dict[str, Any]) -> Tuple[Dict[str, Any], Dict[str, Any]]
+run_step(
+	self,
+	batch: Dict[str, Any]
+)
+-> Tuple[Dict[str, Any], Dict[str, Any]]
 ```
 Run a forward step through the Network on a batch of data.
 
@@ -24,7 +31,13 @@ Implementations of this method within derived classes should handle bringing the
 
 ### transform
 ```python
-transform(self, data:Dict[str, Any], mode:str, epoch:int=1) -> Dict[str, Any]
+transform(
+	self,
+	data: Dict[str, Any],
+	mode: str,
+	epoch: int=1
+)
+-> Dict[str, Any]
 ```
 Run a forward step through the Network on an element of data.
 

@@ -1,6 +1,22 @@
 ## RandomScale
 ```python
-RandomScale(*args, **kwargs)
+RandomScale(
+	scale_limit: Union[float, Tuple[float, float]]=0.1,
+	interpolation: int=1,
+	mode: Union[str, NoneType]=None,
+	image_in: Union[str, NoneType]=None,
+	mask_in: Union[str, NoneType]=None,
+	masks_in: Union[str, NoneType]=None,
+	bbox_in: Union[str, NoneType]=None,
+	keypoints_in: Union[str, NoneType]=None,
+	image_out: Union[str, NoneType]=None,
+	mask_out: Union[str, NoneType]=None,
+	masks_out: Union[str, NoneType]=None,
+	bbox_out: Union[str, NoneType]=None,
+	keypoints_out: Union[str, NoneType]=None,
+	bbox_params: Union[albumentations.core.composition.BboxParams, str, NoneType]=None,
+	keypoint_params: Union[albumentations.core.composition.KeypointParams, str, NoneType]=None
+)
 ```
 Randomly resize the input. Output image size is different from the input image size.
 

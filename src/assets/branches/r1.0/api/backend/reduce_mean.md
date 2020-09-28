@@ -2,7 +2,12 @@
 
 ### reduce_mean
 ```python
-reduce_mean(tensor:~Tensor, axis:Union[NoneType, int, Sequence[int]]=None, keepdims:bool=False) -> ~Tensor
+reduce_mean(
+	tensor: ~Tensor,
+	axis: Union[NoneType, int, Sequence[int]]=None,
+	keepdims: bool=False
+)
+-> ~Tensor
 ```
 Compute the mean value along a given `axis` of a `tensor`.
 
