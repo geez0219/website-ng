@@ -20,6 +20,9 @@ TUTORIALS_DIR = 'tutorials'
 INSTALL_DIR = 'install'
 MAIN_DIR = 'main'
 
+# maximum times to try in the soup
+MAX_SOUP_TRY = 50
+
 # change this to stage env for crawling in pipeline
 LOCAL_URL = 'http://localhost:4200'
 
@@ -28,7 +31,7 @@ options = webdriver.ChromeOptions()
 options.add_argument('--ignore-certificate-errors')
 options.add_argument('--headless')
 driver = webdriver.Chrome(
-    executable_path="/mnt/c/geez/chromedriver/chromedriver.exe",
+    executable_path="/home/geez219/angular_project/chromedriver",
     chrome_options=options)
 
 
@@ -64,17 +67,21 @@ def extract_examples(url, out_dir):
         markdown = soup.find('markdown')
         h1 = soup.find('h1')
 
-        while markdown is None:
-            print("markdown is None. Try to find again")
+        try_count = 0
+        while markdown is None and try_count <= MAX_SOUP_TRY:
+            print(f"markdown of {link} is None. Try to find again ({try_count}th time)")
             driver.get(LOCAL_URL + link)
             soup = BeautifulSoup(driver.page_source, 'lxml')
             markdown = soup.find('markdown')
+            try_count += 1
 
-        while h1 is None:
-            print("h1 is None. Try to find again")
+        try_count = 0
+        while h1 is None and try_count <= MAX_SOUP_TRY:
+            print(f"h1 of {link} is None. Try to find again ({try_count}th time)")
             driver.get(LOCAL_URL + link)
             soup = BeautifulSoup(driver.page_source, 'lxml')
             h1 = soup.find('h1')
+            try_count += 1
 
         item['link'] = FE_URL + link
         item['body'] = clean_body(markdown.text)
@@ -103,17 +110,21 @@ def extract_tutorial(url, out_dir):
         markdown = soup.find('markdown')
         h1 = soup.find('h1')
 
-        while markdown is None:
-            print("markdown is None. Try to find again")
+        try_count = 0
+        while markdown is None and try_count <= MAX_SOUP_TRY:
+            print(f"markdown of {link} is None. Try to find again ({try_count}th time)")
             driver.get(LOCAL_URL + link)
             soup = BeautifulSoup(driver.page_source, 'lxml')
             markdown = soup.find('markdown')
+            try_count += 1
 
-        while h1 is None:
-            print("h1 is None. Try to find again")
+        try_count = 0
+        while h1 is None and try_count <= MAX_SOUP_TRY:
+            print(f"h1 of {link} is None. Try to find again ({try_count}th time)")
             driver.get(LOCAL_URL + link)
             soup = BeautifulSoup(driver.page_source, 'lxml')
             h1 = soup.find('h1')
+            try_count += 1
 
         item['link'] = FE_URL + link
         item['body'] = clean_body(markdown.text)
@@ -139,11 +150,14 @@ def extract_api(url, out_dir):
     for link in links:
         item = {}
         markdown = None
-        while markdown is None:
-            print("markdown is None. Try to find again")
+
+        try_count = 0
+        while markdown is None and try_count <= MAX_SOUP_TRY:
+            print(f"markdown of {link} is None. Try to find again ({try_count}th time)")
             driver.get(LOCAL_URL + link)
             soup = BeautifulSoup(driver.page_source, 'lxml')
             markdown = soup.find('markdown')
+            try_count += 1
 
         item['link'] = FE_URL + link
         item['body'] = clean_body(markdown.text)
