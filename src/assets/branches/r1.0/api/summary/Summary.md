@@ -1,6 +1,9 @@
 ## Summary
 ```python
-Summary(name:Union[str, NoneType]) -> None
+Summary(
+	name: Union[str, NoneType]
+)
+-> None
 ```
 A summary object that records training history.
 
@@ -11,7 +14,10 @@ A summary object that records training history.
 
 ### merge
 ```python
-merge(self, other:'Summary')
+merge(
+	self,
+	other: 'Summary'
+)
 ```
 Merge another `Summary` into this one.
 

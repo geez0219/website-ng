@@ -1,6 +1,11 @@
 ## ReadMat
 ```python
-ReadMat(file:str, keys:Union[str, Iterable[str]], mode:Union[NoneType, str, Iterable[str]]=None, parent_path:str='')
+ReadMat(
+	file: str,
+	keys: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	parent_path: str=''
+)
 ```
 A class for reading .mat files from disk.
 

@@ -1,6 +1,12 @@
 ## ReadImage
 ```python
-ReadImage(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterable[str]], mode:Union[NoneType, str, Iterable[str]]=None, parent_path:str='', color_flag:Union[str, int]=1)
+ReadImage(
+	inputs: Union[str, Iterable[str], Callable],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	parent_path: str='',
+	color_flag: Union[str, int]=1
+)
 ```
 A class for reading png or jpg images from disk.
 

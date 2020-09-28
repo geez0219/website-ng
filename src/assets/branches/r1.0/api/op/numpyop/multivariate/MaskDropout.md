@@ -1,6 +1,17 @@
 ## MaskDropout
 ```python
-MaskDropout(max_objects:Union[int, Tuple[int, int]]=1, image_fill_value:Union[int, float, str]=0, mask_fill_value:Union[int, float]=0, mode:Union[str, NoneType]=None, image_in:Union[str, NoneType]=None, mask_in:Union[str, NoneType]=None, masks_in:Union[str, NoneType]=None, image_out:Union[str, NoneType]=None, mask_out:Union[str, NoneType]=None, masks_out:Union[str, NoneType]=None)
+MaskDropout(
+	max_objects: Union[int, Tuple[int, int]]=1,
+	image_fill_value: Union[int, float, str]=0,
+	mask_fill_value: Union[int, float]=0,
+	mode: Union[str, NoneType]=None,
+	image_in: Union[str, NoneType]=None,
+	mask_in: Union[str, NoneType]=None,
+	masks_in: Union[str, NoneType]=None,
+	image_out: Union[str, NoneType]=None,
+	mask_out: Union[str, NoneType]=None,
+	masks_out: Union[str, NoneType]=None
+)
 ```
 Zero out objects from an image + mask pair.
 

@@ -1,6 +1,13 @@
 ## RandomFog
 ```python
-RandomFog(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterable[str]], mode:Union[NoneType, str, Iterable[str]]=None, fog_coef_lower:float=0.3, fog_coef_upper:float=1.0, alpha_coef:float=0.08)
+RandomFog(
+	inputs: Union[str, Iterable[str], Callable],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	fog_coef_lower: float=0.3,
+	fog_coef_upper: float=1.0,
+	alpha_coef: float=0.08
+)
 ```
 Add fog to an image.
 

@@ -2,7 +2,12 @@
 
 ### reduce_sum
 ```python
-reduce_sum(tensor:~Tensor, axis:Union[NoneType, int, Sequence[int]]=None, keepdims:bool=False) -> ~Tensor
+reduce_sum(
+	tensor: ~Tensor,
+	axis: Union[NoneType, int, Sequence[int]]=None,
+	keepdims: bool=False
+)
+-> ~Tensor
 ```
 Compute the sum along a given `axis` of a `tensor`.
 

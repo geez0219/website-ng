@@ -1,6 +1,8 @@
 ## FEID
 ```python
-FEID(val:int)
+FEID(
+	val: int
+)
 ```
 An int wrapper class that can change how it's values are printed.
 

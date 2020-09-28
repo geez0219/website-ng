@@ -1,6 +1,10 @@
 ## ToGray
 ```python
-ToGray(*args, **kwargs)
+ToGray(
+	inputs: Union[str, Iterable[str]],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None
+)
 ```
 Convert an RGB image to grayscale. If the mean pixel value of the result is > 127, the image is inverted.
 

@@ -1,6 +1,11 @@
 ## SaveAction
 ```python
-SaveAction(option_strings:Sequence[str], dest:str, nargs:Union[int, str, NoneType]='?', **kwargs:Dict[str, Any]) -> None
+SaveAction(
+	option_strings: Sequence[str],
+	dest: str,
+	nargs: Union[int, str, NoneType]='?', **kwargs: Dict[str, Any]
+)
+-> None
 ```
 A customized save action for use with argparse.
 

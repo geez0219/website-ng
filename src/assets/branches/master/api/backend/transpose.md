@@ -2,7 +2,10 @@
 
 ### transpose
 ```python
-transpose(tensor:~Tensor) -> ~Tensor
+transpose(
+	tensor: ~Tensor
+)
+-> ~Tensor
 ```
 Transpose the `tensor`.
 

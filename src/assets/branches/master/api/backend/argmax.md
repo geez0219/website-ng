@@ -2,7 +2,11 @@
 
 ### argmax
 ```python
-argmax(tensor:~Tensor, axis:int=0) -> ~Tensor
+argmax(
+	tensor: ~Tensor,
+	axis: int=0
+)
+-> ~Tensor
 ```
 Compute the index of the maximum value along a given axis of a tensor.
 

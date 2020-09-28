@@ -2,7 +2,11 @@
 
 ### load_model
 ```python
-load_model(model:Union[tensorflow.python.keras.engine.training.Model, torch.nn.modules.module.Module], weights_path:str, load_optimizer:bool=False)
+load_model(
+	model: Union[tensorflow.python.keras.engine.training.Model, torch.nn.modules.module.Module],
+	weights_path: str,
+	load_optimizer: bool=False
+)
 ```
 Load saved weights for a given model.
 

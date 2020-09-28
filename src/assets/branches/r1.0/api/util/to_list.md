@@ -2,7 +2,10 @@
 
 ### to_list
 ```python
-to_list(data:Any) -> List[Any]
+to_list(
+	data: Any
+)
+-> List[Any]
 ```
 Convert data to a list. A single None value will be converted to the empty list.
 

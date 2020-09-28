@@ -2,7 +2,11 @@
 
 ### watch
 ```python
-watch(tensor:~Tensor, tape:Union[tensorflow.python.eager.backprop.GradientTape, NoneType]=None) -> ~Tensor
+watch(
+	tensor: ~Tensor,
+	tape: Union[tensorflow.python.eager.backprop.GradientTape, NoneType]=None
+)
+-> ~Tensor
 ```
 Monitor the given `tensor` for later gradient computations.
 

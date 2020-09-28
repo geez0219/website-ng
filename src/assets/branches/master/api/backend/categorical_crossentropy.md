@@ -2,7 +2,13 @@
 
 ### categorical_crossentropy
 ```python
-categorical_crossentropy(y_pred:~Tensor, y_true:~Tensor, from_logits:bool=False, average_loss:bool=True) -> ~Tensor
+categorical_crossentropy(
+	y_pred: ~Tensor,
+	y_true: ~Tensor,
+	from_logits: bool=False,
+	average_loss: bool=True
+)
+-> ~Tensor
 ```
 Compute categorical crossentropy.
 

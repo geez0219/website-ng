@@ -1,6 +1,22 @@
 ## ElasticTransform
 ```python
-ElasticTransform(*args, **kwargs)
+ElasticTransform(
+	alpha: float=34.0,
+	sigma: float=4.0,
+	alpha_affine: float=50.0,
+	interpolation: int=1,
+	border_mode: int=4,
+	value: Union[NoneType, int, float, List[int], List[float]]=None,
+	mask_value: Union[NoneType, int, float, List[int], List[float]]=None,
+	approximate: bool=False,
+	mode: Union[str, NoneType]=None,
+	image_in: Union[str, NoneType]=None,
+	mask_in: Union[str, NoneType]=None,
+	masks_in: Union[str, NoneType]=None,
+	image_out: Union[str, NoneType]=None,
+	mask_out: Union[str, NoneType]=None,
+	masks_out: Union[str, NoneType]=None
+)
 ```
 Elastic deformation of images.
 

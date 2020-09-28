@@ -2,7 +2,14 @@
 
 ### build
 ```python
-build(model_fn:Callable[[], Union[~Model, List[~Model]]], optimizer_fn:Union[str, fastestimator.schedule.schedule.Scheduler, Callable, List[str], List[Callable], List[fastestimator.schedule.schedule.Scheduler], NoneType], weights_path:Union[str, NoneType, List[Union[str, NoneType]]]=None, model_name:Union[str, List[str], NoneType]=None, mixed_precision:bool=False) -> Union[~Model, List[~Model]]
+build(
+	model_fn: Callable[[], Union[~Model, List[~Model]]],
+	optimizer_fn: Union[str, fastestimator.schedule.schedule.Scheduler, Callable, List[str], List[Callable], List[fastestimator.schedule.schedule.Scheduler], NoneType],
+	weights_path: Union[str, NoneType, List[Union[str, NoneType]]]=None,
+	model_name: Union[str, List[str], NoneType]=None,
+	mixed_precision: bool=False
+)
+-> Union[~Model, List[~Model]]
 ```
 Build model instances and associate them with optimizers.
 

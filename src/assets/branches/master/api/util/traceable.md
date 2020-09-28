@@ -2,7 +2,11 @@
 
 ### traceable
 ```python
-traceable(whitelist:Union[str, Tuple[str]]=(), blacklist:Union[str, Tuple[str]]=()) -> Callable
+traceable(
+	whitelist: Union[str, Tuple[str]]=(),
+	blacklist: Union[str, Tuple[str]]=()
+)
+-> Callable
 ```
 A decorator to be placed on classes in order to make them traceable and to enable a deep restore.
 

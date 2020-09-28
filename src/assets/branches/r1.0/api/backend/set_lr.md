@@ -2,7 +2,10 @@
 
 ### set_lr
 ```python
-set_lr(model:Union[tensorflow.python.keras.engine.training.Model, torch.nn.modules.module.Module], lr:float)
+set_lr(
+	model: Union[tensorflow.python.keras.engine.training.Model, torch.nn.modules.module.Module],
+	lr: float
+)
 ```
 Set the learning rate of a given `model`.
 

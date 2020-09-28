@@ -2,7 +2,12 @@
 
 ### forward_numpyop
 ```python
-forward_numpyop(ops:List[op.numpyop.numpyop.NumpyOp], data:MutableMapping[str, Any], mode:str) -> None
+forward_numpyop(
+	ops: List[op.numpyop.numpyop.NumpyOp],
+	data: MutableMapping[str, Any],
+	mode: str
+)
+-> None
 ```
 Call the forward function for list of NumpyOps, and modify the data dictionary in place.
 

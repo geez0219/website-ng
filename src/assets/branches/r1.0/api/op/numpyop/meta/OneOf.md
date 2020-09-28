@@ -1,6 +1,9 @@
 ## OneOf
 ```python
-OneOf(*numpy_ops:fastestimator.op.numpyop.numpyop.NumpyOp) -> None
+OneOf(
+	*numpy_ops: fastestimator.op.numpyop.numpyop.NumpyOp
+)
+-> None
 ```
 Perform one of several possible NumpyOps.
 
@@ -11,7 +14,12 @@ Perform one of several possible NumpyOps.
 
 ### forward
 ```python
-forward(self, data:Union[numpy.ndarray, List[numpy.ndarray]], state:Dict[str, Any]) -> Union[numpy.ndarray, List[numpy.ndarray]]
+forward(
+	self,
+	data: Union[numpy.ndarray, List[numpy.ndarray]],
+	state: Dict[str, Any]
+)
+-> Union[numpy.ndarray, List[numpy.ndarray]]
 ```
 Execute a randomly selected op from the list of `numpy_ops`.
 

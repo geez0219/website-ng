@@ -1,6 +1,9 @@
 ## UNet
 ```python
-UNet(input_size:Tuple[int, int, int]=(1, 128, 128)) -> None
+UNet(
+	input_size: Tuple[int, int, int]=(1, 128, 128)
+)
+-> None
 ```
 A standard UNet implementation in PyTorch.
 

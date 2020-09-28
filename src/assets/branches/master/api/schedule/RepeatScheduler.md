@@ -1,6 +1,8 @@
 ## RepeatScheduler
 ```python
-RepeatScheduler(*args, **kwds)
+RepeatScheduler(
+	*args, **kwds
+)
 ```
 A scheduler which repeats a collection of entries one after another every epoch.
 

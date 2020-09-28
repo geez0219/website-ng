@@ -1,6 +1,18 @@
 ## Saliency
 ```python
-Saliency(model:~Model, model_inputs:Union[str, Sequence[str]], model_outputs:Union[str, Sequence[str]], class_key:Union[str, NoneType]=None, label_mapping:Union[Dict[str, Any], NoneType]=None, outputs:Union[str, List[str]]='saliency', samples:Union[NoneType, int, Dict[str, Any]]=None, mode:Union[str, Set[str]]=('eval', 'test'), smoothing:int=25, integrating:Union[int, Tuple[int, int]]=(25, 7)) -> None
+Saliency(
+	model: ~Model,
+	model_inputs: Union[str, Sequence[str]],
+	model_outputs: Union[str, Sequence[str]],
+	class_key: Union[str, NoneType]=None,
+	label_mapping: Union[Dict[str, Any], NoneType]=None,
+	outputs: Union[str, List[str]]='saliency',
+	samples: Union[NoneType, int, Dict[str, Any]]=None,
+	mode: Union[str, Set[str]]=('eval', 'test'),
+	smoothing: int=25,
+	integrating: Union[int, Tuple[int, int]]=(25, 7)
+)
+-> None
 ```
 A Trace which computes saliency maps for a given model throughout training.
 

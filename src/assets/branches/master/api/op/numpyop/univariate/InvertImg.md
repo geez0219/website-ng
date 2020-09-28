@@ -1,6 +1,10 @@
 ## InvertImg
 ```python
-InvertImg(*args, **kwargs)
+InvertImg(
+	inputs: Union[str, Iterable[str]],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None
+)
 ```
 Invert an image by subtracting its pixel values from 255.
 

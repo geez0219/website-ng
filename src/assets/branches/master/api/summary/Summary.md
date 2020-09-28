@@ -1,6 +1,10 @@
 ## Summary
 ```python
-Summary(name:Union[str, NoneType], system_config:Union[List[fastestimator.util.traceability_util.FeSummaryTable], NoneType]=None) -> None
+Summary(
+	name: Union[str, NoneType],
+	system_config: Union[List[fastestimator.util.traceability_util.FeSummaryTable], NoneType]=None
+)
+-> None
 ```
 A summary object that records training history.
 
@@ -14,7 +18,10 @@ This class is intentionally not @traceable.
 
 ### merge
 ```python
-merge(self, other:'Summary')
+merge(
+	self,
+	other: 'Summary'
+)
 ```
 Merge another `Summary` into this one.
 

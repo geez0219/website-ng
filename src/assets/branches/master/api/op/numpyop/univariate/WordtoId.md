@@ -1,6 +1,12 @@
 ## WordtoId
 ```python
-WordtoId(*args, **kwargs)
+WordtoId(
+	mapping: Union[Dict[str, int], Callable[[List[str]], List[int]]],
+	inputs: Union[str, Iterable[str]],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None
+)
+-> None
 ```
 Converts words to their corresponding id using mapper function or dictionary.
 

@@ -1,3 +1,4 @@
+
 # Fast Style Transfer with FastEstimator
 
 In this notebook we will demonstrate how to do a neural image style transfer with perceptual loss as described in [Perceptual Losses for Real-Time Style Transfer and Super-Resolution](https://cs.stanford.edu/people/jcjohns/papers/eccv16/JohnsonECCV16.pdf).

@@ -1,6 +1,10 @@
 ## Repeat
 ```python
-Repeat(*args, **kwargs)
+Repeat(
+	op: fastestimator.op.tensorop.tensorop.TensorOp,
+	repeat: Union[int, Callable[..., bool]]=1
+)
+-> None
 ```
 Repeat a TensorOp several times in a row.
 

@@ -1,6 +1,12 @@
 ## ImageViewer
 ```python
-ImageViewer(inputs:Union[str, Sequence[str]], mode:Union[str, Set[str]]=('eval', 'test'), width:int=12, height:int=6) -> None
+ImageViewer(
+	inputs: Union[str, Sequence[str]],
+	mode: Union[str, Set[str]]=('eval', 'test'),
+	width: int=12,
+	height: int=6
+)
+-> None
 ```
 A trace that interrupts your training in order to display images on the screen.
 

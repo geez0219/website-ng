@@ -1,6 +1,12 @@
 ## Recall
 ```python
-Recall(true_key:str, pred_key:str, mode:Union[str, Set[str]]=('eval', 'test'), output_name:str='recall') -> None
+Recall(
+	true_key: str,
+	pred_key: str,
+	mode: Union[str, Set[str]]=('eval', 'test'),
+	output_name: str='recall'
+)
+-> None
 ```
 Compute recall for a classification task and report it back to the logger.
 

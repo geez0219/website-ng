@@ -1,6 +1,11 @@
 ## Trace
 ```python
-Trace(inputs:Union[NoneType, str, Iterable[str]]=None, outputs:Union[NoneType, str, Iterable[str]]=None, mode:Union[NoneType, str, Iterable[str]]=None) -> None
+Trace(
+	inputs: Union[NoneType, str, Iterable[str]]=None,
+	outputs: Union[NoneType, str, Iterable[str]]=None,
+	mode: Union[NoneType, str, Iterable[str]]=None
+)
+-> None
 ```
 Trace controls the training loop. Users can use the `Trace` base class to customize their own functionality.
 
@@ -41,7 +46,11 @@ ability to modify or even cancel training. The order of function invocations is 
 
 ### on_batch_begin
 ```python
-on_batch_begin(self, data:fastestimator.util.data.Data) -> None
+on_batch_begin(
+	self,
+	data: fastestimator.util.data.Data
+)
+-> None
 ```
 Runs at the beginning of each batch.
 
@@ -52,7 +61,11 @@ Runs at the beginning of each batch.
 
 ### on_batch_end
 ```python
-on_batch_end(self, data:fastestimator.util.data.Data) -> None
+on_batch_end(
+	self,
+	data: fastestimator.util.data.Data
+)
+-> None
 ```
 Runs at the end of each batch.
 
@@ -63,7 +76,11 @@ Runs at the end of each batch.
 
 ### on_begin
 ```python
-on_begin(self, data:fastestimator.util.data.Data) -> None
+on_begin(
+	self,
+	data: fastestimator.util.data.Data
+)
+-> None
 ```
 Runs once at the beginning of training or testing.
 
@@ -74,7 +91,11 @@ Runs once at the beginning of training or testing.
 
 ### on_end
 ```python
-on_end(self, data:fastestimator.util.data.Data) -> None
+on_end(
+	self,
+	data: fastestimator.util.data.Data
+)
+-> None
 ```
 Runs once at the end training.
 
@@ -85,7 +106,11 @@ Runs once at the end training.
 
 ### on_epoch_begin
 ```python
-on_epoch_begin(self, data:fastestimator.util.data.Data) -> None
+on_epoch_begin(
+	self,
+	data: fastestimator.util.data.Data
+)
+-> None
 ```
 Runs at the beginning of each epoch.
 
@@ -96,7 +121,11 @@ Runs at the beginning of each epoch.
 
 ### on_epoch_end
 ```python
-on_epoch_end(self, data:fastestimator.util.data.Data) -> None
+on_epoch_end(
+	self,
+	data: fastestimator.util.data.Data
+)
+-> None
 ```
 Runs at the end of each epoch.
 

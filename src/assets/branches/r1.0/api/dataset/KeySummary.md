@@ -1,6 +1,11 @@
 ## KeySummary
 ```python
-KeySummary(dtype:str, num_unique_values:Union[int, NoneType]=None, shape:List[Union[int, NoneType]]=()) -> None
+KeySummary(
+	dtype: str,
+	num_unique_values: Union[int, NoneType]=None,
+	shape: List[Union[int, NoneType]]=()
+)
+-> None
 ```
 A summary of the dataset attributes corresponding to a particular key.
 

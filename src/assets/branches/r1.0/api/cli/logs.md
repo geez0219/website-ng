@@ -2,7 +2,11 @@
 
 ### logs
 ```python
-logs(args:Dict[str, Any], unknown:List[str]) -> None
+logs(
+	args: Dict[str, Any],
+	unknown: List[str]
+)
+-> None
 ```
 A method to invoke the FE logging function using CLI-provided arguments.
 

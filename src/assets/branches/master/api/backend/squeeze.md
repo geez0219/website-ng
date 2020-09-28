@@ -2,7 +2,11 @@
 
 ### squeeze
 ```python
-squeeze(tensor:~Tensor, axis:Union[int, NoneType]=None) -> ~Tensor
+squeeze(
+	tensor: ~Tensor,
+	axis: Union[int, NoneType]=None
+)
+-> ~Tensor
 ```
 Remove an `axis` from a `tensor` if that axis has length 1.
 

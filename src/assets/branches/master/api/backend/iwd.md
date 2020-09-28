@@ -2,7 +2,14 @@
 
 ### iwd
 ```python
-iwd(tensor:~Tensor, power:float=1.0, max_prob:float=0.95, pairwise_distance:float=1.0, eps:Union[~Tensor, NoneType]=None) -> ~Tensor
+iwd(
+	tensor: ~Tensor,
+	power: float=1.0,
+	max_prob: float=0.95,
+	pairwise_distance: float=1.0,
+	eps: Union[~Tensor, NoneType]=None
+)
+-> ~Tensor
 ```
 Compute the Inverse Weighted Distance from the given input.
 

@@ -2,7 +2,11 @@
 
 ### train
 ```python
-train(args:Dict[str, Any], unknown:Union[List[str], NoneType]) -> None
+train(
+	args: Dict[str, Any],
+	unknown: Union[List[str], NoneType]
+)
+-> None
 ```
 Load an Estimator from a file and invoke its .fit() method.
 

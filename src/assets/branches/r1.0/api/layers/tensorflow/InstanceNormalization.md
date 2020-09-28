@@ -1,6 +1,9 @@
 ## InstanceNormalization
 ```python
-InstanceNormalization(epsilon:float=1e-05) -> None
+InstanceNormalization(
+	epsilon: float=1e-05
+)
+-> None
 ```
 A layer for performing instance normalization.
 

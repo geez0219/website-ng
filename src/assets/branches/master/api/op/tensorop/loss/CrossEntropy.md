@@ -1,6 +1,13 @@
 ## CrossEntropy
 ```python
-CrossEntropy(*args, **kwargs)
+CrossEntropy(
+	inputs: Union[NoneType, str, Iterable[str]]=None,
+	outputs: Union[NoneType, str, Iterable[str]]=None,
+	mode: Union[NoneType, str, Iterable[str]]='!infer',
+	from_logits: bool=False,
+	average_loss: bool=True,
+	form: Union[str, NoneType]=None
+)
 ```
 Calculate Element-Wise CrossEntropy (binary, categorical or sparse categorical).
 

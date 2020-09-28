@@ -2,7 +2,13 @@
 
 ### random_normal_like
 ```python
-random_normal_like(tensor:~Tensor, mean:float=0.0, std:float=1.0, dtype:Union[NoneType, str]='float32') -> ~Tensor
+random_normal_like(
+	tensor: ~Tensor,
+	mean: float=0.0,
+	std: float=1.0,
+	dtype: Union[NoneType, str]='float32'
+)
+-> ~Tensor
 ```
 Generate noise shaped like `tensor` from a random normal distribution with a given `mean` and `std`.
 

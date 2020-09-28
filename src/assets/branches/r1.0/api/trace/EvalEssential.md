@@ -1,6 +1,9 @@
 ## EvalEssential
 ```python
-EvalEssential(monitor_names:Set[str]) -> None
+EvalEssential(
+	monitor_names: Set[str]
+)
+-> None
 ```
 A trace to collect important information during evaluation.
 

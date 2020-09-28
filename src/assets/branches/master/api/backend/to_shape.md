@@ -2,7 +2,10 @@
 
 ### to_shape
 ```python
-to_shape(data:Union[Collection, ~Tensor], add_batch=False, exact_shape=True) -> Union[Collection, ~Tensor]
+to_shape(
+	data: Union[Collection, ~Tensor], add_batch=False, exact_shape=True
+)
+-> Union[Collection, ~Tensor]
 ```
 Compute the shape of tensors within a collection of `data`recursively.
 

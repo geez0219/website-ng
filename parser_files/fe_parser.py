@@ -9,7 +9,6 @@ import sys
 import tempfile
 from distutils.dir_util import copy_tree
 from os import sep
-
 from pygit2 import Repository
 
 titles = ['Args', 'Raises', 'Returns']
@@ -118,7 +117,8 @@ def getclasses(item, save_path, mod_dir, branch_name):
                 output.append('## ' + cl[0])
                 output.append("\n```python\n")
                 output.append(cl[0])
-                output.append(str(inspect.signature(cl[1])))
+                signature = str(inspect.signature(cl[1]))
+                output.append(prettify_signature(signature))
                 output.append('\n')
                 output.append('```')
                 output.append('\n')
@@ -131,6 +131,16 @@ def getclasses(item, save_path, mod_dir, branch_name):
             except ValueError:
                 continue
             getclasses(cl[1], save_path, mod_dir, branch_name)
+
+
+def prettify_signature(inp: str):
+    out = inp
+    out = re.sub(r'^\((.+)\)', r'(\n\t\1\n)', out)
+    out = re.sub(r' ->', r'\n->', out)
+    out = re.sub(r'(, )([\w\d]+:)', r',\n\t\2', out)
+    out = re.sub(r':', r': ', out)
+
+    return out
 
 
 def getfunctions(item, save_path, mod_dir, branch_name):
@@ -151,7 +161,8 @@ def getfunctions(item, save_path, mod_dir, branch_name):
                 output.append('### ' + f[0])
                 output.append("\n```python\n")
                 output.append(f[0])
-                output.append(str(inspect.signature(f[1])))
+                signature = str(inspect.signature(f[1]))
+                output.append(prettify_signature(signature))
                 output.append('\n')
                 output.append('```')
                 output.append('\n')
@@ -183,7 +194,8 @@ def getClassFunctions(item, mod_dir, branch_name, save_dir):
                 output.append('### ' + f[0])
                 output.append("\n```python\n")
                 output.append(f[0])
-                output.append(str(inspect.signature(f[1])))
+                signature = str(inspect.signature(f[1]))
+                output.append(prettify_signature(signature))
                 output.append('\n')
                 output.append('```')
                 output.append('\n')
@@ -204,7 +216,7 @@ def generatedocs(repo_dir, save_dir, branch):
         [str]: Returns absolute path to the generated markdown directory
     """
     main_repo = os.path.join(repo_dir, 'fastestimator')
-    head = Repository(repo_dir).head
+    # head = Repository(repo_dir).head
     #branch_name = head.name.split(sep)[-1]
     fe_path = os.path.abspath(main_repo)
     save_dir = os.path.join(save_dir, 'fe')
@@ -228,8 +240,7 @@ def generatedocs(repo_dir, save_dir, branch):
                             os.path.relpath(subdirs, fe_path)])
                 if not os.path.exists(save_path):
                     os.makedirs(save_path)
-                mdtexts = extractmarkdown(mod, save_path, mod_dir,
-                                            branch)
+                mdtexts = extractmarkdown(mod, save_path, mod_dir, branch)
     return save_dir
 
 

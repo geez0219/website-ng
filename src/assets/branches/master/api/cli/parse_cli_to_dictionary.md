@@ -2,7 +2,10 @@
 
 ### parse_cli_to_dictionary
 ```python
-parse_cli_to_dictionary(input_list:List[str]) -> Dict[str, Any]
+parse_cli_to_dictionary(
+	input_list: List[str]
+)
+-> Dict[str, Any]
 ```
 Convert a list of strings into a dictionary with python objects as values.
 

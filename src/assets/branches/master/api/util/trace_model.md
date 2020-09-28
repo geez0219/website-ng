@@ -2,7 +2,14 @@
 
 ### trace_model
 ```python
-trace_model(model:~Model, model_idx:int, model_fn:Any, optimizer_fn:Any, weights_path:Any) -> ~Model
+trace_model(
+	model: ~Model,
+	model_idx: int,
+	model_fn: Any,
+	optimizer_fn: Any,
+	weights_path: Any
+)
+-> ~Model
 ```
 A function to add traceability information to an FE-compiled model.
 

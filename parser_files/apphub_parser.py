@@ -50,10 +50,12 @@ def replaceImagePath(mdfile, d, branch):
     mdfile_updated = []
 
     for line in mdcontent:
-        line = re.sub(re_image_path, partial(replacePath, path_prefix=path_prefix), line)
+        line = re.sub(re_image_path,
+                      partial(replacePath, path_prefix=path_prefix), line)
         idx1, idx2 = map(line.find, [png_tag, html_img_tag])
         if idx2 != -1 and line.split(os.path.sep)[0] != 'assets':
-            line = html_img_tag + os.path.join(path_prefix, line[idx2 + len(html_img_tag):])
+            line = html_img_tag + os.path.join(path_prefix,
+                                               line[idx2 + len(html_img_tag):])
             mdfile_updated.append(line)
         else:
             mdfile_updated.append(line)
@@ -89,7 +91,7 @@ def extractReadMe(output_path, apphub_path):
             endidx = i
             break
 
-    overview = content[:startidx-1]
+    overview = content[:startidx - 1]
     toc = content[startidx:endidx]
 
     # write table of content to the file
@@ -136,8 +138,10 @@ def generateMarkdowns(apphub_path, output_path):
             if ext == '.ipynb' and f[0] != '.':
                 if not os.path.exists(save_dir):
                     os.makedirs(save_dir)
-                subprocess.run(
-                    ['jupyter', 'nbconvert', '--to', 'markdown', os.path.join(subdirs, f), '--output-dir', save_dir])
+                subprocess.run([
+                    'jupyter', 'nbconvert', '--to', 'markdown',
+                    os.path.join(subdirs, f), '--output-dir', save_dir
+                ])
             elif f.endswith(('png', 'jpeg', 'jpg')):
                 filepath = os.path.join(subdirs, f)
                 rel_filepath = os.path.relpath(filepath, apphub_path)
@@ -165,7 +169,7 @@ def getNameTitle(namedict, fname):
 def create_json(output_path, apphub_path):
     json_dict = {}
     json_struct = []
-    json_struct.append({'displayName': 'Overview', 'name': 'overview.md'})
+
     exclude_prefixes = ['_', '.']
     namedict = extractReadMe(output_path, apphub_path)
     for d in os.listdir(output_path):
@@ -173,7 +177,8 @@ def create_json(output_path, apphub_path):
         parent_json_obj = {}
         if os.path.isdir(os.path.join(output_path, d)):
             files = [
-                f for f in os.listdir(os.path.join(output_path, d)) if os.path.isfile(os.path.join(*[output_path, d, f]))
+                f for f in os.listdir(os.path.join(output_path, d))
+                if os.path.isfile(os.path.join(*[output_path, d, f]))
             ]
             for f in files:
                 file_json_obj = {}
@@ -185,8 +190,11 @@ def create_json(output_path, apphub_path):
                     child_list.append(file_json_obj)
             parent_json_obj['displayName'] = title
             parent_json_obj['name'] = d
-            parent_json_obj['children'] = child_list
+            parent_json_obj['children'] = sorted(child_list, key=lambda x: x['displayName'])
             json_struct.append(parent_json_obj)
+            
+    json_struct = sorted(json_struct, key=lambda x: x['displayName'])
+    json_struct.insert(0, {'displayName': 'Overview', 'name': 'overview.md'})
     return json_struct
 
 

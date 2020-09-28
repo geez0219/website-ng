@@ -2,7 +2,10 @@
 
 ### parse_string_to_python
 ```python
-parse_string_to_python(val:str) -> Any
+parse_string_to_python(
+	val: str
+)
+-> Any
 ```
 Convert a string into a python object.
 

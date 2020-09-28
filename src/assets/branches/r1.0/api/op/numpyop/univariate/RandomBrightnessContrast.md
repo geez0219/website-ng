@@ -1,6 +1,13 @@
 ## RandomBrightnessContrast
 ```python
-RandomBrightnessContrast(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterable[str]], mode:Union[NoneType, str, Iterable[str]]=None, brightness_limit:Union[float, Tuple[float, float]]=0.2, contrast_limit:Union[float, Tuple[float, float]]=0.2, brightness_by_max:bool=True)
+RandomBrightnessContrast(
+	inputs: Union[str, Iterable[str], Callable],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	brightness_limit: Union[float, Tuple[float, float]]=0.2,
+	contrast_limit: Union[float, Tuple[float, float]]=0.2,
+	brightness_by_max: bool=True
+)
 ```
 Randomly change the brightness and contrast of an image.
 

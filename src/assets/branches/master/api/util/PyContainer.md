@@ -1,6 +1,9 @@
 ## PyContainer
 ```python
-PyContainer(data:Union[list, tuple, set, dict], truncate:Union[int, NoneType]=None)
+PyContainer(
+	data: Union[list, tuple, set, dict],
+	truncate: Union[int, NoneType]=None
+)
 ```
 A class to convert python containers to a LaTeX representation.
 

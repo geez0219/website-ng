@@ -1,6 +1,18 @@
 ## System
 ```python
-System(network:fastestimator.network.BaseNetwork, pipeline:fastestimator.pipeline.Pipeline, traces:List[Union[_ForwardRef('Trace'), fastestimator.schedule.schedule.Scheduler[_ForwardRef('Trace')]]], mode:Union[str, NoneType]=None, num_devices:int=1, log_steps:Union[int, NoneType]=None, total_epochs:int=0, max_train_steps_per_epoch:Union[int, NoneType]=None, max_eval_steps_per_epoch:Union[int, NoneType]=None, system_config:Union[List[fastestimator.util.traceability_util.FeSummaryTable], NoneType]=None) -> None
+System(
+	network: fastestimator.network.BaseNetwork,
+	pipeline: fastestimator.pipeline.Pipeline,
+	traces: List[Union[_ForwardRef('Trace'), fastestimator.schedule.schedule.Scheduler[_ForwardRef('Trace')]]],
+	mode: Union[str, NoneType]=None,
+	num_devices: int=1,
+	log_steps: Union[int, NoneType]=None,
+	total_epochs: int=0,
+	max_train_steps_per_epoch: Union[int, NoneType]=None,
+	max_eval_steps_per_epoch: Union[int, NoneType]=None,
+	system_config: Union[List[fastestimator.util.traceability_util.FeSummaryTable], NoneType]=None
+)
+-> None
 ```
 A class which tracks state information while the fe.Estimator is running.
 
@@ -37,7 +49,10 @@ This class is intentionally not @traceable.
 
 ### load_state
 ```python
-load_state(self, json_path) -> None
+load_state(
+	self, json_path
+)
+-> None
 ```
 Load training state.
 
@@ -48,7 +63,12 @@ Load training state.
 
 ### reset
 ```python
-reset(self, summary_name:Union[str, NoneType]=None, system_config:Union[str, NoneType]=None) -> None
+reset(
+	self,
+	summary_name: Union[str, NoneType]=None,
+	system_config: Union[str, NoneType]=None
+)
+-> None
 ```
 Reset the current `System` for a new round of training, including a new `Summary` object.
 
@@ -60,7 +80,11 @@ Reset the current `System` for a new round of training, including a new `Summary
 
 ### reset_for_test
 ```python
-reset_for_test(self, summary_name:Union[str, NoneType]=None) -> None
+reset_for_test(
+	self,
+	summary_name: Union[str, NoneType]=None
+)
+-> None
 ```
 Partially reset the current `System` object for a new round of testing.
 
@@ -71,7 +95,10 @@ Partially reset the current `System` object for a new round of testing.
 
 ### save_state
 ```python
-save_state(self, json_path) -> None
+save_state(
+	self, json_path
+)
+-> None
 ```
 Load training state.
 
@@ -82,21 +109,32 @@ Load training state.
 
 ### update_batch_idx
 ```python
-update_batch_idx(self) -> None
+update_batch_idx(
+	self
+)
+-> None
 ```
 Increment the current `batch_idx`.
         
 
 ### update_global_step
 ```python
-update_global_step(self) -> None
+update_global_step(
+	self
+)
+-> None
 ```
 Increment the current `global_step`.
         
 
 ### write_summary
 ```python
-write_summary(self, key:str, value:Any) -> None
+write_summary(
+	self,
+	key: str,
+	value: Any
+)
+-> None
 ```
 Write an entry into the `Summary` object (iff the experiment was named).
 

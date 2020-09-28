@@ -1,6 +1,9 @@
 ## TextFieldBox
 ```python
-TextFieldBox(name:str, height:str='2.5cm')
+TextFieldBox(
+	name: str,
+	height: str='2.5cm'
+)
 ```
 A class to wrap TextFields into padded boxes for use in nesting within tables.
 

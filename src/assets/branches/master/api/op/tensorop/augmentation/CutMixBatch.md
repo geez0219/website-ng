@@ -1,6 +1,12 @@
 ## CutMixBatch
 ```python
-CutMixBatch(inputs:str, outputs:Iterable[str], mode:Union[NoneType, str, Iterable[str]]='train', alpha:Union[float, ~Tensor]=1.0) -> None
+CutMixBatch(
+	inputs: str,
+	outputs: Iterable[str],
+	mode: Union[NoneType, str, Iterable[str]]='train',
+	alpha: Union[float, ~Tensor]=1.0
+)
+-> None
 ```
 This class performs cutmix augmentation on a batch of tensors.
 

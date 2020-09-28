@@ -2,7 +2,11 @@
 
 ### parse_log_file
 ```python
-parse_log_file(file_path:str, file_extension:str) -> fastestimator.summary.summary.Summary
+parse_log_file(
+	file_path: str,
+	file_extension: str
+)
+-> fastestimator.summary.summary.Summary
 ```
 A function which will parse log files into a dictionary of metrics.
 

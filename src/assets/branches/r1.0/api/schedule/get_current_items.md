@@ -2,7 +2,12 @@
 
 ### get_current_items
 ```python
-get_current_items(items:Iterable[Union[~T, schedule.schedule.Scheduler[~T]]], run_modes:Union[str, Iterable[str], NoneType]=None, epoch:Union[int, NoneType]=None) -> List[~T]
+get_current_items(
+	items: Iterable[Union[~T, schedule.schedule.Scheduler[~T]]],
+	run_modes: Union[str, Iterable[str], NoneType]=None,
+	epoch: Union[int, NoneType]=None
+)
+-> List[~T]
 ```
 Select items which should be executed for given mode and epoch.
 

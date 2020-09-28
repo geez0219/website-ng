@@ -1,3 +1,4 @@
+
 # CIFAR-10 Image Classification Using ResNet (PyTorch Backend)
 In this example we are going to demonstrate how to train a CIFAR-10 image classification model using a ResNet architecture on the PyTorch backend. All training details including model structure, data preprocessing, learning rate control, etc. come from https://github.com/davidcpage/cifar10-fast.
 

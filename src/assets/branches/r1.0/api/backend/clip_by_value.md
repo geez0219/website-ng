@@ -2,7 +2,12 @@
 
 ### clip_by_value
 ```python
-clip_by_value(tensor:~Tensor, min_value:Union[int, float, ~Tensor], max_value:Union[int, float, ~Tensor]) -> ~Tensor
+clip_by_value(
+	tensor: ~Tensor,
+	min_value: Union[int, float, ~Tensor],
+	max_value: Union[int, float, ~Tensor]
+)
+-> ~Tensor
 ```
 Clip a tensor such that `min_value` &lt;= tensor &lt;= `max_value`.
 

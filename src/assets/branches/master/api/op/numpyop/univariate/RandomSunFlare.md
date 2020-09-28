@@ -1,6 +1,17 @@
 ## RandomSunFlare
 ```python
-RandomSunFlare(*args, **kwargs)
+RandomSunFlare(
+	inputs: Union[str, Iterable[str]],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	flare_roi: Tuple[float, float, float, float]=(0, 0, 1, 0.5),
+	angle_lower: float=0.0,
+	angle_upper: float=1.0,
+	num_flare_circles_lower: int=6,
+	num_flare_circles_upper: int=10,
+	src_radius: int=400,
+	src_color: Tuple[int, int, int]=(255, 255, 255)
+)
 ```
 Add a sun flare to the image.
 

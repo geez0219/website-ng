@@ -1,6 +1,12 @@
 ## Accuracy
 ```python
-Accuracy(*args, **kwargs)
+Accuracy(
+	true_key: str,
+	pred_key: str,
+	mode: Union[str, Set[str]]=('eval', 'test'),
+	output_name: str='accuracy'
+)
+-> None
 ```
 A trace which computes the accuracy for a given set of predictions.
 

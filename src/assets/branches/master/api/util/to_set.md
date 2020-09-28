@@ -2,7 +2,10 @@
 
 ### to_set
 ```python
-to_set(data:Any) -> Set[Any]
+to_set(
+	data: Any
+)
+-> Set[Any]
 ```
 Convert data to a set. A single None value will be converted to the empty set.
 

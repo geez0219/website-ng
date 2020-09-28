@@ -2,7 +2,11 @@
 
 ### strip_prefix
 ```python
-strip_prefix(target:Union[str, NoneType], prefix:Union[str, NoneType]) -> Union[str, NoneType]
+strip_prefix(
+	target: Union[str, NoneType],
+	prefix: Union[str, NoneType]
+)
+-> Union[str, NoneType]
 ```
 Remove the given `prefix` from the `target` if it is present there.
 

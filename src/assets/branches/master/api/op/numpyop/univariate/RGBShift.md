@@ -1,6 +1,13 @@
 ## RGBShift
 ```python
-RGBShift(*args, **kwargs)
+RGBShift(
+	inputs: Union[str, Iterable[str]],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	r_shift_limit: Union[int, Tuple[int, int]]=20,
+	g_shift_limit: Union[int, Tuple[int, int]]=20,
+	b_shift_limit: Union[int, Tuple[int, int]]=20
+)
 ```
 Randomly shift the channel values for an input RGB image.
 

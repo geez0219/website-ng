@@ -2,7 +2,10 @@
 
 ### to_type
 ```python
-to_type(data:Union[Collection, ~Tensor]) -> Collection
+to_type(
+	data: Union[Collection, ~Tensor]
+)
+-> Collection
 ```
 Compute the data types of tensors within a collection of `data`recursively.
 

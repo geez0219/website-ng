@@ -2,7 +2,18 @@
 
 ### parse_log_dir
 ```python
-parse_log_dir(dir_path:str, log_extension:str='.txt', recursive_search:bool=False, smooth_factor:float=1, save:bool=False, save_path:Union[str, NoneType]=None, ignore_metrics:Union[Set[str], NoneType]=None, share_legend:bool=True, pretty_names:bool=False) -> None
+parse_log_dir(
+	dir_path: str,
+	log_extension: str='.txt',
+	recursive_search: bool=False,
+	smooth_factor: float=1,
+	save: bool=False,
+	save_path: Union[str, NoneType]=None,
+	ignore_metrics: Union[Set[str], NoneType]=None,
+	share_legend: bool=True,
+	pretty_names: bool=False
+)
+-> None
 ```
 A function which will gather all log files within a given folder and pass them along for visualization.
 

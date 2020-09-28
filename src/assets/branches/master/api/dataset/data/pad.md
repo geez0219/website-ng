@@ -2,7 +2,12 @@
 
 ### pad
 ```python
-pad(input_list:List[int], padding_size:int, padding_value:int) -> List[int]
+pad(
+	input_list: List[int],
+	padding_size: int,
+	padding_value: int
+)
+-> List[int]
 ```
 Pad an input_list to a given size.
 

@@ -1,6 +1,10 @@
 ## Sometimes
 ```python
-Sometimes(numpy_op:fastestimator.op.numpyop.numpyop.NumpyOp, prob:float=0.5) -> None
+Sometimes(
+	numpy_op: fastestimator.op.numpyop.numpyop.NumpyOp,
+	prob: float=0.5
+)
+-> None
 ```
 Perform a NumpyOp with a given probability.
 
@@ -12,7 +16,12 @@ Perform a NumpyOp with a given probability.
 
 ### forward
 ```python
-forward(self, data:Union[numpy.ndarray, List[numpy.ndarray]], state:Dict[str, Any]) -> Union[numpy.ndarray, List[numpy.ndarray]]
+forward(
+	self,
+	data: Union[numpy.ndarray, List[numpy.ndarray]],
+	state: Dict[str, Any]
+)
+-> Union[numpy.ndarray, List[numpy.ndarray]]
 ```
 Execute the wrapped operator a certain fraction of the time.
 

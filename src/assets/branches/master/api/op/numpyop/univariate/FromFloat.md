@@ -1,6 +1,12 @@
 ## FromFloat
 ```python
-FromFloat(*args, **kwargs)
+FromFloat(
+	inputs: Union[str, Iterable[str]],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	max_value: Union[float, NoneType]=None,
+	dtype: Union[str, numpy.dtype]='uint16'
+)
 ```
 Takes an input float image in range [0, 1.0] and then multiplies by `max_value` to get an int image.
 

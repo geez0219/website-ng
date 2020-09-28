@@ -1,6 +1,14 @@
 ## ReduceLROnPlateau
 ```python
-ReduceLROnPlateau(*args, **kwargs)
+ReduceLROnPlateau(
+	model: Union[tensorflow.python.keras.engine.training.Model, torch.nn.modules.module.Module],
+	metric: Union[str, NoneType]=None,
+	patience: int=10,
+	factor: float=0.1,
+	best_mode: str='min',
+	min_lr: float=1e-06
+)
+-> None
 ```
 Reduce learning rate based on evaluation results.
 

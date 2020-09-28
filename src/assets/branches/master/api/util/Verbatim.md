@@ -1,6 +1,8 @@
 ## Verbatim
 ```python
-Verbatim(data:str)
+Verbatim(
+	data: str
+)
 ```
 A class to put a string inside the latex verbatim environment.
 

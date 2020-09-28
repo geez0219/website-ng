@@ -1,6 +1,8 @@
 ## TextField
 ```python
-TextField(arguments=None, options=None, *, data=None, **kwargs)
+TextField(
+	arguments=None, options=None, *, data=None, **kwargs
+)
 ```
 A class to create editable text fields.
 

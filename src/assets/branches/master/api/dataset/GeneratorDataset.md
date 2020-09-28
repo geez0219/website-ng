@@ -1,6 +1,10 @@
 ## GeneratorDataset
 ```python
-GeneratorDataset(*args, **kwargs)
+GeneratorDataset(
+	generator: Generator[Dict[str, Any], int, NoneType],
+	samples_per_epoch: int
+)
+-> None
 ```
 A dataset from a generator function.
 
@@ -12,7 +16,10 @@ A dataset from a generator function.
 
 ### summary
 ```python
-summary(self) -> fastestimator.dataset.dataset.DatasetSummary
+summary(
+	self
+)
+-> fastestimator.dataset.dataset.DatasetSummary
 ```
 Generate a summary representation of this dataset.
 

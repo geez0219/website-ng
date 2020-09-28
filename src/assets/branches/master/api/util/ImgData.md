@@ -1,6 +1,9 @@
 ## ImgData
 ```python
-ImgData(colormap:str='Greys', **kwargs:Union[~Tensor, List[~Tensor]]) -> None
+ImgData(
+	colormap: str='Greys', **kwargs: Union[~Tensor, List[~Tensor]]
+)
+-> None
 ```
 A container for image related data.
 
@@ -35,7 +38,16 @@ plt.show()
 
 ### paint_figure
 ```python
-paint_figure(self, height_gap:int=100, min_height:int=200, width_gap:int=50, min_width:int=200, dpi:int=96, save_path:Union[str, NoneType]=None) -> matplotlib.figure.Figure
+paint_figure(
+	self,
+	height_gap: int=100,
+	min_height: int=200,
+	width_gap: int=50,
+	min_width: int=200,
+	dpi: int=96,
+	save_path: Union[str, NoneType]=None
+)
+-> matplotlib.figure.Figure
 ```
 Visualize the current ImgData entries in a matplotlib figure.
 
@@ -60,7 +72,15 @@ plt.show()
 
 ### paint_numpy
 ```python
-paint_numpy(self, height_gap:int=100, min_height:int=200, width_gap:int=50, min_width:int=200, dpi:int=96) -> numpy.ndarray
+paint_numpy(
+	self,
+	height_gap: int=100,
+	min_height: int=200,
+	width_gap: int=50,
+	min_width: int=200,
+	dpi: int=96
+)
+-> numpy.ndarray
 ```
 Visualize the current ImgData entries into an image stored in a numpy array.
 

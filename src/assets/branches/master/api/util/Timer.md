@@ -1,6 +1,9 @@
 ## Timer
 ```python
-Timer(name='Task') -> None
+Timer(
+	name='Task'
+)
+-> None
 ```
 A class that can be used to time things.
 

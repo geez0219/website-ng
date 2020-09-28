@@ -1,6 +1,10 @@
 ## ToSepia
 ```python
-ToSepia(*args, **kwargs)
+ToSepia(
+	inputs: Union[str, Iterable[str]],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None
+)
 ```
 Convert an RGB image to sepia.
 

@@ -1,6 +1,11 @@
 ## ToFloat
 ```python
-ToFloat(*args, **kwargs)
+ToFloat(
+	inputs: Union[str, Iterable[str]],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	max_value: Union[float, NoneType]=None
+)
 ```
 Divides an input by max_value to give a float image in range [0,1].
 

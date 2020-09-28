@@ -2,7 +2,11 @@
 
 ### maximum
 ```python
-maximum(tensor1:~Tensor, tensor2:~Tensor) -> ~Tensor
+maximum(
+	tensor1: ~Tensor,
+	tensor2: ~Tensor
+)
+-> ~Tensor
 ```
 Get the maximum of the given `tensors`.
 

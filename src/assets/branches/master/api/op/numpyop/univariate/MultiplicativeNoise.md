@@ -1,6 +1,13 @@
 ## MultiplicativeNoise
 ```python
-MultiplicativeNoise(*args, **kwargs)
+MultiplicativeNoise(
+	inputs: Union[str, Iterable[str]],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	multiplier: Union[float, Tuple[float, float]]=(0.9, 1.1),
+	per_channel: bool=False,
+	elementwise: bool=False
+)
 ```
 Multiply an image with random perturbations.
 

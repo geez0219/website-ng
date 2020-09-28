@@ -2,7 +2,10 @@
 
 ### Network
 ```python
-Network(ops:Iterable[Union[fastestimator.op.tensorop.tensorop.TensorOp, fastestimator.schedule.schedule.Scheduler[fastestimator.op.tensorop.tensorop.TensorOp]]]) -> network.BaseNetwork
+Network(
+	ops: Iterable[Union[fastestimator.op.tensorop.tensorop.TensorOp, fastestimator.schedule.schedule.Scheduler[fastestimator.op.tensorop.tensorop.TensorOp]]]
+)
+-> network.BaseNetwork
 ```
 A function to automatically instantiate the correct Network derived class based on the given `ops`.
 

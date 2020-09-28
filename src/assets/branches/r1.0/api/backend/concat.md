@@ -2,7 +2,11 @@
 
 ### concat
 ```python
-concat(tensors:List[~Tensor], axis:int=0) -> Union[~Tensor, NoneType]
+concat(
+	tensors: List[~Tensor],
+	axis: int=0
+)
+-> Union[~Tensor, NoneType]
 ```
 Concatenate a list of `tensors` along a given `axis`.
 

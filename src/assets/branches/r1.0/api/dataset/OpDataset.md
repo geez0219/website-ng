@@ -1,6 +1,11 @@
 ## OpDataset
 ```python
-OpDataset(dataset:torch.utils.data.dataset.Dataset, ops:List[fastestimator.op.numpyop.numpyop.NumpyOp], mode:str) -> None
+OpDataset(
+	dataset: torch.utils.data.dataset.Dataset,
+	ops: List[fastestimator.op.numpyop.numpyop.NumpyOp],
+	mode: str
+)
+-> None
 ```
 A wrapper for datasets which allows operators to be applied to them in a pipeline.
 

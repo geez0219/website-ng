@@ -2,7 +2,11 @@
 
 ### gather
 ```python
-gather(tensor:~Tensor, indices:~Tensor) -> ~Tensor
+gather(
+	tensor: ~Tensor,
+	indices: ~Tensor
+)
+-> ~Tensor
 ```
 Gather specific indices from a tensor.
 

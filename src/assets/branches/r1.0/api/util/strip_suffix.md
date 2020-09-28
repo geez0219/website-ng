@@ -2,7 +2,11 @@
 
 ### strip_suffix
 ```python
-strip_suffix(target:Union[str, NoneType], suffix:Union[str, NoneType]) -> Union[str, NoneType]
+strip_suffix(
+	target: Union[str, NoneType],
+	suffix: Union[str, NoneType]
+)
+-> Union[str, NoneType]
 ```
 Remove the given `suffix` from the `target` if it is present there.
 

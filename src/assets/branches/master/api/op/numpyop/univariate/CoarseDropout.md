@@ -1,6 +1,17 @@
 ## CoarseDropout
 ```python
-CoarseDropout(*args, **kwargs)
+CoarseDropout(
+	inputs: Union[str, Iterable[str]],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	max_holes: int=8,
+	max_height: int=8,
+	max_width: int=8,
+	min_holes: Union[int, NoneType]=None,
+	min_height: Union[int, NoneType]=None,
+	min_width: Union[int, NoneType]=None,
+	fill_value: Union[int, float, List[int], List[float]]=0
+)
 ```
 Drop rectangular regions from an image.
 

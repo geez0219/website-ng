@@ -2,7 +2,11 @@
 
 ### tensor_pow
 ```python
-tensor_pow(tensor:~Tensor, power:Union[int, float]) -> ~Tensor
+tensor_pow(
+	tensor: ~Tensor,
+	power: Union[int, float]
+)
+-> ~Tensor
 ```
 Computes x^power element-wise along `tensor`.
 

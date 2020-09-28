@@ -1,6 +1,8 @@
 ## Suppressor
 ```python
-Suppressor()
+Suppressor(
+	
+)
 ```
 A class which can be used to silence output of function calls.
 
@@ -15,7 +17,11 @@ x()  # "hello"
 
 ### write
 ```python
-write(self, dummy:str) -> None
+write(
+	self,
+	dummy: str
+)
+-> None
 ```
 A function which is invoked during print calls.
 

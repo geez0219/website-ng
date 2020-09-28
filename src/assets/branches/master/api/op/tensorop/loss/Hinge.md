@@ -1,6 +1,11 @@
 ## Hinge
 ```python
-Hinge(*args, **kwargs)
+Hinge(
+	inputs: Union[NoneType, str, Iterable[str]]=None,
+	outputs: Union[NoneType, str, Iterable[str]]=None,
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	average_loss: bool=True
+)
 ```
 Calculate the hinge loss between two tensors.
 

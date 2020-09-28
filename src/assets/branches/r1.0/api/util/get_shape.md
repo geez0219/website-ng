@@ -2,7 +2,10 @@
 
 ### get_shape
 ```python
-get_shape(obj:Any) -> List[Union[int, NoneType]]
+get_shape(
+	obj: Any
+)
+-> List[Union[int, NoneType]]
 ```
 A function to find the shapes of an object or sequence of objects.
 

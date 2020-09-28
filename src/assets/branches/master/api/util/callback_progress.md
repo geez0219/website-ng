@@ -2,7 +2,13 @@
 
 ### callback_progress
 ```python
-callback_progress(blocks:int, block_size:int, total_size:int, bar_function:Callable[[int, int, int], str]) -> None
+callback_progress(
+	blocks: int,
+	block_size: int,
+	total_size: int,
+	bar_function: Callable[[int, int, int], str]
+)
+-> None
 ```
 Callback function for urlretrieve that is called when a connection is created and then once for each block.
 

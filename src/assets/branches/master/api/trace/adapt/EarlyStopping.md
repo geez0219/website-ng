@@ -1,6 +1,14 @@
 ## EarlyStopping
 ```python
-EarlyStopping(*args, **kwargs)
+EarlyStopping(
+	monitor: str='loss',
+	min_delta: float=0.0,
+	patience: int=0,
+	compare: str='min',
+	baseline: Union[float, NoneType]=None,
+	mode: str='eval'
+)
+-> None
 ```
 Stop training when a monitored quantity has stopped improving.
 

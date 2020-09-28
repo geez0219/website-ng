@@ -1,6 +1,16 @@
 ## Pipeline
 ```python
-Pipeline(*args, **kwargs)
+Pipeline(
+	train_data: Union[NoneType, ~DataSource, fastestimator.schedule.schedule.Scheduler[~DataSource]]=None,
+	eval_data: Union[NoneType, ~DataSource, fastestimator.schedule.schedule.Scheduler[~DataSource]]=None,
+	test_data: Union[NoneType, ~DataSource, fastestimator.schedule.schedule.Scheduler[~DataSource]]=None,
+	batch_size: Union[NoneType, int, fastestimator.schedule.schedule.Scheduler[int]]=None,
+	ops: Union[NoneType, fastestimator.op.numpyop.numpyop.NumpyOp, fastestimator.schedule.schedule.Scheduler[fastestimator.op.numpyop.numpyop.NumpyOp], List[Union[fastestimator.op.numpyop.numpyop.NumpyOp, fastestimator.schedule.schedule.Scheduler[fastestimator.op.numpyop.numpyop.NumpyOp]]]]=None,
+	num_process: Union[int, NoneType]=None,
+	drop_last: bool=False,
+	pad_value: Union[float, int, NoneType]=None,
+	collate_fn: Union[Callable, NoneType]=None
+)
 ```
 A data pipeline class that takes care of data pre-processing.
 
@@ -19,7 +29,14 @@ A data pipeline class that takes care of data pre-processing.
 
 ### benchmark
 ```python
-benchmark(self, mode:str='train', epoch:int=1, num_steps:int=1000, log_interval:int=100) -> None
+benchmark(
+	self,
+	mode: str='train',
+	epoch: int=1,
+	num_steps: int=1000,
+	log_interval: int=100
+)
+-> None
 ```
 Benchmark the pipeline processing speed.
 
@@ -33,7 +50,12 @@ Benchmark the pipeline processing speed.
 
 ### get_epochs_with_data
 ```python
-get_epochs_with_data(self, total_epochs:int, mode:str) -> Set[int]
+get_epochs_with_data(
+	self,
+	total_epochs: int,
+	mode: str
+)
+-> Set[int]
 ```
 Get a set of epoch indices that contains data given mode.
 
@@ -48,7 +70,13 @@ Get a set of epoch indices that contains data given mode.
 
 ### get_loader
 ```python
-get_loader(self, mode:str, epoch:int=1, shuffle:Union[bool, NoneType]=None) -> Union[torch.utils.data.dataloader.DataLoader, tensorflow.python.data.ops.dataset_ops.DatasetV2]
+get_loader(
+	self,
+	mode: str,
+	epoch: int=1,
+	shuffle: Union[bool, NoneType]=None
+)
+-> Union[torch.utils.data.dataloader.DataLoader, tensorflow.python.data.ops.dataset_ops.DatasetV2]
 ```
 Get a data loader from the Pipeline for a given `mode` and `epoch`.
 
@@ -64,7 +92,11 @@ Get a data loader from the Pipeline for a given `mode` and `epoch`.
 
 ### get_modes
 ```python
-get_modes(self, epoch:Union[int, NoneType]=None) -> Set[str]
+get_modes(
+	self,
+	epoch: Union[int, NoneType]=None
+)
+-> Set[str]
 ```
 Get the modes for which the Pipeline has data.
 
@@ -78,7 +110,14 @@ Get the modes for which the Pipeline has data.
 
 ### get_results
 ```python
-get_results(self, mode:str='train', epoch:int=1, num_steps:int=1, shuffle:bool=False) -> Union[List[Dict[str, Any]], Dict[str, Any]]
+get_results(
+	self,
+	mode: str='train',
+	epoch: int=1,
+	num_steps: int=1,
+	shuffle: bool=False
+)
+-> Union[List[Dict[str, Any]], Dict[str, Any]]
 ```
 Get sample Pipeline outputs.
 
@@ -95,7 +134,11 @@ Get sample Pipeline outputs.
 
 ### get_scheduled_items
 ```python
-get_scheduled_items(self, mode:str) -> List[Any]
+get_scheduled_items(
+	self,
+	mode: str
+)
+-> List[Any]
 ```
 Get a list of items considered for scheduling.
 
@@ -109,7 +152,13 @@ Get a list of items considered for scheduling.
 
 ### transform
 ```python
-transform(self, data:Dict[str, Any], mode:str, epoch:int=1) -> Dict[str, Any]
+transform(
+	self,
+	data: Dict[str, Any],
+	mode: str,
+	epoch: int=1
+)
+-> Dict[str, Any]
 ```
 Apply all pipeline operations on a given data instance for the specified `mode` and `epoch`.
 

@@ -2,7 +2,13 @@
 
 ### sparse_categorical_crossentropy
 ```python
-sparse_categorical_crossentropy(y_pred:~Tensor, y_true:~Tensor, from_logits:bool=False, average_loss:bool=True) -> ~Tensor
+sparse_categorical_crossentropy(
+	y_pred: ~Tensor,
+	y_true: ~Tensor,
+	from_logits: bool=False,
+	average_loss: bool=True
+)
+-> ~Tensor
 ```
 Compute sparse categorical crossentropy.
 

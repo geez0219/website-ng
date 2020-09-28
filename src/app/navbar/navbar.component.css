@@ -88,6 +88,15 @@ nav div ul li a {
 }
 
 .version-select {
+    padding:5px;
+    border-radius: 5px;
+    border:none;
+    color: white;
+    background-color: #0da3d0;
     margin-top: auto;
     margin-bottom: auto;
+}
+
+.version-select:focus{
+    outline:none;
 }

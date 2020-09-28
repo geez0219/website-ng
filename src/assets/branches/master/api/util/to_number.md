@@ -2,7 +2,10 @@
 
 ### to_number
 ```python
-to_number(data:Union[tensorflow.python.framework.ops.Tensor, torch.Tensor, numpy.ndarray, int, float]) -> numpy.ndarray
+to_number(
+	data: Union[tensorflow.python.framework.ops.Tensor, torch.Tensor, numpy.ndarray, int, float]
+)
+-> numpy.ndarray
 ```
 Convert an input value into a Numpy ndarray.
 

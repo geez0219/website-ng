@@ -1,13 +1,18 @@
 ## Scheduler
 ```python
-Scheduler(*args, **kwds)
+Scheduler(
+	*args, **kwds
+)
 ```
 A class which can wrap things like Datasets and Ops to make their behavior epoch-dependent.
     
 
 ### get_all_values
 ```python
-get_all_values(self) -> List[Union[~T, NoneType]]
+get_all_values(
+	self
+)
+-> List[Union[~T, NoneType]]
 ```
 Get a list of all the possible values stored in the `Scheduler`.
 
@@ -17,7 +22,11 @@ Get a list of all the possible values stored in the `Scheduler`.
 
 ### get_current_value
 ```python
-get_current_value(self, epoch:int) -> Union[~T, NoneType]
+get_current_value(
+	self,
+	epoch: int
+)
+-> Union[~T, NoneType]
 ```
 Fetch whichever of the `Scheduler`s elements is appropriate based on the current epoch.
 

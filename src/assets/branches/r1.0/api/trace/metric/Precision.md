@@ -1,6 +1,12 @@
 ## Precision
 ```python
-Precision(true_key:str, pred_key:str, mode:Union[str, Set[str]]=('eval', 'test'), output_name:str='precision') -> None
+Precision(
+	true_key: str,
+	pred_key: str,
+	mode: Union[str, Set[str]]=('eval', 'test'),
+	output_name: str='precision'
+)
+-> None
 ```
 Computes precision for a classification task and reports it back to the logger.
 

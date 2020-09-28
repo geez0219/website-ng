@@ -2,7 +2,12 @@
 
 ### reduce_min
 ```python
-reduce_min(tensor:~Tensor, axis:Union[NoneType, int, Sequence[int]]=None, keepdims:bool=False) -> ~Tensor
+reduce_min(
+	tensor: ~Tensor,
+	axis: Union[NoneType, int, Sequence[int]]=None,
+	keepdims: bool=False
+)
+-> ~Tensor
 ```
 Compute the min value along a given `axis` of a `tensor`.
 

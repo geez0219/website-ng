@@ -1,6 +1,8 @@
 ## NonContext
 ```python
-NonContext()
+NonContext(
+	
+)
 ```
 A class which is used to make nothing unusual happen.
 

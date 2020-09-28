@@ -1,6 +1,11 @@
 ## Minmax
 ```python
-Minmax(*args, **kwargs)
+Minmax(
+	inputs: Union[str, Iterable[str]],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	epsilon: float=1e-07
+)
 ```
 Normalize data using the minmax method.
 

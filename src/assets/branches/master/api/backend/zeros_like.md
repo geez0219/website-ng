@@ -2,7 +2,11 @@
 
 ### zeros_like
 ```python
-zeros_like(tensor:~Tensor, dtype:Union[NoneType, str]=None) -> ~Tensor
+zeros_like(
+	tensor: ~Tensor,
+	dtype: Union[NoneType, str]=None
+)
+-> ~Tensor
 ```
 Generate zeros shaped like `tensor` with a specified `dtype`.
 

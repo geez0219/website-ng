@@ -40,7 +40,7 @@ export class SearchResultComponent implements OnInit {
   }
 
   getSearchResults() {
-    const searchURL = 'https://search.fastestimator.org:3200/search/1.0/' + this.searchText;
+    const searchURL = 'https://search.fastestimator.org:3200/search/' + this.selectedVersion + '/' + this.searchText;
 
     this.http.get(searchURL).subscribe(data => {
       console.log(data);

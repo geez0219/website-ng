@@ -1,6 +1,15 @@
 ## Estimator
 ```python
-Estimator(*args, **kwargs)
+Estimator(
+	pipeline: fastestimator.pipeline.Pipeline,
+	network: fastestimator.network.BaseNetwork,
+	epochs: int,
+	max_train_steps_per_epoch: Union[int, NoneType]=None,
+	max_eval_steps_per_epoch: Union[int, NoneType]=None,
+	traces: Union[NoneType, fastestimator.trace.trace.Trace, fastestimator.schedule.schedule.Scheduler[fastestimator.trace.trace.Trace], Iterable[Union[fastestimator.trace.trace.Trace, fastestimator.schedule.schedule.Scheduler[fastestimator.trace.trace.Trace]]]]=None,
+	log_steps: Union[int, NoneType]=100,
+	monitor_names: Union[NoneType, str, Iterable[str]]=None
+)
 ```
 One class to rule them all.
 
@@ -22,7 +31,12 @@ defines the whole optimization process.
 
 ### fit
 ```python
-fit(self, summary:Union[str, NoneType]=None, warmup:Union[bool, str]=True) -> Union[fastestimator.summary.summary.Summary, NoneType]
+fit(
+	self,
+	summary: Union[str, NoneType]=None,
+	warmup: Union[bool, str]=True
+)
+-> Union[fastestimator.summary.summary.Summary, NoneType]
 ```
 Train the network for the number of epochs specified by the estimator's constructor.
 
@@ -37,7 +51,11 @@ Train the network for the number of epochs specified by the estimator's construc
 
 ### get_scheduled_items
 ```python
-get_scheduled_items(self, mode:str) -> List[Any]
+get_scheduled_items(
+	self,
+	mode: str
+)
+-> List[Any]
 ```
 Get a list of items considered for scheduling.
 
@@ -51,7 +69,11 @@ Get a list of items considered for scheduling.
 
 ### test
 ```python
-test(self, summary:Union[str, NoneType]=None) -> Union[fastestimator.summary.summary.Summary, NoneType]
+test(
+	self,
+	summary: Union[str, NoneType]=None
+)
+-> Union[fastestimator.summary.summary.Summary, NoneType]
 ```
 Run the pipeline / network in test mode for one epoch.
 

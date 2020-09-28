@@ -2,7 +2,11 @@
 
 ### expand_dims
 ```python
-expand_dims(tensor:~Tensor, axis:int=1) -> ~Tensor
+expand_dims(
+	tensor: ~Tensor,
+	axis: int=1
+)
+-> ~Tensor
 ```
 Create a new dimension in `tensor` along a given `axis`.
 

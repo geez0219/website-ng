@@ -1,6 +1,13 @@
 ## Normalize
 ```python
-Normalize(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterable[str]], mode:Union[NoneType, str, Iterable[str]]=None, mean:Union[float, Tuple[float, ...]]=(0.485, 0.456, 0.406), std:Union[float, Tuple[float, ...]]=(0.229, 0.224, 0.225), max_pixel_value:float=255.0)
+Normalize(
+	inputs: Union[str, Iterable[str], Callable],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	mean: Union[float, Tuple[float, ...]]=(0.485, 0.456, 0.406),
+	std: Union[float, Tuple[float, ...]]=(0.229, 0.224, 0.225),
+	max_pixel_value: float=255.0
+)
 ```
 Divide pixel values by a maximum value, subtract mean per channel and divide by std per channel.
 

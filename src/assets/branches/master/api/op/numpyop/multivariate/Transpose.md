@@ -1,6 +1,20 @@
 ## Transpose
 ```python
-Transpose(*args, **kwargs)
+Transpose(
+	mode: Union[str, NoneType]=None,
+	image_in: Union[str, NoneType]=None,
+	mask_in: Union[str, NoneType]=None,
+	masks_in: Union[str, NoneType]=None,
+	bbox_in: Union[str, NoneType]=None,
+	keypoints_in: Union[str, NoneType]=None,
+	image_out: Union[str, NoneType]=None,
+	mask_out: Union[str, NoneType]=None,
+	masks_out: Union[str, NoneType]=None,
+	bbox_out: Union[str, NoneType]=None,
+	keypoints_out: Union[str, NoneType]=None,
+	bbox_params: Union[albumentations.core.composition.BboxParams, str, NoneType]=None,
+	keypoint_params: Union[albumentations.core.composition.KeypointParams, str, NoneType]=None
+)
 ```
 Transpose the input by swapping rows and columns.
 

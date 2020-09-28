@@ -1,6 +1,8 @@
 ## Center
 ```python
-Center(*, options=None, arguments=None, start_arguments=None, **kwargs)
+Center(
+	*, options=None, arguments=None, start_arguments=None, **kwargs
+)
 ```
 A class to center content in a page.
 

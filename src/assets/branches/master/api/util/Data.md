@@ -1,6 +1,8 @@
 ## Data
 ```python
-Data(*args, **kwds)
+Data(
+	*args, **kwds
+)
 ```
 A class which contains prediction and batch data.
 
@@ -28,7 +30,10 @@ r = d.read_logs(extra_keys={"c"})  # {"c":2, "d":3, "a":4}
 
 ### read_logs
 ```python
-read_logs(self) -> Dict[str, Any]
+read_logs(
+	self
+)
+-> Dict[str, Any]
 ```
 Read all values from the `Data` dictionary which were intended to be logged.
 
@@ -38,7 +43,12 @@ Read all values from the `Data` dictionary which were intended to be logged.
 
 ### write_with_log
 ```python
-write_with_log(self, key:str, value:Any) -> None
+write_with_log(
+	self,
+	key: str,
+	value: Any
+)
+-> None
 ```
 Write a given `value` into the `Data` dictionary with the intent that it be logged.
 
@@ -50,7 +60,12 @@ Write a given `value` into the `Data` dictionary with the intent that it be logg
 
 ### write_without_log
 ```python
-write_without_log(self, key:str, value:Any) -> None
+write_without_log(
+	self,
+	key: str,
+	value: Any
+)
+-> None
 ```
 Write a given `value` into the `Data` dictionary with the intent that it not be logged.
 

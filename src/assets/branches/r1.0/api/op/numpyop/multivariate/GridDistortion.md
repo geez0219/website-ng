@@ -1,6 +1,20 @@
 ## GridDistortion
 ```python
-GridDistortion(num_steps:int=5, distort_limit:Union[float, Tuple[float, float]]=0.3, interpolation:int=1, border_mode:int=4, value:Union[NoneType, int, float, List[int], List[float]]=None, mask_value:Union[NoneType, int, float, List[int], List[float]]=None, mode:Union[str, NoneType]=None, image_in:Union[str, NoneType]=None, mask_in:Union[str, NoneType]=None, masks_in:Union[str, NoneType]=None, image_out:Union[str, NoneType]=None, mask_out:Union[str, NoneType]=None, masks_out:Union[str, NoneType]=None)
+GridDistortion(
+	num_steps: int=5,
+	distort_limit: Union[float, Tuple[float, float]]=0.3,
+	interpolation: int=1,
+	border_mode: int=4,
+	value: Union[NoneType, int, float, List[int], List[float]]=None,
+	mask_value: Union[NoneType, int, float, List[int], List[float]]=None,
+	mode: Union[str, NoneType]=None,
+	image_in: Union[str, NoneType]=None,
+	mask_in: Union[str, NoneType]=None,
+	masks_in: Union[str, NoneType]=None,
+	image_out: Union[str, NoneType]=None,
+	mask_out: Union[str, NoneType]=None,
+	masks_out: Union[str, NoneType]=None
+)
 ```
 Distort an image within a grid sub-division
 

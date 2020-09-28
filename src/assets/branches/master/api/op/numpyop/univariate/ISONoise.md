@@ -1,6 +1,12 @@
 ## ISONoise
 ```python
-ISONoise(*args, **kwargs)
+ISONoise(
+	inputs: Union[str, Iterable[str]],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	color_shift: Tuple[float, float]=(0.01, 0.05),
+	intensity: Tuple[float, float]=(0.1, 0.5)
+)
 ```
 Apply camera sensor noise.
 

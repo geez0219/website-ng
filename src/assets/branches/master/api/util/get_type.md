@@ -2,7 +2,10 @@
 
 ### get_type
 ```python
-get_type(obj:Any) -> str
+get_type(
+	obj: Any
+)
+-> str
 ```
 A function to try and infer the types of data within containers.
 

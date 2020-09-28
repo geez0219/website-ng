@@ -1,6 +1,13 @@
 ## HadamardCode
 ```python
-HadamardCode(in_features:Union[int, List[int]], n_classes:int, code_length:Union[int, NoneType]=None, max_prob:float=0.95, power:float=1.0) -> None
+HadamardCode(
+	in_features: Union[int, List[int]],
+	n_classes: int,
+	code_length: Union[int, NoneType]=None,
+	max_prob: float=0.95,
+	power: float=1.0
+)
+-> None
 ```
 A layer for applying an error correcting code to your outputs.
 

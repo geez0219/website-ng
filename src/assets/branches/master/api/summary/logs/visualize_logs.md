@@ -2,7 +2,16 @@
 
 ### visualize_logs
 ```python
-visualize_logs(experiments:List[fastestimator.summary.summary.Summary], save_path:str=None, smooth_factor:float=0, share_legend:bool=True, pretty_names:bool=False, ignore_metrics:Union[Set[str], NoneType]=None, include_metrics:Union[Set[str], NoneType]=None, verbose:bool=True)
+visualize_logs(
+	experiments: List[fastestimator.summary.summary.Summary],
+	save_path: str=None,
+	smooth_factor: float=0,
+	share_legend: bool=True,
+	pretty_names: bool=False,
+	ignore_metrics: Union[Set[str], NoneType]=None,
+	include_metrics: Union[Set[str], NoneType]=None,
+	verbose: bool=True
+)
 ```
 A function which will save or display experiment histories for comparison viewing / analysis.
 

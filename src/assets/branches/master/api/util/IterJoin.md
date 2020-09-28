@@ -1,6 +1,9 @@
 ## IterJoin
 ```python
-IterJoin(data:Iterable, token:str)
+IterJoin(
+	data: Iterable,
+	token: str
+)
 ```
 A class to convert an iterable to a latex representation.
 
@@ -12,7 +15,10 @@ A class to convert an iterable to a latex representation.
 
 ### dumps
 ```python
-dumps(self) -> str
+dumps(
+	self
+)
+-> str
 ```
 Get a string representation of this cell.
 
