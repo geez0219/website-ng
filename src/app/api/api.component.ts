@@ -23,8 +23,8 @@ export class ApiComponent implements OnInit, AfterViewChecked {
   currentSelection: string;
   currentAPIText: string;
   currentAPILink: string;
-  scrollCounter: number = 0;
-  scrollThreshold: number = 20;
+  scrollCounter = 0;
+  scrollThreshold = 20;
   segments: UrlSegment[];
   fragment: string;
   currentVersion: string;
@@ -32,7 +32,7 @@ export class ApiComponent implements OnInit, AfterViewChecked {
   treeControl: NestedTreeControl<API>;
   dataSource: MatTreeNestedDataSource<API>;
 
-  minWidth: number = 640;
+  minWidth = 640;
   screenWidth: number;
   private screenWidth$ = new BehaviorSubject<number>(window.innerWidth);
 

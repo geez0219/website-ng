@@ -31,10 +31,9 @@ export class SearchResultComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-        console.log(params.query);
         this.searchText = params.query;
 
-        this.selectedVersion = this.globalService.getSelectedVersion();
+        this.selectedVersion = params.version;
         this.getSearchResults();
     });
   }
@@ -49,7 +48,7 @@ export class SearchResultComponent implements OnInit {
     error => {
       console.error(error);
       this.globalService.resetLoading();
-      this.router.navigate(['PageNotFound'], {replaceUrl:true})
+      this.router.navigate(['PageNotFound'], {replaceUrl: true});
     });
   }
 
