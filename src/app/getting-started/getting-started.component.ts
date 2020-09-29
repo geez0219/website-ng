@@ -13,9 +13,10 @@ export class GettingStartedComponent implements OnInit, OnDestroy {
   particleStyle: object = {};
   particleParams: object = {};
   scriptTag;
-  width: number = 100;
-  height: number = 100;
+  width = 100;
+  height = 100;
   currentVersion: string;
+  latestVersion: string;
 
   data = {
     name: 'FastEstimator',
@@ -24,10 +25,10 @@ export class GettingStartedComponent implements OnInit, OnDestroy {
   constructor(private title: Title, private globalService: GlobalService) {}
 
   ngOnInit() {
+    this.latestVersion = this.globalService.getLatestVersion();
     this.currentVersion = this.globalService.getSelectedVersion();
     this.globalService.version.subscribe((v: string) => {
       this.currentVersion = v;
-      console.log(this.currentVersion);
     });
     this.title.setTitle(this.data.name);
     tsParticles
