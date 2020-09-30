@@ -6,6 +6,7 @@ import subprocess
 import sys
 from shutil import copy
 from functools import partial
+import pdb
 
 RE_SIDEBAR_TITLE = '[^A-Za-z0-9:!,$%. ]+'
 RE_ROUTE_TITLE = '[^A-Za-z0-9 ]+'
@@ -17,7 +18,7 @@ def generateMarkdowns(output_dir, tutorial_type, fe_path):
     tutorial_sub_dir = os.path.join('tutorial', tutorial_type)
     tutorial_path = os.path.join(fe_path, tutorial_sub_dir)
     # invoke subprocess to run nbconvert command on notebook files
-    output_sub_dir = os.path.join(*[output_dir, 'tutorial', tutorial_type])
+    output_sub_dir = os.path.join(output_dir, 'tutorial', tutorial_type)
     os.makedirs(output_sub_dir, exist_ok=True)
     for filename in os.listdir(tutorial_path):
         if filename.endswith('.ipynb'):
@@ -30,15 +31,18 @@ def generateMarkdowns(output_dir, tutorial_type, fe_path):
 
 
 def replaceRefLink(match, tutorial_type):
+    """
+    ex: [Tutorial 2](./t02_dataset.ipynb)
+     -> [Tutorial 2](./tutorials/master/beginner/t02_dataset)
+    """
     ref_tutorial_type = match.group(1)
     tutorial_no = match.group(2)
     tutorial_name = match.group(3).split('/')
-    # import pdb
-    # pdb.set_trace()
+
     if ref_tutorial_type != '':
-        tutorial = '[{} tutorial {}]'.format(ref_tutorial_type, tutorial_no)
+        tutorial = '[{} Tutorial {}]'.format(ref_tutorial_type, tutorial_no)
     else:
-        tutorial = '[tutorial {}]'.format(tutorial_no)
+        tutorial = '[Tutorial {}]'.format(tutorial_no)
     if len(tutorial_name) > 1:
         return f'{tutorial}(./tutorials/{BRANCH}/{tutorial_name[-2]}/{tutorial_name[-1]})'
     else:
@@ -46,6 +50,10 @@ def replaceRefLink(match, tutorial_type):
 
 
 def replaceApphubLink(match):
+    """
+    ex: [MNIST](../../apphub/image_classification/mnist/mnist.ipynb)
+     -> [MNIST](./examples/master/image_classification/mnist)
+    """
     apphub_link_segments = match.group(3).strip().split('/')
     dir_name = apphub_link_segments[1]
     name = apphub_link_segments[-1]
@@ -53,6 +61,10 @@ def replaceApphubLink(match):
 
 
 def replaceAnchorLink(match, tutorial_type, fname):
+    """
+    ex: [Traces](#ta05trace)
+     -> [Traces](./tutorials/master/advanced/t05_scheduler#ta05trace)
+    """
     anchor_text = match.group(1)
     anchor_link = match.group(2)
     fname = fname.split('/')[-1].split('.')[0]
@@ -60,6 +72,10 @@ def replaceAnchorLink(match, tutorial_type, fname):
 
 
 def replaceRepoLink(match):
+    """
+    ex: [Architectures](../../fastestimator/architecture)
+     -> [Architectures](https://github.com/fastestimator/fastestimator/tree/{BRANCH}/fastestimator/architecture)
+    """
     name = match.group(1)
     url = match.group(2)
     fe_url = f'https://github.com/fastestimator/fastestimator/tree/{BRANCH}/'
@@ -83,6 +99,11 @@ def updateLinks(line, tutorial_type, fname):
 
     return output_line
 
+def replaceImgLink(match):
+    path_prefix = f'assets/branches/{BRANCH}/tutorial'
+    new_src = os.path.join(path_prefix, match.group(1))
+
+    return f'src=\"{new_src}\"'
 
 def replaceImagePath(mdfile, tutorial_type):
     """This function takes markdown file path and append the prefix path to the image path in the file. It allows
@@ -100,15 +121,20 @@ def replaceImagePath(mdfile, tutorial_type):
     mdfile_updated = []
     for line in mdcontent:
         line = updateLinks(line, tutorial_type, mdfile)
-        idx1, idx2 = map(line.find, [png_tag, html_img_tag])
-        if idx1 != -1:
-            line = png_tag + os.path.join(png_path_prefix, line[idx1 + len(png_tag):])
-            mdfile_updated.append(line)
-        elif idx2 != -1:
-            line = html_img_tag + os.path.join(path_prefix, line[idx2 + len(html_img_tag):])
-            mdfile_updated.append(line)
-        else:
-            mdfile_updated.append(line)
+
+        # deal with src=""
+        # <img src="../resources/t01_api.png" alt="drawing" width="700"/>
+        # <img src="assets/branches/master/tutorial/../resources/t01_api.png" alt="drawing" width="700"/>
+        line = re.sub(r'src=\"([^ ]+)\"', replaceImgLink, line)
+
+        idx, _ = map(line.find, [png_tag, html_img_tag])
+        if idx != -1:
+            # [png](t01_getting_started_files/t01_getting_started_19_1.png)
+            # -> [png](assets/branches/master/tutorial/beginner/t01_getting_started_files/t01_getting_started_19_1.png)
+            line = png_tag + os.path.join(png_path_prefix, line[idx + len(png_tag):])
+
+        mdfile_updated.append(line)
+
     with open(mdfile, 'w') as f:
         f.write("".join(mdfile_updated))
 
