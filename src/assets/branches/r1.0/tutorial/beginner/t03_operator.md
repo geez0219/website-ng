@@ -1,4 +1,3 @@
-
 # Tutorial 3: Operator
 
 ## Overview
@@ -13,7 +12,7 @@ In this tutorial we will introduce the `Operator` - a fundamental building block
 
 ## Operator Definition
 
-From [tutorial 1](./tutorials/r1.0/beginner/t01_getting_started), we know that the preprocessing in `Pipeline` and the training in `Network` can be divided into several sub-tasks:
+From [Tutorial 1](./tutorials/r1.0/beginner/t01_getting_started), we know that the preprocessing in `Pipeline` and the training in `Network` can be divided into several sub-tasks:
 
 * **Pipeline**: `Expand_dim` -> `Minmax`
 * **Network**: `ModelOp` -> `CrossEntropy` -> `UpdateOp`
@@ -29,7 +28,7 @@ An Operator has 3 main components:
 * **outputs**: the key(s) of output data
 * **forward function**: the transformation to be applied
 
-The base class constructor also takes a `mode` argument, but for now we will ignore it since `mode` will be discussed extensively in [tutorial 9](./tutorials/r1.0/beginner/t09_inference).
+The base class constructor also takes a `mode` argument, but for now we will ignore it since `mode` will be discussed extensively in [Tutorial 9](./tutorials/r1.0/beginner/t09_inference).
 
 
 ```python

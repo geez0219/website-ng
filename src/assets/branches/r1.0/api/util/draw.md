@@ -2,9 +2,7 @@
 
 ### draw
 ```python
-draw(
-	
-)
+draw()
 -> None
 ```
 Print our name.

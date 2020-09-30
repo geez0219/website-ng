@@ -1,4 +1,3 @@
-
 # Advanced Tutorial 8: Explainable AI (XAI)
 
 ## Overview
@@ -105,7 +104,9 @@ estimator.fit()
 
 
 
+    
 ![png](assets/branches/r1.0/tutorial/advanced/t08_xai_files/t08_xai_6_1.png)
+    
 
 
     FastEstimator-Eval: step: 1563; epoch: 1; ce: 1.1105024; accuracy: 0.5994; 
@@ -115,7 +116,9 @@ estimator.fit()
 
 
 
+    
 ![png](assets/branches/r1.0/tutorial/advanced/t08_xai_files/t08_xai_6_3.png)
+    
 
 
     FastEstimator-Eval: step: 3126; epoch: 2; ce: 0.91278446; accuracy: 0.677; 
@@ -124,7 +127,9 @@ estimator.fit()
 
 
 
+    
 ![png](assets/branches/r1.0/tutorial/advanced/t08_xai_files/t08_xai_6_5.png)
+    
 
 
     FastEstimator-Eval: step: 4689; epoch: 3; ce: 0.9597512; accuracy: 0.6574; 
@@ -134,7 +139,9 @@ estimator.fit()
 
 
 
+    
 ![png](assets/branches/r1.0/tutorial/advanced/t08_xai_files/t08_xai_6_7.png)
+    
 
 
     FastEstimator-Eval: step: 6252; epoch: 4; ce: 0.8268497; accuracy: 0.713; 
@@ -143,7 +150,9 @@ estimator.fit()
 
 
 
+    
 ![png](assets/branches/r1.0/tutorial/advanced/t08_xai_files/t08_xai_6_9.png)
+    
 
 
     FastEstimator-Eval: step: 7815; epoch: 5; ce: 0.8746784; accuracy: 0.7012; 
@@ -156,7 +165,9 @@ estimator.test()
 ```
 
 
+    
 ![png](assets/branches/r1.0/tutorial/advanced/t08_xai_files/t08_xai_7_0.png)
+    
 
 
     FastEstimator-Test: step: 7815; epoch: 5; accuracy: 0.692; 
@@ -195,7 +206,9 @@ plt.show()
 ```
 
 
+    
 ![png](assets/branches/r1.0/tutorial/advanced/t08_xai_files/t08_xai_11_0.png)
+    
 
 
 The `SaliencyNet` class also provides 'get_smoothed_masks' and 'get_integrated_masks' methods for generating the more complicated saliency maps. 

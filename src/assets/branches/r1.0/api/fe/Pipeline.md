@@ -8,7 +8,7 @@ Pipeline(
 	ops: Union[NoneType, fastestimator.op.numpyop.numpyop.NumpyOp, fastestimator.schedule.schedule.Scheduler[fastestimator.op.numpyop.numpyop.NumpyOp], List[Union[fastestimator.op.numpyop.numpyop.NumpyOp, fastestimator.schedule.schedule.Scheduler[fastestimator.op.numpyop.numpyop.NumpyOp]]]]=None,
 	num_process: Union[int, NoneType]=None,
 	drop_last: bool=False,
-	pad_value: Union[float, int, NoneType]=None,
+	pad_value: Union[int, float, NoneType]=None,
 	collate_fn: Union[Callable, NoneType]=None
 )
 ```

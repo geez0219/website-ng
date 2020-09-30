@@ -1,9 +1,8 @@
 ## ReflectionPadding2D
 ```python
 ReflectionPadding2D(
-	padding: Tuple[int, int]=(1, 1)
+	*args, **kwargs
 )
--> None
 ```
 A layer for performing Reflection Padding on 2D arrays.
 

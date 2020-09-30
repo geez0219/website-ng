@@ -1,4 +1,3 @@
-
 # Fast Style Transfer with FastEstimator
 
 In this notebook we will demonstrate how to do a neural image style transfer with perceptual loss as described in [Perceptual Losses for Real-Time Style Transfer and Super-Resolution](https://cs.stanford.edu/people/jcjohns/papers/eccv16/JohnsonECCV16.pdf).
@@ -57,7 +56,9 @@ plt.axis('off');
 ```
 
 
+    
 ![png](assets/branches/r1.0/example/style_transfer/fst_files/fst_4_0.png)
+    
 
 
 ## Building Components
@@ -106,7 +107,9 @@ plt.show()
 ```
 
 
+    
 ![png](assets/branches/r1.0/example/style_transfer/fst_files/fst_10_0.png)
+    
 
 
 ### Step 2: Create `Network`
@@ -434,5 +437,7 @@ plt.axis('off');
 ```
 
 
+    
 ![png](assets/branches/r1.0/example/style_transfer/fst_files/fst_25_0.png)
+    
 

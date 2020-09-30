@@ -1,4 +1,3 @@
-
 # Advanced Tutorial 7: Learning Rate Scheduling
 
 ## Overview
@@ -14,7 +13,7 @@ In this tutorial, we will discuss:
 
 Learning rate schedules can be implemented using the `LRScheduler` `Trace`. `LRScheduler` takes the model and learning schedule through the **lr_fn** parameter. **lr_fn** should be a function/lambda function with 'step' or 'epoch' as its input parameter. This determines whether the learning schedule will be applied at a step or epoch level.
 
-For more details on traces, you can visit [tutorial 7](./tutorials/r1.0/beginner/t07_estimator) in the beginner section and [tutorial 4](./tutorials/r1.0/advanced/t04_trace) in the advanced section. 
+For more details on traces, you can visit [Tutorial 7](./tutorials/r1.0/beginner/t07_estimator) in the beginner section and [Tutorial 4](./tutorials/r1.0/advanced/t04_trace) in the advanced section. 
 
 Let's create a function to generate the pipeline, model, and network to be used for this tutorial:
 
@@ -55,7 +54,7 @@ We can specify a custom learning schedule by passing a custom function to the **
 <a id='ta07epoch'></a>
 
 ### Epoch-wise
-To apply learning rate scheduling at an epoch level, the custom function should have 'epoch' as its parameter. Let's look at the example below which demonstrates this. We will be using the summary parameter in the fit method to be able to visualize the learning rate later. You can go through [tutorial 6](./tutorials/r1.0/advanced/t06_summary) in the advanced section for more details on accessing training history.
+To apply learning rate scheduling at an epoch level, the custom function should have 'epoch' as its parameter. Let's look at the example below which demonstrates this. We will be using the summary parameter in the fit method to be able to visualize the learning rate later. You can go through [Tutorial 6](./tutorials/r1.0/advanced/t06_summary) in the advanced section for more details on accessing training history.
 
 
 ```python
@@ -154,7 +153,9 @@ visualize_logs(history, include_metrics="LeNet_lr")
 ```
 
 
+    
 ![png](assets/branches/r1.0/tutorial/advanced/t07_learning_rate_scheduling_files/t07_learning_rate_scheduling_9_0.png)
+    
 
 
 As you can see, the learning rate changes only after every epoch.
@@ -236,7 +237,9 @@ visualize_logs(history2, include_metrics="LeNet_lr")
 ```
 
 
+    
 ![png](assets/branches/r1.0/tutorial/advanced/t07_learning_rate_scheduling_files/t07_learning_rate_scheduling_14_0.png)
+    
 
 
 <a id='ta07builtin'></a>
@@ -319,7 +322,9 @@ visualize_logs(history3, include_metrics="LeNet_lr")
 ```
 
 
+    
 ![png](assets/branches/r1.0/tutorial/advanced/t07_learning_rate_scheduling_files/t07_learning_rate_scheduling_20_0.png)
+    
 
 
 <a id='ta07apphub'></a>
