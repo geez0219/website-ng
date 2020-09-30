@@ -1,4 +1,3 @@
-
 # Tutorial 2: Creating a FastEstimator dataset
 
 ## Overview

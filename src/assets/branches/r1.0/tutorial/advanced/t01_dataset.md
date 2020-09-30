@@ -1,4 +1,3 @@
-
 # Advanced Tutorial 1: Dataset
 
 ## Overview
@@ -15,7 +14,7 @@ In this tutorial, we will talk about the following topics:
     * [Unpaired Dataset](./tutorials/r1.0/advanced/t01_dataset#ta01ud)
 * [Related Apphub Examples](./tutorials/r1.0/advanced/t01_dataset#ta01rae)
 
-Before going through the tutorial, it is recommended to check [beginner tutorial 02](./tutorials/r1.0/beginner/t02_dataset) for basic understanding of `dataset` from PyTorch and FastEstimator. We will talk about more details about `fe.dataset` API in this tutorial.
+Before going through the tutorial, it is recommended to check [beginner Tutorial 02](./tutorials/r1.0/beginner/t02_dataset) for basic understanding of `dataset` from PyTorch and FastEstimator. We will talk about more details about `fe.dataset` API in this tutorial.
 
 <a id='ta01summary'></a>
 

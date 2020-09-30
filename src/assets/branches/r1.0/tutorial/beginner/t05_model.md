@@ -1,4 +1,3 @@
-
 # Tutorial 5: Model
 
 ## Overview

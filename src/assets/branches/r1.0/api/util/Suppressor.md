@@ -1,8 +1,6 @@
 ## Suppressor
 ```python
-Suppressor(
-	
-)
+Suppressor()
 ```
 A class which can be used to silence output of function calls.
 

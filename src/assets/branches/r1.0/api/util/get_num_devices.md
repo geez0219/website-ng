@@ -2,9 +2,7 @@
 
 ### get_num_devices
 ```python
-get_num_devices(
-	
-)
+get_num_devices()
 ```
 Determine the number of available GPUs.
 

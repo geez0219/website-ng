@@ -1,4 +1,3 @@
-
 # Tutorial 1: Getting Started
 
 ## Overview
@@ -37,11 +36,11 @@ Any deep learning task can be constructed by following the 3 main steps:
 <a id='t01Pipeline'></a>
 
 ### Step 1 - Pipeline
-We use FastEstimator dataset API to load the MNIST dataset. Please check out [tutorial 2](./tutorials/r1.0/beginner/t02_dataset) for more details about the dataset API. In this case our data preprocessing involves: 
+We use FastEstimator dataset API to load the MNIST dataset. Please check out [Tutorial 2](./tutorials/r1.0/beginner/t02_dataset) for more details about the dataset API. In this case our data preprocessing involves: 
 1. Expand image dimension from (28,28) to (28, 28, 1) for convenience during convolution operations.
 2. Rescale pixel values from [0, 255] to [0, 1].
 
-Please check out [tutorial 3](./tutorials/r1.0/beginner/t03_operator) for details about `Operator` and [tutorial 4](./tutorials/r1.0/beginner/t04_pipeline) for `Pipeline`.
+Please check out [Tutorial 3](./tutorials/r1.0/beginner/t03_operator) for details about `Operator` and [Tutorial 4](./tutorials/r1.0/beginner/t04_pipeline) for `Pipeline`.
 
 
 ```python
@@ -61,13 +60,13 @@ pipeline = fe.Pipeline(train_data=train_data,
 
 ### Step 2 - Network
 
-The model definition can be either from `tf.keras.Model` or `torch.nn.Module`, for more info about network definitions, check out [tutorial 5](./tutorials/r1.0/beginner/t05_model). The differentiable operations during training are listed as follows:
+The model definition can be either from `tf.keras.Model` or `torch.nn.Module`, for more info about network definitions, check out [Tutorial 5](./tutorials/r1.0/beginner/t05_model). The differentiable operations during training are listed as follows:
 
 1. Feed the preprocessed images to the network and get prediction scores.
 2. Calculate `CrossEntropy` (loss) between prediction scores and ground truth.
 3. Update the model by minimizing `CrossEntropy`.
 
-For more info about `Network` and its operators, check out [tutorial 6](./tutorials/r1.0/beginner/t06_network).
+For more info about `Network` and its operators, check out [Tutorial 6](./tutorials/r1.0/beginner/t06_network).
 
 
 ```python
@@ -89,7 +88,7 @@ network = fe.Network(ops=[
 <a id='t01Estimator'></a>
 
 ### Step 3 - Estimator
-We define the `Estimator` to connect the `Network` to the `Pipeline`, and compute accuracy as a validation metric. Please see [tutorial 7](./tutorials/r1.0/beginner/t07_estimator) for more about `Estimator` and `Traces`.
+We define the `Estimator` to connect the `Network` to the `Pipeline`, and compute accuracy as a validation metric. Please see [Tutorial 7](./tutorials/r1.0/beginner/t07_estimator) for more about `Estimator` and `Traces`.
 
 
 ```python
@@ -173,7 +172,7 @@ estimator.fit()
 <a id='t01Inferencing'></a>
 
 ### Inferencing
-After training, we can do inferencing on new data with `Pipeline.transform` and `Netowork.transform`. Please checkout [tutorial 8](./tutorials/r1.0/beginner/t08_mode) for more details. 
+After training, we can do inferencing on new data with `Pipeline.transform` and `Netowork.transform`. Please checkout [Tutorial 8](./tutorials/r1.0/beginner/t08_mode) for more details. 
 
 
 ```python
@@ -194,7 +193,9 @@ fig = img.paint_figure()
 
 
 
+    
 ![png](assets/branches/r1.0/tutorial/beginner/t01_getting_started_files/t01_getting_started_19_1.png)
+    
 
 
 <a id='t01Apphub'></a>
