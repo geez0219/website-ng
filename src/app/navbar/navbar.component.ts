@@ -97,6 +97,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     this.versionList = this.globalService.getVersions();
 
     this.setTabLinks();
+    this.tabBreakList = new Array(this.tabList.length);
 
     this.router.events.subscribe((val) => {
       if (val instanceof NavigationStart) {
@@ -148,8 +149,6 @@ export class NavbarComponent implements OnInit, AfterViewInit {
         hidden: false,
       },
     ];
-
-    this.tabBreakList = new Array(this.tabList.length);
   }
 
   getInstallBaseURL(version: string) {
@@ -175,6 +174,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     this.dealBreaking();
     this.checkAndDealSearchBreaking();
     this.cd.detectChanges();
+    console.log("rerun");
   }
 
   preRoute(newSelection: string) {
@@ -287,12 +287,19 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     }
   }
 
-  versionChanged(event) {
-    this.globalService.version.next(event.target.value);
-    this.globalService.setCurrentVersion(event.target.value);
-    this.setTabLinks();
+  setVersion(version){
+    if(version != this.defaultVersion){
+      this.globalService.version.next(version);
+      this.globalService.setCurrentVersion(version);
+      this.setTabLinks();
+      const newRoute = this.getCurrentRoute(this.router.url.split('/')[1], version);
 
-    const newRoute = this.getCurrentRoute(this.router.url.split('/')[1], event.target.value);
-    this.router.navigate([newRoute]);
+      this.router.navigate([newRoute]);
+      this.defaultVersion = version;
+
+      this.checkBreaking();
+      this.dealBreaking();
+      this.checkAndDealSearchBreaking();
+    }
   }
 }
