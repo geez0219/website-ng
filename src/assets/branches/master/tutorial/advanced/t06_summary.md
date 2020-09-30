@@ -1,4 +1,3 @@
-
 # Advanced Tutorial 6: Summary
 
 ## Overview
@@ -51,7 +50,7 @@ traces = [
 
 ## Experiment Logging
 
-As you may have noticed if you have used FastEstimator, log messages are printed to the screen during training. If you want to persist these log messages for later records, you can simply pipe them into a file when launching training from the command line, or else just copy and paste the messages from the console into a persistent file on the disk. FastEstimator allows logging to be controlled via arguments passed to the `Estimator` class, as described in the [tutorial 7](./tutorials/master/beginner/t07_estimator) in the beginner section. Let's see an example logging every 120 steps:
+As you may have noticed if you have used FastEstimator, log messages are printed to the screen during training. If you want to persist these log messages for later records, you can simply pipe them into a file when launching training from the command line, or else just copy and paste the messages from the console into a persistent file on the disk. FastEstimator allows logging to be controlled via arguments passed to the `Estimator` class, as described in the [Beginner Tutorial 7](./tutorials/master/beginner/t07_estimator). Let's see an example logging every 120 steps:
 
 
 ```python
@@ -67,26 +66,26 @@ est.fit()
                                                                             
     
     FastEstimator-Warn: No ModelSaver Trace detected. Models will not be saved.
-    FastEstimator-Start: step: 1; num_device: 0; logging_interval: 120; 
-    FastEstimator-Train: step: 1; ce: 2.310556; model_lr: 0.001; 
-    FastEstimator-Train: step: 120; ce: 0.37298; steps/sec: 144.44; model_lr: 0.0009975198; 
-    FastEstimator-Train: step: 240; ce: 0.23124042; steps/sec: 137.05; model_lr: 0.000990021; 
-    FastEstimator-Train: step: 360; ce: 0.025805598; steps/sec: 126.34; model_lr: 0.0009775789; 
-    FastEstimator-Train: step: 480; ce: 0.053540815; steps/sec: 115.62; model_lr: 0.0009603194; 
-    FastEstimator-Train: step: 600; ce: 0.124904916; steps/sec: 98.48; model_lr: 0.00093841663; 
-    FastEstimator-Train: step: 720; ce: 0.069644645; steps/sec: 102.84; model_lr: 0.00091209175; 
-    FastEstimator-Train: step: 840; ce: 0.054759175; steps/sec: 100.21; model_lr: 0.0008816107; 
-    FastEstimator-Train: step: 960; ce: 0.014191106; steps/sec: 90.53; model_lr: 0.00084728113; 
-    FastEstimator-Train: step: 1080; ce: 0.15409154; steps/sec: 84.12; model_lr: 0.0008094498; 
-    FastEstimator-Train: step: 1200; ce: 0.021797167; steps/sec: 81.62; model_lr: 0.0007684987; 
-    FastEstimator-Train: step: 1320; ce: 0.018265918; steps/sec: 81.65; model_lr: 0.0007248414; 
-    FastEstimator-Train: step: 1440; ce: 0.0836072; steps/sec: 79.25; model_lr: 0.0006789187; 
-    FastEstimator-Train: step: 1560; ce: 0.0046536885; steps/sec: 66.7; model_lr: 0.00063119427; 
-    FastEstimator-Train: step: 1680; ce: 0.0028682733; steps/sec: 82.64; model_lr: 0.0005821501; 
-    FastEstimator-Train: step: 1800; ce: 0.075449295; steps/sec: 77.96; model_lr: 0.00053228147; 
-    FastEstimator-Train: step: 1875; epoch: 1; epoch_time: 22.39 sec; 
-    FastEstimator-Eval: step: 1875; epoch: 1; ce: 0.040944144; accuracy: 0.9868; 
-    FastEstimator-Finish: step: 1875; total_time: 23.1 sec; model_lr: 0.0005009185; 
+    FastEstimator-Start: step: 1; num_device: 1; logging_interval: 120; 
+    FastEstimator-Train: step: 1; ce: 2.2443972; model_lr: 0.0009999998; 
+    FastEstimator-Train: step: 120; ce: 0.12492387; steps/sec: 669.12; model_lr: 0.000997478; 
+    FastEstimator-Train: step: 240; ce: 0.048826903; steps/sec: 672.17; model_lr: 0.0009899376; 
+    FastEstimator-Train: step: 360; ce: 0.23642284; steps/sec: 725.35; model_lr: 0.0009774548; 
+    FastEstimator-Train: step: 480; ce: 0.09294783; steps/sec: 700.77; model_lr: 0.0009601558; 
+    FastEstimator-Train: step: 600; ce: 0.028917177; steps/sec: 699.82; model_lr: 0.0009382152; 
+    FastEstimator-Train: step: 720; ce: 0.20153509; steps/sec: 684.74; model_lr: 0.00091185456; 
+    FastEstimator-Train: step: 840; ce: 0.17263229; steps/sec: 716.73; model_lr: 0.00088134; 
+    FastEstimator-Train: step: 960; ce: 0.015276889; steps/sec: 704.36; model_lr: 0.00084697985; 
+    FastEstimator-Train: step: 1080; ce: 0.2609227; steps/sec: 717.46; model_lr: 0.0008091209; 
+    FastEstimator-Train: step: 1200; ce: 0.087061; steps/sec: 690.11; model_lr: 0.0007681455; 
+    FastEstimator-Train: step: 1320; ce: 0.0999055; steps/sec: 725.65; model_lr: 0.0007244674; 
+    FastEstimator-Train: step: 1440; ce: 0.0026154623; steps/sec: 682.23; model_lr: 0.00067852775; 
+    FastEstimator-Train: step: 1560; ce: 0.0033505233; steps/sec: 725.46; model_lr: 0.0006307903; 
+    FastEstimator-Train: step: 1680; ce: 0.03747531; steps/sec: 692.43; model_lr: 0.00058173726; 
+    FastEstimator-Train: step: 1800; ce: 0.01739407; steps/sec: 721.32; model_lr: 0.0005318639; 
+    FastEstimator-Train: step: 1875; epoch: 1; epoch_time: 3.21 sec; 
+    FastEstimator-Eval: step: 1875; epoch: 1; ce: 0.038839005; accuracy: 0.988; 
+    FastEstimator-Finish: step: 1875; total_time: 4.5 sec; model_lr: 0.0005005; 
 
 
 <a id='ta06summaries'></a>
@@ -109,14 +108,14 @@ summary = est.fit("experiment1")
                                                                             
     
     FastEstimator-Warn: No ModelSaver Trace detected. Models will not be saved.
-    FastEstimator-Start: step: 1; num_device: 0; logging_interval: 500; 
-    FastEstimator-Train: step: 1; ce: 0.0035908362; model_lr: 0.001; 
-    FastEstimator-Train: step: 500; ce: 0.2240004; steps/sec: 167.16; model_lr: 0.000956986; 
-    FastEstimator-Train: step: 1000; ce: 0.017725334; steps/sec: 175.28; model_lr: 0.0008350416; 
-    FastEstimator-Train: step: 1500; ce: 0.033957843; steps/sec: 171.15; model_lr: 0.0006552519; 
-    FastEstimator-Train: step: 1875; epoch: 1; epoch_time: 11.02 sec; 
-    FastEstimator-Eval: step: 1875; epoch: 1; ce: 0.042691424; accuracy: 0.9878; 
-    FastEstimator-Finish: step: 1875; total_time: 11.62 sec; model_lr: 0.0005009185; 
+    FastEstimator-Start: step: 1; num_device: 1; logging_interval: 500; 
+    FastEstimator-Train: step: 1; ce: 0.10593383; model_lr: 0.0009999998; 
+    FastEstimator-Train: step: 500; ce: 0.0012721822; steps/sec: 695.15; model_lr: 0.00095681596; 
+    FastEstimator-Train: step: 1000; ce: 0.005035706; steps/sec: 708.72; model_lr: 0.00083473074; 
+    FastEstimator-Train: step: 1500; ce: 0.0077150357; steps/sec: 711.83; model_lr: 0.000654854; 
+    FastEstimator-Train: step: 1875; epoch: 1; epoch_time: 2.73 sec; 
+    FastEstimator-Eval: step: 1875; epoch: 1; ce: 0.037608337; accuracy: 0.9868; 
+    FastEstimator-Finish: step: 1875; total_time: 3.96 sec; model_lr: 0.0005005; 
 
 
 Lets take a look at what sort of information is contained within our `Summary` object:
@@ -143,27 +142,27 @@ summary.history
 
     defaultdict(<function fastestimator.summary.summary.Summary.__init__.<locals>.<lambda>()>,
                 {'train': defaultdict(dict,
-                             {'num_device': {0: array(0)},
+                             {'num_device': {0: array(1)},
                               'logging_interval': {0: array(500)},
-                              'ce': {1: array(0.00359084, dtype=float32),
-                               500: array(0.2240004, dtype=float32),
-                               1000: array(0.01772533, dtype=float32),
-                               1500: array(0.03395784, dtype=float32)},
+                              'ce': {1: array(0.10593383, dtype=float32),
+                               500: array(0.00127218, dtype=float32),
+                               1000: array(0.00503571, dtype=float32),
+                               1500: array(0.00771504, dtype=float32)},
                               'model_lr': {1: array(0.001, dtype=float32),
-                               500: array(0.00095699, dtype=float32),
-                               1000: array(0.00083504, dtype=float32),
-                               1500: array(0.00065525, dtype=float32)},
-                              'steps/sec': {500: array(167.16),
-                               1000: array(175.28),
-                               1500: array(171.15)},
+                               500: array(0.00095682, dtype=float32),
+                               1000: array(0.00083473, dtype=float32),
+                               1500: array(0.00065485, dtype=float32),
+                               1875: array(0.0005005, dtype=float32)},
+                              'steps/sec': {500: array(695.15),
+                               1000: array(708.72),
+                               1500: array(711.83)},
                               'epoch': {1875: 1},
-                              'epoch_time': {1875: array('11.02 sec', dtype='<U9')}}),
+                              'epoch_time': {1875: array('2.73 sec', dtype='<U8')},
+                              'total_time': {1875: array('3.96 sec', dtype='<U8')}}),
                  'eval': defaultdict(dict,
                              {'epoch': {1875: 1},
-                              'ce': {1875: array(0.04269142, dtype=float32)},
-                              'accuracy': {1875: array(0.9878)},
-                              'total_time': {1875: array('11.62 sec', dtype='<U9')},
-                              'model_lr': {1875: array(0.00050092, dtype=float32)}})})
+                              'ce': {1875: array(0.03760834, dtype=float32)},
+                              'accuracy': {1875: array(0.9868)}})})
 
 
 
@@ -174,7 +173,7 @@ The history field can appear a little daunting, but it is simply a dictionary la
 summary = est.test()
 ```
 
-    FastEstimator-Test: step: 1875; epoch: 1; accuracy: 0.9868; 
+    FastEstimator-Test: step: 1875; epoch: 1; accuracy: 0.99; 
 
 
 
@@ -187,30 +186,30 @@ summary.history
 
     defaultdict(<function fastestimator.summary.summary.Summary.__init__.<locals>.<lambda>()>,
                 {'train': defaultdict(dict,
-                             {'num_device': {0: array(0)},
+                             {'num_device': {0: array(1)},
                               'logging_interval': {0: array(500)},
-                              'ce': {1: array(0.00359084, dtype=float32),
-                               500: array(0.2240004, dtype=float32),
-                               1000: array(0.01772533, dtype=float32),
-                               1500: array(0.03395784, dtype=float32)},
+                              'ce': {1: array(0.10593383, dtype=float32),
+                               500: array(0.00127218, dtype=float32),
+                               1000: array(0.00503571, dtype=float32),
+                               1500: array(0.00771504, dtype=float32)},
                               'model_lr': {1: array(0.001, dtype=float32),
-                               500: array(0.00095699, dtype=float32),
-                               1000: array(0.00083504, dtype=float32),
-                               1500: array(0.00065525, dtype=float32)},
-                              'steps/sec': {500: array(167.16),
-                               1000: array(175.28),
-                               1500: array(171.15)},
+                               500: array(0.00095682, dtype=float32),
+                               1000: array(0.00083473, dtype=float32),
+                               1500: array(0.00065485, dtype=float32),
+                               1875: array(0.0005005, dtype=float32)},
+                              'steps/sec': {500: array(695.15),
+                               1000: array(708.72),
+                               1500: array(711.83)},
                               'epoch': {1875: 1},
-                              'epoch_time': {1875: array('11.02 sec', dtype='<U9')}}),
+                              'epoch_time': {1875: array('2.73 sec', dtype='<U8')},
+                              'total_time': {1875: array('3.96 sec', dtype='<U8')}}),
                  'eval': defaultdict(dict,
                              {'epoch': {1875: 1},
-                              'ce': {1875: array(0.04269142, dtype=float32)},
-                              'accuracy': {1875: array(0.9878)},
-                              'total_time': {1875: array('11.62 sec', dtype='<U9')},
-                              'model_lr': {1875: array(0.00050092, dtype=float32)}}),
+                              'ce': {1875: array(0.03760834, dtype=float32)},
+                              'accuracy': {1875: array(0.9868)}}),
                  'test': defaultdict(dict,
                              {'epoch': {1875: 1},
-                              'accuracy': {1875: array(0.9868)}})})
+                              'accuracy': {1875: array(0.99)}})})
 
 
 
@@ -268,7 +267,9 @@ fe.summary.logs.visualize_logs(experiments=[summary])
 ```
 
 
+    
 ![png](assets/branches/master/tutorial/advanced/t06_summary_files/t06_summary_23_0.png)
+    
 
 
 If you are only interested in visualizing a subset of these log values, it is also possible to whitelist or blacklist values via the 'include_metrics' and 'ignore_metrics' arguments respectively:
@@ -279,7 +280,9 @@ fe.summary.logs.visualize_logs(experiments=[summary], include_metrics={"accuracy
 ```
 
 
+    
 ![png](assets/branches/master/tutorial/advanced/t06_summary_files/t06_summary_25_0.png)
+    
 
 
 It is also possible to compare logs from different experiments, which can be especially useful when fiddling with hyper-parameter values to determine their effects on training:
@@ -290,7 +293,9 @@ fe.summary.logs.parse_log_files(file_paths=["../resources/t06a_exp1.txt", "../re
 ```
 
 
+    
 ![png](assets/branches/master/tutorial/advanced/t06_summary_files/t06_summary_27_0.png)
+    
 
 
 All of the log files within a given directory can also be compared at the same time, either by using the parse_log_dir() method or via the command line as follows: fastestimator logs --extension .txt --smooth 0 ../resources
@@ -334,21 +339,21 @@ est.fit()
                                                                             
     
     FastEstimator-Warn: No ModelSaver Trace detected. Models will not be saved.
-    FastEstimator-Tensorboard: writing logs to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmpb_oy2ihe/20200504-202406
-    FastEstimator-Start: step: 1; num_device: 0; logging_interval: 1000; 
-    FastEstimator-Train: step: 1; ce: 2.296093; model1_lr: 0.001; 
-    FastEstimator-Train: step: 1000; ce: 0.18865156; steps/sec: 71.25; model1_lr: 0.0008350416; 
-    FastEstimator-Train: step: 1875; epoch: 1; epoch_time: 26.52 sec; 
-    FastEstimator-Eval: step: 1875; epoch: 1; ce: 0.050555836; accuracy: 0.9816; 
-    FastEstimator-Train: step: 2000; ce: 0.052690372; steps/sec: 70.85; model1_lr: 0.00044870423; 
-    FastEstimator-Train: step: 3000; ce: 0.0037323756; steps/sec: 70.63; model1_lr: 9.664212e-05; 
-    FastEstimator-Train: step: 3750; epoch: 2; epoch_time: 26.56 sec; 
-    FastEstimator-Eval: step: 3750; epoch: 2; ce: 0.030163307; accuracy: 0.99; 
-    FastEstimator-Train: step: 4000; ce: 0.063815504; steps/sec: 70.37; model1_lr: 0.0009891716; 
-    FastEstimator-Train: step: 5000; ce: 0.002615007; steps/sec: 73.63; model1_lr: 0.0007506123; 
-    FastEstimator-Train: step: 5625; epoch: 3; epoch_time: 25.93 sec; 
-    FastEstimator-Eval: step: 5625; epoch: 3; ce: 0.030318245; accuracy: 0.9902; 
-    FastEstimator-Finish: step: 5625; total_time: 81.43 sec; model1_lr: 0.0005009185; 
+    FastEstimator-Tensorboard: writing logs to /tmp/tmppy1edyce/20200929-185115
+    FastEstimator-Start: step: 1; num_device: 1; logging_interval: 1000; 
+    FastEstimator-Train: step: 1; ce: 2.3263385; model2_lr: 0.0009999998; 
+    FastEstimator-Train: step: 1000; ce: 0.02360101; steps/sec: 450.57; model2_lr: 0.00083473074; 
+    FastEstimator-Train: step: 1875; epoch: 1; epoch_time: 4.19 sec; 
+    FastEstimator-Eval: step: 1875; epoch: 1; ce: 0.062874146; accuracy: 0.9802; 
+    FastEstimator-Train: step: 2000; ce: 0.003110849; steps/sec: 466.04; model2_lr: 0.00044828805; 
+    FastEstimator-Train: step: 3000; ce: 0.008105779; steps/sec: 466.15; model2_lr: 9.639601e-05; 
+    FastEstimator-Train: step: 3750; epoch: 2; epoch_time: 4.07 sec; 
+    FastEstimator-Eval: step: 3750; epoch: 2; ce: 0.027781308; accuracy: 0.9904; 
+    FastEstimator-Train: step: 4000; ce: 0.01386946; steps/sec: 458.4; model2_lr: 0.0009890847; 
+    FastEstimator-Train: step: 5000; ce: 0.020999195; steps/sec: 470.05; model2_lr: 0.00075025; 
+    FastEstimator-Train: step: 5625; epoch: 3; epoch_time: 4.06 sec; 
+    FastEstimator-Eval: step: 5625; epoch: 3; ce: 0.028465897; accuracy: 0.9902; 
+    FastEstimator-Finish: step: 5625; total_time: 13.63 sec; model2_lr: 0.0005005; 
 
 
 Now let's launch TensorBoard to visualize our logs. Note that this call will prevent any subsequent Jupyter Notebook cells from running until you manually terminate it.

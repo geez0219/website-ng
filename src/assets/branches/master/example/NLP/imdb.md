@@ -1,4 +1,3 @@
-
 # Sentiment Prediction in IMDB Reviews using an LSTM
 
 

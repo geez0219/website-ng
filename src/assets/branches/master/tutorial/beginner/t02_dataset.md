@@ -1,4 +1,3 @@
-
 # Tutorial 2: Creating a FastEstimator dataset
 
 ## Overview
@@ -49,7 +48,7 @@ print(ds[0])
 print(len(ds))
 ```
 
-    {'x': array([0.11588935, 0.27958611, 0.45703942, 0.36171531, 0.66472315]), 'y': 0.5592775462425909}
+    {'x': array([0.77730671, 0.99536305, 0.30362685, 0.82398129, 0.87116199]), 'y': 0.9211995152006527}
     100
 
 
@@ -104,7 +103,7 @@ print(dataset[0])
 print(len(dataset))
 ```
 
-    {'x': '/var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmp8ttxesg9/tmpcmkfpq_n/a1.txt', 'y': 0}
+    {'x': '/tmp/tmp4_th3s9a/tmphe1zvp3u/a2.txt', 'y': 1}
     4
 
 
@@ -200,7 +199,7 @@ print(dataset[0])
 print(len(dataset))
 ```
 
-    {'x': array([0.30590938, 0.65189247, 0.37606477, 0.01100033]), 'y': 1}
+    {'x': array([0.15550239, 0.0600738 , 0.29110195, 0.09245787]), 'y': 1}
     10
 
 

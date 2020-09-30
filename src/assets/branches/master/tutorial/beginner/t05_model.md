@@ -1,4 +1,3 @@
-
 # Tutorial 5: Model
 
 ## Overview
@@ -176,7 +175,7 @@ fe.backend.save_model(resnet50_torch, save_dir=model_dir, model_name= "resnet50_
 
 
 
-    '/var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmpl70q0hk6/resnet50_torch.pt'
+    '/tmp/tmp7iizhyd7/resnet50_torch.pt'
 
 
 

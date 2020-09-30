@@ -1,4 +1,3 @@
-
 # Advanced Tutorial 1: Dataset
 
 ## Overview
@@ -15,7 +14,7 @@ In this tutorial, we will talk about the following topics:
     * [Unpaired Dataset](./tutorials/master/advanced/t01_dataset#ta01ud)
 * [Related Apphub Examples](./tutorials/master/advanced/t01_dataset#ta01rae)
 
-Before going through the tutorial, it is recommended to check [beginner tutorial 02](./tutorials/master/beginner/t02_dataset) for basic understanding of `dataset` from PyTorch and FastEstimator. We will talk about more details about `fe.dataset` API in this tutorial.
+Before going through the tutorial, it is recommended to check [Beginner Tutorial 2](./tutorials/master/beginner/t02_dataset) for basic understanding of `dataset` from PyTorch and FastEstimator. We will talk about more details about `fe.dataset` API in this tutorial.
 
 <a id='ta01summary'></a>
 
@@ -47,7 +46,7 @@ Or even more simply, by invoking the print function:
 print(train_data)
 ```
 
-    {"keys": {"x": {"dtype": "uint8", "shape": [28, 28]}, "y": {"dtype": "uint8", "num_unique_values": 10, "shape": []}}, "num_instances": 60000}
+    {"num_instances": 60000, "keys": {"x": {"shape": [28, 28], "dtype": "uint8"}, "y": {"num_unique_values": 10, "shape": [], "dtype": "uint8"}}}
 
 
 <a id='ta01splitting'></a>

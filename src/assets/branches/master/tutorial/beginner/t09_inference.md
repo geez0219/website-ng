@@ -1,4 +1,3 @@
-
 # Tutorial 9: Inference
 ## Overview
 In this tutorial we are going to cover:
@@ -11,7 +10,7 @@ In this tutorial we are going to cover:
 
 ## Running inference with transform method
 
-Running inference means using a trained deep learning model to get a prediction from some input data. Users can use `pipeline.transform` and `network.transform` to feed the data forward and get the computed result in any operation mode. Here we are going to use an end-to-end example (the same example code from [tutorial 8](./tutorials/master/beginner/t08_mode)) on MNIST image classification to demonstrate how to run inference.  
+Running inference means using a trained deep learning model to get a prediction from some input data. Users can use `pipeline.transform` and `network.transform` to feed the data forward and get the computed result in any operation mode. Here we are going to use an end-to-end example (the same example code from [Tutorial 8](./tutorials/master/beginner/t08_mode)) on MNIST image classification to demonstrate how to run inference.  
 
 We first train a deep leaning model with the following code:
 
@@ -60,29 +59,29 @@ estimator.fit()
                                                                             
     
     FastEstimator-Warn: No ModelSaver Trace detected. Models will not be saved.
-    FastEstimator-Start: step: 1; num_device: 0; logging_interval: 100; 
-    FastEstimator-Train: step: 1; ce: 2.3035316; 
-    FastEstimator-Train: step: 100; ce: 1.6618028; steps/sec: 146.74; 
-    FastEstimator-Train: step: 200; ce: 1.4808083; steps/sec: 151.68; 
-    FastEstimator-Train: step: 300; ce: 1.0872928; steps/sec: 150.25; 
-    FastEstimator-Train: step: 400; ce: 1.1683241; steps/sec: 144.47; 
-    FastEstimator-Train: step: 500; ce: 0.63509166; steps/sec: 142.96; 
-    FastEstimator-Train: step: 600; ce: 0.84414047; steps/sec: 137.78; 
-    FastEstimator-Train: step: 700; ce: 0.90303344; steps/sec: 141.27; 
-    FastEstimator-Train: step: 800; ce: 0.6876491; steps/sec: 130.39; 
-    FastEstimator-Train: step: 900; ce: 0.7615918; steps/sec: 134.94; 
-    FastEstimator-Train: step: 1000; ce: 0.7081696; steps/sec: 134.51; 
-    FastEstimator-Train: step: 1100; ce: 1.054371; steps/sec: 129.01; 
-    FastEstimator-Train: step: 1200; ce: 0.65663564; steps/sec: 125.8; 
-    FastEstimator-Train: step: 1300; ce: 0.80188024; steps/sec: 119.49; 
-    FastEstimator-Train: step: 1400; ce: 1.1256162; steps/sec: 115.14; 
-    FastEstimator-Train: step: 1500; ce: 1.4453554; steps/sec: 112.19; 
-    FastEstimator-Train: step: 1600; ce: 0.52970994; steps/sec: 106.5; 
-    FastEstimator-Train: step: 1700; ce: 0.48612577; steps/sec: 103.63; 
-    FastEstimator-Train: step: 1800; ce: 1.1535486; steps/sec: 106.13; 
-    FastEstimator-Train: step: 1875; epoch: 1; epoch_time: 17.0 sec; 
-    FastEstimator-Eval: step: 1875; epoch: 1; ce: 0.17459252; accuracy: 0.948; 
-    FastEstimator-Finish: step: 1875; total_time: 17.72 sec; model_lr: 0.001; 
+    FastEstimator-Start: step: 1; num_device: 1; logging_interval: 100; 
+    FastEstimator-Train: step: 1; ce: 2.3060365; 
+    FastEstimator-Train: step: 100; ce: 1.3945999; steps/sec: 607.74; 
+    FastEstimator-Train: step: 200; ce: 1.2612264; steps/sec: 608.3; 
+    FastEstimator-Train: step: 300; ce: 1.0923076; steps/sec: 637.68; 
+    FastEstimator-Train: step: 400; ce: 1.0432141; steps/sec: 618.6; 
+    FastEstimator-Train: step: 500; ce: 1.1291115; steps/sec: 632.26; 
+    FastEstimator-Train: step: 600; ce: 1.1621585; steps/sec: 631.08; 
+    FastEstimator-Train: step: 700; ce: 0.8800679; steps/sec: 635.6; 
+    FastEstimator-Train: step: 800; ce: 0.881644; steps/sec: 626.44; 
+    FastEstimator-Train: step: 900; ce: 1.0101147; steps/sec: 634.27; 
+    FastEstimator-Train: step: 1000; ce: 0.6896187; steps/sec: 625.37; 
+    FastEstimator-Train: step: 1100; ce: 0.8749423; steps/sec: 622.53; 
+    FastEstimator-Train: step: 1200; ce: 0.92175865; steps/sec: 638.35; 
+    FastEstimator-Train: step: 1300; ce: 0.863528; steps/sec: 597.19; 
+    FastEstimator-Train: step: 1400; ce: 0.97089654; steps/sec: 564.34; 
+    FastEstimator-Train: step: 1500; ce: 0.80536413; steps/sec: 657.6; 
+    FastEstimator-Train: step: 1600; ce: 1.2070308; steps/sec: 624.45; 
+    FastEstimator-Train: step: 1700; ce: 0.7665318; steps/sec: 639.24; 
+    FastEstimator-Train: step: 1800; ce: 0.79776144; steps/sec: 629.49; 
+    FastEstimator-Train: step: 1875; epoch: 1; epoch_time: 3.58 sec; 
+    FastEstimator-Eval: step: 1875; epoch: 1; ce: 0.16841692; accuracy: 0.9488; 
+    FastEstimator-Finish: step: 1875; total_time: 5.2 sec; model_lr: 0.001; 
 
 
 Let's create a customized print function to showcase our inferencing easier:
@@ -144,7 +143,7 @@ print_dict_but_value(infer_data)
 
 ### Network.transform
 
-We then use the network object to call the `transform` method that runs the network graph ("x_out" to "y_pred"). Much like with `pipeline.transform`, it will return it's Op outputs, though this time in the form of a dictionary of Tensors. The data type of the returned values depends on the backend of the network. It is `tf.Tensor` when using the TensorFlow backend and `torch.Tensor` with PyTorch. Please check out [tutorial 6](./tutorials/master/beginner/t06_network) for more details about `Network` backends). 
+We then use the network object to call the `transform` method that runs the network graph ("x_out" to "y_pred"). Much like with `pipeline.transform`, it will return it's Op outputs, though this time in the form of a dictionary of Tensors. The data type of the returned values depends on the backend of the network. It is `tf.Tensor` when using the TensorFlow backend and `torch.Tensor` with PyTorch. Please check out [Tutorial 6](./tutorials/master/beginner/t06_network) for more details about `Network` backends). 
 
 <img src="assets/branches/master/tutorial/../resources/t09_infer_mode3.PNG" alt="drawing" width="700"/>
 
@@ -168,11 +167,13 @@ img = fe.util.ImgData(x=infer_data["x"])
 fig = img.paint_figure()
 ```
 
-    Predicted class is 7
+    Predicted class is 2
 
 
 
+    
 ![png](assets/branches/master/tutorial/beginner/t09_inference_files/t09_inference_19_1.png)
+    
 
 
 <a id='t09apphub'></a>

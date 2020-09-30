@@ -1,4 +1,3 @@
-
 # Advanced Tutorial 7: Learning Rate Scheduling
 
 ## Overview
@@ -14,7 +13,7 @@ In this tutorial, we will discuss:
 
 Learning rate schedules can be implemented using the `LRScheduler` `Trace`. `LRScheduler` takes the model and learning schedule through the **lr_fn** parameter. **lr_fn** should be a function/lambda function with 'step' or 'epoch' as its input parameter. This determines whether the learning schedule will be applied at a step or epoch level.
 
-For more details on traces, you can visit [tutorial 7](./tutorials/master/beginner/t07_estimator) in the beginner section and [tutorial 4](./tutorials/master/advanced/t04_trace) in the advanced section. 
+For more details on traces, you can visit [Beginner Tutorial 7](./tutorials/master/beginner/t07_estimator) and [Advanced Tutorial 4](./tutorials/master/advanced/t04_trace). 
 
 Let's create a function to generate the pipeline, model, and network to be used for this tutorial:
 
@@ -55,7 +54,7 @@ We can specify a custom learning schedule by passing a custom function to the **
 <a id='ta07epoch'></a>
 
 ### Epoch-wise
-To apply learning rate scheduling at an epoch level, the custom function should have 'epoch' as its parameter. Let's look at the example below which demonstrates this. We will be using the summary parameter in the fit method to be able to visualize the learning rate later. You can go through [tutorial 6](./tutorials/master/advanced/t06_summary) in the advanced section for more details on accessing training history.
+To apply learning rate scheduling at an epoch level, the custom function should have 'epoch' as its parameter. Let's look at the example below which demonstrates this. We will be using the summary parameter in the fit method to be able to visualize the learning rate later. You can go through [Advanced Tutorial 6](./tutorials/master/advanced/t06_summary) for more details on accessing training history.
 
 
 ```python
@@ -82,68 +81,68 @@ history = estimator.fit(summary="Experiment_1")
                                                                             
     
     FastEstimator-Warn: No ModelSaver Trace detected. Models will not be saved.
-    FastEstimator-Start: step: 1; num_device: 0; logging_interval: 100; 
-    FastEstimator-Train: step: 1; ce: 2.3121834; LeNet_lr: 0.001; 
-    FastEstimator-Train: step: 100; ce: 0.3843257; steps/sec: 139.02; LeNet_lr: 0.001; 
-    FastEstimator-Train: step: 200; ce: 0.117751315; steps/sec: 131.96; LeNet_lr: 0.001; 
-    FastEstimator-Train: step: 300; ce: 0.20433763; steps/sec: 129.58; LeNet_lr: 0.001; 
-    FastEstimator-Train: step: 400; ce: 0.10046323; steps/sec: 122.35; LeNet_lr: 0.001; 
-    FastEstimator-Train: step: 500; ce: 0.18251789; steps/sec: 122.15; LeNet_lr: 0.001; 
-    FastEstimator-Train: step: 600; ce: 0.027669977; steps/sec: 118.68; LeNet_lr: 0.001; 
-    FastEstimator-Train: step: 700; ce: 0.018796597; steps/sec: 117.34; LeNet_lr: 0.001; 
-    FastEstimator-Train: step: 800; ce: 0.1343742; steps/sec: 113.8; LeNet_lr: 0.001; 
-    FastEstimator-Train: step: 900; ce: 0.066348195; steps/sec: 101.95; LeNet_lr: 0.001; 
-    FastEstimator-Train: step: 1000; ce: 0.21500783; steps/sec: 103.25; LeNet_lr: 0.001; 
-    FastEstimator-Train: step: 1100; ce: 0.020392025; steps/sec: 101.94; LeNet_lr: 0.001; 
-    FastEstimator-Train: step: 1200; ce: 0.06266867; steps/sec: 101.34; LeNet_lr: 0.001; 
-    FastEstimator-Train: step: 1300; ce: 0.0051358286; steps/sec: 98.58; LeNet_lr: 0.001; 
-    FastEstimator-Train: step: 1400; ce: 0.11623003; steps/sec: 95.29; LeNet_lr: 0.001; 
-    FastEstimator-Train: step: 1500; ce: 0.2841274; steps/sec: 94.73; LeNet_lr: 0.001; 
-    FastEstimator-Train: step: 1600; ce: 0.0059423; steps/sec: 91.64; LeNet_lr: 0.001; 
-    FastEstimator-Train: step: 1700; ce: 0.020643737; steps/sec: 93.76; LeNet_lr: 0.001; 
-    FastEstimator-Train: step: 1800; ce: 0.05520491; steps/sec: 94.92; LeNet_lr: 0.001; 
-    FastEstimator-Train: step: 1875; epoch: 1; epoch_time: 19.52 sec; 
-    FastEstimator-Train: step: 1900; ce: 0.011271543; steps/sec: 94.66; LeNet_lr: 0.00095; 
-    FastEstimator-Train: step: 2000; ce: 0.02188245; steps/sec: 89.22; LeNet_lr: 0.00095; 
-    FastEstimator-Train: step: 2100; ce: 0.0048960065; steps/sec: 84.91; LeNet_lr: 0.00095; 
-    FastEstimator-Train: step: 2200; ce: 0.009766675; steps/sec: 90.6; LeNet_lr: 0.00095; 
-    FastEstimator-Train: step: 2300; ce: 0.008525206; steps/sec: 88.56; LeNet_lr: 0.00095; 
-    FastEstimator-Train: step: 2400; ce: 0.007846909; steps/sec: 85.83; LeNet_lr: 0.00095; 
-    FastEstimator-Train: step: 2500; ce: 0.11211253; steps/sec: 84.11; LeNet_lr: 0.00095; 
-    FastEstimator-Train: step: 2600; ce: 0.013980574; steps/sec: 80.19; LeNet_lr: 0.00095; 
-    FastEstimator-Train: step: 2700; ce: 0.026221849; steps/sec: 79.1; LeNet_lr: 0.00095; 
-    FastEstimator-Train: step: 2800; ce: 0.025860263; steps/sec: 78.37; LeNet_lr: 0.00095; 
-    FastEstimator-Train: step: 2900; ce: 0.008109703; steps/sec: 77.45; LeNet_lr: 0.00095; 
-    FastEstimator-Train: step: 3000; ce: 0.09107354; steps/sec: 75.67; LeNet_lr: 0.00095; 
-    FastEstimator-Train: step: 3100; ce: 0.003782929; steps/sec: 73.88; LeNet_lr: 0.00095; 
-    FastEstimator-Train: step: 3200; ce: 0.0090578655; steps/sec: 72.33; LeNet_lr: 0.00095; 
-    FastEstimator-Train: step: 3300; ce: 0.103154205; steps/sec: 83.93; LeNet_lr: 0.00095; 
-    FastEstimator-Train: step: 3400; ce: 0.013315021; steps/sec: 79.49; LeNet_lr: 0.00095; 
-    FastEstimator-Train: step: 3500; ce: 0.017441805; steps/sec: 85.13; LeNet_lr: 0.00095; 
-    FastEstimator-Train: step: 3600; ce: 0.017847143; steps/sec: 77.92; LeNet_lr: 0.00095; 
-    FastEstimator-Train: step: 3700; ce: 0.04056422; steps/sec: 82.93; LeNet_lr: 0.00095; 
-    FastEstimator-Train: step: 3750; epoch: 2; epoch_time: 23.04 sec; 
-    FastEstimator-Train: step: 3800; ce: 0.004228523; steps/sec: 79.59; LeNet_lr: 0.0009; 
-    FastEstimator-Train: step: 3900; ce: 0.0015197117; steps/sec: 81.38; LeNet_lr: 0.0009; 
-    FastEstimator-Train: step: 4000; ce: 0.0004167799; steps/sec: 79.58; LeNet_lr: 0.0009; 
-    FastEstimator-Train: step: 4100; ce: 0.012444577; steps/sec: 79.87; LeNet_lr: 0.0009; 
-    FastEstimator-Train: step: 4200; ce: 0.011467964; steps/sec: 80.24; LeNet_lr: 0.0009; 
-    FastEstimator-Train: step: 4300; ce: 0.004452401; steps/sec: 76.3; LeNet_lr: 0.0009; 
-    FastEstimator-Train: step: 4400; ce: 0.0045919186; steps/sec: 77.09; LeNet_lr: 0.0009; 
-    FastEstimator-Train: step: 4500; ce: 0.05509679; steps/sec: 80.72; LeNet_lr: 0.0009; 
-    FastEstimator-Train: step: 4600; ce: 0.0028458317; steps/sec: 76.64; LeNet_lr: 0.0009; 
-    FastEstimator-Train: step: 4700; ce: 0.014053181; steps/sec: 78.09; LeNet_lr: 0.0009; 
-    FastEstimator-Train: step: 4800; ce: 0.00821719; steps/sec: 77.62; LeNet_lr: 0.0009; 
-    FastEstimator-Train: step: 4900; ce: 0.05650976; steps/sec: 81.53; LeNet_lr: 0.0009; 
-    FastEstimator-Train: step: 5000; ce: 0.044777524; steps/sec: 75.98; LeNet_lr: 0.0009; 
-    FastEstimator-Train: step: 5100; ce: 0.000998376; steps/sec: 76.29; LeNet_lr: 0.0009; 
-    FastEstimator-Train: step: 5200; ce: 0.00041511073; steps/sec: 73.71; LeNet_lr: 0.0009; 
-    FastEstimator-Train: step: 5300; ce: 0.023241056; steps/sec: 86.19; LeNet_lr: 0.0009; 
-    FastEstimator-Train: step: 5400; ce: 0.18524896; steps/sec: 81.82; LeNet_lr: 0.0009; 
-    FastEstimator-Train: step: 5500; ce: 0.12962568; steps/sec: 83.83; LeNet_lr: 0.0009; 
-    FastEstimator-Train: step: 5600; ce: 0.0027833423; steps/sec: 83.36; LeNet_lr: 0.0009; 
-    FastEstimator-Train: step: 5625; epoch: 3; epoch_time: 23.63 sec; 
-    FastEstimator-Finish: step: 5625; total_time: 66.27 sec; LeNet_lr: 0.0009; 
+    FastEstimator-Start: step: 1; num_device: 1; logging_interval: 100; 
+    FastEstimator-Train: step: 1; ce: 2.3089; LeNet_lr: 0.001; 
+    FastEstimator-Train: step: 100; ce: 0.58078986; steps/sec: 694.76; LeNet_lr: 0.001; 
+    FastEstimator-Train: step: 200; ce: 0.13996598; steps/sec: 767.68; LeNet_lr: 0.001; 
+    FastEstimator-Train: step: 300; ce: 0.047897074; steps/sec: 784.24; LeNet_lr: 0.001; 
+    FastEstimator-Train: step: 400; ce: 0.046643212; steps/sec: 776.27; LeNet_lr: 0.001; 
+    FastEstimator-Train: step: 500; ce: 0.022375159; steps/sec: 815.21; LeNet_lr: 0.001; 
+    FastEstimator-Train: step: 600; ce: 0.07842708; steps/sec: 778.69; LeNet_lr: 0.001; 
+    FastEstimator-Train: step: 700; ce: 0.20251414; steps/sec: 802.99; LeNet_lr: 0.001; 
+    FastEstimator-Train: step: 800; ce: 0.035366945; steps/sec: 769.72; LeNet_lr: 0.001; 
+    FastEstimator-Train: step: 900; ce: 0.03398672; steps/sec: 810.71; LeNet_lr: 0.001; 
+    FastEstimator-Train: step: 1000; ce: 0.112584725; steps/sec: 783.55; LeNet_lr: 0.001; 
+    FastEstimator-Train: step: 1100; ce: 0.05205777; steps/sec: 689.27; LeNet_lr: 0.001; 
+    FastEstimator-Train: step: 1200; ce: 0.0033754208; steps/sec: 743.87; LeNet_lr: 0.001; 
+    FastEstimator-Train: step: 1300; ce: 0.0054937536; steps/sec: 803.25; LeNet_lr: 0.001; 
+    FastEstimator-Train: step: 1400; ce: 0.0065217884; steps/sec: 783.11; LeNet_lr: 0.001; 
+    FastEstimator-Train: step: 1500; ce: 0.011019227; steps/sec: 819.06; LeNet_lr: 0.001; 
+    FastEstimator-Train: step: 1600; ce: 0.05610779; steps/sec: 783.92; LeNet_lr: 0.001; 
+    FastEstimator-Train: step: 1700; ce: 0.10374484; steps/sec: 812.64; LeNet_lr: 0.001; 
+    FastEstimator-Train: step: 1800; ce: 0.16797249; steps/sec: 777.94; LeNet_lr: 0.001; 
+    FastEstimator-Train: step: 1875; epoch: 1; epoch_time: 2.96 sec; 
+    FastEstimator-Train: step: 1900; ce: 0.002968135; steps/sec: 456.57; LeNet_lr: 0.00095; 
+    FastEstimator-Train: step: 2000; ce: 0.004666821; steps/sec: 661.41; LeNet_lr: 0.00095; 
+    FastEstimator-Train: step: 2100; ce: 0.0124099245; steps/sec: 707.8; LeNet_lr: 0.00095; 
+    FastEstimator-Train: step: 2200; ce: 0.08333805; steps/sec: 765.97; LeNet_lr: 0.00095; 
+    FastEstimator-Train: step: 2300; ce: 0.04198639; steps/sec: 770.37; LeNet_lr: 0.00095; 
+    FastEstimator-Train: step: 2400; ce: 0.072333984; steps/sec: 788.7; LeNet_lr: 0.00095; 
+    FastEstimator-Train: step: 2500; ce: 0.0021644386; steps/sec: 783.02; LeNet_lr: 0.00095; 
+    FastEstimator-Train: step: 2600; ce: 0.117298014; steps/sec: 805.19; LeNet_lr: 0.00095; 
+    FastEstimator-Train: step: 2700; ce: 0.029399084; steps/sec: 787.32; LeNet_lr: 0.00095; 
+    FastEstimator-Train: step: 2800; ce: 0.025874225; steps/sec: 810.38; LeNet_lr: 0.00095; 
+    FastEstimator-Train: step: 2900; ce: 0.0076365666; steps/sec: 788.14; LeNet_lr: 0.00095; 
+    FastEstimator-Train: step: 3000; ce: 0.018179502; steps/sec: 793.57; LeNet_lr: 0.00095; 
+    FastEstimator-Train: step: 3100; ce: 0.002729386; steps/sec: 780.15; LeNet_lr: 0.00095; 
+    FastEstimator-Train: step: 3200; ce: 0.005655894; steps/sec: 785.53; LeNet_lr: 0.00095; 
+    FastEstimator-Train: step: 3300; ce: 0.0051174066; steps/sec: 772.76; LeNet_lr: 0.00095; 
+    FastEstimator-Train: step: 3400; ce: 0.03424426; steps/sec: 714.72; LeNet_lr: 0.00095; 
+    FastEstimator-Train: step: 3500; ce: 0.061904356; steps/sec: 692.78; LeNet_lr: 0.00095; 
+    FastEstimator-Train: step: 3600; ce: 0.01764475; steps/sec: 815.43; LeNet_lr: 0.00095; 
+    FastEstimator-Train: step: 3700; ce: 0.004598704; steps/sec: 796.09; LeNet_lr: 0.00095; 
+    FastEstimator-Train: step: 3750; epoch: 2; epoch_time: 2.54 sec; 
+    FastEstimator-Train: step: 3800; ce: 0.007359849; steps/sec: 466.42; LeNet_lr: 0.0009; 
+    FastEstimator-Train: step: 3900; ce: 0.03665335; steps/sec: 798.22; LeNet_lr: 0.0009; 
+    FastEstimator-Train: step: 4000; ce: 0.010769706; steps/sec: 775.86; LeNet_lr: 0.0009; 
+    FastEstimator-Train: step: 4100; ce: 0.0013347296; steps/sec: 794.47; LeNet_lr: 0.0009; 
+    FastEstimator-Train: step: 4200; ce: 0.00937571; steps/sec: 776.57; LeNet_lr: 0.0009; 
+    FastEstimator-Train: step: 4300; ce: 0.0073838052; steps/sec: 798.44; LeNet_lr: 0.0009; 
+    FastEstimator-Train: step: 4400; ce: 0.0016001706; steps/sec: 755.96; LeNet_lr: 0.0009; 
+    FastEstimator-Train: step: 4500; ce: 0.0027758705; steps/sec: 789.77; LeNet_lr: 0.0009; 
+    FastEstimator-Train: step: 4600; ce: 0.14900081; steps/sec: 771.62; LeNet_lr: 0.0009; 
+    FastEstimator-Train: step: 4700; ce: 0.00067295914; steps/sec: 794.2; LeNet_lr: 0.0009; 
+    FastEstimator-Train: step: 4800; ce: 0.035189193; steps/sec: 687.94; LeNet_lr: 0.0009; 
+    FastEstimator-Train: step: 4900; ce: 0.013106734; steps/sec: 725.63; LeNet_lr: 0.0009; 
+    FastEstimator-Train: step: 5000; ce: 0.0010486699; steps/sec: 790.38; LeNet_lr: 0.0009; 
+    FastEstimator-Train: step: 5100; ce: 0.0015635535; steps/sec: 801.9; LeNet_lr: 0.0009; 
+    FastEstimator-Train: step: 5200; ce: 0.22061187; steps/sec: 772.13; LeNet_lr: 0.0009; 
+    FastEstimator-Train: step: 5300; ce: 0.0050542983; steps/sec: 806.05; LeNet_lr: 0.0009; 
+    FastEstimator-Train: step: 5400; ce: 0.0024875803; steps/sec: 764.54; LeNet_lr: 0.0009; 
+    FastEstimator-Train: step: 5500; ce: 0.0076733916; steps/sec: 832.12; LeNet_lr: 0.0009; 
+    FastEstimator-Train: step: 5600; ce: 0.005431102; steps/sec: 804.78; LeNet_lr: 0.0009; 
+    FastEstimator-Train: step: 5625; epoch: 3; epoch_time: 2.54 sec; 
+    FastEstimator-Finish: step: 5625; total_time: 9.77 sec; LeNet_lr: 0.0009; 
 
 
 The learning rate is available in the training log at steps specified using the log_steps parameter in the `Estimator`. By default, training is logged every 100 steps.
@@ -154,7 +153,9 @@ visualize_logs(history, include_metrics="LeNet_lr")
 ```
 
 
+    
 ![png](assets/branches/master/tutorial/advanced/t07_learning_rate_scheduling_files/t07_learning_rate_scheduling_9_0.png)
+    
 
 
 As you can see, the learning rate changes only after every epoch.
@@ -186,48 +187,48 @@ history2 = estimator.fit(summary="Experiment_2")
                                                                             
     
     FastEstimator-Warn: No ModelSaver Trace detected. Models will not be saved.
-    FastEstimator-Start: step: 1; num_device: 0; logging_interval: 100; 
-    FastEstimator-Train: step: 1; ce: 2.3268642; LeNet_lr: 0.001; 
-    FastEstimator-Train: step: 100; ce: 0.34729302; steps/sec: 81.02; LeNet_lr: 0.0009868; 
-    FastEstimator-Train: step: 200; ce: 0.16947752; steps/sec: 79.79; LeNet_lr: 0.00097346667; 
-    FastEstimator-Train: step: 300; ce: 0.1158019; steps/sec: 79.11; LeNet_lr: 0.00096013333; 
-    FastEstimator-Train: step: 400; ce: 0.08662731; steps/sec: 77.06; LeNet_lr: 0.0009468; 
-    FastEstimator-Train: step: 500; ce: 0.0455483; steps/sec: 75.55; LeNet_lr: 0.00093346665; 
-    FastEstimator-Train: step: 600; ce: 0.17311177; steps/sec: 77.16; LeNet_lr: 0.0009201333; 
-    FastEstimator-Train: step: 700; ce: 0.07044801; steps/sec: 77.25; LeNet_lr: 0.0009068; 
-    FastEstimator-Train: step: 800; ce: 0.060867704; steps/sec: 76.46; LeNet_lr: 0.00089346664; 
-    FastEstimator-Train: step: 900; ce: 0.14833035; steps/sec: 77.65; LeNet_lr: 0.00088013336; 
-    FastEstimator-Train: step: 1000; ce: 0.01502298; steps/sec: 75.22; LeNet_lr: 0.0008668; 
-    FastEstimator-Train: step: 1100; ce: 0.14445232; steps/sec: 75.63; LeNet_lr: 0.0008534667; 
-    FastEstimator-Train: step: 1200; ce: 0.027258653; steps/sec: 74.33; LeNet_lr: 0.00084013335; 
-    FastEstimator-Train: step: 1300; ce: 0.12475329; steps/sec: 73.37; LeNet_lr: 0.0008268; 
-    FastEstimator-Train: step: 1400; ce: 0.09298558; steps/sec: 76.89; LeNet_lr: 0.0008134667; 
-    FastEstimator-Train: step: 1500; ce: 0.048965212; steps/sec: 71.28; LeNet_lr: 0.00080013333; 
-    FastEstimator-Train: step: 1600; ce: 0.043585315; steps/sec: 74.56; LeNet_lr: 0.0007868; 
-    FastEstimator-Train: step: 1700; ce: 0.18490058; steps/sec: 72.17; LeNet_lr: 0.00077346666; 
-    FastEstimator-Train: step: 1800; ce: 0.08914224; steps/sec: 73.68; LeNet_lr: 0.0007601333; 
-    FastEstimator-Train: step: 1875; epoch: 1; epoch_time: 24.87 sec; 
-    FastEstimator-Train: step: 1900; ce: 0.06549401; steps/sec: 72.05; LeNet_lr: 0.0007468; 
-    FastEstimator-Train: step: 2000; ce: 0.005398229; steps/sec: 73.46; LeNet_lr: 0.00073346664; 
-    FastEstimator-Train: step: 2100; ce: 0.19036639; steps/sec: 73.44; LeNet_lr: 0.0007201333; 
-    FastEstimator-Train: step: 2200; ce: 0.0037528607; steps/sec: 74.23; LeNet_lr: 0.0007068; 
-    FastEstimator-Train: step: 2300; ce: 0.07193564; steps/sec: 73.72; LeNet_lr: 0.0006934667; 
-    FastEstimator-Train: step: 2400; ce: 0.27834976; steps/sec: 72.84; LeNet_lr: 0.00068013335; 
-    FastEstimator-Train: step: 2500; ce: 0.058940012; steps/sec: 74.08; LeNet_lr: 0.0006668; 
-    FastEstimator-Train: step: 2600; ce: 0.14127687; steps/sec: 73.21; LeNet_lr: 0.0006534667; 
-    FastEstimator-Train: step: 2700; ce: 0.03426341; steps/sec: 75.49; LeNet_lr: 0.00064013334; 
-    FastEstimator-Train: step: 2800; ce: 0.033499897; steps/sec: 71.58; LeNet_lr: 0.0006268; 
-    FastEstimator-Train: step: 2900; ce: 0.008997633; steps/sec: 75.63; LeNet_lr: 0.00061346666; 
-    FastEstimator-Train: step: 3000; ce: 0.02539826; steps/sec: 74.05; LeNet_lr: 0.0006001333; 
-    FastEstimator-Train: step: 3100; ce: 0.10326672; steps/sec: 72.52; LeNet_lr: 0.0005868; 
-    FastEstimator-Train: step: 3200; ce: 0.008950228; steps/sec: 78.7; LeNet_lr: 0.00057346665; 
-    FastEstimator-Train: step: 3300; ce: 0.023044724; steps/sec: 76.58; LeNet_lr: 0.0005601333; 
-    FastEstimator-Train: step: 3400; ce: 0.030512333; steps/sec: 72.12; LeNet_lr: 0.0005468; 
-    FastEstimator-Train: step: 3500; ce: 0.0038094707; steps/sec: 72.78; LeNet_lr: 0.0005334667; 
-    FastEstimator-Train: step: 3600; ce: 0.041347966; steps/sec: 75.93; LeNet_lr: 0.00052013336; 
-    FastEstimator-Train: step: 3700; ce: 0.0005119173; steps/sec: 72.98; LeNet_lr: 0.0005068; 
-    FastEstimator-Train: step: 3750; epoch: 2; epoch_time: 25.35 sec; 
-    FastEstimator-Finish: step: 3750; total_time: 50.26 sec; LeNet_lr: 0.0005001333; 
+    FastEstimator-Start: step: 1; num_device: 1; logging_interval: 100; 
+    FastEstimator-Train: step: 1; ce: 2.3065164; LeNet_lr: 0.001; 
+    FastEstimator-Train: step: 100; ce: 0.23714758; steps/sec: 655.65; LeNet_lr: 0.0009868; 
+    FastEstimator-Train: step: 200; ce: 0.6577442; steps/sec: 678.86; LeNet_lr: 0.00097346667; 
+    FastEstimator-Train: step: 300; ce: 0.14811869; steps/sec: 677.92; LeNet_lr: 0.00096013333; 
+    FastEstimator-Train: step: 400; ce: 0.11562818; steps/sec: 668.4; LeNet_lr: 0.0009468; 
+    FastEstimator-Train: step: 500; ce: 0.027212799; steps/sec: 633.48; LeNet_lr: 0.00093346665; 
+    FastEstimator-Train: step: 600; ce: 0.17180511; steps/sec: 570.52; LeNet_lr: 0.0009201333; 
+    FastEstimator-Train: step: 700; ce: 0.060723193; steps/sec: 695.62; LeNet_lr: 0.0009068; 
+    FastEstimator-Train: step: 800; ce: 0.072167784; steps/sec: 682.35; LeNet_lr: 0.00089346664; 
+    FastEstimator-Train: step: 900; ce: 0.037193242; steps/sec: 683.86; LeNet_lr: 0.00088013336; 
+    FastEstimator-Train: step: 1000; ce: 0.09921763; steps/sec: 605.18; LeNet_lr: 0.0008668; 
+    FastEstimator-Train: step: 1100; ce: 0.050317485; steps/sec: 603.58; LeNet_lr: 0.0008534667; 
+    FastEstimator-Train: step: 1200; ce: 0.033182904; steps/sec: 682.28; LeNet_lr: 0.00084013335; 
+    FastEstimator-Train: step: 1300; ce: 0.030531863; steps/sec: 707.21; LeNet_lr: 0.0008268; 
+    FastEstimator-Train: step: 1400; ce: 0.033350274; steps/sec: 683.06; LeNet_lr: 0.0008134667; 
+    FastEstimator-Train: step: 1500; ce: 0.20844415; steps/sec: 706.99; LeNet_lr: 0.00080013333; 
+    FastEstimator-Train: step: 1600; ce: 0.0029021623; steps/sec: 685.66; LeNet_lr: 0.0007868; 
+    FastEstimator-Train: step: 1700; ce: 0.009277768; steps/sec: 717.94; LeNet_lr: 0.00077346666; 
+    FastEstimator-Train: step: 1800; ce: 0.0021057532; steps/sec: 688.16; LeNet_lr: 0.0007601333; 
+    FastEstimator-Train: step: 1875; epoch: 1; epoch_time: 3.0 sec; 
+    FastEstimator-Train: step: 1900; ce: 0.03702537; steps/sec: 417.6; LeNet_lr: 0.0007468; 
+    FastEstimator-Train: step: 2000; ce: 0.053149987; steps/sec: 651.14; LeNet_lr: 0.00073346664; 
+    FastEstimator-Train: step: 2100; ce: 0.017920867; steps/sec: 670.72; LeNet_lr: 0.0007201333; 
+    FastEstimator-Train: step: 2200; ce: 0.08334316; steps/sec: 684.75; LeNet_lr: 0.0007068; 
+    FastEstimator-Train: step: 2300; ce: 0.003692674; steps/sec: 682.05; LeNet_lr: 0.0006934667; 
+    FastEstimator-Train: step: 2400; ce: 0.003553884; steps/sec: 690.95; LeNet_lr: 0.00068013335; 
+    FastEstimator-Train: step: 2500; ce: 0.013678698; steps/sec: 661.92; LeNet_lr: 0.0006668; 
+    FastEstimator-Train: step: 2600; ce: 0.07064867; steps/sec: 716.98; LeNet_lr: 0.0006534667; 
+    FastEstimator-Train: step: 2700; ce: 0.036846854; steps/sec: 686.8; LeNet_lr: 0.00064013334; 
+    FastEstimator-Train: step: 2800; ce: 0.004501665; steps/sec: 671.16; LeNet_lr: 0.0006268; 
+    FastEstimator-Train: step: 2900; ce: 0.2406652; steps/sec: 566.73; LeNet_lr: 0.00061346666; 
+    FastEstimator-Train: step: 3000; ce: 0.004612835; steps/sec: 703.64; LeNet_lr: 0.0006001333; 
+    FastEstimator-Train: step: 3100; ce: 0.04271071; steps/sec: 568.53; LeNet_lr: 0.0005868; 
+    FastEstimator-Train: step: 3200; ce: 0.124661796; steps/sec: 674.27; LeNet_lr: 0.00057346665; 
+    FastEstimator-Train: step: 3300; ce: 0.012699548; steps/sec: 592.47; LeNet_lr: 0.0005601333; 
+    FastEstimator-Train: step: 3400; ce: 0.0035635328; steps/sec: 636.74; LeNet_lr: 0.0005468; 
+    FastEstimator-Train: step: 3500; ce: 0.116995685; steps/sec: 683.88; LeNet_lr: 0.0005334667; 
+    FastEstimator-Train: step: 3600; ce: 0.007870817; steps/sec: 691.72; LeNet_lr: 0.00052013336; 
+    FastEstimator-Train: step: 3700; ce: 0.01830994; steps/sec: 676.26; LeNet_lr: 0.0005068; 
+    FastEstimator-Train: step: 3750; epoch: 2; epoch_time: 2.96 sec; 
+    FastEstimator-Finish: step: 3750; total_time: 7.12 sec; LeNet_lr: 0.0005001333; 
 
 
 
@@ -236,7 +237,9 @@ visualize_logs(history2, include_metrics="LeNet_lr")
 ```
 
 
+    
 ![png](assets/branches/master/tutorial/advanced/t07_learning_rate_scheduling_files/t07_learning_rate_scheduling_14_0.png)
+    
 
 
 <a id='ta07builtin'></a>
@@ -269,48 +272,48 @@ history3 = estimator.fit(summary="Experiment_3")
                                                                             
     
     FastEstimator-Warn: No ModelSaver Trace detected. Models will not be saved.
-    FastEstimator-Start: step: 1; num_device: 0; logging_interval: 100; 
-    FastEstimator-Train: step: 1; ce: 2.3090043; LeNet_lr: 0.001; 
-    FastEstimator-Train: step: 100; ce: 0.34759182; steps/sec: 72.64; LeNet_lr: 0.0009931439; 
-    FastEstimator-Train: step: 200; ce: 0.124293044; steps/sec: 72.99; LeNet_lr: 0.0009724906; 
-    FastEstimator-Train: step: 300; ce: 0.11162343; steps/sec: 76.42; LeNet_lr: 0.00093861774; 
-    FastEstimator-Train: step: 400; ce: 0.1846501; steps/sec: 73.36; LeNet_lr: 0.0008924742; 
-    FastEstimator-Train: step: 500; ce: 0.09742119; steps/sec: 72.06; LeNet_lr: 0.0008353522; 
-    FastEstimator-Train: step: 600; ce: 0.013896314; steps/sec: 74.61; LeNet_lr: 0.0007688517; 
-    FastEstimator-Train: step: 700; ce: 0.10306329; steps/sec: 71.42; LeNet_lr: 0.00069483527; 
-    FastEstimator-Train: step: 800; ce: 0.020540427; steps/sec: 72.34; LeNet_lr: 0.00061537593; 
-    FastEstimator-Train: step: 900; ce: 0.33192694; steps/sec: 74.66; LeNet_lr: 0.0005326991; 
-    FastEstimator-Train: step: 1000; ce: 0.027314447; steps/sec: 73.71; LeNet_lr: 0.00044912045; 
-    FastEstimator-Train: step: 1100; ce: 0.07889113; steps/sec: 71.89; LeNet_lr: 0.00036698082; 
-    FastEstimator-Train: step: 1200; ce: 0.13510469; steps/sec: 71.83; LeNet_lr: 0.0002885808; 
-    FastEstimator-Train: step: 1300; ce: 0.026300007; steps/sec: 75.5; LeNet_lr: 0.00021611621; 
-    FastEstimator-Train: step: 1400; ce: 0.028623505; steps/sec: 70.93; LeNet_lr: 0.00015161661; 
-    FastEstimator-Train: step: 1500; ce: 0.12303919; steps/sec: 72.35; LeNet_lr: 9.688851e-05; 
-    FastEstimator-Train: step: 1600; ce: 0.08176289; steps/sec: 73.9; LeNet_lr: 5.3464726e-05; 
-    FastEstimator-Train: step: 1700; ce: 0.018114068; steps/sec: 76.93; LeNet_lr: 2.2561479e-05; 
-    FastEstimator-Train: step: 1800; ce: 0.02731928; steps/sec: 73.86; LeNet_lr: 5.0442964e-06; 
-    FastEstimator-Train: step: 1875; epoch: 1; epoch_time: 25.59 sec; 
-    FastEstimator-Train: step: 1900; ce: 0.014814988; steps/sec: 76.8; LeNet_lr: 0.0009995962; 
-    FastEstimator-Train: step: 2000; ce: 0.054916177; steps/sec: 76.62; LeNet_lr: 0.000989258; 
-    FastEstimator-Train: step: 2100; ce: 0.016524037; steps/sec: 75.3; LeNet_lr: 0.0009652308; 
-    FastEstimator-Train: step: 2200; ce: 0.03584575; steps/sec: 77.71; LeNet_lr: 0.0009281874; 
-    FastEstimator-Train: step: 2300; ce: 0.016135138; steps/sec: 73.3; LeNet_lr: 0.00087916537; 
-    FastEstimator-Train: step: 2400; ce: 0.017202383; steps/sec: 76.79; LeNet_lr: 0.0008195377; 
-    FastEstimator-Train: step: 2500; ce: 0.02264627; steps/sec: 75.4; LeNet_lr: 0.00075097446; 
-    FastEstimator-Train: step: 2600; ce: 0.014660467; steps/sec: 81.77; LeNet_lr: 0.00067539595; 
-    FastEstimator-Train: step: 2700; ce: 0.1418988; steps/sec: 76.47; LeNet_lr: 0.0005949189; 
-    FastEstimator-Train: step: 2800; ce: 0.033834495; steps/sec: 74.0; LeNet_lr: 0.00051179744; 
-    FastEstimator-Train: step: 2900; ce: 0.117458574; steps/sec: 75.8; LeNet_lr: 0.00042835958; 
-    FastEstimator-Train: step: 3000; ce: 0.039562702; steps/sec: 74.06; LeNet_lr: 0.0003469422; 
-    FastEstimator-Train: step: 3100; ce: 0.013925586; steps/sec: 77.25; LeNet_lr: 0.00026982563; 
-    FastEstimator-Train: step: 3200; ce: 0.010165918; steps/sec: 74.82; LeNet_lr: 0.0001991698; 
-    FastEstimator-Train: step: 3300; ce: 0.009503109; steps/sec: 74.25; LeNet_lr: 0.00013695359; 
-    FastEstimator-Train: step: 3400; ce: 0.02341089; steps/sec: 75.41; LeNet_lr: 8.491957e-05; 
-    FastEstimator-Train: step: 3500; ce: 0.06209151; steps/sec: 74.37; LeNet_lr: 4.452509e-05; 
-    FastEstimator-Train: step: 3600; ce: 0.105473876; steps/sec: 78.39; LeNet_lr: 1.6901524e-05; 
-    FastEstimator-Train: step: 3700; ce: 0.010678038; steps/sec: 74.96; LeNet_lr: 2.8225472e-06; 
-    FastEstimator-Train: step: 3750; epoch: 2; epoch_time: 24.75 sec; 
-    FastEstimator-Finish: step: 3750; total_time: 50.39 sec; LeNet_lr: 1.0007011e-06; 
+    FastEstimator-Start: step: 1; num_device: 1; logging_interval: 100; 
+    FastEstimator-Train: step: 1; ce: 2.2930279; LeNet_lr: 0.0009999993; 
+    FastEstimator-Train: step: 100; ce: 0.26312476; steps/sec: 638.7; LeNet_lr: 0.000993005; 
+    FastEstimator-Train: step: 200; ce: 0.12205046; steps/sec: 667.97; LeNet_lr: 0.000972216; 
+    FastEstimator-Train: step: 300; ce: 0.14842911; steps/sec: 696.66; LeNet_lr: 0.0009382152; 
+    FastEstimator-Train: step: 400; ce: 0.27469447; steps/sec: 674.11; LeNet_lr: 0.00089195487; 
+    FastEstimator-Train: step: 500; ce: 0.01054606; steps/sec: 705.46; LeNet_lr: 0.00083473074; 
+    FastEstimator-Train: step: 600; ce: 0.18344438; steps/sec: 686.91; LeNet_lr: 0.0007681455; 
+    FastEstimator-Train: step: 700; ce: 0.029220346; steps/sec: 682.13; LeNet_lr: 0.000694064; 
+    FastEstimator-Train: step: 800; ce: 0.13878524; steps/sec: 676.54; LeNet_lr: 0.00061456126; 
+    FastEstimator-Train: step: 900; ce: 0.028735036; steps/sec: 698.14; LeNet_lr: 0.0005318639; 
+    FastEstimator-Train: step: 1000; ce: 0.055955518; steps/sec: 667.36; LeNet_lr: 0.00044828805; 
+    FastEstimator-Train: step: 1100; ce: 0.07805036; steps/sec: 699.72; LeNet_lr: 0.00036617456; 
+    FastEstimator-Train: step: 1200; ce: 0.0090379715; steps/sec: 683.74; LeNet_lr: 0.00028782323; 
+    FastEstimator-Train: step: 1300; ce: 0.077315584; steps/sec: 586.27; LeNet_lr: 0.00021542858; 
+    FastEstimator-Train: step: 1400; ce: 0.05346773; steps/sec: 624.91; LeNet_lr: 0.00015101816; 
+    FastEstimator-Train: step: 1500; ce: 0.08146605; steps/sec: 683.15; LeNet_lr: 9.639601e-05; 
+    FastEstimator-Train: step: 1600; ce: 0.0033195266; steps/sec: 587.82; LeNet_lr: 5.3091975e-05; 
+    FastEstimator-Train: step: 1700; ce: 0.12897912; steps/sec: 668.69; LeNet_lr: 2.231891e-05; 
+    FastEstimator-Train: step: 1800; ce: 0.004909375; steps/sec: 673.23; LeNet_lr: 4.9387068e-06; 
+    FastEstimator-Train: step: 1875; epoch: 1; epoch_time: 3.07 sec; 
+    FastEstimator-Train: step: 1900; ce: 0.15640017; steps/sec: 340.63; LeNet_lr: 0.0009995619; 
+    FastEstimator-Train: step: 2000; ce: 0.089771196; steps/sec: 674.14; LeNet_lr: 0.0009890847; 
+    FastEstimator-Train: step: 2100; ce: 0.013233781; steps/sec: 666.61; LeNet_lr: 0.00096492335; 
+    FastEstimator-Train: step: 2200; ce: 0.026806809; steps/sec: 679.56; LeNet_lr: 0.00092775445; 
+    FastEstimator-Train: step: 2300; ce: 0.011386171; steps/sec: 673.87; LeNet_lr: 0.00087861903; 
+    FastEstimator-Train: step: 2400; ce: 0.018773185; steps/sec: 696.83; LeNet_lr: 0.00081889326; 
+    FastEstimator-Train: step: 2500; ce: 0.03541358; steps/sec: 671.42; LeNet_lr: 0.00075025; 
+    FastEstimator-Train: step: 2600; ce: 0.11294758; steps/sec: 714.27; LeNet_lr: 0.0006746117; 
+    FastEstimator-Train: step: 2700; ce: 0.028423183; steps/sec: 697.1; LeNet_lr: 0.00059409696; 
+    FastEstimator-Train: step: 2800; ce: 0.16977276; steps/sec: 703.42; LeNet_lr: 0.00051096076; 
+    FastEstimator-Train: step: 2900; ce: 0.01733088; steps/sec: 669.76; LeNet_lr: 0.00042753152; 
+    FastEstimator-Train: step: 3000; ce: 0.02646891; steps/sec: 680.62; LeNet_lr: 0.000346146; 
+    FastEstimator-Train: step: 3100; ce: 0.002477122; steps/sec: 594.12; LeNet_lr: 0.00026908363; 
+    FastEstimator-Train: step: 3200; ce: 0.013257658; steps/sec: 621.69; LeNet_lr: 0.00019850275; 
+    FastEstimator-Train: step: 3300; ce: 0.003857479; steps/sec: 684.61; LeNet_lr: 0.00013638017; 
+    FastEstimator-Train: step: 3400; ce: 0.029402707; steps/sec: 692.26; LeNet_lr: 8.445584e-05; 
+    FastEstimator-Train: step: 3500; ce: 0.00379532; steps/sec: 671.9; LeNet_lr: 4.4184046e-05; 
+    FastEstimator-Train: step: 3600; ce: 0.0058736084; steps/sec: 705.67; LeNet_lr: 1.6692711e-05; 
+    FastEstimator-Train: step: 3700; ce: 0.031074949; steps/sec: 670.42; LeNet_lr: 2.7518167e-06; 
+    FastEstimator-Train: step: 3750; epoch: 2; epoch_time: 2.87 sec; 
+    FastEstimator-Finish: step: 3750; total_time: 7.14 sec; LeNet_lr: 1e-06; 
 
 
 
@@ -319,7 +322,9 @@ visualize_logs(history3, include_metrics="LeNet_lr")
 ```
 
 
+    
 ![png](assets/branches/master/tutorial/advanced/t07_learning_rate_scheduling_files/t07_learning_rate_scheduling_20_0.png)
+    
 
 
 <a id='ta07apphub'></a>

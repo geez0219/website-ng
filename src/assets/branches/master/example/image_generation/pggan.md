@@ -1,4 +1,3 @@
-
 # Progressive Growing GAN (PGGAN)
 In this notebook, we will demonstrate the functionality of ``Scheduler`` which enables advanced training schemes such as the progressive training method described in [Karras et al.](https://arxiv.org/pdf/1710.10196.pdf). 
 We will train a PGGAN to produce synthetic frontal chest X-ray images where both the generator and the discriminator grow from $4\times4$ to $128\times128$.
@@ -152,7 +151,9 @@ for i, epoch in enumerate(event_epoch):
 ```
 
 
+    
 ![png](assets/branches/master/example/image_generation/pggan_files/pggan_10_0.png)
+    
 
 
 ## Defining `Network`

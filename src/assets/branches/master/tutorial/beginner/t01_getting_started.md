@@ -1,4 +1,3 @@
-
 # Tutorial 1: Getting Started
 
 ## Overview
@@ -37,11 +36,11 @@ Any deep learning task can be constructed by following the 3 main steps:
 <a id='t01Pipeline'></a>
 
 ### Step 1 - Pipeline
-We use FastEstimator dataset API to load the MNIST dataset. Please check out [tutorial 2](./tutorials/master/beginner/t02_dataset) for more details about the dataset API. In this case our data preprocessing involves: 
+We use FastEstimator dataset API to load the MNIST dataset. Please check out [Tutorial 2](./tutorials/master/beginner/t02_dataset) for more details about the dataset API. In this case our data preprocessing involves: 
 1. Expand image dimension from (28,28) to (28, 28, 1) for convenience during convolution operations.
 2. Rescale pixel values from [0, 255] to [0, 1].
 
-Please check out [tutorial 3](./tutorials/master/beginner/t03_operator) for details about `Operator` and [tutorial 4](./tutorials/master/beginner/t04_pipeline) for `Pipeline`.
+Please check out [Tutorial 3](./tutorials/master/beginner/t03_operator) for details about `Operator` and [Tutorial 4](./tutorials/master/beginner/t04_pipeline) for `Pipeline`.
 
 
 ```python
@@ -61,13 +60,13 @@ pipeline = fe.Pipeline(train_data=train_data,
 
 ### Step 2 - Network
 
-The model definition can be either from `tf.keras.Model` or `torch.nn.Module`, for more info about network definitions, check out [tutorial 5](./tutorials/master/beginner/t05_model). The differentiable operations during training are listed as follows:
+The model definition can be either from `tf.keras.Model` or `torch.nn.Module`, for more info about network definitions, check out [Tutorial 5](./tutorials/master/beginner/t05_model). The differentiable operations during training are listed as follows:
 
 1. Feed the preprocessed images to the network and get prediction scores.
 2. Calculate `CrossEntropy` (loss) between prediction scores and ground truth.
 3. Update the model by minimizing `CrossEntropy`.
 
-For more info about `Network` and its operators, check out [tutorial 6](./tutorials/master/beginner/t06_network).
+For more info about `Network` and its operators, check out [Tutorial 6](./tutorials/master/beginner/t06_network).
 
 
 ```python
@@ -89,7 +88,7 @@ network = fe.Network(ops=[
 <a id='t01Estimator'></a>
 
 ### Step 3 - Estimator
-We define the `Estimator` to connect the `Network` to the `Pipeline`, and compute accuracy as a validation metric. Please see [tutorial 7](./tutorials/master/beginner/t07_estimator) for more about `Estimator` and `Traces`.
+We define the `Estimator` to connect the `Network` to the `Pipeline`, and compute accuracy as a validation metric. Please see [Tutorial 7](./tutorials/master/beginner/t07_estimator) for more about `Estimator` and `Traces`.
 
 
 ```python
@@ -122,58 +121,58 @@ estimator.fit()
     /_/    \__,_/____/\__/_____/____/\__/_/_/ /_/ /_/\__,_/\__/\____/_/     
                                                                             
     
-    FastEstimator-Start: step: 1; num_device: 0; logging_interval: 100; 
-    FastEstimator-Train: step: 1; ce: 2.325205; 
-    FastEstimator-Train: step: 100; ce: 0.37162033; steps/sec: 161.0; 
-    FastEstimator-Train: step: 200; ce: 0.24027318; steps/sec: 166.53; 
-    FastEstimator-Train: step: 300; ce: 0.042502172; steps/sec: 160.22; 
-    FastEstimator-Train: step: 400; ce: 0.08067161; steps/sec: 160.19; 
-    FastEstimator-Train: step: 500; ce: 0.0573852; steps/sec: 149.4; 
-    FastEstimator-Train: step: 600; ce: 0.0157291; steps/sec: 146.06; 
-    FastEstimator-Train: step: 700; ce: 0.21018827; steps/sec: 140.01; 
-    FastEstimator-Train: step: 800; ce: 0.008484628; steps/sec: 135.1; 
-    FastEstimator-Train: step: 900; ce: 0.02928259; steps/sec: 128.3; 
-    FastEstimator-Train: step: 1000; ce: 0.061196238; steps/sec: 126.4; 
-    FastEstimator-Train: step: 1100; ce: 0.06762987; steps/sec: 120.72; 
-    FastEstimator-Train: step: 1200; ce: 0.0072296523; steps/sec: 118.11; 
-    FastEstimator-Train: step: 1300; ce: 0.08244678; steps/sec: 110.16; 
-    FastEstimator-Train: step: 1400; ce: 0.07375234; steps/sec: 105.76; 
-    FastEstimator-Train: step: 1500; ce: 0.03207487; steps/sec: 104.01; 
-    FastEstimator-Train: step: 1600; ce: 0.1325811; steps/sec: 104.97; 
-    FastEstimator-Train: step: 1700; ce: 0.2333475; steps/sec: 99.21; 
-    FastEstimator-Train: step: 1800; ce: 0.081265345; steps/sec: 101.39; 
-    FastEstimator-Train: step: 1875; epoch: 1; epoch_time: 17.21 sec; 
-    FastEstimator-BestModelSaver: Saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmplq_y8tyg/model_best_accuracy.h5
-    FastEstimator-Eval: step: 1875; epoch: 1; ce: 0.05035614; accuracy: 0.9828; since_best_accuracy: 0; max_accuracy: 0.9828; 
-    FastEstimator-Train: step: 1900; ce: 0.24747448; steps/sec: 100.72; 
-    FastEstimator-Train: step: 2000; ce: 0.056484234; steps/sec: 169.42; 
-    FastEstimator-Train: step: 2100; ce: 0.1583787; steps/sec: 186.35; 
-    FastEstimator-Train: step: 2200; ce: 0.004822081; steps/sec: 179.8; 
-    FastEstimator-Train: step: 2300; ce: 0.027388994; steps/sec: 180.22; 
-    FastEstimator-Train: step: 2400; ce: 0.017995346; steps/sec: 183.84; 
-    FastEstimator-Train: step: 2500; ce: 0.0071977032; steps/sec: 184.27; 
-    FastEstimator-Train: step: 2600; ce: 0.034278065; steps/sec: 182.51; 
-    FastEstimator-Train: step: 2700; ce: 0.045357186; steps/sec: 181.42; 
-    FastEstimator-Train: step: 2800; ce: 0.057187617; steps/sec: 182.88; 
-    FastEstimator-Train: step: 2900; ce: 0.04257428; steps/sec: 178.63; 
-    FastEstimator-Train: step: 3000; ce: 0.26984444; steps/sec: 167.96; 
-    FastEstimator-Train: step: 3100; ce: 0.026010124; steps/sec: 166.83; 
-    FastEstimator-Train: step: 3200; ce: 0.03834851; steps/sec: 161.82; 
-    FastEstimator-Train: step: 3300; ce: 0.01365272; steps/sec: 166.79; 
-    FastEstimator-Train: step: 3400; ce: 0.015053293; steps/sec: 164.75; 
-    FastEstimator-Train: step: 3500; ce: 0.0041770767; steps/sec: 163.45; 
-    FastEstimator-Train: step: 3600; ce: 0.0006832063; steps/sec: 162.57; 
-    FastEstimator-Train: step: 3700; ce: 0.015146113; steps/sec: 158.26; 
-    FastEstimator-Train: step: 3750; epoch: 2; epoch_time: 11.0 sec; 
-    FastEstimator-BestModelSaver: Saved model to /var/folders/lx/drkxftt117gblvgsp1p39rlc0000gn/T/tmplq_y8tyg/model_best_accuracy.h5
-    FastEstimator-Eval: step: 3750; epoch: 2; ce: 0.0408412; accuracy: 0.9875; since_best_accuracy: 0; max_accuracy: 0.9875; 
-    FastEstimator-Finish: step: 3750; total_time: 30.16 sec; model_lr: 0.001; 
+    FastEstimator-Start: step: 1; num_device: 1; logging_interval: 100; 
+    FastEstimator-Train: step: 1; ce: 2.2944355; 
+    FastEstimator-Train: step: 100; ce: 0.17604804; steps/sec: 724.9; 
+    FastEstimator-Train: step: 200; ce: 0.6541523; steps/sec: 755.07; 
+    FastEstimator-Train: step: 300; ce: 0.22645846; steps/sec: 793.02; 
+    FastEstimator-Train: step: 400; ce: 0.1256088; steps/sec: 773.46; 
+    FastEstimator-Train: step: 500; ce: 0.18927144; steps/sec: 809.2; 
+    FastEstimator-Train: step: 600; ce: 0.07107867; steps/sec: 779.29; 
+    FastEstimator-Train: step: 700; ce: 0.07468874; steps/sec: 806.57; 
+    FastEstimator-Train: step: 800; ce: 0.23852134; steps/sec: 781.42; 
+    FastEstimator-Train: step: 900; ce: 0.028577618; steps/sec: 826.27; 
+    FastEstimator-Train: step: 1000; ce: 0.115206845; steps/sec: 776.94; 
+    FastEstimator-Train: step: 1100; ce: 0.07892787; steps/sec: 841.47; 
+    FastEstimator-Train: step: 1200; ce: 0.14857067; steps/sec: 791.73; 
+    FastEstimator-Train: step: 1300; ce: 0.049252644; steps/sec: 834.86; 
+    FastEstimator-Train: step: 1400; ce: 0.046725605; steps/sec: 799.79; 
+    FastEstimator-Train: step: 1500; ce: 0.06713241; steps/sec: 812.31; 
+    FastEstimator-Train: step: 1600; ce: 0.08489384; steps/sec: 803.99; 
+    FastEstimator-Train: step: 1700; ce: 0.00921803; steps/sec: 767.87; 
+    FastEstimator-Train: step: 1800; ce: 0.0072177458; steps/sec: 694.9; 
+    FastEstimator-Train: step: 1875; epoch: 1; epoch_time: 2.97 sec; 
+    FastEstimator-BestModelSaver: Saved model to /tmp/tmpcxa1xloj/model_best_accuracy.h5
+    FastEstimator-Eval: step: 1875; epoch: 1; ce: 0.06391551; accuracy: 0.9802; since_best_accuracy: 0; max_accuracy: 0.9802; 
+    FastEstimator-Train: step: 1900; ce: 0.006937413; steps/sec: 419.42; 
+    FastEstimator-Train: step: 2000; ce: 0.10369404; steps/sec: 769.67; 
+    FastEstimator-Train: step: 2100; ce: 0.023126157; steps/sec: 787.83; 
+    FastEstimator-Train: step: 2200; ce: 0.013664322; steps/sec: 807.29; 
+    FastEstimator-Train: step: 2300; ce: 0.15465331; steps/sec: 782.67; 
+    FastEstimator-Train: step: 2400; ce: 0.0059421803; steps/sec: 783.07; 
+    FastEstimator-Train: step: 2500; ce: 0.03436095; steps/sec: 789.81; 
+    FastEstimator-Train: step: 2600; ce: 0.003341827; steps/sec: 813.02; 
+    FastEstimator-Train: step: 2700; ce: 0.009203151; steps/sec: 779.41; 
+    FastEstimator-Train: step: 2800; ce: 0.0031451974; steps/sec: 818.42; 
+    FastEstimator-Train: step: 2900; ce: 0.03497669; steps/sec: 789.2; 
+    FastEstimator-Train: step: 3000; ce: 0.0043699713; steps/sec: 816.05; 
+    FastEstimator-Train: step: 3100; ce: 0.14205246; steps/sec: 769.89; 
+    FastEstimator-Train: step: 3200; ce: 0.00966863; steps/sec: 827.11; 
+    FastEstimator-Train: step: 3300; ce: 0.005415355; steps/sec: 780.63; 
+    FastEstimator-Train: step: 3400; ce: 0.027803676; steps/sec: 812.07; 
+    FastEstimator-Train: step: 3500; ce: 0.3876436; steps/sec: 788.85; 
+    FastEstimator-Train: step: 3600; ce: 0.011643453; steps/sec: 809.37; 
+    FastEstimator-Train: step: 3700; ce: 0.20535453; steps/sec: 794.13; 
+    FastEstimator-Train: step: 3750; epoch: 2; epoch_time: 2.46 sec; 
+    FastEstimator-BestModelSaver: Saved model to /tmp/tmpcxa1xloj/model_best_accuracy.h5
+    FastEstimator-Eval: step: 3750; epoch: 2; ce: 0.03874958; accuracy: 0.9867; since_best_accuracy: 0; max_accuracy: 0.9867; 
+    FastEstimator-Finish: step: 3750; total_time: 8.86 sec; model_lr: 0.001; 
 
 
 <a id='t01Inferencing'></a>
 
 ### Inferencing
-After training, we can do inferencing on new data with `Pipeline.transform` and `Netowork.transform`. Please checkout [tutorial 8](./tutorials/master/beginner/t08_mode) for more details. 
+After training, we can do inferencing on new data with `Pipeline.transform` and `Netowork.transform`. Please checkout [Tutorial 8](./tutorials/master/beginner/t08_mode) for more details. \
 
 
 ```python
@@ -194,7 +193,9 @@ fig = img.paint_figure()
 
 
 
+    
 ![png](assets/branches/master/tutorial/beginner/t01_getting_started_files/t01_getting_started_19_1.png)
+    
 
 
 <a id='t01Apphub'></a>

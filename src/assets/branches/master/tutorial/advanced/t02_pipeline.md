@@ -1,4 +1,3 @@
-
 # Advanced Tutorial 2: Pipeline
 
 ## Overview
@@ -12,7 +11,7 @@ In this tutorial, we will discuss the following topics:
 * [Padding Batch Data](./tutorials/master/advanced/t02_pipeline#ta02pbd)
 * [Benchmark Pipeline Speed](./tutorials/master/advanced/t02_pipeline#ta02bps)
 
-In the [beginner tutorial 4](./tutorials/master/beginner/t04_pipeline), we learned how to build a data pipeline that handles data loading and preprocessing tasks efficiently. Now that you have understood some basic operations in the `Pipeline`, we will demonstrate some advanced concepts and how to leverage them to create efficient `Pipelines` in this tutorial.
+In the [Beginner Tutorial 4](./tutorials/master/beginner/t04_pipeline), we learned how to build a data pipeline that handles data loading and preprocessing tasks efficiently. Now that you have understood some basic operations in the `Pipeline`, we will demonstrate some advanced concepts and how to leverage them to create efficient `Pipelines` in this tutorial.
 
 <a id='ta02itp'></a>
 
@@ -57,22 +56,22 @@ for batch in loader_fe:
     print(batch)
 ```
 
-    {'x': tensor([[0.1288, 0.2118],
-            [0.9344, 0.5583],
-            [0.0879, 0.5939]], dtype=torch.float64), 'y': tensor([[0.8071],
-            [0.8469],
-            [0.9160]], dtype=torch.float64)}
-    {'x': tensor([[0.7866, 0.8248],
-            [0.3285, 0.9311],
-            [0.7637, 0.9474]], dtype=torch.float64), 'y': tensor([[0.5504],
-            [0.8430],
-            [0.7415]], dtype=torch.float64)}
-    {'x': tensor([[0.3689, 0.3373],
-            [0.3407, 0.0571],
-            [0.2216, 0.1906]], dtype=torch.float64), 'y': tensor([[0.6517],
-            [0.4824],
-            [0.5171]], dtype=torch.float64)}
-    {'x': tensor([[0.6018, 0.4306]], dtype=torch.float64), 'y': tensor([[0.0023]], dtype=torch.float64)}
+    {'x': tensor([[0.5085, 0.0519],
+            [0.8167, 0.1808],
+            [0.9175, 0.5209]], dtype=torch.float64), 'y': tensor([[0.5407],
+            [0.7994],
+            [0.4728]], dtype=torch.float64)}
+    {'x': tensor([[0.9302, 0.6404],
+            [0.1795, 0.1212],
+            [0.8716, 0.9381]], dtype=torch.float64), 'y': tensor([[0.4747],
+            [0.4103],
+            [0.3916]], dtype=torch.float64)}
+    {'x': tensor([[0.9929, 0.9415],
+            [0.6404, 0.8039],
+            [0.1624, 0.9285]], dtype=torch.float64), 'y': tensor([[0.1118],
+            [0.8162],
+            [0.7057]], dtype=torch.float64)}
+    {'x': tensor([[0.0748, 0.8554]], dtype=torch.float64), 'y': tensor([[0.2276]], dtype=torch.float64)}
 
 
 <a id='ta02example'></a>
@@ -181,24 +180,31 @@ from fastestimator.op.numpyop.univariate import Minmax, ExpandDims
 from fastestimator.op.numpyop.multivariate import Rotate
 
 pipeline = fe.Pipeline(train_data=cifar_train,
-                       ops=[ExpandDims(inputs="x", outputs="x"),
-                            Minmax(inputs="x", outputs="x_out"),
-                            Rotate(image_in="x_out", image_out="x_out", limit=180)],
-                      batch_size=64)
+                       ops=[Minmax(inputs="x", outputs="x_out"),
+                            Rotate(image_in="x_out", image_out="x_out", limit=180),
+                            ExpandDims(inputs="x_out", outputs="x_out", mode="train")],
+                       batch_size=64)
 ```
 
 Let's benchmark the pre-processing speed for this pipeline in training mode:
 
 
 ```python
-pipeline_cifar.benchmark(mode="train")
+pipeline.benchmark(mode="train")
 ```
 
-    FastEstimator: Step: 100, Epoch: 1, Steps/sec: 797.9008250605733
-    FastEstimator: Step: 200, Epoch: 1, Steps/sec: 2249.3393577839283
-    FastEstimator: Step: 300, Epoch: 1, Steps/sec: 2236.913774803168
-    FastEstimator: Step: 400, Epoch: 1, Steps/sec: 2244.6406454903963
-    FastEstimator: Step: 500, Epoch: 1, Steps/sec: 2303.2515324338206
-    FastEstimator: Step: 600, Epoch: 1, Steps/sec: 2250.139806811566
-    FastEstimator: Step: 700, Epoch: 1, Steps/sec: 2310.7264336983017
+    FastEstimator: Step: 100, Epoch: 1, Steps/sec: 355.0314672561461
+    FastEstimator: Step: 200, Epoch: 1, Steps/sec: 688.959209809261
+    FastEstimator: Step: 300, Epoch: 1, Steps/sec: 646.3625572114369
+    FastEstimator: Step: 400, Epoch: 1, Steps/sec: 709.4726870671318
+    FastEstimator: Step: 500, Epoch: 1, Steps/sec: 654.4829388343634
+    FastEstimator: Step: 600, Epoch: 1, Steps/sec: 716.1617101086067
+    FastEstimator: Step: 700, Epoch: 1, Steps/sec: 635.2802801079024
+    
+    Breakdown of time taken by Pipeline Operations (train epoch 1)
+    Op         : Inputs : Outputs :  Time
+    --------------------------------------
+    Minmax     : x      : x_out   : 39.42%
+    Rotate     : x_out  : x_out   : 49.45%
+    ExpandDims : x_out  : x_out   : 11.13%
 

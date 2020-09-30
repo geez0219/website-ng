@@ -1,4 +1,3 @@
-
 # Instance Detection with RetinaNet
 
 We are going to implement [RetinaNet by Lin et al., 2017](https://arxiv.org/abs/1708.02002) for [COCO dataset](http://cocodataset.org/) instance detection.
@@ -240,7 +239,9 @@ print("id = {}".format(batch_data[step_index]['image_id'][batch_index].numpy()))
 
 
 
+    
 ![png](assets/branches/master/example/instance_detection/retinanet_files/retinanet_20_1.png)
+    
 
 
 ## Step 2 - `Network` construction
@@ -632,5 +633,7 @@ plt.tight_layout()
 ```
 
 
+    
 ![png](assets/branches/master/example/instance_detection/retinanet_files/retinanet_47_0.png)
+    
 

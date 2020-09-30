@@ -1,4 +1,3 @@
-
 # DCGAN on the MNIST Dataset
 
 
@@ -379,5 +378,7 @@ for i in range(images.shape[0]):
 ```
 
 
+    
 ![png](assets/branches/master/example/image_generation/dcgan_files/dcgan_28_0.png)
+    
 

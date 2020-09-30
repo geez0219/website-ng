@@ -1,4 +1,3 @@
-
 # Adversarial Robustness with Error Correcting Codes (and Hinge Loss)
 ## (Never use Softmax again)
 
@@ -665,7 +664,9 @@ logs = visualize_logs(experiments=[softmax_results, ecc_results, hydra_results],
 ```
 
 
+    
 ![png](assets/branches/master/example/adversarial_training/ecc_hinge_files/ecc_hinge_23_0.png)
+    
 
 
 As you can see, the conventional network using softmax to convert logits to class probabilities actually gets more and more vulnerable to adversarial attacks as training progresses. It also quickly overfits to the data, reaching an optimal performance around epoch 7. By switching the output layer of the model to generate an error correcting code and training with hinge loss, the model is able to train almost 6 times longer before reaching peak conventional accuracy. Moreover, the adversarial performance of the network continues to improve even after the main training runs out. This is significantly better performance than networks trained specifically to combat this attack, shown in the [FGSM](../fgsm/fgsm.ipynb) notebook. It can also be seen that there is no additional cost to training using ECC as opposed to softmax in terms of steps/sec. This is a big benefit over FGSM, where the training time for each step is doubled. With these benefits in mind, you may want to consider never using softmax again.

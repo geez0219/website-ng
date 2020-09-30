@@ -6,8 +6,12 @@ update_model(
 	model: Union[tensorflow.python.keras.engine.training.Model, torch.nn.modules.module.Module],
 	loss: Union[tensorflow.python.framework.ops.Tensor, torch.Tensor],
 	tape: Union[tensorflow.python.eager.backprop.GradientTape, NoneType]=None,
-	retain_graph: bool=True
+	retain_graph: bool=True,
+	scaler: Union[torch.cuda.amp.grad_scaler.GradScaler, NoneType]=None,
+	defer: bool=False,
+	deferred: Union[Dict[str, List[Callable[[], NoneType]]], NoneType]=None
 )
+-> None
 ```
 Update `model` weights based on a given `loss`.
 
@@ -39,7 +43,11 @@ fe.backend.update_model(m, loss=loss)
 * **loss** :  A loss value to compute gradients from.
 * **tape** :  A TensorFlow GradientTape which was recording when the `loss` was computed (iff using TensorFlow).
 * **retain_graph** :  Whether to keep the model graph in memory (applicable only for PyTorch).
+* **scaler** :  A PyTorch loss scaler that scales loss when PyTorch mixed precision is used.
+* **defer** :  If True, then the model update function will be stored into the `deferred` dictionary rather than        applied immediately.
+* **deferred** :  A dictionary in which model update functions are stored.
 
 #### Raises:
 
 * **ValueError** :  If `model` is an unacceptable data type.
+* **RuntimeError** :  If attempting to modify a PyTorch model which relied on gradients within a different PyTorch model        which has in turn already undergone a non-deferred update.

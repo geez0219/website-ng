@@ -1,4 +1,3 @@
-
 # Advanced Tutorial 4: Trace
 
 ## Overview
@@ -51,7 +50,7 @@ def get_pipeline_model_network(model_name="LeNet", batch_size=32):
 <a id='ta04customize'></a>
 
 ## Customizing Traces
-In [tutorial 7](./tutorials/master/beginner/t07_estimator) in the beginner section, we talked about the basic concept and structure of `Traces` and used a few `Traces` provided by FastEstimator. We can also customize a Trace to suit our needs. Let's look at an example of a custom trace implementation:
+In [Beginner Tutorial 7](./tutorials/master/beginner/t07_estimator), we talked about the basic concept and structure of `Traces` and used a few `Traces` provided by FastEstimator. We can also customize a Trace to suit our needs. Let's look at an example of a custom trace implementation:
 
 <a id='ta04example'></a>
 
@@ -109,24 +108,24 @@ estimator.fit()
                                                                             
     
     FastEstimator-Warn: No ModelSaver Trace detected. Models will not be saved.
-    FastEstimator-Start: step: 1; num_device: 0; logging_interval: 1000; 
-    FastEstimator-Train: step: 1; ce: 2.3049126; 
-    FastEstimator-Train: step: 1000; ce: 0.18839744; steps/sec: 121.57; 
-    FastEstimator-Train: step: 1875; epoch: 1; epoch_time: 19.89 sec; 
-    FastEstimator-Eval: step: 1875; epoch: 1; ce: 0.04401617; f2_score: 0.9853780424409669; 
-    FastEstimator-Train: step: 2000; ce: 0.015927518; steps/sec: 95.05; 
-    FastEstimator-Train: step: 3000; ce: 0.07206129; steps/sec: 186.86; 
-    FastEstimator-Train: step: 3750; epoch: 2; epoch_time: 10.6 sec; 
-    FastEstimator-Eval: step: 3750; epoch: 2; ce: 0.04134067; f2_score: 0.9845700637368479; 
-    FastEstimator-Train: step: 4000; ce: 0.008171058; steps/sec: 169.0; 
-    FastEstimator-Train: step: 5000; ce: 0.0019764265; steps/sec: 180.37; 
-    FastEstimator-Train: step: 5625; epoch: 3; epoch_time: 10.88 sec; 
-    FastEstimator-Eval: step: 5625; epoch: 3; ce: 0.029307945; f2_score: 0.9900004384152095; 
-    FastEstimator-Train: step: 6000; ce: 0.0135234; steps/sec: 167.19; 
-    FastEstimator-Train: step: 7000; ce: 0.04989395; steps/sec: 183.41; 
-    FastEstimator-Train: step: 7500; epoch: 4; epoch_time: 10.4 sec; 
-    FastEstimator-Eval: step: 7500; epoch: 4; ce: 0.032727916; f2_score: 0.9897883746689528; 
-    FastEstimator-Finish: step: 7500; total_time: 54.32 sec; LeNet_lr: 0.001; 
+    FastEstimator-Start: step: 1; num_device: 1; logging_interval: 1000; 
+    FastEstimator-Train: step: 1; ce: 2.3083596; 
+    FastEstimator-Train: step: 1000; ce: 0.16284753; steps/sec: 656.26; 
+    FastEstimator-Train: step: 1875; epoch: 1; epoch_time: 3.55 sec; 
+    FastEstimator-Eval: step: 1875; epoch: 1; ce: 0.035797507; f2_score: 0.9885909522565743; 
+    FastEstimator-Train: step: 2000; ce: 0.020546585; steps/sec: 615.78; 
+    FastEstimator-Train: step: 3000; ce: 0.0059753414; steps/sec: 713.25; 
+    FastEstimator-Train: step: 3750; epoch: 2; epoch_time: 2.69 sec; 
+    FastEstimator-Eval: step: 3750; epoch: 2; ce: 0.03689827; f2_score: 0.9877924021686296; 
+    FastEstimator-Train: step: 4000; ce: 0.02098944; steps/sec: 680.01; 
+    FastEstimator-Train: step: 5000; ce: 0.22268356; steps/sec: 741.56; 
+    FastEstimator-Train: step: 5625; epoch: 3; epoch_time: 2.65 sec; 
+    FastEstimator-Eval: step: 5625; epoch: 3; ce: 0.032033153; f2_score: 0.9901934586365465; 
+    FastEstimator-Train: step: 6000; ce: 0.0055854702; steps/sec: 677.84; 
+    FastEstimator-Train: step: 7000; ce: 0.0013257915; steps/sec: 679.31; 
+    FastEstimator-Train: step: 7500; epoch: 4; epoch_time: 2.8 sec; 
+    FastEstimator-Eval: step: 7500; epoch: 4; ce: 0.029642625; f2_score: 0.9913968204671144; 
+    FastEstimator-Finish: step: 7500; total_time: 17.99 sec; LeNet_lr: 0.001; 
 
 
 <a id='ta04more'></a>
@@ -213,34 +212,34 @@ estimator.fit()
                                                                             
     
     FastEstimator-Warn: No ModelSaver Trace detected. Models will not be saved.
-    FastEstimator-Start: step: 1; num_device: 0; logging_interval: 1000; 
-    FastEstimator-Train: step: 1; ce: 2.2952752; 
-    FastEstimator-Train: step: 1000; ce: 0.1313241; steps/sec: 179.84; 
-    FastEstimator-Train: step: 1875; epoch: 1; epoch_time: 10.96 sec; 
-    FastEstimator-Eval: step: 1875; epoch: 1; ce: 0.04599155; 
+    FastEstimator-Start: step: 1; num_device: 1; logging_interval: 1000; 
+    FastEstimator-Train: step: 1; ce: 2.305337; 
+    FastEstimator-Train: step: 1000; ce: 0.024452677; steps/sec: 734.32; 
+    FastEstimator-Train: step: 1875; epoch: 1; epoch_time: 2.76 sec; 
+    FastEstimator-Eval: step: 1875; epoch: 1; ce: 0.0569705; 
     precision:
-    [0.98878505,0.99165275,0.98351648,0.99017682,0.99798793,0.98454746,
-     0.98198198,0.98294243,0.96296296,0.97402597];
+    [0.97585513,0.98211091,0.9752381 ,0.98080614,0.99562363,0.96210526,
+     1.        ,0.98137803,1.        ,0.97504798];
     recall:
-    [0.99249531,0.98181818,0.98713235,0.99212598,0.98023715,0.98454746,
-     0.98866213,0.96848739,0.98526316,0.98039216];
+    [0.99589322,1.        ,0.99224806,0.99223301,0.98484848,0.9827957 ,
+     0.95850622,0.98137803,0.95503212,0.97692308];
     f1_score:
-    [0.9906367 ,0.98671096,0.9853211 ,0.99115044,0.9890329 ,0.98454746,
-     0.98531073,0.97566138,0.97398543,0.9771987 ];
-    FastEstimator-Train: step: 2000; ce: 0.0038511096; steps/sec: 164.72; 
-    FastEstimator-Train: step: 3000; ce: 0.004517486; steps/sec: 161.99; 
-    FastEstimator-Train: step: 3750; epoch: 2; epoch_time: 12.14 sec; 
-    FastEstimator-Eval: step: 3750; epoch: 2; ce: 0.034655295; 
+    [0.98577236,0.99097473,0.98366955,0.98648649,0.99020675,0.97234043,
+     0.97881356,0.98137803,0.9769989 ,0.97598463];
+    FastEstimator-Train: step: 2000; ce: 0.0021102745; steps/sec: 674.01; 
+    FastEstimator-Train: step: 3000; ce: 0.0089770565; steps/sec: 688.42; 
+    FastEstimator-Train: step: 3750; epoch: 2; epoch_time: 2.8 sec; 
+    FastEstimator-Eval: step: 3750; epoch: 2; ce: 0.034781747; 
     precision:
-    [0.9906367 ,0.99505766,0.98899083,0.98635478,0.984375  ,0.98675497,
-     0.98868778,0.99353448,0.97717842,0.99107143];
+    [0.98780488,0.99097473,0.98843931,0.98841699,0.99349241,0.98908297,
+     0.99375   ,0.9905303 ,0.97468354,0.98449612];
     recall:
-    [0.99249531,0.99834711,0.99080882,0.99606299,0.99604743,0.98675497,
-     0.99092971,0.96848739,0.99157895,0.96732026];
+    [0.99794661,1.        ,0.99418605,0.99417476,0.99134199,0.97419355,
+     0.98962656,0.97392924,0.98929336,0.97692308];
     f1_score:
-    [0.99156514,0.99669967,0.98989899,0.99118511,0.99017682,0.98675497,
-     0.98980747,0.98085106,0.98432602,0.97905182];
-    FastEstimator-Finish: step: 3750; total_time: 24.53 sec; LeNet_lr: 0.001; 
+    [0.99284985,0.99546691,0.99130435,0.99128751,0.99241603,0.9815818 ,
+     0.99168399,0.98215962,0.98193411,0.98069498];
+    FastEstimator-Finish: step: 3750; total_time: 8.76 sec; LeNet_lr: 0.001; 
 
 
 `Note:` precision, recall, and f1-score are displayed for each class
@@ -292,59 +291,55 @@ estimator.fit()
     Global Step Index:  1
     Batch Index:  1
     Epoch:  1
-    Batch data has following keys:  ['x', 'y', 'y_pred', 'ce']
-    Batch true labels:  tf.Tensor([4 6 6 0], shape=(4,), dtype=uint8)
-    Batch predictictions:  tf.Tensor(
-    [[0.10117384 0.09088749 0.09792296 0.09737834 0.09084693 0.08700039
-      0.11264212 0.10984743 0.10661378 0.10568672]
-     [0.0952943  0.09128962 0.10272249 0.10368769 0.09144977 0.08363624
-      0.1107841  0.11008291 0.10188652 0.10916632]
-     [0.10018928 0.08916146 0.10396809 0.10721539 0.0849424  0.08629669
-      0.11222021 0.10986723 0.09851621 0.10762308]
-     [0.09981812 0.09000086 0.10369569 0.09561141 0.09411818 0.08580256
-      0.11238981 0.10954484 0.10357945 0.10543918]], shape=(4, 10), dtype=float32)
+    Batch data has following keys:  ['y', 'ce', 'x', 'y_pred']
+    Batch true labels:  [1 5 8 5]
+    Batch predictictions:  [[0.09878654 0.11280762 0.10882236 0.0953772  0.09711165 0.09277759
+      0.09783419 0.09401798 0.10111833 0.10134653]
+     [0.10425894 0.11605782 0.11004242 0.09267453 0.08793817 0.09537386
+      0.10757758 0.08135056 0.09903805 0.10568804]
+     [0.1016297  0.11371672 0.10940187 0.09458858 0.09116017 0.09185343
+      0.10174091 0.08704273 0.10234813 0.10651773]
+     [0.10281158 0.10875763 0.10668261 0.08935054 0.09368025 0.10163527
+      0.10554942 0.08158974 0.09799404 0.11194893]]
     Global Step Index:  2
     Batch Index:  2
     Epoch:  1
-    Batch data has following keys:  ['x', 'y', 'y_pred', 'ce']
-    Batch true labels:  tf.Tensor([4 4 9 1], shape=(4,), dtype=uint8)
-    Batch predictictions:  tf.Tensor(
-    [[0.10240942 0.07996594 0.10190804 0.09579862 0.09545476 0.07724807
-      0.12645632 0.1047412  0.1043587  0.11165903]
-     [0.10151558 0.08773842 0.09836152 0.09669358 0.0958946  0.07577368
-      0.12727338 0.10294375 0.10158429 0.11222118]
-     [0.10219741 0.08286765 0.10365716 0.09298524 0.09625786 0.06968912
-      0.13070971 0.10312404 0.10423445 0.11427741]
-     [0.10077347 0.08387047 0.10196234 0.09324285 0.09473021 0.08261613
-      0.11878415 0.1059215  0.11001182 0.10808703]], shape=(4, 10), dtype=float32)
+    Batch data has following keys:  ['y', 'ce', 'x', 'y_pred']
+    Batch true labels:  [9 7 0 9]
+    Batch predictictions:  [[0.10153595 0.11117928 0.10700106 0.09030598 0.09056976 0.10074646
+      0.10491277 0.08370153 0.10058438 0.10946291]
+     [0.09943405 0.11675353 0.10615741 0.09357058 0.09498165 0.09680846
+      0.09997059 0.08461777 0.09770196 0.11000396]
+     [0.10712261 0.11406822 0.10380837 0.09336544 0.08995877 0.09921383
+      0.10175668 0.08751085 0.09903854 0.10415668]
+     [0.10325367 0.10959569 0.10525871 0.08968467 0.09167413 0.10499243
+      0.10512233 0.08271552 0.09867672 0.10902614]]
     Global Step Index:  3
     Batch Index:  1
     Epoch:  2
-    Batch data has following keys:  ['x', 'y', 'y_pred', 'ce']
-    Batch true labels:  tf.Tensor([0 7 7 7], shape=(4,), dtype=uint8)
-    Batch predictictions:  tf.Tensor(
-    [[0.10566284 0.07728784 0.10565729 0.08178721 0.10713114 0.06507431
-      0.13530098 0.09833021 0.10452496 0.11924319]
-     [0.10526433 0.08540256 0.0971095  0.08443997 0.1094939  0.06850007
-      0.12796785 0.09084202 0.10899913 0.12198068]
-     [0.10248369 0.0828173  0.10205018 0.0864138  0.10586432 0.07090016
-      0.1273839  0.09568971 0.10854369 0.1178532 ]
-     [0.10461577 0.08429881 0.09658652 0.08807645 0.10916384 0.07197928
-      0.12543353 0.09240671 0.10978852 0.11765066]], shape=(4, 10), dtype=float32)
+    Batch data has following keys:  ['y', 'ce', 'x', 'y_pred']
+    Batch true labels:  [4 9 5 0]
+    Batch predictictions:  [[0.10507825 0.10794099 0.10248892 0.08767187 0.08906174 0.10877317
+      0.10675651 0.08316758 0.09733932 0.11172164]
+     [0.10452065 0.10935836 0.10143676 0.08643056 0.08772491 0.11231022
+      0.10028692 0.08151487 0.09872114 0.11769552]
+     [0.10281294 0.11222194 0.1011567  0.08917599 0.093499   0.10987655
+      0.10295148 0.08328241 0.09753096 0.10749206]
+     [0.11502377 0.10897078 0.10094845 0.08484171 0.08951931 0.10733136
+      0.09949591 0.08294778 0.09814924 0.11277179]]
     Global Step Index:  4
     Batch Index:  2
     Epoch:  2
-    Batch data has following keys:  ['x', 'y', 'y_pred', 'ce']
-    Batch true labels:  tf.Tensor([0 5 3 7], shape=(4,), dtype=uint8)
-    Batch predictictions:  tf.Tensor(
-    [[0.09841534 0.0690296  0.10122424 0.07857155 0.11737346 0.05218776
-      0.13999611 0.10599035 0.11199971 0.12521197]
-     [0.10094637 0.07799206 0.10599674 0.08304708 0.11446269 0.060531
-      0.13092558 0.10104699 0.10494769 0.12010376]
-     [0.09200194 0.08393346 0.0990442  0.08482413 0.11270893 0.0664842
-      0.12764609 0.10573834 0.11171819 0.11590049]
-     [0.10079639 0.08117153 0.10319441 0.08249949 0.11676847 0.06465001
-      0.12598662 0.10077127 0.10564327 0.11851855]], shape=(4, 10), dtype=float32)
+    Batch data has following keys:  ['y', 'ce', 'x', 'y_pred']
+    Batch true labels:  [2 9 5 9]
+    Batch predictictions:  [[0.10447924 0.11029453 0.09903328 0.08642756 0.09253392 0.11049397
+      0.10054693 0.08330047 0.09570859 0.11718156]
+     [0.10390399 0.11127824 0.10138535 0.08615676 0.09266223 0.11076459
+      0.10240171 0.08131735 0.09794777 0.11218196]
+     [0.10628477 0.10850214 0.09937814 0.08383881 0.0902461  0.11622549
+      0.103737   0.07806063 0.09677587 0.11695106]
+     [0.10669366 0.10886899 0.09865166 0.08427355 0.0894412  0.117375
+      0.10394516 0.07848874 0.09449891 0.11776313]]
 
 
 As you can see, we can visualize information like the global step, batch number, epoch, keys in the data dictionary, true labels, and predictions at batch level using our `Trace`.

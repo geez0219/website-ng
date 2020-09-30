@@ -1,4 +1,3 @@
-
 # Advanced Tutorial 3: Operator
 
 ## Overview
@@ -8,18 +7,19 @@ In this tutorial, we will discuss:
     * [state](./tutorials/master/advanced/t03_operator#ta03state)
 * [NumpyOp](./tutorials/master/advanced/t03_operator#ta03no)
     * [DeleteOp](./tutorials/master/advanced/t03_operator#ta03do)
-    * [MetaOp](./tutorials/master/advanced/t03_operator#ta03mo)
+    * [LambdaOp](./tutorials/master/advanced/t03_operator#ta03nl)
     * [Customizing NumpyOps](./tutorials/master/advanced/t03_operator#ta03cn)
 * [TensorOp](./tutorials/master/advanced/t03_operator#ta03to)
-   * [Customizing TensorOps](./tutorials/master/advanced/t03_operator#ta03ct)
+    * [LambdaOp](./tutorials/master/advanced/t03_operator#ta03tl)
+    * [Customizing TensorOps](./tutorials/master/advanced/t03_operator#ta03ct)
 * [Related Apphub Examples](./tutorials/master/advanced/t03_operator#ta03rae)
 
 <a id='ta03om'></a>
 
 ## Operator Mechanism
-We learned about the operator structure in [Beginner tutorial 3](./tutorials/master/beginner/t03_operator). Operators are used to build complex computation graphs in FastEstimator.
+We learned about the operator structure in [Beginner Tutorial 3](./tutorials/master/beginner/t03_operator). Operators are used to build complex computation graphs in FastEstimator.
 
-In FastEstimator, all the available data is held in a data dictionary during execution. An `Op` runs when it's `mode` matches the current execution mode. For more information on mode, you can go through [Beginner tutorial 8](./tutorials/master/beginner/t08_mode).
+In FastEstimator, all the available data is held in a data dictionary during execution. An `Op` runs when it's `mode` matches the current execution mode. For more information on mode, you can go through [Beginner Tutorial 8](./tutorials/master/beginner/t08_mode).
 
 Here's one simple example of an operator:
 
@@ -57,7 +57,7 @@ The state argument in the `forward` function stores meta information about train
 <a id='ta03no'></a>
 
 ## NumpyOp
-NumpyOp is used in `Pipeline` for data pre-processing and augmentation. You can go through [Beginner tutorial 4](./tutorials/master/beginner/t04_pipeline) to get an overview of NumpyOp and their usage. Here, we will talk about some advanced NumpyOps.
+NumpyOp is used in `Pipeline` for data pre-processing and augmentation. You can go through [Beginner Tutorial 4](./tutorials/master/beginner/t04_pipeline) to get an overview of NumpyOp and their usage. Here, we will talk about some advanced NumpyOps.
 
 <a id='ta03do'></a>
 
@@ -68,7 +68,7 @@ Delete op is used to delete keys from the data dictionary which are no longer re
 ```python
 import fastestimator as fe
 from fastestimator.dataset.data import cifar10
-from fastestimator.op.numpyop import Delete, LambdaOp
+from fastestimator.op.numpyop import Delete
 from fastestimator.op.numpyop.meta import OneOf, Sometimes
 from fastestimator.op.numpyop.multivariate import HorizontalFlip, Rotate, VerticalFlip
 from fastestimator.op.numpyop.univariate import Blur, Minmax, ChannelTranspose
@@ -102,41 +102,33 @@ print("Keys in pipeline with Delete Op: ", data2.keys())
     Keys in pipeline with Delete Op:  dict_keys(['x', 'y'])
 
 
-<a id='ta03mo'></a>
+<a id='ta03nl'></a>
 
-### MetaOp
-Meta ops are NumpyOps which operate on other NumpyOps. For example: `Sometimes` is a meta op which applies a given NumpyOp with the specified probability. `OneOf` applies only one randomly selected NumpyOp from the given list of NumpyOps.   
+### LambdaOp
+The `LambdaOp` is a flexible Op which allows you to execute arbitrary lambda functions. This can be especially useful for adding new keys to the data dictionary, or for performing simple computations without having to write a new NumpyOp. If your lambda function has a return value, it should be in the form of an np.ndarrary.
 
 
 ```python
+from fastestimator.op.numpyop import LambdaOp
+
 pipeline3 = fe.Pipeline(train_data=train_data,
                         eval_data=eval_data,
                         batch_size=4,
-                        ops = [LambdaOp(fn=lambda x: x, inputs="x", outputs="x_mid"), #create intermediate key
-                               Sometimes(HorizontalFlip(image_in="x", 
-                                                        image_out="x_mid",
-                                                        mode="train"), prob=0.5), 
-                               OneOf(Rotate(image_in="x_mid", image_out="x_out", mode="train", limit=45), 
-                                     VerticalFlip(image_in="x_mid", image_out="x_out", mode="train"), 
-                                     Blur(inputs="x_mid", outputs="x_out", mode="train", blur_limit=7))])
+                        ops = [LambdaOp(fn=lambda: 5, outputs="z"), #create a new key
+                               LambdaOp(fn=lambda a: a*3, inputs="z", outputs="z3")
+                               ])
 ```
-
-Plotting the results of the data pre-processing
 
 
 ```python
-from fastestimator.util import to_number
-
 data3 = pipeline3.get_results()
-img = fe.util.ImgData(Input_Image=to_number(data3["x"]), Sometimes_Op=to_number(data3["x_mid"]), OneOf_Op=to_number(data3["x_out"]))
-fig = img.paint_figure()
+print(f"z: {data3['z']}")
+print(f"z3: {data3['z3']}")
 ```
 
+    z: tensor([5, 5, 5, 5])
+    z3: tensor([15, 15, 15, 15])
 
-![png](assets/branches/master/tutorial/advanced/t03_operator_files/t03_operator_21_0.png)
-
-
-As you can see, Sometimes Op horizontally flips the image with 50% probability and OneOf applies either a vertical flip, rotation, or blur augmentation randomly.
 
 <a id='ta03cn'></a>
 
@@ -191,18 +183,47 @@ fig = img.paint_figure()
 ```
 
 
-![png](assets/branches/master/tutorial/advanced/t03_operator_files/t03_operator_28_0.png)
+    
+![png](assets/branches/master/tutorial/advanced/t03_operator_files/t03_operator_26_0.png)
+    
 
 
 <a id='ta03to'></a>
 
 ## TensorOp
-`TensorOps` are used to process tensor data. They are used within a `Network` for graph-based operations. You can go through [Beginner tutorial 6](./tutorials/master/beginner/t06_network) to get an overview of `TensorOps` and their usages.
+`TensorOps` are used to process tensor data. They are used within a `Network` for graph-based operations. You can go through [Beginner Tutorial 6](./tutorials/master/beginner/t06_network) to get an overview of `TensorOps` and their usages.
+
+<a id='ta03tl'></a>
+
+### LambdaOp
+Just like with NumpyOps, TensorOps have a `LambdaOp` too. The TensorOp version differs in that it should return a tf.Tensor or torch.Tensor rather than an np.ndarray.
+
+
+```python
+from fastestimator.op.tensorop import LambdaOp
+import tensorflow as tf
+
+network = fe.Network(ops=[
+    LambdaOp(inputs='x', outputs='y', fn=lambda a: a*5)
+])
+
+data = network.transform(data={'x':tf.ones((2,2))}, mode='train')
+print(f"x: \n{data['x']}")
+print(f"y: \n{data['y']}")
+```
+
+    x: 
+    [[1. 1.]
+     [1. 1.]]
+    y: 
+    [[5. 5.]
+     [5. 5.]]
+
 
 <a id='ta03ct'></a>
 
 ### Customizing TensorOps
-We can create a custom `TensorOp` using TensorFlow or Pytorch library calls according to our requirements. Below, we showcase a custom `TensorOp` which combines the batch dimension and patch dimension from the output of the above `Pipeline` to make it compatible to the `Network`.  
+We can create a custom `TensorOp` using TensorFlow or Pytorch library calls according to our requirements. Below, we showcase a custom `TensorOp` which combines the batch dimension and patch dimension from the output of the above `Pipeline` to make it compatible to the `Network`. `TensorOps` also have a .build() method which will be invoked before the Network runs so that you can make the op compatible with multiple different backends (though you don't have to do this if you don't care about cross-framework compatibility).
 
 
 ```python
@@ -213,11 +234,18 @@ class DimensionAdjustment(TensorOp):
     def __init__(self, reduce_dim=[0, 1], inputs=None, outputs=None, mode=None):
         super().__init__(inputs, outputs, mode)
         self.reduce_dim = reduce_dim
+        self.reshape_fn = None
+    
+    def build(self, framework):
+        if framework=='tf':
+            self.reshape_fn = lambda tensor: tf.reshape(tensor, shape=self._new_shape(tensor))
+        elif framework=='torch':
+            self.reshape_fn = lambda tensor: torch.reshape(tensor, shape=self._new_shape(tensor))
     
     def forward(self, data, state):
         image, label = data
-        image_out = tf.reshape(image, shape=self._new_shape(image))
-        label_out = tf.reshape(label, shape=self._new_shape(label))
+        image_out = self.reshape_fn(image)
+        label_out = self.reshape_fn(label)
         return [image_out, label_out]
     
     def _new_shape(self, data):
@@ -260,6 +288,17 @@ print(f"Result Image Shape: {result['x'].shape}, Label Shape: {result['y'].shape
     Pipeline Output, Image Shape: torch.Size([8, 4, 24, 24, 3]), Label Shape: torch.Size([8, 4, 1])
     Result Image Shape: (32, 24, 24, 3), Label Shape: (32, 1)
 
+
+`TensorOps` have three other methods which are much less commonly used, but may be overridden if you are working on a complex Op:
+1. get_fe_models(self) -> Set
+2. get_fe_loss_keys(self) -> Set
+3. fe_retain_graph(self, retain) -> bool
+
+If your custom `TensorOp` contains one or more neural network models, you should override the get_fe_models() method to return all of those models. An example where this is done is in our `ModelOp`.
+
+If your custom `TensorOp` is being used to apply a loss value to a model, you should override the get_fe_loss_keys() method to return the string name(s) of all the keys which are being used as losses. An example where this is done is in our `UpdateOp`.
+
+Finally, if your custom Op computes gradients, it should override the fe_retain_graph method such that it can control whether or not your Op will keep the computation graph in memory or erase it after completing its forward pass. An example where this is done is in our `UpdateOp`.
 
 <a id='ta03rae'></a>
 

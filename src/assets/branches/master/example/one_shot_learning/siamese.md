@@ -1,4 +1,3 @@
-
 # One-Shot Learning using a Siamese Network in FastEstimator
 
 This notebook demonstrates how to perform one-shot learning using a Siamese Network in FastEstimator.
@@ -124,14 +123,18 @@ plt.show()
 
 
 
+    
 ![png](assets/branches/master/example/one_shot_learning/siamese_files/siamese_10_1.png)
+    
 
 
     Image pair from different characters
 
 
 
+    
 ![png](assets/branches/master/example/one_shot_learning/siamese_files/siamese_10_3.png)
+    
 
 
 ### Step 2: Create `Network`
@@ -390,9 +393,13 @@ plt.tight_layout()
 ```
 
 
+    
 ![png](assets/branches/master/example/one_shot_learning/siamese_files/siamese_28_0.png)
+    
 
 
 
+    
 ![png](assets/branches/master/example/one_shot_learning/siamese_files/siamese_28_1.png)
+    
 

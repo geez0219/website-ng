@@ -1,4 +1,3 @@
-
 # Tutorial 4: Pipeline
 
 ## Overview
@@ -23,7 +22,7 @@ In deep learning, data preprocessing is a way of converting data from its raw fo
 
 ## Loading data into a Pipeline
 
-In [tutorial 2](./tutorials/master/beginner/t02_dataset) we demonstrated different ways to construct FastEstimator datasets. Here we will see how datasets can be loaded in the `Pipeline` and how various operations can then be applied to the data. `fe.Pipeline` handles three different types of datasets:
+In [Tutorial 2](./tutorials/master/beginner/t02_dataset) we demonstrated different ways to construct FastEstimator datasets. Here we will see how datasets can be loaded in the `Pipeline` and how various operations can then be applied to the data. `fe.Pipeline` handles three different types of datasets:
 
 * tf.data.Dataset
 * torch.data.Dataloader
@@ -94,7 +93,7 @@ pipeline_torch = fe.Pipeline(dataloader_torch)
 
 ### Using a FastEstimator Dataset
 
-Next, we will see how to use one of the Fastestimator Datasets in the `Pipeline`. We will create `fe.dataset.NumpyDataset` and load it into our pipeline. As we saw in [tutorial 2](./tutorials/master/beginner/t02_dataset), `NumpyDataset` takes a dictionary with keys for the <b>input data</b> and <b>ground truth labels</b>.
+Next, we will see how to use one of the Fastestimator Datasets in the `Pipeline`. We will create `fe.dataset.NumpyDataset` and load it into our pipeline. As we saw in [Tutorial 2](./tutorials/master/beginner/t02_dataset), `NumpyDataset` takes a dictionary with keys for the <b>input data</b> and <b>ground truth labels</b>.
 
 
 ```python
@@ -121,15 +120,15 @@ pipeline_tf.get_results(num_steps=1)
 
 
     {'x': <tf.Tensor: shape=(4, 2), dtype=float64, numpy=
-     array([[0.25898835, 0.23625184],
-            [0.70300216, 0.63624074],
-            [0.79369219, 0.62362004],
-            [0.93831427, 0.87692817]])>,
+     array([[0.63098872, 0.02492519],
+            [0.20859418, 0.39825037],
+            [0.23939722, 0.21990976],
+            [0.70966992, 0.80645352]])>,
      'y': <tf.Tensor: shape=(4, 1), dtype=float64, numpy=
-     array([[0.95529881],
-            [0.41207025],
-            [0.46023815],
-            [0.18431654]])>}
+     array([[0.68909166],
+            [0.66729607],
+            [0.27104117],
+            [0.3786991 ]])>}
 
 
 
@@ -137,7 +136,7 @@ pipeline_tf.get_results(num_steps=1)
 
 ## Using Numpy Operators in Pipeline
 
-In [tutorial 3](./tutorials/master/beginner/t03_operator), we learned about `Operators` and their structure. They are used in FastEstimator for constructing workflow graphs. Here we will talk specifically about Numpy Operators (`NumpyOp`s) and how to use them in `Pipeline`.
+In [Tutorial 3](./tutorials/master/beginner/t03_operator), we learned about `Operators` and their structure. They are used in FastEstimator for constructing workflow graphs. Here we will talk specifically about Numpy Operators (`NumpyOp`s) and how to use them in `Pipeline`.
 
 `NumpyOp`s form the foundation of FastEstimator data augmentation within the `Pipeline`, and inherit from the `Op` base class. They perform preprocessing and augmentation tasks on non-Tensor data. With a list of `NumpyOp`s, even complicated preprocessing tasks can be implemented in only a few lines of code. Many of the augmentation operations in FastEstimator leverage the image augmentation library [albumentations](https://github.com/albumentations-team/albumentations).
 
@@ -176,13 +175,13 @@ minmax_op = Minmax(inputs="x", outputs="x_out")
 
 ### Multivariate NumpyOp
 
-Multivariate Numpy Operators perform different operations based on the nature of the input features. For example, if you have an image with an associated mask as well as bounding boxes, rotating all three of these objects together requires the backend code to know which of the inputs is an image and which is a bounding box. Here we will demonstrate the `Rotate` Numpy Operator which will rotate images randomly by some angle in the range (-180, 180) degrees.
+Multivariate Numpy Operators perform different operations based on the nature of the input features. For example, if you have an image with an associated mask as well as bounding boxes, rotating all three of these objects together requires the backend code to know which of the inputs is an image and which is a bounding box. Here we will demonstrate the `Rotate` Numpy Operator which will rotate images randomly by some angle in the range (-60, 60) degrees.
 
 
 ```python
 from fastestimator.op.numpyop.multivariate import Rotate
 
-rotation_op = Rotate(image_in="x_out", image_out="x_out", limit=180)
+rotation_op = Rotate(image_in="x_out", image_out="x_out", limit=60)
 ```
 
 <a id='t04custom'></a>
@@ -224,7 +223,9 @@ fig = img.paint_figure()
 ```
 
 
+    
 ![png](assets/branches/master/tutorial/beginner/t04_pipeline_files/t04_pipeline_41_0.png)
+    
 
 
 <a id='t04apphub'></a>

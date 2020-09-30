@@ -1,4 +1,3 @@
-
 # Horse to Zebra Unpaired Image Translation with CycleGAN in FastEstimator
 
 This notebook demonstrates how to perform an unpaired image to image translation using CycleGAN in FastEstimator.
@@ -95,7 +94,9 @@ fig = img.paint_figure()
 ```
 
 
+    
 ![png](assets/branches/master/example/image_generation/cyclegan_files/cyclegan_11_0.png)
+    
 
 
 ### Step 2: Create Network
@@ -435,11 +436,15 @@ fig2 = img2.paint_figure()
 ```
 
 
+    
 ![png](assets/branches/master/example/image_generation/cyclegan_files/cyclegan_34_0.png)
+    
 
 
 
+    
 ![png](assets/branches/master/example/image_generation/cyclegan_files/cyclegan_34_1.png)
+    
 
 
 Note the addition of zebra-like stripe texture on top of horses when translating from horses to zebras.
