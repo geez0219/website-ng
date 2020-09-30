@@ -216,7 +216,7 @@ if __name__ == '__main__':
 
     #relative urls
 
-    branches = ["r1.0", "master"]
+    branches = ["r1.0", "r1.1"]
 
     for branch in branches:
         example_rel_url = f'examples/{branch}/overview'
