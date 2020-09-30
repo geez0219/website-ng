@@ -52,7 +52,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   searchBreak: number;
   searchInMoreBreak: number;
   searchbarMinWidth: number = 170;
-  defaultVersion: string;
+  selectedVersion: string;
 
   structureHeaderDict = {
     'Content-Type': 'application/json',
@@ -93,7 +93,10 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.defaultVersion = this.globalService.getSelectedVersion();
+    this.selectedVersion = this.globalService.getSelectedVersion();
+    this.globalService.version.subscribe((v: string) => {
+      this.selectedVersion = v;
+    });
     this.versionList = this.globalService.getVersions();
 
     this.setTabLinks();
@@ -288,14 +291,15 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   }
 
   setVersion(version){
-    if(version != this.defaultVersion){
+    if(version != this.selectedVersion){
       this.globalService.version.next(version);
       this.globalService.setCurrentVersion(version);
       this.setTabLinks();
       const newRoute = this.getCurrentRoute(this.router.url.split('/')[1], version);
 
-      this.router.navigate([newRoute]);
-      this.defaultVersion = version;
+      if(newRoute != undefined){
+        this.router.navigate([newRoute]);
+      }
 
       this.checkBreaking();
       this.dealBreaking();

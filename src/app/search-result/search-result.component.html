@@ -1,12 +1,12 @@
-<div class="wrapper">
+<div *ngIf="data" class="wrapper">
     <div class="searchresulttext">
         <p class="searchqueryheader">Search results for <span class="searchquery">'{{searchText}}'</span></p>
     </div>
     <ul class="search-items">
         <li class="list-item" *ngFor="let searchResult of data.hits.hits">
-            <div class="heading"><a href={{searchResult._source.link}}>{{searchResult._source.title}}</a></div>
-            <div class="url"><a href={{searchResult._source.link}}>{{searchResult._source.link}}</a></div>
-            <div class="highlight" [innerHTML]="searchResult.highlight.body[0]"></div>
+              <div class="heading"><a href={{searchResult._source.link}}>{{searchResult._source.title}}</a></div>
+              <div class="url"><a href={{searchResult._source.link}}>{{searchResult._source.link}}</a></div>
+              <div *ngIf="searchResult.highlight" class="highlight" [innerHTML]="searchResult.highlight.body[0]"></div>
         </li>
     </ul>
 </div>
