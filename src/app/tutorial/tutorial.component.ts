@@ -1,43 +1,44 @@
-import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { BehaviorSubject, ObjectUnsubscribedError } from 'rxjs';
 import { Title } from '@angular/platform-browser';
 
 import { NestedTreeControl } from '@angular/cdk/tree';
-import { MatSidenav} from '@angular/material/sidenav';
+import { MatSidenav } from '@angular/material/sidenav';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 
 import { Example } from '../example';
 import { GlobalService } from '../global.service';
+import { constants } from 'http2';
 
 @Component({
   selector: 'app-tutorial',
   templateUrl: './tutorial.component.html',
   styleUrls: ['../api/api.component.css']
 })
-export class TutorialComponent implements OnInit {
+export class TutorialComponent implements OnInit, AfterViewChecked {
   tutorialList: Example[];
   selectedTutorial: string;
   currentSelection: string;
   currentTutorialText: string;
-  scrollCounter: number=0;
-  scrollThreshold: number=20;
+  scrollCounter = 0;
+  scrollThreshold = 20;
   segments: UrlSegment[];
   fragment: string;
   currentVersion: string;
 
   treeControl: NestedTreeControl<Example>;
   dataSource: MatTreeNestedDataSource<Example>;
-  minWidth: number = 640;
+  minWidth = 640;
   screenWidth: number;
   private screenWidth$ = new BehaviorSubject<number>(window.innerWidth);
 
-  subscribeTimer: number=-1;
-  timeLeft: number=10;
+  subscribeTimer = -1;
+  timeLeft = 10;
   structureHeaderDict = {
     'Content-Type': 'application/json',
-    'Accept': "application/json, text/plain",
+    'Accept': 'application/json, text/plain',
     'Access-Control-Allow-Origin': '*'
   }
   structureRequestOptions = {
@@ -45,7 +46,7 @@ export class TutorialComponent implements OnInit {
   };
 
   contentHeaderDict = {
-    'Accept': "application/json, text/plain",
+    'Accept': 'application/json, text/plain',
     'Access-Control-Allow-Origin': '*'
   }
   contentRequestOptions = {
@@ -65,17 +66,17 @@ export class TutorialComponent implements OnInit {
   }
 
   @HostListener('window:scroll', ['$event'])
-  onScroll(event){
-    if(this.scrollCounter < this.scrollThreshold){
+  onScroll(event) {
+    if (this.scrollCounter < this.scrollThreshold) {
       this.scrollCounter += 1;
     }
   }
 
   constructor(private http: HttpClient,
-    private router: Router,
-    private route: ActivatedRoute,
-    private title: Title,
-    private globalService: GlobalService) {}
+              private router: Router,
+              private route: ActivatedRoute,
+              private title: Title,
+              private globalService: GlobalService) { }
 
   ngOnInit() {
     this.treeControl = new NestedTreeControl<Example>(node => node.children);
@@ -89,9 +90,13 @@ export class TutorialComponent implements OnInit {
       this.getTutorialStructure();
     });
 
+    this.globalService.version.subscribe((version: string) => {
+      this.tutorialList = undefined;
+    });
+
     this.route.fragment.subscribe((fragment: string) => {
       this.fragment = fragment;
-    })
+    });
 
     this.screenWidth$.subscribe(width => {
       this.screenWidth = width;
@@ -116,8 +121,8 @@ export class TutorialComponent implements OnInit {
   hasChild = (_: number, node: Example) => !!node.children && node.children.length > 0;
 
   flatten(arr) {
-    var ret: Example[] = [];
-    for (let a of arr) {
+    let ret: Example[] = [];
+    for (const a of arr) {
       if (a.children) {
         ret = ret.concat(this.flatten(a.children));
       } else {
@@ -129,10 +134,10 @@ export class TutorialComponent implements OnInit {
   }
 
   expandNodes(tutorialName: string) {
-    var tutorialParts: Array<string> = tutorialName.split("/");
+    const tutorialParts: Array<string> = tutorialName.split('/');
     tutorialParts.pop();
 
-    var expandNode = this.tutorialList.filter(tutorial => tutorial.name === tutorialParts[0])[0];
+    const expandNode = this.tutorialList.filter(tutorial => tutorial.name === tutorialParts[0])[0];
     this.treeControl.expand(expandNode);
   }
 
@@ -141,7 +146,7 @@ export class TutorialComponent implements OnInit {
       this.loadSelectedTutorial();
     } else {
       this.http.get('assets/branches/' + this.currentVersion + '/tutorial/structure.json', this.structureRequestOptions).subscribe(data => {
-        this.tutorialList = <Example[]>(data);
+        this.tutorialList = (data as Example[]);
 
         this.dataSource.data = this.tutorialList;
         this.treeControl.dataNodes = this.tutorialList;
@@ -156,14 +161,14 @@ export class TutorialComponent implements OnInit {
   }
 
   private loadSelectedTutorial() {
-    if (this.segments.length == 0) {
+    if (this.segments.length === 0) {
       this.updateTutorialContent(this.tutorialList[0].children[0]);
       this.treeControl.expand(this.treeControl.dataNodes[0]);
     }
     else {
-      var e: Example[] = this.flatten(this.tutorialList)
+      const e: Example[] = this.flatten(this.tutorialList)
         .filter(tutorial =>
-          (this.segments.map(segment => segment.toString()).slice(1, this.segments.length).join('/') + ".md") === tutorial.name);
+          (this.segments.map(segment => segment.toString()).slice(1, this.segments.length).join('/') + '.md') === tutorial.name);
 
       if (e.length > 0) {
         this.updateTutorialContent(e[0]);
@@ -182,7 +187,7 @@ export class TutorialComponent implements OnInit {
     this.currentSelection = 'assets/branches/' + this.currentVersion + '/tutorial/' + tutorial.name;
 
     this.getSelectedTutorialText();
-    this.title.setTitle(tutorial.displayName + " | Fastestimator");
+    this.title.setTitle(tutorial.displayName + ' | Fastestimator');
   }
 
   getSelectedTutorialText() {
@@ -199,21 +204,21 @@ export class TutorialComponent implements OnInit {
 
   getImageUrl() {
     if (this.sidenav.opened) {
-      this.grippy.nativeElement.style.left = "19rem"
-      return "url(../../assets/images/sidebar-grippy-hide.png)"
+      this.grippy.nativeElement.style.left = '19rem'
+      return 'url(../../assets/images/sidebar-grippy-hide.png)'
     } else {
-      this.grippy.nativeElement.style.left = "0rem"
-      return "url(../../assets/images/sidebar-grippy-show.png)"
+      this.grippy.nativeElement.style.left = '0rem'
+      return 'url(../../assets/images/sidebar-grippy-show.png)'
     }
   }
 
   checkSidebar() {
     if (this.sidenav.opened) {
-      this.grippy.nativeElement.style.backgroundImage = "url(../../assets/images/sidebar-grippy-hide.png)"
-      this.grippy.nativeElement.style.left = "19rem"
+      this.grippy.nativeElement.style.backgroundImage = 'url(../../assets/images/sidebar-grippy-hide.png)'
+      this.grippy.nativeElement.style.left = '19rem'
     } else {
-      this.grippy.nativeElement.style.backgroundImage = "url(../../assets/images/sidebar-grippy-show.png)"
-      this.grippy.nativeElement.style.left = "0rem"
+      this.grippy.nativeElement.style.backgroundImage = 'url(../../assets/images/sidebar-grippy-show.png)'
+      this.grippy.nativeElement.style.left = '0rem'
     }
   }
 
@@ -223,8 +228,8 @@ export class TutorialComponent implements OnInit {
   }
 
   createRouterLink(url: string) {
-    var components: Array<string> = url.substring(0, url.length - 3).split('/');
-    var ret = ['/tutorials', this.currentVersion];
+    const components: Array<string> = url.substring(0, url.length - 3).split('/');
+    const ret = ['/tutorials', this.currentVersion];
 
     return ret.concat(components);
   }
