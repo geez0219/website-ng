@@ -32,6 +32,7 @@ export class TutorialComponent implements OnInit, AfterViewChecked {
   minWidth = 640;
   screenWidth: number;
   private screenWidth$ = new BehaviorSubject<number>(window.innerWidth);
+  versionChanged: boolean;
 
   subscribeTimer = -1;
   timeLeft = 10;
@@ -39,7 +40,8 @@ export class TutorialComponent implements OnInit, AfterViewChecked {
     'Content-Type': 'application/json',
     'Accept': 'application/json, text/plain',
     'Access-Control-Allow-Origin': '*'
-  }
+  };
+
   structureRequestOptions = {
     headers: new HttpHeaders(this.structureHeaderDict),
   };
@@ -83,6 +85,13 @@ export class TutorialComponent implements OnInit, AfterViewChecked {
     this.dataSource = new MatTreeNestedDataSource<Example>();
 
     this.route.url.subscribe((segments: UrlSegment[]) => {
+      const queryParam = this.router.url.split('?')[1];
+      if (queryParam !== undefined && queryParam.startsWith('versionChanged')) {
+        this.versionChanged = true;
+      } else {
+        this.versionChanged = false;
+      }
+
       this.globalService.setLoading();
       this.segments = segments;
 
@@ -175,7 +184,11 @@ export class TutorialComponent implements OnInit, AfterViewChecked {
         this.expandNodes(e[0].name);
       } else {
         this.globalService.resetLoading();
-        this.router.navigate(['PageNotFound'], { replaceUrl: true });
+        if (this.versionChanged) {
+          this.router.navigate(['/tutorials/' + this.currentVersion + '/beginner/t01_getting_started']);
+        } else {
+          this.router.navigate(['PageNotFound'], { replaceUrl: true });
+        }
       }
     }
   }

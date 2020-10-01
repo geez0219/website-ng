@@ -26,6 +26,7 @@ export class ExampleComponent implements OnInit, AfterViewChecked {
   segments: UrlSegment[];
   fragment: string;
   currentVersion: string;
+  versionChanged: boolean;
 
   treeControl: NestedTreeControl<Example>;
   dataSource: MatTreeNestedDataSource<Example>;
@@ -82,6 +83,13 @@ export class ExampleComponent implements OnInit, AfterViewChecked {
     this.dataSource = new MatTreeNestedDataSource<Example>();
 
     this.route.url.subscribe((segments: UrlSegment[]) => {
+      const queryParam = this.router.url.split('?')[1];
+      if (queryParam !== undefined && queryParam.startsWith('versionChanged')) {
+        this.versionChanged = true;
+      } else {
+        this.versionChanged = false;
+      }
+
       this.globalService.setLoading();
       this.segments = segments;
 
@@ -121,8 +129,8 @@ export class ExampleComponent implements OnInit, AfterViewChecked {
   hasChild = (_: number, node: Example) => !!node.children && node.children.length > 0;
 
   flatten(arr) {
-    var ret: Example[] = [];
-    for (let a of arr) {
+    let ret: Example[] = [];
+    for (const a of arr) {
       if (a.children) {
         ret = ret.concat(this.flatten(a.children));
       } else {
@@ -175,7 +183,11 @@ export class ExampleComponent implements OnInit, AfterViewChecked {
         this.expandNodes(e[0].name);
       } else {
         this.globalService.resetLoading();
-        this.router.navigate(['PageNotFound'], {replaceUrl:true});
+        if (this.versionChanged) {
+          this.router.navigate(['/examples/' + this.currentVersion + '/overview']);
+        } else {
+          this.router.navigate(['PageNotFound'], { replaceUrl: true });
+        }
       }
     }
   }
