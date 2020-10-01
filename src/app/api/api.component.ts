@@ -124,7 +124,7 @@ export class ApiComponent implements OnInit, AfterViewChecked {
 
   flatten(arr) {
     let ret: API[] = [];
-    for (let a of arr) {
+    for (const a of arr) {
       if (a.children) {
         ret = ret.concat(this.flatten(a.children));
       } else {
@@ -194,7 +194,7 @@ export class ApiComponent implements OnInit, AfterViewChecked {
         searchString = this.segments.slice(2, this.segments.length).join('/') + '.md';
       }
 
-      let a: API[] = this.flatten(this.apiList).filter(api => searchString === api.name);
+      const a: API[] = this.flatten(this.apiList).filter(api => searchString === api.name);
 
       if (a.length > 0) {
         this.updateAPIContent(a[0]);
@@ -227,7 +227,7 @@ export class ApiComponent implements OnInit, AfterViewChecked {
         console.error(error);
         this.globalService.resetLoading();
 
-        this.router.navigate(['PageNotFound'], { replaceUrl: true })
+        this.router.navigate(['PageNotFound'], { replaceUrl: true });
       });
   }
 

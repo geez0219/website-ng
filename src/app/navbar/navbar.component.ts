@@ -177,7 +177,6 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     this.dealBreaking();
     this.checkAndDealSearchBreaking();
     this.cd.detectChanges();
-    console.log("rerun");
   }
 
   preRoute(newSelection: string) {
@@ -290,15 +289,22 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     }
   }
 
-  setVersion(version){
-    if(version != this.selectedVersion){
+  setVersion(version: string){
+    if (version !== this.selectedVersion) {
       this.globalService.version.next(version);
       this.globalService.setCurrentVersion(version);
-      this.setTabLinks();
-      const newRoute = this.getCurrentRoute(this.router.url.split('/')[1], version);
 
-      if(newRoute != undefined){
-        this.router.navigate([newRoute]);
+      this.setTabLinks();
+
+      const baseURL = this.router.url.split('?')[0];
+      const routeType = baseURL.split('/')[1];
+      if (routeType !== 'search') {
+        const newRoute =  routeType + '/' + version + '/' + baseURL.split('/').splice(3).join('/');
+        if (routeType === 'api' || routeType === 'tutorials' || routeType === 'examples') {
+          this.router.navigate([newRoute], { queryParams: { versionChanged: 'true' } });
+        } else if (routeType === 'install' || routeType === 'community') {
+          this.router.navigate([this.getCurrentRoute(routeType, version)]);
+        }
       }
 
       this.checkBreaking();

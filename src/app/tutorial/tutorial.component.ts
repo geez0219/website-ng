@@ -1,7 +1,7 @@
 import { Component, OnInit, HostListener, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
-import { BehaviorSubject, ObjectUnsubscribedError } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Title } from '@angular/platform-browser';
 
 import { NestedTreeControl } from '@angular/cdk/tree';
@@ -47,7 +47,8 @@ export class TutorialComponent implements OnInit, AfterViewChecked {
   contentHeaderDict = {
     'Accept': 'application/json, text/plain',
     'Access-Control-Allow-Origin': '*'
-  }
+  };
+
   contentRequestOptions = {
     responseType: 'text' as 'text',
     headers: new HttpHeaders(this.contentHeaderDict)
@@ -197,27 +198,27 @@ export class TutorialComponent implements OnInit, AfterViewChecked {
       error => {
         console.error(error);
         this.globalService.resetLoading();
-        this.router.navigate(['PageNotFound'], { replaceUrl: true })
+        this.router.navigate(['PageNotFound'], { replaceUrl: true });
       });
   }
 
   getImageUrl() {
     if (this.sidenav.opened) {
-      this.grippy.nativeElement.style.left = '19rem'
-      return 'url(../../assets/images/sidebar-grippy-hide.png)'
+      this.grippy.nativeElement.style.left = '19rem';
+      return 'url(../../assets/images/sidebar-grippy-hide.png)';
     } else {
-      this.grippy.nativeElement.style.left = '0rem'
-      return 'url(../../assets/images/sidebar-grippy-show.png)'
+      this.grippy.nativeElement.style.left = '0rem';
+      return 'url(../../assets/images/sidebar-grippy-show.png)';
     }
   }
 
   checkSidebar() {
     if (this.sidenav.opened) {
-      this.grippy.nativeElement.style.backgroundImage = 'url(../../assets/images/sidebar-grippy-hide.png)'
-      this.grippy.nativeElement.style.left = '19rem'
+      this.grippy.nativeElement.style.backgroundImage = 'url(../../assets/images/sidebar-grippy-hide.png)';
+      this.grippy.nativeElement.style.left = '19rem';
     } else {
-      this.grippy.nativeElement.style.backgroundImage = 'url(../../assets/images/sidebar-grippy-show.png)'
-      this.grippy.nativeElement.style.left = '0rem'
+      this.grippy.nativeElement.style.backgroundImage = 'url(../../assets/images/sidebar-grippy-show.png)';
+      this.grippy.nativeElement.style.left = '0rem';
     }
   }
 
