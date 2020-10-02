@@ -49,25 +49,6 @@
       </div>
     </div>
 
-    <!-- <div #versionDOM class="nav-item version-div" ngbDropdown display="dynamic">
-      <a class="nav-link version-select" tabindex="0" ngbDropdownToggle id="navbarDropdown3" role="button">
-        <div>
-          {{defaultVersion}}
-        </div>
-
-        <mat-icon aria-hidden="true" role="img" class="mat-icon notranslate material-icons mat-icon-no-color version-arrow">
-          arrow_drop_down
-        </mat-icon>
-      </a>
-      <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
-        <a ngbDropdownItem *ngFor="let version of versionList" (click)="setVersion(version.name)">{{version.name}}</a>
-      </div>
-    </div> -->
-    <!-- <select #versionDOM matNativeControl required class="version-select"
-      (change)="versionChanged($event)" [(ngModel)]="defaultVersion">
-      <option *ngFor="let version of versionList" class="version-option"> {{version.name}}</option>
-    </select> -->
-
     <button #searchIconDOM (click)="expandSearch()" [hidden]="isSearchIconHidden || isSearchExpanded"
       style="background-color: transparent; border:none; outline:none; padding: 3px 20px 0 20px">
       <mat-icon aria-hidden="true" role="img" class="mat-icon notranslate material-icons mat-icon-no-color"
