@@ -31,3 +31,20 @@ Check dependency of PDF-generating packages.
 #### Raises:
 
 * **OSError** :  Some required package has not been installed.
+
+### sanitize_value
+```python
+sanitize_value(
+	value: Union[int, float]
+)
+-> str
+```
+Sanitize input value for a better report display.
+
+
+#### Args:
+
+* **value** :  Value to be sanitized.
+
+#### Returns:
+    Sanitized string of `value`.

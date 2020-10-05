@@ -1,8 +1,8 @@
 
 
-### load_data
+### shakespeare.load_data
 ```python
-load_data(
+shakespeare.load_data(
 	root_dir: Union[str, NoneType]=None,
 	seq_length: int=100
 )

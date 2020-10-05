@@ -1,8 +1,8 @@
 
 
-### load_data
+### german_ner.load_data
 ```python
-load_data(
+german_ner.load_data(
 	root_dir: Union[str, NoneType]=None
 )
 -> Tuple[fastestimator.dataset.numpy_dataset.NumpyDataset, fastestimator.dataset.numpy_dataset.NumpyDataset, Set[str], Set[str]]
