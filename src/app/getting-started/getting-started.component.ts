@@ -1,5 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+
 import { GlobalService } from '../global.service';
 
 declare var tsParticles;
@@ -22,7 +24,9 @@ export class GettingStartedComponent implements OnInit, OnDestroy {
     name: 'FastEstimator',
   };
 
-  constructor(private title: Title, private globalService: GlobalService) {}
+  constructor(private router: Router,
+              private title: Title,
+              private globalService: GlobalService) {}
 
   ngOnInit() {
     this.latestVersion = this.globalService.getLatestVersion();
@@ -49,5 +53,10 @@ export class GettingStartedComponent implements OnInit, OnDestroy {
       .catch((error) => {
         console.error(error);
       });
+  }
+
+  navigateToLatestExample(exampleURL: string) {
+    this.globalService.version.next(this.latestVersion);
+    this.router.navigate([exampleURL]);
   }
 }

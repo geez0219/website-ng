@@ -11,7 +11,7 @@ import {
   ChangeDetectorRef,
   Inject,
 } from '@angular/core';
-import { NavigationStart, NavigationEnd, Router } from '@angular/router';
+import { NavigationStart, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { GlobalService } from '../global.service';
