@@ -8,7 +8,7 @@ from shutil import copy
 from functools import partial
 import pdb
 
-RE_SIDEBAR_TITLE = '[^A-Za-z0-9:!,$%. ]+'
+RE_SIDEBAR_TITLE = '[^A-Za-z0-9:!,$%. ()]+'
 RE_ROUTE_TITLE = '[^A-Za-z0-9 ]+'
 BRANCH = None
 
