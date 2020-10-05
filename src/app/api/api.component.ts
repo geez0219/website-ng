@@ -23,16 +23,17 @@ export class ApiComponent implements OnInit, AfterViewChecked {
   currentSelection: string;
   currentAPIText: string;
   currentAPILink: string;
-  scrollCounter: number = 0;
-  scrollThreshold: number = 20;
+  scrollCounter = 0;
+  scrollThreshold = 20;
   segments: UrlSegment[];
   fragment: string;
   currentVersion: string;
+  versionChanged: boolean;
 
   treeControl: NestedTreeControl<API>;
   dataSource: MatTreeNestedDataSource<API>;
 
-  minWidth: number = 640;
+  minWidth = 640;
   screenWidth: number;
   private screenWidth$ = new BehaviorSubject<number>(window.innerWidth);
 
@@ -47,7 +48,8 @@ export class ApiComponent implements OnInit, AfterViewChecked {
     'Content-Type': 'application/json',
     'Accept': 'application/json, text/plain',
     'Access-Control-Allow-Origin': '*'
-  }
+  };
+
   structureRequestOptions = {
     headers: new HttpHeaders(this.structureHeaderDict),
   };
@@ -55,7 +57,8 @@ export class ApiComponent implements OnInit, AfterViewChecked {
   contentHeaderDict = {
     'Accept': 'application/json, text/plain',
     'Access-Control-Allow-Origin': '*'
-  }
+  };
+
   contentRequestOptions = {
     responseType: 'text' as 'text',
     headers: new HttpHeaders(this.contentHeaderDict)
@@ -88,6 +91,13 @@ export class ApiComponent implements OnInit, AfterViewChecked {
     });
 
     this.route.url.subscribe((segments: UrlSegment[]) => {
+      const queryParam = this.router.url.split('?')[1];
+      if (queryParam !== undefined && queryParam.startsWith('versionChanged')) {
+        this.versionChanged = true;
+      } else {
+        this.versionChanged = false;
+      }
+
       this.globalService.setLoading();
       this.segments = segments;
 
@@ -124,7 +134,7 @@ export class ApiComponent implements OnInit, AfterViewChecked {
 
   flatten(arr) {
     let ret: API[] = [];
-    for (let a of arr) {
+    for (const a of arr) {
       if (a.children) {
         ret = ret.concat(this.flatten(a.children));
       } else {
@@ -194,14 +204,18 @@ export class ApiComponent implements OnInit, AfterViewChecked {
         searchString = this.segments.slice(2, this.segments.length).join('/') + '.md';
       }
 
-      let a: API[] = this.flatten(this.apiList).filter(api => searchString === api.name);
+      const a: API[] = this.flatten(this.apiList).filter(api => searchString === api.name);
 
       if (a.length > 0) {
         this.updateAPIContent(a[0]);
         this.expandNodes(a[0].name);
       } else {
         this.globalService.resetLoading();
-        this.router.navigate(['PageNotFound'], { replaceUrl: true });
+        if (this.versionChanged) {
+          this.router.navigate(['/api/' + this.currentVersion + '/fe/Estimator']);
+        } else {
+          this.router.navigate(['PageNotFound'], { replaceUrl: true });
+        }
       }
     }
   }
@@ -227,7 +241,7 @@ export class ApiComponent implements OnInit, AfterViewChecked {
         console.error(error);
         this.globalService.resetLoading();
 
-        this.router.navigate(['PageNotFound'], { replaceUrl: true })
+        this.router.navigate(['PageNotFound'], { replaceUrl: true });
       });
   }
 

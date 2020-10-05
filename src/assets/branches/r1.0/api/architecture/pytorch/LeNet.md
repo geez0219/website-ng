@@ -1,6 +1,10 @@
 ## LeNet
 ```python
-LeNet(input_shape:Tuple[int, int, int]=(1, 28, 28), classes:int=10) -> None
+LeNet(
+	input_shape: Tuple[int, int, int]=(1, 28, 28),
+	classes: int=10
+)
+-> None
 ```
 A standard LeNet implementation in pytorch.
 

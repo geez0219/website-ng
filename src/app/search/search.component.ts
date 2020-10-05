@@ -1,6 +1,8 @@
-import { Component, OnInit }  from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+
+import { GlobalService } from '../global.service';
 
 @Component({
   selector: 'app-search',
@@ -11,12 +13,12 @@ export class SearchComponent implements OnInit{
   searchText: string;
 
   constructor(private http: HttpClient,
-              private router: Router) {}
+              private router: Router,
+              private globalService: GlobalService) {}
 
   ngOnInit() {}
 
   search() {
-    console.log("searching for " + this.searchText);
-    this.router.navigate(['/searchresult'], { queryParams: { query: this.searchText } });
+    this.router.navigate(['/searchresult'], { queryParams: { query: this.searchText, version: this.globalService.getSelectedVersion() } });
   }
 }

@@ -244,7 +244,9 @@ print("id = {}".format(batch_data[step_index]['image_id'][batch_index].numpy()))
 
 
 
+    
 ![png](assets/branches/r1.0/example/instance_detection/retinanet_files/retinanet_20_1.png)
+    
 
 
 ## Step 2 - `Network` construction
@@ -777,5 +779,7 @@ plt.tight_layout()
 
 
 
+    
 ![png](assets/branches/r1.0/example/instance_detection/retinanet_files/retinanet_52_1.png)
+    
 

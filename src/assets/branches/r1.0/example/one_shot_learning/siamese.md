@@ -123,14 +123,18 @@ plt.show()
 
 
 
+    
 ![png](assets/branches/r1.0/example/one_shot_learning/siamese_files/siamese_10_1.png)
+    
 
 
     Image pair from different characters
 
 
 
+    
 ![png](assets/branches/r1.0/example/one_shot_learning/siamese_files/siamese_10_3.png)
+    
 
 
 ### Step 2: Create `Network`
@@ -389,9 +393,13 @@ plt.tight_layout()
 ```
 
 
+    
 ![png](assets/branches/r1.0/example/one_shot_learning/siamese_files/siamese_28_0.png)
+    
 
 
 
+    
 ![png](assets/branches/r1.0/example/one_shot_learning/siamese_files/siamese_28_1.png)
+    
 

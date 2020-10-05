@@ -16,9 +16,9 @@ In this tutorial, we will discuss:
 <a id='ta03om'></a>
 
 ## Operator Mechanism
-We learned about the operator structure in [Beginner tutorial 3](./tutorials/r1.0/beginner/t03_operator). Operators are used to build complex computation graphs in FastEstimator.
+We learned about the operator structure in [Beginner Tutorial 3](./tutorials/r1.0/beginner/t03_operator). Operators are used to build complex computation graphs in FastEstimator.
 
-In FastEstimator, all the available data is held in a data dictionary during execution. An `Op` runs when it's `mode` matches the current execution mode. For more information on mode, you can go through [Beginner tutorial 8](./tutorials/r1.0/beginner/t08_mode).
+In FastEstimator, all the available data is held in a data dictionary during execution. An `Op` runs when it's `mode` matches the current execution mode. For more information on mode, you can go through [Beginner Tutorial 8](./tutorials/r1.0/beginner/t08_mode).
 
 Here's one simple example of an operator:
 
@@ -56,7 +56,7 @@ The state argument in the `forward` function stores meta information about train
 <a id='ta03no'></a>
 
 ## NumpyOp
-NumpyOp is used in `Pipeline` for data pre-processing and augmentation. You can go through [Beginner tutorial 4](./tutorials/r1.0/beginner/t04_pipeline) to get an overview of NumpyOp and their usage. Here, we will talk about some advanced NumpyOps.
+NumpyOp is used in `Pipeline` for data pre-processing and augmentation. You can go through [Beginner Tutorial 4](./tutorials/r1.0/beginner/t04_pipeline) to get an overview of NumpyOp and their usage. Here, we will talk about some advanced NumpyOps.
 
 <a id='ta03do'></a>
 
@@ -131,7 +131,9 @@ fig = img.paint_figure()
 ```
 
 
+    
 ![png](assets/branches/r1.0/tutorial/advanced/t03_operator_files/t03_operator_21_0.png)
+    
 
 
 As you can see, Sometimes Op horizontally flips the image with 50% probability and OneOf applies either a vertical flip, rotation, or blur augmentation randomly.
@@ -189,13 +191,15 @@ fig = img.paint_figure()
 ```
 
 
+    
 ![png](assets/branches/r1.0/tutorial/advanced/t03_operator_files/t03_operator_28_0.png)
+    
 
 
 <a id='ta03to'></a>
 
 ## TensorOp
-`TensorOps` are used to process tensor data. They are used within a `Network` for graph-based operations. You can go through [Beginner tutorial 6](./tutorials/r1.0/beginner/t06_network) to get an overview of `TensorOps` and their usages.
+`TensorOps` are used to process tensor data. They are used within a `Network` for graph-based operations. You can go through [Beginner Tutorial 6](./tutorials/r1.0/beginner/t06_network) to get an overview of `TensorOps` and their usages.
 
 <a id='ta03ct'></a>
 

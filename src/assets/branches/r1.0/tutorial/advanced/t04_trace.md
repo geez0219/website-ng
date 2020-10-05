@@ -50,7 +50,7 @@ def get_pipeline_model_network(model_name="LeNet", batch_size=32):
 <a id='ta04customize'></a>
 
 ## Customizing Traces
-In [tutorial 7](./tutorials/r1.0/beginner/t07_estimator) in the beginner section, we talked about the basic concept and structure of `Traces` and used a few `Traces` provided by FastEstimator. We can also customize a Trace to suit our needs. Let's look at an example of a custom trace implementation:
+In [Tutorial 7](./tutorials/r1.0/beginner/t07_estimator) in the beginner section, we talked about the basic concept and structure of `Traces` and used a few `Traces` provided by FastEstimator. We can also customize a Trace to suit our needs. Let's look at an example of a custom trace implementation:
 
 <a id='ta04example'></a>
 

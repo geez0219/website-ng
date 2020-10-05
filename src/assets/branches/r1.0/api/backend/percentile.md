@@ -2,7 +2,13 @@
 
 ### percentile
 ```python
-percentile(tensor:~Tensor, percentiles:Union[int, List[int]], axis:Union[NoneType, int, List[int]]=None, keepdims:bool=True) -> ~Tensor
+percentile(
+	tensor: ~Tensor,
+	percentiles: Union[int, List[int]],
+	axis: Union[NoneType, int, List[int]]=None,
+	keepdims: bool=True
+)
+-> ~Tensor
 ```
 Compute the `percentiles` of a `tensor`.
 

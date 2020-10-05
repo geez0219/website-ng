@@ -31,16 +31,15 @@ export class SearchResultComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-        console.log(params.query);
         this.searchText = params.query;
 
-        this.selectedVersion = this.globalService.getSelectedVersion();
+        this.selectedVersion = params.version;
         this.getSearchResults();
     });
   }
 
   getSearchResults() {
-    const searchURL = 'https://search.fastestimator.org:3200/search/1.0/' + this.searchText;
+    const searchURL = 'https://search.fastestimator.org:3200/search/' + this.selectedVersion + '/' + this.searchText;
 
     this.http.get(searchURL).subscribe(data => {
       console.log(data);
@@ -49,7 +48,7 @@ export class SearchResultComponent implements OnInit {
     error => {
       console.error(error);
       this.globalService.resetLoading();
-      this.router.navigate(['PageNotFound'], {replaceUrl:true})
+      this.router.navigate(['PageNotFound'], {replaceUrl: true});
     });
   }
 

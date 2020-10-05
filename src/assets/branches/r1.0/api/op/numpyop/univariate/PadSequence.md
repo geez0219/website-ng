@@ -1,6 +1,14 @@
 ## PadSequence
 ```python
-PadSequence(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterable[str]], max_len:int, value:Union[str, int]=0, append:bool=True, mode:Union[NoneType, str, Iterable[str]]=None) -> None
+PadSequence(
+	inputs: Union[str, Iterable[str], Callable],
+	outputs: Union[str, Iterable[str]],
+	max_len: int,
+	value: Union[str, int]=0,
+	append: bool=True,
+	mode: Union[NoneType, str, Iterable[str]]=None
+)
+-> None
 ```
 Pad sequences to the same length with provided value.
 

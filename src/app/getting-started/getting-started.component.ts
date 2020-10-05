@@ -1,5 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+
 import { GlobalService } from '../global.service';
 
 declare var tsParticles;
@@ -13,21 +15,24 @@ export class GettingStartedComponent implements OnInit, OnDestroy {
   particleStyle: object = {};
   particleParams: object = {};
   scriptTag;
-  width: number = 100;
-  height: number = 100;
+  width = 100;
+  height = 100;
   currentVersion: string;
+  latestVersion: string;
 
   data = {
     name: 'FastEstimator',
   };
 
-  constructor(private title: Title, private globalService: GlobalService) {}
+  constructor(private router: Router,
+              private title: Title,
+              private globalService: GlobalService) {}
 
   ngOnInit() {
+    this.latestVersion = this.globalService.getLatestVersion();
     this.currentVersion = this.globalService.getSelectedVersion();
     this.globalService.version.subscribe((v: string) => {
       this.currentVersion = v;
-      console.log(this.currentVersion);
     });
     this.title.setTitle(this.data.name);
     tsParticles
@@ -48,5 +53,10 @@ export class GettingStartedComponent implements OnInit, OnDestroy {
       .catch((error) => {
         console.error(error);
       });
+  }
+
+  navigateToLatestExample(exampleURL: string) {
+    this.globalService.version.next(this.latestVersion);
+    this.router.navigate([exampleURL]);
   }
 }

@@ -97,7 +97,9 @@ for i, j in enumerate(np.random.randint(low=0, high=batch_size-1, size=sample_nu
 ```
 
 
+    
 ![png](assets/branches/r1.0/example/image_generation/cvae_files/cvae_11_0.png)
+    
 
 
 ## Step 2 - `Network` construction
@@ -314,5 +316,7 @@ for i, j in enumerate(np.random.randint(low=0, high=batch_size-1, size=sample_nu
 ```
 
 
+    
 ![png](assets/branches/r1.0/example/image_generation/cvae_files/cvae_25_0.png)
+    
 

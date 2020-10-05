@@ -1,6 +1,12 @@
 ## ModelOp
 ```python
-ModelOp(model:Union[tensorflow.python.keras.engine.training.Model, torch.nn.modules.module.Module], inputs:Union[NoneType, str, Iterable[str], Callable]=None, outputs:Union[NoneType, str, Iterable[str]]=None, mode:Union[NoneType, str, Iterable[str]]=None, trainable:bool=True)
+ModelOp(
+	model: Union[tensorflow.python.keras.engine.training.Model, torch.nn.modules.module.Module],
+	inputs: Union[NoneType, str, Iterable[str], Callable]=None,
+	outputs: Union[NoneType, str, Iterable[str]]=None,
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	trainable: bool=True
+)
 ```
 This class performs forward passes of a neural network over batch data to generate predictions.
 

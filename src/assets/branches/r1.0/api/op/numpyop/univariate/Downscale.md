@@ -1,6 +1,13 @@
 ## Downscale
 ```python
-Downscale(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterable[str]], mode:Union[NoneType, str, Iterable[str]]=None, scale_min:float=0.25, scale_max:float=0.25, interpolation:int=0)
+Downscale(
+	inputs: Union[str, Iterable[str], Callable],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	scale_min: float=0.25,
+	scale_max: float=0.25,
+	interpolation: int=0
+)
 ```
 Decrease image quality by downscaling and then upscaling.
 

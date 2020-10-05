@@ -1,6 +1,10 @@
 ## UNetEncoderBlock
 ```python
-UNetEncoderBlock(in_channels:int, out_channels:int) -> None
+UNetEncoderBlock(
+	in_channels: int,
+	out_channels: int
+)
+-> None
 ```
 A UNet encoder block.
 

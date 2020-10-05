@@ -29,18 +29,28 @@
         [hidden]="!isSearchExpanded">
         <mat-icon aria-hidden="true" role="img" class="mat-icon notranslate material-icons mat-icon-no-color"
           style="font-size: 2rem; width:inherit; height:inherit">
-          arrow_back_ios
+          arrow_forward_ios
         </mat-icon>
       </button>
     </ul>
 
-    <select #versionDOM matNativeControl required class="version-select" [hidden]="isSearchExpanded"
-      (change)="versionChanged($event)" [(ngModel)]="defaultVersion">
-      <option *ngFor="let version of versionList"> {{version.name}}</option>
-    </select>
+    <div #versionDOM class="nav-item version-div" ngbDropdown display="dynamic">
+      <a class="nav-link version-select" tabindex="0" ngbDropdownToggle id="navbarDropdown3" role="button">
+          <div style="margin: 0 25px 0 10px">
+            {{selectedVersion}}
+          </div>
+
+          <mat-icon aria-hidden="true" role="img" class="mat-icon notranslate material-icons mat-icon-no-color version-arrow">
+            arrow_drop_down
+          </mat-icon>
+      </a>
+      <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
+        <a ngbDropdownItem *ngFor="let version of versionList" (click)="setVersion(version.name)">{{version.name}}</a>
+      </div>
+    </div>
 
     <button #searchIconDOM (click)="expandSearch()" [hidden]="isSearchIconHidden || isSearchExpanded"
-      style="background-color: transparent; border:none; outline:none; padding: 10px 10px 0 10px">
+      style="background-color: transparent; border:none; outline:none; padding: 3px 20px 0 20px">
       <mat-icon aria-hidden="true" role="img" class="mat-icon notranslate material-icons mat-icon-no-color"
         style="font-size: 2rem; width:inherit; height:inherit">
         search

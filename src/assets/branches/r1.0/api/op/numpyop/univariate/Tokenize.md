@@ -1,6 +1,13 @@
 ## Tokenize
 ```python
-Tokenize(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterable[str]], mode:Union[NoneType, str, Iterable[str]]=None, tokenize_fn:Union[NoneType, Callable[[str], List[str]]]=None, to_lower_case:bool=False) -> None
+Tokenize(
+	inputs: Union[str, Iterable[str], Callable],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	tokenize_fn: Union[NoneType, Callable[[str], List[str]]]=None,
+	to_lower_case: bool=False
+)
+-> None
 ```
 Split the sequences into tokens.
 

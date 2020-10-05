@@ -87,7 +87,36 @@ nav div ul li a {
     /* background-color: #2A7BBA; */
 }
 
-.version-select {
+.version-div {
     margin-top: auto;
     margin-bottom: auto;
+}
+
+.version-select{
+    padding:5px;
+    border-radius: 5px;
+    border:none;
+    color: white;
+    background-color: #2a7bba;
+    display: flex;
+    align-items: center;
+    width:6rem;
+}
+
+.version-select:focus{
+    outline:none;
+}
+
+.dropdown-toggle::after{
+    display:none;
+}
+
+.version-arrow {
+    position:absolute;
+    right:0;
+    margin-right:3px;
+}
+
+.dropdown-menu{
+    min-width: 6rem;
 }

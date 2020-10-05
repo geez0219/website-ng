@@ -20,7 +20,7 @@ FastEstimator provides 4 corresponding modes: `train`, `eval`, `test`, and `infe
 * train: `estimator.fit()` being called, during training cycle
 * eval: `estimator.fit()` being called, during evaluation cycle
 * test: `estimator.test()` being called
-* infer: `pipeline.transform(mode="infer")` or `network.transform(mode="infer")` being called (inference will be covered in [tutorial 9](./tutorials/r1.0/beginner/t09_inference))
+* infer: `pipeline.transform(mode="infer")` or `network.transform(mode="infer")` being called (inference will be covered in [Tutorial 9](./tutorials/r1.0/beginner/t09_inference))
 
 <a id='t08how'></a>
 
@@ -106,7 +106,7 @@ Everything in the "test" mode is the same as the "eval" mode, except that the da
 <img src="assets/branches/r1.0/tutorial/../resources/t08_test_mode.PNG" alt="drawing" width="700"/>
 
 ### Infer Mode
-"Infer" mode only has the minimum operations that model inference requires. The data source is not defined yet because input data will not be passed until the inference function is invoked. See [tutorial 9](./tutorials/r1.0/beginner/t09_inference) for more details.
+"Infer" mode only has the minimum operations that model inference requires. The data source is not defined yet because input data will not be passed until the inference function is invoked. See [Tutorial 9](./tutorials/r1.0/beginner/t09_inference) for more details.
 
 <img src="assets/branches/r1.0/tutorial/../resources/t08_infer_mode.PNG" alt="drawing" width="700"/>
 

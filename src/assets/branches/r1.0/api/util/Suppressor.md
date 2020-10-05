@@ -15,7 +15,11 @@ x()  # "hello"
 
 ### write
 ```python
-write(self, dummy:str) -> None
+write(
+	self,
+	dummy: str
+)
+-> None
 ```
 A function which is invoked during print calls.
 

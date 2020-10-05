@@ -1,6 +1,12 @@
 ## ChannelDropout
 ```python
-ChannelDropout(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterable[str]], mode:Union[NoneType, str, Iterable[str]]=None, channel_drop_range:Tuple[int, int]=(1, 1), fill_value:Union[int, float]=0)
+ChannelDropout(
+	inputs: Union[str, Iterable[str], Callable],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	channel_drop_range: Tuple[int, int]=(1, 1),
+	fill_value: Union[int, float]=0
+)
 ```
 Randomly drop channels from the image.
 

@@ -6,11 +6,13 @@ import re
 import time
 import urllib.request as urllib2
 from urllib.parse import urljoin
-import pdb
+import sys
 from bs4 import BeautifulSoup
 from selenium import webdriver
+import pdb
+import shutil
 
-#fastestimator url to append
+# fastestimator url to append
 FE_URL = 'https://www.fastestimator.org'
 EXAMPLES_DIR = 'examples'
 API_DIR = 'api'
@@ -18,15 +20,18 @@ TUTORIALS_DIR = 'tutorials'
 INSTALL_DIR = 'install'
 MAIN_DIR = 'main'
 
-#change this to stage env for crawling in pipeline
+# maximum times to try in the soup
+MAX_SOUP_TRY = 50
+
+# change this to stage env for crawling in pipeline
 LOCAL_URL = 'http://localhost:4200'
 
-#initialize the selenium driver for the chrome
+# initialize the selenium driver for the chrome
 options = webdriver.ChromeOptions()
 options.add_argument('--ignore-certificate-errors')
 options.add_argument('--headless')
 driver = webdriver.Chrome(
-    executable_path="/home/geez219/Downloads/chromedriver",
+    executable_path="/home/geez219/angular_project/chromedriver",
     chrome_options=options)
 
 
@@ -44,7 +49,7 @@ def save_json_file(fname, parent_dir, item):
         f.write(json.dumps(item))
 
 
-def extract_examples(url):
+def extract_examples(url, out_dir):
     links = []
     driver.get(url)
     page_source = driver.page_source
@@ -62,16 +67,32 @@ def extract_examples(url):
         markdown = soup.find('markdown')
         h1 = soup.find('h1')
 
+        try_count = 0
+        while markdown is None and try_count <= MAX_SOUP_TRY:
+            print(f"markdown of {link} is None. Try to find again ({try_count}th time)")
+            driver.get(LOCAL_URL + link)
+            soup = BeautifulSoup(driver.page_source, 'lxml')
+            markdown = soup.find('markdown')
+            try_count += 1
+
+        try_count = 0
+        while h1 is None and try_count <= MAX_SOUP_TRY:
+            print(f"h1 of {link} is None. Try to find again ({try_count}th time)")
+            driver.get(LOCAL_URL + link)
+            soup = BeautifulSoup(driver.page_source, 'lxml')
+            h1 = soup.find('h1')
+            try_count += 1
+
         item['link'] = FE_URL + link
         item['body'] = clean_body(markdown.text)
         item['title'] = h1.text
 
-        #save json file
+        # save json file
         fname = item['link'].split('/')[-1] + '.json'
-        save_json_file(fname, EXAMPLES_DIR, item)
+        save_json_file(fname, out_dir, item)
 
 
-def extract_tutorial(url):
+def extract_tutorial(url, out_dir):
     links = []
     driver.get(url)
     page_source = driver.page_source
@@ -83,13 +104,27 @@ def extract_tutorial(url):
     print(links)
 
     for link in links:
-        print(link)
-        pdb.set_trace()
         item = {}
         driver.get(LOCAL_URL + link)
         soup = BeautifulSoup(driver.page_source, 'lxml')
         markdown = soup.find('markdown')
         h1 = soup.find('h1')
+
+        try_count = 0
+        while markdown is None and try_count <= MAX_SOUP_TRY:
+            print(f"markdown of {link} is None. Try to find again ({try_count}th time)")
+            driver.get(LOCAL_URL + link)
+            soup = BeautifulSoup(driver.page_source, 'lxml')
+            markdown = soup.find('markdown')
+            try_count += 1
+
+        try_count = 0
+        while h1 is None and try_count <= MAX_SOUP_TRY:
+            print(f"h1 of {link} is None. Try to find again ({try_count}th time)")
+            driver.get(LOCAL_URL + link)
+            soup = BeautifulSoup(driver.page_source, 'lxml')
+            h1 = soup.find('h1')
+            try_count += 1
 
         item['link'] = FE_URL + link
         item['body'] = clean_body(markdown.text)
@@ -98,10 +133,10 @@ def extract_tutorial(url):
 
         #save json file
         fname = item['link'].split('/')[-1] + '.json'
-        save_json_file(fname, TUTORIALS_DIR, item)
+        save_json_file(fname, out_dir, item)
 
 
-def extract_api(url):
+def extract_api(url, out_dir):
     links = []
     driver.get(url)
     page_source = driver.page_source
@@ -114,9 +149,15 @@ def extract_api(url):
 
     for link in links:
         item = {}
-        driver.get(LOCAL_URL + link)
-        soup = BeautifulSoup(driver.page_source, 'lxml')
-        markdown = soup.find('markdown')
+        markdown = None
+
+        try_count = 0
+        while markdown is None and try_count <= MAX_SOUP_TRY:
+            print(f"markdown of {link} is None. Try to find again ({try_count}th time)")
+            driver.get(LOCAL_URL + link)
+            soup = BeautifulSoup(driver.page_source, 'lxml')
+            markdown = soup.find('markdown')
+            try_count += 1
 
         item['link'] = FE_URL + link
         item['body'] = clean_body(markdown.text)
@@ -124,12 +165,12 @@ def extract_api(url):
         dirname = item['link'].split('/')[-2]
         item['title'] = title
 
-        #save json file
+        # save json file
         fname = title + '.json'
-        save_json_file(dirname + '_' + fname, API_DIR, item)
+        save_json_file(dirname + '_' + fname, out_dir, item)
 
 
-def extract_install(url):
+def extract_install(url, out_dir):
     driver.get(url)
     item = {}
     soup = BeautifulSoup(driver.page_source, 'lxml')
@@ -139,10 +180,10 @@ def extract_install(url):
     item['title'] = 'Install'
 
     fname = item['link'].split('/')[-1] + '.json'
-    save_json_file(fname, INSTALL_DIR, item)
+    save_json_file(fname, out_dir, item)
 
 
-def extract_main(url):
+def extract_main(url, out_dir):
     driver.get(url)
     item = {}
     soup = BeautifulSoup(driver.page_source, 'lxml')
@@ -153,7 +194,7 @@ def extract_main(url):
     item['title'] = 'Getting Started'
 
     fname = 'gettingstarted.json'
-    save_json_file(fname, MAIN_DIR, item)
+    save_json_file(fname, out_dir, item)
 
 
 '''
@@ -172,20 +213,25 @@ def extract_main_list(url):
 
 
 if __name__ == '__main__':
+
     #relative urls
-    example_rel_url = 'examples/overview'
-    tutorial_rel_url = 'tutorials/beginner/t01_getting_started'
-    api_rel_url = 'api/fe/Estimator'
-    install_rel_url = 'install'
 
-    example_url = urljoin(LOCAL_URL, example_rel_url)
-    tutorial_url = urljoin(LOCAL_URL, tutorial_rel_url)
-    api_url = urljoin(LOCAL_URL, api_rel_url)
-    install_url = urljoin(LOCAL_URL, install_rel_url)
+    branches = ["r1.0", "r1.1"]
 
-    # extract_examples(example_url)
-    extract_tutorial(tutorial_url)
-    # extract_api(api_url)
-    # extract_install(install_url)
-    # extract_main(LOCAL_URL)
-    #extract_main_list(main_url)
+    for branch in branches:
+        example_rel_url = f'examples/{branch}/overview'
+        tutorial_rel_url = f'tutorials/{branch}/beginner/t01_getting_started'
+        api_rel_url = f'api/{branch}/fe/Estimator'
+        install_rel_url = f'install/{branch}'
+
+        example_url = urljoin(LOCAL_URL, example_rel_url)
+        tutorial_url = urljoin(LOCAL_URL, tutorial_rel_url)
+        api_url = urljoin(LOCAL_URL, api_rel_url)
+        install_url = urljoin(LOCAL_URL, install_rel_url)
+
+        extract_examples(example_url, os.path.join(branch, EXAMPLES_DIR))
+        extract_tutorial(tutorial_url, os.path.join(branch, TUTORIALS_DIR))
+        extract_api(api_url, os.path.join(branch, API_DIR))
+        extract_install(install_url, os.path.join(branch, INSTALL_DIR))
+        extract_main(LOCAL_URL, os.path.join(branch, MAIN_DIR))
+        #extract_main_list(main_url)

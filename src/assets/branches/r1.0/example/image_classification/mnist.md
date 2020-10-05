@@ -83,7 +83,9 @@ fig = img.paint_figure()
 ```
 
 
+    
 ![png](assets/branches/r1.0/example/image_classification/mnist_files/mnist_10_0.png)
+    
 
 
 ## Step 2 - `Network` construction
@@ -239,5 +241,7 @@ fig = img.paint_figure()
 ```
 
 
+    
 ![png](assets/branches/r1.0/example/image_classification/mnist_files/mnist_20_0.png)
+    
 

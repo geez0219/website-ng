@@ -11,7 +11,7 @@ import {
   ChangeDetectorRef,
   Inject,
 } from '@angular/core';
-import { NavigationStart, NavigationEnd, Router } from '@angular/router';
+import { NavigationStart, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { GlobalService } from '../global.service';
@@ -52,7 +52,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   searchBreak: number;
   searchInMoreBreak: number;
   searchbarMinWidth: number = 170;
-  defaultVersion: string;
+  selectedVersion: string;
 
   structureHeaderDict = {
     'Content-Type': 'application/json',
@@ -93,10 +93,14 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.defaultVersion = this.globalService.getSelectedVersion();
+    this.selectedVersion = this.globalService.getSelectedVersion();
+    this.globalService.version.subscribe((v: string) => {
+      this.selectedVersion = v;
+    });
     this.versionList = this.globalService.getVersions();
 
     this.setTabLinks();
+    this.tabBreakList = new Array(this.tabList.length);
 
     this.router.events.subscribe((val) => {
       if (val instanceof NavigationStart) {
@@ -148,8 +152,6 @@ export class NavbarComponent implements OnInit, AfterViewInit {
         hidden: false,
       },
     ];
-
-    this.tabBreakList = new Array(this.tabList.length);
   }
 
   getInstallBaseURL(version: string) {
@@ -287,12 +289,27 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     }
   }
 
-  versionChanged(event) {
-    this.globalService.version.next(event.target.value);
-    this.globalService.setCurrentVersion(event.target.value);
-    this.setTabLinks();
+  setVersion(version: string){
+    if (version !== this.selectedVersion) {
+      this.globalService.version.next(version);
+      this.globalService.setCurrentVersion(version);
 
-    const newRoute = this.getCurrentRoute(this.router.url.split('/')[1], event.target.value);
-    this.router.navigate([newRoute]);
+      this.setTabLinks();
+
+      const baseURL = this.router.url.split('?')[0];
+      const routeType = baseURL.split('/')[1];
+      if (routeType !== 'search') {
+        const newRoute =  routeType + '/' + version + '/' + baseURL.split('/').splice(3).join('/');
+        if (routeType === 'api' || routeType === 'tutorials' || routeType === 'examples') {
+          this.router.navigate([newRoute], { queryParams: { versionChanged: 'true' } });
+        } else if (routeType === 'install' || routeType === 'community') {
+          this.router.navigate([this.getCurrentRoute(routeType, version)]);
+        }
+      }
+
+      this.checkBreaking();
+      this.dealBreaking();
+      this.checkAndDealSearchBreaking();
+    }
   }
 }

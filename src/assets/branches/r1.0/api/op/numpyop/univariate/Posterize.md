@@ -1,6 +1,11 @@
 ## Posterize
 ```python
-Posterize(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterable[str]], mode:Union[NoneType, str, Iterable[str]]=None, num_bits:Union[int, Tuple[int, int], Tuple[int, int, int], Tuple[Tuple[int, int], Tuple[int, int], Tuple[int, int]]]=4)
+Posterize(
+	inputs: Union[str, Iterable[str], Callable],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	num_bits: Union[int, Tuple[int, int], Tuple[int, int, int], Tuple[Tuple[int, int], Tuple[int, int], Tuple[int, int]]]=4
+)
 ```
 Reduce the number of bits for each color channel
 

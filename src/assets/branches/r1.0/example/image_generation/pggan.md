@@ -151,7 +151,9 @@ for i, epoch in enumerate(event_epoch):
 ```
 
 
+    
 ![png](assets/branches/r1.0/example/image_generation/pggan_files/pggan_10_0.png)
+    
 
 
 ## Defining `Network`

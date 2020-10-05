@@ -178,7 +178,9 @@ visualize_image_mask(img, msk)
 ```
 
 
+    
 ![png](assets/branches/r1.0/example/multi_task_learning/uncertainty_loss_files/uncertainty_loss_10_0.png)
+    
 
 
 ### Step 2: Create `Network`
@@ -500,7 +502,9 @@ visualize_image_mask(Minmax(img), mask_gt)
 ```
 
 
+    
 ![png](assets/branches/r1.0/example/multi_task_learning/uncertainty_loss_files/uncertainty_loss_28_0.png)
+    
 
 
 ### Visualize Prediction
@@ -520,5 +524,7 @@ visualize_image_mask(Minmax(img), pred_mask)
 ```
 
 
+    
 ![png](assets/branches/r1.0/example/multi_task_learning/uncertainty_loss_files/uncertainty_loss_30_0.png)
+    
 

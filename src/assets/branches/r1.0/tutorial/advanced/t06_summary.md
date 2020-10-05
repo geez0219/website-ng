@@ -50,7 +50,7 @@ traces = [
 
 ## Experiment Logging
 
-As you may have noticed if you have used FastEstimator, log messages are printed to the screen during training. If you want to persist these log messages for later records, you can simply pipe them into a file when launching training from the command line, or else just copy and paste the messages from the console into a persistent file on the disk. FastEstimator allows logging to be controlled via arguments passed to the `Estimator` class, as described in the [tutorial 7](./tutorials/r1.0/beginner/t07_estimator) in the beginner section. Let's see an example logging every 120 steps:
+As you may have noticed if you have used FastEstimator, log messages are printed to the screen during training. If you want to persist these log messages for later records, you can simply pipe them into a file when launching training from the command line, or else just copy and paste the messages from the console into a persistent file on the disk. FastEstimator allows logging to be controlled via arguments passed to the `Estimator` class, as described in the [Tutorial 7](./tutorials/r1.0/beginner/t07_estimator) in the beginner section. Let's see an example logging every 120 steps:
 
 
 ```python
@@ -267,7 +267,9 @@ fe.summary.logs.visualize_logs(experiments=[summary])
 ```
 
 
+    
 ![png](assets/branches/r1.0/tutorial/advanced/t06_summary_files/t06_summary_23_0.png)
+    
 
 
 If you are only interested in visualizing a subset of these log values, it is also possible to whitelist or blacklist values via the 'include_metrics' and 'ignore_metrics' arguments respectively:
@@ -278,7 +280,9 @@ fe.summary.logs.visualize_logs(experiments=[summary], include_metrics={"accuracy
 ```
 
 
+    
 ![png](assets/branches/r1.0/tutorial/advanced/t06_summary_files/t06_summary_25_0.png)
+    
 
 
 It is also possible to compare logs from different experiments, which can be especially useful when fiddling with hyper-parameter values to determine their effects on training:
@@ -289,7 +293,9 @@ fe.summary.logs.parse_log_files(file_paths=["../resources/t06a_exp1.txt", "../re
 ```
 
 
+    
 ![png](assets/branches/r1.0/tutorial/advanced/t06_summary_files/t06_summary_27_0.png)
+    
 
 
 All of the log files within a given directory can also be compared at the same time, either by using the parse_log_dir() method or via the command line as follows: fastestimator logs --extension .txt --smooth 0 ../resources

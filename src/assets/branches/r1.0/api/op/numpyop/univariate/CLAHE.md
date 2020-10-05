@@ -1,6 +1,12 @@
 ## CLAHE
 ```python
-CLAHE(inputs:Union[str, Iterable[str], Callable], outputs:Union[str, Iterable[str]], mode:Union[NoneType, str, Iterable[str]]=None, clip_limit:Union[float, Tuple[float, float]]=4.0, tile_grid_size:Tuple[int, int]=(8, 8))
+CLAHE(
+	inputs: Union[str, Iterable[str], Callable],
+	outputs: Union[str, Iterable[str]],
+	mode: Union[NoneType, str, Iterable[str]]=None,
+	clip_limit: Union[float, Tuple[float, float]]=4.0,
+	tile_grid_size: Tuple[int, int]=(8, 8)
+)
 ```
 Apply contrast limited adaptive histogram equalization to the image.
 

@@ -1,6 +1,13 @@
 ## ConfusionMatrix
 ```python
-ConfusionMatrix(true_key:str, pred_key:str, num_classes:int, mode:Union[str, Set[str]]=('eval', 'test'), output_name:str='confusion_matrix') -> None
+ConfusionMatrix(
+	true_key: str,
+	pred_key: str,
+	num_classes: int,
+	mode: Union[str, Set[str]]=('eval', 'test'),
+	output_name: str='confusion_matrix'
+)
+-> None
 ```
 Computes the confusion matrix between y_true and y_predicted.
 

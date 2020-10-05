@@ -13,6 +13,7 @@ export class GlobalService {
 
   versions: Version[];
   selectedVersion: string;
+  latestVersion: string;
 
   version = new Subject();
 
@@ -46,7 +47,12 @@ export class GlobalService {
 
   setVersions(version: Version[]) {
     this.versions = version;
-    this.selectedVersion = this.versions.filter(this.isLatest)[0].name;
+    this.latestVersion = this.versions.filter(this.isLatest)[0].name;
+    this.selectedVersion = this.latestVersion;
+  }
+
+  getLatestVersion() {
+    return this.latestVersion;
   }
 
   getSelectedVersion() {

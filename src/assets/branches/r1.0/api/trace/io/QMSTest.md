@@ -1,6 +1,13 @@
 ## QMSTest
 ```python
-QMSTest(test_descriptions:Union[str, List[str]], test_criterias:Union[List[Callable], Callable], test_title:str='QMSTest', json_output:str='', doc_output:str='') -> None
+QMSTest(
+	test_descriptions: Union[str, List[str]],
+	test_criterias: Union[List[Callable], Callable],
+	test_title: str='QMSTest',
+	json_output: str='',
+	doc_output: str=''
+)
+-> None
 ```
 Automate QMS testing and report generation.
 

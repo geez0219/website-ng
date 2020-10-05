@@ -14,7 +14,7 @@ In this tutorial, we will talk about:
 * [Model Testing](./tutorials/r1.0/beginner/t07_estimator#t07testing)
 * [Related Apphub Examples](./tutorials/r1.0/beginner/t07_estimator#t07apphub)
 
-`Estimator` is the API that manages everything related to the training loop. It combines `Pipeline` and `Network` together and provides users with fine-grain control over the training loop. Before we demonstrate different ways to control the training loop let's define a template similar to [tutorial 1](./tutorials/r1.0/beginner/t01_getting_started), but this time we will use a PyTorch model.
+`Estimator` is the API that manages everything related to the training loop. It combines `Pipeline` and `Network` together and provides users with fine-grain control over the training loop. Before we demonstrate different ways to control the training loop let's define a template similar to [Tutorial 1](./tutorials/r1.0/beginner/t01_getting_started), but this time we will use a PyTorch model.
 
 
 ```python
@@ -290,7 +290,7 @@ As we can see from the illustration above, the training process is essentially a
 <a id='t07structure'></a>
 
 ### Structure
-If you are familiar with Keras, you will notice that the structure of `Trace` is very similar to the `Callback` in keras.  Despite the structural similarity, `Trace` gives you a lot more flexibility which we will talk about in depth in [advanced tutorial 4](./tutorials/r1.0/advanced/t04_trace). Implementation-wise, `Trace` is a python class with the following structure:
+If you are familiar with Keras, you will notice that the structure of `Trace` is very similar to the `Callback` in keras.  Despite the structural similarity, `Trace` gives you a lot more flexibility which we will talk about in depth in [advanced Tutorial 4](./tutorials/r1.0/advanced/t04_trace). Implementation-wise, `Trace` is a python class with the following structure:
 
 
 ```python

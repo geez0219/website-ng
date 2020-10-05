@@ -1,6 +1,11 @@
 ## BatchDataset
 ```python
-BatchDataset(datasets:Union[fastestimator.dataset.dataset.FEDataset, Iterable[fastestimator.dataset.dataset.FEDataset]], num_samples:Union[int, Iterable[int]], probability:Union[Iterable[float], NoneType]=None) -> None
+BatchDataset(
+	datasets: Union[fastestimator.dataset.dataset.FEDataset, Iterable[fastestimator.dataset.dataset.FEDataset]],
+	num_samples: Union[int, Iterable[int]],
+	probability: Union[Iterable[float], NoneType]=None
+)
+-> None
 ```
 BatchDataset extracts a list (batch) of data from a single dataset or multiple datasets.
 
@@ -36,7 +41,10 @@ This dataset helps to enable several use-cases:
 
 ### reset_index_maps
 ```python
-reset_index_maps(self) -> None
+reset_index_maps(
+	self
+)
+-> None
 ```
 Rearrange the index maps of this BatchDataset.
 
@@ -45,29 +53,32 @@ basis datasets.
 
 ### split
 ```python
-split(self, *fractions:Union[float, int, Iterable[int]]) -> Union[_ForwardRef('UnpairedDataset'), List[_ForwardRef('UnpairedDataset')]]
+split(
+	self, *fractions: Union[float, int, Iterable[int]])
+-> Union[_ForwardRef('UnpairedDataset'), List[_ForwardRef('UnpairedDataset'
+)]]
 ```
 Split this dataset into multiple smaller datasets.
 
 This function enables several types of splitting:
-    1. Splitting by fractions.
-        ```python
-        ds = fe.dataset.FEDataset(...)  # len(ds) == 1000
-        ds2 = ds.split(0.1)  # len(ds) == 900, len(ds2) == 100
-        ds3, ds4 = ds.split(0.1, 0.2)  # len(ds) == 630, len(ds3) == 90, len(ds4) == 180
-        ```
-    2. Splitting by counts.
-        ```python
-        ds = fe.dataset.FEDataset(...)  # len(ds) == 1000
-        ds2 = ds.split(100)  # len(ds) == 900, len(ds2) == 100
-        ds3, ds4 = ds.split(90, 180)  # len(ds) == 630, len(ds3) == 90, len(ds4) == 180
-        ```
-    3. Splitting by indices.
-        ``python
-        ds = fe.dataset.FEDataset(...)  # len(ds) == 1000
-        ds2 = ds.split([87,2,3,100,121,158])  # len(ds) == 994, len(ds2) == 6
-        ds3 = ds.split(range(100))  # len(ds) == 894, len(ds3) == 100
-        ```
+1. Splitting by fractions.
+    ```python
+    ds = fe.dataset.FEDataset(...)  # len(ds) == 1000
+    ds2 = ds.split(0.1)  # len(ds) == 900, len(ds2) == 100
+    ds3, ds4 = ds.split(0.1, 0.2)  # len(ds) == 630, len(ds3) == 90, len(ds4) == 180
+    ```
+2. Splitting by counts.
+    ```python
+    ds = fe.dataset.FEDataset(...)  # len(ds) == 1000
+    ds2 = ds.split(100)  # len(ds) == 900, len(ds2) == 100
+    ds3, ds4 = ds.split(90, 180)  # len(ds) == 630, len(ds3) == 90, len(ds4) == 180
+    ```
+3. Splitting by indices.
+    ```python
+    ds = fe.dataset.FEDataset(...)  # len(ds) == 1000
+    ds2 = ds.split([87,2,3,100,121,158])  # len(ds) == 994, len(ds2) == 6
+    ds3 = ds.split(range(100))  # len(ds) == 894, len(ds3) == 100
+    ```
 
 
 #### Args:
@@ -79,7 +90,10 @@ This function enables several types of splitting:
 
 ### summary
 ```python
-summary(self) -> fastestimator.dataset.dataset.DatasetSummary
+summary(
+	self
+)
+-> fastestimator.dataset.dataset.DatasetSummary
 ```
 Generate a summary representation of this dataset.
 

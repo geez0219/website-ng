@@ -1,6 +1,9 @@
 ## Cropping2D
 ```python
-Cropping2D(cropping:Union[int, Tuple[Union[int, Tuple[int, int]], Union[int, Tuple[int, int]]]]=0) -> None
+Cropping2D(
+	cropping: Union[int, Tuple[Union[int, Tuple[int, int]], Union[int, Tuple[int, int]]]]=0
+)
+-> None
 ```
 A layer for cropping along height and width dimensions
 
