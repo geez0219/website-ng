@@ -5,12 +5,12 @@ OneOf(
 )
 -> None
 ```
-Perform one of several possible NumpyOps.
+Perform one of several possible TensorOps.
 
 
 #### Args:
 
-* **numpy_ops** :  A list of ops to choose between with uniform probability.
+* **tensor_ops** :  A list of ops to choose between with uniform probability.
 
 ### forward
 ```python

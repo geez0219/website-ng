@@ -262,7 +262,8 @@ def generate_sequence(inp_seq, vocab, min_paragraph_len=50):
     generated_seq = data["x"]
     counter=0
     next_entry=0
-    while counter<min_paragraph_len or next_entry != 43:  # Stopping at <eos> tag
+    # Stopping at <eos> tag or after min_paragraph_len+30 words
+    while (counter<min_paragraph_len or next_entry != 43) and counter<min_paragraph_len+30:  
         next_entry = get_next_word(data, vocab)
         generated_seq = np.concatenate([generated_seq.squeeze(), [next_entry]])
         data = {"x": generated_seq[-20:].reshape((1, 20))}
