@@ -36,9 +36,6 @@
     <div class="content-wrapper">
       <div class="content">
         <markdown [data]="currentAPIText"></markdown>
-        <hr />
-        <a *ngIf="currentAPIText" mat-raised-button color="primary" class="git-button" target="_blank"
-          href={{currentAPILink}}>View source code on GitHub</a>
       </div>
     </div>
     <div *ngIf="currentAPIText">

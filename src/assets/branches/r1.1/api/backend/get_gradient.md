@@ -1,6 +1,4 @@
-
-
-### get_gradient
+## get_gradient<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/backend/get_gradient.py/#L25-L100>View source on Github</a>
 ```python
 get_gradient(
 	target: ~Tensor,
@@ -39,7 +37,7 @@ b = fe.backend.get_gradient(target=b, sources=x)  # [2.0, 2.0, 2.0]
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **target** :  The target (final) tensor.
 * **sources** :  A sequence of source (initial) tensors.
@@ -47,9 +45,10 @@ b = fe.backend.get_gradient(target=b, sources=x)  # [2.0, 2.0, 2.0]
 * **tape** :  TensorFlow gradient tape. Only needed when using the TensorFlow backend.
 * **retain_graph** :  Whether to retain PyTorch graph. Only valid when using the PyTorch backend.
 
-#### Returns:
+<h3>Returns:</h3>
     Gradient(s) of the `target` with respect to the `sources`.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **ValueError** :  If `target` is an unacceptable data type.
+

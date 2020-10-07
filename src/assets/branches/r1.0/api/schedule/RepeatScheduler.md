@@ -1,4 +1,4 @@
-## RepeatScheduler
+## RepeatScheduler<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/schedule/schedule.py/#L45-L78>View source on Github</a>
 ```python
 RepeatScheduler(
 	*args, **kwds
@@ -19,10 +19,13 @@ s.get_current_value(epoch=5)  # "b"
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **repeat_list** :  What elements to cycle between every epoch. Note that epochs start counting from 1. To have nothing    happen for a particular epoch, None values may be used.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **AssertionError** :  If `repeat_list` is not a List.
+
+
+

@@ -1,4 +1,4 @@
-## TensorBoard
+## TensorBoard<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/trace/io/tensorboard.py/#L260-L422>View source on Github</a>
 ```python
 TensorBoard(
 	log_dir: str='logs',
@@ -20,7 +20,7 @@ Note that if you plan to run a tensorboard server simultaneous to training, you 
 https://github.com/tensorflow/tensorboard/issues/1063
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **log_dir** :  Path of the directory where the log files to be parsed by TensorBoard should be saved.
 * **update_freq** :  'batch', 'epoch', integer, or strings like '10s', '15e'. When using 'batch', writes the losses and        metrics to TensorBoard after each batch. The same applies for 'epoch'. If using an integer, let's say 1000,        the callback will write the metrics and losses to TensorBoard every 1000 samples. You can also use strings        like '8s' to indicate every 8 steps or '5e' to indicate every 5 epochs. Note that writing too frequently to        TensorBoard can slow down your training. You can use None to disable updating, but this will make the trace        mostly useless.
@@ -31,3 +31,6 @@ https://github.com/tensorflow/tensorboard/issues/1063
 * **write_embeddings** :  If a string or list of strings is provided, the corresponding keys will be written to        TensorBoard embeddings.
 * **embedding_labels** :  Keys corresponding to label information for the `write_embeddings`.
 * **embedding_images** :  Keys corresponding to raw images to be associated with the `write_embeddings`.
+
+
+

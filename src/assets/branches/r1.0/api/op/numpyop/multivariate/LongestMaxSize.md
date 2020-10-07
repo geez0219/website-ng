@@ -1,4 +1,4 @@
-## LongestMaxSize
+## LongestMaxSize<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/op/numpyop/multivariate/longest_max_size.py/#L24-L79>View source on Github</a>
 ```python
 LongestMaxSize(
 	max_size: int=1024,
@@ -21,7 +21,7 @@ LongestMaxSize(
 Rescale an image so that maximum side is equal to max_size, keeping the aspect ratio of the initial image.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
 * **image_in** :  The key of an image to be modified.
@@ -39,3 +39,6 @@ Rescale an image so that maximum side is equal to max_size, keeping the aspect r
 * **max_size** :  Maximum size of the image after the transformation.
 * **interpolation** :  Flag that is used to specify the interpolation algorithm. Should be one of        cv2.INTER_NEAREST, cv2.INTER_LINEAR, cv2.INTER_CUBIC, cv2.INTER_AREA, cv2.INTER_LANCZOS4.
 * **Image types** :     uint8, float32
+
+
+

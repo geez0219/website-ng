@@ -1,6 +1,4 @@
-
-
-### to_shape
+## to_shape<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/backend/to_shape.py/#L24-L81>View source on Github</a>
 ```python
 to_shape(
 	data: Union[Collection, ~Tensor], add_batch=False, exact_shape=True
@@ -40,11 +38,12 @@ shape = fe.backend.to_shape(data, exact_shape=False)
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **data** :  A tensor or possibly nested collection of tensors.
 * **add_batch** :  Whether to prepend a batch dimension to the shapes.
 * **exact_shape** :  Whether to return the exact shapes, or if False to fill the shapes with None values.
 
-#### Returns:
+<h3>Returns:</h3>
     A collection with the same structure as `data`, but with any tensors substituted for their shapes.
+

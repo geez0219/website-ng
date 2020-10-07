@@ -1,6 +1,4 @@
-
-
-### set_lr
+## set_lr<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/backend/set_lr.py/#L21-L49>View source on Github</a>
 ```python
 set_lr(
 	model: Union[tensorflow.python.keras.engine.training.Model, torch.nn.modules.module.Module],
@@ -22,11 +20,12 @@ fe.backend.set_lr(m, lr=0.8)  # m.optimizer.param_groups[-1]['lr'] == 0.8
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **model** :  A neural network instance to modify.
 * **lr** :  The learning rate to assign to the `model`.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **ValueError** :  If `model` is an unacceptable data type.
+

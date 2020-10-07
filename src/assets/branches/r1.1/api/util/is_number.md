@@ -1,6 +1,4 @@
-
-
-### is_number
+## is_number<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/util/util.py/#L532-L550>View source on Github</a>
 ```python
 is_number(
 	arg: str
@@ -15,9 +13,10 @@ x = fe.util.is_number("ae13.7")  # False
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **arg** :  A potentially numeric input string.
 
-#### Returns:
+<h3>Returns:</h3>
     True iff `arg` represents a number.
+

@@ -1,9 +1,7 @@
-
-
-### get_inputs_by_op
+## get_inputs_by_op<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/op.py/#L77-L95>View source on Github</a>
 ```python
 get_inputs_by_op(
-	op: op.op.Op,
+	op: fastestimator.op.op.Op,
 	store: Mapping[str, Any]
 )
 -> Any
@@ -11,10 +9,11 @@ get_inputs_by_op(
 Retrieve the necessary input data from the data dictionary in order to run an `op`.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **op** :  The op to run.
 * **store** :  The system's data dictionary to draw inputs out of.
 
-#### Returns:
+<h3>Returns:</h3>
     Input data to be fed to the `op` forward function.
+

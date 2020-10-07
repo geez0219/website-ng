@@ -1,6 +1,4 @@
-
-
-### to_tensor
+## to_tensor<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/backend/to_tensor.py/#L24-L72>View source on Github</a>
 ```python
 to_tensor(
 	data: Union[Collection, ~Tensor, float, int, NoneType],
@@ -34,10 +32,11 @@ t = fe.backend.to_tensor(data, target_type='tf')
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **data** :  A tensor or possibly nested collection of tensors.
 * **target_type** :  What kind of tensor(s) to create, either "tf" or "torch".
 
-#### Returns:
+<h3>Returns:</h3>
     A collection with the same structure as `data`, but with any tensors converted to the `target_type`.
+

@@ -1,4 +1,4 @@
-## BatchDataset
+## BatchDataset<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/dataset/batch_dataset.py/#L27-L237>View source on Github</a>
 ```python
 BatchDataset(
 	datasets: Union[fastestimator.dataset.dataset.FEDataset, Iterable[fastestimator.dataset.dataset.FEDataset]],
@@ -33,13 +33,13 @@ This dataset helps to enable several use-cases:
     ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **datasets** :  The dataset(s) to use for batch sampling. While these should be FEDatasets, pytorch datasets will        technically also work. If you use them, however, you will lose the .split() and .summary() methods.
 * **num_samples** :  Number of samples to draw from the `datasets`. May be a single int if used in conjunction with        `probability`, otherwise a list of ints of len(`datasets`) is required.
 * **probability** :  Probability to draw from each dataset. Only allowed if `num_samples` is an integer.
 
-### reset_index_maps
+### reset_index_maps<span class="tag">method of BatchDataset</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/dataset/batch_dataset.py/#L223-L237>View source on Github</a>
 ```python
 reset_index_maps(
 	self
@@ -51,7 +51,7 @@ Rearrange the index maps of this BatchDataset.
 This method is invoked every epoch by OpDataset which allows each epoch to have different random pairings of the
 basis datasets.
 
-### split
+### split<span class="tag">method of BatchDataset</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/dataset/batch_dataset.py/#L118-L167>View source on Github</a>
 ```python
 split(
 	self, *fractions: Union[float, int, Iterable[int]])
@@ -81,18 +81,18 @@ This function enables several types of splitting:
     ```
 
 
-#### Args:
+<h4>Args:</h4>
 
- *fractions :  Floating point values will be interpreted as percentages, integers as an absolute number of        datapoints, and an iterable of integers as the exact indices of the data that should be removed in order        to create the new dataset.
+* **fractions** :  Floating point values will be interpreted as percentages, integers as an absolute number of        datapoints, and an iterable of integers as the exact indices of the data that should be removed in order        to create the new dataset.
 
-#### Returns:
+<h4>Returns:</h4>
     One or more new datasets which are created by removing elements from the current dataset. The number of    datasets returned will be equal to the number of `fractions` provided. If only a single value is provided    then the return will be a single dataset rather than a list of datasets.
 
-#### Raises:
+<h4>Raises:</h4>
 
 * **NotImplementedError** :  If the user created this dataset using one or more non-FEDataset inputs.
 
-### summary
+### summary<span class="tag">method of BatchDataset</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/dataset/batch_dataset.py/#L169-L179>View source on Github</a>
 ```python
 summary(
 	self
@@ -101,5 +101,8 @@ summary(
 ```
 Generate a summary representation of this dataset.
 
-#### Returns:
+<h4>Returns:</h4>
     A summary representation of this dataset.
+
+
+

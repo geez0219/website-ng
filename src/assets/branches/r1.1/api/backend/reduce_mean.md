@@ -1,6 +1,4 @@
-
-
-### reduce_mean
+## reduce_mean<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/backend/reduce_mean.py/#L26-L84>View source on Github</a>
 ```python
 reduce_mean(
 	tensor: ~Tensor,
@@ -39,15 +37,16 @@ b = fe.backend.reduce_mean(p, axis=[0,2])  # [3.5, 5.5]
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **tensor** :  The input value.
 * **axis** :  Which axis or collection of axes to compute the mean along.
 * **keepdims** :  Whether to preserve the number of dimensions during the reduction.
 
-#### Returns:
+<h3>Returns:</h3>
     The mean values of `tensor` along `axis`.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **ValueError** :  If `tensor` is an unacceptable data type.
+

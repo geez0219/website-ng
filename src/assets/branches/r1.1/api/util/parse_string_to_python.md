@@ -1,6 +1,4 @@
-
-
-### parse_string_to_python
+## parse_string_to_python<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/util/util.py/#L104-L127>View source on Github</a>
 ```python
 parse_string_to_python(
 	val: str
@@ -16,9 +14,10 @@ x = fe.util.parse_string_to_python("{'a':5, 'b':7}")  # {'a':5, 'b':7}
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **val** :  An input string.
 
-#### Returns:
+<h3>Returns:</h3>
     A python object version of the input string.
+

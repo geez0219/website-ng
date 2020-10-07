@@ -1,4 +1,4 @@
-## Delete
+## Delete<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/op/numpyop/numpyop.py/#L44-L56>View source on Github</a>
 ```python
 Delete(
 	keys: Union[str, List[str]],
@@ -11,6 +11,9 @@ Delete key(s) and their associated values from the data dictionary.
 The system has special logic to detect instances of this Op and delete its `inputs` from the data dictionary.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **keys** :  Existing key(s) to be deleted from the data dictionary.
+
+
+

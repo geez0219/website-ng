@@ -1,4 +1,4 @@
-## RandomScale
+## RandomScale<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/op/numpyop/multivariate/random_scale.py/#L24-L80>View source on Github</a>
 ```python
 RandomScale(
 	scale_limit: Union[float, Tuple[float, float]]=0.1,
@@ -21,7 +21,7 @@ RandomScale(
 Randomly resize the input. Output image size is different from the input image size.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
 * **image_in** :  The key of an image to be modified.
@@ -39,3 +39,6 @@ Randomly resize the input. Output image size is different from the input image s
 * **scale_limit** :  Scaling factor range. If scale_limit is a single float value, the range will be        (1 - scale_limit, 1 + scale_limit).
 * **interpolation** :  Flag that is used to specify the interpolation algorithm. Should be one of        cv2.INTER_NEAREST, cv2.INTER_LINEAR, cv2.INTER_CUBIC, cv2.INTER_AREA, cv2.INTER_LANCZOS4.
 * **Image types** :     uint8, float32
+
+
+

@@ -1,6 +1,4 @@
-
-
-### callback_progress
+## callback_progress<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/util/wget_util.py/#L110-L141>View source on Github</a>
 ```python
 callback_progress(
 	blocks: int,
@@ -24,9 +22,10 @@ wget.download('http://url.com', '/save/dir', bar=fe.util.bar_custom)
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **blocks** :  number of blocks transferred so far.
 * **block_size** :  in bytes.
 * **total_size** :  in bytes, can be -1 if server doesn't return it.
 * **bar_function** :  another callback function to visualize progress.
+

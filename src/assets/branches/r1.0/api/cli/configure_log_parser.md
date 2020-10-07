@@ -1,6 +1,4 @@
-
-
-### configure_log_parser
+## configure_log_parser<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/cli/logs.py/#L47-L110>View source on Github</a>
 ```python
 configure_log_parser(
 	subparsers: 'A...'
@@ -10,6 +8,7 @@ configure_log_parser(
 Add a logging parser to an existing argparser.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **subparsers** :  The parser object to be appended to.
+

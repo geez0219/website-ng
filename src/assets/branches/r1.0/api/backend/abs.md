@@ -1,6 +1,4 @@
-
-
-### abs
+## abs<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/backend/abs.py/#L24-L61>View source on Github</a>
 ```python
 abs(
 	tensor: ~Tensor
@@ -28,13 +26,14 @@ b = fe.backend.abs(p)  # [2, 7, 19]
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **tensor** :  The input value.
 
-#### Returns:
+<h3>Returns:</h3>
     The absolute value of `tensor`.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **ValueError** :  If `tensor` is an unacceptable data type.
+

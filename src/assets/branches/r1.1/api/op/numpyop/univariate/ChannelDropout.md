@@ -1,4 +1,4 @@
-## ChannelDropout
+## ChannelDropout<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/numpyop/univariate/channel_dropout.py/#L24-L49>View source on Github</a>
 ```python
 ChannelDropout(
 	inputs: Union[str, Iterable[str]],
@@ -11,7 +11,7 @@ ChannelDropout(
 Randomly drop channels from the image.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **inputs** :  Key(s) of images to be modified.
 * **outputs** :  Key(s) into which to write the modified images.
@@ -19,3 +19,6 @@ Randomly drop channels from the image.
 * **channel_drop_range** :  Range from which we choose the number of channels to drop.
 * **fill_value** :  Pixel values for the dropped channel.
 * **Image types** :     int8, uint16, unit32, float32
+
+
+

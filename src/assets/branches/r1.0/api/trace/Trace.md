@@ -1,4 +1,4 @@
-## Trace
+## Trace<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/trace/trace.py/#L27-L124>View source on Github</a>
 ```python
 Trace(
 	inputs: Union[NoneType, str, Iterable[str]]=None,
@@ -38,13 +38,13 @@ ability to modify or even cancel training. The order of function invocations is 
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **inputs** :  A set of keys that this trace intends to read from the state dictionary as inputs.
 * **outputs** :  A set of keys that this trace intends to write into the system buffer.
 * **mode** :  What mode(s) to execute this Trace in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
 
-### on_batch_begin
+### on_batch_begin<span class="tag">method of Trace</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/trace/trace.py/#L94-L100>View source on Github</a>
 ```python
 on_batch_begin(
 	self,
@@ -55,11 +55,11 @@ on_batch_begin(
 Runs at the beginning of each batch.
 
 
-#### Args:
+<h4>Args:</h4>
 
 * **data** :  A dictionary through which traces can communicate with each other or write values for logging.
 
-### on_batch_end
+### on_batch_end<span class="tag">method of Trace</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/trace/trace.py/#L102-L108>View source on Github</a>
 ```python
 on_batch_end(
 	self,
@@ -70,11 +70,11 @@ on_batch_end(
 Runs at the end of each batch.
 
 
-#### Args:
+<h4>Args:</h4>
 
 * **data** :  The current batch and prediction data, as well as any information written by prior `Traces`.
 
-### on_begin
+### on_begin<span class="tag">method of Trace</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/trace/trace.py/#L78-L84>View source on Github</a>
 ```python
 on_begin(
 	self,
@@ -85,11 +85,11 @@ on_begin(
 Runs once at the beginning of training or testing.
 
 
-#### Args:
+<h4>Args:</h4>
 
 * **data** :  A dictionary through which traces can communicate with each other or write values for logging.
 
-### on_end
+### on_end<span class="tag">method of Trace</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/trace/trace.py/#L118-L124>View source on Github</a>
 ```python
 on_end(
 	self,
@@ -100,11 +100,11 @@ on_end(
 Runs once at the end training.
 
 
-#### Args:
+<h4>Args:</h4>
 
 * **data** :  A dictionary through which traces can communicate with each other or write values for logging.
 
-### on_epoch_begin
+### on_epoch_begin<span class="tag">method of Trace</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/trace/trace.py/#L86-L92>View source on Github</a>
 ```python
 on_epoch_begin(
 	self,
@@ -115,11 +115,11 @@ on_epoch_begin(
 Runs at the beginning of each epoch.
 
 
-#### Args:
+<h4>Args:</h4>
 
 * **data** :  A dictionary through which traces can communicate with each other or write values for logging.
 
-### on_epoch_end
+### on_epoch_end<span class="tag">method of Trace</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/trace/trace.py/#L110-L116>View source on Github</a>
 ```python
 on_epoch_end(
 	self,
@@ -130,6 +130,9 @@ on_epoch_end(
 Runs at the end of each epoch.
 
 
-#### Args:
+<h4>Args:</h4>
 
 * **data** :  A dictionary through which traces can communicate with each other or write values for logging.
+
+
+

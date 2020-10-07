@@ -1,6 +1,4 @@
-
-
-### cast
+## cast<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/backend/cast.py/#L26-L75>View source on Github</a>
 ```python
 cast(
 	data: Union[Collection, ~Tensor],
@@ -38,10 +36,11 @@ This method can be used with Numpy data:
 
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **data** :  A tensor or possibly nested collection of tensors.
 * **dtype** :  Target data type, can be one of following uint8, int8, int16, int32, int64, float16, float32, float64.
 
-#### Returns:
+<h3>Returns:</h3>
      A collection with the same structure as `data` with target data type. 
+

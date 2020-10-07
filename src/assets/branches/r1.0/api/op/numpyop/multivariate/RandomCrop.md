@@ -1,4 +1,4 @@
-## RandomCrop
+## RandomCrop<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/op/numpyop/multivariate/random_crop.py/#L23-L77>View source on Github</a>
 ```python
 RandomCrop(
 	height: int,
@@ -21,7 +21,7 @@ RandomCrop(
 Crop a random part of the input.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
 * **image_in** :  The key of an image to be modified.
@@ -39,3 +39,6 @@ Crop a random part of the input.
 * **height** :  Height of the crop.
 * **width** :  Width of the crop.
 * **Image types** :     uint8, float32
+
+
+

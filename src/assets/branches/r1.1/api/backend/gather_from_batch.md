@@ -1,6 +1,4 @@
-
-
-### gather_from_batch
+## gather_from_batch<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/backend/gather_from_batch.py/#L28-L82>View source on Github</a>
 ```python
 gather_from_batch(
 	tensor: ~Tensor,
@@ -41,14 +39,15 @@ b = fe.backend.gather_from_batch(p, ind)  # [[2, 3], [4, 5], [10, 11]]
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **tensor** :  A tensor of shape (batch, d1, ..., dn).
 * **indices** :  A tensor of shape (batch, ) or (batch, 1) indicating which indices should be selected.
 
-#### Returns:
+<h3>Returns:</h3>
     A tensor of shape (batch, d2, ..., dn) containing the elements from `tensor` at the given `indices`.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **ValueError** :  If `tensor` is an unacceptable data type.
+

@@ -1,4 +1,4 @@
-## OpticalDistortion
+## OpticalDistortion<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/op/numpyop/multivariate/optical_distortion.py/#L23-L82>View source on Github</a>
 ```python
 OpticalDistortion(
 	distort_limit: Union[float, Tuple[float, float]]=0.05,
@@ -19,7 +19,7 @@ OpticalDistortion(
 Apply optical distortion to an image / mask.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
 * **image_in** :  The key of an image to be modified.
@@ -35,3 +35,6 @@ Apply optical distortion to an image / mask.
 * **value** :  Padding value if border_mode is cv2.BORDER_CONSTANT.
 * **mask_value** :  Padding value if border_mode is cv2.BORDER_CONSTANT applied for masks.
 * **Image types** :     uint8, float32
+
+
+

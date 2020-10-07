@@ -1,4 +1,4 @@
-## SaliencyNet
+## SaliencyNet<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/xai/saliency.py/#L43-L261>View source on Github</a>
 ```python
 SaliencyNet(
 	model: ~Model,
@@ -10,14 +10,14 @@ SaliencyNet(
 A class to generate saliency masks from a given model.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **model** :  The model, compiled with fe.build, which is to be inspected.
 * **model_inputs** :  The key(s) corresponding to the model inputs within the data dictionary.
 * **model_outputs** :  The key(s) corresponding to the model outputs which are written into the data dictionary.
 * **outputs** :  The keys(s) under which to write the generated saliency images.
 
-### get_integrated_masks
+### get_integrated_masks<span class="tag">method of SaliencyNet</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/xai/saliency.py/#L236-L261>View source on Github</a>
 ```python
 get_integrated_masks(
 	self,
@@ -31,15 +31,15 @@ Generates integrated greyscale saliency mask(s) from a given `batch` of data.
 See https://arxiv.org/abs/1703.01365 for background on the IntegratedGradient method.
 
 
-#### Args:
+<h4>Args:</h4>
 
 * **batch** :  An input batch of data.
 * **nsamples** :  Number of samples to average across to get the integrated gradient.
 
-#### Returns:
+<h4>Returns:</h4>
     Greyscale saliency masks smoothed via the IntegratedGradient method.
 
-### get_masks
+### get_masks<span class="tag">method of SaliencyNet</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/xai/saliency.py/#L107-L121>View source on Github</a>
 ```python
 get_masks(
 	self,
@@ -50,14 +50,14 @@ get_masks(
 Generates greyscale saliency mask(s) from a given `batch` of data.
 
 
-#### Args:
+<h4>Args:</h4>
 
 * **batch** :  A batch of input data to be fed to the model.
 
-#### Returns:
+<h4>Returns:</h4>
     The model's classification decisions and greyscale saliency mask(s) for the given `batch` of data.
 
-### get_smoothed_masks
+### get_smoothed_masks<span class="tag">method of SaliencyNet</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/xai/saliency.py/#L184-L234>View source on Github</a>
 ```python
 get_smoothed_masks(
 	self,
@@ -72,7 +72,7 @@ get_smoothed_masks(
 Generates smoothed greyscale saliency mask(s) from a given `batch` of data.
 
 
-#### Args:
+<h4>Args:</h4>
 
 * **batch** :  An input batch of data.
 * **stdev_spread** :  Amount of noise to add to the input, as fraction of the total spread (x_max - x_min).
@@ -80,5 +80,8 @@ Generates smoothed greyscale saliency mask(s) from a given `batch` of data.
 * **nintegration** :  Number of samples to compute when integrating (None to disable).
 * **magnitude** :  If true, computes the sum of squares of gradients instead of just the sum.
 
-#### Returns:
+<h4>Returns:</h4>
     Greyscale saliency mask(s) smoothed via the SmoothGrad method.
+
+
+

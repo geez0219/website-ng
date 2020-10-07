@@ -1,6 +1,4 @@
-
-
-### clip_by_value
+## clip_by_value<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/backend/clip_by_value.py/#L24-L81>View source on Github</a>
 ```python
 clip_by_value(
 	tensor: ~Tensor,
@@ -36,15 +34,16 @@ b = fe.backend.clip_by_value(p, min_value=-2) # [-2, 4, 2, 0, 9, -2]
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **tensor** :  The input value.
 * **min_value** :  The minimum value to clip to.
 * **max_value** :  The maximum value to clip to.
 
-#### Returns:
+<h3>Returns:</h3>
     The `tensor`, with it's values clipped.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **ValueError** :  If `tensor` is an unacceptable data type.
+

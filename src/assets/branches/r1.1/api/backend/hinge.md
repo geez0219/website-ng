@@ -1,6 +1,4 @@
-
-
-### hinge
+## hinge<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/backend/hinge.py/#L27-L58>View source on Github</a>
 ```python
 hinge(
 	y_true: ~Tensor,
@@ -25,15 +23,16 @@ b = fe.backend.hinge(y_pred=pred, y_true=true)  # [0.8  1.2  0.85 0.  ]
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **y_true** :  Ground truth class labels which should take values of 1 or -1.
 * **y_pred** :  Prediction score for each class, with a shape like y_true. dtype float32 or float16.
 
-#### Returns:
+<h3>Returns:</h3>
     The hinge loss between `y_true` and `y_pred`
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **AssertionError** :  If `y_true` and `y_pred` have mismatched shapes or disparate types.
 * **ValueError** :  If `y_pred` is an unacceptable data type.
+

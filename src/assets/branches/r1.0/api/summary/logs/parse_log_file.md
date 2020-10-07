@@ -1,6 +1,4 @@
-
-
-### parse_log_file
+## parse_log_file<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/summary/logs/log_parse.py/#L25-L53>View source on Github</a>
 ```python
 parse_log_file(
 	file_path: str,
@@ -11,10 +9,11 @@ parse_log_file(
 A function which will parse log files into a dictionary of metrics.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **file_path** :  The path to a log file.
 * **file_extension** :  The extension of the log file.
 
-#### Returns:
+<h3>Returns:</h3>
     An experiment summarizing the given log file.
+

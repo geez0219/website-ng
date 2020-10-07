@@ -1,6 +1,4 @@
-
-
-### feed_forward
+## feed_forward<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/backend/feed_forward.py/#L26-L68>View source on Github</a>
 ```python
 feed_forward(
 	model: Union[tensorflow.python.keras.engine.training.Model, torch.nn.modules.module.Module],
@@ -26,15 +24,16 @@ b = fe.backend.feed_forward(m, x)  # [[~0.5, ~0.5], [~0.5, ~0.5], [~0.5, ~0.5]]
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **model** :  A neural network to run the forward step through.
 * **x** :  An input tensor for the `model`. This value will be auto-cast to either a tf.Tensor or torch.Tensor as        applicable for the `model`.
 * **training** :  Whether this forward step is part of training or not. This may impact the behavior of `model` layers        such as dropout.
 
-#### Returns:
+<h3>Returns:</h3>
     The result of `model(x)`.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **ValueError** :  If `model` is an unacceptable data type.
+

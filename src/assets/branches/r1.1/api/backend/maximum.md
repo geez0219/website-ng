@@ -1,6 +1,4 @@
-
-
-### maximum
+## maximum<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/backend/maximum.py/#L24-L65>View source on Github</a>
 ```python
 maximum(
 	tensor1: ~Tensor,
@@ -32,14 +30,15 @@ res = fe.backend.maximum(p1, p2) # [[2, 7, 6]]
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **tensor1** :  First tensor.
 * **tensor2** :  Second tensor.
 
-#### Returns:
+<h3>Returns:</h3>
     The maximum of two `tensors`.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **ValueError** :  If `tensor` is an unacceptable data type.
+

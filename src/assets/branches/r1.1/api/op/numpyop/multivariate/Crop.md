@@ -1,4 +1,4 @@
-## Crop
+## Crop<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/numpyop/multivariate/crop.py/#L25-L83>View source on Github</a>
 ```python
 Crop(
 	x_min: int=0,
@@ -23,7 +23,7 @@ Crop(
 Crop a region from the input.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
 * **image_in** :  The key of an image to be modified.
@@ -43,3 +43,6 @@ Crop a region from the input.
 * **x_max** :  Maximum lower right x coordinate.
 * **y_max** :  Maximum lower right y coordinate.
 * **Image types** :     uint8, float32
+
+
+

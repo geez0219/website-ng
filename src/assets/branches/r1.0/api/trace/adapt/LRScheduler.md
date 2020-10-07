@@ -1,4 +1,4 @@
-## LRScheduler
+## LRScheduler<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/trace/adapt/lr_scheduler.py/#L29-L72>View source on Github</a>
 ```python
 LRScheduler(
 	model: Union[tensorflow.python.keras.engine.training.Model, torch.nn.modules.module.Module],
@@ -17,11 +17,14 @@ fe.Estimator(..., traces=[s])  # Learning rate will change based on epoch
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **model** :  A model instance compiled with fe.build.
 * **lr_fn** :  A lr scheduling function that takes either 'epoch' or 'step' as input.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **AssertionError** :  If the `lr_fn` is not configured properly.
+
+
+

@@ -1,4 +1,4 @@
-## CoarseDropout
+## CoarseDropout<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/numpyop/univariate/coarse_dropout.py/#L24-L66>View source on Github</a>
 ```python
 CoarseDropout(
 	inputs: Union[str, Iterable[str]],
@@ -16,7 +16,7 @@ CoarseDropout(
 Drop rectangular regions from an image.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **inputs** :  Key(s) of images to be modified.
 * **outputs** :  Key(s) into which to write the modified images.
@@ -29,3 +29,6 @@ Drop rectangular regions from an image.
 * **min_width** :  Minimum width of the hole. If `None`, `min_height` is set to `max_width`.
 * **fill_value** :  value for dropped pixels.
 * **Image types** :     uint8, float32
+
+
+

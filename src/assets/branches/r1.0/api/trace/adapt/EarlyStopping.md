@@ -1,4 +1,4 @@
-## EarlyStopping
+## EarlyStopping<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/trace/adapt/early_stopping.py/#L23-L87>View source on Github</a>
 ```python
 EarlyStopping(
 	monitor: str='loss',
@@ -13,7 +13,7 @@ EarlyStopping(
 Stop training when a monitored quantity has stopped improving.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **monitor** :  Quantity to be monitored.
 * **min_delta** :  Minimum change in the monitored quantity to qualify as an improvement, i.e. an        absolute change of less than min_delta will count as no improvement.
@@ -22,6 +22,9 @@ Stop training when a monitored quantity has stopped improving.
 * **baseline** :  Baseline value for the monitored quantity. Training will stop if the model doesn't        show improvement over the baseline.
 * **mode** :  What mode(s) to execute this Trace in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **ValueError** :  If `compare` is an invalid value or more than one `monitor` is provided.
+
+
+

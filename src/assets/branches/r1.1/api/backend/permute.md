@@ -1,6 +1,4 @@
-
-
-### permute
+## permute<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/backend/permute.py/#L24-L65>View source on Github</a>
 ```python
 permute(
 	tensor: ~Tensor,
@@ -32,14 +30,15 @@ b = fe.backend.permute(P, [0, 2, 1])  # [[[0, 2], [1, 3]], [[4, 6], [5, 7]], [[8
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **tensor** :  The tensor to permute.
 * **permutation** :  The new axis order to be used. Should be a list containing all integers in range [0, tensor.ndim).
 
-#### Returns:
+<h3>Returns:</h3>
     The `tensor` with axes swapped according to the `permutation`.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **ValueError** :  If `tensor` is an unacceptable data type.
+

@@ -1,4 +1,4 @@
-## ToSepia
+## ToSepia<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/op/numpyop/univariate/to_sepia.py/#L22-L39>View source on Github</a>
 ```python
 ToSepia(
 	inputs: Union[str, Iterable[str], Callable],
@@ -9,9 +9,12 @@ ToSepia(
 Convert an RGB image to sepia.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **inputs** :  Key(s) of images to be converted to sepia.
 * **outputs** :  Key(s) into which to write the sepia images.
 * **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
 * **Image types** :     uint8, float32
+
+
+

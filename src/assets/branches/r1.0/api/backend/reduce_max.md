@@ -1,6 +1,4 @@
-
-
-### reduce_max
+## reduce_max<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/backend/reduce_max.py/#L26-L82>View source on Github</a>
 ```python
 reduce_max(
 	tensor: ~Tensor,
@@ -39,15 +37,16 @@ b = fe.backend.reduce_max(p, axis=[0,2])  # [6, 8]
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **tensor** :  The input value.
 * **axis** :  Which axis or collection of axes to compute the maximum along.
 * **keepdims** :  Whether to preserve the number of dimensions during the reduction.
 
-#### Returns:
+<h3>Returns:</h3>
     The maximum values of `tensor` along `axis`.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **ValueError** :  If `tensor` is an unacceptable data type.
+

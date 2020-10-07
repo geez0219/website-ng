@@ -1,6 +1,4 @@
-
-
-### cosine_decay
+## cosine_decay<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/schedule/lr_shedule.py/#L18-L61>View source on Github</a>
 ```python
 cosine_decay(
 	time: int,
@@ -22,7 +20,7 @@ fe.Estimator(..., traces=[s])
 For more information, check out SGDR: https://arxiv.org/pdf/1608.03983.pdf.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **time** :  The current step or epoch during training starting from 1.
 * **cycle_length** :  The decay cycle length.
@@ -31,6 +29,7 @@ For more information, check out SGDR: https://arxiv.org/pdf/1608.03983.pdf.
 * **start** :  The step or epoch to start the decay schedule.
 * **cycle_multiplier** :  The factor by which next cycle length will be multiplied.
 
-#### Returns:
+<h3>Returns:</h3>
 
 * **lr** :  learning rate given current step or epoch.
+

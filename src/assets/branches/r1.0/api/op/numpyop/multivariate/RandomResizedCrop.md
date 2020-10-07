@@ -1,4 +1,4 @@
-## RandomResizedCrop
+## RandomResizedCrop<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/op/numpyop/multivariate/random_resized_crop.py/#L24-L91>View source on Github</a>
 ```python
 RandomResizedCrop(
 	height: int,
@@ -24,7 +24,7 @@ RandomResizedCrop(
 Crop a random part of the input and rescale it to some size.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
 * **image_in** :  The key of an image to be modified.
@@ -45,3 +45,6 @@ Crop a random part of the input and rescale it to some size.
 * **ratio** :  Range of aspect ratio of the origin aspect ratio cropped.
 * **interpolation** :  flag that is used to specify the interpolation algorithm. Should be one of        cv2.INTER_NEAREST, cv2.INTER_LINEAR, cv2.INTER_CUBIC, cv2.INTER_AREA, cv2.INTER_LANCZOS4.
 * **Image types** :     uint8, float32
+
+
+

@@ -1,6 +1,4 @@
-
-
-### update_model
+## update_model<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/backend/update_model.py/#L25-L116>View source on Github</a>
 ```python
 update_model(
 	model: Union[tensorflow.python.keras.engine.training.Model, torch.nn.modules.module.Module],
@@ -37,7 +35,7 @@ fe.backend.update_model(m, loss=loss)
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **model** :  A neural network instance to update.
 * **loss** :  A loss value to compute gradients from.
@@ -47,7 +45,8 @@ fe.backend.update_model(m, loss=loss)
 * **defer** :  If True, then the model update function will be stored into the `deferred` dictionary rather than        applied immediately.
 * **deferred** :  A dictionary in which model update functions are stored.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **ValueError** :  If `model` is an unacceptable data type.
 * **RuntimeError** :  If attempting to modify a PyTorch model which relied on gradients within a different PyTorch model        which has in turn already undergone a non-deferred update.
+

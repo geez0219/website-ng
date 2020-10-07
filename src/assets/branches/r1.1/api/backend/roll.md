@@ -1,6 +1,4 @@
-
-
-### roll
+## roll<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/backend/roll.py/#L24-L76>View source on Github</a>
 ```python
 roll(
 	tensor: ~Tensor,
@@ -42,15 +40,16 @@ b = fe.backend.roll(p, shift=[-1, -1], axis=[0, 1])  # [[6, 7, 5], [2, 3, 1]]
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **tensor** :  The input value.
 * **shift** :  The number of places by which the elements need to be shifted. If shift is a list, axis must be a list of        same size.
 * **axis** :  axis along which elements will be rolled.
 
-#### Returns:
+<h3>Returns:</h3>
     The rolled `tensor`.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **ValueError** :  If `tensor` is an unacceptable data type.
+

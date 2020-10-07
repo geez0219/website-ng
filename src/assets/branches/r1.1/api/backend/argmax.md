@@ -1,6 +1,4 @@
-
-
-### argmax
+## argmax<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/backend/argmax.py/#L24-L65>View source on Github</a>
 ```python
 argmax(
 	tensor: ~Tensor,
@@ -32,14 +30,15 @@ b = fe.backend.argmax(p, axis=1)  # [1, 0, 1]
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **tensor** :  The input value.
 * **axis** :  Which axis to compute the index along.
 
-#### Returns:
+<h3>Returns:</h3>
     The indices corresponding to the maximum values within `tensor` along `axis`.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **ValueError** :  If `tensor` is an unacceptable data type.
+

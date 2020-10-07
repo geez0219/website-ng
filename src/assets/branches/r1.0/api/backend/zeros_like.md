@@ -1,6 +1,4 @@
-
-
-### zeros_like
+## zeros_like<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/backend/zeros_like.py/#L26-L67>View source on Github</a>
 ```python
 zeros_like(
 	tensor: ~Tensor,
@@ -32,14 +30,15 @@ b = fe.backend.zeros_like(p, dtype="float32")  # [[0.0, 0.0], [0.0, 0.0]]
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **tensor** :  The tensor whose shape will be copied.
 * **dtype** :  The data type to be used when generating the resulting tensor. If None then the `tensor` dtype is used.
 
-#### Returns:
+<h3>Returns:</h3>
     A tensor of zeros with the same shape as `tensor`.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **ValueError** :  If `tensor` is an unacceptable data type.
+

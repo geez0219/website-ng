@@ -1,4 +1,4 @@
-## RandomRotate90
+## RandomRotate90<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/op/numpyop/multivariate/random_rotate_90.py/#L23-L73>View source on Github</a>
 ```python
 RandomRotate90(
 	mode: Union[str, NoneType]=None,
@@ -19,7 +19,7 @@ RandomRotate90(
 Rotate a given input randomly by 90 degrees.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
 * **image_in** :  The key of an image to be modified.
@@ -35,3 +35,6 @@ Rotate a given input randomly by 90 degrees.
 * **bbox_params** :  Parameters defining the type of bounding box ('coco', 'pascal_voc', 'albumentations' or 'yolo').
 * **keypoint_params** :  Parameters defining the type of keypoints ('xy', 'yx', 'xya', 'xys', 'xyas', 'xysa').
 * **Image types** :     uint8, float32
+
+
+

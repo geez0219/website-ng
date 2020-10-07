@@ -1,4 +1,4 @@
-## Data
+## Data<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/util/data.py/#L18-L69>View source on Github</a>
 ```python
 Data(
 	*args, **kwds
@@ -22,11 +22,11 @@ r = d.read_logs(extra_keys={"c"})  # {"c":2, "d":3, "a":4}
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **batch_data** :  The batch data dictionary. In practice this is itself often a ChainMap containing separate        prediction and batch dictionaries.
 
-### read_logs
+### read_logs<span class="tag">method of Data</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/util/data.py/#L63-L69>View source on Github</a>
 ```python
 read_logs(
 	self
@@ -36,10 +36,10 @@ read_logs(
 Read all values from the `Data` dictionary which were intended to be logged.
 
 
-#### Returns:
+<h4>Returns:</h4>
     A dictionary of all of the keys and values to be logged.
 
-### write_with_log
+### write_with_log<span class="tag">method of Data</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/util/data.py/#L45-L52>View source on Github</a>
 ```python
 write_with_log(
 	self,
@@ -51,12 +51,12 @@ write_with_log(
 Write a given `value` into the `Data` dictionary with the intent that it be logged.
 
 
-#### Args:
+<h4>Args:</h4>
 
 * **key** :  The key to associate with the new entry.
 * **value** :  The new entry to be written.
 
-### write_without_log
+### write_without_log<span class="tag">method of Data</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/util/data.py/#L54-L61>View source on Github</a>
 ```python
 write_without_log(
 	self,
@@ -68,7 +68,10 @@ write_without_log(
 Write a given `value` into the `Data` dictionary with the intent that it not be logged.
 
 
-#### Args:
+<h4>Args:</h4>
 
 * **key** :  The ey to associate with the new entry.
 * **value** :  The new entry to be written.
+
+
+

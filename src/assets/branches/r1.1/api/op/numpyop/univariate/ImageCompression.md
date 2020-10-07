@@ -1,4 +1,4 @@
-## ImageCompression
+## ImageCompression<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/numpyop/univariate/image_compression.py/#L24-L54>View source on Github</a>
 ```python
 ImageCompression(
 	inputs: Union[str, Iterable[str]],
@@ -12,7 +12,7 @@ ImageCompression(
 Decrease compression of an image.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **inputs** :  Key(s) of images to be modified.
 * **outputs** :  Key(s) into which to write the modified images.
@@ -21,3 +21,6 @@ Decrease compression of an image.
 * **quality_upper** :  Upper bound on the image quality. Should be in [0, 100] range for jpeg and [1, 100] for webp.
 * **compression_type** :  should be ImageCompressionType.JPEG or ImageCompressionType.WEBP.
 * **Image types** :     uint8, float32
+
+
+

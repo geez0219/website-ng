@@ -1,4 +1,4 @@
-## EpochScheduler
+## EpochScheduler<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/schedule/schedule.py/#L85-L145>View source on Github</a>
 ```python
 EpochScheduler(
 	*args, **kwds
@@ -20,10 +20,13 @@ s.get_current_value(epoch=100)  # "c"
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **epoch_dict** :  A mapping from epoch -> element. For epochs in between keys in the dictionary, the closest prior key        will be used to determine which element to return. None values may be used to cause nothing to happen for a        particular epoch.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **AssertionError** :  If the `epoch_dict` is of the wrong type, or contains invalid keys.
+
+
+

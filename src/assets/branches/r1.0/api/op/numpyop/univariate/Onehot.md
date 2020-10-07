@@ -1,4 +1,4 @@
-## Onehot
+## Onehot<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/op/numpyop/univariate/onehot.py/#L22-L60>View source on Github</a>
 ```python
 Onehot(
 	inputs: Union[str, Iterable[str], Callable],
@@ -14,7 +14,7 @@ This can be desirable for increasing robustness against incorrect labels:
 https://towardsdatascience.com/label-smoothing-making-model-robust-to-incorrect-labels-2fae037ffbd0
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **inputs** :  Input key(s) of labels to be onehot encoded.
 * **outputs** :  Output key(s) of labels.
@@ -22,3 +22,6 @@ https://towardsdatascience.com/label-smoothing-making-model-robust-to-incorrect-
 * **label_smoothing** :  Smoothing factor, after smoothing class output is 1 - label_smoothing + label_smoothing
 * **/ num_classes, the other class output is** :  label_smoothing / num_classes.
 * **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
+
+
+

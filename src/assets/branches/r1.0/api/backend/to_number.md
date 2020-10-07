@@ -1,6 +1,4 @@
-
-
-### to_number
+## to_number<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/backend/to_number.py/#L22-L58>View source on Github</a>
 ```python
 to_number(
 	data: Union[tensorflow.python.framework.ops.Tensor, torch.Tensor, numpy.ndarray, int, float]
@@ -30,9 +28,10 @@ b = fe.backend.to_number(p)  # [1, 2, 3] (type==np.ndarray)
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **data** :  The value to be converted into a np.ndarray.
 
-#### Returns:
+<h3>Returns:</h3>
     An ndarray corresponding to the given `data`.
+

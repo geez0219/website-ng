@@ -1,6 +1,4 @@
-
-
-### get_lr
+## get_lr<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/backend/get_lr.py/#L21-L52>View source on Github</a>
 ```python
 get_lr(
 	model: Union[tensorflow.python.keras.engine.training.Model, torch.nn.modules.module.Module]
@@ -22,13 +20,14 @@ b = fe.backend.get_lr(model=m)  # 0.001
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **model** :  A neural network instance to inspect.
 
-#### Returns:
+<h3>Returns:</h3>
     The learning rate of `model`.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **ValueError** :  If `model` is an unacceptable data type.
+

@@ -1,4 +1,4 @@
-## RandomRain
+## RandomRain<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/numpyop/univariate/random_rain.py/#L24-L69>View source on Github</a>
 ```python
 RandomRain(
 	inputs: Union[str, Iterable[str]],
@@ -17,7 +17,7 @@ RandomRain(
 Add rain to an image
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **inputs** :  Key(s) of images to be modified.
 * **outputs** :  Key(s) into which to write the modified images.
@@ -31,3 +31,6 @@ Add rain to an image
 * **brightness_coefficient** :  Rainy days are usually shady. Should be in range [0, 1].
 * **rain_type** :  One of [None, "drizzle", "heavy", "torrential"].
 * **Image types** :     uint8, float32
+
+
+

@@ -1,4 +1,4 @@
-## DefaultKeyDict
+## DefaultKeyDict<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/util/util.py/#L454-L473>View source on Github</a>
 ```python
 DefaultKeyDict(
 	default: Callable[[Any], Any], **kwargs
@@ -14,7 +14,10 @@ print(d["c"])  # "cc"
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **default** :  A function which takes a key and returns a default value based on the key.
  **kwargs :  Initial key/value pairs for the dictionary.
+
+
+

@@ -22,7 +22,6 @@ export class ApiComponent implements OnInit, AfterViewChecked {
   selectedAPI: string;
   currentSelection: string;
   currentAPIText: string;
-  currentAPILink: string;
   scrollCounter = 0;
   scrollThreshold = 20;
   segments: UrlSegment[];
@@ -225,7 +224,6 @@ export class ApiComponent implements OnInit, AfterViewChecked {
 
     this.selectedAPI = api.name;
     this.currentSelection = 'assets/branches/' + this.currentVersion + '/api/' + api.name;
-    this.currentAPILink = api.sourceurl;
 
     this.getSelectedAPIText();
     this.title.setTitle(api.displayName + ' | Fastestimator');

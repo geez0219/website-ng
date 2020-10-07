@@ -1,4 +1,4 @@
-## SiameseDirDataset
+## SiameseDirDataset<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/dataset/siamese_dir_dataset.py/#L26-L177>View source on Github</a>
 ```python
 SiameseDirDataset(
 	root_dir: str,
@@ -19,7 +19,7 @@ or many times as 'data_key_right' within the same epoch. SiameseDirDataset.split
 rather than by data instance index.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **root_dir** :  The path to the directory containing data sorted by folders.
 * **data_key_left** :  What key to assign to the first data element in the pair.
@@ -29,7 +29,7 @@ rather than by data instance index.
 * **label_mapping** :  A dictionary defining the mapping to use. If not provided will map classes to int labels.
 * **file_extension** :  If provided then only files ending with the file_extension will be included.
 
-### one_shot_trial
+### one_shot_trial<span class="tag">method of SiameseDirDataset</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/dataset/siamese_dir_dataset.py/#L144-L167>View source on Github</a>
 ```python
 one_shot_trial(
 	self,
@@ -42,14 +42,14 @@ Generate one-shot trial data.
 The similarity should be highest between the index 0 elements of the arrays.
 
 
-#### Args:
+<h4>Args:</h4>
 
 * **n** :  The number of samples to draw for computing one shot accuracy. Should be <= the number of total classes.
 
-#### Returns:
+<h4>Returns:</h4>
     ([class_a_instance_x, class_a_instance_x, class_a_instance_x, ...],    [class_a_instance_w, class_b_instance_y, class_c_instance_z, ...])
 
-### summary
+### summary<span class="tag">method of SiameseDirDataset</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/dataset/siamese_dir_dataset.py/#L169-L177>View source on Github</a>
 ```python
 summary(
 	self
@@ -58,5 +58,8 @@ summary(
 ```
 Generate a summary representation of this dataset.
 
-#### Returns:
+<h4>Returns:</h4>
     A summary representation of this dataset.
+
+
+

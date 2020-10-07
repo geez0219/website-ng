@@ -1,4 +1,4 @@
-## HorizontalFlip
+## HorizontalFlip<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/numpyop/multivariate/horizontal_flip.py/#L25-L75>View source on Github</a>
 ```python
 HorizontalFlip(
 	mode: Union[str, NoneType]=None,
@@ -19,7 +19,7 @@ HorizontalFlip(
 Flip an image horizontally.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
 * **image_in** :  The key of an image to be modified.
@@ -35,3 +35,6 @@ Flip an image horizontally.
 * **bbox_params** :  Parameters defining the type of bounding box ('coco', 'pascal_voc', 'albumentations' or 'yolo').
 * **keypoint_params** :  Parameters defining the type of keypoints ('xy', 'yx', 'xya', 'xys', 'xyas', 'xysa').
 * **Image types** :     uint8, float32
+
+
+

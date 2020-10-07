@@ -1,4 +1,4 @@
-## ImgData
+## ImgData<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/util/img_data.py/#L30-L335>View source on Github</a>
 ```python
 ImgData(
 	colormap: str='Greys', **kwargs: Union[~Tensor, List[~Tensor]]
@@ -25,16 +25,16 @@ plt.show()
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **colormap** :  What colormap to use when rendering greyscale images. A good colorization option is 'inferno'.
  **kwargs :  image_title / image pairs for visualization. Images with the same batch dimensions will be laid out        side-by-side, with earlier kwargs entries displayed further to the left. The value part of the key/value        pair can be a list of tensors, in which case the elements of the list are overlaid. This can be useful for        displaying masks and bounding boxes on top of images. In such cases, the largest image should be put as the        first entry in the list. Bounding boxes should be shaped like (batch, n_boxes, box), where each box is        formatted like (x0, y0, width, height[, label]).
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **AssertionError** :  If a list of Tensors is provided as an input, but that list has an inconsistent batch dimension.
 
-### paint_figure
+### paint_figure<span class="tag">method of ImgData</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/util/img_data.py/#L239-L297>View source on Github</a>
 ```python
 paint_figure(
 	self,
@@ -56,7 +56,7 @@ plt.show()
 ```
 
 
-#### Args:
+<h4>Args:</h4>
 
 * **height_gap** :  How much space to put between each row.
 * **min_height** :  The minimum height of a row.
@@ -65,10 +65,10 @@ plt.show()
 * **dpi** :  The resolution of the image to display.
 * **save_path** :  If provided, the figure will be saved to the given path.
 
-#### Returns:
+<h4>Returns:</h4>
     The handle to the generated matplotlib figure.
 
-### paint_numpy
+### paint_numpy<span class="tag">method of ImgData</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/util/img_data.py/#L299-L335>View source on Github</a>
 ```python
 paint_numpy(
 	self,
@@ -90,7 +90,7 @@ plt.show()
 ```
 
 
-#### Args:
+<h4>Args:</h4>
 
 * **height_gap** :  How much space to put between each row.
 * **min_height** :  The minimum height of a row.
@@ -98,5 +98,8 @@ plt.show()
 * **min_width** :  The minimum width of a column.
 * **dpi** :  The resolution of the image to display.
 
-#### Returns:
+<h4>Returns:</h4>
     A numpy array with dimensions (1, height, width, 3) containing an image representation of this ImgData.
+
+
+

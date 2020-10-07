@@ -1,4 +1,4 @@
-## Downscale
+## Downscale<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/numpyop/univariate/downscale.py/#L25-L52>View source on Github</a>
 ```python
 Downscale(
 	inputs: Union[str, Iterable[str]],
@@ -12,7 +12,7 @@ Downscale(
 Decrease image quality by downscaling and then upscaling.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **inputs** :  Key(s) of images to be modified.
 * **outputs** :  Key(s) into which to write the modified images.
@@ -21,3 +21,6 @@ Decrease image quality by downscaling and then upscaling.
 * **scale_max** :   Upper bound on the image scale. Should be >= scale_min.
 * **interpolation** :  cv2 interpolation method.
 * **Image types** :     uint8, float32
+
+
+

@@ -1,6 +1,4 @@
-
-
-### concat
+## concat<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/backend/concat.py/#L24-L67>View source on Github</a>
 ```python
 concat(
 	tensors: List[~Tensor],
@@ -32,14 +30,15 @@ b = fe.backend.concat(p, axis=1)  # [[0, 1, 2, 3, 4, 5]]
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **tensors** :  A list of tensors to be concatenated.
 * **axis** :  The axis along which to concatenate the input.
 
-#### Returns:
+<h3>Returns:</h3>
     A concatenated representation of the `tensors`, or None if the list of `tensors` was empty.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **ValueError** :  If `tensors` is an unacceptable data type.
+

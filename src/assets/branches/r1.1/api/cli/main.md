@@ -1,7 +1,0 @@
-
-
-### main
-```python
-main()
--> None
-```

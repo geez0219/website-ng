@@ -1,6 +1,4 @@
-
-
-### binary_crossentropy
+## binary_crossentropy<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/backend/binary_crossentropy.py/#L25-L80>View source on Github</a>
 ```python
 binary_crossentropy(
 	y_pred: ~Tensor,
@@ -32,16 +30,17 @@ b = fe.backend.binary_crossentropy(y_pred=pred, y_true=true, average_loss=False)
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **y_pred** :  Prediction with a shape like (batch, ...). dtype float32 or float16.
 * **y_true** :  Ground truth class labels with the same shape as `y_pred`. dtype int or float32 or float16.
 * **from_logits** :  Whether y_pred is from logits. If True, a sigmoid will be applied to the prediction.
 * **average_loss** :  Whether to average the element-wise loss.
 
-#### Returns:
+<h3>Returns:</h3>
     The binary crossentropy between `y_pred` and `y_true`. A scalar if `average_loss` is True, else a tensor with    the same shape as `y_true`.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **AssertionError** :  If `y_true` or `y_pred` are unacceptable data types.
+

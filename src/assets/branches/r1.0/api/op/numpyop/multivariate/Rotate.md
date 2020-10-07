@@ -1,4 +1,4 @@
-## Rotate
+## Rotate<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/op/numpyop/multivariate/rotate.py/#L24-L93>View source on Github</a>
 ```python
 Rotate(
 	limit: Union[int, Tuple[int, int]]=90,
@@ -24,7 +24,7 @@ Rotate(
 Rotate the input by an angle selected randomly from the uniform distribution.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
 * **image_in** :  The key of an image to be modified.
@@ -45,3 +45,6 @@ Rotate the input by an angle selected randomly from the uniform distribution.
 * **value** :  padding value if border_mode is cv2.BORDER_CONSTANT.
 * **mask_value** :  padding value if border_mode is cv2.BORDER_CONSTANT applied for masks.
 * **Image types** :     uint8, float32
+
+
+

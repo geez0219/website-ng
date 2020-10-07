@@ -1,6 +1,4 @@
-
-
-### prettify_metric_name
+## prettify_metric_name<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/util/util.py/#L224-L237>View source on Github</a>
 ```python
 prettify_metric_name(
 	metric: str
@@ -14,9 +12,10 @@ x = fe.util.prettify_metric_name("myUgly_loss")  # "My Ugly Loss"
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **metric** :  A string to be formatted.
 
-#### Returns:
+<h3>Returns:</h3>
     The formatted version of 'metric'.
+

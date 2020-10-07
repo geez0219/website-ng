@@ -1,6 +1,4 @@
-
-
-### matmul
+## matmul<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/backend/matmul.py/#L24-L67>View source on Github</a>
 ```python
 matmul(
 	a: ~Tensor,
@@ -32,14 +30,15 @@ c = fe.backend.matmul(a, b)  # [[8], [26]]
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **a** :  The first matrix.
 * **b** :  The second matrix.
 
-#### Returns:
+<h3>Returns:</h3>
     The matrix multiplication result of a * b.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **ValueError** :  If either `a` or `b` are unacceptable or non-matching data types.
+

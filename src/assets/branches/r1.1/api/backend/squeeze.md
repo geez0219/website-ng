@@ -1,6 +1,4 @@
-
-
-### squeeze
+## squeeze<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/backend/squeeze.py/#L24-L71>View source on Github</a>
 ```python
 squeeze(
 	tensor: ~Tensor,
@@ -35,14 +33,15 @@ b = fe.backend.squeeze(p, axis=3)  # [[[1, 2]], [[3, 4]], [[5, 6]]]
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **tensor** :  The input value.
 * **axis** :  Which axis to squeeze along, which must have length==1 (or pass None to squeeze all length 1 axes).
 
-#### Returns:
+<h3>Returns:</h3>
     The reshaped `tensor`.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **ValueError** :  If `tensor` is an unacceptable data type.
+
