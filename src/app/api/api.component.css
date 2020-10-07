@@ -54,11 +54,11 @@
     display: block;
     font-size: 1em;
     line-height: 1.5em;
-    padding:6px 18px;
+    padding:6px 9px;
 }
 
 .sidebar-api .items ul{
-    padding-inline-start: 1em;
+    padding-inline-start: 20px;
 }
 
 
@@ -151,11 +151,6 @@ button { outline: none; }
   text-align: center;
 }
 
-.git-button {
-    background-color:#378de5;
-    text-decoration: none;
-}
-
 mat-sidenav-content {
     background-color: white;
 }
@@ -224,6 +219,28 @@ markdown ::ng-deep .language-plot{
 
 markdown ::ng-deep code{
     font-size:100%;
+}
+
+markdown ::ng-deep .tag{
+    font-size: 0.6em;
+    font-weight: normal;
+    color:gray;
+    font-style: italic;
+    margin-left: 1em;
+}
+
+markdown ::ng-deep .sourcelink{
+    background-color:#378de5;
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    float: right;
+    position: relative;
+    top: 5px;
+    line-height:normal;
 }
 
 
