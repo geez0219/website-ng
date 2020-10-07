@@ -10,7 +10,6 @@ import json
 
 titles = ['Args', 'Raises', 'Returns']
 fe_url = 'https://github.com/fastestimator/fastestimator/blob'
-sourcelines_dict = {}
 html_char_regex = r'([\<\>])'
 args_regex = r'(Args|Returns|Raises):\n'
 re_url = r'(?:(?:http|https)\:\/\/)?[a-zA-Z0-9\.\/\?\:@\-_=#]+\.(?:[a-zA-Z]){2,6}(?:[a-zA-Z0-9\.\&\/\?\:@\-_=#])*'
@@ -22,165 +21,181 @@ def isDoc(obj):
         return True
     return False
 
-
-def add_source_lines(module, mod_name, f_rel_path, save_dir):
-    sourcelines = inspect.getsourcelines(module)
-    start = sourcelines[1]
-    end = start + len(sourcelines[0]) - 1
-
-    # use dumped markdown absolute path as key
-    # /home/geez219/angular_project/website-ng2/parser_files/master/api/dataset/data/cifar10.load_data.md
-    key = os.path.abspath(os.path.join(save_dir, mod_name) + ".md")
-
-    # cifar10.load_data -> cifar10/load_data
-    mod_name = mod_name.replace(".", sep)
-
-    sourcelines_dict[key] = os.path.join(
-        fe_url, branch, 'fastestimator', f_rel_path, '#L' + str(start) + '-L' + str(end))
-
 class APIFolder:
     def __init__(self, save_dir, fe_dir, target_dir):
         self.save_dir = save_dir
         self.fe_dir = fe_dir
         self.target_dir = target_dir
-        self.module_infos = None
+        self.func_and_classes = None
+        self.file_modules = None
 
-    def _extract_api_module(self):
-        self.module_infos = []
-        for f in os.listdir(self.target_dir):
-            if not f.endswith(".py"):
+    def _extract_folder_module(self):
+        rel_path = os.path.relpath(self.target_dir, self.fe_dir).replace(sep, ".")
+        dir_module = pydoc.safeimport(rel_path)
+
+        self.func_and_classes = []
+        self.file_modules = []
+        # pdb.set_trace()
+        for name, member in inspect.getmembers(dir_module):
+            if name.startswith("_"):
                 continue
-            f_rel_path = os.path.relpath(
-                os.path.join(self.target_dir, f),
-                self.fe_dir,
-            )
-            f_module_path = f_rel_path.replace(sep, ".")
-            f_module = pydoc.safeimport(inspect.getmodulename(f_module_path))
+            if not member: # EarlyStop
+                continue
+            if os.path.basename( # skip folder module
+                    inspect.getsourcefile(member)) == "__init__.py":
+                continue
+            # print(f"name:{name} member:{member}")
+            # pdb.set_trace()
+            if inspect.isfunction(member) or inspect.isclass(member):
+                self.func_and_classes.append([name, member])
+            elif inspect.ismodule(member):
+                self.file_modules.append([name, member])
 
-            for name, api_module in inspect.getmembers(f_module):
-                if inspect.getmodule(api_module) != f_module:
-                    continue
-                if name.startswith('_'):
-                    continue
-
-                # load -> cifar10.load
-                substitue_name = f"{f.split('.')[-2]}.{name}"
-
-                self.module_infos.append(
-                    [name, api_module, substitue_name, f_rel_path]
-                )
-
-    def _solve_name_conflict(self):
-        name_count = {}
-        for name, _, _, _ in self.module_infos:
-            if name in name_count:
-                name_count[name] += 1
-            else:
-                name_count[name] = 1
-
-        duplicate_names = [name for name, count in name_count.items() if count > 1]
-
-        for info in self.module_infos:
-            if info[0] in duplicate_names:
-                info[0] = info[2]  # use substitute name
+        # remove file_modules in which any member of func_and_classes is defined
+        # ex: >>> from fastestimator.estimator import Estimator
+        #     this will include both estimator.py and Estimator but we only want Estimator
+        for idx, (name, module) in reversed(list(enumerate(self.file_modules))):
+            for _, member in self.func_and_classes:
+                if inspect.getmodule(member) == module:
+                    self.file_modules.pop(idx)
+                    break
 
     def _build_api_markdown(self):
-        for name, mod, _, f_rel_path in self.module_infos:
-            APIMarkdown(name=name, module=mod, save_dir=self.save_dir).dump()
-            add_source_lines(module=mod,
-                             mod_name=name,
-                             save_dir=self.save_dir,
-                             f_rel_path=f_rel_path)
+        for name, obj in self.file_modules:
+            APIMarkdown(name=name, obj=obj, save_dir=self.save_dir, fe_dir=self.fe_dir).dump()
+        for name, obj in self.func_and_classes:
+            APIMarkdown(name=name, obj=obj, save_dir=self.save_dir, fe_dir=self.fe_dir).dump()
+
 
     def dump(self):
         if not os.path.exists(self.save_dir):
             os.makedirs(self.save_dir)
 
-        self._extract_api_module()
-        self._solve_name_conflict()
+        self._extract_folder_module()
         self._build_api_markdown()
 
 
 class APIMarkdown:
-    def __init__(self, name, module, save_dir):
+    def __init__(self, name, obj, save_dir, fe_dir):
         self.name = name
-        self.module = module
+        self.obj = obj
         self.save_dir = save_dir
-        self.md_content = None
+        self.fe_dir = fe_dir
 
-    def __repr__(self):
-        return f"<APIMarkdown name={self.name}, module={self.module}, save_dir={self.save_dir}>"
+    def get_url(self, obj):
+        sourcefile = inspect.getsourcefile(obj)
+        sourcelines = inspect.getsourcelines(obj)
+        start = sourcelines[1]
+        end = start + len(sourcelines[0]) - 1
 
-    def func_to_md(self):
+        url = os.path.join(fe_url, branch, os.path.relpath(sourcefile, self.fe_dir),
+                           '#L' + str(start) + '-L' + str(end))
+
+        return url
+
+    def get_source_link(self, obj):
+        return f'<a class="sourcelink" href={self.get_url(obj)}>View source on Github</a>\n'
+
+    @staticmethod
+    def get_type_tag(tag_name):
+        return f'<span class="tag">{tag_name}</span>'
+
+    def file_to_md(self, obj):
         content = []
+        content.append(f'# {obj.__name__}')
+        content.append(self.get_type_tag("module"))
+        content.append("\n---\n")
+        for name, api_module in inspect.getmembers(obj):
+            if inspect.getmodule(api_module) != obj:
+                continue
+            if name.startswith('_'):
+                continue
+
+            if inspect.isclass(api_module):
+                content.extend(self.class_to_md(api_module))
+            elif inspect.isfunction(api_module):
+                content.extend(self.func_to_md(api_module))
+
+        return content
+
+    def func_to_md(self, obj):
+        content = []
+        content.append(f'## {obj.__name__}')
+        content.append(self.get_type_tag('function'))
+        content.append(self.get_source_link(obj))
+        content.append("```python\n")
+        content.append(obj.__name__)
+        signature = str(inspect.signature(obj))
+        content.append(self.prettify_signature(signature) + '\n')
+        content.append('```\n')
+        content.append(self.format_docstring(inspect.getdoc(obj), level=3))
         content.append('\n\n')
-        content.append('### ' + self.name)
-        content.append("\n```python\n")
-        content.append(self.name)
-        signature = str(inspect.signature(self.module))
-        content.append(self.prettify_signature(signature))
-        content.append('\n')
-        content.append('```')
-        content.append('\n')
-        content.append(self.format_docstring(inspect.getdoc(self.module)))
 
-        self.md_content = "".join(content)
+        return content
 
 
-    def class_to_md(self):
+    def class_to_md(self, obj):
+        try: # some class raise error when running inspect.signature(self.obj) such as fe.EarlyStop
+            signature = str(inspect.signature(obj))
+        except ValueError:
+            return []
+
         content = []
-        content.append('## ' + self.name)
-        content.append("\n```python\n")
-        content.append(self.name)
-        signature = str(inspect.signature(self.module))
-        content.append(self.prettify_signature(signature))
-        content.append('\n')
-        content.append('```')
-        content.append('\n')
-        content.append(self.format_docstring(self.module.__doc__))
-        content.extend(self.get_class_method())
+        content.append(f'## {obj.__name__}')
+        content.append(self.get_type_tag("class"))
+        content.append(self.get_source_link(obj))
+        content.append("```python\n")
+        content.append(obj.__name__)
 
-        self.md_content = "".join(content)
+        content.append(self.prettify_signature(signature) + "\n")
+        content.append('```\n')
+        content.append(self.format_docstring(obj.__doc__, level=3))
+        content.append('\n\n')
+        content.extend(self.get_class_method(obj))
+        content.append('\n\n')
 
 
-    def get_class_method(self):
+        return content
+
+
+    def get_class_method(self, obj):
         """It extracts the functions which are functions of the current class that is being
 
         Returns:
             [list]: It returns the markdown string with object signature appended in the list
         """
-        output = list()
-        funcs = inspect.getmembers(self.module, inspect.isfunction)
+        content = []
+        funcs = inspect.getmembers(obj, inspect.isfunction)
         for f in funcs:
-            if f[1].__qualname__.split('.')[0] == self.module.__qualname__:
+            if f[1].__qualname__.split('.')[0] == obj.__qualname__:
                 if not f[0].startswith("_") and not isDoc(f[1]):
-                    output.append('\n\n')
-                    output.append('### ' + f[0])
-                    output.append("\n```python\n")
-                    output.append(f[0])
+                    content.append('### ' + f[0])
+                    content.append(self.get_type_tag(f"method of {obj.__name__}"))
+                    content.append(self.get_source_link(f[1]))
+                    content.append("```python\n")
+                    content.append(f[0])
                     signature = str(inspect.signature(f[1]))
-                    output.append(APIMarkdown.prettify_signature(signature))
-                    output.append('\n')
-                    output.append('```')
-                    output.append('\n')
-                    output.append(APIMarkdown.format_docstring(f[1].__doc__))
+                    content.append(APIMarkdown.prettify_signature(signature) + "\n")
+                    content.append('```\n')
+                    content.append(APIMarkdown.format_docstring(f[1].__doc__, level=4))
+                    content.append('\n\n')
 
-        return output
+        return content
 
 
     def dump(self):
-        try:  # some class raise error when running inspect.signature(self.module) such as fe.EarlyStop
-            if inspect.isclass(self.module):
-                self.class_to_md()
-            else:
-                self.func_to_md()
+        if inspect.isclass(self.obj):
+            content = self.class_to_md(self.obj)
+        elif inspect.isfunction(self.obj):
+            content = self.func_to_md(self.obj)
+        else:
+            content = self.file_to_md(self.obj)
 
-            save_path = os.path.join(self.save_dir, self.name + ".md")
-            with open(save_path, "w") as f:
-                f.write(self.md_content)
+        save_path = os.path.join(self.save_dir, self.name + ".md")
+        with open(save_path, "w") as f:
+            f.write("".join(content))
 
-        except ValueError:
-            pass
+
 
     @staticmethod
     def prettify_signature(inp: str):
@@ -193,7 +208,7 @@ class APIMarkdown:
         return out
 
     @staticmethod
-    def format_docstring(docstr):
+    def format_docstring(docstr, level):
         """It format the docstring in markdown form and append it to the list
 
         Args:
@@ -219,8 +234,9 @@ class APIMarkdown:
                         if ':' in new_docstr[idx] and new_docstr[idx].strip() not in urls:
                             elements = new_docstr[idx].split(':')
                             if elements[0].strip() in titles:
-                                title = '#### ' + elements[0].strip()
-                                res.append('\n\n' + title + ':\n')
+                                res.append(
+                                    f"\n\n<h{level}>{elements[0].strip()}:</h{level}>\n"
+                                )
                             else:
                                 res.append('\n')
                                 param = elements[0].strip()
@@ -268,13 +284,14 @@ def generatedocs(repo_dir, save_dir, branch):
     Returns:
         [str]: Returns absolute path to the generated markdown directory
     """
+    #insert project path to system path to later detect the modules in project
+    sys.path.insert(0, repo_dir)
+
     fe_path = os.path.abspath((os.path.join(repo_dir, 'fastestimator')))
 
     if os.path.exists(save_dir):
         shutil.rmtree(save_dir)
 
-    #insert project path to system path to later detect the modules in project
-    sys.path.insert(0, fe_path)
     # directories that needs to be excluded
     exclude = set(['test', '__pycache__'])
     for path, dirs, _ in os.walk(fe_path, topdown=True):
@@ -285,10 +302,14 @@ def generatedocs(repo_dir, save_dir, branch):
 
         os.makedirs(save_path, exist_ok=True)
         dirs[:] = [d for d in dirs if d not in exclude]
+
+        # if path == "/home/geez219/python_project/fastestimator/fastestimator/dataset":
         api_folder = APIFolder(save_dir=save_path,
-                               target_dir=path,
-                               fe_dir=fe_path)
+                                target_dir=path,
+                                fe_dir=repo_dir)
         api_folder.dump()
+        # pdb.set_trace()
+        # print()
 
     return save_dir
 
@@ -337,7 +358,6 @@ def generate_json(path):
         # file
         else:
             display_name = os.path.splitext(os.path.basename(path))[0]
-            json_dict["sourceurl"] = sourcelines_dict[os.path.abspath(path)]
 
         json_dict["displayName"] = display_name
 
@@ -363,3 +383,19 @@ if __name__ == "__main__":
 
     with open(json_path, 'w') as f:
         json.dump(struct_json, f, indent=4)
+
+
+    # ## experiment
+    # branch = "master"
+    # fe_path = "/home/geez219/python_project/fastestimator/fastestimator"
+    # sys.path.insert(0, fe_path)
+    # name = "Estimator"
+    # save_dir = "Estimator"
+    # f_rel_path = "estimator.py"
+    # os.makedirs(save_dir, exist_ok=True)
+    # module = pydoc.safeimport(inspect.getmodulename("estimator.py"))
+    # api_md = APIMarkdown(name=name,
+    #                      module=module,
+    #                      save_dir=save_dir,
+    #                      f_rel_path=f_rel_path)
+    # api_md.dump()
