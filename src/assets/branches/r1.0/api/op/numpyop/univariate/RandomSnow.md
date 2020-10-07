@@ -1,4 +1,4 @@
-## RandomSnow
+## RandomSnow<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/op/numpyop/univariate/random_snow.py/#L22-L52>View source on Github</a>
 ```python
 RandomSnow(
 	inputs: Union[str, Iterable[str], Callable],
@@ -12,7 +12,7 @@ RandomSnow(
 Bleach out some pixels to simulate snow.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **inputs** :  Key(s) of images to be modified.
 * **outputs** :  Key(s) into which to write the modified images.
@@ -21,3 +21,6 @@ Bleach out some pixels to simulate snow.
 * **snow_point_upper** :  Upper bound of the amount of snow. Should be in the range [0, 1].
 * **brightness_coeff** :  A larger number will lead to a more snow on the image. Should be >= 0.
 * **Image types** :     uint8, float32
+
+
+

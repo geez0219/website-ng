@@ -1,6 +1,4 @@
-
-
-### check_nan
+## check_nan<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/backend/check_nan.py/#L22-L54>View source on Github</a>
 ```python
 check_nan(
 	val: Union[int, float, numpy.ndarray, tensorflow.python.framework.ops.Tensor, torch.Tensor]
@@ -28,9 +26,10 @@ b = fe.backend.check_nan(n)  # True
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **val** :  The input value.
 
-#### Returns:
+<h3>Returns:</h3>
     True iff `val` contains NaN
+

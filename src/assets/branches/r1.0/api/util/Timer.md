@@ -1,4 +1,4 @@
-## Timer
+## Timer<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/util/util.py/#L189-L215>View source on Github</a>
 ```python
 Timer(
 	name='Task'
@@ -16,3 +16,7 @@ def func():
     return x()
 func()  # T2 took 0.14819 seconds
 ```
+
+
+
+

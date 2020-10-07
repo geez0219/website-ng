@@ -1,6 +1,4 @@
-
-
-### parse_log_dir
+## parse_log_dir<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/summary/logs/log_parse.py/#L98-L130>View source on Github</a>
 ```python
 parse_log_dir(
 	dir_path: str,
@@ -18,7 +16,7 @@ parse_log_dir(
 A function which will gather all log files within a given folder and pass them along for visualization.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **dir_path** :  The path to a directory containing log files.
 * **log_extension** :  The extension of the log files.
@@ -29,3 +27,4 @@ A function which will gather all log files within a given folder and pass them a
 * **ignore_metrics** :  Any metrics within the log files which will not be visualized.
 * **share_legend** :  Whether to have one legend across all graphs (True) or one legend per graph (False).
 * **pretty_names** :  Whether to modify the metric names in graph titles (True) or leave them alone (False).
+

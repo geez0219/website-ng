@@ -1,4 +1,4 @@
-## RandomShadow
+## RandomShadow<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/numpyop/univariate/random_shadow.py/#L24-L63>View source on Github</a>
 ```python
 RandomShadow(
 	inputs: Union[str, Iterable[str]],
@@ -13,7 +13,7 @@ RandomShadow(
 Add shadows to an image
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **inputs** :  Key(s) of images to be modified.
 * **outputs** :  Key(s) into which to write the modified images.
@@ -23,3 +23,6 @@ Add shadows to an image
 * **num_shadows_upper** :  Lower limit for the possible number of shadows.        Should be in range [`num_shadows_lower`, inf].
 * **shadow_dimension** :  Number of edges in the shadow polygons.
 * **Image types** :     uint8, float32
+
+
+

@@ -1,6 +1,4 @@
-
-
-### update_model
+## update_model<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/backend/update_model.py/#L24-L74>View source on Github</a>
 ```python
 update_model(
 	model: Union[tensorflow.python.keras.engine.training.Model, torch.nn.modules.module.Module],
@@ -33,13 +31,14 @@ fe.backend.update_model(m, loss=loss)
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **model** :  A neural network instance to update.
 * **loss** :  A loss value to compute gradients from.
 * **tape** :  A TensorFlow GradientTape which was recording when the `loss` was computed (iff using TensorFlow).
 * **retain_graph** :  Whether to keep the model graph in memory (applicable only for PyTorch).
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **ValueError** :  If `model` is an unacceptable data type.
+

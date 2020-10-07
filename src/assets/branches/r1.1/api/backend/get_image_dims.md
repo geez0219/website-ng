@@ -1,6 +1,4 @@
-
-
-### get_image_dims
+## get_image_dims<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/backend/get_image_dims.py/#L24-L61>View source on Github</a>
 ```python
 get_image_dims(
 	tensor: ~Tensor
@@ -28,13 +26,14 @@ b = fe.backend.get_image_dims(p)  # (3, 12, 12)
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **tensor** :  The input tensor.
 
-#### Returns:
+<h3>Returns:</h3>
     Channels, height and width of the `tensor`.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **ValueError** :  If `tensor` is an unacceptable data type.
+

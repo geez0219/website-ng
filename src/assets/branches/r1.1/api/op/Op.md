@@ -1,4 +1,4 @@
-## Op
+## Op<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/op.py/#L22-L74>View source on Github</a>
 ```python
 Op(
 	inputs: Union[NoneType, str, Iterable[str]]=None,
@@ -38,8 +38,11 @@ in list format and unwrap the values before storing them into the data dictionar
 fe.op.numpyop.univariate.univariate.ImageOnlyAlbumentation.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **inputs** :  Key(s) from which to retrieve data from the data dictionary.
 * **outputs** :  Key(s) under which to write the outputs of this Op back to the data dictionary.
 * **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
+
+
+

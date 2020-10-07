@@ -1,6 +1,4 @@
-
-
-### tensor_pow
+## tensor_pow<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/backend/tensor_pow.py/#L24-L65>View source on Github</a>
 ```python
 tensor_pow(
 	tensor: ~Tensor,
@@ -32,14 +30,15 @@ b = fe.backend.tensor_pow(p, 0.21)  # [[1.0, 1.338, 1.457], [1.191, 0.865, 0]]
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **tensor** :  The input tensor.
 * **power** :  The power to which to raise the elements in the `tensor`.
 
-#### Returns:
+<h3>Returns:</h3>
     The `tensor` raised element-wise to the given `power`.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **ValueError** :  If `tensor` is an unacceptable data type.
+

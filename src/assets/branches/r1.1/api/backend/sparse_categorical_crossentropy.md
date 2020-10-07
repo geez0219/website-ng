@@ -1,6 +1,4 @@
-
-
-### sparse_categorical_crossentropy
+## sparse_categorical_crossentropy<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/backend/sparse_categorical_crossentropy.py/#L25-L77>View source on Github</a>
 ```python
 sparse_categorical_crossentropy(
 	y_pred: ~Tensor,
@@ -33,16 +31,17 @@ b = fe.backend.sparse_categorical_crossentropy(y_pred=pred, y_true=true, average
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **y_pred** :  Prediction with a shape like (Batch, C). dtype float32 or float16.
 * **y_true** :  Ground truth class labels with a shape like (Batch) or (Batch, 1). dtype int.
 * **from_logits** :  Whether y_pred is from logits. If True, a softmax will be applied to the prediction.
 * **average_loss** :  Whether to average the element-wise loss.
 
-#### Returns:
+<h3>Returns:</h3>
     The sparse categorical crossentropy between `y_pred` and `y_true`. A scalar if `average_loss` is True, else a    tensor with the shape (Batch).
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **AssertionError** :  If `y_true` or `y_pred` are unacceptable data types.
+

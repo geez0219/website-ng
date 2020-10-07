@@ -1,4 +1,4 @@
-## NumpyOp
+## NumpyOp<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/numpyop/numpyop.py/#L24-L43>View source on Github</a>
 ```python
 NumpyOp(
 	inputs: Union[NoneType, str, Iterable[str]]=None,
@@ -11,7 +11,7 @@ An Operator class which takes and returns numpy data.
 
 These Operators are used in fe.Pipeline to perform data pre-processing / augmentation.
 
-### forward
+### forward<span class="tag">method of NumpyOp</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/numpyop/numpyop.py/#L29-L43>View source on Github</a>
 ```python
 forward(
 	self,
@@ -25,10 +25,13 @@ A method which will be invoked in order to transform data.
 This method will be invoked on individual elements of data before any batching / axis expansion is performed.
 
 
-#### Args:
+<h4>Args:</h4>
 
 * **data** :  The arrays from the data dictionary corresponding to whatever keys this Op declares as its `inputs`.
 * **state** :  Information about the current execution context, for example {"mode" "train"}.
 
-#### Returns:
+<h4>Returns:</h4>
     The `data` after applying whatever transform this Op is responsible for. It will be written into the data    dictionary based on whatever keys this Op declares as its `outputs`.
+
+
+

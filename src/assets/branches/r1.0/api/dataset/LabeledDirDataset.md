@@ -1,4 +1,4 @@
-## LabeledDirDataset
+## LabeledDirDataset<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/dataset/labeled_dir_dataset.py/#L22-L81>View source on Github</a>
 ```python
 LabeledDirDataset(
 	root_dir: str,
@@ -12,7 +12,7 @@ LabeledDirDataset(
 A dataset which reads files from a folder hierarchy like root/class(/es)/data.file.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **root_dir** :  The path to the directory containing data sorted by folders.
 * **data_key** :  What key to assign to the data values in the data dictionary.
@@ -20,7 +20,7 @@ A dataset which reads files from a folder hierarchy like root/class(/es)/data.fi
 * **label_mapping** :  A dictionary defining the mapping to use. If not provided will map classes to int labels.
 * **file_extension** :  If provided then only files ending with the file_extension will be included.
 
-### summary
+### summary<span class="tag">method of LabeledDirDataset</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/dataset/labeled_dir_dataset.py/#L72-L81>View source on Github</a>
 ```python
 summary(
 	self
@@ -29,5 +29,8 @@ summary(
 ```
 Generate a summary representation of this dataset.
 
-#### Returns:
+<h4>Returns:</h4>
     A summary representation of this dataset.
+
+
+

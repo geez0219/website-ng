@@ -1,4 +1,4 @@
-## Posterize
+## Posterize<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/op/numpyop/univariate/posterize.py/#L22-L46>View source on Github</a>
 ```python
 Posterize(
 	inputs: Union[str, Iterable[str], Callable],
@@ -10,10 +10,13 @@ Posterize(
 Reduce the number of bits for each color channel
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **inputs** :  Key(s) of images to be modified.
 * **outputs** :  Key(s) into which to write the modified images.
 * **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
 * **num_bits** :  Number of high bits. If num_bits is a single value, the range will be [num_bits, num_bits]. A triplet        of ints will be interpreted as [r, g, b], and a triplet of pairs as [[r1, r1], [g1, g2], [b1, b2]]. Must be        in the range [0, 8].
 * **Image types** :     uint8
+
+
+

@@ -1,4 +1,4 @@
-## CropNonEmptyMaskIfExists
+## CropNonEmptyMaskIfExists<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/numpyop/multivariate/crop_non_empty_mask_if_exists.py/#L25-L90>View source on Github</a>
 ```python
 CropNonEmptyMaskIfExists(
 	height: int,
@@ -23,7 +23,7 @@ CropNonEmptyMaskIfExists(
 Crop an area with mask if mask is non-empty, otherwise crop randomly.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
 * **image_in** :  The key of an image to be modified.
@@ -43,3 +43,6 @@ Crop an area with mask if mask is non-empty, otherwise crop randomly.
 * **ignore_values** :  Values to ignore in mask, `0` values are always ignored (e.g. if background value is 5 set         `ignore_values=[5]` to ignore).
 * **ignore_channels** :  Channels to ignore in mask (e.g. if background is a first channel set `ignore_channels=[0]` to        ignore).
 * **Image types** :     uint8, float32
+
+
+

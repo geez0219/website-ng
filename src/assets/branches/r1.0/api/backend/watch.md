@@ -1,6 +1,4 @@
-
-
-### watch
+## watch<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/backend/watch.py/#L23-L59>View source on Github</a>
 ```python
 watch(
 	tensor: ~Tensor,
@@ -24,14 +22,15 @@ x = fe.backend.watch(x)  # x.requires_grad == True
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **tensor** :  The tensor to be monitored.
 * **tape** :  A TensorFlow GradientTape which will be used to record gradients (iff using TensorFlow for the backend).
 
-#### Returns:
+<h3>Returns:</h3>
     The `tensor` or a copy of the `tensor` which is being tracked for gradient computations. This value is only    needed if using PyTorch as the backend.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **ValueError** :  If `tensor` is an unacceptable data type.
+

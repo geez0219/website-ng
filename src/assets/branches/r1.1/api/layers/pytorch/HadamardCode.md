@@ -1,4 +1,4 @@
-## HadamardCode
+## HadamardCode<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/layers/pytorch/hadamard.py/#L25-L131>View source on Github</a>
 ```python
 HadamardCode(
 	in_features: Union[int, List[int]],
@@ -46,7 +46,7 @@ def forward(self, x):
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **in_features** :  How many input features there are (inputs should be of shape (Batch, N) or [(Batch, N), ...]).
 * **n_classes** :  How many output classes to map onto.
@@ -54,6 +54,9 @@ def forward(self, x):
 * **max_prob** :  The maximum probability that can be assigned to a class. For numeric stability this must be less than        1.0. Intuitively it makes sense to keep this close to 1, but to get adversarial training benefits it should        be noticeably less than 1, for example 0.95 or even 0.8.
 * **power** :  The power parameter to be used by Inverse Distance Weighting when transforming Hadamard class distances        into a class probability distribution. A value of 1.0 gives an intuitive mapping to probabilities, but small        values such as 0.25 appear to give slightly better adversarial benefits. Large values like 2 or 3 give        slightly faster convergence at the expense of adversarial performance. Must be greater than zero.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **ValueError** :  If `code_length` is invalid.
+
+
+

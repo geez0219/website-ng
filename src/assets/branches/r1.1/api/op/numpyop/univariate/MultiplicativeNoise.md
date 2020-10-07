@@ -1,4 +1,4 @@
-## MultiplicativeNoise
+## MultiplicativeNoise<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/numpyop/univariate/multiplicative_noise.py/#L24-L56>View source on Github</a>
 ```python
 MultiplicativeNoise(
 	inputs: Union[str, Iterable[str]],
@@ -12,7 +12,7 @@ MultiplicativeNoise(
 Multiply an image with random perturbations.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **inputs** :  Key(s) of images to be modified.
 * **outputs** :  Key(s) into which to write the modified images.
@@ -21,3 +21,6 @@ Multiply an image with random perturbations.
 * **per_channel** :  Whether to sample different multipliers for each channel of the image.
 * **elementwise** :  If `False` multiply multiply all pixels in an image with a random value sampled once.        If `True` Multiply image pixels with values that are pixelwise randomly sampled.
 * **Image types** :     uint8, float32
+
+
+

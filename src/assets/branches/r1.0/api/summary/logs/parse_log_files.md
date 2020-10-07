@@ -1,6 +1,4 @@
-
-
-### parse_log_files
+## parse_log_files<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/summary/logs/log_parse.py/#L56-L95>View source on Github</a>
 ```python
 parse_log_files(
 	file_paths: List[str],
@@ -20,7 +18,7 @@ This function which will iterate through the given log file paths, parse them to
 metrics which are blacklisted, and then pass the necessary information on the graphing function.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **file_paths** :  A list of paths to various log files.
 * **log_extension** :  The extension of the log files.
@@ -31,6 +29,7 @@ metrics which are blacklisted, and then pass the necessary information on the gr
 * **share_legend** :  Whether to have one legend across all graphs (True) or one legend per graph (False).
 * **pretty_names** :  Whether to modify the metric names in graph titles (True) or leave them alone (False).
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **AssertionError** :  If no log files are provided.
+

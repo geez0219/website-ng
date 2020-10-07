@@ -1,6 +1,4 @@
-
-
-### load_model
+## load_model<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/backend/load_model.py/#L23-L66>View source on Github</a>
 ```python
 load_model(
 	model: Union[tensorflow.python.keras.engine.training.Model, torch.nn.modules.module.Module],
@@ -25,12 +23,13 @@ fe.backend.load_model(m, weights_path="tmp/test.pt")
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **model** :  A neural network instance to load.
 * **weights_path** :  Path to the `model` weights.
 * **load_optimizer** :  Whether to load optimizer. If True, then it will load <weights_opt> file in the path.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **ValueError** :  If `model` is an unacceptable data type.
+

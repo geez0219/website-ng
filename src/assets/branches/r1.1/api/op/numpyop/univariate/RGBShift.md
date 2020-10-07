@@ -1,4 +1,4 @@
-## RGBShift
+## RGBShift<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/numpyop/univariate/rgb_shift.py/#L24-L57>View source on Github</a>
 ```python
 RGBShift(
 	inputs: Union[str, Iterable[str]],
@@ -12,7 +12,7 @@ RGBShift(
 Randomly shift the channel values for an input RGB image.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **inputs** :  Key(s) of images to be normalized.
 * **outputs** :  Key(s) into which to write the normalized images.
@@ -21,3 +21,6 @@ Randomly shift the channel values for an input RGB image.
 * **g_shift_limit** :  range for changing values for the green channel. If g_shift_limit is a single int, the range        will be (-g_shift_limit, g_shift_limit).
 * **b_shift_limit** :  range for changing values for the blue channel. If b_shift_limit is a single int, the range        will be (-b_shift_limit, b_shift_limit).
 * **Image types** :     uint8, float32
+
+
+

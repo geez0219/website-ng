@@ -1,6 +1,4 @@
-
-
-### reshape
+## reshape<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/backend/reshape.py/#L24-L72>View source on Github</a>
 ```python
 reshape(
 	tensor: ~Tensor,
@@ -38,14 +36,15 @@ b = fe.backend.reshape(p, shape=[2, 2, 2, 1])  # [[[[1], [2]], [[3], [4]]], [[[5
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **tensor** :  The input value.
 * **shape** :  The new shape of the tensor. At most one value may be -1 which indicates that whatever values are left        should be packed into that axis.
 
-#### Returns:
+<h3>Returns:</h3>
     The reshaped `tensor`.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **ValueError** :  If `tensor` is an unacceptable data type.
+

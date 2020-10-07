@@ -1,4 +1,4 @@
-## System
+## System<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/summary/system.py/#L25-L168>View source on Github</a>
 ```python
 System(
 	network: fastestimator.network.BaseNetwork,
@@ -14,7 +14,7 @@ System(
 A class which tracks state information while the fe.Estimator is running.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **network** :  The network instance being used by the current fe.Estimator.
 * **mode** :  The current execution mode (or None for warmup).
@@ -37,7 +37,7 @@ A class which tracks state information while the fe.Estimator is running.
 * **summary** :  An object to write experiment results to.
 * **experiment_time** :  A timestamp indicating when this model was trained.
 
-### load_state
+### load_state<span class="tag">method of System</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/summary/system.py/#L95-L104>View source on Github</a>
 ```python
 load_state(
 	self, json_path
@@ -47,11 +47,11 @@ load_state(
 Load training state.
 
 
-#### Args:
+<h4>Args:</h4>
 
 * **json_path** :  The json file path to load from.
 
-### reset
+### reset<span class="tag">method of System</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/summary/system.py/#L133-L144>View source on Github</a>
 ```python
 reset(
 	self,
@@ -62,11 +62,11 @@ reset(
 Reset the current `System` for a new round of training, including a new `Summary` object.
 
 
-#### Args:
+<h4>Args:</h4>
 
 * **summary_name** :  The name of the experiment. The `Summary` object will store information iff name is not None.
 
-### reset_for_test
+### reset_for_test<span class="tag">method of System</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/summary/system.py/#L146-L158>View source on Github</a>
 ```python
 reset_for_test(
 	self,
@@ -77,11 +77,11 @@ reset_for_test(
 Partially reset the current `System` object for a new round of testing.
 
 
-#### Args:
+<h4>Args:</h4>
 
 * **summary_name** :  The name of the experiment. If not provided, the system will re-use the previous summary name.
 
-### save_state
+### save_state<span class="tag">method of System</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/summary/system.py/#L106-L115>View source on Github</a>
 ```python
 save_state(
 	self, json_path
@@ -91,11 +91,11 @@ save_state(
 Load training state.
 
 
-#### Args:
+<h4>Args:</h4>
 
 * **json_path** :  The json file path to save to.
 
-### update_batch_idx
+### update_batch_idx<span class="tag">method of System</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/summary/system.py/#L125-L131>View source on Github</a>
 ```python
 update_batch_idx(
 	self
@@ -105,7 +105,7 @@ update_batch_idx(
 Increment the current `batch_idx`.
         
 
-### update_global_step
+### update_global_step<span class="tag">method of System</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/summary/system.py/#L117-L123>View source on Github</a>
 ```python
 update_global_step(
 	self
@@ -115,7 +115,7 @@ update_global_step(
 Increment the current `global_step`.
         
 
-### write_summary
+### write_summary<span class="tag">method of System</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/summary/system.py/#L160-L168>View source on Github</a>
 ```python
 write_summary(
 	self,
@@ -127,7 +127,10 @@ write_summary(
 Write an entry into the `Summary` object (iff the experiment was named).
 
 
-#### Args:
+<h4>Args:</h4>
 
 * **key** :  The key to write into the summary object.
 * **value** :  The value to write into the summary object.
+
+
+

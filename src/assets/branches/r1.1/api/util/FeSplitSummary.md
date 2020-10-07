@@ -1,4 +1,4 @@
-## FeSplitSummary
+## FeSplitSummary<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/util/traceability_util.py/#L117-L145>View source on Github</a>
 ```python
 FeSplitSummary()
 ```
@@ -6,7 +6,7 @@ A class to summarize splits performed on an FE Dataset.
 
 This class is intentionally not @traceable.
 
-### add_split
+### add_split<span class="tag">method of FeSplitSummary</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/util/traceability_util.py/#L126-L133>View source on Github</a>
 ```python
 add_split(
 	self,
@@ -18,12 +18,12 @@ add_split(
 Record another split on this dataset.
 
 
-#### Args:
+<h4>Args:</h4>
 
 * **parent** :  The id of the parent involved in the split (or 'self' if you are the parent).
 * **fraction** :  The string representation of the split fraction that was used.
 
-### dumps
+### dumps<span class="tag">method of FeSplitSummary</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/util/traceability_util.py/#L135-L145>View source on Github</a>
 ```python
 dumps(
 	self
@@ -33,5 +33,8 @@ dumps(
 Generate a LaTeX formatted representation of this object.
 
 
-#### Returns:
+<h4>Returns:</h4>
     A LaTeX string representation of this object.
+
+
+

@@ -1,6 +1,4 @@
-
-
-### reduce_min
+## reduce_min<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/backend/reduce_min.py/#L26-L82>View source on Github</a>
 ```python
 reduce_min(
 	tensor: ~Tensor,
@@ -39,15 +37,16 @@ b = fe.backend.reduce_min(p, axis=[0,2])  # [1, 3]
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **tensor** :  The input value.
 * **axis** :  Which axis or collection of axes to compute the min along.
 * **keepdims** :  Whether to preserve the number of dimensions during the reduction.
 
-#### Returns:
+<h3>Returns:</h3>
     The min values of `tensor` along `axis`.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **ValueError** :  If `tensor` is an unacceptable data type.
+

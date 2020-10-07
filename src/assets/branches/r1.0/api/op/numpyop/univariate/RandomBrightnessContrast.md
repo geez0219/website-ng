@@ -1,4 +1,4 @@
-## RandomBrightnessContrast
+## RandomBrightnessContrast<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/op/numpyop/univariate/random_brightness_contrast.py/#L22-L54>View source on Github</a>
 ```python
 RandomBrightnessContrast(
 	inputs: Union[str, Iterable[str], Callable],
@@ -12,7 +12,7 @@ RandomBrightnessContrast(
 Randomly change the brightness and contrast of an image.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **inputs** :  Key(s) of images to be modified.
 * **outputs** :  Key(s) into which to write the modified images.
@@ -21,3 +21,6 @@ Randomly change the brightness and contrast of an image.
 * **contrast_limit** :  Factor range for changing contrast.        If limit is a single float, the range will be (-limit, limit).
 * **brightness_by_max** :  If True adjust contrast by image dtype maximum, else adjust contrast by image mean.
 * **Image types** :     uint8, float32
+
+
+

@@ -1,4 +1,4 @@
-## ISONoise
+## ISONoise<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/numpyop/univariate/iso_noise.py/#L24-L49>View source on Github</a>
 ```python
 ISONoise(
 	inputs: Union[str, Iterable[str]],
@@ -11,7 +11,7 @@ ISONoise(
 Apply camera sensor noise.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **inputs** :  Key(s) of images to be modified.
 * **outputs** :  Key(s) into which to write the modified images.
@@ -19,3 +19,6 @@ Apply camera sensor noise.
 * **color_shift** :  Variance range for color hue change. Measured as a fraction of 360 degree Hue angle in the HLS        colorspace.
 * **intensity** :  Multiplicative factor that controls the strength of color and luminace noise.
 * **Image types** :     uint8
+
+
+

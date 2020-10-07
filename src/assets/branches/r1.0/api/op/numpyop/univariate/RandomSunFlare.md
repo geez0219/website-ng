@@ -1,4 +1,4 @@
-## RandomSunFlare
+## RandomSunFlare<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/op/numpyop/univariate/random_sun_flare.py/#L22-L67>View source on Github</a>
 ```python
 RandomSunFlare(
 	inputs: Union[str, Iterable[str], Callable],
@@ -16,7 +16,7 @@ RandomSunFlare(
 Add a sun flare to the image.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **inputs** :  Key(s) of images to be normalized.
 * **outputs** :  Key(s) into which to write the modified images.
@@ -29,3 +29,6 @@ Add a sun flare to the image.
 * **src_radius** :  Radius of the flare.
 * **src_color** :  Color of the flare (R,G,B).
 * **Image types** :     uint8, float32
+
+
+

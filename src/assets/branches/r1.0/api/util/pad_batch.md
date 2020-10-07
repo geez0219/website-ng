@@ -1,6 +1,4 @@
-
-
-### pad_batch
+## pad_batch<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/util/util.py/#L386-L408>View source on Github</a>
 ```python
 pad_batch(
 	batch: List[MutableMapping[str, Any]],
@@ -17,11 +15,12 @@ print(data)  # [{'x': [[1., 1.], [1., 1.],[0., 0.]], 'y': 8}, {'x': [[1., 0.], [
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **batch** :  A list of data to be padded.
 * **pad_value** :  The value to pad with.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **AssertionError** :  If the data within the batch do not have matching ranks.
+

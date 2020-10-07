@@ -1,4 +1,4 @@
-## HueSaturationValue
+## HueSaturationValue<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/op/numpyop/univariate/hue_saturation_value.py/#L22-L55>View source on Github</a>
 ```python
 HueSaturationValue(
 	inputs: Union[str, Iterable[str], Callable],
@@ -12,7 +12,7 @@ HueSaturationValue(
 Randomly modify the hue, saturation, and value of an image.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **inputs** :  Key(s) of images to be modified.
 * **outputs** :  Key(s) into which to write the modified images.
@@ -21,3 +21,6 @@ Randomly modify the hue, saturation, and value of an image.
 * **sat_shift_limit** :  Range for changing saturation. If sat_shift_limit is a single int, the range will be        (-sat_shift_limit, sat_shift_limit).
 * **val_shift_limit** :  range for changing value. If val_shift_limit is a single int, the range will be        (-val_shift_limit, val_shift_limit).
 * **Image types** :     uint8, float32
+
+
+

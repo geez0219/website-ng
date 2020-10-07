@@ -1,4 +1,4 @@
-## LogSplicer
+## LogSplicer<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/util/util.py/#L240-L266>View source on Github</a>
 ```python
 LogSplicer(
 	log_path: str
@@ -7,6 +7,9 @@ LogSplicer(
 A class to send stdout information into a file before passing it along to the normal stdout.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **log_path** :  The path/filename into which to append the current stdout.
+
+
+

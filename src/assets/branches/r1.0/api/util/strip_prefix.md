@@ -1,6 +1,4 @@
-
-
-### strip_prefix
+## strip_prefix<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/util/util.py/#L263-L283>View source on Github</a>
 ```python
 strip_prefix(
 	target: Union[str, NoneType],
@@ -16,10 +14,11 @@ x = fe.util.strip_prefix("astring.json", "asa")  # "astring.json"
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **target** :  A string to be formatted.
 * **prefix** :  A string to be removed from `target`.
 
-#### Returns:
+<h3>Returns:</h3>
     The formatted version of `target`.
+

@@ -1,6 +1,4 @@
-
-
-### tensor_sqrt
+## tensor_sqrt<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/backend/tensor_sqrt.py/#L24-L61>View source on Github</a>
 ```python
 tensor_sqrt(
 	tensor: ~Tensor
@@ -28,13 +26,14 @@ b = fe.backend.tensor_sqrt(p)  # [[1.0, 2.0, 2.4495], [2.0, 3.0, 4.0]]
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **tensor** :  The input tensor.
 
-#### Returns:
+<h3>Returns:</h3>
     The `tensor` that contains square root of input values.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **ValueError** :  If `tensor` is an unacceptable data type.
+

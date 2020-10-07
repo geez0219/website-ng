@@ -1,4 +1,4 @@
-## Normalize
+## Normalize<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/numpyop/univariate/normalize.py/#L24-L50>View source on Github</a>
 ```python
 Normalize(
 	inputs: Union[str, Iterable[str]],
@@ -12,7 +12,7 @@ Normalize(
 Divide pixel values by a maximum value, subtract mean per channel and divide by std per channel.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **inputs** :  Key(s) of images to be modified.
 * **outputs** :  Key(s) into which to write the modified images.
@@ -21,3 +21,6 @@ Divide pixel values by a maximum value, subtract mean per channel and divide by 
 * **std** :  The divisor.
 * **max_pixel_value** :  Maximum possible pixel value.
 * **Image types** :     uint8, float32
+
+
+

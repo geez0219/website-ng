@@ -1,6 +1,4 @@
-
-
-### bar_custom
+## bar_custom<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/util/wget_util.py/#L21-L107>View source on Github</a>
 ```python
 bar_custom(
 	current: float,
@@ -32,11 +30,12 @@ wget.download('http://url.com', '/save/dir', bar=fe.util.bar_custom)
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **current** :  The current amount of progress.
 * **total** :  The total amount of progress required by the task.
 * **width** :  The available width.
 
-#### Returns:
+<h3>Returns:</h3>
     A formatted string to display the current progress.
+

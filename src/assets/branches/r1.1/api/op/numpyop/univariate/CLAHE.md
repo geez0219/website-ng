@@ -1,4 +1,4 @@
-## CLAHE
+## CLAHE<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/numpyop/univariate/clahe.py/#L24-L49>View source on Github</a>
 ```python
 CLAHE(
 	inputs: Union[str, Iterable[str]],
@@ -11,7 +11,7 @@ CLAHE(
 Apply contrast limited adaptive histogram equalization to the image.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **inputs** :  Key(s) of images to be modified.
 * **outputs** :  Key(s) into which to write the modified images.
@@ -19,3 +19,6 @@ Apply contrast limited adaptive histogram equalization to the image.
 * **clip_limit** :  upper threshold value for contrast limiting. If clip_limit is a single float value, the range will        be (1, clip_limit).
 * **tile_grid_size** :  size of grid for histogram equalization.
 * **Image types** :     uint8
+
+
+

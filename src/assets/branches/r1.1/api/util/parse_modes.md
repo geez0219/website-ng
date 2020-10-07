@@ -1,6 +1,4 @@
-
-
-### parse_modes
+## parse_modes<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/util/util.py/#L446-L474>View source on Github</a>
 ```python
 parse_modes(
 	modes: Set[str]
@@ -17,13 +15,14 @@ m = fe.util.parse_modes({"!train", "!infer"})  # {"eval", "test"}
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **modes** :  The desired modes to run on (possibly containing blacklisted modes).
 
-#### Returns:
+<h3>Returns:</h3>
     The modes to run on (converted to a whitelist).
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **AssertionError** :  If invalid modes are detected, or if blacklisted modes and whitelisted modes are mixed.
+

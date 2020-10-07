@@ -1,6 +1,4 @@
-
-
-### plot_logs
+## plot_logs<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/summary/logs/log_plot.py/#L149-L367>View source on Github</a>
 ```python
 plot_logs(
 	experiments: List[fastestimator.summary.summary.Summary],
@@ -15,7 +13,7 @@ plot_logs(
 A function which will plot experiment histories for comparison viewing / analysis.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **experiments** :  Experiment(s) to plot.
 * **smooth_factor** :  A non-negative float representing the magnitude of gaussian smoothing to apply (zero for none).
@@ -24,5 +22,6 @@ A function which will plot experiment histories for comparison viewing / analysi
 * **ignore_metrics** :  Any keys to ignore during plotting.
 * **include_metrics** :  A whitelist of keys to include during plotting. If None then all will be included.
 
-#### Returns:
+<h3>Returns:</h3>
     The handle of the pyplot figure.
+

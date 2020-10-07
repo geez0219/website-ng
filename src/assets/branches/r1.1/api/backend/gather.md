@@ -1,6 +1,4 @@
-
-
-### gather
+## gather<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/backend/gather.py/#L28-L79>View source on Github</a>
 ```python
 gather(
 	tensor: ~Tensor,
@@ -40,14 +38,15 @@ b = fe.backend.gather(p, ind)  # [[[4, 5], [6, 7]], [[0, 1], [2, 3]], [[4, 5], [
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **tensor** :  A tensor to gather values from.
 * **indices** :  A tensor indicating which indices should be selected. These represent locations along the 0 axis.
 
-#### Returns:
+<h3>Returns:</h3>
     A tensor containing the elements from `tensor` at the given `indices`.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **ValueError** :  If `tensor` is an unacceptable data type.
+

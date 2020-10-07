@@ -1,4 +1,4 @@
-## ReadImage
+## ReadImage<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/op/numpyop/univariate/read_image.py/#L24-L72>View source on Github</a>
 ```python
 ReadImage(
 	inputs: Union[str, Iterable[str], Callable],
@@ -11,7 +11,7 @@ ReadImage(
 A class for reading png or jpg images from disk.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **inputs** :  Key(s) of paths to images to be loaded.
 * **outputs** :  Key(s) of images to be output.
@@ -19,6 +19,9 @@ A class for reading png or jpg images from disk.
 * **parent_path** :  Parent path that will be prepended to a given path.
 * **color_flag** :  Whether to read the image as 'color', 'grey', or one of the cv2.IMREAD flags.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **AssertionError** :  If `inputs` and `outputs` have mismatched lengths, or the `color_flag` is unacceptable.
+
+
+

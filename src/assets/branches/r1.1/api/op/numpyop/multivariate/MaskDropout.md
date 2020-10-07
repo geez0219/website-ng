@@ -1,4 +1,4 @@
-## MaskDropout
+## MaskDropout<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/numpyop/multivariate/mask_dropout.py/#L24-L77>View source on Github</a>
 ```python
 MaskDropout(
 	max_objects: Union[int, Tuple[int, int]]=1,
@@ -20,7 +20,7 @@ from mask. The mask must be single-channel image, with zero values treated as ba
 number of channels.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
 * **image_in** :  The key of an image to be modified.
@@ -33,3 +33,6 @@ number of channels.
 * **image_fill_value** :  Fill value to use when filling image.        Can be 'inpaint' to apply in-painting (works only  for 3-channel images)
 * **mask_fill_value** :  Fill value to use when filling mask.
 * **Image types** :     uint8, float32
+
+
+

@@ -1,6 +1,4 @@
-
-
-### to_type
+## to_type<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/backend/to_type.py/#L24-L68>View source on Github</a>
 ```python
 to_type(
 	data: Union[Collection, ~Tensor]
@@ -34,9 +32,10 @@ types = fe.backend.to_type(data)
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **data** :  A tensor or possibly nested collection of tensors.
 
-#### Returns:
+<h3>Returns:</h3>
     A collection with the same structure as `data`, but with any tensors substituted for their dtypes.
+

@@ -1,4 +1,4 @@
-## RandomCropNearBBox
+## RandomCropNearBBox<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/numpyop/multivariate/random_crop_near_bbox.py/#L25-L80>View source on Github</a>
 ```python
 RandomCropNearBBox(
 	cropping_bbox_in: str,
@@ -21,7 +21,7 @@ RandomCropNearBBox(
 Crop bbox from an image with random shift by x,y coordinates.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
 * **image_in** :  The key of an image to be modified.
@@ -39,3 +39,6 @@ Crop bbox from an image with random shift by x,y coordinates.
 * **keypoint_params** :  Parameters defining the type of keypoints ('xy', 'yx', 'xya', 'xys', 'xyas', 'xysa').
 * **max_part_shift** :  Float value in the range (0.0, 1.0).
 * **Image types** :     uint8, float32
+
+
+

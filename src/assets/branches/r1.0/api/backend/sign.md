@@ -1,6 +1,4 @@
-
-
-### sign
+## sign<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/backend/sign.py/#L24-L61>View source on Github</a>
 ```python
 sign(
 	tensor: ~Tensor
@@ -28,13 +26,14 @@ b = fe.backend.sign(p)  # [-1, 1, -1]
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **tensor** :  The input value.
 
-#### Returns:
+<h3>Returns:</h3>
     The sign of each value of the `tensor`.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **ValueError** :  If `tensor` is an unacceptable data type.
+

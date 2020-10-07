@@ -1,4 +1,4 @@
-## OneOf
+## OneOf<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/tensorop/meta/one_of.py/#L30-L87>View source on Github</a>
 ```python
 OneOf(
 	*tensor_ops: fastestimator.op.tensorop.tensorop.TensorOp
@@ -8,11 +8,11 @@ OneOf(
 Perform one of several possible TensorOps.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **tensor_ops** :  A list of ops to choose between with uniform probability.
 
-### forward
+### forward<span class="tag">method of OneOf</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/tensorop/meta/one_of.py/#L76-L87>View source on Github</a>
 ```python
 forward(
 	self,
@@ -24,10 +24,13 @@ forward(
 Execute a randomly selected op from the list of `numpy_ops`.
 
 
-#### Args:
+<h4>Args:</h4>
 
 * **data** :  The information to be passed to one of the wrapped operators.
 * **state** :  Information about the current execution context, for example {"mode" "train"}.
 
-#### Returns:
+<h4>Returns:</h4>
     The `data` after application of one of the available numpyOps.
+
+
+

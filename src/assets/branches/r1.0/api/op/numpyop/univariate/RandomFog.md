@@ -1,4 +1,4 @@
-## RandomFog
+## RandomFog<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/op/numpyop/univariate/random_fog.py/#L22-L52>View source on Github</a>
 ```python
 RandomFog(
 	inputs: Union[str, Iterable[str], Callable],
@@ -12,7 +12,7 @@ RandomFog(
 Add fog to an image.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **inputs** :  Key(s) of images to be modified.
 * **outputs** :  Key(s) into which to write the modified images.
@@ -21,3 +21,6 @@ Add fog to an image.
 * **fog_coef_upper** :  Upper limit for fog intensity coefficient. Should be in the range [0, 1].
 * **alpha_coef** :  Transparency of the fog circles. Should be in the range [0, 1].
 * **Image types** :     uint8, float32
+
+
+

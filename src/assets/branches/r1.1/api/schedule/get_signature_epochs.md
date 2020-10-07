@@ -1,6 +1,4 @@
-
-
-### get_signature_epochs
+## get_signature_epochs<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/schedule/schedule.py/#L148-L166>View source on Github</a>
 ```python
 get_signature_epochs(
 	items: List[Any],
@@ -12,11 +10,12 @@ get_signature_epochs(
 Find all epochs of changes due to schedulers.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **items** :  List of items to scan from.
 * **total_epochs** :  The maximum epoch number to consider when searching for signature epochs.
 * **mode** :  Current execution mode. If None, all execution modes will be considered.
 
-#### Returns:
+<h3>Returns:</h3>
     The epoch numbers of changes.
+

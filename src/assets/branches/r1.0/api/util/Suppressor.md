@@ -1,4 +1,4 @@
-## Suppressor
+## Suppressor<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/util/util.py/#L157-L186>View source on Github</a>
 ```python
 Suppressor()
 ```
@@ -13,7 +13,7 @@ x()  # "hello"
 ```
 
 
-### write
+### write<span class="tag">method of Suppressor</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/util/util.py/#L180-L186>View source on Github</a>
 ```python
 write(
 	self,
@@ -24,6 +24,9 @@ write(
 A function which is invoked during print calls.
 
 
-#### Args:
+<h4>Args:</h4>
 
 * **dummy** :  The string which wanted to be printed.
+
+
+

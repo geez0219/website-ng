@@ -1,6 +1,4 @@
-
-
-### get_type
+## get_type<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/util/util.py/#L368-L403>View source on Github</a>
 ```python
 get_type(
 	obj: Any
@@ -27,9 +25,10 @@ x = fe.util.get_type([[[1]]]) # "List[List[List[int]]]"
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **obj** :  Data which may be wrapped in some kind of container.
 
-#### Returns:
+<h3>Returns:</h3>
     A string representation of the data type of the `obj`.
+

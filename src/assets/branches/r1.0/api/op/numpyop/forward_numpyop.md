@@ -1,9 +1,7 @@
-
-
-### forward_numpyop
+## forward_numpyop<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/op/numpyop/numpyop.py/#L59-L74>View source on Github</a>
 ```python
 forward_numpyop(
-	ops: List[op.numpyop.numpyop.NumpyOp],
+	ops: List[fastestimator.op.numpyop.numpyop.NumpyOp],
 	data: MutableMapping[str, Any],
 	mode: str
 )
@@ -12,8 +10,9 @@ forward_numpyop(
 Call the forward function for list of NumpyOps, and modify the data dictionary in place.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **ops** :  A list of NumpyOps to execute.
 * **data** :  The data dictionary.
 * **mode** :  The current execution mode ("train", "eval", "test", or "infer").
+

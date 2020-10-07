@@ -1,6 +1,4 @@
-
-
-### to_list
+## to_list<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/util/util.py/#L83-L109>View source on Github</a>
 ```python
 to_list(
 	data: Any
@@ -20,9 +18,10 @@ x = fe.util.to_list({'a': 7})  # [{'a': 7}]
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **data** :  Input data, within or without a python container.
 
-#### Returns:
+<h3>Returns:</h3>
     The input `data` but inside a list instead of whatever other container type used to hold it.
+

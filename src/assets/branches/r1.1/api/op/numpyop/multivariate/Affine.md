@@ -1,4 +1,4 @@
-## Affine
+## Affine<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/numpyop/multivariate/affine.py/#L27-L122>View source on Github</a>
 ```python
 Affine(
 	rotate: Union[~Number, Tuple[~Number, ~Number]]=0,
@@ -26,7 +26,7 @@ Affine(
 Perform affine transformations on an image.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **rotate** :  How much to rotate an image (in degrees). If a single value is given then images will be rotated by            a value sampled from the range [-n, n]. If a tuple (a, b) is given then each image will be rotated            by a value sampled from the range [a, b].
 * **scale** :  How much to scale an image (in percentage). If a single value is given then all images will be scaled            by a value drawn from the range [1.0, n]. If a tuple (a,b) is given then each image will be scaled            based on a value drawn from the range [a,b].
@@ -49,3 +49,6 @@ Perform affine transformations on an image.
 * **bbox_params** :  Parameters defining the type of bounding box ('coco', 'pascal_voc', 'albumentations' or 'yolo').
 * **keypoint_params** :  Parameters defining the type of keypoints ('xy', 'yx', 'xya', 'xys', 'xyas', 'xysa').
 * **Image types** :     uint8, float32
+
+
+

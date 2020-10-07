@@ -1,4 +1,4 @@
-## Sometimes
+## Sometimes<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/numpyop/meta/sometimes.py/#L24-L67>View source on Github</a>
 ```python
 Sometimes(
 	numpy_op: fastestimator.op.numpyop.numpyop.NumpyOp,
@@ -14,12 +14,12 @@ Sometimes declined to generate it. If you want to create a default value for a n
 invoking the Sometimes.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **numpy_op** :  The operator to be performed.
 * **prob** :  The probability of execution, which should be in the range [0-1).
 
-### forward
+### forward<span class="tag">method of Sometimes</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/numpyop/meta/sometimes.py/#L48-L67>View source on Github</a>
 ```python
 forward(
 	self,
@@ -31,10 +31,13 @@ forward(
 Execute the wrapped operator a certain fraction of the time.
 
 
-#### Args:
+<h4>Args:</h4>
 
 * **data** :  The information to be passed to the wrapped operator.
 * **state** :  Information about the current execution context, for example {"mode" "train"}.
 
-#### Returns:
+<h4>Returns:</h4>
     The original `data`, or the `data` after running it through the wrapped operator.
+
+
+

@@ -1,4 +1,4 @@
-## RandomGamma
+## RandomGamma<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/op/numpyop/univariate/random_gamma.py/#L22-L46>View source on Github</a>
 ```python
 RandomGamma(
 	inputs: Union[str, Iterable[str], Callable],
@@ -11,7 +11,7 @@ RandomGamma(
 Apply a gamma transform to an image.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **inputs** :  Key(s) of images to be modified.
 * **outputs** :  Key(s) into which to write the modified images.
@@ -19,3 +19,6 @@ Apply a gamma transform to an image.
 * **gamma_limit** :  If gamma_limit is a single float value, the range will be (-gamma_limit, gamma_limit).
 * **eps** :  A numerical stability constant to avoid division by zero.
 * **Image types** :     uint8, float32
+
+
+

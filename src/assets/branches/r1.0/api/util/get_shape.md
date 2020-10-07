@@ -1,6 +1,4 @@
-
-
-### get_shape
+## get_shape<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/util/util.py/#L315-L352>View source on Github</a>
 ```python
 get_shape(
 	obj: Any
@@ -22,9 +20,10 @@ x = fe.util.get_shape({"a": np.ones((12,22,11))})  # []
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **obj** :  Data to infer the shape of.
 
-#### Returns:
+<h3>Returns:</h3>
     A list representing the shape of the data.
+

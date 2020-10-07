@@ -1,6 +1,4 @@
-
-
-### transpose
+## transpose<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/backend/transpose.py/#L24-L61>View source on Github</a>
 ```python
 transpose(
 	tensor: ~Tensor
@@ -28,13 +26,14 @@ b = fe.backend.transpose(p)  # [[0, 3, 6], [1, 4, 7], [2, 5, 8]]
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **tensor** :  The input value.
 
-#### Returns:
+<h3>Returns:</h3>
     The transposed `tensor`.
 
-#### Raises:
+<h3>Raises:</h3>
 
 * **ValueError** :  If `tensor` is an unacceptable data type.
+

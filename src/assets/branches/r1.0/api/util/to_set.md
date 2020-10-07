@@ -1,6 +1,4 @@
-
-
-### to_set
+## to_set<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/util/util.py/#L112-L137>View source on Github</a>
 ```python
 to_set(
 	data: Any
@@ -19,9 +17,10 @@ x = fe.util.to_set((7))  # {7}
 ```
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **data** :  Input data, within or without a python container. The `data` must be hashable.
 
-#### Returns:
+<h3>Returns:</h3>
     The input `data` but inside a set instead of whatever other container type used to hold it.
+

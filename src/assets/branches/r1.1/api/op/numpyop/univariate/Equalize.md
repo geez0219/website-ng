@@ -1,4 +1,4 @@
-## Equalize
+## Equalize<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/numpyop/univariate/equalize.py/#L25-L56>View source on Github</a>
 ```python
 Equalize(
 	inputs: Union[str, Iterable[str]],
@@ -13,7 +13,7 @@ Equalize(
 Equalize the image histogram.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **inputs** :  Key(s) of images to be modified.
 * **outputs** :  Key(s) into which to write the modified images.
@@ -23,3 +23,6 @@ Equalize the image histogram.
 * **mask** :  If given, only the pixels selected by the mask are included in the analysis. May be 1 channel or 3 channel        array. Function signature must include `image` argument.
 * **mask_params** :  Params for mask function.
 * **Image types** :     uint8
+
+
+

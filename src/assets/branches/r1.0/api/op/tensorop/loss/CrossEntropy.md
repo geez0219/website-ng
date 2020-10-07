@@ -1,4 +1,4 @@
-## CrossEntropy
+## CrossEntropy<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/op/tensorop/loss/cross_entropy.py/#L28-L71>View source on Github</a>
 ```python
 CrossEntropy(
 	inputs: Union[NoneType, str, Iterable[str], Callable]=None,
@@ -12,7 +12,7 @@ CrossEntropy(
 Calculate Element-Wise CrossEntropy (binary, categorical or sparse categorical).
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **inputs** :  A tuple or list like [<y_pred>, <y_true>].
 * **outputs** :  String key under which to store the computed loss value.
@@ -20,3 +20,6 @@ Calculate Element-Wise CrossEntropy (binary, categorical or sparse categorical).
 * **from_logits** :  Whether y_pred is logits (without softmax).
 * **average_loss** :  Whether to average the element-wise loss after the Loss Op.
 * **form** :  What form of cross entropy should be performed ('binary', 'categorical', 'sparse', or None). None will        automatically infer the correct form based on tensor shape.
+
+
+

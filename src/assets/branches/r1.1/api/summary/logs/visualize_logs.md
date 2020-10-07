@@ -1,6 +1,4 @@
-
-
-### visualize_logs
+## visualize_logs<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/summary/logs/log_plot.py/#L370-L407>View source on Github</a>
 ```python
 visualize_logs(
 	experiments: List[fastestimator.summary.summary.Summary],
@@ -16,7 +14,7 @@ visualize_logs(
 A function which will save or display experiment histories for comparison viewing / analysis.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **experiments** :  Experiment(s) to plot.
 * **save_path** :  The path where the figure should be saved, or None to display the figure to the screen.
@@ -26,3 +24,4 @@ A function which will save or display experiment histories for comparison viewin
 * **ignore_metrics** :  Any metrics to ignore during plotting.
 * **include_metrics** :  A whitelist of metric keys (None whitelists all keys).
 * **verbose** :  Whether to print out the save location.
+

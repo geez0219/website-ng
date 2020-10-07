@@ -1,7 +1,7 @@
-## TestReport
+## TestReport<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/trace/io/test_report.py/#L86-L517>View source on Github</a>
 ```python
 TestReport(
-	test_cases: Union[trace.io.test_report.TestCase, List[trace.io.test_report.TestCase]],
+	test_cases: Union[fastestimator.trace.io.test_report.TestCase, List[fastestimator.trace.io.test_report.TestCase]],
 	save_path: str,
 	test_title: Union[str, NoneType]=None,
 	data_id: str=None
@@ -13,14 +13,14 @@ Automate testing and report generation.
 This trace will evaluate all its `test_cases` during test mode and generate a PDF report and a JSON test result.
 
 
-#### Args:
+<h3>Args:</h3>
 
 * **test_cases** :  The test(s) to be run.
 * **save_path** :  Where to save the outputs.
 * **test_title** :  The title of the test, or None to use the experiment name.
 * **data_id** :  Data instance ID key. If provided, then per-instances test will include failing instance IDs.
 
-### check_pdf_dependency
+### check_pdf_dependency<span class="tag">method of TestReport</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/trace/io/test_report.py/#L490-L502>View source on Github</a>
 ```python
 check_pdf_dependency()
 -> None
@@ -28,11 +28,11 @@ check_pdf_dependency()
 Check dependency of PDF-generating packages.
 
 
-#### Raises:
+<h4>Raises:</h4>
 
 * **OSError** :  Some required package has not been installed.
 
-### sanitize_value
+### sanitize_value<span class="tag">method of TestReport</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/trace/io/test_report.py/#L504-L517>View source on Github</a>
 ```python
 sanitize_value(
 	value: Union[int, float]
@@ -42,9 +42,12 @@ sanitize_value(
 Sanitize input value for a better report display.
 
 
-#### Args:
+<h4>Args:</h4>
 
 * **value** :  Value to be sanitized.
 
-#### Returns:
+<h4>Returns:</h4>
     Sanitized string of `value`.
+
+
+
