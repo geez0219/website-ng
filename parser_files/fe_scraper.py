@@ -9,7 +9,6 @@ from urllib.parse import urljoin
 import sys
 from bs4 import BeautifulSoup
 from selenium import webdriver
-import pdb
 import shutil
 
 # fastestimator url to append
@@ -25,6 +24,7 @@ MAX_SOUP_TRY = 50
 
 # change this to stage env for crawling in pipeline
 LOCAL_URL = 'http://localhost:4200'
+# LOCAL_URL = 'https://fastestimator.org'
 
 # initialize the selenium driver for the chrome
 options = webdriver.ChromeOptions()
@@ -145,6 +145,7 @@ def extract_api(url, out_dir):
     for node in nodes:
         a = node.find('a')
         links.append(a.attrs['href'])
+
     print(links)
 
     for link in links:
@@ -217,6 +218,10 @@ if __name__ == '__main__':
     #relative urls
 
     branches = ["r1.0", "r1.1"]
+    out_dir = "search_index"
+
+    if os.path.exists(out_dir):
+        shutil.rmtree(out_dir)
 
     for branch in branches:
         example_rel_url = f'examples/{branch}/overview'
@@ -229,9 +234,12 @@ if __name__ == '__main__':
         api_url = urljoin(LOCAL_URL, api_rel_url)
         install_url = urljoin(LOCAL_URL, install_rel_url)
 
-        extract_examples(example_url, os.path.join(branch, EXAMPLES_DIR))
-        extract_tutorial(tutorial_url, os.path.join(branch, TUTORIALS_DIR))
-        extract_api(api_url, os.path.join(branch, API_DIR))
-        extract_install(install_url, os.path.join(branch, INSTALL_DIR))
-        extract_main(LOCAL_URL, os.path.join(branch, MAIN_DIR))
+        extract_examples(example_url,
+                         os.path.join(out_dir, branch, EXAMPLES_DIR))
+        extract_tutorial(tutorial_url,
+                         os.path.join(out_dir, branch, TUTORIALS_DIR))
+        extract_api(api_url, os.path.join(out_dir, branch, API_DIR))
+        extract_install(install_url, os.path.join(out_dir, branch,
+                                                  INSTALL_DIR))
+        extract_main(LOCAL_URL, os.path.join(out_dir, branch, MAIN_DIR))
         #extract_main_list(main_url)

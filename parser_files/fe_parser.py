@@ -54,11 +54,13 @@ class APIFolder:
             APIMarkdown(name=name, obj=obj, save_dir=self.save_dir, fe_dir=self.fe_dir).dump()
 
     def dump(self):
-        if not os.path.exists(self.save_dir):
-            os.makedirs(self.save_dir)
-
         self._extract_folder_module()
-        self._build_api_markdown()
+
+        if self.file_modules or self.func_and_classes:
+            # make sure there is any markdown to be dumped before create the dir (important)
+            # otherwise the structure.json will have a folder node without children
+            os.makedirs(self.save_dir, exist_ok=True)
+            self._build_api_markdown()
 
 
 class APIMarkdown:
