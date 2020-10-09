@@ -694,11 +694,6 @@
                 "displayName": "fe.op.tensorop",
                 "children": [
                     {
-                        "name": "op/tensorop/augmentation",
-                        "displayName": "fe.op.tensorop.augmentation",
-                        "children": []
-                    },
-                    {
                         "name": "op/tensorop/gradient",
                         "displayName": "fe.op.tensorop.gradient",
                         "children": [
@@ -729,11 +724,6 @@
                                 "displayName": "MeanSquaredError"
                             }
                         ]
-                    },
-                    {
-                        "name": "op/tensorop/meta",
-                        "displayName": "fe.op.tensorop.meta",
-                        "children": []
                     },
                     {
                         "name": "op/tensorop/model",
