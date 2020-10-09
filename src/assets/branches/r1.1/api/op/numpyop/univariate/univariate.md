@@ -1,5 +1,7 @@
-# fastestimator.op.numpyop.univariate.univariate<span class="tag">module</span>
+# tf.op.numpyop.univariate.univariate<span class="tag">module</span>
+
 ---
+
 ## ImageOnlyAlbumentation<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/numpyop/univariate/univariate.py/#L26-L57>View source on Github</a>
 ```python
 ImageOnlyAlbumentation(
@@ -18,10 +20,12 @@ it provides is available at https://albumentations-demo.herokuapp.com.
 
 <h3>Args:</h3>
 
-* **func** :  An Albumentation function to be invoked.
-* **inputs** :  Key(s) from which to retrieve data from the data dictionary. If more than one key is provided, the        `func` will be run in replay mode so that the exact same augmentation is applied to each value.
-* **outputs** :  Key(s) under which to write the outputs of this Op back to the data dictionary.
-* **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
 
+* **func**: An Albumentation function to be invoked.
 
+* **inputs**: Key(s) from which to retrieve data from the data dictionary. If more than one key is provided, the `func` will be run in replay mode so that the exact same augmentation is applied to each value.
+
+* **outputs**: Key(s) under which to write the outputs of this Op back to the data dictionary.
+
+* **mode**: What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument like "!infer" or "!train".
 

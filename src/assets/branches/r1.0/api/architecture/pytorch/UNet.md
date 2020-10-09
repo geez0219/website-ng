@@ -10,7 +10,6 @@ A standard UNet implementation in PyTorch.
 
 <h3>Args:</h3>
 
-* **input_size** :  The size of the input tensor (channels, height, width).
 
-
+* **input_size**: The size of the input tensor (channels, height, width).
 

@@ -16,10 +16,14 @@ The value of 'bbox' has shape (batch_size, num_bbox, 5). The 5 is [x1, y1, w, h,
 
 <h3>Args:</h3>
 
-* **num_classes** :  Maximum `int` value for your class label. In COCO dataset we only used 80 classes, but the maxium        value of the class label is `90`. In this case `num_classes` should be `90`.
+
+* **num_classes**: Maximum `int` value for your class label. In COCO dataset we only used 80 classes, but the maxium value of the class label is `90`. In this case `num_classes` should be `90`. 
 
 <h3>Returns:</h3>
-    Mean Average Precision.
+
+<ul class="return-block"><li>    Mean Average Precision.</li></ul>
+
+---
 
 ### accumulate<span class="tag">method of MeanAveragePrecision</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/trace/metric/mean_average_precision.py/#L282-L373>View source on Github</a>
 ```python
@@ -29,6 +33,8 @@ accumulate(
 -> None
 ```
 Generate precision-recall curve.
+
+---
 
 ### compute_iou<span class="tag">method of MeanAveragePrecision</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/trace/metric/mean_average_precision.py/#L399-L430>View source on Github</a>
 ```python
@@ -46,11 +52,16 @@ We leverage `maskUtils.iou`.
 
 <h4>Args:</h4>
 
-* **det** :  Detection array.
-* **gt** :  Ground truth array.
+
+* **det**: Detection array.
+
+* **gt**: Ground truth array. 
 
 <h4>Returns:</h4>
-    Intersection of union array.
+
+<ul class="return-block"><li>    Intersection of union array.</li></ul>
+
+---
 
 ### evaluate_img<span class="tag">method of MeanAveragePrecision</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/trace/metric/mean_average_precision.py/#L220-L280>View source on Github</a>
 ```python
@@ -66,11 +77,9 @@ Find gt matches for det given one image and one category.
 
 <h4>Args:</h4>
 
-* **cat_id** : 
-* **img_id** : 
+ cat_id: img_id: Returns:
 
-<h4>Returns:</h4>
-
+---
 
 ### on_batch_begin<span class="tag">method of MeanAveragePrecision</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/trace/metric/mean_average_precision.py/#L110-L118>View source on Github</a>
 ```python
@@ -81,6 +90,8 @@ on_batch_begin(
 ```
 Reset instance variables.
 
+---
+
 ### on_epoch_begin<span class="tag">method of MeanAveragePrecision</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/trace/metric/mean_average_precision.py/#L103-L108>View source on Github</a>
 ```python
 on_epoch_begin(
@@ -89,6 +100,8 @@ on_epoch_begin(
 )
 ```
 Reset instance variables.
+
+---
 
 ### summarize<span class="tag">method of MeanAveragePrecision</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/trace/metric/mean_average_precision.py/#L375-L397>View source on Github</a>
 ```python
@@ -103,10 +116,10 @@ Compute average precision given one intersection union threshold.
 
 <h4>Args:</h4>
 
-* **iou** :  Intersection over union threshold. If this value is `None`, then average all iou thresholds. The result        is the mean average precision.
+
+* **iou**: Intersection over union threshold. If this value is `None`, then average all iou thresholds. The result is the mean average precision. 
 
 <h4>Returns:</h4>
-    Average precision.
 
-
+<ul class="return-block"><li>    Average precision.</li></ul>
 

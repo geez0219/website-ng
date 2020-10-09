@@ -11,7 +11,6 @@ This class is intentionally not @traceable.
 
 <h3>Args:</h3>
 
-* **data** :  The string to be wrapped.
 
-
+* **data**: The string to be wrapped.
 

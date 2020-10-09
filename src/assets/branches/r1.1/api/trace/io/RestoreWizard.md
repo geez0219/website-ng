@@ -13,8 +13,8 @@ System includes model weights, optimizer state, global step and epoch index.
 
 <h3>Args:</h3>
 
-* **directory** :  Directory to save and load system.
-* **frequency** :  Saving frequency in epoch(s).
 
+* **directory**: Directory to save and load system.
 
+* **frequency**: Saving frequency in epoch(s).
 

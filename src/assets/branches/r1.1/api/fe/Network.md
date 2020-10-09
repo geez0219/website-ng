@@ -10,13 +10,19 @@ A function to automatically instantiate the correct Network derived class based 
 
 <h3>Args:</h3>
 
-* **ops** :  A collection of Ops defining the graph for this Network. It should contain at least one ModelOp, and all        models should be either TensorFlow or Pytorch. We currently do not support mixing TensorFlow and Pytorch        models within the same network.
 
-<h3>Returns:</h3>
-    A network instance containing the given `ops`.
+* **ops**: A collection of Ops defining the graph for this Network. It should contain at least one ModelOp, and all models should be either TensorFlow or Pytorch. We currently do not support mixing TensorFlow and Pytorch models within the same network. 
 
 <h3>Raises:</h3>
 
-* **AssertionError** :  If TensorFlow and PyTorch models are mixed, or if no models are provided.
-* **ValueError** :  If a model is provided whose type cannot be identified as either TensorFlow or PyTorch.
+
+* **AssertionError**: If TensorFlow and PyTorch models are mixed, or if no models are provided.
+
+* **ValueError**: If a model is provided whose type cannot be identified as either TensorFlow or PyTorch.
+
+<h3>Returns:</h3>
+
+<ul class="return-block"><li>    A network instance containing the given <code>ops</code>.
+
+</li></ul>
 

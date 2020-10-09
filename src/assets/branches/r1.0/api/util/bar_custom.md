@@ -32,10 +32,14 @@ wget.download('http://url.com', '/save/dir', bar=fe.util.bar_custom)
 
 <h3>Args:</h3>
 
-* **current** :  The current amount of progress.
-* **total** :  The total amount of progress required by the task.
-* **width** :  The available width.
+
+* **current**: The current amount of progress.
+
+* **total**: The total amount of progress required by the task.
+
+* **width**: The available width. 
 
 <h3>Returns:</h3>
-    A formatted string to display the current progress.
+
+<ul class="return-block"><li>    A formatted string to display the current progress.</li></ul>
 

@@ -14,10 +14,12 @@ If indices are not provided, the maximum values along the batch dimension will b
 
 <h3>Args:</h3>
 
-* **inputs** :  The tensor(s) to gather values from.
-* **indices** :  A tensor containing target indices to gather.
-* **outputs** :  The key(s) under which to save the output.
-* **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
 
+* **inputs**: The tensor(s) to gather values from.
 
+* **indices**: A tensor containing target indices to gather.
+
+* **outputs**: The key(s) under which to save the output.
+
+* **mode**: What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument like "!infer" or "!train".
 

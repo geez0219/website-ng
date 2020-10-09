@@ -20,8 +20,10 @@ x = fe.util.to_list({'a': 7})  # [{'a': 7}]
 
 <h3>Args:</h3>
 
-* **data** :  Input data, within or without a python container.
+
+* **data**: Input data, within or without a python container. 
 
 <h3>Returns:</h3>
-    The input `data` but inside a list instead of whatever other container type used to hold it.
+
+<ul class="return-block"><li>    The input <code>data</code> but inside a list instead of whatever other container type used to hold it.</li></ul>
 

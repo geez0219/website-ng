@@ -8,5 +8,3 @@ A class to adjust the size of boxes.
 
 This class is intentionally not @traceable.
 
-
-

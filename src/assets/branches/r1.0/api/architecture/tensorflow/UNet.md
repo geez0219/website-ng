@@ -10,8 +10,10 @@ A standard UNet implementation in pytorch
 
 <h3>Args:</h3>
 
-* **input_size** :  The size of the input tensor (height, width, channels).
+
+* **input_size**: The size of the input tensor (height, width, channels). 
 
 <h3>Returns:</h3>
-    A TensorFlow LeNet model.
+
+<ul class="return-block"><li>    A TensorFlow LeNet model.</li></ul>
 

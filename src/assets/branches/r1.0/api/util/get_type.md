@@ -18,8 +18,10 @@ x = fe.util.get_type(27)  # "int"
 
 <h3>Args:</h3>
 
-* **obj** :  Data which may be wrapped in some kind of container.
+
+* **obj**: Data which may be wrapped in some kind of container. 
 
 <h3>Returns:</h3>
-    A string representation of the data type of the `obj`.
+
+<ul class="return-block"><li>    A string representation of the data type of the <code>obj</code>.</li></ul>
 

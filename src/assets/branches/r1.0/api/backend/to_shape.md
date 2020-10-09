@@ -40,10 +40,14 @@ shape = fe.backend.to_shape(data, exact_shape=False)
 
 <h3>Args:</h3>
 
-* **data** :  A tensor or possibly nested collection of tensors.
-* **add_batch** :  Whether to prepend a batch dimension to the shapes.
-* **exact_shape** :  Whether to return the exact shapes, or if False to fill the shapes with None values.
+
+* **data**: A tensor or possibly nested collection of tensors.
+
+* **add_batch**: Whether to prepend a batch dimension to the shapes.
+
+* **exact_shape**: Whether to return the exact shapes, or if False to fill the shapes with None values. 
 
 <h3>Returns:</h3>
-    A collection with the same structure as `data`, but with any tensors substituted for their shapes.
+
+<ul class="return-block"><li>    A collection with the same structure as <code>data</code>, but with any tensors substituted for their shapes.</li></ul>
 

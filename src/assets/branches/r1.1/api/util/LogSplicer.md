@@ -9,7 +9,6 @@ A class to send stdout information into a file before passing it along to the no
 
 <h3>Args:</h3>
 
-* **log_path** :  The path/filename into which to append the current stdout.
 
-
+* **log_path**: The path/filename into which to append the current stdout.
 

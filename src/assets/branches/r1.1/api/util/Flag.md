@@ -11,7 +11,6 @@ This class is intentionally not @traceable.
 
 <h3>Args:</h3>
 
-* **val** :  The initial value for the Flag.
 
-
+* **val**: The initial value for the Flag.
 

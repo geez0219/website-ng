@@ -18,10 +18,13 @@ print(data)  # [{'x': [[1., 1.], [1., 1.], [0., 0.]], 'y': 8}, {'x': [[1., 0.], 
 
 <h3>Args:</h3>
 
-* **batch** :  A list of data to be padded.
-* **pad_value** :  The value to pad with.
+
+* **batch**: A list of data to be padded.
+
+* **pad_value**: The value to pad with. 
 
 <h3>Raises:</h3>
 
-* **AssertionError** :  If the data within the batch do not have matching rank, or have different keys
+
+* **AssertionError**: If the data within the batch do not have matching rank, or have different keys
 

@@ -32,13 +32,19 @@ b = fe.backend.argmax(p, axis=1)  # [1, 0, 1]
 
 <h3>Args:</h3>
 
-* **tensor** :  The input value.
-* **axis** :  Which axis to compute the index along.
 
-<h3>Returns:</h3>
-    The indices corresponding to the maximum values within `tensor` along `axis`.
+* **tensor**: The input value.
+
+* **axis**: Which axis to compute the index along. 
 
 <h3>Raises:</h3>
 
-* **ValueError** :  If `tensor` is an unacceptable data type.
+
+* **ValueError**: If `tensor` is an unacceptable data type.
+
+<h3>Returns:</h3>
+
+<ul class="return-block"><li>    The indices corresponding to the maximum values within <code>tensor</code> along <code>axis</code>.
+
+</li></ul>
 

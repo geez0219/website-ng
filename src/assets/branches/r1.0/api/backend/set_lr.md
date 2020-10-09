@@ -22,10 +22,13 @@ fe.backend.set_lr(m, lr=0.8)  # m.optimizer.param_groups[-1]['lr'] == 0.8
 
 <h3>Args:</h3>
 
-* **model** :  A neural network instance to modify.
-* **lr** :  The learning rate to assign to the `model`.
+
+* **model**: A neural network instance to modify.
+
+* **lr**: The learning rate to assign to the `model`. 
 
 <h3>Raises:</h3>
 
-* **ValueError** :  If `model` is an unacceptable data type.
+
+* **ValueError**: If `model` is an unacceptable data type.
 

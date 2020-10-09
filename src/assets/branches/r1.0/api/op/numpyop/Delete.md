@@ -13,7 +13,6 @@ The system has special logic to detect instances of this Op and delete its `inpu
 
 <h3>Args:</h3>
 
-* **keys** :  Existing key(s) to be deleted from the data dictionary.
 
-
+* **keys**: Existing key(s) to be deleted from the data dictionary.
 

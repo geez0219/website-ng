@@ -28,8 +28,10 @@ b = fe.backend.check_nan(n)  # True
 
 <h3>Args:</h3>
 
-* **val** :  The input value.
+
+* **val**: The input value. 
 
 <h3>Returns:</h3>
-    True iff `val` contains NaN
+
+<ul class="return-block"><li>    True iff <code>val</code> contains NaN</li></ul>
 

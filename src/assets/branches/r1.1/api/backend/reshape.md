@@ -38,13 +38,19 @@ b = fe.backend.reshape(p, shape=[2, 2, 2, 1])  # [[[[1], [2]], [[3], [4]]], [[[5
 
 <h3>Args:</h3>
 
-* **tensor** :  The input value.
-* **shape** :  The new shape of the tensor. At most one value may be -1 which indicates that whatever values are left        should be packed into that axis.
 
-<h3>Returns:</h3>
-    The reshaped `tensor`.
+* **tensor**: The input value.
+
+* **shape**: The new shape of the tensor. At most one value may be -1 which indicates that whatever values are left should be packed into that axis. 
 
 <h3>Raises:</h3>
 
-* **ValueError** :  If `tensor` is an unacceptable data type.
+
+* **ValueError**: If `tensor` is an unacceptable data type.
+
+<h3>Returns:</h3>
+
+<ul class="return-block"><li>    The reshaped <code>tensor</code>.
+
+</li></ul>
 

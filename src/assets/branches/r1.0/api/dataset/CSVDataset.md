@@ -15,9 +15,10 @@ that you want to feed into, say, an ImageReader Op.
 
 <h3>Args:</h3>
 
-* **file_path** :  The (absolute) path to the CSV file.
-* **delimiter** :  What delimiter is used by the file.
-* **kwargs** :  Other arguments to be passed through to pandas csv reader function. See the pandas docs for details        https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html.
 
+* **file_path**: The (absolute) path to the CSV file.
 
+* **delimiter**: What delimiter is used by the file.
+
+* **kwargs**: Other arguments to be passed through to pandas csv reader function. See the pandas docs for details: https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html.
 

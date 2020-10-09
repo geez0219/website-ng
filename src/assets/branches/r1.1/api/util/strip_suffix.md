@@ -16,9 +16,12 @@ x = fe.util.strip_suffix("astring.json", ".yson")  # "astring.json"
 
 <h3>Args:</h3>
 
-* **target** :  A string to be formatted.
-* **suffix** :  A string to be removed from `target`.
+
+* **target**: A string to be formatted.
+
+* **suffix**: A string to be removed from `target`. 
 
 <h3>Returns:</h3>
-    The formatted version of `target`.
+
+<ul class="return-block"><li>    The formatted version of <code>target</code>.</li></ul>
 

@@ -16,15 +16,19 @@ over-fitting, stabilize GAN training, and against adversarial attacks (https://a
 
 <h3>Args:</h3>
 
-* **inputs** :  Key of the input to be mixed up.
-* **outputs** :  Key to store the mixed-up outputs.
-* **mode** :  What mode to execute in. Probably 'train'.
-* **alpha** :  The alpha value defining the beta distribution to be drawn from during training.
-* **shared_beta** :  Sample a single beta for a batch or element wise beta for each image.
+
+* **inputs**: Key of the input to be mixed up.
+
+* **outputs**: Key to store the mixed-up outputs.
+
+* **mode**: What mode to execute in. Probably 'train'.
+
+* **alpha**: The alpha value defining the beta distribution to be drawn from during training.
+
+* **shared_beta**: Sample a single beta for a batch or element wise beta for each image. 
 
 <h3>Raises:</h3>
 
-* **AssertionError** :  If input arguments are invalid.
 
-
+* **AssertionError**: If input arguments are invalid.
 

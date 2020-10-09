@@ -30,8 +30,10 @@ b = fe.backend.to_number(p)  # [1, 2, 3] (type==np.ndarray)
 
 <h3>Args:</h3>
 
-* **data** :  The value to be converted into a np.ndarray.
+
+* **data**: The value to be converted into a np.ndarray. 
 
 <h3>Returns:</h3>
-    An ndarray corresponding to the given `data`.
+
+<ul class="return-block"><li>    An ndarray corresponding to the given <code>data</code>.</li></ul>
 

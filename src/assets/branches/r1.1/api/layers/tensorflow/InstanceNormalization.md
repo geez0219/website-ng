@@ -1,8 +1,9 @@
 ## InstanceNormalization<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/layers/tensorflow/instance_norm.py/#L21-L61>View source on Github</a>
 ```python
 InstanceNormalization(
-	*args, **kwargs
+	epsilon: float=1e-05
 )
+-> None
 ```
 A layer for performing instance normalization.
 
@@ -22,7 +23,6 @@ y = m(x)  # mean ~= 0, stddev ~= 0
 
 <h3>Args:</h3>
 
-* **epsilon** :  A numerical stability constant added to the variance.
 
-
+* **epsilon**: A numerical stability constant added to the variance.
 

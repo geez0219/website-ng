@@ -8,5 +8,3 @@ A class to center content in a page.
 
 This class is intentionally not @traceable.
 
-
-

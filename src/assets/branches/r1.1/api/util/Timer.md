@@ -20,5 +20,3 @@ func()  # T2 took 0.14819 seconds
 ```
 
 
-
-

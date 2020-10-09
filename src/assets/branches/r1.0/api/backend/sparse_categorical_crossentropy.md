@@ -33,15 +33,24 @@ b = fe.backend.sparse_categorical_crossentropy(y_pred=pred, y_true=true, average
 
 <h3>Args:</h3>
 
-* **y_pred** :  Prediction with a shape like (Batch, C). dtype float32.
-* **y_true** :  Ground truth class labels with a shape like (Batch) or (Batch, 1). dtype int.
-* **from_logits** :  Whether y_pred is from logits. If True, a softmax will be applied to the prediction.
-* **average_loss** :  Whether to average the element-wise loss.
 
-<h3>Returns:</h3>
-    The sparse categorical crossentropy between `y_pred` and `y_true`. A scalar if `average_loss` is True, else a    tensor with the shape (Batch).
+* **y_pred**: Prediction with a shape like (Batch, C). dtype: float32.
+
+* **y_true**: Ground truth class labels with a shape like (Batch) or (Batch, 1). dtype: int.
+
+* **from_logits**: Whether y_pred is from logits. If True, a softmax will be applied to the prediction.
+
+* **average_loss**: Whether to average the element-wise loss. 
 
 <h3>Raises:</h3>
 
-* **AssertionError** :  If `y_true` or `y_pred` are unacceptable data types.
+
+* **AssertionError**: If `y_true` or `y_pred` are unacceptable data types.
+
+<h3>Returns:</h3>
+
+<ul class="return-block"><li>    The sparse categorical crossentropy between <code>y_pred</code> and <code>y_true</code>. A scalar if <code>average_loss</code> is True, else a
+    tensor with the shape (Batch).
+
+</li></ul>
 

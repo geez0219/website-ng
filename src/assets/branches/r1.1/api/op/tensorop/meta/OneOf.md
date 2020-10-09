@@ -10,7 +10,10 @@ Perform one of several possible TensorOps.
 
 <h3>Args:</h3>
 
-* **tensor_ops** :  A list of ops to choose between with uniform probability.
+
+* **tensor_ops**: A list of ops to choose between with uniform probability.
+
+---
 
 ### forward<span class="tag">method of OneOf</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/tensorop/meta/one_of.py/#L76-L87>View source on Github</a>
 ```python
@@ -26,11 +29,12 @@ Execute a randomly selected op from the list of `numpy_ops`.
 
 <h4>Args:</h4>
 
-* **data** :  The information to be passed to one of the wrapped operators.
-* **state** :  Information about the current execution context, for example {"mode" "train"}.
+
+* **data**: The information to be passed to one of the wrapped operators.
+
+* **state**: Information about the current execution context, for example {"mode": "train"}. 
 
 <h4>Returns:</h4>
-    The `data` after application of one of the available numpyOps.
 
-
+<ul class="return-block"><li>    The <code>data</code> after application of one of the available numpyOps.</li></ul>
 

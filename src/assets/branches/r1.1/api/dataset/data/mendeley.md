@@ -1,5 +1,7 @@
-# fastestimator.dataset.data.mendeley<span class="tag">module</span>
+# tf.dataset.data.mendeley<span class="tag">module</span>
+
 ---
+
 ## load_data<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/dataset/data/mendeley.py/#L26-L79>View source on Github</a>
 ```python
 load_data(
@@ -18,8 +20,10 @@ https://creativecommons.org/licenses/by/4.0/
 
 <h3>Args:</h3>
 
-* **root_dir** :  The path to store the downloaded data. When `path` is not provided, the data will be saved into        `fastestimator_data` under the user's home directory.
+
+* **root_dir**: The path to store the downloaded data. When `path` is not provided, the data will be saved into `fastestimator_data` under the user's home directory. 
 
 <h3>Returns:</h3>
-    (train_data, test_data)
+
+<ul class="return-block"><li>    (train_data, test_data)</li></ul>
 

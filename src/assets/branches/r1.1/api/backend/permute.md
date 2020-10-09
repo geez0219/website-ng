@@ -32,13 +32,19 @@ b = fe.backend.permute(P, [0, 2, 1])  # [[[0, 2], [1, 3]], [[4, 6], [5, 7]], [[8
 
 <h3>Args:</h3>
 
-* **tensor** :  The tensor to permute.
-* **permutation** :  The new axis order to be used. Should be a list containing all integers in range [0, tensor.ndim).
 
-<h3>Returns:</h3>
-    The `tensor` with axes swapped according to the `permutation`.
+* **tensor**: The tensor to permute.
+
+* **permutation**: The new axis order to be used. Should be a list containing all integers in range [0, tensor.ndim). 
 
 <h3>Raises:</h3>
 
-* **ValueError** :  If `tensor` is an unacceptable data type.
+
+* **ValueError**: If `tensor` is an unacceptable data type.
+
+<h3>Returns:</h3>
+
+<ul class="return-block"><li>    The <code>tensor</code> with axes swapped according to the <code>permutation</code>.
+
+</li></ul>
 

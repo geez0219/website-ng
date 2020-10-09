@@ -17,15 +17,26 @@ A data pipeline class that takes care of data pre-processing.
 
 <h3>Args:</h3>
 
-* **train_data** :  The training data, or None if no training data is available.
-* **eval_data** :  The evaluation data, or None if no evaluation data is available.
-* **test_data** :  The testing data, or None if no evaluation data is available.
-* **batch_size** :  The batch size to be used by the pipeline. NOTE This argument is only applicable when using a        FastEstimator Dataset.
-* **ops** :  NumpyOps to be used for pre-processing. NOTE This argument is only applicable when using a FastEstimator        Dataset.
-* **num_process** :  Number of CPU threads to use for data pre-processing. NOTE This argument is only applicable when        using a FastEstimator Dataset. None will default to the system CPU count. Multiprocessing can be disabled by        passing 0 here, which can be useful for debugging.
-* **drop_last** :  Whether to drop the last batch if the last batch is incomplete.
-* **pad_value** :  The padding value if batch padding is needed. None indicates that no padding is needed. NOTE This        argument is only applicable when using a FastEstimator Dataset.
-* **collate_fn** :  Function to merge data into one batch with input being list of elements.
+
+* **train_data**: The training data, or None if no training data is available.
+
+* **eval_data**: The evaluation data, or None if no evaluation data is available.
+
+* **test_data**: The testing data, or None if no evaluation data is available.
+
+* **batch_size**: The batch size to be used by the pipeline. NOTE: This argument is only applicable when using a FastEstimator Dataset.
+
+* **ops**: NumpyOps to be used for pre-processing. NOTE: This argument is only applicable when using a FastEstimator Dataset.
+
+* **num_process**: Number of CPU threads to use for data pre-processing. NOTE: This argument is only applicable when using a FastEstimator Dataset. None will default to the system CPU count. Multiprocessing can be disabled by passing 0 here, which can be useful for debugging.
+
+* **drop_last**: Whether to drop the last batch if the last batch is incomplete.
+
+* **pad_value**: The padding value if batch padding is needed. None indicates that no padding is needed. NOTE: This argument is only applicable when using a FastEstimator Dataset.
+
+* **collate_fn**: Function to merge data into one batch with input being list of elements.
+
+---
 
 ### benchmark<span class="tag">method of Pipeline</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/pipeline.py/#L153-L228>View source on Github</a>
 ```python
@@ -43,10 +54,16 @@ Benchmark the pipeline processing speed.
 
 <h4>Args:</h4>
 
-* **mode** :  The execution mode to benchmark. This can be 'train', 'eval' or 'test'.
-* **epoch** :  The epoch index to benchmark. Note that epoch indices are 1-indexed.
-* **num_steps** :  The maximum number of steps over which to perform the benchmark.
-* **log_interval** :  The logging interval.
+
+* **mode**: The execution mode to benchmark. This can be 'train', 'eval' or 'test'.
+
+* **epoch**: The epoch index to benchmark. Note that epoch indices are 1-indexed.
+
+* **num_steps**: The maximum number of steps over which to perform the benchmark.
+
+* **log_interval**: The logging interval.
+
+---
 
 ### get_epochs_with_data<span class="tag">method of Pipeline</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/pipeline.py/#L242-L258>View source on Github</a>
 ```python
@@ -62,11 +79,16 @@ Get a set of epoch indices that contains data given mode.
 
 <h4>Args:</h4>
 
-* **total_epochs** :  Total number of epochs.
-* **mode** :  Current execution mode.
+
+* **total_epochs**: Total number of epochs.
+
+* **mode**: Current execution mode. 
 
 <h4>Returns:</h4>
-    Set of epoch indices.
+
+<ul class="return-block"><li>    Set of epoch indices.</li></ul>
+
+---
 
 ### get_loader<span class="tag">method of Pipeline</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/pipeline.py/#L303-L343>View source on Github</a>
 ```python
@@ -83,12 +105,18 @@ Get a data loader from the Pipeline for a given `mode` and `epoch`.
 
 <h4>Args:</h4>
 
-* **mode** :  The execution mode for the loader. This can be 'train', 'eval' or 'test'.
-* **epoch** :  The epoch index for the loader. Note that epoch indices are 1-indexed.
-* **shuffle** :  Whether to shuffle the data. If None, the value for shuffle is based on mode. NOTE This argument        is only used with FastEstimator Datasets.
+
+* **mode**: The execution mode for the loader. This can be 'train', 'eval' or 'test'.
+
+* **epoch**: The epoch index for the loader. Note that epoch indices are 1-indexed.
+
+* **shuffle**: Whether to shuffle the data. If None, the value for shuffle is based on mode. NOTE: This argument is only used with FastEstimator Datasets. 
 
 <h4>Returns:</h4>
-    A data loader for the given `mode` and `epoch`.
+
+<ul class="return-block"><li>    A data loader for the given <code>mode</code> and <code>epoch</code>.</li></ul>
+
+---
 
 ### get_modes<span class="tag">method of Pipeline</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/pipeline.py/#L133-L151>View source on Github</a>
 ```python
@@ -103,10 +131,14 @@ Get the modes for which the Pipeline has data.
 
 <h4>Args:</h4>
 
-* **epoch** :  The current epoch index
+
+* **epoch**: The current epoch index 
 
 <h4>Returns:</h4>
-    The modes for which the Pipeline has data.
+
+<ul class="return-block"><li>    The modes for which the Pipeline has data.</li></ul>
+
+---
 
 ### get_results<span class="tag">method of Pipeline</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/pipeline.py/#L278-L301>View source on Github</a>
 ```python
@@ -124,13 +156,20 @@ Get sample Pipeline outputs.
 
 <h4>Args:</h4>
 
-* **mode** :  The execution mode in which to run. This can be "train", "eval", or "test".
-* **epoch** :  The epoch index to run. Note that epoch indices are 1-indexed.
-* **num_steps** :  Number of steps (batches) to get.
-* **shuffle** :  Whether to use shuffling.
+
+* **mode**: The execution mode in which to run. This can be "train", "eval", or "test".
+
+* **epoch**: The epoch index to run. Note that epoch indices are 1-indexed.
+
+* **num_steps**: Number of steps (batches) to get.
+
+* **shuffle**: Whether to use shuffling. 
 
 <h4>Returns:</h4>
-    A list of batches of Pipeline outputs.
+
+<ul class="return-block"><li>    A list of batches of Pipeline outputs.</li></ul>
+
+---
 
 ### get_scheduled_items<span class="tag">method of Pipeline</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/pipeline.py/#L230-L240>View source on Github</a>
 ```python
@@ -145,10 +184,14 @@ Get a list of items considered for scheduling.
 
 <h4>Args:</h4>
 
-* **mode** :  Current execution mode.
+
+* **mode**: Current execution mode. 
 
 <h4>Returns:</h4>
-    List of schedulable items in Pipeline.
+
+<ul class="return-block"><li>    List of schedulable items in Pipeline.</li></ul>
+
+---
 
 ### transform<span class="tag">method of Pipeline</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/pipeline.py/#L260-L276>View source on Github</a>
 ```python
@@ -165,12 +208,14 @@ Apply all pipeline operations on a given data instance for the specified `mode` 
 
 <h4>Args:</h4>
 
-* **data** :  Input data in dictionary format.
-* **mode** :  The execution mode in which to run. This can be "train", "eval", "test" or "infer".
-* **epoch** :  The epoch index to run. Note that epoch indices are 1-indexed.
+
+* **data**: Input data in dictionary format.
+
+* **mode**: The execution mode in which to run. This can be "train", "eval", "test" or "infer".
+
+* **epoch**: The epoch index to run. Note that epoch indices are 1-indexed. 
 
 <h4>Returns:</h4>
-    The transformed data.
 
-
+<ul class="return-block"><li>    The transformed data.</li></ul>
 

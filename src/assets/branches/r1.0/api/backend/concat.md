@@ -32,13 +32,19 @@ b = fe.backend.concat(p, axis=1)  # [[0, 1, 2, 3, 4, 5]]
 
 <h3>Args:</h3>
 
-* **tensors** :  A list of tensors to be concatenated.
-* **axis** :  The axis along which to concatenate the input.
 
-<h3>Returns:</h3>
-    A concatenated representation of the `tensors`, or None if the list of `tensors` was empty.
+* **tensors**: A list of tensors to be concatenated.
+
+* **axis**: The axis along which to concatenate the input. 
 
 <h3>Raises:</h3>
 
-* **ValueError** :  If `tensors` is an unacceptable data type.
+
+* **ValueError**: If `tensors` is an unacceptable data type.
+
+<h3>Returns:</h3>
+
+<ul class="return-block"><li>    A concatenated representation of the <code>tensors</code>, or None if the list of <code>tensors</code> was empty.
+
+</li></ul>
 

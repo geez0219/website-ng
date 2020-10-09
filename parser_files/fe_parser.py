@@ -8,18 +8,6 @@ import re
 import pydoc
 import json
 
-titles = ['Args', 'Raises', 'Returns']
-fe_url = 'https://github.com/fastestimator/fastestimator/blob'
-html_char_regex = r'([\<\>])'
-args_regex = r'(Args|Returns|Raises):\n'
-re_url = r'(?:(?:http|https)\:\/\/)?[a-zA-Z0-9\.\/\?\:@\-_=#]+\.(?:[a-zA-Z]){2,6}(?:[a-zA-Z0-9\.\&\/\?\:@\-_=#])*'
-
-
-def isDoc(obj):
-    doc = obj.__doc__
-    if doc == '' or doc == None:
-        return True
-    return False
 
 class APIFolder:
     def __init__(self, save_dir, fe_dir, target_dir):
@@ -44,8 +32,7 @@ class APIFolder:
             if os.path.basename( # skip folder module
                     inspect.getsourcefile(member)) == "__init__.py":
                 continue
-            # print(f"name:{name} member:{member}")
-            # pdb.set_trace()
+
             if inspect.isfunction(member) or inspect.isclass(member):
                 self.func_and_classes.append([name, member])
             elif inspect.ismodule(member):
@@ -66,7 +53,6 @@ class APIFolder:
         for name, obj in self.func_and_classes:
             APIMarkdown(name=name, obj=obj, save_dir=self.save_dir, fe_dir=self.fe_dir).dump()
 
-
     def dump(self):
         if not os.path.exists(self.save_dir):
             os.makedirs(self.save_dir)
@@ -76,6 +62,8 @@ class APIFolder:
 
 
 class APIMarkdown:
+    fe_url = 'https://github.com/fastestimator/fastestimator/blob'
+
     def __init__(self, name, obj, save_dir, fe_dir):
         self.name = name
         self.obj = obj
@@ -88,9 +76,9 @@ class APIMarkdown:
         start = sourcelines[1]
         end = start + len(sourcelines[0]) - 1
 
-        url = os.path.join(fe_url, branch, os.path.relpath(sourcefile, self.fe_dir),
+        url = os.path.join(APIMarkdown.fe_url, branch,
+                           os.path.relpath(sourcefile, self.fe_dir),
                            '#L' + str(start) + '-L' + str(end))
-
         return url
 
     def get_source_link(self, obj):
@@ -100,11 +88,17 @@ class APIMarkdown:
     def get_type_tag(tag_name):
         return f'<span class="tag">{tag_name}</span>'
 
+    @staticmethod
+    def process_module_name(name):
+        """ fastestimator -> fe.dataset.data.cifar10
+        """
+        return re.sub("^fastestimator\.", "tf.", name)
+
     def file_to_md(self, obj):
         content = []
-        content.append(f'# {obj.__name__}')
+        content.append(f'# {self.process_module_name(obj.__name__)}')
         content.append(self.get_type_tag("module"))
-        content.append("\n---\n")
+        content.append("\n\n")
         for name, api_module in inspect.getmembers(obj):
             if inspect.getmodule(api_module) != obj:
                 continue
@@ -112,14 +106,16 @@ class APIMarkdown:
                 continue
 
             if inspect.isclass(api_module):
-                content.extend(self.class_to_md(api_module))
+                content.extend(self.class_to_md(api_module, True))
             elif inspect.isfunction(api_module):
-                content.extend(self.func_to_md(api_module))
+                content.extend(self.func_to_md(api_module, True))
 
         return content
 
-    def func_to_md(self, obj):
+    def func_to_md(self, obj, toprule):
         content = []
+        if toprule:
+            content.append("---\n\n")
         content.append(f'## {obj.__name__}')
         content.append(self.get_type_tag('function'))
         content.append(self.get_source_link(obj))
@@ -128,19 +124,24 @@ class APIMarkdown:
         signature = str(inspect.signature(obj))
         content.append(self.prettify_signature(signature) + '\n')
         content.append('```\n')
-        content.append(self.format_docstring(inspect.getdoc(obj), level=3))
-        content.append('\n\n')
+        docstr = DocString(obj.__doc__)
+        content.append(docstr.format(level=3))
 
         return content
 
-
-    def class_to_md(self, obj):
+    def class_to_md(self, obj, toprule):
         try: # some class raise error when running inspect.signature(self.obj) such as fe.EarlyStop
-            signature = str(inspect.signature(obj))
+            old_sig = inspect.signature(obj.__init__)
+            params = [x for x in old_sig.parameters.values()]
+            # create new signature without self argument
+            signature = str(old_sig.replace(parameters=params[1:]))
+
         except ValueError:
             return []
 
         content = []
+        if toprule:
+            content.append("---\n\n")
         content.append(f'## {obj.__name__}')
         content.append(self.get_type_tag("class"))
         content.append(self.get_source_link(obj))
@@ -149,11 +150,10 @@ class APIMarkdown:
 
         content.append(self.prettify_signature(signature) + "\n")
         content.append('```\n')
-        content.append(self.format_docstring(obj.__doc__, level=3))
-        content.append('\n\n')
-        content.extend(self.get_class_method(obj))
-        content.append('\n\n')
 
+        docstr = DocString(obj.__doc__)
+        content.append(docstr.format(level=3))
+        content.extend(self.get_class_method(obj))
 
         return content
 
@@ -166,36 +166,39 @@ class APIMarkdown:
         """
         content = []
         funcs = inspect.getmembers(obj, inspect.isfunction)
-        for f in funcs:
-            if f[1].__qualname__.split('.')[0] == obj.__qualname__:
-                if not f[0].startswith("_") and not isDoc(f[1]):
-                    content.append('### ' + f[0])
-                    content.append(self.get_type_tag(f"method of {obj.__name__}"))
-                    content.append(self.get_source_link(f[1]))
-                    content.append("```python\n")
-                    content.append(f[0])
-                    signature = str(inspect.signature(f[1]))
-                    content.append(APIMarkdown.prettify_signature(signature) + "\n")
-                    content.append('```\n')
-                    content.append(APIMarkdown.format_docstring(f[1].__doc__, level=4))
-                    content.append('\n\n')
+        for name, func in funcs:
+            if func.__qualname__.split('.')[0] == obj.__qualname__:
+                if name.startswith("_"):
+                    continue
+                if not func.__doc__: # otherwise trace will show on_epoch method ...
+                    continue
+
+                content.append("---\n\n")
+                content.append('### ' + name)
+                content.append(self.get_type_tag(f"method of {obj.__name__}"))
+                content.append(self.get_source_link(func))
+                content.append("```python\n")
+                content.append(name)
+                signature = str(inspect.signature(func))
+                content.append(self.prettify_signature(signature) + "\n")
+                content.append('```\n')
+                docstr = DocString(func.__doc__)
+                content.append(docstr.format(level=4))
 
         return content
 
 
     def dump(self):
         if inspect.isclass(self.obj):
-            content = self.class_to_md(self.obj)
+            content = self.class_to_md(self.obj, False)
         elif inspect.isfunction(self.obj):
-            content = self.func_to_md(self.obj)
+            content = self.func_to_md(self.obj, False)
         else:
             content = self.file_to_md(self.obj)
 
         save_path = os.path.join(self.save_dir, self.name + ".md")
         with open(save_path, "w") as f:
             f.write("".join(content))
-
-
 
     @staticmethod
     def prettify_signature(inp: str):
@@ -207,71 +210,122 @@ class APIMarkdown:
 
         return out
 
+class DocString:
+    def __init__(self, string):
+        self.string = string
+        self.intro = ''
+        self.args = ''
+        self.raises = ''
+        self.returns = ''
+
+    def format(self, level):
+        self._parse()
+
+        content = []
+        content.append(self.intro + "\n\n")
+        if self.args:
+            content.append(self._format_args(level))
+
+        if self.raises:
+            content.append(self._format_raises(level))
+            # pdb.set_trace()
+
+        if self.returns:
+            content.append(self._format_returns(level))
+
+        return "".join(content)
+
+    def _format_returns(self, level):
+        header = f"<h{level}>Returns:</h{level}>"
+
+        #  `xxxx` cannot render properly inside html tag
+        content = re.sub(r"`([^`]+)`", r"<code>\1</code>", self.returns)
+        content = f'<ul class="return-block"><li>{content}</li></ul>'
+
+        return header + "\n\n" + content + "\n\n"
+
+    def _format_raises(self, level):
+        header = f"<h{level}>Raises:</h{level}>"
+        content = re.sub(r"( +)([^\s]+): ", r"\n* **\2**: ", self.raises)
+
+        return header + "\n\n" + content + "\n\n"
+
+
+    def _format_args(self, level):
+        header = f"<h{level}>Args:</h{level}>"
+        content = re.sub(r"( {3,})([^\s]+): ", r"<newline>* **\2**: ", self.args)
+        content = re.sub(r"[\n ]{2,}", r" ", content)
+        content = re.sub(r"<newline>", r"\n", content)
+
+        return header + "\n\n" + content + "\n\n"
+
+    def _parse(self):
+        self.intro = ''
+        self.args = ''
+        self.raises = ''
+        self.returns = ''
+
+        if not self.string:
+            return
+
+        docstr = inspect.cleandoc(self.string)
+        docstr = DocString.replace_escape_char(docstr)
+        docstr = DocString.unwrap_http_url(docstr)
+        pattern = re.compile(r"(Args|Returns|Raises):\n")
+        matches = [match for match in pattern.finditer(docstr)]
+
+        if not matches:
+            self.intro = docstr
+        else:
+            self.intro = docstr[:matches[0].start()-1]
+
+            for idx in range(len(matches)):
+                if idx + 1 < len(matches): # not the last one
+                    part = docstr[matches[idx].end(): matches[idx + 1].start()]
+                else: # last one
+                    part = docstr[matches[idx].end():]
+
+                if matches[idx].group() == "Args:\n":
+                    self.args = part
+                elif matches[idx].group() == "Returns:\n":
+                    self.returns = part
+                elif matches[idx].group() == "Raises:\n":
+                    self.raises = part
+
     @staticmethod
-    def format_docstring(docstr, level):
-        """It format the docstring in markdown form and append it to the list
-
-        Args:
-            docstr[str]: Input docstring that needs to be formated
-
-        Returns:
-            [str]: markdown string converted from docstring
-        """
-        docstr_output = ''
-        if docstr != None:
-            docstr_output = inspect.cleandoc(docstr)
-            docstr_output = APIMarkdown.replaceEscapeChar(docstr_output)
-            args = re.search(args_regex, docstr_output)
-            if args != None:
-                pos = args.start(0)
-                doc_arg = docstr_output[pos:]
-                docstr_output = docstr_output[:pos - 1]
-                urls = re.findall(re_url, doc_arg)
-                new_docstr = doc_arg.split('\n')
-                res = []
-                if len(new_docstr) != 0:
-                    for idx in range(len(new_docstr)):
-                        if ':' in new_docstr[idx] and new_docstr[idx].strip() not in urls:
-                            elements = new_docstr[idx].split(':')
-                            if elements[0].strip() in titles:
-                                res.append(
-                                    f"\n\n<h{level}>{elements[0].strip()}:</h{level}>\n"
-                                )
-                            else:
-                                res.append('\n')
-                                param = elements[0].strip()
-                                if param[0] in ['*']:
-                                    param = ' ' + param
-                                else:
-                                    param = '* **' + param + '**'
-                                res.append(param)
-                                res.append(' : ')
-                                for i in range(1, len(elements)):
-                                    res.append(elements[i])
-                        else:
-                            res.append(new_docstr[idx])
-                docstr_output = docstr_output + ''.join(res)
-            return docstr_output
-        return docstr_output
-
-    @staticmethod
-    def replaceEscapeChar(input, startpos=0):
+    def replace_escape_char(inpstr, startpos=0):
         re_plot = r'```\s*(plot|python)([^```]+)```'
         pattern = re.compile(re_plot)
-        res = pattern.search(input, startpos)
+        res = pattern.search(inpstr, startpos)
         if res is not None:
             startidx = res.start()
             endidx = res.end()
             if startpos != 0:
-                output = input[0:startpos] + input[startpos:startidx].replace(
+                output = inpstr[0:startpos] + inpstr[startpos:startidx].replace(
                     '<', '&lt;').replace('>', '&gt;')
             else:
-                output = input[startpos:startidx].replace('<', '&lt;').replace(
+                output = inpstr[startpos:startidx].replace('<', '&lt;').replace(
                     '>', '&gt;')
-            output = '{}{}\n{}'.format(output, res.group(0), input[endidx + 1:])
-            return APIMarkdown.replaceEscapeChar(output, startpos=endidx)
+            output = '{}{}\n{}'.format(output, res.group(0), inpstr[endidx + 1:])
+            return DocString.replace_escape_char(output, startpos=endidx)
         else:
-            return input
+            return inpstr
+
+    @staticmethod
+    def remove_newline(match):
+        return re.sub(r"\n", "", match.group(0))
+
+    @staticmethod
+    def unwrap_http_url(inpstr):
+        """ make url from multiple line back to one line
+            ex:
+                'https://papers.nips.cc/paper/9070-error
+                -correcting-output-codes'
+                =>
+                'https://papers.nips.cc/paper/9070-error-correcting-output-codes'
+        """
+        url_pattern = r"'(http|https)://[^']*'"
+        return re.sub(url_pattern, DocString.remove_newline, inpstr)
 
 
 def generatedocs(repo_dir, save_dir, branch):
@@ -302,14 +356,11 @@ def generatedocs(repo_dir, save_dir, branch):
 
         os.makedirs(save_path, exist_ok=True)
         dirs[:] = [d for d in dirs if d not in exclude]
-
-        # if path == "/home/geez219/python_project/fastestimator/fastestimator/dataset":
         api_folder = APIFolder(save_dir=save_path,
                                 target_dir=path,
                                 fe_dir=repo_dir)
         api_folder.dump()
-        # pdb.set_trace()
-        # print()
+
 
     return save_dir
 
@@ -383,19 +434,3 @@ if __name__ == "__main__":
 
     with open(json_path, 'w') as f:
         json.dump(struct_json, f, indent=4)
-
-
-    # ## experiment
-    # branch = "master"
-    # fe_path = "/home/geez219/python_project/fastestimator/fastestimator"
-    # sys.path.insert(0, fe_path)
-    # name = "Estimator"
-    # save_dir = "Estimator"
-    # f_rel_path = "estimator.py"
-    # os.makedirs(save_dir, exist_ok=True)
-    # module = pydoc.safeimport(inspect.getmodulename("estimator.py"))
-    # api_md = APIMarkdown(name=name,
-    #                      module=module,
-    #                      save_dir=save_dir,
-    #                      f_rel_path=f_rel_path)
-    # api_md.dump()

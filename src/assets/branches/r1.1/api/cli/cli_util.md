@@ -1,5 +1,7 @@
-# fastestimator.cli.cli_util<span class="tag">module</span>
+# tf.cli.cli_util<span class="tag">module</span>
+
 ---
+
 ## SaveAction<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/cli/cli_util.py/#L8-L45>View source on Github</a>
 ```python
 SaveAction(
@@ -19,12 +21,16 @@ This class is intentionally not @traceable.
 
 <h3>Args:</h3>
 
-* **option_strings** :  A list of command-line option strings which should be associated with this action.
-* **dest** :  The name of the attribute to hold the created object(s).
-* **nargs** :  The number of command line arguments to be consumed.
- **kwargs :  Pass-through keyword arguments.
 
+* **option_strings**: A list of command-line option strings which should be associated with this action.
 
+* **dest**: The name of the attribute to hold the created object(s).
+
+* **nargs**: The number of command line arguments to be consumed.
+
+* ****kwargs**: Pass-through keyword arguments.
+
+---
 
 ## parse_cli_to_dictionary<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/cli/cli_util.py/#L48-L79>View source on Github</a>
 ```python
@@ -43,8 +49,10 @@ a = parse_cli_to_dictionary(["--epochs", "5", "--test", "this", "--lr", "0.74"])
 
 <h3>Args:</h3>
 
-* **input_list** :  A list of input strings from the cli.
+
+* **input_list**: A list of input strings from the cli. 
 
 <h3>Returns:</h3>
-    A dictionary constructed from the `input_list`, with values converted to python objects where applicable.
+
+<ul class="return-block"><li>    A dictionary constructed from the <code>input_list</code>, with values converted to python objects where applicable.</li></ul>
 

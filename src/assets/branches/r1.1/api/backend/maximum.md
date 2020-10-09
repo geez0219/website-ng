@@ -32,13 +32,19 @@ res = fe.backend.maximum(p1, p2) # [[2, 7, 6]]
 
 <h3>Args:</h3>
 
-* **tensor1** :  First tensor.
-* **tensor2** :  Second tensor.
 
-<h3>Returns:</h3>
-    The maximum of two `tensors`.
+* **tensor1**: First tensor.
+
+* **tensor2**: Second tensor. 
 
 <h3>Raises:</h3>
 
-* **ValueError** :  If `tensor` is an unacceptable data type.
+
+* **ValueError**: If `tensor` is an unacceptable data type.
+
+<h3>Returns:</h3>
+
+<ul class="return-block"><li>    The maximum of two <code>tensors</code>.
+
+</li></ul>
 

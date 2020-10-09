@@ -13,9 +13,12 @@ Decorated classes will gain the .fe_summary() and .fe_state() methods.
 
 <h3>Args:</h3>
 
-* **whitelist** :  Arguments which should be included in a deep restore of the decorated class.
-* **blacklist** :  Arguments which should be excluded from a deep restore of the decorated class.
+
+* **whitelist**: Arguments which should be included in a deep restore of the decorated class.
+
+* **blacklist**: Arguments which should be excluded from a deep restore of the decorated class. 
 
 <h3>Returns:</h3>
-    The decorated class.
+
+<ul class="return-block"><li>    The decorated class.</li></ul>
 

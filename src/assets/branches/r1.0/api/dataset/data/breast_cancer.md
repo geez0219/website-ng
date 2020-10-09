@@ -1,5 +1,7 @@
-# fastestimator.dataset.data.breast_cancer<span class="tag">module</span>
+# tf.dataset.data.breast_cancer<span class="tag">module</span>
+
 ---
+
 ## load_data<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/dataset/data/breast_cancer.py/#L24-L37>View source on Github</a>
 ```python
 load_data()
@@ -11,5 +13,6 @@ For more information about this dataset and the meaning of the features it conta
 
 
 <h3>Returns:</h3>
-    (train_data, eval_data)
+
+<ul class="return-block"><li>    (train_data, eval_data)</li></ul>
 

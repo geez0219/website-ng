@@ -22,12 +22,17 @@ b = fe.backend.get_lr(model=m)  # 0.001
 
 <h3>Args:</h3>
 
-* **model** :  A neural network instance to inspect.
 
-<h3>Returns:</h3>
-    The learning rate of `model`.
+* **model**: A neural network instance to inspect. 
 
 <h3>Raises:</h3>
 
-* **ValueError** :  If `model` is an unacceptable data type.
+
+* **ValueError**: If `model` is an unacceptable data type.
+
+<h3>Returns:</h3>
+
+<ul class="return-block"><li>    The learning rate of <code>model</code>.
+
+</li></ul>
 

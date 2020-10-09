@@ -40,15 +40,23 @@ b = fe.backend.percentile(p, percentiles=[66], axis=1)  # [[[2], [5], [8]]]
 
 <h3>Args:</h3>
 
-* **tensor** :  The tensor from which to extract percentiles.
-* **percentiles** :  One or more percentile values to be computed.
-* **axis** :  Along which axes to compute the percentile (None to compute over all axes).
-* **keepdims** :  Whether to maintain the number of dimensions from `tensor`.
 
-<h3>Returns:</h3>
-    The `percentiles` of the given `tensor`.
+* **tensor**: The tensor from which to extract percentiles.
+
+* **percentiles**: One or more percentile values to be computed.
+
+* **axis**: Along which axes to compute the percentile (None to compute over all axes).
+
+* **keepdims**: Whether to maintain the number of dimensions from `tensor`. 
 
 <h3>Raises:</h3>
 
-* **ValueError** :  If `tensor` is an unacceptable data type.
+
+* **ValueError**: If `tensor` is an unacceptable data type.
+
+<h3>Returns:</h3>
+
+<ul class="return-block"><li>    The <code>percentiles</code> of the given <code>tensor</code>.
+
+</li></ul>
 

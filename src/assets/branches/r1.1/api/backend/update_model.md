@@ -37,16 +37,26 @@ fe.backend.update_model(m, loss=loss)
 
 <h3>Args:</h3>
 
-* **model** :  A neural network instance to update.
-* **loss** :  A loss value to compute gradients from.
-* **tape** :  A TensorFlow GradientTape which was recording when the `loss` was computed (iff using TensorFlow).
-* **retain_graph** :  Whether to keep the model graph in memory (applicable only for PyTorch).
-* **scaler** :  A PyTorch loss scaler that scales loss when PyTorch mixed precision is used.
-* **defer** :  If True, then the model update function will be stored into the `deferred` dictionary rather than        applied immediately.
-* **deferred** :  A dictionary in which model update functions are stored.
+
+* **model**: A neural network instance to update.
+
+* **loss**: A loss value to compute gradients from.
+
+* **tape**: A TensorFlow GradientTape which was recording when the `loss` was computed (iff using TensorFlow).
+
+* **retain_graph**: Whether to keep the model graph in memory (applicable only for PyTorch).
+
+* **scaler**: A PyTorch loss scaler that scales loss when PyTorch mixed precision is used.
+
+* **defer**: If True, then the model update function will be stored into the `deferred` dictionary rather than applied immediately.
+
+* **deferred**: A dictionary in which model update functions are stored. 
 
 <h3>Raises:</h3>
 
-* **ValueError** :  If `model` is an unacceptable data type.
-* **RuntimeError** :  If attempting to modify a PyTorch model which relied on gradients within a different PyTorch model        which has in turn already undergone a non-deferred update.
+
+* **ValueError**: If `model` is an unacceptable data type.
+
+* **RuntimeError**: If attempting to modify a PyTorch model which relied on gradients within a different PyTorch model
+        which has in turn already undergone a non-deferred update.
 

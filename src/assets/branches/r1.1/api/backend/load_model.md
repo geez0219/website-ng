@@ -25,11 +25,15 @@ fe.backend.load_model(m, weights_path="tmp/test.pt")
 
 <h3>Args:</h3>
 
-* **model** :  A neural network instance to load.
-* **weights_path** :  Path to the `model` weights.
-* **load_optimizer** :  Whether to load optimizer. If True, then it will load <weights_opt> file in the path.
+
+* **model**: A neural network instance to load.
+
+* **weights_path**: Path to the `model` weights.
+
+* **load_optimizer**: Whether to load optimizer. If True, then it will load <weights_opt> file in the path. 
 
 <h3>Raises:</h3>
 
-* **ValueError** :  If `model` is an unacceptable data type.
+
+* **ValueError**: If `model` is an unacceptable data type.
 

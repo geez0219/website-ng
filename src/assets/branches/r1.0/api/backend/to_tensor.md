@@ -34,9 +34,12 @@ t = fe.backend.to_tensor(data, target_type='tf')
 
 <h3>Args:</h3>
 
-* **data** :  A tensor or possibly nested collection of tensors.
-* **target_type** :  What kind of tensor(s) to create, either "tf" or "torch".
+
+* **data**: A tensor or possibly nested collection of tensors.
+
+* **target_type**: What kind of tensor(s) to create, either "tf" or "torch". 
 
 <h3>Returns:</h3>
-    A collection with the same structure as `data`, but with any tensors converted to the `target_type`.
+
+<ul class="return-block"><li>    A collection with the same structure as <code>data</code>, but with any tensors converted to the <code>target_type</code>.</li></ul>
 

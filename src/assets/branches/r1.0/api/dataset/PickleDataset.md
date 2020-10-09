@@ -14,7 +14,6 @@ into, say, an ImageReader Op.
 
 <h3>Args:</h3>
 
-* **file_path** :  The (absolute) path to the pickle file.
 
-
+* **file_path**: The (absolute) path to the pickle file.
 

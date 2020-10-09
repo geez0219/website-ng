@@ -15,8 +15,10 @@ x = fe.util.is_number("ae13.7")  # False
 
 <h3>Args:</h3>
 
-* **arg** :  A potentially numeric input string.
+
+* **arg**: A potentially numeric input string. 
 
 <h3>Returns:</h3>
-    True iff `arg` represents a number.
+
+<ul class="return-block"><li>    True iff <code>arg</code> represents a number.</li></ul>
 

@@ -12,7 +12,10 @@ Call the forward function for list of NumpyOps, and modify the data dictionary i
 
 <h3>Args:</h3>
 
-* **ops** :  A list of NumpyOps to execute.
-* **data** :  The data dictionary.
-* **mode** :  The current execution mode ("train", "eval", "test", or "infer").
+
+* **ops**: A list of NumpyOps to execute.
+
+* **data**: The data dictionary.
+
+* **mode**: The current execution mode ("train", "eval", "test", or "infer").
 

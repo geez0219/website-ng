@@ -12,10 +12,14 @@ Find all epochs of changes due to schedulers.
 
 <h3>Args:</h3>
 
-* **items** :  List of items to scan from.
-* **total_epochs** :  The maximum epoch number to consider when searching for signature epochs.
-* **mode** :  Current execution mode. If None, all execution modes will be considered.
+
+* **items**: List of items to scan from.
+
+* **total_epochs**: The maximum epoch number to consider when searching for signature epochs.
+
+* **mode**: Current execution mode. If None, all execution modes will be considered. 
 
 <h3>Returns:</h3>
-    The epoch numbers of changes.
+
+<ul class="return-block"><li>    The epoch numbers of changes.</li></ul>
 

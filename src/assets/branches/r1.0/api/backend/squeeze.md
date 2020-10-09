@@ -35,13 +35,19 @@ b = fe.backend.squeeze(p, axis=3)  # [[[1, 2]], [[3, 4]], [[5, 6]]]
 
 <h3>Args:</h3>
 
-* **tensor** :  The input value.
-* **axis** :  Which axis to squeeze along, which must have length==1 (or pass None to squeeze all length 1 axes).
 
-<h3>Returns:</h3>
-    The reshaped `tensor`.
+* **tensor**: The input value.
+
+* **axis**: Which axis to squeeze along, which must have length==1 (or pass None to squeeze all length 1 axes). 
 
 <h3>Raises:</h3>
 
-* **ValueError** :  If `tensor` is an unacceptable data type.
+
+* **ValueError**: If `tensor` is an unacceptable data type.
+
+<h3>Returns:</h3>
+
+<ul class="return-block"><li>    The reshaped <code>tensor</code>.
+
+</li></ul>
 

@@ -30,14 +30,21 @@ b = fe.backend.clip_by_value(p, min_value=-2, max_value=3)  # [-2, 3, 2, 0, 3, -
 
 <h3>Args:</h3>
 
-* **tensor** :  The input value.
-* **min_value** :  The minimum value to clip to.
-* **max_value** :  The maximum value to clip to.
 
-<h3>Returns:</h3>
-    The `tensor`, with it's values clipped.
+* **tensor**: The input value.
+
+* **min_value**: The minimum value to clip to.
+
+* **max_value**: The maximum value to clip to. 
 
 <h3>Raises:</h3>
 
-* **ValueError** :  If `tensor` is an unacceptable data type.
+
+* **ValueError**: If `tensor` is an unacceptable data type.
+
+<h3>Returns:</h3>
+
+<ul class="return-block"><li>    The <code>tensor</code>, with it's values clipped.
+
+</li></ul>
 

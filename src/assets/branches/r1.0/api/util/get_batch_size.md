@@ -10,8 +10,10 @@ Infer batch size from a batch dictionary.
 
 <h3>Args:</h3>
 
-* **data** :  The batch dictionary.
+
+* **data**: The batch dictionary. 
 
 <h3>Returns:</h3>
-    batch size.
+
+<ul class="return-block"><li>    batch size.</li></ul>
 

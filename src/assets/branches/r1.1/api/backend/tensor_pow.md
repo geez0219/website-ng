@@ -32,13 +32,19 @@ b = fe.backend.tensor_pow(p, 0.21)  # [[1.0, 1.338, 1.457], [1.191, 0.865, 0]]
 
 <h3>Args:</h3>
 
-* **tensor** :  The input tensor.
-* **power** :  The power to which to raise the elements in the `tensor`.
 
-<h3>Returns:</h3>
-    The `tensor` raised element-wise to the given `power`.
+* **tensor**: The input tensor.
+
+* **power**: The power to which to raise the elements in the `tensor`. 
 
 <h3>Raises:</h3>
 
-* **ValueError** :  If `tensor` is an unacceptable data type.
+
+* **ValueError**: If `tensor` is an unacceptable data type.
+
+<h3>Returns:</h3>
+
+<ul class="return-block"><li>    The <code>tensor</code> raised element-wise to the given <code>power</code>.
+
+</li></ul>
 

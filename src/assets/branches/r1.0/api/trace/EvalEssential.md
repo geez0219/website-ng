@@ -12,7 +12,6 @@ Please don't add this trace into an estimator manually. FastEstimator will add i
 
 <h3>Args:</h3>
 
-* **monitor_names** :  Any keys which should be collected over the course of an eval epoch.
 
-
+* **monitor_names**: Any keys which should be collected over the course of an eval epoch.
 

@@ -16,26 +16,46 @@ A class which tracks state information while the fe.Estimator is running.
 
 <h3>Args:</h3>
 
-* **network** :  The network instance being used by the current fe.Estimator.
-* **mode** :  The current execution mode (or None for warmup).
-* **num_devices** :  How many GPUs are available for training.
-* **log_steps** :  Log every n steps (0 to disable train logging, None to disable all logging).
-* **total_epochs** :  How many epochs training is expected to run for.
-* **max_train_steps_per_epoch** :  Whether training epochs will be cut short after N steps (or use None if they will run to        completion)
-* **Attributes** : 
-* **mode** :  What is the current execution mode of the estimator ('train', 'eval', 'test'), None if warmup.
-* **global_step** :  How many training steps have elapsed.
-* **num_devices** :  How many GPUs are available for training.
-* **log_steps** :  Log every n steps (0 to disable train logging, None to disable all logging).
-* **total_epochs** :  How many epochs training is expected to run for.
-* **epoch_idx** :  The current epoch index for the training (starting from 1).
-* **batch_idx** :  The current batch index within an epoch (starting from 1).
-* **stop_training** :  A flag to signal that training should abort.
-* **network** :  A reference to the network being used this epoch
-* **max_train_steps_per_epoch** :  Training will complete after n steps even if loader is not yet exhausted.
-* **max_eval_steps_per_epoch** :  Evaluation will complete after n steps even if loader is not yet exhausted.
-* **summary** :  An object to write experiment results to.
-* **experiment_time** :  A timestamp indicating when this model was trained.
+
+* **network**: The network instance being used by the current fe.Estimator.
+
+* **mode**: The current execution mode (or None for warmup).
+
+* **num_devices**: How many GPUs are available for training.
+
+* **log_steps**: Log every n steps (0 to disable train logging, None to disable all logging).
+
+* **total_epochs**: How many epochs training is expected to run for.
+
+* **max_train_steps_per_epoch**: Whether training epochs will be cut short after N steps (or use None if they will run to completion) Attributes:
+
+* **mode**: What is the current execution mode of the estimator ('train', 'eval', 'test'), None if warmup.
+
+* **global_step**: How many training steps have elapsed.
+
+* **num_devices**: How many GPUs are available for training.
+
+* **log_steps**: Log every n steps (0 to disable train logging, None to disable all logging).
+
+* **total_epochs**: How many epochs training is expected to run for.
+
+* **epoch_idx**: The current epoch index for the training (starting from 1).
+
+* **batch_idx**: The current batch index within an epoch (starting from 1).
+
+* **stop_training**: A flag to signal that training should abort.
+
+* **network**: A reference to the network being used this epoch
+
+* **max_train_steps_per_epoch**: Training will complete after n steps even if loader is not yet exhausted.
+
+* **max_eval_steps_per_epoch**: Evaluation will complete after n steps even if loader is not yet exhausted.
+
+* **summary**: An object to write experiment results to.
+
+* **experiment_time**: A timestamp indicating when this model was trained.
+
+---
 
 ### load_state<span class="tag">method of System</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/summary/system.py/#L95-L104>View source on Github</a>
 ```python
@@ -49,7 +69,10 @@ Load training state.
 
 <h4>Args:</h4>
 
-* **json_path** :  The json file path to load from.
+
+* **json_path**: The json file path to load from.
+
+---
 
 ### reset<span class="tag">method of System</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/summary/system.py/#L133-L144>View source on Github</a>
 ```python
@@ -64,7 +87,10 @@ Reset the current `System` for a new round of training, including a new `Summary
 
 <h4>Args:</h4>
 
-* **summary_name** :  The name of the experiment. The `Summary` object will store information iff name is not None.
+
+* **summary_name**: The name of the experiment. The `Summary` object will store information iff name is not None.
+
+---
 
 ### reset_for_test<span class="tag">method of System</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/summary/system.py/#L146-L158>View source on Github</a>
 ```python
@@ -79,7 +105,10 @@ Partially reset the current `System` object for a new round of testing.
 
 <h4>Args:</h4>
 
-* **summary_name** :  The name of the experiment. If not provided, the system will re-use the previous summary name.
+
+* **summary_name**: The name of the experiment. If not provided, the system will re-use the previous summary name.
+
+---
 
 ### save_state<span class="tag">method of System</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/summary/system.py/#L106-L115>View source on Github</a>
 ```python
@@ -93,7 +122,10 @@ Load training state.
 
 <h4>Args:</h4>
 
-* **json_path** :  The json file path to save to.
+
+* **json_path**: The json file path to save to.
+
+---
 
 ### update_batch_idx<span class="tag">method of System</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/summary/system.py/#L125-L131>View source on Github</a>
 ```python
@@ -105,6 +137,8 @@ update_batch_idx(
 Increment the current `batch_idx`.
         
 
+---
+
 ### update_global_step<span class="tag">method of System</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/summary/system.py/#L117-L123>View source on Github</a>
 ```python
 update_global_step(
@@ -114,6 +148,8 @@ update_global_step(
 ```
 Increment the current `global_step`.
         
+
+---
 
 ### write_summary<span class="tag">method of System</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/summary/system.py/#L160-L168>View source on Github</a>
 ```python
@@ -129,8 +165,8 @@ Write an entry into the `Summary` object (iff the experiment was named).
 
 <h4>Args:</h4>
 
-* **key** :  The key to write into the summary object.
-* **value** :  The value to write into the summary object.
 
+* **key**: The key to write into the summary object.
 
+* **value**: The value to write into the summary object.
 

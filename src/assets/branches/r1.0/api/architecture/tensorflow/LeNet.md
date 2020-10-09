@@ -13,9 +13,12 @@ The LeNet model has 3 convolution layers and 2 dense layers.
 
 <h3>Args:</h3>
 
-* **input_shape** :  shape of the input data (height, width, channels).
-* **classes** :  The number of outputs the model should generate.
+
+* **input_shape**: shape of the input data (height, width, channels).
+
+* **classes**: The number of outputs the model should generate. 
 
 <h3>Returns:</h3>
-    A TensorFlow LeNet model.
+
+<ul class="return-block"><li>    A TensorFlow LeNet model.</li></ul>
 

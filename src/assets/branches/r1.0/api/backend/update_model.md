@@ -33,12 +33,17 @@ fe.backend.update_model(m, loss=loss)
 
 <h3>Args:</h3>
 
-* **model** :  A neural network instance to update.
-* **loss** :  A loss value to compute gradients from.
-* **tape** :  A TensorFlow GradientTape which was recording when the `loss` was computed (iff using TensorFlow).
-* **retain_graph** :  Whether to keep the model graph in memory (applicable only for PyTorch).
+
+* **model**: A neural network instance to update.
+
+* **loss**: A loss value to compute gradients from.
+
+* **tape**: A TensorFlow GradientTape which was recording when the `loss` was computed (iff using TensorFlow).
+
+* **retain_graph**: Whether to keep the model graph in memory (applicable only for PyTorch). 
 
 <h3>Raises:</h3>
 
-* **ValueError** :  If `model` is an unacceptable data type.
+
+* **ValueError**: If `model` is an unacceptable data type.
 
