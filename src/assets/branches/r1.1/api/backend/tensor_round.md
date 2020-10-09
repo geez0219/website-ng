@@ -28,12 +28,17 @@ b = fe.backend.tensor_round(p)  # [[1, 4, 6], [4, 9, 16]]
 
 <h3>Args:</h3>
 
-* **tensor** :  The input tensor.
 
-<h3>Returns:</h3>
-    The rounded `tensor`.
+* **tensor**: The input tensor. 
 
 <h3>Raises:</h3>
 
-* **ValueError** :  If `tensor` is an unacceptable data type.
+
+* **ValueError**: If `tensor` is an unacceptable data type.
+
+<h3>Returns:</h3>
+
+<ul class="return-block"><li>    The rounded <code>tensor</code>.
+
+</li></ul>
 

@@ -39,14 +39,21 @@ b = fe.backend.reduce_min(p, axis=[0,2])  # [1, 3]
 
 <h3>Args:</h3>
 
-* **tensor** :  The input value.
-* **axis** :  Which axis or collection of axes to compute the min along.
-* **keepdims** :  Whether to preserve the number of dimensions during the reduction.
 
-<h3>Returns:</h3>
-    The min values of `tensor` along `axis`.
+* **tensor**: The input value.
+
+* **axis**: Which axis or collection of axes to compute the min along.
+
+* **keepdims**: Whether to preserve the number of dimensions during the reduction. 
 
 <h3>Raises:</h3>
 
-* **ValueError** :  If `tensor` is an unacceptable data type.
+
+* **ValueError**: If `tensor` is an unacceptable data type.
+
+<h3>Returns:</h3>
+
+<ul class="return-block"><li>    The min values of <code>tensor</code> along <code>axis</code>.
+
+</li></ul>
 

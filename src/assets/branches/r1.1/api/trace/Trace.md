@@ -40,9 +40,14 @@ ability to modify or even cancel training. The order of function invocations is 
 
 <h3>Args:</h3>
 
-* **inputs** :  A set of keys that this trace intends to read from the state dictionary as inputs.
-* **outputs** :  A set of keys that this trace intends to write into the system buffer.
-* **mode** :  What mode(s) to execute this Trace in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
+
+* **inputs**: A set of keys that this trace intends to read from the state dictionary as inputs.
+
+* **outputs**: A set of keys that this trace intends to write into the system buffer.
+
+* **mode**: What mode(s) to execute this Trace in. For example, "train", "eval", "test", or "infer". To execute regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument like "!infer" or "!train".
+
+---
 
 ### on_batch_begin<span class="tag">method of Trace</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/trace/trace.py/#L100-L106>View source on Github</a>
 ```python
@@ -57,7 +62,10 @@ Runs at the beginning of each batch.
 
 <h4>Args:</h4>
 
-* **data** :  A dictionary through which traces can communicate with each other or write values for logging.
+
+* **data**: A dictionary through which traces can communicate with each other or write values for logging.
+
+---
 
 ### on_batch_end<span class="tag">method of Trace</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/trace/trace.py/#L108-L114>View source on Github</a>
 ```python
@@ -72,7 +80,10 @@ Runs at the end of each batch.
 
 <h4>Args:</h4>
 
-* **data** :  The current batch and prediction data, as well as any information written by prior `Traces`.
+
+* **data**: The current batch and prediction data, as well as any information written by prior `Traces`.
+
+---
 
 ### on_begin<span class="tag">method of Trace</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/trace/trace.py/#L84-L90>View source on Github</a>
 ```python
@@ -87,7 +98,10 @@ Runs once at the beginning of training or testing.
 
 <h4>Args:</h4>
 
-* **data** :  A dictionary through which traces can communicate with each other or write values for logging.
+
+* **data**: A dictionary through which traces can communicate with each other or write values for logging.
+
+---
 
 ### on_end<span class="tag">method of Trace</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/trace/trace.py/#L124-L130>View source on Github</a>
 ```python
@@ -102,7 +116,10 @@ Runs once at the end training.
 
 <h4>Args:</h4>
 
-* **data** :  A dictionary through which traces can communicate with each other or write values for logging.
+
+* **data**: A dictionary through which traces can communicate with each other or write values for logging.
+
+---
 
 ### on_epoch_begin<span class="tag">method of Trace</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/trace/trace.py/#L92-L98>View source on Github</a>
 ```python
@@ -117,7 +134,10 @@ Runs at the beginning of each epoch.
 
 <h4>Args:</h4>
 
-* **data** :  A dictionary through which traces can communicate with each other or write values for logging.
+
+* **data**: A dictionary through which traces can communicate with each other or write values for logging.
+
+---
 
 ### on_epoch_end<span class="tag">method of Trace</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/trace/trace.py/#L116-L122>View source on Github</a>
 ```python
@@ -132,7 +152,6 @@ Runs at the end of each epoch.
 
 <h4>Args:</h4>
 
-* **data** :  A dictionary through which traces can communicate with each other or write values for logging.
 
-
+* **data**: A dictionary through which traces can communicate with each other or write values for logging.
 

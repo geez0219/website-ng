@@ -31,14 +31,21 @@ b = fe.backend.mean_squared_error(y_pred=pred, y_true=true)  # [1.0, 9.0, 0.0, 1
 
 <h3>Args:</h3>
 
-* **y_true** :  Ground truth class labels with a shape like (batch) or (batch, n_classes). dtype int or float32.
-* **y_pred** :  Prediction score for each class, with a shape like y_true. dtype float32.
 
-<h3>Returns:</h3>
-    The MSE between `y_true` and `y_pred`
+* **y_true**: Ground truth class labels with a shape like (batch) or (batch, n_classes). dtype: int or float32.
+
+* **y_pred**: Prediction score for each class, with a shape like y_true. dtype: float32. 
 
 <h3>Raises:</h3>
 
-* **AssertionError** :  If `y_true` and `y_pred` have mismatched shapes or disparate types.
-* **ValueError** :  If `y_pred` is an unacceptable data type.
+
+* **AssertionError**: If `y_true` and `y_pred` have mismatched shapes or disparate types.
+
+* **ValueError**: If `y_pred` is an unacceptable data type.
+
+<h3>Returns:</h3>
+
+<ul class="return-block"><li>    The MSE between <code>y_true</code> and <code>y_pred</code>
+
+</li></ul>
 

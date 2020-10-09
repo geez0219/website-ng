@@ -12,8 +12,8 @@ This class is intentionally not @traceable.
 
 <h3>Args:</h3>
 
-* **data** :  The python object to be converted to LaTeX.
-* **truncate** :  How many values to display before truncating with an ellipsis. This should be a positive integer or        None to disable truncation.
 
+* **data**: The python object to be converted to LaTeX.
 
+* **truncate**: How many values to display before truncating with an ellipsis. This should be a positive integer or None to disable truncation.
 

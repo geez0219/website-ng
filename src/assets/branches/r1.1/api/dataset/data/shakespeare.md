@@ -1,5 +1,7 @@
-# fastestimator.dataset.data.shakespeare<span class="tag">module</span>
+# tf.dataset.data.shakespeare<span class="tag">module</span>
+
 ---
+
 ## load_data<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/dataset/data/shakespeare.py/#L28-L68>View source on Github</a>
 ```python
 load_data(
@@ -16,9 +18,12 @@ Sourced from https://storage.googleapis.com/download.tensorflow.org/data/shakesp
 
 <h3>Args:</h3>
 
-* **root_dir** :  The path to store the downloaded data. When `path` is not provided, the data will be saved into        `fastestimator_data` under the user's home directory.
-* **seq_length** :  Length of data sequence.
+
+* **root_dir**: The path to store the downloaded data. When `path` is not provided, the data will be saved into `fastestimator_data` under the user's home directory.
+
+* **seq_length**: Length of data sequence. 
 
 <h3>Returns:</h3>
-    (train_data, vocab)
+
+<ul class="return-block"><li>    (train_data, vocab)</li></ul>
 

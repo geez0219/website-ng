@@ -11,6 +11,8 @@ An Operator class which takes and returns tensor data.
 
 These Operators are used in fe.Network to perform graph-based operations like neural network training.
 
+---
+
 ### build<span class="tag">method of TensorOp</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/tensorop/tensorop.py/#L48-L57>View source on Github</a>
 ```python
 build(
@@ -27,7 +29,10 @@ framework is known.
 
 <h4>Args:</h4>
 
-* **framework** :  Which framework this Op will be executing in. One of 'tf' or 'torch'.
+
+* **framework**: Which framework this Op will be executing in. One of 'tf' or 'torch'.
+
+---
 
 ### fe_retain_graph<span class="tag">method of TensorOp</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/tensorop/tensorop.py/#L88-L103>View source on Github</a>
 ```python
@@ -46,10 +51,15 @@ performed by this Op should retain or discard the graph respectively afterwards.
 
 <h4>Args:</h4>
 
-* **retain** :  If None, then return the current retain_graph status of the Op. If True or False, then set the        retain_graph status of the op to the new status and return the new status.
+
+* **retain**: If None, then return the current retain_graph status of the Op. If True or False, then set the retain_graph status of the op to the new status and return the new status. 
 
 <h4>Returns:</h4>
-    Whether this Op will retain the backward gradient graph after it's forward pass, or None if this Op does not    compute backward gradients.
+
+<ul class="return-block"><li>    Whether this Op will retain the backward gradient graph after it's forward pass, or None if this Op does not
+    compute backward gradients.</li></ul>
+
+---
 
 ### forward<span class="tag">method of TensorOp</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/tensorop/tensorop.py/#L33-L46>View source on Github</a>
 ```python
@@ -67,11 +77,17 @@ This method will be invoked on batches of data.
 
 <h4>Args:</h4>
 
-* **data** :  The batch from the data dictionary corresponding to whatever keys this Op declares as its `inputs`.
-* **state** :  Information about the current execution context, for example {"mode" "train"}.
+
+* **data**: The batch from the data dictionary corresponding to whatever keys this Op declares as its `inputs`.
+
+* **state**: Information about the current execution context, for example {"mode": "train"}. 
 
 <h4>Returns:</h4>
-    The `data` after applying whatever transform this Op is responsible for. It will be written into the data    dictionary based on whatever keys this Op declares as its `outputs`.
+
+<ul class="return-block"><li>    The <code>data</code> after applying whatever transform this Op is responsible for. It will be written into the data
+    dictionary based on whatever keys this Op declares as its <code>outputs</code>.</li></ul>
+
+---
 
 ### get_fe_loss_keys<span class="tag">method of TensorOp</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/tensorop/tensorop.py/#L76-L85>View source on Github</a>
 ```python
@@ -87,7 +103,10 @@ about losses, for example by the Network in get_loss_keys().
 
 
 <h4>Returns:</h4>
-    Any loss keys held by this Op.
+
+<ul class="return-block"><li>    Any loss keys held by this Op.</li></ul>
+
+---
 
 ### get_fe_models<span class="tag">method of TensorOp</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/tensorop/tensorop.py/#L64-L73>View source on Github</a>
 ```python
@@ -103,7 +122,6 @@ models, for example by the Network during load_epoch().
 
 
 <h4>Returns:</h4>
-    Any models held by this Op.
 
-
+<ul class="return-block"><li>    Any models held by this Op.</li></ul>
 

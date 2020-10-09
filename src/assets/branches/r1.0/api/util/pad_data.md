@@ -17,10 +17,14 @@ x = fe.util.pad_data(x, target_shape=(3, 3), pad_value = -2)  # [[1, 1, -2], [-2
 
 <h3>Args:</h3>
 
-* **data** :  The data to be padded.
-* **target_shape** :  The desired shape for `data`. Should have the same rank as `data`, with each dimension being >=        the size of the `data` dimension.
-* **pad_value** :  The value to insert into `data` if padding is required to achieve the `target_shape`.
+
+* **data**: The data to be padded.
+
+* **target_shape**: The desired shape for `data`. Should have the same rank as `data`, with each dimension being >= the size of the `data` dimension.
+
+* **pad_value**: The value to insert into `data` if padding is required to achieve the `target_shape`. 
 
 <h3>Returns:</h3>
-    The `data`, padded to the `target_shape`.
+
+<ul class="return-block"><li>    The <code>data</code>, padded to the <code>target_shape</code>.</li></ul>
 

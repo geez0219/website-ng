@@ -28,12 +28,17 @@ b = fe.backend.get_image_dims(p)  # (3, 12, 12)
 
 <h3>Args:</h3>
 
-* **tensor** :  The input tensor.
 
-<h3>Returns:</h3>
-    Channels, height and width of the `tensor`.
+* **tensor**: The input tensor. 
 
 <h3>Raises:</h3>
 
-* **ValueError** :  If `tensor` is an unacceptable data type.
+
+* **ValueError**: If `tensor` is an unacceptable data type.
+
+<h3>Returns:</h3>
+
+<ul class="return-block"><li>    Channels, height and width of the <code>tensor</code>.
+
+</li></ul>
 

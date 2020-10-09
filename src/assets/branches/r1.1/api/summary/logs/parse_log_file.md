@@ -11,9 +11,13 @@ A function which will parse log files into a dictionary of metrics.
 
 <h3>Args:</h3>
 
-* **file_path** :  The path to a log file.
-* **file_extension** :  The extension of the log file.
+
+* **file_path**: The path to a log file.
+
+* **file_extension**: The extension of the log file.
+
 
 <h3>Returns:</h3>
-    An experiment summarizing the given log file.
+
+<ul class="return-block"><li>    An experiment summarizing the given log file.</li></ul>
 

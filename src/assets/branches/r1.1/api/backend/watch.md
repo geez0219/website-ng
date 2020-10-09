@@ -24,13 +24,20 @@ x = fe.backend.watch(x)  # x.requires_grad == True
 
 <h3>Args:</h3>
 
-* **tensor** :  The tensor to be monitored.
-* **tape** :  A TensorFlow GradientTape which will be used to record gradients (iff using TensorFlow for the backend).
 
-<h3>Returns:</h3>
-    The `tensor` or a copy of the `tensor` which is being tracked for gradient computations. This value is only    needed if using PyTorch as the backend.
+* **tensor**: The tensor to be monitored.
+
+* **tape**: A TensorFlow GradientTape which will be used to record gradients (iff using TensorFlow for the backend). 
 
 <h3>Raises:</h3>
 
-* **ValueError** :  If `tensor` is an unacceptable data type.
+
+* **ValueError**: If `tensor` is an unacceptable data type.
+
+<h3>Returns:</h3>
+
+<ul class="return-block"><li>    The <code>tensor</code> or a copy of the <code>tensor</code> which is being tracked for gradient computations. This value is only
+    needed if using PyTorch as the backend.
+
+</li></ul>
 

@@ -15,8 +15,8 @@ of other traces (ex. accuracy).
 
 <h3>Args:</h3>
 
-* **monitor_names** :  key(s) to monitor for NaN values. If None, all loss values will be monitored. "*" will monitor        all trace output keys and losses.
-* **mode** :  What mode(s) to execute this Trace in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
 
+* **monitor_names**: key(s) to monitor for NaN values. If None, all loss values will be monitored. "*" will monitor all trace output keys and losses.
 
+* **mode**: What mode(s) to execute this Trace in. For example, "train", "eval", "test", or "infer". To execute regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument like "!infer" or "!train".
 

@@ -6,5 +6,6 @@ Determine the number of available GPUs.
 
 
 <h3>Returns:</h3>
-    The number of available GPUs, or 1 if none are found.
+
+<ul class="return-block"><li>    The number of available GPUs, or 1 if none are found.</li></ul>
 

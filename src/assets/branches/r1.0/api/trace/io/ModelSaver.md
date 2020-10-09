@@ -12,9 +12,10 @@ Save model weights based on epoch frequency during training.
 
 <h3>Args:</h3>
 
-* **model** :  A model instance compiled with fe.build.
-* **save_dir** :  Folder path into which to save the `model`.
-* **frequency** :  Model saving frequency in epoch(s).
 
+* **model**: A model instance compiled with fe.build.
 
+* **save_dir**: Folder path into which to save the `model`.
+
+* **frequency**: Model saving frequency in epoch(s).
 

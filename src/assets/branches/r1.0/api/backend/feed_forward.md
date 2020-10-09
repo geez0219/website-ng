@@ -26,14 +26,21 @@ b = fe.backend.feed_forward(m, x)  # [[~0.5, ~0.5], [~0.5, ~0.5], [~0.5, ~0.5]]
 
 <h3>Args:</h3>
 
-* **model** :  A neural network to run the forward step through.
-* **x** :  An input tensor for the `model`. This value will be auto-cast to either a tf.Tensor or torch.Tensor as        applicable for the `model`.
-* **training** :  Whether this forward step is part of training or not. This may impact the behavior of `model` layers        such as dropout.
 
-<h3>Returns:</h3>
-    The result of `model(x)`.
+* **model**: A neural network to run the forward step through.
+
+* **x**: An input tensor for the `model`. This value will be auto-cast to either a tf.Tensor or torch.Tensor as applicable for the `model`.
+
+* **training**: Whether this forward step is part of training or not. This may impact the behavior of `model` layers such as dropout. 
 
 <h3>Raises:</h3>
 
-* **ValueError** :  If `model` is an unacceptable data type.
+
+* **ValueError**: If `model` is an unacceptable data type.
+
+<h3>Returns:</h3>
+
+<ul class="return-block"><li>    The result of <code>model(x)</code>.
+
+</li></ul>
 

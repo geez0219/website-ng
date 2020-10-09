@@ -32,13 +32,19 @@ c = fe.backend.matmul(a, b)  # [[8], [26]]
 
 <h3>Args:</h3>
 
-* **a** :  The first matrix.
-* **b** :  The second matrix.
 
-<h3>Returns:</h3>
-    The matrix multiplication result of a * b.
+* **a**: The first matrix.
+
+* **b**: The second matrix. 
 
 <h3>Raises:</h3>
 
-* **ValueError** :  If either `a` or `b` are unacceptable or non-matching data types.
+
+* **ValueError**: If either `a` or `b` are unacceptable or non-matching data types.
+
+<h3>Returns:</h3>
+
+<ul class="return-block"><li>    The matrix multiplication result of a * b.
+
+</li></ul>
 

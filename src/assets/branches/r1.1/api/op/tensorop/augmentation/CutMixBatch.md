@@ -18,14 +18,17 @@ attacks (https://arxiv.org/pdf/1905.04899.pdf).
 
 <h3>Args:</h3>
 
-* **inputs** :  Key of the image batch to be cut-mixed.
-* **outputs** :  Keys under which to store the cut-mixed images and lambda value.
-* **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
-* **alpha** :  The alpha value defining the beta distribution to be drawn from during training which controls the        combination ratio between image pairs.
+
+* **inputs**: Key of the image batch to be cut-mixed.
+
+* **outputs**: Keys under which to store the cut-mixed images and lambda value.
+
+* **mode**: What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument like "!infer" or "!train".
+
+* **alpha**: The alpha value defining the beta distribution to be drawn from during training which controls the combination ratio between image pairs. 
 
 <h3>Raises:</h3>
 
-* **AssertionError** :  If the provided inputs are invalid.
 
-
+* **AssertionError**: If the provided inputs are invalid.
 

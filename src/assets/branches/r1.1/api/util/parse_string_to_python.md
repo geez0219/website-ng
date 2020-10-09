@@ -16,8 +16,10 @@ x = fe.util.parse_string_to_python("{'a':5, 'b':7}")  # {'a':5, 'b':7}
 
 <h3>Args:</h3>
 
-* **val** :  An input string.
+
+* **val**: An input string. 
 
 <h3>Returns:</h3>
-    A python object version of the input string.
+
+<ul class="return-block"><li>    A python object version of the input string.</li></ul>
 

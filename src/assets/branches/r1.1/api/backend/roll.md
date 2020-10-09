@@ -42,14 +42,21 @@ b = fe.backend.roll(p, shift=[-1, -1], axis=[0, 1])  # [[6, 7, 5], [2, 3, 1]]
 
 <h3>Args:</h3>
 
-* **tensor** :  The input value.
-* **shift** :  The number of places by which the elements need to be shifted. If shift is a list, axis must be a list of        same size.
-* **axis** :  axis along which elements will be rolled.
 
-<h3>Returns:</h3>
-    The rolled `tensor`.
+* **tensor**: The input value.
+
+* **shift**: The number of places by which the elements need to be shifted. If shift is a list, axis must be a list of same size.
+
+* **axis**: axis along which elements will be rolled. 
 
 <h3>Raises:</h3>
 
-* **ValueError** :  If `tensor` is an unacceptable data type.
+
+* **ValueError**: If `tensor` is an unacceptable data type.
+
+<h3>Returns:</h3>
+
+<ul class="return-block"><li>    The rolled <code>tensor</code>.
+
+</li></ul>
 

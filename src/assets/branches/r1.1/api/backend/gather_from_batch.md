@@ -41,13 +41,19 @@ b = fe.backend.gather_from_batch(p, ind)  # [[2, 3], [4, 5], [10, 11]]
 
 <h3>Args:</h3>
 
-* **tensor** :  A tensor of shape (batch, d1, ..., dn).
-* **indices** :  A tensor of shape (batch, ) or (batch, 1) indicating which indices should be selected.
 
-<h3>Returns:</h3>
-    A tensor of shape (batch, d2, ..., dn) containing the elements from `tensor` at the given `indices`.
+* **tensor**: A tensor of shape (batch, d1, ..., dn).
+
+* **indices**: A tensor of shape (batch, ) or (batch, 1) indicating which indices should be selected. 
 
 <h3>Raises:</h3>
 
-* **ValueError** :  If `tensor` is an unacceptable data type.
+
+* **ValueError**: If `tensor` is an unacceptable data type.
+
+<h3>Returns:</h3>
+
+<ul class="return-block"><li>    A tensor of shape (batch, d2, ..., dn) containing the elements from <code>tensor</code> at the given <code>indices</code>.
+
+</li></ul>
 

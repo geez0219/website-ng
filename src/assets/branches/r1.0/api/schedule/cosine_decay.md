@@ -19,13 +19,18 @@ fe.Estimator(..., traces=[s])
 
 <h3>Args:</h3>
 
-* **time** :  The current step or epoch during training starting from 1.
-* **cycle_length** :  The decay cycle length.
-* **init_lr** :  Initial learning rate to decay from.
-* **min_lr** :  Minimum learning rate.
-* **start** :  The step or epoch to start the decay schedule.
+
+* **time**: The current step or epoch during training starting from 1.
+
+* **cycle_length**: The decay cycle length.
+
+* **init_lr**: Initial learning rate to decay from.
+
+* **min_lr**: Minimum learning rate.
+
+* **start**: The step or epoch to start the decay schedule. 
 
 <h3>Returns:</h3>
 
-* **lr** :  learning rate given current step or epoch.
+<ul class="return-block"><li>    lr: learning rate given current step or epoch.</li></ul>
 

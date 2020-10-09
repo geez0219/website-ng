@@ -16,8 +16,8 @@ print(d["c"])  # "cc"
 
 <h3>Args:</h3>
 
-* **default** :  A function which takes a key and returns a default value based on the key.
- **kwargs :  Initial key/value pairs for the dictionary.
 
+* **default**: A function which takes a key and returns a default value based on the key.
 
+* ****kwargs**: Initial key/value pairs for the dictionary.
 

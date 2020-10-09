@@ -38,9 +38,13 @@ This method can be used with Numpy data:
 
 <h3>Args:</h3>
 
-* **data** :  A tensor or possibly nested collection of tensors.
-* **dtype** :  Target data type, can be one of following uint8, int8, int16, int32, int64, float16, float32, float64.
+
+* **data**: A tensor or possibly nested collection of tensors.
+
+* **dtype**: Target data type, can be one of following: uint8, int8, int16, int32, int64, float16, float32, float64. 
 
 <h3>Returns:</h3>
-     A collection with the same structure as `data` with target data type. 
+
+<ul class="return-block"><li>     A collection with the same structure as <code>data</code> with target data type.
+ </li></ul>
 

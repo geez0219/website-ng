@@ -11,7 +11,6 @@ This class is intentionally not @traceable.
 
 <h3>Args:</h3>
 
-* **val** :  An integer id to be wrapped.
 
-
+* **val**: An integer id to be wrapped.
 

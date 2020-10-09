@@ -25,14 +25,21 @@ b = fe.backend.hinge(y_pred=pred, y_true=true)  # [0.8  1.2  0.85 0.  ]
 
 <h3>Args:</h3>
 
-* **y_true** :  Ground truth class labels which should take values of 1 or -1.
-* **y_pred** :  Prediction score for each class, with a shape like y_true. dtype float32 or float16.
 
-<h3>Returns:</h3>
-    The hinge loss between `y_true` and `y_pred`
+* **y_true**: Ground truth class labels which should take values of 1 or -1.
+
+* **y_pred**: Prediction score for each class, with a shape like y_true. dtype: float32 or float16. 
 
 <h3>Raises:</h3>
 
-* **AssertionError** :  If `y_true` and `y_pred` have mismatched shapes or disparate types.
-* **ValueError** :  If `y_pred` is an unacceptable data type.
+
+* **AssertionError**: If `y_true` and `y_pred` have mismatched shapes or disparate types.
+
+* **ValueError**: If `y_pred` is an unacceptable data type.
+
+<h3>Returns:</h3>
+
+<ul class="return-block"><li>    The hinge loss between <code>y_true</code> and <code>y_pred</code>
+
+</li></ul>
 

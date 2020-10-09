@@ -19,12 +19,13 @@ fe.Estimator(..., traces=[s])  # Learning rate will change based on epoch
 
 <h3>Args:</h3>
 
-* **model** :  A model instance compiled with fe.build.
-* **lr_fn** :  A lr scheduling function that takes either 'epoch' or 'step' as input.
+
+* **model**: A model instance compiled with fe.build.
+
+* **lr_fn**: A lr scheduling function that takes either 'epoch' or 'step' as input. 
 
 <h3>Raises:</h3>
 
-* **AssertionError** :  If the `lr_fn` is not configured properly.
 
-
+* **AssertionError**: If the `lr_fn` is not configured properly.
 

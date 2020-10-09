@@ -24,15 +24,23 @@ fe.backend.save_model(m, save_dir="/tmp", model_name="test")  # Generates 'test.
 
 <h3>Args:</h3>
 
-* **model** :  A neural network instance to save.
-* **save_dir** :  Directory into which to write the `model` weights.
-* **model_name** :  The name of the model (used for naming the weights file). If None, model.model_name will be used.
-* **save_optimizer** :  Whether to save optimizer. If True, optimizer will be saved in a separate file at same folder.
 
-<h3>Returns:</h3>
-    The saved model path.
+* **model**: A neural network instance to save.
+
+* **save_dir**: Directory into which to write the `model` weights.
+
+* **model_name**: The name of the model (used for naming the weights file). If None, model.model_name will be used.
+
+* **save_optimizer**: Whether to save optimizer. If True, optimizer will be saved in a separate file at same folder. 
 
 <h3>Raises:</h3>
 
-* **ValueError** :  If `model` is an unacceptable data type.
+
+* **ValueError**: If `model` is an unacceptable data type.
+
+<h3>Returns:</h3>
+
+<ul class="return-block"><li>    The saved model path.
+
+</li></ul>
 

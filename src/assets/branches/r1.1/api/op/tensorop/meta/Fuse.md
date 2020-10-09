@@ -10,11 +10,11 @@ Run a sequence of TensorOps as a single Op.
 
 <h3>Args:</h3>
 
-* **ops** :  A sequence of TensorOps to run. They must all share the same mode. It also doesn't support scheduled ops at        the moment, though the subnet itself may be scheduled.
+
+* **ops**: A sequence of TensorOps to run. They must all share the same mode. It also doesn't support scheduled ops at the moment, though the subnet itself may be scheduled. 
 
 <h3>Raises:</h3>
 
-* **ValueError** :  If `ops` are invalid.
 
-
+* **ValueError**: If `ops` are invalid.
 

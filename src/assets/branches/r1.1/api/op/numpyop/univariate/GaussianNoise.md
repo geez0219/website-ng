@@ -16,12 +16,14 @@ your image is in a range like [-0.5, 0.5] then you do not want to use this Op.
 
 <h3>Args:</h3>
 
-* **inputs** :  Key(s) of images to be modified.
-* **outputs** :  Key(s) into which to write the modified images.
-* **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
-* **var_limit** :  Variance range for noise. If var_limit is a single float, the range will be (0, var_limit).
-* **mean** :  Mean of the noise.
-* **Image types** :     uint8, float32
 
+* **inputs**: Key(s) of images to be modified.
 
+* **outputs**: Key(s) into which to write the modified images.
+
+* **mode**: What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument like "!infer" or "!train".
+
+* **var_limit**: Variance range for noise. If var_limit is a single float, the range will be (0, var_limit).
+
+* **mean**: Mean of the noise. Image types: uint8, float32
 

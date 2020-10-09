@@ -32,15 +32,24 @@ b = fe.backend.binary_crossentropy(y_pred=pred, y_true=true, average_loss=False)
 
 <h3>Args:</h3>
 
-* **y_pred** :  Prediction with a shape like (batch, ...). dtype float32.
-* **y_true** :  Ground truth class labels with the same shape as `y_pred`. dtype int or float32.
-* **from_logits** :  Whether y_pred is from logits. If True, a sigmoid will be applied to the prediction.
-* **average_loss** :  Whether to average the element-wise loss.
 
-<h3>Returns:</h3>
-    The binary crossentropy between `y_pred` and `y_true`. A scalar if `average_loss` is True, else a tensor with    the same shape as `y_true`.
+* **y_pred**: Prediction with a shape like (batch, ...). dtype: float32.
+
+* **y_true**: Ground truth class labels with the same shape as `y_pred`. dtype: int or float32.
+
+* **from_logits**: Whether y_pred is from logits. If True, a sigmoid will be applied to the prediction.
+
+* **average_loss**: Whether to average the element-wise loss. 
 
 <h3>Raises:</h3>
 
-* **AssertionError** :  If `y_true` or `y_pred` are unacceptable data types.
+
+* **AssertionError**: If `y_true` or `y_pred` are unacceptable data types.
+
+<h3>Returns:</h3>
+
+<ul class="return-block"><li>    The binary crossentropy between <code>y_pred</code> and <code>y_true</code>. A scalar if <code>average_loss</code> is True, else a tensor with
+    the same shape as <code>y_true</code>.
+
+</li></ul>
 

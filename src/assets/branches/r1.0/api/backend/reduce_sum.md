@@ -39,14 +39,21 @@ b = fe.backend.reduce_sum(p, axis=[0,2])  # [14, 22]
 
 <h3>Args:</h3>
 
-* **tensor** :  The input value.
-* **axis** :  Which axis or collection of axes to compute the sum along.
-* **keepdims** :  Whether to preserve the number of dimensions during the reduction.
 
-<h3>Returns:</h3>
-    The sum of `tensor` along `axis`.
+* **tensor**: The input value.
+
+* **axis**: Which axis or collection of axes to compute the sum along.
+
+* **keepdims**: Whether to preserve the number of dimensions during the reduction. 
 
 <h3>Raises:</h3>
 
-* **ValueError** :  If `tensor` is an unacceptable data type.
+
+* **ValueError**: If `tensor` is an unacceptable data type.
+
+<h3>Returns:</h3>
+
+<ul class="return-block"><li>    The sum of <code>tensor</code> along <code>axis</code>.
+
+</li></ul>
 

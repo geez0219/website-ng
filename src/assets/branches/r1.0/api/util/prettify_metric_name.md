@@ -14,8 +14,10 @@ x = fe.util.prettify_metric_name("myUgly_loss")  # "My Ugly Loss"
 
 <h3>Args:</h3>
 
-* **metric** :  A string to be formatted.
+
+* **metric**: A string to be formatted. 
 
 <h3>Returns:</h3>
-    The formatted version of 'metric'.
+
+<ul class="return-block"><li>    The formatted version of 'metric'.</li></ul>
 

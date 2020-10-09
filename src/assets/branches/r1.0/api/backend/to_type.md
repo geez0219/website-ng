@@ -5,7 +5,7 @@ to_type(
 )
 -> Collection
 ```
-Compute the data types of tensors within a collection of `data`recursively.
+Compute the data types of tensors within a collection of `data` recursively.
 
 This method can be used with Numpy data:
 ```python
@@ -34,8 +34,10 @@ types = fe.backend.to_type(data)
 
 <h3>Args:</h3>
 
-* **data** :  A tensor or possibly nested collection of tensors.
+
+* **data**: A tensor or possibly nested collection of tensors. 
 
 <h3>Returns:</h3>
-    A collection with the same structure as `data`, but with any tensors substituted for their dtypes.
+
+<ul class="return-block"><li>    A collection with the same structure as <code>data</code>, but with any tensors substituted for their dtypes.</li></ul>
 

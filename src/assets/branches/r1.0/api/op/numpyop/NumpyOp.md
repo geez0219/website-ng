@@ -11,6 +11,8 @@ An Operator class which takes and returns numpy data.
 
 These Operators are used in fe.Pipeline to perform data pre-processing / augmentation.
 
+---
+
 ### forward<span class="tag">method of NumpyOp</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/op/numpyop/numpyop.py/#L27-L41>View source on Github</a>
 ```python
 forward(
@@ -27,11 +29,13 @@ This method will be invoked on individual elements of data before any batching /
 
 <h4>Args:</h4>
 
-* **data** :  The arrays from the data dictionary corresponding to whatever keys this Op declares as its `inputs`.
-* **state** :  Information about the current execution context, for example {"mode" "train"}.
+
+* **data**: The arrays from the data dictionary corresponding to whatever keys this Op declares as its `inputs`.
+
+* **state**: Information about the current execution context, for example {"mode": "train"}. 
 
 <h4>Returns:</h4>
-    The `data` after applying whatever transform this Op is responsible for. It will be written into the data    dictionary based on whatever keys this Op declares as its `outputs`.
 
-
+<ul class="return-block"><li>    The <code>data</code> after applying whatever transform this Op is responsible for. It will be written into the data
+    dictionary based on whatever keys this Op declares as its <code>outputs</code>.</li></ul>
 

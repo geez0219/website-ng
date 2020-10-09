@@ -32,13 +32,19 @@ b = fe.backend.expand_dims(p, axis=1)  # [[2], [5], [7]]
 
 <h3>Args:</h3>
 
-* **tensor** :  The input to be modified, having n dimensions.
-* **axis** :  Which axis should the new axis be inserted along. Must be in the range [-n-1, n].
 
-<h3>Returns:</h3>
-    A concatenated representation of the `tensors`, or None if the list of `tensors` was empty.
+* **tensor**: The input to be modified, having n dimensions.
+
+* **axis**: Which axis should the new axis be inserted along. Must be in the range [-n-1, n]. 
 
 <h3>Raises:</h3>
 
-* **ValueError** :  If `tensor` is an unacceptable data type.
+
+* **ValueError**: If `tensor` is an unacceptable data type.
+
+<h3>Returns:</h3>
+
+<ul class="return-block"><li>    A concatenated representation of the <code>tensors</code>, or None if the list of <code>tensors</code> was empty.
+
+</li></ul>
 

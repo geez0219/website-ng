@@ -1,6 +1,8 @@
 ## Suppressor<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/util/util.py/#L157-L186>View source on Github</a>
 ```python
-Suppressor()
+Suppressor(
+	*args, **kwargs
+)
 ```
 A class which can be used to silence output of function calls.
 
@@ -12,6 +14,8 @@ with fe.util.Suppressor():
 x()  # "hello"
 ```
 
+
+---
 
 ### write<span class="tag">method of Suppressor</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/util/util.py/#L180-L186>View source on Github</a>
 ```python
@@ -26,7 +30,6 @@ A function which is invoked during print calls.
 
 <h4>Args:</h4>
 
-* **dummy** :  The string which wanted to be printed.
 
-
+* **dummy**: The string which wanted to be printed.
 

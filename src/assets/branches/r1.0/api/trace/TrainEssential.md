@@ -12,7 +12,6 @@ Please don't add this trace into an estimator manually. FastEstimator will add i
 
 <h3>Args:</h3>
 
-* **monitor_names** :  Which keys from the data dictionary to monitor during training.
 
-
+* **monitor_names**: Which keys from the data dictionary to monitor during training.
 

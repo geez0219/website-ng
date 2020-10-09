@@ -13,8 +13,12 @@ This class is intentionally not @traceable.
 
 <h3>Args:</h3>
 
-* **name** :  Name of the experiment. If None then experiment results will be ignored.
-* **system_config** :  A description of the initialization parameters defining the estimator associated with this        experiment.
+
+* **name**: Name of the experiment. If None then experiment results will be ignored.
+
+* **system_config**: A description of the initialization parameters defining the estimator associated with this experiment.
+
+---
 
 ### merge<span class="tag">method of Summary</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/summary/summary.py/#L36-L44>View source on Github</a>
 ```python
@@ -28,7 +32,6 @@ Merge another `Summary` into this one.
 
 <h4>Args:</h4>
 
-* **other** :  Other `summary` object to be merged.
 
-
+* **other**: Other `summary` object to be merged.
 

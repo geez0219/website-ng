@@ -14,10 +14,12 @@ This expects every sample to have a separate .mat file.
 
 <h3>Args:</h3>
 
-* **file** :  Dictionary key that contains the .mat path.
-* **keys** :  Key(s) to read from the .mat file.
-* **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
-* **parent_path** :  Parent path that will be prepended to a given filepath.
 
+* **file**: Dictionary key that contains the .mat path.
 
+* **keys**: Key(s) to read from the .mat file.
+
+* **mode**: What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument like "!infer" or "!train".
+
+* **parent_path**: Parent path that will be prepended to a given filepath.
 

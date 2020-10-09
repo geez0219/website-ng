@@ -40,13 +40,19 @@ b = fe.backend.gather(p, ind)  # [[[4, 5], [6, 7]], [[0, 1], [2, 3]], [[4, 5], [
 
 <h3>Args:</h3>
 
-* **tensor** :  A tensor to gather values from.
-* **indices** :  A tensor indicating which indices should be selected. These represent locations along the 0 axis.
 
-<h3>Returns:</h3>
-    A tensor containing the elements from `tensor` at the given `indices`.
+* **tensor**: A tensor to gather values from.
+
+* **indices**: A tensor indicating which indices should be selected. These represent locations along the 0 axis. 
 
 <h3>Raises:</h3>
 
-* **ValueError** :  If `tensor` is an unacceptable data type.
+
+* **ValueError**: If `tensor` is an unacceptable data type.
+
+<h3>Returns:</h3>
+
+<ul class="return-block"><li>    A tensor containing the elements from <code>tensor</code> at the given <code>indices</code>.
+
+</li></ul>
 

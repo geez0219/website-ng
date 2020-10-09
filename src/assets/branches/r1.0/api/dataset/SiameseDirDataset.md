@@ -21,13 +21,22 @@ rather than by data instance index.
 
 <h3>Args:</h3>
 
-* **root_dir** :  The path to the directory containing data sorted by folders.
-* **data_key_left** :  What key to assign to the first data element in the pair.
-* **data_key_right** :  What key to assign to the second data element in the pair.
-* **label_key** :  What key to assign to the label values in the data dictionary.
-* **percent_matching_data** :  What percentage of the time should data be paired by class (label value = 1).
-* **label_mapping** :  A dictionary defining the mapping to use. If not provided will map classes to int labels.
-* **file_extension** :  If provided then only files ending with the file_extension will be included.
+
+* **root_dir**: The path to the directory containing data sorted by folders.
+
+* **data_key_left**: What key to assign to the first data element in the pair.
+
+* **data_key_right**: What key to assign to the second data element in the pair.
+
+* **label_key**: What key to assign to the label values in the data dictionary.
+
+* **percent_matching_data**: What percentage of the time should data be paired by class (label value = 1).
+
+* **label_mapping**: A dictionary defining the mapping to use. If not provided will map classes to int labels.
+
+* **file_extension**: If provided then only files ending with the file_extension will be included.
+
+---
 
 ### one_shot_trial<span class="tag">method of SiameseDirDataset</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/dataset/siamese_dir_dataset.py/#L142-L165>View source on Github</a>
 ```python
@@ -44,10 +53,15 @@ The similarity should be highest between the index 0 elements of the arrays.
 
 <h4>Args:</h4>
 
-* **n** :  The number of samples to draw for computing one shot accuracy. Should be <= the number of total classes.
+
+* **n**: The number of samples to draw for computing one shot accuracy. Should be <= the number of total classes. 
 
 <h4>Returns:</h4>
-    ([class_a_instance_x, class_a_instance_x, class_a_instance_x, ...],    [class_a_instance_w, class_b_instance_y, class_c_instance_z, ...])
+
+<ul class="return-block"><li>    ([class_a_instance_x, class_a_instance_x, class_a_instance_x, ...],
+    [class_a_instance_w, class_b_instance_y, class_c_instance_z, ...])</li></ul>
+
+---
 
 ### summary<span class="tag">method of SiameseDirDataset</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/dataset/siamese_dir_dataset.py/#L167-L175>View source on Github</a>
 ```python
@@ -59,7 +73,6 @@ summary(
 Generate a summary representation of this dataset.
 
 <h4>Returns:</h4>
-    A summary representation of this dataset.
 
-
+<ul class="return-block"><li>    A summary representation of this dataset.</li></ul>
 

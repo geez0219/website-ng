@@ -10,11 +10,11 @@ Run a sequence of NumpyOps as a single Op.
 
 <h3>Args:</h3>
 
-* **ops** :  A sequence of NumpyOps to run. They must all share the same mode. It also doesn't support scheduled ops at        the moment, though the Fuse itself may be scheduled.
+
+* **ops**: A sequence of NumpyOps to run. They must all share the same mode. It also doesn't support scheduled ops at the moment, though the Fuse itself may be scheduled. 
 
 <h3>Raises:</h3>
 
-* **ValueError** :  If `repeat` or `ops` are invalid.
 
-
+* **ValueError**: If `repeat` or `ops` are invalid.
 

@@ -15,10 +15,12 @@ This class is useful primarily for Jupyter Notebook, or for debugging purposes.
 
 <h3>Args:</h3>
 
-* **inputs** :  Key(s) of images to be displayed.
-* **mode** :  What mode(s) to execute this Trace in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
-* **width** :  The width in inches of the figure.
-* **height** :  The height in inches of the figure.
 
+* **inputs**: Key(s) of images to be displayed.
 
+* **mode**: What mode(s) to execute this Trace in. For example, "train", "eval", "test", or "infer". To execute regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument like "!infer" or "!train".
+
+* **width**: The width in inches of the figure.
+
+* **height**: The height in inches of the figure.
 

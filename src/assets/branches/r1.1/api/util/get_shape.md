@@ -22,8 +22,10 @@ x = fe.util.get_shape({"a": np.ones((12,22,11))})  # []
 
 <h3>Args:</h3>
 
-* **obj** :  Data to infer the shape of.
+
+* **obj**: Data to infer the shape of. 
 
 <h3>Returns:</h3>
-    A list representing the shape of the data.
+
+<ul class="return-block"><li>    A list representing the shape of the data.</li></ul>
 

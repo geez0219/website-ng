@@ -24,8 +24,12 @@ wget.download('http://url.com', '/save/dir', bar=fe.util.bar_custom)
 
 <h3>Args:</h3>
 
-* **blocks** :  number of blocks transferred so far.
-* **block_size** :  in bytes.
-* **total_size** :  in bytes, can be -1 if server doesn't return it.
-* **bar_function** :  another callback function to visualize progress.
+
+* **blocks**: number of blocks transferred so far.
+
+* **block_size**: in bytes.
+
+* **total_size**: in bytes, can be -1 if server doesn't return it.
+
+* **bar_function**: another callback function to visualize progress.
 

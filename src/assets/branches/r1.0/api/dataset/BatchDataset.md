@@ -35,9 +35,14 @@ This dataset helps to enable several use-cases:
 
 <h3>Args:</h3>
 
-* **datasets** :  The dataset(s) to use for batch sampling.
-* **num_samples** :  Number of samples to draw from the `datasets`. May be a single int if used in conjunction with        `probability`, otherwise a list of ints of len(`datasets`) is required.
-* **probability** :  Probability to draw from each dataset. Only allowed if `num_samples` is an integer.
+
+* **datasets**: The dataset(s) to use for batch sampling.
+
+* **num_samples**: Number of samples to draw from the `datasets`. May be a single int if used in conjunction with `probability`, otherwise a list of ints of len(`datasets`) is required.
+
+* **probability**: Probability to draw from each dataset. Only allowed if `num_samples` is an integer.
+
+---
 
 ### reset_index_maps<span class="tag">method of BatchDataset</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/dataset/batch_dataset.py/#L207-L221>View source on Github</a>
 ```python
@@ -50,6 +55,8 @@ Rearrange the index maps of this BatchDataset.
 
 This method is invoked every epoch by OpDataset which allows each epoch to have different random pairings of the
 basis datasets.
+
+---
 
 ### split<span class="tag">method of BatchDataset</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/dataset/batch_dataset.py/#L112-L154>View source on Github</a>
 ```python
@@ -83,10 +90,16 @@ This function enables several types of splitting:
 
 <h4>Args:</h4>
 
-* **fractions** :  Floating point values will be interpreted as percentages, integers as an absolute number of        datapoints, and an iterable of integers as the exact indices of the data that should be removed in order        to create the new dataset.
+
+* ***fractions**: Floating point values will be interpreted as percentages, integers as an absolute number of datapoints, and an iterable of integers as the exact indices of the data that should be removed in order to create the new dataset. 
 
 <h4>Returns:</h4>
-    One or more new datasets which are created by removing elements from the current dataset. The number of    datasets returned will be equal to the number of `fractions` provided. If only a single value is provided    then the return will be a single dataset rather than a list of datasets.
+
+<ul class="return-block"><li>    One or more new datasets which are created by removing elements from the current dataset. The number of
+    datasets returned will be equal to the number of <code>fractions</code> provided. If only a single value is provided
+    then the return will be a single dataset rather than a list of datasets.</li></ul>
+
+---
 
 ### summary<span class="tag">method of BatchDataset</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/dataset/batch_dataset.py/#L156-L163>View source on Github</a>
 ```python
@@ -98,7 +111,6 @@ summary(
 Generate a summary representation of this dataset.
 
 <h4>Returns:</h4>
-    A summary representation of this dataset.
 
-
+<ul class="return-block"><li>    A summary representation of this dataset.</li></ul>
 

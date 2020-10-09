@@ -28,12 +28,17 @@ b = fe.backend.tensor_sqrt(p)  # [[1.0, 2.0, 2.4495], [2.0, 3.0, 4.0]]
 
 <h3>Args:</h3>
 
-* **tensor** :  The input tensor.
 
-<h3>Returns:</h3>
-    The `tensor` that contains square root of input values.
+* **tensor**: The input tensor. 
 
 <h3>Raises:</h3>
 
-* **ValueError** :  If `tensor` is an unacceptable data type.
+
+* **ValueError**: If `tensor` is an unacceptable data type.
+
+<h3>Returns:</h3>
+
+<ul class="return-block"><li>    The <code>tensor</code> that contains square root of input values.
+
+</li></ul>
 

@@ -1,11 +1,13 @@
 ## Scheduler<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/schedule/schedule.py/#L24-L44>View source on Github</a>
 ```python
 Scheduler(
-	*args, **kwds
+	*args, **kwargs
 )
 ```
 A class which can wrap things like Datasets and Ops to make their behavior epoch-dependent.
     
+
+---
 
 ### get_all_values<span class="tag">method of Scheduler</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/schedule/schedule.py/#L38-L44>View source on Github</a>
 ```python
@@ -18,7 +20,10 @@ Get a list of all the possible values stored in the `Scheduler`.
 
 
 <h4>Returns:</h4>
-    A list of all the values stored in the `Scheduler`. This may contain None values.
+
+<ul class="return-block"><li>    A list of all the values stored in the <code>Scheduler</code>. This may contain None values.</li></ul>
+
+---
 
 ### get_current_value<span class="tag">method of Scheduler</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/schedule/schedule.py/#L27-L36>View source on Github</a>
 ```python
@@ -33,10 +38,10 @@ Fetch whichever of the `Scheduler`s elements is appropriate based on the current
 
 <h4>Args:</h4>
 
-* **epoch** :  The current epoch.
+
+* **epoch**: The current epoch. 
 
 <h4>Returns:</h4>
-    The element from the Scheduler to be used at the given `epoch`. This value might be None.
 
-
+<ul class="return-block"><li>    The element from the Scheduler to be used at the given <code>epoch</code>. This value might be None.</li></ul>
 

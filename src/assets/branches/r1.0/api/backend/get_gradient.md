@@ -39,16 +39,25 @@ b = fe.backend.get_gradient(target=b, sources=x)  # [2.0, 2.0, 2.0]
 
 <h3>Args:</h3>
 
-* **target** :  The target (final) tensor.
-* **sources** :  A sequence of source (initial) tensors.
-* **higher_order** :  Whether the gradient will be used for higher order gradients.
-* **tape** :  TensorFlow gradient tape. Only needed when using the TensorFlow backend.
-* **retain_graph** :  Whether to retain PyTorch graph. Only valid when using the PyTorch backend.
 
-<h3>Returns:</h3>
-    Gradient(s) of the `target` with respect to the `sources`.
+* **target**: The target (final) tensor.
+
+* **sources**: A sequence of source (initial) tensors.
+
+* **higher_order**: Whether the gradient will be used for higher order gradients.
+
+* **tape**: TensorFlow gradient tape. Only needed when using the TensorFlow backend.
+
+* **retain_graph**: Whether to retain PyTorch graph. Only valid when using the PyTorch backend. 
 
 <h3>Raises:</h3>
 
-* **ValueError** :  If `target` is an unacceptable data type.
+
+* **ValueError**: If `target` is an unacceptable data type.
+
+<h3>Returns:</h3>
+
+<ul class="return-block"><li>    Gradient(s) of the <code>target</code> with respect to the <code>sources</code>.
+
+</li></ul>
 

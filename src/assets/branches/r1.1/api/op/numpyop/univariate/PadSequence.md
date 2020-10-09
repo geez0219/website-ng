@@ -15,12 +15,16 @@ Pad sequences to the same length with provided value.
 
 <h3>Args:</h3>
 
-* **inputs** :  Key(s) of sequences to be padded.
-* **outputs** :  Key(s) of sequences that are padded.
-* **max_len** :  Maximum length of all sequences.
-* **value** :  Padding value.
-* **append** :  Pad before or after the sequences. True for padding the values after the sequence, False otherwise.
-* **mode** :  What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute        regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument        like "!infer" or "!train".
 
+* **inputs**: Key(s) of sequences to be padded.
 
+* **outputs**: Key(s) of sequences that are padded.
+
+* **max_len**: Maximum length of all sequences.
+
+* **value**: Padding value.
+
+* **append**: Pad before or after the sequences. True for padding the values after the sequence, False otherwise.
+
+* **mode**: What mode(s) to execute this Op in. For example, "train", "eval", "test", or "infer". To execute regardless of mode, pass None. To execute in all modes except for a particular one, you can pass an argument like "!infer" or "!train".
 

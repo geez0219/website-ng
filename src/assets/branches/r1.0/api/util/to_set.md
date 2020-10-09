@@ -19,8 +19,10 @@ x = fe.util.to_set((7))  # {7}
 
 <h3>Args:</h3>
 
-* **data** :  Input data, within or without a python container. The `data` must be hashable.
+
+* **data**: Input data, within or without a python container. The `data` must be hashable. 
 
 <h3>Returns:</h3>
-    The input `data` but inside a set instead of whatever other container type used to hold it.
+
+<ul class="return-block"><li>    The input <code>data</code> but inside a set instead of whatever other container type used to hold it.</li></ul>
 

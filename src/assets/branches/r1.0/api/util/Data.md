@@ -1,8 +1,9 @@
 ## Data<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/util/data.py/#L18-L69>View source on Github</a>
 ```python
 Data(
-	*args, **kwds
+	batch_data: Union[MutableMapping[str, Any], NoneType]=None
 )
+-> None
 ```
 A class which contains prediction and batch data.
 
@@ -24,7 +25,10 @@ r = d.read_logs(extra_keys={"c"})  # {"c":2, "d":3, "a":4}
 
 <h3>Args:</h3>
 
-* **batch_data** :  The batch data dictionary. In practice this is itself often a ChainMap containing separate        prediction and batch dictionaries.
+
+* **batch_data**: The batch data dictionary. In practice this is itself often a ChainMap containing separate prediction and batch dictionaries.
+
+---
 
 ### read_logs<span class="tag">method of Data</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/util/data.py/#L63-L69>View source on Github</a>
 ```python
@@ -37,7 +41,10 @@ Read all values from the `Data` dictionary which were intended to be logged.
 
 
 <h4>Returns:</h4>
-    A dictionary of all of the keys and values to be logged.
+
+<ul class="return-block"><li>    A dictionary of all of the keys and values to be logged.</li></ul>
+
+---
 
 ### write_with_log<span class="tag">method of Data</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/util/data.py/#L45-L52>View source on Github</a>
 ```python
@@ -53,8 +60,12 @@ Write a given `value` into the `Data` dictionary with the intent that it be logg
 
 <h4>Args:</h4>
 
-* **key** :  The key to associate with the new entry.
-* **value** :  The new entry to be written.
+
+* **key**: The key to associate with the new entry.
+
+* **value**: The new entry to be written.
+
+---
 
 ### write_without_log<span class="tag">method of Data</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/util/data.py/#L54-L61>View source on Github</a>
 ```python
@@ -70,8 +81,8 @@ Write a given `value` into the `Data` dictionary with the intent that it not be 
 
 <h4>Args:</h4>
 
-* **key** :  The ey to associate with the new entry.
-* **value** :  The new entry to be written.
 
+* **key**: The ey to associate with the new entry.
 
+* **value**: The new entry to be written.
 

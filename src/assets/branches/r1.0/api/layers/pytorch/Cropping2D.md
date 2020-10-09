@@ -20,11 +20,11 @@ y = m.forward(x)  # [[[[14, 15], [24, 25], [34, 35], [44, 45], [54, 55]]]]
 
 <h3>Args:</h3>
 
-* **cropping** :  Height and width cropping parameters. If a single int 'n' is specified, then the width and height of        the input will both be reduced by '2n', with 'n' coming off of each side of the input. If a tuple ('h', 'w')        is provided, then the height and width of the input will be reduced by '2h' and '2w' respectively, with 'h'        and 'w' coming off of each side of the input. If a tuple like (('h1', 'h2'), ('w1', 'w2')) is provided, then        'h1' will be removed from the top, 'h2' from the bottom, 'w1' from the left, and 'w2' from the right        (assuming the top left corner as the 0,0 origin).
+
+* **cropping**: Height and width cropping parameters. If a single int 'n' is specified, then the width and height of the input will both be reduced by '2n', with 'n' coming off of each side of the input. If a tuple ('h', 'w') is provided, then the height and width of the input will be reduced by '2h' and '2w' respectively, with 'h' and 'w' coming off of each side of the input. If a tuple like (('h1', 'h2'), ('w1', 'w2')) is provided, then 'h1' will be removed from the top, 'h2' from the bottom, 'w1' from the left, and 'w2' from the right (assuming the top left corner as the 0,0 origin). 
 
 <h3>Raises:</h3>
 
-* **ValueError** :  If `cropping` has an unacceptable data type.
 
-
+* **ValueError**: If `cropping` has an unacceptable data type.
 

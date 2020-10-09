@@ -1,5 +1,7 @@
-# fastestimator.dataset.dataset<span class="tag">module</span>
+# tf.dataset.dataset<span class="tag">module</span>
+
 ---
+
 ## DatasetSummary<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/dataset/dataset.py/#L53-L88>View source on Github</a>
 ```python
 DatasetSummary(
@@ -15,19 +17,28 @@ This class contains information summarizing a dataset object.
 
 <h3>Args:</h3>
 
-* **num_instances** :  The number of data instances within the dataset (influences the size of an epoch).
-* **num_classes** :  How many different classes are present.
-* **keys** :  What keys does the dataset provide, along with summary information about each key.
-* **class_key** :  Which key corresponds to class information (if known).
-* **class_key_mapping** :  A mapping of the original class string values to the values which are output to the pipeline.
 
+* **num_instances**: The number of data instances within the dataset (influences the size of an epoch).
 
+* **num_classes**: How many different classes are present.
+
+* **keys**: What keys does the dataset provide, along with summary information about each key.
+
+* **class_key**: Which key corresponds to class information (if known).
+
+* **class_key_mapping**: A mapping of the original class string values to the values which are output to the pipeline.
+
+---
 
 ## FEDataset<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/dataset/dataset.py/#L91-L224>View source on Github</a>
 ```python
-FEDataset()
+FEDataset(
+	*args, **kwargs
+)
 ```
 
+
+---
 
 ### split<span class="tag">method of FEDataset</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/dataset/dataset.py/#L113-L192>View source on Github</a>
 ```python
@@ -61,10 +72,16 @@ This function enables several types of splitting:
 
 <h4>Args:</h4>
 
- *fractions :  Floating point values will be interpreted as percentages, integers as an absolute number of        datapoints, and an iterable of integers as the exact indices of the data that should be removed in order        to create the new dataset.
+
+* ***fractions**: Floating point values will be interpreted as percentages, integers as an absolute number of datapoints, and an iterable of integers as the exact indices of the data that should be removed in order to create the new dataset. 
 
 <h4>Returns:</h4>
-    One or more new datasets which are created by removing elements from the current dataset. The number of    datasets returned will be equal to the number of `fractions` provided. If only a single value is provided    then the return will be a single dataset rather than a list of datasets.
+
+<ul class="return-block"><li>    One or more new datasets which are created by removing elements from the current dataset. The number of
+    datasets returned will be equal to the number of <code>fractions</code> provided. If only a single value is provided
+    then the return will be a single dataset rather than a list of datasets.</li></ul>
+
+---
 
 ### summary<span class="tag">method of FEDataset</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/dataset/dataset.py/#L216-L221>View source on Github</a>
 ```python
@@ -76,9 +93,10 @@ summary(
 Generate a summary representation of this dataset.
 
 <h4>Returns:</h4>
-    A summary representation of this dataset.
 
+<ul class="return-block"><li>    A summary representation of this dataset.</li></ul>
 
+---
 
 ## InMemoryDataset<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/dataset/dataset.py/#L227-L371>View source on Github</a>
 ```python
@@ -92,7 +110,10 @@ A dataset abstraction to simplify the implementation of datasets which hold thei
 
 <h3>Args:</h3>
 
-* **data** :  A dictionary like {data_index {<instance dictionary>}}.
+
+* **data**: A dictionary like {data_index: {<instance dictionary>}}.
+
+---
 
 ### summary<span class="tag">method of InMemoryDataset</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/dataset/dataset.py/#L337-L371>View source on Github</a>
 ```python
@@ -104,9 +125,10 @@ summary(
 Generate a summary representation of this dataset.
 
 <h4>Returns:</h4>
-    A summary representation of this dataset.
 
+<ul class="return-block"><li>    A summary representation of this dataset.</li></ul>
 
+---
 
 ## KeySummary<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.0/fastestimator/dataset/dataset.py/#L28-L50>View source on Github</a>
 ```python
@@ -122,9 +144,10 @@ A summary of the dataset attributes corresponding to a particular key.
 
 <h3>Args:</h3>
 
-* **num_unique_values** :  The number of unique values corresponding to a particular key (if known).
-* **shape** :  The shape of the vectors corresponding to the key. None is used in a list to indicate that a dimension is        ragged.
-* **dtype** :  The data type of instances corresponding to the given key.
 
+* **num_unique_values**: The number of unique values corresponding to a particular key (if known).
 
+* **shape**: The shape of the vectors corresponding to the key. None is used in a list to indicate that a dimension is ragged.
+
+* **dtype**: The data type of instances corresponding to the given key.
 
