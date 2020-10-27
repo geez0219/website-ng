@@ -6,7 +6,6 @@ pipeline{
                 stage('r1.0'){
                     agent {label 'master'}
                     steps {
-                        sh 'mkdir r1.0'
                         sh 'pwd'
                         sh 'ls'
                     }
@@ -14,7 +13,6 @@ pipeline{
                 stage('r1.1'){
                     agent {label 'master'}
                     steps {
-                        sh 'mkdir r1.1'
                         sh 'pwd'
                         sh 'ls'
                     }
