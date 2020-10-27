@@ -1,12 +1,21 @@
 pipeline{
-    agent any
+    agent {label 'master'}
     stages {
         stage('Build'){
-          steps{
-            sh '''
-              echo build
-            '''
-          }
+            parallel{
+                stage('r1.0'){
+                    agent {label 'master'}
+                    steps {
+                        sh 'mkdir r1.0'
+                    }
+                }
+                stage('r1.1'){
+                    agent {label 'master'}
+                    steps {
+                        sh 'mkdir r1.1'
+                    }
+                }
+            }
 		}
 	}
 }
