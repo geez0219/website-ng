@@ -1,23 +1,19 @@
-pipeline{
-    agent {label 'master'}
-    stages {
-        stage('Build'){
-            parallel{
-                stage('r1.0'){
-                    agent {label 'master'}
-                    steps {
-                        sh 'pwd'
-                        sh 'ls'
-                    }
-                }
-                stage('r1.1'){
-                    agent {label 'master'}
-                    steps {
-                        sh 'pwd'
-                        sh 'ls'
-                    }
-                }
-            }
-		}
-	}
+node(label: 'master'){
+    def branches = ["r1.0", "r1.1"]
+    def builders = [:]
+    def IMAGE_TAG="$BUILD_TAG".toLowerCase()
+    for (x in branches) {
+        def branch = x // Need to bind the label variable before the closure - can't do 'for (label in labels)'
+        def fe_repo = "fastestimator_" + branch
+        // Create a map to pass in to the 'parallel' step so we can fire all the builds at once
+        builders[branch] = {
+          node {
+              stage("get FE"){
+                  sh "git clone -b ${branch} https://github.com/fastestimator/fastestimator.git ${fe_repo}"
+              }
+          }
+        }
+    }
+
+    parallel builders
 }
