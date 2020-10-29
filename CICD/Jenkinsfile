@@ -1,16 +1,32 @@
 node(label: 'master'){
     def branches = ["r1.0", "r1.1"]
     def builders = [:]
-    def IMAGE_TAG="$BUILD_TAG".toLowerCase()
+    def image_tag ="$BUILD_TAG".toLowerCase()
+    def docker_parsed_path = "/home/ubuntu/fastestimator_web"
+    def local_parsed_path = "/root/fastestimator_web"
+
     for (x in branches) {
         def branch = x // Need to bind the label variable before the closure - can't do 'for (label in labels)'
         def fe_repo = "fastestimator_" + branch
+        def image_name = image_tag + branch
         // Create a map to pass in to the 'parallel' step so we can fire all the builds at once
         builders[branch] = {
           node {
-              stage("get FE"){
-                  sh "git clone -b ${branch} https://github.com/fastestimator/fastestimator.git ${fe_repo}"
-              }
+            stage("get FE"){
+                sh "git clone -b ${branch} https://github.com/fastestimator/fastestimator.git ${fe_repo}"
+            }
+
+            stage("parse"){
+                def customImage = docker.build('$image_name', '--no-cache - < $fe_repo/docker/nightly/Dockerfile.cpu')
+                try {
+                    customImage.inside('-u root -v $local_parsed_path:$docker_parsed_path') {
+                        echo "hello"
+                    }
+                }
+                finally {
+                    sh 'docker rmi "$image_name"'
+                }
+            }
           }
         }
     }
