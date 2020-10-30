@@ -2,8 +2,8 @@ node(label: 'master'){
     def branches = ["r1.0", "r1.1"]
     def builders = [:]
     def image_tag ="$BUILD_TAG".toLowerCase()
-    def docker_parsed_path = "/home/ubuntu/fastestimator_web"
-    def local_parsed_path = "/data/fastestimator_web"
+    def docker_parsed_path = "/data/fastestimator_web"
+    def local_parsed_path = "/home/ubuntu/fastestimator_web"
 
     for (x in branches) {
         def branch = x // Need to bind the label variable before the closure - can't do 'for (label in labels)'
