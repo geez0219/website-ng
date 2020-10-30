@@ -41,6 +41,7 @@ node(label: 'master'){
     stage("build"){
         checkout scm
         sh "cp -r $docker_parsed_path $asset_path"
+        sh "cp CICD/branches.json $asset_path"
         sh "npm install"
         sh "npm run build:ssr"
     }
