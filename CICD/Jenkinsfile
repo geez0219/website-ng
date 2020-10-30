@@ -19,11 +19,11 @@ node(label: 'master'){
             }
 
             stage("parse"){
-                def customImage = docker.build(image_name, "--no-cache - < $fe_repo/docker/stable/Dockerfile.cpu")
+                def customImage = docker.build(image_name, "--no-cache --build-arg InstallFE=False - < $fe_repo/docker/stable/Dockerfile.cpu")
                 try {
                     customImage.inside("-u root -v $local_parsed_path:$docker_parsed_path") {
-                        echo "hello"
-                        sh "mkdir $docker_parsed_path/$branch"
+                        sh "pip install --no-cache-dir ./$fe_repo"
+                        sh "python parser_files/parse_all.py $fe_repo $docker_parsed_path $branch"
                     }
                 }
                 finally {
