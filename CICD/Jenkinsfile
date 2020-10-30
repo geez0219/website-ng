@@ -23,7 +23,8 @@ node(label: 'master'){
                 try {
                     customImage.inside("-u root -v $local_parsed_path:$docker_parsed_path") {
                         sh "pip install --no-cache-dir ./$fe_repo"
-                        sh "python parser_files/parse_all.py $fe_repo $docker_parsed_path $branch"
+                        sh "pip install jupyter"
+                        sh "python parser_files/parse_all.py $fe_repo $docker_parsed_path/$branch $branch"
                     }
                 }
                 finally {
