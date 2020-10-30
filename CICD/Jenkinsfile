@@ -4,7 +4,7 @@ node(label: 'master'){
     def image_tag ="$BUILD_TAG".toLowerCase()
     def docker_parsed_path = "/data/fastestimator_web"
     def local_parsed_path = "/home/ubuntu/fastestimator_web"
-
+    def asset_path = "src/assets/branches"
     for (x in branches) {
         def branch = x // Need to bind the label variable before the closure - can't do 'for (label in labels)'
         def fe_repo = "fastestimator_" + branch
@@ -37,4 +37,11 @@ node(label: 'master'){
     }
 
     parallel builders
+
+    stage("build"){
+        checkout scm
+        sh "cp -r $docker_parsed_path $asset_path"
+        sh "npm install"
+        sh "npm run build:ssr"
+    }
 }
