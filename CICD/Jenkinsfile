@@ -9,6 +9,7 @@ node(label: 'master'){
         def branch = x // Need to bind the label variable before the closure - can't do 'for (label in labels)'
         def fe_repo = "fastestimator_" + branch
         def image_name = image_tag + branch
+
         // Create a map to pass in to the 'parallel' step so we can fire all the builds at once
         builders[branch] = {
           node {
