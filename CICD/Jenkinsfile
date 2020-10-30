@@ -18,9 +18,9 @@ node(label: 'master'){
             }
 
             stage("parse"){
-                def customImage = docker.build('${image_name}', '--no-cache - < ${fe_repo}/docker/nightly/Dockerfile.cpu')
+                def customImage = docker.build(image_name, "--no-cache - < $fe_repo/docker/nightly/Dockerfile.cpu")
                 try {
-                    customImage.inside('-u root -v ${local_parsed_path}:${docker_parsed_path}') {
+                    customImage.inside("-u root -v $local_parsed_path:$docker_parsed_path") {
                         echo "hello"
                     }
                 }
