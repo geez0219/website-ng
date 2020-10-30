@@ -23,6 +23,7 @@ node(label: 'master'){
                 try {
                     customImage.inside("-u root -v $local_parsed_path:$docker_parsed_path") {
                         echo "hello"
+                        sh "mkdir $docker_parsed_path/$branch"
                     }
                 }
                 finally {
