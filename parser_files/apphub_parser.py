@@ -5,6 +5,7 @@ import json
 import os
 import pydoc
 import re
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -127,6 +128,9 @@ def extractReadMe(output_path, apphub_path):
 
 
 def generateMarkdowns(apphub_path, output_path):
+    if os.path.exists(output_path):
+        shutil.rmtree(output_path)
+        
     json_struct = []
     exclude_prefixes = ['_', '.']
     for subdirs, dirs, files in os.walk(apphub_path, topdown=True):
@@ -190,9 +194,10 @@ def create_json(output_path, apphub_path):
                     child_list.append(file_json_obj)
             parent_json_obj['displayName'] = title
             parent_json_obj['name'] = d
-            parent_json_obj['children'] = sorted(child_list, key=lambda x: x['displayName'])
+            parent_json_obj['children'] = sorted(
+                child_list, key=lambda x: x['displayName'])
             json_struct.append(parent_json_obj)
-            
+
     json_struct = sorted(json_struct, key=lambda x: x['displayName'])
     json_struct.insert(0, {'displayName': 'Overview', 'name': 'overview.md'})
     return json_struct
