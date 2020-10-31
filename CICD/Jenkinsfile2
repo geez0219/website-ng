@@ -9,7 +9,7 @@ node(label: 'master'){
     stage("read json"){
         checkout scm
         def file_content = readFile encoding: 'utf-8', file: 'CICD/Jenkinsfile'
-        sh "echo $file_content"
+        echo "$file_content"
         // def inputFile = new File("CICD/branches,json")
         // def InputJSON = new JsonSlurper().parseText(inputFile.text)
         // InputJSON.each{ println it }
