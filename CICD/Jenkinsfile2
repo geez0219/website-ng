@@ -1,3 +1,5 @@
+import groovy.json.JsonSlurper
+
 node(label: 'master'){
     def branches = ["r1.0", "r1.1"]
     def builders = [:]
@@ -8,10 +10,9 @@ node(label: 'master'){
 
     stage("read json"){
         checkout scm
-        def file_content = readFile encoding: 'utf-8', file: 'CICD/Jenkinsfile'
+        def file_content = readFile encoding: 'utf-8', file: 'CICD/branches.json'
         echo "$file_content"
-        // def inputFile = new File("CICD/branches,json")
-        // def InputJSON = new JsonSlurper().parseText(inputFile.text)
-        // InputJSON.each{ println it }
+        def InputJSON = new JsonSlurper().parseText(file_content)
+        InputJSON.each{ println it }
     }
 }
