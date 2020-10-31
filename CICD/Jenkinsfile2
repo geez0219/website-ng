@@ -10,8 +10,8 @@ node(label: 'master'){
 
     stage("read json"){
         checkout scm
-        def inputFile = new File("CICD/branches,json")
-        def InputJSON = new JsonSlurper().parseText(inputFile.text)
+        // def inputFile = new File("CICD/branches,json")
+        // def InputJSON = new JsonSlurper().parseText(inputFile.text)
         // InputJSON.each{ println it }
     }
 }
