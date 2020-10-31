@@ -1,0 +1,13 @@
+node(label: 'master'){
+    def branches = ["r1.0", "r1.1"]
+    def builders = [:]
+    def image_tag ="$BUILD_TAG".toLowerCase()
+    def docker_parsed_path = "/data/fastestimator_web"
+    def local_parsed_path = "/home/ubuntu/fastestimator_web"
+    def asset_path = "src/assets/branches"
+
+    stage("read json"){
+        checkout scm
+        def projects = readJSON file: "CICD/branches.json"
+    }
+}
