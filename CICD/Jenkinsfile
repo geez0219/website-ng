@@ -15,7 +15,7 @@ node(label: 'master'){
     stage("read json"){
         checkout scm
         def file_content = readFile encoding: 'utf-8', file: 'CICD/branches.json'
-        branches = new JsonSlurper().parseText(file_content)
+        def branches = new JsonSlurper().parseText(file_content)
         for (x in branches){
             println x.name
         }
