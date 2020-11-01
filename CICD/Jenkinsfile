@@ -1,5 +1,7 @@
+import groovy.json.JsonSlurper
+
 node(label: 'master'){
-    def branches = ["r1.0", "r1.1"]
+    // def branches = ["r1.0", "r1.1"]
     def builders = [:]
     def image_tag ="$BUILD_TAG".toLowerCase()
     def docker_parsed_path = "/data/fastestimator_web"
@@ -10,8 +12,14 @@ node(label: 'master'){
         sh "rm -rf $docker_parsed_path/*"
     }
 
+    stage("read json"){
+        checkout scm
+        def file_content = readFile encoding: 'utf-8', file: 'CICD/branches.json'
+        def branches = new JsonSlurper().parseText(file_content)
+    }
+
     for (x in branches) {
-        def branch = x // Need to bind the label variable before the closure - can't do 'for (label in labels)'
+        def branch = x.name // Need to bind the label variable before the closure - can't do 'for (label in labels)'
         def fe_repo = "fastestimator_" + branch
         def image_name = image_tag + branch
 
