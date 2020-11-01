@@ -7,7 +7,6 @@ node(label: 'master'){
     def docker_parsed_path = "/data/fastestimator_web"
     def local_parsed_path = "/home/ubuntu/fastestimator_web"
     def asset_path = "src/assets/branches"
-    def branches
 
     stage("clean"){
         sh "rm -rf $docker_parsed_path/*"
