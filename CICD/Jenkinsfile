@@ -22,6 +22,12 @@ node(label: 'master'){
         }
     }
 
+    stage("print again"){
+        for (x in branches){
+            println x.name
+        }
+    }
+
 
     for (x in branches) {
         def branch = x.name // Need to bind the label variable before the closure - can't do 'for (label in labels)'
