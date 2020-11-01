@@ -31,31 +31,31 @@ node(label: 'master'){
 
             // Create a map to pass in to the 'parallel' step so we can fire all the builds at once
             builders[branch] = {
-            node {
-                stage("get FE"){
-                    checkout scm
-                    sh "rm -rf $fe_repo"
-                    sh "git clone -b $branch https://github.com/geez0219/fastestimator.git $fe_repo"
-                }
-
-                stage("parse"){
-                    def customImage = docker.build(image_name, "--no-cache --build-arg InstallFE=False - < $fe_repo/docker/stable/Dockerfile.cpu")
-                    try {
-                        customImage.inside("-u root -v $local_parsed_path:$docker_parsed_path") {
-                            sh "pip install --no-cache-dir ./$fe_repo"
-                            sh "pip install jupyter"
-                            sh "python parser_files/parse_all.py $fe_repo $docker_parsed_path/$branch $branch"
-                        }
+                node {
+                    stage("get FE"){
+                        checkout scm
+                        sh "rm -rf $fe_repo"
+                        sh "git clone -b $branch https://github.com/geez0219/fastestimator.git $fe_repo"
                     }
-                    finally {
-                        sh "docker rmi ${image_name}"
+
+                    stage("parse"){
+                        def customImage = docker.build(image_name, "--no-cache --build-arg InstallFE=False - < $fe_repo/docker/stable/Dockerfile.cpu")
+                        try {
+                            customImage.inside("-u root -v $local_parsed_path:$docker_parsed_path") {
+                                sh "pip install --no-cache-dir ./$fe_repo"
+                                sh "pip install jupyter"
+                                sh "python parser_files/parse_all.py $fe_repo $docker_parsed_path/$branch $branch"
+                            }
+                        }
+                        finally {
+                            sh "docker rmi ${image_name}"
+                        }
                     }
                 }
             }
         }
-    }
 
-    parallel builders
+        parallel builders
     }
 
 
