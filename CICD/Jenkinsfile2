@@ -13,6 +13,7 @@ node(label: 'master'){
         def file_content = readFile encoding: 'utf-8', file: 'CICD/branches.json'
         echo "$file_content"
         def InputJSON = new JsonSlurper().parseText(file_content)
-        InputJSON.each{ println it }
+        println InputJSON
+        // InputJSON.each{ println it }
     }
 }
