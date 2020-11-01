@@ -14,6 +14,11 @@ node(label: 'master'){
         echo "$file_content"
         def InputJSON = new JsonSlurper().parseText(file_content)
         println InputJSON
+        println InputJSON.getClass()
+        println InputJSON[0]
+        println InputJSON[0].getClass()
+        println InputJSON[0].name
+        println InputJSON[0].name.getClass()
         // InputJSON.each{ println it }
     }
 }
