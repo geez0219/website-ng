@@ -2,11 +2,12 @@ import groovy.json.JsonSlurper
 
 node(label: 'master'){
     def builders = [:]
+    def branches = []
     def image_tag ="$BUILD_TAG".toLowerCase()
     def docker_parsed_path = "/data/fastestimator_web"
     def local_parsed_path = "/home/ubuntu/fastestimator_web"
     def asset_path = "src/assets/branches"
-    def branches = []
+
     stage("clean"){
         sh "rm -rf $docker_parsed_path/*"
     }
@@ -60,12 +61,20 @@ node(label: 'master'){
 
     parallel builders
 
-
     stage("build"){
         checkout scm
         sh "cp -r $docker_parsed_path $asset_path"
         sh "cp CICD/branches.json $asset_path"
-        sh "npm install"
-        sh "npm run build:ssr"
+
+        def customImage = docker.build("FE-angular", "--no-cache - < docker/Dockerfile")
+        try {
+            customImage.inside("-u root -v $local_parsed_path:$docker_parsed_path") {
+                sh "npm install"
+                sh "npm run build:ssr"
+            }
+        }
+        finally {
+            sh "docker rmi ${image_name}"
+        }
     }
 }
