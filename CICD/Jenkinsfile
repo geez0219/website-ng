@@ -11,17 +11,17 @@ node(label: 'master'){
         sh "rm -rf $docker_parsed_path/*"
     }
 
-    stage("read json"){
-        checkout scm
-        def file_content = readFile encoding: 'utf-8', file: 'CICD/branches.json'
-        JSON = new JsonSlurper().parseText(file_content)
-        for (x in JSON){
-            branches << x.name
-        }
-        for (y in branches){
-            println y
-        }
-    }
+    // stage("read json"){
+    //     checkout scm
+    //     def file_content = readFile encoding: 'utf-8', file: 'CICD/branches.json'
+    //     JSON = new JsonSlurper().parseText(file_content)
+    //     for (x in JSON){
+    //         branches << x.name
+    //     }
+    //     for (y in branches){
+    //         println y
+    //     }
+    // }
 
     stage("read json2"){
         // for (y in branches){
