@@ -6,7 +6,7 @@ node(label: 'master'){
     def docker_parsed_path = "/data/fastestimator_web"
     def local_parsed_path = "/home/ubuntu/fastestimator_web"
     def asset_path = "src/assets/branches"
-    // def branches = []
+    def branches = []
     stage("clean"){
         sh "rm -rf $docker_parsed_path/*"
     }
@@ -14,7 +14,10 @@ node(label: 'master'){
     stage("read json"){
         checkout scm
         def file_content = readFile encoding: 'utf-8', file: 'CICD/branches.json'
-        def branches = new JsonSlurper().parseText(file_content)
+        def JSON = new JsonSlurper().parseText(file_content)
+        for (x in JSON){
+            branches << x.name
+        }
         for (y in branches){
             println y
         }
