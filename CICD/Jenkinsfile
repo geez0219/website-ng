@@ -27,7 +27,7 @@ node(label: 'master'){
         // for (y in branches){
         //     println y
         // }
-        println 8
+        println local_parsed_path
     }
 
     // for (x in branches) {
