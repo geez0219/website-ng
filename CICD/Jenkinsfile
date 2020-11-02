@@ -24,9 +24,9 @@ node(label: 'master'){
     }
 
     stage("read json2"){
-        // for (y in branches){
-        //     println y
-        // }
+        for (y in branches){
+            println y
+        }
         println local_parsed_path
     }
 
