@@ -65,16 +65,16 @@ node(label: 'master'){
         checkout scm
         sh "cp -r $docker_parsed_path $asset_path"
         sh "cp CICD/branches.json $asset_path"
-
-        def customImage = docker.build("fe_angular", "--no-cache - < docker/Dockerfile")
+        def web_image = "fe_angular"
+        def customImage = docker.build(web_image, "--no-cache - < docker/Dockerfile")
         try {
             customImage.inside("-u root -v $local_parsed_path:$docker_parsed_path") {
                 sh "npm install"
-                // sh "npm run build:ssr"
+                sh "npm run build:ssr"
             }
         }
         finally {
-            sh "docker rmi ${image_name}"
+            sh "docker rmi $web_image"
         }
     }
 }
