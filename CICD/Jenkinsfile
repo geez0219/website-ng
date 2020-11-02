@@ -18,6 +18,9 @@ node(label: 'master'){
         for (x in JSON){
             branches << x.name
         }
+        for (y in branches){
+            println y
+        }
     }
 
     for (x in branches) {
