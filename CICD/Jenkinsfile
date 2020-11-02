@@ -18,57 +18,54 @@ node(label: 'master'){
         for (x in JSON){
             branches << x.name
         }
-        for (y in branches){
-            println y
-        }
     }
 
-    stage("read json2"){
-        for (y in branches){
-            println y
-        }
-        println local_parsed_path
-    }
-
-    // for (x in branches) {
-    //     def branch = x // Need to bind the label variable before the closure - can't do 'for (label in labels)'
-    //     def fe_repo = "fastestimator_" + branch
-    //     def image_name = image_tag + branch
-
-    //     // Create a map to pass in to the 'parallel' step so we can fire all the builds at once
-    //     builders[branch] = {
-    //         node {
-    //             stage("get FE"){
-    //                 checkout scm
-    //                 sh "rm -rf $fe_repo"
-    //                 sh "git clone -b $branch https://github.com/geez0219/fastestimator.git $fe_repo"
-    //             }
-
-    //             stage("parse"){
-    //                 def customImage = docker.build(image_name, "--no-cache --build-arg InstallFE=False - < $fe_repo/docker/stable/Dockerfile.cpu")
-    //                 try {
-    //                     customImage.inside("-u root -v $local_parsed_path:$docker_parsed_path") {
-    //                         sh "pip install --no-cache-dir ./$fe_repo"
-    //                         sh "pip install jupyter"
-    //                         sh "python parser_files/parse_all.py $fe_repo $docker_parsed_path/$branch $branch"
-    //                     }
-    //                 }
-    //                 finally {
-    //                     sh "docker rmi ${image_name}"
-    //                 }
-    //             }
-    //         }
+    // stage("read json2"){
+    //     for (y in branches){
+    //         println y
     //     }
+    //     println local_parsed_path
     // }
 
-    // parallel builders
+    for (x in branches) {
+        def branch = x // Need to bind the label variable before the closure - can't do 'for (label in labels)'
+        def fe_repo = "fastestimator_" + branch
+        def image_name = image_tag + branch
+
+        // Create a map to pass in to the 'parallel' step so we can fire all the builds at once
+        builders[branch] = {
+            node {
+                stage("get FE"){
+                    checkout scm
+                    sh "rm -rf $fe_repo"
+                    sh "git clone -b $branch https://github.com/geez0219/fastestimator.git $fe_repo"
+                }
+
+                stage("parse"){
+                    def customImage = docker.build(image_name, "--no-cache --build-arg InstallFE=False - < $fe_repo/docker/stable/Dockerfile.cpu")
+                    try {
+                        customImage.inside("-u root -v $local_parsed_path:$docker_parsed_path") {
+                            sh "pip install --no-cache-dir ./$fe_repo"
+                            sh "pip install jupyter"
+                            sh "python parser_files/parse_all.py $fe_repo $docker_parsed_path/$branch $branch"
+                        }
+                    }
+                    finally {
+                        sh "docker rmi ${image_name}"
+                    }
+                }
+            }
+        }
+    }
+
+    parallel builders
 
 
-    // stage("build"){
-    //     checkout scm
-    //     sh "cp -r $docker_parsed_path $asset_path"
-    //     sh "cp CICD/branches.json $asset_path"
-    //     sh "npm install"
-    //     sh "npm run build:ssr"
-    // }
+    stage("build"){
+        checkout scm
+        sh "cp -r $docker_parsed_path $asset_path"
+        sh "cp CICD/branches.json $asset_path"
+        sh "npm install"
+        sh "npm run build:ssr"
+    }
 }
