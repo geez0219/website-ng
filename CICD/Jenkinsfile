@@ -23,6 +23,12 @@ node(label: 'master'){
         }
     }
 
+    stage("read json2"){
+        for (y in branches){
+            println y
+        }
+    }
+
     for (x in branches) {
         def branch = x // Need to bind the label variable before the closure - can't do 'for (label in labels)'
         def fe_repo = "fastestimator_" + branch
