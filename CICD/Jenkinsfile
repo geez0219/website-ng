@@ -21,13 +21,6 @@ node(label: 'master'){
         }
     }
 
-    // stage("read json2"){
-    //     for (y in branches){
-    //         println y
-    //     }
-    //     println local_parsed_path
-    // }
-
     for (x in branches) {
         def branch = x // Need to bind the label variable before the closure - can't do 'for (label in labels)'
         def fe_repo = "fastestimator_" + branch
@@ -68,7 +61,7 @@ node(label: 'master'){
         def web_image = "fe_angular"
         def customImage = docker.build(web_image, "--no-cache - < docker/Dockerfile")
         try {
-            customImage.inside("-u root -v $local_parsed_path:$docker_parsed_path") {
+            customImage.inside("-u root") {
                 sh "npm install"
                 sh "npm run build:ssr"
             }
@@ -76,5 +69,22 @@ node(label: 'master'){
         finally {
             sh "docker rmi $web_image"
         }
+    }
+
+    stage("deploy"){
+        def web_version ="$BUILD_TAG".toLowerCase()
+        def dist_file = "${web_version}.zip"
+        def s3_bucket = "fastestimator-web"
+        def web_app = "FE"
+        def web_env = "Fe-env-5"
+
+        sh "ls -al"
+        sh "zip -r $dist_file dist package.json"
+        sh "aws s3 cp $dist_file s3://$s3_bucket/$dist_file"
+        sh "aws elasticbeanstalk create-application-version --application-name $web_app --version-label $web_version \
+            --source-bundle S3Bucket=$s3_bucket,S3Key=$dist_file --no-auto-create-application --process"
+        sleep(5000)
+        sh "aws elasticbeanstalk update-environment application-name $web_app --environment-name $web_env \
+            --version-label $web_version"
     }
 }
