@@ -23,8 +23,8 @@ MAIN_DIR = 'main'
 MAX_SOUP_TRY = 50
 
 # change this to stage env for crawling in pipeline
-LOCAL_URL = 'http://localhost:4200'
-# LOCAL_URL = 'https://fastestimator.org'
+# LOCAL_URL = 'http://localhost:4200'
+LOCAL_URL = 'https://fastestimator.org'
 
 # initialize the selenium driver for the chrome
 options = webdriver.ChromeOptions()
