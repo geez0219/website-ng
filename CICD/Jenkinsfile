@@ -86,7 +86,7 @@ node(label: "master"){
 
         sleep(5)
 
-        sh "aws elasticbeanstalk update-environment application-name $web_app --environment-name $web_env \
+        sh "aws elasticbeanstalk update-environment --application-name $web_app --environment-name $web_env \
             --version-label $web_version"
     }
 
