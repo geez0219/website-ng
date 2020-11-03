@@ -83,7 +83,9 @@ node(label: 'master'){
         sh "aws s3 cp $dist_file s3://$s3_bucket/$dist_file"
         sh "aws elasticbeanstalk create-application-version --application-name $web_app --version-label $web_version \
             --source-bundle S3Bucket=$s3_bucket,S3Key=$dist_file --no-auto-create-application --process"
+
         sleep(5000)
+        
         sh "aws elasticbeanstalk update-environment application-name $web_app --environment-name $web_env \
             --version-label $web_version"
     }
