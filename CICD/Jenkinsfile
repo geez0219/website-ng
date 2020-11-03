@@ -1,6 +1,6 @@
 import groovy.json.JsonSlurper
 
-node(label: 'master'){
+node(label: "master"){
     def builders = [:]
     def branches = []
     def image_tag ="$BUILD_TAG".toLowerCase()
@@ -85,8 +85,14 @@ node(label: 'master'){
             --source-bundle S3Bucket=$s3_bucket,S3Key=$dist_file --no-auto-create-application --process"
 
         sleep(5000)
-        
+
         sh "aws elasticbeanstalk update-environment application-name $web_app --environment-name $web_env \
             --version-label $web_version"
+    }
+
+    node(label: 'elastic-search'){
+        stage("parse web"){
+            sh "pwd"
+        }
     }
 }
