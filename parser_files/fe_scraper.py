@@ -10,6 +10,7 @@ import sys
 from bs4 import BeautifulSoup
 from selenium import webdriver
 import shutil
+import sys
 
 # fastestimator url to append
 FE_URL = 'https://www.fastestimator.org'
@@ -23,16 +24,14 @@ MAIN_DIR = 'main'
 MAX_SOUP_TRY = 50
 
 # change this to stage env for crawling in pipeline
-# LOCAL_URL = 'http://localhost:4200'
-LOCAL_URL = 'https://fastestimator.org'
+LOCAL_URL = 'http://localhost:4000'
+# LOCAL_URL = 'https://fastestimator.org'
 
 # initialize the selenium driver for the chrome
 options = webdriver.ChromeOptions()
 options.add_argument('--ignore-certificate-errors')
 options.add_argument('--headless')
-driver = webdriver.Chrome(
-    executable_path="/home/geez219/angular_project/chromedriver",
-    chrome_options=options)
+
 
 
 def clean_body(text):
@@ -219,6 +218,11 @@ if __name__ == '__main__':
 
     branches = ["r1.0", "r1.1"]
     out_dir = "search_index"
+
+    driver_path = sys.argv[1]
+
+    driver = webdriver.Chrome(executable_path=driver_path,
+                              chrome_options=options)
 
     if os.path.exists(out_dir):
         shutil.rmtree(out_dir)
