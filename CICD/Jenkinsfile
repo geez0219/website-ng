@@ -54,7 +54,7 @@ node(label: "master"){
 
     parallel builders
 
-    stage("build"){
+    stage("build-and-parse"){
         checkout scm
         sh "cp -r $docker_volume_path/parsed_branches/* $asset_path"
         sh "cp CICD/branches.json $asset_path"
@@ -64,6 +64,9 @@ node(label: "master"){
             customImage.inside("-u root") {
                 sh "npm install"
                 sh "npm run build:ssr"
+                sh "npm run serve:ssr &"
+                sh "python3.6 parse_files/fe_scraper.py /usr/local/bin/chromedriver"
+                sh "ls search_index"
             }
         }
         finally {
