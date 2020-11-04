@@ -23,7 +23,13 @@ RUN python3.6 -m pip install --no-cache-dir \
 
 # configure node
 ENV NVM_DIR /root/.nvm
+ENV NODE_VERSION 14.3.0
 
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash \
     && . $NVM_DIR/nvm.sh \
-    && nvm install 14.3.0
+    && nvm install $NODE_VERSION
+    && nvm alias default $NODE_VERSION \
+    && nvm use default
+
+ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
+ENV PATH      $NVM_DIR/v$NODE_VERSION/bin:$PATH
