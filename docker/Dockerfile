@@ -22,7 +22,7 @@ RUN python3.6 -m pip install --no-cache-dir \
     selenium
 
 # configure node
-ENV NVM_DIR /$HOME/.nvm
+ENV NVM_DIR /root/.nvm
 ENV NODE_VERSION 14.3.0
 
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash \
