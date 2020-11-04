@@ -61,7 +61,7 @@ node(label: "master"){
         def web_image = "fe_angular"
         def customImage = docker.build(web_image, "--no-cache - < docker/Dockerfile")
         try {
-            customImage.inside("-u root") {
+            customImage.inside("-u root --network='host'") {
                 sh "npm install"
                 sh "npm run build:ssr"
                 sh "npm run serve:ssr &"
@@ -94,7 +94,7 @@ node(label: "master"){
     }
 
     node(label: "elastic-search"){
-        stage("parse web"){
+        stage("index"){
             sh "pwd"
         }
     }
