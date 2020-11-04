@@ -27,7 +27,7 @@ ENV NODE_VERSION 14.3.0
 
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash \
     && . $NVM_DIR/nvm.sh \
-    && nvm install $NODE_VERSION
+    && nvm install $NODE_VERSION \ 
     && nvm alias default $NODE_VERSION \
     && nvm use default
 
