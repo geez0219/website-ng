@@ -65,7 +65,7 @@ node(label: "master"){
                 sh "npm install"
                 sh "npm run build:ssr"
                 sh "npm run serve:ssr &"
-                sh "python3.6 parse_files/fe_scraper.py /usr/local/bin/chromedriver"
+                sh "python3.6 parser_files/fe_scraper.py /usr/local/bin/chromedriver"
                 sh "ls search_index"
             }
         }
