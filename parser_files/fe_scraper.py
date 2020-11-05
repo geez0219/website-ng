@@ -10,6 +10,7 @@ import sys
 from bs4 import BeautifulSoup
 from selenium import webdriver
 import shutil
+import sys
 
 # fastestimator url to append
 FE_URL = 'https://www.fastestimator.org'
@@ -23,16 +24,15 @@ MAIN_DIR = 'main'
 MAX_SOUP_TRY = 50
 
 # change this to stage env for crawling in pipeline
-LOCAL_URL = 'http://localhost:4200'
+LOCAL_URL = 'http://localhost:4000'
 # LOCAL_URL = 'https://fastestimator.org'
 
 # initialize the selenium driver for the chrome
 options = webdriver.ChromeOptions()
 options.add_argument('--ignore-certificate-errors')
 options.add_argument('--headless')
-driver = webdriver.Chrome(
-    executable_path="/home/geez219/angular_project/chromedriver",
-    chrome_options=options)
+options.add_argument('--no-sandbox')
+options.add_argument("--disable-dev-shm-usage")
 
 
 def clean_body(text):
@@ -50,6 +50,9 @@ def save_json_file(fname, parent_dir, item):
 
 
 def extract_examples(url, out_dir):
+    if os.path.exists(out_dir):
+        shutil.rmtree(out_dir)
+
     links = []
     driver.get(url)
     page_source = driver.page_source
@@ -93,6 +96,9 @@ def extract_examples(url, out_dir):
 
 
 def extract_tutorial(url, out_dir):
+    if os.path.exists(out_dir):
+        shutil.rmtree(out_dir)
+
     links = []
     driver.get(url)
     page_source = driver.page_source
@@ -137,6 +143,9 @@ def extract_tutorial(url, out_dir):
 
 
 def extract_api(url, out_dir):
+    if os.path.exists(out_dir):
+        shutil.rmtree(out_dir)
+
     links = []
     driver.get(url)
     page_source = driver.page_source
@@ -172,6 +181,9 @@ def extract_api(url, out_dir):
 
 
 def extract_install(url, out_dir):
+    if os.path.exists(out_dir):
+        shutil.rmtree(out_dir)
+
     driver.get(url)
     item = {}
     soup = BeautifulSoup(driver.page_source, 'lxml')
@@ -214,32 +226,29 @@ def extract_main_list(url):
 
 
 if __name__ == '__main__':
+    branch = sys.argv[1]
+    out_dir = sys.argv[2]
+    driver_path = sys.argv[3]
 
-    #relative urls
+    driver = webdriver.Chrome(executable_path=driver_path,
+                              chrome_options=options)
 
-    branches = ["r1.0", "r1.1"]
-    out_dir = "search_index"
+    example_rel_url = f'examples/{branch}/overview'
+    tutorial_rel_url = f'tutorials/{branch}/beginner/t01_getting_started'
+    api_rel_url = f'api/{branch}/fe/Estimator'
+    install_rel_url = f'install/{branch}'
 
-    if os.path.exists(out_dir):
-        shutil.rmtree(out_dir)
+    example_url = urljoin(LOCAL_URL, example_rel_url)
+    tutorial_url = urljoin(LOCAL_URL, tutorial_rel_url)
+    api_url = urljoin(LOCAL_URL, api_rel_url)
+    install_url = urljoin(LOCAL_URL, install_rel_url)
 
-    for branch in branches:
-        example_rel_url = f'examples/{branch}/overview'
-        tutorial_rel_url = f'tutorials/{branch}/beginner/t01_getting_started'
-        api_rel_url = f'api/{branch}/fe/Estimator'
-        install_rel_url = f'install/{branch}'
-
-        example_url = urljoin(LOCAL_URL, example_rel_url)
-        tutorial_url = urljoin(LOCAL_URL, tutorial_rel_url)
-        api_url = urljoin(LOCAL_URL, api_rel_url)
-        install_url = urljoin(LOCAL_URL, install_rel_url)
-
-        extract_examples(example_url,
-                         os.path.join(out_dir, branch, EXAMPLES_DIR))
-        extract_tutorial(tutorial_url,
-                         os.path.join(out_dir, branch, TUTORIALS_DIR))
-        extract_api(api_url, os.path.join(out_dir, branch, API_DIR))
-        extract_install(install_url, os.path.join(out_dir, branch,
-                                                  INSTALL_DIR))
-        extract_main(LOCAL_URL, os.path.join(out_dir, branch, MAIN_DIR))
-        #extract_main_list(main_url)
+    extract_examples(example_url,
+                        os.path.join(out_dir, branch, EXAMPLES_DIR))
+    extract_tutorial(tutorial_url,
+                        os.path.join(out_dir, branch, TUTORIALS_DIR))
+    extract_api(api_url, os.path.join(out_dir, branch, API_DIR))
+    extract_install(install_url, os.path.join(out_dir, branch,
+                                                INSTALL_DIR))
+    extract_main(LOCAL_URL, os.path.join(out_dir, branch, MAIN_DIR))
+    #extract_main_list(main_url)

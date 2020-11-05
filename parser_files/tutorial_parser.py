@@ -1,12 +1,13 @@
 """ FastEstimator Docstring parser """
 import json
 import os
+import pdb
 import re
+import shutil
 import subprocess
 import sys
-from shutil import copy
 from functools import partial
-import pdb
+from shutil import copy
 
 RE_SIDEBAR_TITLE = '[^A-Za-z0-9:!,$%. ()]+'
 RE_ROUTE_TITLE = '[^A-Za-z0-9 ]+'
@@ -19,11 +20,18 @@ def generateMarkdowns(output_dir, tutorial_type, fe_path):
     tutorial_path = os.path.join(fe_path, tutorial_sub_dir)
     # invoke subprocess to run nbconvert command on notebook files
     output_sub_dir = os.path.join(output_dir, 'tutorial', tutorial_type)
+
+    if os.path.exists(output_sub_dir):
+        shutil.rmtree(output_sub_dir)
+
     os.makedirs(output_sub_dir, exist_ok=True)
     for filename in os.listdir(tutorial_path):
         if filename.endswith('.ipynb'):
             filepath = os.path.join(tutorial_path, filename)
-            subprocess.run(['jupyter', 'nbconvert', '--to', 'markdown', filepath, '--output-dir', output_sub_dir])
+            subprocess.run([
+                'jupyter', 'nbconvert', '--to', 'markdown', filepath,
+                '--output-dir', output_sub_dir
+            ])
         elif filename.endswith('.md'):
             filepath = os.path.join(tutorial_path, filename)
             copy(filepath, output_sub_dir)
@@ -93,17 +101,20 @@ def updateLinks(line, tutorial_type, fname):
                          partial(replaceRefLink, tutorial_type=tutorial_type),
                          output_line)
     output_line = re.sub(re_apphub_link, replaceApphubLink, output_line)
-    output_line = re.sub(re_anchortag_link, partial(replaceAnchorLink, tutorial_type=tutorial_type,
-                                                    fname=fname), output_line)
-
+    output_line = re.sub(
+        re_anchortag_link,
+        partial(replaceAnchorLink, tutorial_type=tutorial_type, fname=fname),
+        output_line)
 
     return output_line
+
 
 def replaceImgLink(match):
     path_prefix = f'assets/branches/{BRANCH}/tutorial'
     new_src = os.path.join(path_prefix, match.group(1))
 
     return f'src=\"{new_src}\"'
+
 
 def replaceImagePath(mdfile, tutorial_type):
     """This function takes markdown file path and append the prefix path to the image path in the file. It allows
@@ -131,7 +142,8 @@ def replaceImagePath(mdfile, tutorial_type):
         if idx != -1:
             # [png](t01_getting_started_files/t01_getting_started_19_1.png)
             # -> [png](assets/branches/master/tutorial/beginner/t01_getting_started_files/t01_getting_started_19_1.png)
-            line = png_tag + os.path.join(png_path_prefix, line[idx + len(png_tag):])
+            line = png_tag + os.path.join(png_path_prefix,
+                                          line[idx + len(png_tag):])
 
         mdfile_updated.append(line)
 
@@ -166,18 +178,20 @@ def createJson(output_dir):
                         sidebar_val_dict = {}
                         if flag and sentence_tokens[0] in headers:
                             f_obj['name'] = os.path.join(f.name, filename)
-                            f_obj['displayName'] = re.sub(RE_SIDEBAR_TITLE, '', sentence)
+                            f_obj['displayName'] = re.sub(
+                                RE_SIDEBAR_TITLE, '', sentence)
                             flag = False
                         elif sentence_tokens[0] in subheaders:
                             title = re.sub(RE_SIDEBAR_TITLE, '', sentence)
                             route_title = re.sub(RE_ROUTE_TITLE, '', sentence)
-                            sidebar_val_dict['id'] = route_title.lower().strip().replace(' ', '-')
+                            sidebar_val_dict['id'] = route_title.lower().strip(
+                            ).replace(' ', '-')
                             sidebar_val_dict['displayName'] = title.strip()
                             sidebar_titles.append(sidebar_val_dict)
                     f_obj['toc'] = sidebar_titles
                     children.append(f_obj)
             dir_obj['children'] = children
-        dir_arr.append(dir_obj)
+            dir_arr.append(dir_obj)
 
     output_struct = os.path.join(tutorial_output_path, 'structure.json')
     # write to json file
