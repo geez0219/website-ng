@@ -61,7 +61,7 @@ node(label: "master"){
         def web_image = "fe_angular"
         def customImage = docker.build(web_image, "--no-cache - < docker/Dockerfile")
         try {
-            customImage.inside("-u root --network='host'") {
+            customImage.inside("-u root") {
                 sh "npm install"
                 sh "npm run build:ssr"
                 sh "npm run serve:ssr &"
