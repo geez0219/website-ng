@@ -54,7 +54,7 @@ node(label: "master"){
 
     parallel builders
 
-    stage("build-and-parse"){
+    stage("build and scrape"){
         checkout scm
         sh "cp -r $docker_volume_path/parsed_branches/* $asset_path"
         sh "cp CICD/branches.json $asset_path"
@@ -66,7 +66,7 @@ node(label: "master"){
                 sh "npm run build:ssr"
                 sh "npm run serve:ssr &"
                 sh "python3.6 parser_files/fe_scraper.py /usr/local/bin/chromedriver"
-                sh "ls search_index"
+                stash includes: "search_index/**/*", name: "search_index"
             }
         }
         finally {
@@ -94,8 +94,10 @@ node(label: "master"){
     }
 
     node(label: "elastic-search"){
-        stage("index"){
-            sh "pwd"
+        stage("index elastic-search"){
+            dir("/home/ubuntu/fastestimator/nodejs-elasticsearch"){
+                unstash "search_index"
+            }
         }
     }
 }
