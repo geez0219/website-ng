@@ -60,4 +60,4 @@ curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE \
 ENV CHROMEDRIVER_DIR /usr/local/bin/
 
 # Unzip the Chrome Driver into /usr/local/bin directory
-RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
+RUN unzip /tmp/chromedriver.zip chromedriver -d $CHROMEDRIVER_DIR
