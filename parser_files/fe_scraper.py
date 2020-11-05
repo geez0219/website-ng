@@ -50,6 +50,9 @@ def save_json_file(fname, parent_dir, item):
 
 
 def extract_examples(url, out_dir):
+    if os.path.exists(out_dir):
+        shutil.rmtree(out_dir)
+
     links = []
     driver.get(url)
     page_source = driver.page_source
@@ -93,6 +96,9 @@ def extract_examples(url, out_dir):
 
 
 def extract_tutorial(url, out_dir):
+    if os.path.exists(out_dir):
+        shutil.rmtree(out_dir)
+
     links = []
     driver.get(url)
     page_source = driver.page_source
@@ -137,6 +143,9 @@ def extract_tutorial(url, out_dir):
 
 
 def extract_api(url, out_dir):
+    if os.path.exists(out_dir):
+        shutil.rmtree(out_dir)
+
     links = []
     driver.get(url)
     page_source = driver.page_source
@@ -172,6 +181,9 @@ def extract_api(url, out_dir):
 
 
 def extract_install(url, out_dir):
+    if os.path.exists(out_dir):
+        shutil.rmtree(out_dir)
+
     driver.get(url)
     item = {}
     soup = BeautifulSoup(driver.page_source, 'lxml')
@@ -214,37 +226,29 @@ def extract_main_list(url):
 
 
 if __name__ == '__main__':
-
-    #relative urls
-
-    branches = ["r1.0", "r1.1"]
-    out_dir = "search_index"
-
-    driver_path = sys.argv[1]
+    branch = sys.argv[1]
+    out_dir = sys.argv[2]
+    driver_path = sys.argv[3]
 
     driver = webdriver.Chrome(executable_path=driver_path,
                               chrome_options=options)
 
-    if os.path.exists(out_dir):
-        shutil.rmtree(out_dir)
+    example_rel_url = f'examples/{branch}/overview'
+    tutorial_rel_url = f'tutorials/{branch}/beginner/t01_getting_started'
+    api_rel_url = f'api/{branch}/fe/Estimator'
+    install_rel_url = f'install/{branch}'
 
-    for branch in branches:
-        example_rel_url = f'examples/{branch}/overview'
-        tutorial_rel_url = f'tutorials/{branch}/beginner/t01_getting_started'
-        api_rel_url = f'api/{branch}/fe/Estimator'
-        install_rel_url = f'install/{branch}'
+    example_url = urljoin(LOCAL_URL, example_rel_url)
+    tutorial_url = urljoin(LOCAL_URL, tutorial_rel_url)
+    api_url = urljoin(LOCAL_URL, api_rel_url)
+    install_url = urljoin(LOCAL_URL, install_rel_url)
 
-        example_url = urljoin(LOCAL_URL, example_rel_url)
-        tutorial_url = urljoin(LOCAL_URL, tutorial_rel_url)
-        api_url = urljoin(LOCAL_URL, api_rel_url)
-        install_url = urljoin(LOCAL_URL, install_rel_url)
-
-        extract_examples(example_url,
-                         os.path.join(out_dir, branch, EXAMPLES_DIR))
-        extract_tutorial(tutorial_url,
-                         os.path.join(out_dir, branch, TUTORIALS_DIR))
-        extract_api(api_url, os.path.join(out_dir, branch, API_DIR))
-        extract_install(install_url, os.path.join(out_dir, branch,
-                                                  INSTALL_DIR))
-        extract_main(LOCAL_URL, os.path.join(out_dir, branch, MAIN_DIR))
-        #extract_main_list(main_url)
+    extract_examples(example_url,
+                        os.path.join(out_dir, branch, EXAMPLES_DIR))
+    extract_tutorial(tutorial_url,
+                        os.path.join(out_dir, branch, TUTORIALS_DIR))
+    extract_api(api_url, os.path.join(out_dir, branch, API_DIR))
+    extract_install(install_url, os.path.join(out_dir, branch,
+                                                INSTALL_DIR))
+    extract_main(LOCAL_URL, os.path.join(out_dir, branch, MAIN_DIR))
+    #extract_main_list(main_url)
