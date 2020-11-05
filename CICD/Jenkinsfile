@@ -8,7 +8,7 @@ node(label: "master"){
     def local_volume_path = "/home/ubuntu/fastestimator_web"
     def asset_path = "src/assets/branches"
     def index_dir = "auto_deploy"
-    
+
     stage("clean"){
         sh "rm -rf $docker_volume_path/parsed_branches/*"
     }
@@ -78,6 +78,17 @@ node(label: "master"){
         }
     }
 
+    node(label: "elastic-search"){
+        stage("index elastic-search"){
+            dir("/home/ubuntu/fastestimator/nodejs-elasticsearch"){
+                unstash index_dir
+                for (branch in branches){
+                    sh "python3 load_index.py $index_dir/$branch $branch"
+                }
+            }
+        }
+    }
+    
     stage("deploy"){
         def web_version ="$BUILD_TAG".toLowerCase()
         def dist_file = "${web_version}.zip"
@@ -95,16 +106,5 @@ node(label: "master"){
 
         sh "aws elasticbeanstalk update-environment --application-name $web_app --environment-name $web_env \
             --version-label $web_version"
-    }
-
-    node(label: "elastic-search"){
-        stage("index elastic-search"){
-            dir("/home/ubuntu/fastestimator/nodejs-elasticsearch"){
-                unstash index_dir
-                for (branch in branches){
-                    sh "python3 load_index.py $index_dir/$branch $branch"
-                }
-            }
-        }
     }
 }
