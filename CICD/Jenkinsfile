@@ -1,12 +1,110 @@
-pipeline{
-    agent any
-    stages {
-        stage('Build'){
-          steps{
-            sh '''
-              echo build
-            '''
-          }
-		}
-	}
+import groovy.json.JsonSlurper
+
+node(label: "master"){
+    def builders = [:]
+    def branches = []
+    def image_tag ="$BUILD_TAG".toLowerCase()
+    def docker_volume_path = "/data/fastestimator_web"
+    def local_volume_path = "/home/ubuntu/fastestimator_web"
+    def asset_path = "src/assets/branches"
+    def index_dir = "auto_deploy"
+
+    stage("clean"){
+        sh "rm -rf $docker_volume_path/parsed_branches/*"
+    }
+
+    stage("read json"){
+        checkout scm
+        def file_content = readFile encoding: 'utf-8', file: 'CICD/branches.json'
+        def JSON = new JsonSlurper().parseText(file_content)
+        for (x in JSON){
+            branches << x.name
+        }
+    }
+
+    for (x in branches) {
+        def branch = x // Need to bind the label variable before the closure - can't do 'for (branch in branches)'
+        def fe_repo = "fastestimator_" + branch
+        def image_name = image_tag + branch
+
+        // Create a map to pass in to the 'parallel' step so we can fire all the builds at once
+        builders[branch] = {
+            node {
+                stage("get FE"){
+                    checkout scm
+                    sh "rm -rf $fe_repo"
+                    sh "git clone -b $branch https://github.com/geez0219/fastestimator.git $fe_repo"
+                }
+
+                stage("parse"){
+                    def customImage = docker.build(image_name, "--no-cache --build-arg InstallFE=False - < $fe_repo/docker/stable/Dockerfile.cpu")
+                    try {
+                        customImage.inside("-u root -v $local_volume_path:$docker_volume_path") {
+                            sh "pip install --no-cache-dir ./$fe_repo"
+                            sh "pip install jupyter"
+                            sh "python parser_files/parse_all.py $fe_repo $docker_volume_path/parsed_branches/$branch $branch"
+                        }
+                    }
+                    finally {
+                        sh "docker rmi ${image_name}"
+                    }
+                }
+            }
+        }
+    }
+
+    parallel builders
+
+    stage("build and scrape"){
+        checkout scm
+        sh "cp -r $docker_volume_path/parsed_branches/* $asset_path"
+        sh "cp CICD/branches.json $asset_path"
+        def web_image = "fe_angular"
+        def customImage = docker.build(web_image, "--no-cache - < docker/Dockerfile")
+        try {
+            customImage.inside("-u root") {
+                sh "npm install"
+                sh "npm run build:ssr"
+                sh "npm run serve:ssr &"
+                for (branch in branches){
+                    sh "python3.6 parser_files/fe_scraper.py $branch $index_dir /usr/local/bin/chromedriver" // driver path
+                }
+
+                stash includes: "$index_dir/**/*", name: index_dir
+            }
+        }
+        finally {
+            sh "docker rmi $web_image"
+        }
+    }
+
+    node(label: "elastic-search"){
+        stage("index elastic-search"){
+            dir("/home/ubuntu/fastestimator/nodejs-elasticsearch"){
+                unstash index_dir
+                for (branch in branches){
+                    sh "python3 load_index.py $index_dir/$branch $branch"
+                }
+            }
+        }
+    }
+
+    stage("deploy"){
+        def web_version ="$BUILD_TAG".toLowerCase()
+        def dist_file = "${web_version}.zip"
+        def s3_bucket = "fastestimator-web"
+        def web_app = "FE"
+        def web_env = "Fe-env-5"
+
+        sh "ls -al"
+        sh "zip -r $dist_file dist package.json"
+        sh "aws s3 cp $dist_file s3://$s3_bucket/$dist_file"
+        sh "aws elasticbeanstalk create-application-version --application-name $web_app --version-label $web_version \
+            --source-bundle S3Bucket=$s3_bucket,S3Key=$dist_file --no-auto-create-application --process"
+
+        sleep(5)
+
+        sh "aws elasticbeanstalk update-environment --application-name $web_app --environment-name $web_env \
+            --version-label $web_version"
+    }
 }

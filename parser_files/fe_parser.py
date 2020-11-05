@@ -343,10 +343,10 @@ def generatedocs(repo_dir, save_dir, branch):
     #insert project path to system path to later detect the modules in project
     sys.path.insert(0, repo_dir)
 
-    fe_path = os.path.abspath((os.path.join(repo_dir, 'fastestimator')))
-
     if os.path.exists(save_dir):
         shutil.rmtree(save_dir)
+
+    fe_path = os.path.abspath((os.path.join(repo_dir, 'fastestimator')))
 
     # directories that needs to be excluded
     exclude = set(['test', '__pycache__'])
@@ -431,6 +431,7 @@ if __name__ == "__main__":
 
     save_dir = os.path.join(output_dir, "api")
     json_path = os.path.join(save_dir, "structure.json")
+
     generatedocs(repo_dir, save_dir, branch)
     struct_json = generate_json(save_dir)
 
