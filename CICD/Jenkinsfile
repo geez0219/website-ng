@@ -67,7 +67,7 @@ node(label: "master"){
                 sh "npm run build:ssr"
                 sh "npm run serve:ssr &"
                 for (branch in branches){
-                    sh "python3.6 parser_files/fe_scraper.py $branch $index_dir $CHROMEDRIVER_DIR/chromedriver" // driver path
+                    sh "python3.6 parser_files/fe_scraper.py $branch $index_dir /usr/local/bin/chromedriver" // driver path
                 }
 
                 stash includes: "$index_dir/**/*", name: index_dir
