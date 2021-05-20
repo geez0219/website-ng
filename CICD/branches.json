@@ -1,7 +1,11 @@
 [
     {
-        "name": "r1.1",
+        "name": "r1.2",
         "latest": true
+    },
+    {
+        "name": "r1.1",
+        "latest": false
     },
     {
         "name": "r1.0",
