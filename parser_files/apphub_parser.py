@@ -11,6 +11,7 @@ import sys
 import tempfile
 from functools import partial
 from shutil import copy
+import pdb
 
 re_sidebar_title = '[^A-Za-z0-9:!,$%.() ]+'
 re_route_title = '[^A-Za-z0-9 ]+'
@@ -130,7 +131,7 @@ def extractReadMe(output_path, apphub_path):
 def generateMarkdowns(apphub_path, output_path):
     if os.path.exists(output_path):
         shutil.rmtree(output_path)
-        
+
     json_struct = []
     exclude_prefixes = ['_', '.']
     for subdirs, dirs, files in os.walk(apphub_path, topdown=True):
@@ -171,10 +172,8 @@ def getNameTitle(namedict, fname):
 
 
 def create_json(output_path, apphub_path):
-    json_dict = {}
     json_struct = []
 
-    exclude_prefixes = ['_', '.']
     namedict = extractReadMe(output_path, apphub_path)
     for d in os.listdir(output_path):
         child_list = []
@@ -188,7 +187,12 @@ def create_json(output_path, apphub_path):
                 file_json_obj = {}
                 fname, ext = os.path.splitext(os.path.basename(f))
                 if ext == '.md' and f[0] != '.':
-                    title, name = getNameTitle(namedict, fname)
+                    if getNameTitle(namedict, fname) is None:
+                        raise RuntimeError(
+                            "detect example not in the apphub README.md")
+                    else:
+                        title, name = getNameTitle(namedict, fname)
+
                     file_json_obj['name'] = os.path.join(d, fname + ext)
                     file_json_obj['displayName'] = name
                     child_list.append(file_json_obj)

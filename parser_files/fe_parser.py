@@ -10,7 +10,16 @@ import json
 
 
 class APIFolder:
+    """ class to generate an parsed API folder from an target folder
+    it doens't care the subfolder. It only reads the modules in that folder level and pop the markdown files.
+
+    Args:
+        save_dir: path to the destination folder (ex: .../api/architecture)
+        fe_dir: path to the fastestimator folder (ex: .../fastestimator)
+        target_dir: path to the target folder to parse (ex: .../fastestimator/architecture)
+    """
     def __init__(self, save_dir, fe_dir, target_dir):
+
         self.save_dir = save_dir
         self.fe_dir = fe_dir
         self.target_dir = target_dir
@@ -27,12 +36,15 @@ class APIFolder:
         for name, member in inspect.getmembers(dir_module):
             if name.startswith("_"):
                 continue
-            if not member: # EarlyStop
-                continue
-            if os.path.basename( # skip folder module
-                    inspect.getsourcefile(member)) == "__init__.py":
+            if not member: # ex: EarlyStop
                 continue
 
+            source_path = inspect.getfile(member)
+            if not source_path.startswith(self.fe_dir): # skip module not from fe ex: cv2
+                continue
+            if os.path.basename(
+                    source_path) == "__init__.py":  # skip folder module
+                continue
             if inspect.isfunction(member) or inspect.isclass(member):
                 self.func_and_classes.append([name, member])
             elif inspect.ismodule(member):
@@ -359,8 +371,8 @@ def generatedocs(repo_dir, save_dir, branch):
         os.makedirs(save_path, exist_ok=True)
         dirs[:] = [d for d in dirs if d not in exclude]
         api_folder = APIFolder(save_dir=save_path,
-                                target_dir=path,
-                                fe_dir=repo_dir)
+                               target_dir=path,
+                               fe_dir=repo_dir)
         api_folder.dump()
 
 
@@ -426,8 +438,8 @@ def generate_json(path):
 
 if __name__ == "__main__":
     repo_dir = sys.argv[1]
-    branch = sys.argv[2]
-    output_dir = sys.argv[3]
+    output_dir = sys.argv[2]
+    branch = sys.argv[3]
 
     save_dir = os.path.join(output_dir, "api")
     json_path = os.path.join(save_dir, "structure.json")
