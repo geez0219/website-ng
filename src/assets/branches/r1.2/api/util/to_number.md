@@ -1,0 +1,39 @@
+## to_number<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.2/fastestimator/util/util.py/#L839-L875>View source on Github</a>
+```python
+to_number(
+	data: Union[tensorflow.python.framework.ops.Tensor, torch.Tensor, numpy.ndarray, int, float]
+)
+-> numpy.ndarray
+```
+Convert an input value into a Numpy ndarray.
+
+This method can be used with Python and Numpy data:
+```python
+b = fe.backend.to_number(5)  # 5 (type==np.ndarray)
+b = fe.backend.to_number(4.0)  # 4.0 (type==np.ndarray)
+n = np.array([1, 2, 3])
+b = fe.backend.to_number(n)  # [1, 2, 3] (type==np.ndarray)
+```
+
+This method can be used with TensorFlow tensors:
+```python
+t = tf.constant([1, 2, 3])
+b = fe.backend.to_number(t)  # [1, 2, 3] (type==np.ndarray)
+```
+
+This method can be used with PyTorch tensors:
+```python
+p = torch.tensor([1, 2, 3])
+b = fe.backend.to_number(p)  # [1, 2, 3] (type==np.ndarray)
+```
+
+
+<h3>Args:</h3>
+
+
+* **data**: The value to be converted into a np.ndarray. 
+
+<h3>Returns:</h3>
+
+<ul class="return-block"><li>    An ndarray corresponding to the given <code>data</code>.</li></ul>
+

@@ -18,7 +18,6 @@ def generateMarkdowns(output_dir, tutorial_type, fe_path):
     # form a input files path
     tutorial_sub_dir = os.path.join('tutorial', tutorial_type)
     tutorial_path = os.path.join(fe_path, tutorial_sub_dir)
-    # invoke subprocess to run nbconvert command on notebook files
     output_sub_dir = os.path.join(output_dir, 'tutorial', tutorial_type)
 
     if os.path.exists(output_sub_dir):
@@ -28,6 +27,7 @@ def generateMarkdowns(output_dir, tutorial_type, fe_path):
     for filename in os.listdir(tutorial_path):
         if filename.endswith('.ipynb'):
             filepath = os.path.join(tutorial_path, filename)
+            # invoke subprocess to run nbconvert command on notebook files
             subprocess.run([
                 'jupyter', 'nbconvert', '--to', 'markdown', filepath,
                 '--output-dir', output_sub_dir
@@ -84,6 +84,7 @@ def replaceRepoLink(match):
     ex: [Architectures](../../fastestimator/architecture)
      -> [Architectures](https://github.com/fastestimator/fastestimator/tree/{BRANCH}/fastestimator/architecture)
     """
+    pdb.set_trace()
     name = match.group(1)
     url = match.group(2)
     fe_url = f'https://github.com/fastestimator/fastestimator/tree/{BRANCH}/'

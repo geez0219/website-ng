@@ -1,0 +1,192 @@
+[
+    {
+        "displayName": "Overview",
+        "name": "overview.md"
+    },
+    {
+        "displayName": "Adversarial Training",
+        "name": "adversarial_training",
+        "children": [
+            {
+                "name": "adversarial_training/ecc.md",
+                "displayName": "Adversarial Robustness with Error Correcting Codes"
+            },
+            {
+                "name": "adversarial_training/ecc_hinge.md",
+                "displayName": "Adversarial Robustness with Error Correcting Codes (and Hinge Loss)"
+            },
+            {
+                "name": "adversarial_training/fgsm.md",
+                "displayName": "Fast Gradient Sign Method"
+            }
+        ]
+    },
+    {
+        "displayName": "Anomaly Detection",
+        "name": "anomaly_detection",
+        "children": [
+            {
+                "name": "anomaly_detection/alocc.md",
+                "displayName": "Adversarially Learned OneClass Classifier for Novelty Detection"
+            }
+        ]
+    },
+    {
+        "displayName": "AutoML",
+        "name": "automl",
+        "children": [
+            {
+                "name": "automl/rand_augment.md",
+                "displayName": "RandAugment"
+            }
+        ]
+    },
+    {
+        "displayName": "Contrastive Learing",
+        "name": "contrastive_learning",
+        "children": [
+            {
+                "name": "contrastive_learning/simclr.md",
+                "displayName": "SimCLR"
+            }
+        ]
+    },
+    {
+        "displayName": "Curriculum Learning",
+        "name": "curriculum_learning",
+        "children": [
+            {
+                "name": "curriculum_learning/superloss.md",
+                "displayName": "SuperLoss"
+            }
+        ]
+    },
+    {
+        "displayName": "Image Classification",
+        "name": "image_classification",
+        "children": [
+            {
+                "name": "image_classification/cifar10_fast.md",
+                "displayName": "CIFAR10 Fast"
+            },
+            {
+                "name": "image_classification/mnist.md",
+                "displayName": "MNIST"
+            },
+            {
+                "name": "image_classification/pyramidnet.md",
+                "displayName": "Pyramid Network"
+            }
+        ]
+    },
+    {
+        "displayName": "Image Generation",
+        "name": "image_generation",
+        "children": [
+            {
+                "name": "image_generation/cvae.md",
+                "displayName": "CVAE"
+            },
+            {
+                "name": "image_generation/cyclegan.md",
+                "displayName": "CycleGAN"
+            },
+            {
+                "name": "image_generation/dcgan.md",
+                "displayName": "DCGAN"
+            },
+            {
+                "name": "image_generation/pggan.md",
+                "displayName": "PGGAN"
+            }
+        ]
+    },
+    {
+        "displayName": "Image Style Transfer",
+        "name": "style_transfer",
+        "children": [
+            {
+                "name": "style_transfer/fst.md",
+                "displayName": "Fast Style Transfer"
+            }
+        ]
+    },
+    {
+        "displayName": "Instance Detection",
+        "name": "instance_detection",
+        "children": [
+            {
+                "name": "instance_detection/retinanet.md",
+                "displayName": "RetinaNet"
+            }
+        ]
+    },
+    {
+        "displayName": "Learning Rate Scheduling",
+        "name": "lr_controller",
+        "children": [
+            {
+                "name": "lr_controller/super_convergence.md",
+                "displayName": "Super Convergence"
+            }
+        ]
+    },
+    {
+        "displayName": "Multitask Learning",
+        "name": "multi_task_learning",
+        "children": [
+            {
+                "name": "multi_task_learning/uncertainty_loss.md",
+                "displayName": "Uncertainty Weighted Loss"
+            }
+        ]
+    },
+    {
+        "displayName": "Natural Language Processing (NLP)",
+        "name": "NLP",
+        "children": [
+            {
+                "name": "NLP/ptb.md",
+                "displayName": "Language Modeling"
+            },
+            {
+                "name": "NLP/bert.md",
+                "displayName": "Named Entity Recognition"
+            },
+            {
+                "name": "NLP/imdb.md",
+                "displayName": "Text Classification"
+            }
+        ]
+    },
+    {
+        "displayName": "Oneshot Learning",
+        "name": "one_shot_learning",
+        "children": [
+            {
+                "name": "one_shot_learning/siamese.md",
+                "displayName": "Siamese Network"
+            }
+        ]
+    },
+    {
+        "displayName": "Semantic Segmentation",
+        "name": "semantic_segmentation",
+        "children": [
+            {
+                "name": "semantic_segmentation/unet.md",
+                "displayName": "UNet"
+            }
+        ]
+    },
+    {
+        "displayName": "Tabular Data",
+        "name": "tabular",
+        "children": [
+            {
+                "name": "tabular/dnn.md",
+                "displayName": "DNN"
+            }
+        ]
+    }
+]
