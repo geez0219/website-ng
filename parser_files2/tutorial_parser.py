@@ -1,4 +1,33 @@
-""" FastEstimator Docstring parser """
+""" FastEstimator tutorial parser. This script parses the FE tutorial and generates the assets files for webpage
+
+    The example parsing case where...
+    * FE_DIR = "fastestimator"
+    * OUTPUT_PATH = "branches/r1.2/"
+
+    (repo)                                  (asset)
+    fastestimator/tutorial/                 branches/r1.2/
+    ├── advanced/                           ├── tutorial/
+    │   ├── t01_dataset.ipynb               │    ├── advanced/
+    │   ├── t02_pipeline.ipynb              │    │   ├── t01_dataset.md
+    │   └── ...                             │    │   ├── t02_pipeline.md
+    ├── beginner/                           │    │   └── ...
+    │   ├── t01_getting_started.ipynb   =>  │    ├── beginner/
+    │   ├── t02_dataset.ipynb               │    │   ├── t01_getting_started.md
+    │   └── ...                             │    |   ├── t01_getting_started_files/
+    └── resources                           |    |   |   └─ t01_getting_started_19_1.png
+        ├── t01_api.png                     │    |   ├── t02_dataset.md
+        └── ...                             |    |   └── ...
+                                            |    └── structure.json
+                                            └── resources/
+                                                ├── t01_api.png
+                                                └── ...
+                                            (Note: the "resources" dir is not generated from this parser, but the
+                                             assets expects it. It will be copied by other parsing script)
+
+    * It expect the source of tutorial dir has only two sub-dirs: "advanced" and "beginner" and all tutorial notebook
+      files are exactly in those two dir levels (not under further nested dir).
+
+"""
 import json
 import os
 import pdb
@@ -14,28 +43,37 @@ RE_ROUTE_TITLE = '[^A-Za-z0-9 ]+'
 BRANCH = None
 
 
-def generateMarkdowns(output_dir, tutorial_type, fe_path):
-    # form a input files path
-    tutorial_sub_dir = os.path.join('tutorial', tutorial_type)
-    tutorial_path = os.path.join(fe_path, tutorial_sub_dir)
-    output_sub_dir = os.path.join(output_dir, 'tutorial', tutorial_type)
+def generateMarkdowns(source_tutorial, output_tutorial):
+    """ Parse repo tutorial and generate assets tutorial for webpage.
+    Args:
+        source_tutorial: tutorial source (ex: fastestimator/tutorial)
+        output_tutorial: parsed tutorial destination (ex: r1.1/tutorial)
+    """
 
-    if os.path.exists(output_sub_dir):
-        shutil.rmtree(output_sub_dir)
+    if os.path.exists(output_tutorial):
+        shutil.rmtree(output_tutorial)
 
-    os.makedirs(output_sub_dir, exist_ok=True)
-    for filename in os.listdir(tutorial_path):
-        if filename.endswith('.ipynb'):
-            filepath = os.path.join(tutorial_path, filename)
-            # invoke subprocess to run nbconvert command on notebook files
-            subprocess.run([
-                'jupyter', 'nbconvert', '--to', 'markdown', filepath,
-                '--output-dir', output_sub_dir
-            ])
-        elif filename.endswith('.md'):
-            filepath = os.path.join(tutorial_path, filename)
-            copy(filepath, output_sub_dir)
-    return output_sub_dir
+    for path, dirs, files in os.walk(source_tutorial):
+        # not walk into the dir start with "_" and ".", and avoid going to the "resources" dir (this is reserved for
+        # tutorial resources)
+        dirs[:] = [
+            d for d in dirs if d[0] not in ["_", "."] and d != "resources"
+        ]
+
+        output_dir = os.path.join(output_tutorial,
+                                  os.path.relpath(path, source_tutorial))
+        os.makedirs(output_dir, exist_ok=True)
+        for f in files:
+            if f.endswith('.ipynb'):
+                filepath = os.path.join(path, f)
+                # invoke subprocess to run nbconvert command on notebook files
+                subprocess.run([
+                    'jupyter', 'nbconvert', '--to', 'markdown', filepath,
+                    '--output-dir', output_dir
+                ])
+            elif f.endswith('.md'):
+                filepath = os.path.join(path, f)
+                copy(filepath, output_dir)
 
 
 def replaceRefLink(match, tutorial_type):
@@ -84,117 +122,118 @@ def replaceRepoLink(match):
     ex: [Architectures](../../fastestimator/architecture)
      -> [Architectures](https://github.com/fastestimator/fastestimator/tree/{BRANCH}/fastestimator/architecture)
     """
-    pdb.set_trace()
     name = match.group(1)
     url = match.group(2)
     fe_url = f'https://github.com/fastestimator/fastestimator/tree/{BRANCH}/'
     return '[{}]({})'.format(name, os.path.join(fe_url, url))
 
 
-def updateLinks(line, tutorial_type, fname):
-    re_ref_link = r'\[(\w*)\s*[tT]utorial\s*(\d+)\]\(\.+\/([^\)]*)\.ipynb\)'
-    re_apphub_link = r'\[([\w\d\-\/\s]+)\]\((.+apphub(.+))\.ipynb\)'
-    re_anchortag_link = r'\[([^\]]+)\]\(#([^)]+)\)'
-    re_repo_link = r'\[([\w|\d|\s]*)\]\([\./]*([^\)\.#]*)(?:\.py|)\)'
-
-    output_line = re.sub(re_repo_link, replaceRepoLink, line)
-    output_line = re.sub(re_ref_link,
-                         partial(replaceRefLink, tutorial_type=tutorial_type),
-                         output_line)
-    output_line = re.sub(re_apphub_link, replaceApphubLink, output_line)
-    output_line = re.sub(
-        re_anchortag_link,
-        partial(replaceAnchorLink, tutorial_type=tutorial_type, fname=fname),
-        output_line)
-
-    return output_line
-
-
 def replaceImgLink(match):
+    """
+    deal with src=""
+    ex: <img src="../resources/t01_api.png" alt="drawing" width="700"/>
+     -> <img src="assets/branches/master/tutorial/../resources/t01_api.png" alt="drawing" width="700"/>
+    """
     path_prefix = f'assets/branches/{BRANCH}/tutorial'
     new_src = os.path.join(path_prefix, match.group(1))
 
     return f'src=\"{new_src}\"'
 
 
-def replaceImagePath(mdfile, tutorial_type):
-    """This function takes markdown file path and append the prefix path to the image path in the file. It allows
-    angular to find images in the server.
+def replaceImgLink2(match, tutorial_type):
+    """
+    deal with img link from papermill nbconvert generated markdown
+    ex: ![png](t01_getting_started_files/t01_getting_started_19_1.png)
+     -> ![png](assets/branches/master/tutorial/beginner/t01_getting_started_files/t01_getting_started_19_1.png)
+    """
+    return f'![png](assets/branches/{BRANCH}/tutorial/{tutorial_type}/{match.group(1)})'
+
+
+def replaceLink(line, tutorial_type, fname):
+    re_ref_link = r'\[(\w*)\s*[tT]utorial\s*(\d+)\]\(\.+\/([^\)]*)\.ipynb\)'
+    re_apphub_link = r'\[([\w\d\-\/\s]+)\]\((.+apphub(.+))\.ipynb\)'
+    re_anchortag_link = r'\[([^\]]+)\]\(#([^)]+)\)'
+    re_repo_link = r'\[([\w|\d|\s]*)\]\([\./]*([^\)\.#]*)(?:\.py|)\)'
+    re_src_img_link = r'src=\"([^ ]+)\"'
+    re_png_img_link = r'!\[png\]\((.+)\)'
+
+    output_line = re.sub(re_repo_link, replaceRepoLink, line)
+    output_line = re.sub(
+        re_ref_link, lambda x: replaceRefLink(x, tutorial_type=tutorial_type),
+        output_line)
+    output_line = re.sub(re_apphub_link, replaceApphubLink, output_line)
+    output_line = re.sub(
+        re_anchortag_link, lambda x: replaceAnchorLink(
+            x, tutorial_type=tutorial_type, fname=fname), output_line)
+
+    output_line = re.sub(re_src_img_link, replaceImgLink, output_line)
+    output_line = re.sub(
+        re_png_img_link,
+        lambda x: replaceImgLink2(x, tutorial_type=tutorial_type), output_line)
+
+    return output_line
+
+
+def updateLink(mdfile, tutorial_type):
+    """Replace all links to fit web application.
 
     Args:
-        mdfile: markdown file
+        mdfile: markdown file path
         tutorial_type = Type of tutorial e.g. 'beginner' or 'advanced'
     """
     mdcontent = open(mdfile).readlines()
-    png_tag = '![png]('
-    html_img_tag = '<img src="'
-    path_prefix = f'assets/branches/{BRANCH}/tutorial'
-    png_path_prefix = f'assets/branches/{BRANCH}/tutorial/{tutorial_type}'
     mdfile_updated = []
     for line in mdcontent:
-        line = updateLinks(line, tutorial_type, mdfile)
-
-        # deal with src=""
-        # <img src="../resources/t01_api.png" alt="drawing" width="700"/>
-        # <img src="assets/branches/master/tutorial/../resources/t01_api.png" alt="drawing" width="700"/>
-        line = re.sub(r'src=\"([^ ]+)\"', replaceImgLink, line)
-
-        idx, _ = map(line.find, [png_tag, html_img_tag])
-        if idx != -1:
-            # [png](t01_getting_started_files/t01_getting_started_19_1.png)
-            # -> [png](assets/branches/master/tutorial/beginner/t01_getting_started_files/t01_getting_started_19_1.png)
-            line = png_tag + os.path.join(png_path_prefix,
-                                          line[idx + len(png_tag):])
-
+        line = replaceLink(line, tutorial_type, mdfile)
         mdfile_updated.append(line)
 
     with open(mdfile, 'w') as f:
         f.write("".join(mdfile_updated))
 
 
-def createJson(output_dir):
-    dir_arr = []
-    headers = ['#']
-    subheaders = ['##', '###']
-    tutorial_output_path = os.path.join(output_dir, 'tutorial')
-    for f in os.scandir(tutorial_output_path):
-        if f.is_dir():
-            dir_obj = {}
-            dir_obj['name'] = f.name
-            dir_obj['displayName'] = f.name.capitalize() + ' Tutorials'
-            children = []
-            for filename in sorted(os.listdir(f)):
-                if filename.endswith('.md'):
-                    filepath = os.path.join(f, filename)
-                    # replace ref links in the markdown files
-                    replaceImagePath(filepath, f.name)
-                    # open updated markdown file and extract table of content
-                    mdfile = open(os.path.join(f, filename)).readlines()
-                    flag = True
-                    f_obj = {}
-                    sidebar_titles = []
-                    for sentence in mdfile:
-                        sentence = sentence.strip()
-                        sentence_tokens = sentence.split(' ')
-                        sidebar_val_dict = {}
-                        if flag and sentence_tokens[0] in headers:
-                            f_obj['name'] = os.path.join(f.name, filename)
-                            f_obj['displayName'] = re.sub(
-                                RE_SIDEBAR_TITLE, '', sentence)
-                            flag = False
-                        elif sentence_tokens[0] in subheaders:
-                            title = re.sub(RE_SIDEBAR_TITLE, '', sentence)
-                            route_title = re.sub(RE_ROUTE_TITLE, '', sentence)
-                            sidebar_val_dict['id'] = route_title.lower().strip(
-                            ).replace(' ', '-')
-                            sidebar_val_dict['displayName'] = title.strip()
-                            sidebar_titles.append(sidebar_val_dict)
-                    f_obj['toc'] = sidebar_titles
-                    children.append(f_obj)
-            dir_obj['children'] = children
-            dir_arr.append(dir_obj)
+def updateLinkLoop(target_dir):
+    """ Replace all links in the tutorials of src/assets to fit web application.
 
-    output_struct = os.path.join(tutorial_output_path, 'structure.json')
+    Args:
+        target_dir: The path to tutorial dir that is full of md file generated by papermill nbconvert.
+    """
+    for tutorial_type in ["advanced", "beginner"]:
+        for f in os.listdir(os.path.join(target_dir, tutorial_type)):
+            if f.endswith('.md'):
+                updateLink(os.path.join(target_dir, tutorial_type, f),
+                           tutorial_type)
+
+
+def createJson(target_dir):
+    """ Create structure.json
+
+    Args:
+        target_dir: The path to tutorial dir that is full of md file generated by papermill nbconvert.
+            assume file structure need to be:
+    """
+    dir_arr = []
+    for tutorial_type in ["advanced", "beginner"]:
+        dir_obj = {
+            "name": tutorial_type,
+            "displayName": tutorial_type.capitalize() + ' Tutorials',
+            "children": None
+        }
+        children = []
+        sub_tutorial_dir = os.path.join(target_dir, tutorial_type)
+        for f in sorted(os.listdir(sub_tutorial_dir)):
+            if f.endswith('.md'):
+                # open updated markdown file and extract table of content
+                title = open(os.path.join(sub_tutorial_dir, f)).readlines()[0]
+                title = re.sub(RE_SIDEBAR_TITLE, '', title)
+                f_obj = {
+                    "name": os.path.join(tutorial_type, f),
+                    "displayName": title
+                }
+                children.append(f_obj)
+        dir_obj['children'] = children
+        dir_arr.append(dir_obj)
+
+    output_struct = os.path.join(target_dir, 'structure.json')
     # write to json file
     with open(output_struct, 'w') as f:
         f.write(json.dumps(dir_arr))
@@ -206,7 +245,9 @@ if __name__ == '__main__':
     OUTPUT_PATH = sys.argv[2]
     BRANCH = sys.argv[3]
 
-    # generate markdown to temp dir
-    beginner_output_path = generateMarkdowns(OUTPUT_PATH, 'beginner', FE_DIR)
-    advanced_output_path = generateMarkdowns(OUTPUT_PATH, 'advanced', FE_DIR)
-    createJson(OUTPUT_PATH)
+    source_path = os.path.join(FE_DIR, "tutorial")
+    output_path = os.path.join(OUTPUT_PATH, "tutorial")
+
+    generateMarkdowns(source_path, output_path)  # create markdown
+    updateLinkLoop(output_path)
+    createJson(output_path)
