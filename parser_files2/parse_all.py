@@ -12,5 +12,3 @@ if __name__ == "__main__":
         os.system(
             f"python {script_path} {repo_path} {output_path} {branch}")
 
-    resource_path = os.path.join(repo_path, "tutorial", "resources")
-    os.system(f"cp -r {resource_path} {output_path}")

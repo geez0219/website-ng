@@ -5,24 +5,21 @@
     * OUTPUT_PATH = "branches/r1.2/"
 
     (repo)                                  (asset)
-    fastestimator/tutorial/                 branches/r1.2/
-    ├── advanced/                           ├── tutorial/
-    │   ├── t01_dataset.ipynb               │    ├── advanced/
-    │   ├── t02_pipeline.ipynb              │    │   ├── t01_dataset.md
-    │   └── ...                             │    │   ├── t02_pipeline.md
-    ├── beginner/                           │    │   └── ...
-    │   ├── t01_getting_started.ipynb   =>  │    ├── beginner/
-    │   ├── t02_dataset.ipynb               │    │   ├── t01_getting_started.md
-    │   └── ...                             │    |   ├── t01_getting_started_files/
-    └── resources                           |    |   |   └─ t01_getting_started_19_1.png
-        ├── t01_api.png                     │    |   ├── t02_dataset.md
-        └── ...                             |    |   └── ...
-                                            |    └── structure.json
-                                            └── resources/
-                                                ├── t01_api.png
-                                                └── ...
-                                            (Note: the "resources" dir is not generated from this parser, but the
-                                             assets expects it. It will be copied by other parsing script)
+    fastestimator/tutorial/                 branches/r1.2/tutorial
+    ├── advanced/                           ├── advanced/
+    │   ├── t01_dataset.ipynb               │   ├── t01_dataset.md
+    │   ├── t02_pipeline.ipynb              │   ├── t02_pipeline.md
+    │   └── ...                             │   └── ...
+    ├── beginner/                           ├── beginner/
+    │   ├── t01_getting_started.ipynb   =>  │   ├── t01_getting_started.md
+    │   ├── t02_dataset.ipynb               |   ├── t01_getting_started_files/
+    │   └── ...                             |   |   └─ t01_getting_started_19_1.png
+    └── resources                           |   ├── t02_dataset.md
+        ├── t01_api.png                     |   └── ...
+        └── ...                             ├── resources/
+                                            |   ├── t01_api.png
+                                            |   └── ...
+                                            └── structure.json
 
     * It expect the source of tutorial dir has only two sub-dirs: "advanced" and "beginner" and all tutorial notebook
       files are exactly in those two dir levels (not under further nested dir).
@@ -43,7 +40,7 @@ RE_ROUTE_TITLE = '[^A-Za-z0-9 ]+'
 BRANCH = None
 
 
-def generateMarkdowns(source_tutorial, output_tutorial):
+def generateMarkdowns(source_tutorial, output_tutorial): # generateMDCopyResource
     """ Parse repo tutorial and generate assets tutorial for webpage.
     Args:
         source_tutorial: tutorial source (ex: fastestimator/tutorial)
@@ -75,6 +72,11 @@ def generateMarkdowns(source_tutorial, output_tutorial):
                 filepath = os.path.join(path, f)
                 copy(filepath, output_dir)
 
+    # copy resources dir
+    source_resources = os.path.join(source_tutorial, "resources")
+    output_resources = os.path.join(output_tutorial, "resources")
+    shutil.copytree(source_resources, output_resources)
+
 
 def replaceRefLink(match, tutorial_type):
     """
@@ -98,18 +100,17 @@ def replaceRefLink(match, tutorial_type):
 def replaceApphubLink(match):
     """
     ex: [MNIST](../../apphub/image_classification/mnist/mnist.ipynb)
-     -> [MNIST](./examples/master/image_classification/mnist)
+     -> [MNIST](./examples/r1.2/image_classification/mnist/mnist)
     """
-    apphub_link_segments = match.group(3).strip().split('/')
-    dir_name = apphub_link_segments[1]
-    name = apphub_link_segments[-1]
-    return f'[{match.group(1)}](./examples/{BRANCH}/{dir_name}/{name})'
+    apphub_link_segments = match.group(3).strip()
+
+    return f'[{match.group(1)}](./examples/{BRANCH}/{apphub_link_segments})'
 
 
 def replaceAnchorLink(match, tutorial_type, fname):
     """
     ex: [Traces](#ta05trace)
-     -> [Traces](./tutorials/master/advanced/t05_scheduler#ta05trace)
+     -> [Traces](./tutorials/r1.2/advanced/t05_scheduler#ta05trace)
     """
     anchor_text = match.group(1)
     anchor_link = match.group(2)
@@ -119,12 +120,14 @@ def replaceAnchorLink(match, tutorial_type, fname):
 
 def replaceRepoLink(match):
     """
-    ex: [Architectures](../../fastestimator/architecture)
+
+    ex: [Architectures](../../fastestimator/architecture)    # in beginner t05
      -> [Architectures](https://github.com/fastestimator/fastestimator/tree/{BRANCH}/fastestimator/architecture)
     """
     name = match.group(1)
     url = match.group(2)
     fe_url = f'https://github.com/fastestimator/fastestimator/tree/{BRANCH}/'
+    pdb.set_trace()
     return '[{}]({})'.format(name, os.path.join(fe_url, url))
 
 
@@ -132,10 +135,13 @@ def replaceImgLink(match):
     """
     deal with src=""
     ex: <img src="../resources/t01_api.png" alt="drawing" width="700"/>
-     -> <img src="assets/branches/master/tutorial/../resources/t01_api.png" alt="drawing" width="700"/>
+     -> <img src="assets/branches/master/tutorial/resources/t01_api.png" alt="drawing" width="700"/>
     """
     path_prefix = f'assets/branches/{BRANCH}/tutorial'
-    new_src = os.path.join(path_prefix, match.group(1))
+
+    src_strip = "/".join(match.group(1).split(
+        "/")[1:])  # strip the "../" from "../resources/t01_api.png"
+    new_src = os.path.join(path_prefix, src_strip)
 
     return f'src=\"{new_src}\"'
 
@@ -151,7 +157,7 @@ def replaceImgLink2(match, tutorial_type):
 
 def replaceLink(line, tutorial_type, fname):
     re_ref_link = r'\[(\w*)\s*[tT]utorial\s*(\d+)\]\(\.+\/([^\)]*)\.ipynb\)'
-    re_apphub_link = r'\[([\w\d\-\/\s]+)\]\((.+apphub(.+))\.ipynb\)'
+    re_apphub_link = r'\[([\w\d\-\/\s]+)\]\((.+apphub/(.+))\.ipynb\)'
     re_anchortag_link = r'\[([^\]]+)\]\(#([^)]+)\)'
     re_repo_link = r'\[([\w|\d|\s]*)\]\([\./]*([^\)\.#]*)(?:\.py|)\)'
     re_src_img_link = r'src=\"([^ ]+)\"'
@@ -230,6 +236,7 @@ def createJson(target_dir):
                     "displayName": title
                 }
                 children.append(f_obj)
+
         dir_obj['children'] = children
         dir_arr.append(dir_obj)
 

@@ -147,7 +147,7 @@ model_tf = fe.build(model_fn=my_model_tf, optimizer_fn=lambda: tf.optimizers.Ada
 model_torch = fe.build(model_fn=my_model_torch, optimizer_fn=lambda x: torch.optim.Adam(params=x, lr=1e-4))
 ```
 
-If a model function returns multiple models, a list of optimizers can be provided. See the **[pggan apphub](./examples/r1.2/image_generation/pggan)** for an example with multiple models and optimizers.
+If a model function returns multiple models, a list of optimizers can be provided. See the **[pggan apphub](./examples/r1.2/image_generation/pggan/pggan)** for an example with multiple models and optimizers.
 
 <a id='t05weights'></a>
 
@@ -212,12 +212,12 @@ print("Model Name: ", model.model_name)
     Model Name:  LeNet
 
 
-If a model function returns multiple models, a list of model_names can be given. See the **[pggan apphub](./examples/r1.2/image_generation/pggan)** for an illustration with multiple models and model names.
+If a model function returns multiple models, a list of model_names can be given. See the **[pggan apphub](./examples/r1.2/image_generation/pggan/pggan)** for an illustration with multiple models and model names.
 
 <a id='t05apphub'></a>
 
 ## Apphub Examples
 You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
 
-* [PG-GAN](./examples/r1.2/image_generation/pggan)
-* [Uncertainty Weighted Loss](./examples/r1.2/multi_task_learning/uncertainty_loss)
+* [PG-GAN](./examples/r1.2/image_generation/pggan/pggan)
+* [Uncertainty Weighted Loss](./examples/r1.2/multi_task_learning/uncertainty_weighted_loss/uncertainty_loss)

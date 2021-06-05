@@ -6,7 +6,7 @@ CVAEs are Convolutional Variational Autoencoders. They are composed of two model
 
 
 In this example, we will use a CVAE to generate data similar to the MNIST dataset using the TensorFlow backend. All training details including model structure, data preprocessing, loss calculation, etc. come from the [TensorFlow CVAE tutorial](https://www.tensorflow.org/tutorials/generative/cvae)
-![cvae](assets/branches/r1.2/example/image_generation/VAE_complete.png)[img source: https://mlexplained.com/2017/12/28/an-intuitive-explanation-of-variational-autoencoders-vaes-part-1]
+![cvae](assets/branches/r1.2/example/image_generation/VAE_complete.png)
 
 ## Import the required libraries
 

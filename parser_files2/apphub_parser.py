@@ -3,6 +3,7 @@ import glob
 import inspect
 import json
 import os
+import pdb
 import pydoc
 import re
 import shutil
@@ -11,74 +12,35 @@ import sys
 import tempfile
 from functools import partial
 from shutil import copy
-import pdb
 
 re_sidebar_title = '[^A-Za-z0-9:!,$%.() ]+'
 re_route_title = '[^A-Za-z0-9 ]+'
 re_url = '\[notebook\]\((.*)\)'
 
+NAME_T = {"repo": "tutorial",
+          "asset": "tutorial",
+          "route": "tutorials"}
 
-def splitall(path):
-    allparts = []
-    while 1:
-        parts = os.path.split(path)
-        if parts[0] == path:  # sentinel for absolute paths
-            allparts.insert(0, parts[0])
-            break
-        elif parts[1] == path:  # sentinel for relative paths
-            allparts.insert(0, parts[1])
-            break
-        else:
-            path = parts[0]
-            allparts.insert(0, parts[1])
-    return allparts
+NAME_A = {"repo": "apphub",
+          "asset": "example",
+          "route": "examples"}
 
 
-def replacePath(match, path_prefix):
-    tag = match.group(1)
-    url = match.group(2)
+def create_json(output_path, apphub_path):
+    """Generate overview.md and structure.json by parsing the `apphub_path`/README.md
 
-    path = os.path.join(path_prefix, url)
-    output = '![{}]({})'.format(tag, path)
-    return output
+    README.md in apphub has following structure:
+        ...
+        ## Table of Contents:
+        ### Natural Language Processing (NLP)
+        ...
+        ## Contributions
+        ...
 
-
-def replaceImagePath(mdfile, d, branch):
-    mdcontent = open(mdfile).readlines()
-    re_image_path = r'!\[(.+)\]\((?!http)[\./]*(.+)\)'
-    png_tag = '![png]('
-    html_img_tag = '<img src="'
-    path_prefix = os.path.join(f'assets/branches/{branch}/example', d)
-    mdfile_updated = []
-
-    for line in mdcontent:
-        line = re.sub(re_image_path,
-                      partial(replacePath, path_prefix=path_prefix), line)
-        idx1, idx2 = map(line.find, [png_tag, html_img_tag])
-        if idx2 != -1 and line.split(os.path.sep)[0] != 'assets':
-            line = html_img_tag + os.path.join(path_prefix,
-                                               line[idx2 + len(html_img_tag):])
-            mdfile_updated.append(line)
-        else:
-            mdfile_updated.append(line)
-    with open(mdfile, 'w') as f:
-        f.write("".join(mdfile_updated))
-    return mdfile
-
-
-def extractTitle(md_path, fname):
-    headers = ['#']
-    f = os.path.join(md_path, fname + '.md')
-    mdfile = open(f).readlines()
-    for sentence in mdfile:
-        sentence = sentence.strip()
-        sentence_tokens = sentence.split(' ')
-        if sentence_tokens[0] in headers:
-            title = re.sub(re_sidebar_title, '', sentence)
-            return title
-
-
-def extractReadMe(output_path, apphub_path):
+    * The part from starting line to "## Table of Contents" called <overview>
+    * The part from "## Table of Contents" to the line before "## Contributions" called <toc>
+    * This function parses the README.md, generates overview.md, and generate structure.json from parsing <toc>
+    """
     readmefile = os.path.join(apphub_path, 'README.md')
     content = open(readmefile).readlines()
     toc = []
@@ -100,130 +62,287 @@ def extractReadMe(output_path, apphub_path):
     with open(apphub_toc_path, 'w') as f:
         f.write("".join(overview))
 
-    ex_list = []
-    title_dict = {}
-    child, files_list = [], []
-    flag = False
+    struct = []
+    category = None
     for line in toc[1:]:
-        line_tokens = line.split(' ')
-        if line_tokens[0] in ['###', '####']:
-            if flag:
-                title_dict['children'] = child
-                ex_list.append(title_dict)
-                child = []
-                title_dict = {}
-            title = re.sub(re_sidebar_title, '', line).strip()
-            title_dict['title'] = title
-        else:
-            flag = True
-            l = line.split(':')[0]
-            name = re.sub(re_sidebar_title, '', l)
-            url = re.findall(re_url, line)
-            if name != '' and url:
-                fname = os.path.basename(url[0]).split('.')[0]
-                child_dict = {}
-                child_dict[fname] = {'title': title, 'name': name.strip()}
-                files_list.append(child_dict)
-                child.append(child_dict)
-    return files_list
+        if line.startswith("###"):
+            if category: # record the previous category dict
+                category["children"].sort(key=lambda x: x["displayName"])
+                struct.append(category)
+
+            match = re.search(r'### (.+)', line)
+            if match:
+                category_dname = match.group(1)
+            else:
+                raise RuntimeError(f"cannot extract display name of an apphub category from line:\n{line}")
+
+            category = {"name": None, "displayName": category_dname, "children":[]}
+
+        elif line.startswith("*"):
+            assert category is not None
+            match = re.search(r'\*\*(.+):\*\*', line)
+            match2 = re.search(r'\*\*(.+)\*\*:', line)
+            if match:
+                example_dname = match.group(1)
+            elif match2:
+                example_dname = match2.group(1)
+            else:
+                raise RuntimeError(f"cannot extract display name of an apphub example from line:\n{line}")
+
+            match = re.search(r'\[notebook\]\(https://github.com/fastestimator/fastestimator/blob/master/apphub/(.+).ipynb\)', line)
+            if match:
+                example_name = match.group(1) + ".md"
+                category_name = example_name.split("/")[0]
+            else:
+                raise RuntimeError(f"cannot extract name of an apphub example from line:\n{line}")
+
+            if category["name"] and category["name"] != category_name:
+                raise RuntimeError("example from same category should be under same category dir (apphub/<category_dir>)")
+
+            category["name"] = category_name
+            category["children"].append({"name": example_name, "displayName": example_dname})
+
+    # sort the category
+    struct.sort(key=lambda x: x["displayName"])
+
+    struct.insert(0, {"name": "overview.md", "displayName": "Overview"})
+
+    # write to json file
+    json_path = os.path.join(output_path, 'structure.json')
+    with open(json_path, 'w') as f:
+        f.write(json.dumps(struct))
 
 
-def generateMarkdowns(apphub_path, output_path):
-    if os.path.exists(output_path):
-        shutil.rmtree(output_path)
 
-    json_struct = []
-    exclude_prefixes = ['_', '.']
-    for subdirs, dirs, files in os.walk(apphub_path, topdown=True):
-        dirs[:] = [d for d in dirs if not d[0] in exclude_prefixes]
+def generateMarkdowns(source_apphub, output_apphub):
+    """ Parse repo tutorial and generate assets tutorial for webpage.
+    Args:
+        source_apphub: tutorial source (ex: fastestimator/tutorial)
+        output_apphub: parsed tutorial destination (ex: r1.1/tutorial)
+    """
+
+    if os.path.exists(output_apphub):
+        shutil.rmtree(output_apphub)
+
+    for path, dirs, files in os.walk(source_apphub):
+        # not walk into the dir start with "_" and ".",
+        dirs[:] = [d for d in dirs if d[0] not in ["_", "."]]
+        output_dir = os.path.join(output_apphub,
+                                  os.path.relpath(path, source_apphub))
+        os.makedirs(output_dir, exist_ok=True)
+
+        case_dir = False  # is the current dir has ipynb?
         for f in files:
-            fname, ext = os.path.splitext(os.path.basename(f))
-            example_type = splitall(os.path.relpath(subdirs, apphub_path))[0]
-            save_dir = os.path.join(output_path, example_type)
-            if ext == '.ipynb' and f[0] != '.':
-                if not os.path.exists(save_dir):
-                    os.makedirs(save_dir)
+            if f.endswith('.ipynb'):
+                filepath = os.path.join(path, f)
+                # invoke subprocess to run nbconvert command on notebook files
                 subprocess.run([
-                    'jupyter', 'nbconvert', '--to', 'markdown',
-                    os.path.join(subdirs, f), '--output-dir', save_dir
+                    'jupyter', 'nbconvert', '--to', 'markdown', filepath,
+                    '--output-dir', output_dir
                 ])
-            elif f.endswith(('png', 'jpeg', 'jpg')):
-                filepath = os.path.join(subdirs, f)
-                rel_filepath = os.path.relpath(filepath, apphub_path)
-                image_subdir_elem = rel_filepath.split(os.path.sep)[2:-1]
-                if len(image_subdir_elem) >= 1:
-                    image_subdir = os.path.join(*image_subdir_elem)
-                    output_image_path = os.path.join(save_dir, image_subdir)
-                    if not os.path.exists(output_image_path):
-                        os.makedirs(output_image_path)
-                    copy(filepath, output_image_path)
-                else:
-                    if not os.path.exists(save_dir):
-                        os.makedirs(save_dir)
-                    copy(filepath, save_dir)
+                case_dir = True
 
-
-def getNameTitle(namedict, fname):
-    for obj in namedict:
-        if fname in obj.keys():
-            title = obj[fname]['title']
-            name = obj[fname]['name']
-            return title, name
-
-
-def create_json(output_path, apphub_path):
-    json_struct = []
-
-    namedict = extractReadMe(output_path, apphub_path)
-    for d in os.listdir(output_path):
-        child_list = []
-        parent_json_obj = {}
-        if os.path.isdir(os.path.join(output_path, d)):
-            files = [
-                f for f in os.listdir(os.path.join(output_path, d))
-                if os.path.isfile(os.path.join(*[output_path, d, f]))
-            ]
+        if case_dir:
+            # copy all resources that .ipynb might need
             for f in files:
-                file_json_obj = {}
-                fname, ext = os.path.splitext(os.path.basename(f))
-                if ext == '.md' and f[0] != '.':
-                    if getNameTitle(namedict, fname) is None:
-                        raise RuntimeError(
-                            "detect example not in the apphub README.md")
+                if not f.endswith('.ipynb') and not f.endswith(".py"):
+                    filepath = os.path.join(path, f)
+                    if os.path.isdir(filepath):
+                        shutil.copytree(filepath, output_dir)
                     else:
-                        title, name = getNameTitle(namedict, fname)
+                        shutil.copy(filepath, output_dir)
 
-                    file_json_obj['name'] = os.path.join(d, fname + ext)
-                    file_json_obj['displayName'] = name
-                    child_list.append(file_json_obj)
-            parent_json_obj['displayName'] = title
-            parent_json_obj['name'] = d
-            parent_json_obj['children'] = sorted(
-                child_list, key=lambda x: x['displayName'])
-            json_struct.append(parent_json_obj)
 
-    json_struct = sorted(json_struct, key=lambda x: x['displayName'])
-    json_struct.insert(0, {'displayName': 'Overview', 'name': 'overview.md'})
-    return json_struct
+def replace_link_to_tutorial(match):
+    """
+    pattern = f'^\.\.\/{NAME_T["repo"]}\/(.+)\.ipynb$'
+
+    ex: [Tutorial1](../../tutorial/beginner/t01_getting_started.ipynb)
+     -> [Tutorial1](./tutorials/r1.2/beginner/t01_getting_started)
+    """
+
+    return f'./{NAME_T["route"]}/{BRANCH}/{match.group(1)}'
+
+
+def replace_link_to_tutorial_tag(match):
+    """
+    pattern = f'^\.\.\/{NAME_T["repo"]}\/(.+)\.ipynb#(.+)$'
+
+    ex: [Tutorial1](../../tutorial/beginner/t01_getting_started.ipynb#hello)
+     -> [Tutorial1](./tutorials/r1.2/beginner/t01_getting_started#hello)
+    """
+
+    return f'./{NAME_T["route"]}/{BRANCH}/{match.group(1)}#{match.group(2)}'
+
+
+def replace_link_to_apphub(match):
+    """
+    pattern = f'^(.+)\.ipynb$'
+
+    ex: [CIFAR10 Fast](../../image_classification/cifar10_fast/cifar10_fast.ipynb)
+     -> [CIFAR10 Fast](./examples/r1.2/image_classification/cifar10_fast/cifar10_fast)
+    """
+    return f'./{NAME_A["route"]}/{BRANCH}/{match.group(1)}'
+
+def replace_link_to_apphub_tag(match):
+    """
+    pattern = f'^(.+)\.ipynb#(.+)$'
+
+    ex: [CIFAR10 Fast](../../image_classification/cifar10_fast/cifar10_fast.ipynb#hello)
+     -> [CIFAR10 Fast](./examples/r1.2/image_classification/cifar10_fast/cifar10_fast#hello)
+    """
+    return f'./{NAME_A["route"]}/{BRANCH}/{match.group(1)}#{match.group(2)}'
+
+
+
+def update_link_to_page(link, rel_path):
+    """
+    apphub to apphub
+    ex: [CIFAR10 Fast](../../image_classification/cifar10_fast/cifar10_fast.ipynb)
+     -> [CIFAR10 Fast](./examples/r1.2/image_classification/cifar10_fast/cifar10_fast)
+
+    apphub to tutorial
+    ex: [Tutorial1](../../tutorial/beginner/t01_getting_started.ipynb)
+     -> [Tutorial1](./tutorials/r1.2/beginner/t01_getting_started)
+    """
+
+    rel_path_link = os.path.normpath(os.path.join(rel_path, link))
+
+    tutorial_pattern = f'^\.\.\/{NAME_T["repo"]}\/(.+)\.ipynb$'
+    tutorial_pattern_tag = f'^\.\.\/{NAME_T["repo"]}\/(.+)\.ipynb#(.+)$'
+    apphub_pattern = f'^(.+)\.ipynb$'
+    apphub_pattern_tag = f'^(.+)\.ipynb#(.+)$'
+
+    if rel_path_link.startswith(f'../{NAME_T["repo"]}'): # tutorial
+        if re.search(tutorial_pattern, rel_path_link):
+            link = re.sub(tutorial_pattern, replace_link_to_tutorial, rel_path_link)
+        elif re.search(tutorial_pattern_tag, rel_path_link):
+            link = re.sub(tutorial_pattern_tag, replace_link_to_tutorial_tag,
+                          rel_path_link)
+
+    elif rel_path_link.startswith(f'../'):
+        raise RuntimeError(
+                "The page link need to point to either tutorial or apphub")
+    else:
+        if re.search(apphub_pattern, rel_path_link):
+            link = re.sub(apphub_pattern, replace_link_to_apphub, rel_path_link)
+        elif re.search(apphub_pattern_tag, rel_path_link):
+            link = re.sub(apphub_pattern_tag, replace_link_to_apphub_tag,
+                          rel_path_link)
+
+    return link
+
+
+def update_link_to_asset(link, rel_path):
+    prefix = f"./assets/branches/{BRANCH}"
+    rel_path_link = os.path.normpath(os.path.join(NAME_A["asset"], rel_path, link))
+
+    return os.path.join(prefix, rel_path_link)
+
+# def replacePageWithTag(line, rel_path):
+#     """
+#     apphub to apphub
+#     ex: [FGSM](../fgsm/fgsm.ipynb)
+#     -> [FGSM](./examples/r1.2/adversarial_training/fgsm/fgsm#model-testing)
+#     ex: [tag1](#tag1)
+#     -> [tag1](./examples/r1.2/adversarial_training/fgsm/fgsm#tag1)
+
+#     apphub to tutorial
+#     ex: [Tutorial1](../../tutorial/beginner/t01_getting_started.ipynb#t01Apphub)
+#      -> [Tutorial1](./tutorials/r1.2/beginner/t01_getting_started#t01Apphub)
+#     """
+
+
+def replace_line_p1(match, rel_path, fname):
+    """
+    pattern = r'\[(.+)\]\((.+)\)'
+    [match.group(1)](match.group(2))
+    """
+    link = match.group(2).strip()
+    url_pattern = r'^https?:\/\/|^www.'
+
+    nb_pattern = r'\.ipynb$|\.ipynb#(.)+$'
+    tag_pattern = r'^#[^\/]+$'
+
+    if re.search(url_pattern, link): # if the link is url
+        pass #
+    elif re.search(nb_pattern, link):  # is page
+        link = update_link_to_page(link, rel_path)
+
+    elif re.search(tag_pattern, link):
+        fname, _ = os.path.splitext(fname)
+        link = os.path.join(NAME_A["route"], BRANCH, rel_path, fname, link)
+
+    else: # is assets
+        link = update_link_to_asset(link, rel_path)
+
+    return f'[{match.group(1)}]({link})'
+
+
+
+def update_line(line, rel_path, fname):
+    re_ref_link = r'\[(\w*)\s*[tT]utorial\s*(\d+)\]\(\.+\/([^\)]*)\.ipynb\)'
+    re_apphub_link = r'\[([\w\d\-\/\s]+)\]\((.+apphub(.+))\.ipynb\)'
+    re_anchortag_link = r'\[([^\]]+)\]\(#([^)]+)\)'
+    re_repo_link = r'\[([\w|\d|\s]*)\]\([\./]*([^\)\.#]*)(?:\.py|)\)'
+    re_src_img_link = r'src=\"([^ ]+)\"'
+    re_src_img_link2 = r'!\[(.+)\]\((.+)\)'
+
+
+    link_pattern1 = r'\[(.+)\]\((.+)\)'
+    link_pattern2 = r'src=\"([^ ]+)\"'
+    # line = re.sub(re_repo_link, replaceRepoLink, line)
+    # line = re.sub(
+    #     re_ref_link, lambda x: replaceRefLink(x, tutorial_type=tutorial_type),
+    #     line)
+    # line = re.sub(re_apphub_link, replaceApphubLink, line)
+    # line = re.sub(
+    #     re_anchortag_link, lambda x: replaceAnchorLink(
+    #         x, tutorial_type=tutorial_type, fname=fname), line)
+
+    # line = re.sub(re_src_img_link,
+    #               lambda x: replaceImgLink(x, rel_path=rel_path), line)
+
+    # line = re.sub(re_src_img_link2,
+    #               lambda x: replaceImgLink2(x, rel_path=rel_path), line)
+
+    if re.search(link_pattern1, line):
+        line = re.sub(link_pattern1, lambda x: replace_line_p1(x, rel_path=rel_path, fname=fname), line)
+
+    return line
+
+
+
+def update_md(target_dir):
+    """ Replace all links in the tutorials of src/assets to fit web application.
+
+    Args:
+        target_dir: The path to tutorial dir that is full of md file generated by papermill nbconvert.
+    """
+    for path, dirs, files in os.walk(target_dir):
+        rel_path = os.path.relpath(path, target_dir)
+        for f in files:
+            if f.endswith('.md') and f!="overview.md":
+                md_path = os.path.join(path, f)
+                mdcontent = open(md_path).readlines()
+                mdfile_updated = []
+                for line in mdcontent:
+                    line = update_line(line, rel_path, f)
+                    mdfile_updated.append(line)
+
+                with open(md_path, 'w') as f:
+                    f.write("".join(mdfile_updated))
 
 
 if __name__ == '__main__':
     # take fastestimator dir path and output dir
     FE_DIR = sys.argv[1]
     OUTPUT_PATH = sys.argv[2]
-    branch = sys.argv[3]
+    BRANCH = sys.argv[3]
 
-    example_output_path = os.path.join(OUTPUT_PATH, 'example')
     apphub_path = os.path.join(FE_DIR, 'apphub')
+    example_output_path = os.path.join(OUTPUT_PATH, 'example')
 
     generateMarkdowns(apphub_path, example_output_path)
-    for subdirs, dirs, files in os.walk(example_output_path, topdown=True):
-        for f in files:
-            if f.endswith('.md'):
-                d = subdirs.split(os.path.sep)[-1]
-                replaceImagePath(os.path.join(subdirs, f), d, branch)
-
-    struct_json_path = os.path.join(example_output_path, 'structure.json')
-    # write to json file
-    with open(struct_json_path, 'w') as f:
-        f.write(json.dumps(create_json(example_output_path, apphub_path)))
+    update_md(example_output_path)
+    create_json(example_output_path, apphub_path)
