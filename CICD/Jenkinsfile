@@ -33,7 +33,7 @@ node(label: "master"){
                 stage("get FE"){
                     checkout scm
                     sh "rm -rf $fe_repo"
-                    sh "git clone -b $branch https://github.com/geez0219/fastestimator.git $fe_repo"
+                    sh "git clone -b $branch https://github.com/fastestimator/fastestimator.git $fe_repo"
                 }
 
                 stage("parse"){
