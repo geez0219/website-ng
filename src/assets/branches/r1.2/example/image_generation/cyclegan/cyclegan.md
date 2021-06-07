@@ -95,7 +95,7 @@ fig = img.paint_figure()
 
 
     
-![png](./assets/branches/r1.2/example/image_generation/cyclegan/cyclegan_files/cyclegan_11_0.png)
+![png](assets/branches/r1.2/example/image_generation/cyclegan/cyclegan_files/cyclegan_11_0.png)
     
 
 
@@ -437,13 +437,13 @@ fig2 = img2.paint_figure()
 
 
     
-![png](./assets/branches/r1.2/example/image_generation/cyclegan/cyclegan_files/cyclegan_34_0.png)
+![png](assets/branches/r1.2/example/image_generation/cyclegan/cyclegan_files/cyclegan_34_0.png)
     
 
 
 
     
-![png](./assets/branches/r1.2/example/image_generation/cyclegan/cyclegan_files/cyclegan_34_1.png)
+![png](assets/branches/r1.2/example/image_generation/cyclegan/cyclegan_files/cyclegan_34_1.png)
     
 
 

@@ -13,17 +13,9 @@ import tempfile
 from functools import partial
 from shutil import copy
 
-re_sidebar_title = '[^A-Za-z0-9:!,$%.() ]+'
-re_route_title = '[^A-Za-z0-9 ]+'
-re_url = '\[notebook\]\((.*)\)'
+NAME_T = {"repo": "tutorial", "asset": "tutorial", "route": "tutorials"}
 
-NAME_T = {"repo": "tutorial",
-          "asset": "tutorial",
-          "route": "tutorials"}
-
-NAME_A = {"repo": "apphub",
-          "asset": "example",
-          "route": "examples"}
+NAME_A = {"repo": "apphub", "asset": "example", "route": "examples"}
 
 
 def create_json(output_path, apphub_path):
@@ -66,7 +58,7 @@ def create_json(output_path, apphub_path):
     category = None
     for line in toc[1:]:
         if line.startswith("###"):
-            if category: # record the previous category dict
+            if category:  # record the previous category dict
                 category["children"].sort(key=lambda x: x["displayName"])
                 struct.append(category)
 
@@ -74,9 +66,15 @@ def create_json(output_path, apphub_path):
             if match:
                 category_dname = match.group(1)
             else:
-                raise RuntimeError(f"cannot extract display name of an apphub category from line:\n{line}")
+                raise RuntimeError(
+                    f"cannot extract display name of an apphub category from line:\n{line}"
+                )
 
-            category = {"name": None, "displayName": category_dname, "children":[]}
+            category = {
+                "name": None,
+                "displayName": category_dname,
+                "children": []
+            }
 
         elif line.startswith("*"):
             assert category is not None
@@ -87,20 +85,31 @@ def create_json(output_path, apphub_path):
             elif match2:
                 example_dname = match2.group(1)
             else:
-                raise RuntimeError(f"cannot extract display name of an apphub example from line:\n{line}")
+                raise RuntimeError(
+                    f"cannot extract display name of an apphub example from line:\n{line}"
+                )
 
-            match = re.search(r'\[notebook\]\(https://github.com/fastestimator/fastestimator/blob/master/apphub/(.+).ipynb\)', line)
+            match = re.search(
+                r'\[notebook\]\(https://github.com/fastestimator/fastestimator/blob/master/apphub/(.+).ipynb\)',
+                line)
             if match:
                 example_name = match.group(1) + ".md"
                 category_name = example_name.split("/")[0]
             else:
-                raise RuntimeError(f"cannot extract name of an apphub example from line:\n{line}")
+                raise RuntimeError(
+                    f"cannot extract name of an apphub example from line:\n{line}"
+                )
 
             if category["name"] and category["name"] != category_name:
-                raise RuntimeError("example from same category should be under same category dir (apphub/<category_dir>)")
+                raise RuntimeError(
+                    "example from same category should be under same category dir (apphub/<category_dir>)"
+                )
 
             category["name"] = category_name
-            category["children"].append({"name": example_name, "displayName": example_dname})
+            category["children"].append({
+                "name": example_name,
+                "displayName": example_dname
+            })
 
     # sort the category
     struct.sort(key=lambda x: x["displayName"])
@@ -111,7 +120,6 @@ def create_json(output_path, apphub_path):
     json_path = os.path.join(output_path, 'structure.json')
     with open(json_path, 'w') as f:
         f.write(json.dumps(struct))
-
 
 
 def generateMarkdowns(source_apphub, output_apphub):
@@ -147,10 +155,12 @@ def generateMarkdowns(source_apphub, output_apphub):
             for f in files:
                 if not f.endswith('.ipynb') and not f.endswith(".py"):
                     filepath = os.path.join(path, f)
-                    if os.path.isdir(filepath):
-                        shutil.copytree(filepath, output_dir)
-                    else:
-                        shutil.copy(filepath, output_dir)
+                    shutil.copy(filepath, output_dir)
+
+            for d in dirs:
+                dirpath = os.path.join(path, d)
+                newdir = os.path.join(output_dir, d)
+                shutil.copytree(dirpath, newdir)
 
 
 def replace_link_to_tutorial(match):
@@ -184,6 +194,7 @@ def replace_link_to_apphub(match):
     """
     return f'./{NAME_A["route"]}/{BRANCH}/{match.group(1)}'
 
+
 def replace_link_to_apphub_tag(match):
     """
     pattern = f'^(.+)\.ipynb#(.+)$'
@@ -192,7 +203,6 @@ def replace_link_to_apphub_tag(match):
      -> [CIFAR10 Fast](./examples/r1.2/image_classification/cifar10_fast/cifar10_fast#hello)
     """
     return f'./{NAME_A["route"]}/{BRANCH}/{match.group(1)}#{match.group(2)}'
-
 
 
 def update_link_to_page(link, rel_path):
@@ -213,19 +223,21 @@ def update_link_to_page(link, rel_path):
     apphub_pattern = f'^(.+)\.ipynb$'
     apphub_pattern_tag = f'^(.+)\.ipynb#(.+)$'
 
-    if rel_path_link.startswith(f'../{NAME_T["repo"]}'): # tutorial
+    if rel_path_link.startswith(f'../{NAME_T["repo"]}'):  # tutorial
         if re.search(tutorial_pattern, rel_path_link):
-            link = re.sub(tutorial_pattern, replace_link_to_tutorial, rel_path_link)
+            link = re.sub(tutorial_pattern, replace_link_to_tutorial,
+                          rel_path_link)
         elif re.search(tutorial_pattern_tag, rel_path_link):
             link = re.sub(tutorial_pattern_tag, replace_link_to_tutorial_tag,
                           rel_path_link)
 
     elif rel_path_link.startswith(f'../'):
         raise RuntimeError(
-                "The page link need to point to either tutorial or apphub")
-    else:
+            "The page link need to point to either tutorial or apphub")
+    else:  # apphub
         if re.search(apphub_pattern, rel_path_link):
-            link = re.sub(apphub_pattern, replace_link_to_apphub, rel_path_link)
+            link = re.sub(apphub_pattern, replace_link_to_apphub,
+                          rel_path_link)
         elif re.search(apphub_pattern_tag, rel_path_link):
             link = re.sub(apphub_pattern_tag, replace_link_to_apphub_tag,
                           rel_path_link)
@@ -234,83 +246,68 @@ def update_link_to_page(link, rel_path):
 
 
 def update_link_to_asset(link, rel_path):
-    prefix = f"./assets/branches/{BRANCH}"
-    rel_path_link = os.path.normpath(os.path.join(NAME_A["asset"], rel_path, link))
+    """to repo asset file
+    ex: ![img](./Figure/pggan_1024x1024.png)
+    ->  ![img](assets/branches/r1.2/example/image_generation/pggan/Figure/pggan_1024x1024.png)
+    """
+    prefix = f"assets/branches/{BRANCH}"
+    rel_path_link = os.path.normpath(
+        os.path.join(NAME_A["asset"], rel_path, link))
 
     return os.path.join(prefix, rel_path_link)
 
-# def replacePageWithTag(line, rel_path):
-#     """
-#     apphub to apphub
-#     ex: [FGSM](../fgsm/fgsm.ipynb)
-#     -> [FGSM](./examples/r1.2/adversarial_training/fgsm/fgsm#model-testing)
-#     ex: [tag1](#tag1)
-#     -> [tag1](./examples/r1.2/adversarial_training/fgsm/fgsm#tag1)
 
-#     apphub to tutorial
-#     ex: [Tutorial1](../../tutorial/beginner/t01_getting_started.ipynb#t01Apphub)
-#      -> [Tutorial1](./tutorials/r1.2/beginner/t01_getting_started#t01Apphub)
-#     """
-
-
-def replace_line_p1(match, rel_path, fname):
+def update_link_pure_tag(link, rel_path, fname):
+    """to same apphub with tag
+    ex: [CIFAR10 Fast](#hello)
+     -> [CIFAR10 Fast](./examples/r1.2/image_classification/cifar10_fast/cifar10_fast#hello)
     """
-    pattern = r'\[(.+)\]\((.+)\)'
-    [match.group(1)](match.group(2))
-    """
-    link = match.group(2).strip()
+    fname, _ = os.path.splitext(fname)
+    link = os.path.join(NAME_A["route"], BRANCH, rel_path, fname, link)
+    return link
+
+
+def update_link(link, rel_path, fname):
+    link = link.strip()
     url_pattern = r'^https?:\/\/|^www.'
-
     nb_pattern = r'\.ipynb$|\.ipynb#(.)+$'
     tag_pattern = r'^#[^\/]+$'
 
-    if re.search(url_pattern, link): # if the link is url
-        pass #
-    elif re.search(nb_pattern, link):  # is page
+    if re.search(url_pattern, link):  # if the link is url
+        pass
+    elif re.search(nb_pattern, link):  # if it points to nb file
         link = update_link_to_page(link, rel_path)
 
-    elif re.search(tag_pattern, link):
-        fname, _ = os.path.splitext(fname)
-        link = os.path.join(NAME_A["route"], BRANCH, rel_path, fname, link)
+    elif re.search(tag_pattern, link):  # if it points to pure hashtag
+        link = update_link_pure_tag(link, rel_path, fname)
 
-    else: # is assets
+    else:
         link = update_link_to_asset(link, rel_path)
 
-    return f'[{match.group(1)}]({link})'
-
+    return link
 
 
 def update_line(line, rel_path, fname):
-    re_ref_link = r'\[(\w*)\s*[tT]utorial\s*(\d+)\]\(\.+\/([^\)]*)\.ipynb\)'
-    re_apphub_link = r'\[([\w\d\-\/\s]+)\]\((.+apphub(.+))\.ipynb\)'
-    re_anchortag_link = r'\[([^\]]+)\]\(#([^)]+)\)'
-    re_repo_link = r'\[([\w|\d|\s]*)\]\([\./]*([^\)\.#]*)(?:\.py|)\)'
-    re_src_img_link = r'src=\"([^ ]+)\"'
-    re_src_img_link2 = r'!\[(.+)\]\((.+)\)'
-
-
     link_pattern1 = r'\[(.+)\]\((.+)\)'
-    link_pattern2 = r'src=\"([^ ]+)\"'
-    # line = re.sub(re_repo_link, replaceRepoLink, line)
-    # line = re.sub(
-    #     re_ref_link, lambda x: replaceRefLink(x, tutorial_type=tutorial_type),
-    #     line)
-    # line = re.sub(re_apphub_link, replaceApphubLink, line)
-    # line = re.sub(
-    #     re_anchortag_link, lambda x: replaceAnchorLink(
-    #         x, tutorial_type=tutorial_type, fname=fname), line)
-
-    # line = re.sub(re_src_img_link,
-    #               lambda x: replaceImgLink(x, rel_path=rel_path), line)
-
-    # line = re.sub(re_src_img_link2,
-    #               lambda x: replaceImgLink2(x, rel_path=rel_path), line)
-
+    link_pattern2 = r'src=[\"\']([^ ]+)[\"\']'
+    link_pattern3 = r'href=[\"\']([^ ]+)[\"\']'
     if re.search(link_pattern1, line):
-        line = re.sub(link_pattern1, lambda x: replace_line_p1(x, rel_path=rel_path, fname=fname), line)
+        line = re.sub(
+            link_pattern1, lambda match:
+            f'[{match.group(1)}]({update_link(match.group(2), rel_path, fname)})',
+            line)
+    elif re.search(link_pattern2, line):
+        # pdb.set_trace()
+        line = re.sub(
+            link_pattern2, lambda match:
+            f'src={update_link(match.group(1), rel_path, fname)}', line)
+
+    elif re.search(link_pattern3, line):
+        line = re.sub(
+            link_pattern3, lambda match:
+            f'href={update_link(match.group(1), rel_path, fname)}', line)
 
     return line
-
 
 
 def update_md(target_dir):
@@ -322,7 +319,7 @@ def update_md(target_dir):
     for path, dirs, files in os.walk(target_dir):
         rel_path = os.path.relpath(path, target_dir)
         for f in files:
-            if f.endswith('.md') and f!="overview.md":
+            if f.endswith('.md') and f != "overview.md":
                 md_path = os.path.join(path, f)
                 mdcontent = open(md_path).readlines()
                 mdfile_updated = []

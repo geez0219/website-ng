@@ -278,7 +278,7 @@ plt.show()
 
 
     
-![png](./assets/branches/r1.2/example/automl/rand_augment/rand_augment_files/rand_augment_8_0.png)
+![png](assets/branches/r1.2/example/automl/rand_augment/rand_augment_files/rand_augment_8_0.png)
     
 
 
@@ -367,6 +367,6 @@ plt.show()
 
 
     
-![png](./assets/branches/r1.2/example/automl/rand_augment/rand_augment_files/rand_augment_17_0.png)
+![png](assets/branches/r1.2/example/automl/rand_augment/rand_augment_files/rand_augment_17_0.png)
     
 

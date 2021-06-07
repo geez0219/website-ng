@@ -84,7 +84,7 @@ fig = img.paint_figure()
 
 
     
-![png](./assets/branches/r1.2/example/image_classification/mnist/mnist_files/mnist_10_0.png)
+![png](assets/branches/r1.2/example/image_classification/mnist/mnist_files/mnist_10_0.png)
     
 
 
@@ -242,6 +242,6 @@ fig = img.paint_figure()
 
 
     
-![png](./assets/branches/r1.2/example/image_classification/mnist/mnist_files/mnist_20_0.png)
+![png](assets/branches/r1.2/example/image_classification/mnist/mnist_files/mnist_20_0.png)
     
 

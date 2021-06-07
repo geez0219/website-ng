@@ -240,7 +240,7 @@ print("id = {}".format(batch_data[step_index]['image_id'][batch_index].numpy()))
 
 
     
-![png](./assets/branches/r1.2/example/instance_detection/retinanet/retinanet_files/retinanet_20_1.png)
+![png](assets/branches/r1.2/example/instance_detection/retinanet/retinanet_files/retinanet_20_1.png)
     
 
 
@@ -634,6 +634,6 @@ plt.tight_layout()
 
 
     
-![png](./assets/branches/r1.2/example/instance_detection/retinanet/retinanet_files/retinanet_47_0.png)
+![png](assets/branches/r1.2/example/instance_detection/retinanet/retinanet_files/retinanet_47_0.png)
     
 

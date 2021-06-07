@@ -82,7 +82,7 @@ plt.show()
 
 
     
-![png](./assets/branches/r1.2/example/image_classification/pyramidnet/pyramidnet_files/pyramidnet_9_0.png)
+![png](assets/branches/r1.2/example/image_classification/pyramidnet/pyramidnet_files/pyramidnet_9_0.png)
     
 
 

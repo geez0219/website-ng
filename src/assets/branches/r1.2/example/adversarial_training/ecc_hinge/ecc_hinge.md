@@ -665,7 +665,7 @@ logs = visualize_logs(experiments=[softmax_results, ecc_results, hydra_results],
 
 
     
-![png](./assets/branches/r1.2/example/adversarial_training/ecc_hinge/ecc_hinge_files/ecc_hinge_23_0.png)
+![png](assets/branches/r1.2/example/adversarial_training/ecc_hinge/ecc_hinge_files/ecc_hinge_23_0.png)
     
 
 

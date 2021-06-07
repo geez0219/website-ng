@@ -57,7 +57,7 @@ plt.axis('off');
 
 
     
-![png](./assets/branches/r1.2/example/style_transfer/fst_coco/fst_files/fst_4_0.png)
+![png](assets/branches/r1.2/example/style_transfer/fst_coco/fst_files/fst_4_0.png)
     
 
 
@@ -109,7 +109,7 @@ plt.show()
 
 
     
-![png](./assets/branches/r1.2/example/style_transfer/fst_coco/fst_files/fst_10_0.png)
+![png](assets/branches/r1.2/example/style_transfer/fst_coco/fst_files/fst_10_0.png)
     
 
 
@@ -439,6 +439,6 @@ plt.axis('off');
 
 
     
-![png](./assets/branches/r1.2/example/style_transfer/fst_coco/fst_files/fst_25_0.png)
+![png](assets/branches/r1.2/example/style_transfer/fst_coco/fst_files/fst_25_0.png)
     
 

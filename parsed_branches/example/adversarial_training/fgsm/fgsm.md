@@ -326,7 +326,7 @@ fig = img.paint_figure()
 
 
     
-![png](./assets/branches/r1.2/example/adversarial_training/fgsm/fgsm_files/fgsm_29_0.png)
+![png](assets/branches/r1.2/example/adversarial_training/fgsm/fgsm_files/fgsm_29_0.png)
     
 
 

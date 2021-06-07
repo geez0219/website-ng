@@ -597,7 +597,7 @@ fe.summary.logs.visualize_logs([regular, superL], include_metrics={'mcc', 'ce', 
 
 
     
-![png](./assets/branches/r1.2/example/curriculum_learning/superloss/superloss_files/superloss_15_0.png)
+![png](assets/branches/r1.2/example/curriculum_learning/superloss/superloss_files/superloss_15_0.png)
     
 
 
@@ -610,7 +610,7 @@ fe.summary.logs.visualize_logs(estimator_super.system.custom_graphs['label_confi
 
 
     
-![png](./assets/branches/r1.2/example/curriculum_learning/superloss/superloss_files/superloss_17_0.png)
+![png](assets/branches/r1.2/example/curriculum_learning/superloss/superloss_files/superloss_17_0.png)
     
 
 
@@ -623,6 +623,6 @@ fe.summary.logs.visualize_logs(estimator_regular.system.custom_graphs['label_con
 
 
     
-![png](./assets/branches/r1.2/example/curriculum_learning/superloss/superloss_files/superloss_19_0.png)
+![png](assets/branches/r1.2/example/curriculum_learning/superloss/superloss_files/superloss_19_0.png)
     
 

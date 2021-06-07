@@ -124,7 +124,7 @@ plt.show()
 
 
     
-![png](./assets/branches/r1.2/example/one_shot_learning/siamese_network/siamese_files/siamese_10_1.png)
+![png](assets/branches/r1.2/example/one_shot_learning/siamese_network/siamese_files/siamese_10_1.png)
     
 
 
@@ -133,7 +133,7 @@ plt.show()
 
 
     
-![png](./assets/branches/r1.2/example/one_shot_learning/siamese_network/siamese_files/siamese_10_3.png)
+![png](assets/branches/r1.2/example/one_shot_learning/siamese_network/siamese_files/siamese_10_3.png)
     
 
 
@@ -394,12 +394,12 @@ plt.tight_layout()
 
 
     
-![png](./assets/branches/r1.2/example/one_shot_learning/siamese_network/siamese_files/siamese_28_0.png)
+![png](assets/branches/r1.2/example/one_shot_learning/siamese_network/siamese_files/siamese_28_0.png)
     
 
 
 
     
-![png](./assets/branches/r1.2/example/one_shot_learning/siamese_network/siamese_files/siamese_28_1.png)
+![png](assets/branches/r1.2/example/one_shot_learning/siamese_network/siamese_files/siamese_28_1.png)
     
 

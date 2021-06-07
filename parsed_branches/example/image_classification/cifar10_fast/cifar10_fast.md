@@ -121,7 +121,7 @@ for i, j in enumerate(np.random.randint(low=0, high=batch_size-1, size=sample_nu
 
 
     
-![png](./assets/branches/r1.2/example/image_classification/cifar10_fast/cifar10_fast_files/cifar10_fast_10_2.png)
+![png](assets/branches/r1.2/example/image_classification/cifar10_fast/cifar10_fast_files/cifar10_fast_10_2.png)
     
 
 
@@ -336,6 +336,6 @@ for i, j in enumerate(np.random.randint(low=0, high=batch_size-1, size=sample_nu
 
 
     
-![png](./assets/branches/r1.2/example/image_classification/cifar10_fast/cifar10_fast_files/cifar10_fast_20_0.png)
+![png](assets/branches/r1.2/example/image_classification/cifar10_fast/cifar10_fast_files/cifar10_fast_20_0.png)
     
 

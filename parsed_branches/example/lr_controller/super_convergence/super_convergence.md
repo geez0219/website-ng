@@ -68,7 +68,7 @@ The preparation of the super-convergence schedule is to search the suitable LR r
 
 To run the test we need to implement the trace to record the maximum LR. After running the training with linear increaseing LR, we will get the maximum LR. 
 
-<img src="./typical_lr.PNG" alt="drawing" width="400"/>
+<img src=assets/branches/r1.2/example/lr_controller/super_convergence/typical_lr.PNG alt="drawing" width="400"/>
 [The typical learning rate and metircs plot from https://arxiv.org/pdf/1708.07120.pdf]
 
 
@@ -129,7 +129,7 @@ plt.legend(loc='upper left', frameon=False)
 
 
     
-![png](./assets/branches/r1.2/example/lr_controller/super_convergence/super_convergence_files/super_convergence_8_1.png)
+![png](assets/branches/r1.2/example/lr_controller/super_convergence/super_convergence_files/super_convergence_8_1.png)
     
 
 
@@ -142,7 +142,7 @@ The LR change has 3 phases:
 2. decrase LR from maximum LR to minimum LR at 45%~90% of training process
 3. decrase LR from minimum LR to 0 at 90%~100% of training process
 
-<img src="./lr_schedule.PNG" alt="drawing" width="400"/>
+<img src=assets/branches/r1.2/example/lr_controller/super_convergence/lr_schedule.PNG alt="drawing" width="400"/>
 
 
 ```python
@@ -361,4 +361,4 @@ main_train.fit()
 
 
 ## Result Discussion
-The result of it might not be super impressive when comparing with original example [CIFAR10 Fast](./assets/branches/r1.2/example/image_classification/cifar10_fast/cifar10_fast.ipynb). But please be aware that the example has its own LR schedules which is specially tuned on that configuration (plus that scheduler is also cyclical LR schedule).
+The result of it might not be super impressive when comparing with original example [CIFAR10 Fast](assets/branches/r1.2/example/image_classification/cifar10_fast/cifar10_fast.ipynb). But please be aware that the example has its own LR schedules which is specially tuned on that configuration (plus that scheduler is also cyclical LR schedule).

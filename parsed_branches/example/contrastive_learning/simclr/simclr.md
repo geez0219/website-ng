@@ -161,7 +161,7 @@ model_con, model_finetune = fe.build(model_fn=ResNet9, optimizer_fn=["adam", "ad
 
 ## Pre-Training Network
  SimCLR uses NT-Xent (the normalized temperature-scaled cross entropy loss) to train the encoder. By reducing the loss it will increase the similarity of positive augemented pairs and decrease the similarity of negative pairs as the following GIF demonstrates. For a detailed formula, please refer to the [orginal paper](https://arxiv.org/pdf/2002.05709.pdf).
- <img src="https://1.bp.blogspot.com/--vH4PKpE9Yo/Xo4a2BYervI/AAAAAAAAFpM/vaFDwPXOyAokAC8Xh852DzOgEs22NhbXwCLcBGAsYHQ/s1600/image4.gif" alt="drawing" width="400"/>
+ <img src=https://1.bp.blogspot.com/--vH4PKpE9Yo/Xo4a2BYervI/AAAAAAAAFpM/vaFDwPXOyAokAC8Xh852DzOgEs22NhbXwCLcBGAsYHQ/s1600/image4.gif alt="drawing" width="400"/>
 (source: https://ai.googleblog.com/2020/04/advancing-self-supervised-and-semi.html)
  
 

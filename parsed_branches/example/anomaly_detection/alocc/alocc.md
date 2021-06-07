@@ -90,14 +90,14 @@ fig = img.paint_figure()
 
 
     
-![png](./assets/branches/r1.2/example/anomaly_detection/alocc/alocc_files/alocc_8_0.png)
+![png](assets/branches/r1.2/example/anomaly_detection/alocc/alocc_files/alocc_8_0.png)
     
 
 
 ### Step 2: Create `Network`
 
 The architecture of our model consists of an Autoencoder (ecoder-decoder) network and a Discriminator network.
-![Network Architecture](./assets/branches/r1.2/example/anomaly_detection/alocc/network_architecture.PNG)[Credit: https://arxiv.org/pdf/1802.09088.pdf]
+![Network Architecture](assets/branches/r1.2/example/anomaly_detection/alocc/network_architecture.PNG)[Credit: https://arxiv.org/pdf/1802.09088.pdf]
 
 
 ```python
@@ -426,13 +426,13 @@ fig2 = img2.paint_figure()
 
 
     
-![png](./assets/branches/r1.2/example/anomaly_detection/alocc/alocc_files/alocc_25_0.png)
+![png](assets/branches/r1.2/example/anomaly_detection/alocc/alocc_files/alocc_25_0.png)
     
 
 
 
     
-![png](./assets/branches/r1.2/example/anomaly_detection/alocc/alocc_files/alocc_25_1.png)
+![png](assets/branches/r1.2/example/anomaly_detection/alocc/alocc_files/alocc_25_1.png)
     
 
 
