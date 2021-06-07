@@ -87,7 +87,7 @@ model_torch = fe.build(model_fn=my_model_torch, optimizer_fn="adam")
 
 ### Importing model architecture from FastEstimator
 
-Below we import a PyTorch LeNet architecture from FastEstimator. See our [Architectures](assets/branches/r1.2/fastestimator/architecture) folder for a full list of the architectures provided by FastEstimator.
+Below we import a PyTorch LeNet architecture from FastEstimator. See our [Architectures](https://github.com/fastestimator/fastestimator/tree/r1.2/fastestimator/architecture) folder for a full list of the architectures provided by FastEstimator.
 
 
 ```python
@@ -221,7 +221,7 @@ You can find some practical examples of the concepts described here in the follo
 
 * [PG-GAN](examples/r1.2/image_generation/pggan/pggan)
 * [Uncertainty Weighted Loss](examples/r1.2/multi_task_learning/uncertainty_weighted_loss/uncertainty_loss)
-* [API](assets/branches/r1.2/fastestimator/estimator.py)
+* [API](https://github.com/fastestimator/fastestimator/tree/r1.2/fastestimator/estimator.py)
 
 
 ```python

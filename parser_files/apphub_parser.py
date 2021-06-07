@@ -165,16 +165,29 @@ def update_link_to_page(link, rel_path):
     return link
 
 
-def update_link_to_asset(link, rel_path):
-    """to repo asset files
+
+def update_link_to_asset_api(link, rel_path):
+    """to repo asset files or api folder
+    to api
+    ex: ../../fastestimator/architecture
+    ->  https://github.com/fastestimator/fastestimator/tree/r1.2/fastestimator/architecture
+
+    to asset
     ex: ./Figure/pggan_1024x1024.png
     ->  assets/branches/r1.2/example/image_generation/pggan/Figure/pggan_1024x1024.png
     """
-    prefix = f"assets/branches/{BRANCH}"
+
     rel_path_link = os.path.normpath(
         os.path.join(A_NAME["asset"], rel_path, link))
+    if rel_path_link.startswith(f'fastestimator'):
+        # link to API
+        # TODO: link to fastestimator API webpage
+        link = f"https://github.com/fastestimator/fastestimator/tree/{BRANCH}/{rel_path_link}"
+    else:
+        # link to asset
+        link = f"assets/branches/{BRANCH}/{rel_path_link}"
 
-    return os.path.join(prefix, rel_path_link)
+    return link
 
 
 def update_link_pure_tag(link, rel_path, fname):
@@ -202,7 +215,7 @@ def update_link(link, rel_path, fname):
         link = update_link_pure_tag(link, rel_path, fname)
 
     else:
-        link = update_link_to_asset(link, rel_path)
+        link = update_link_to_asset_api(link, rel_path)
 
     return link
 
