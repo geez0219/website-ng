@@ -1,4 +1,4 @@
-## FeSplitSummary<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/util/traceability_util.py/#L117-L145>View source on Github</a>
+## FeSplitSummary<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/util/traceability_util.py/#L133-L161>View source on Github</a>
 ```python
 FeSplitSummary()
 ```
@@ -8,7 +8,7 @@ This class is intentionally not @traceable.
 
 ---
 
-### add_split<span class="tag">method of FeSplitSummary</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/util/traceability_util.py/#L126-L133>View source on Github</a>
+### add_split<span class="tag">method of FeSplitSummary</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/util/traceability_util.py/#L142-L149>View source on Github</a>
 ```python
 add_split(
 	self,
@@ -29,7 +29,7 @@ Record another split on this dataset.
 
 ---
 
-### dumps<span class="tag">method of FeSplitSummary</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/util/traceability_util.py/#L135-L145>View source on Github</a>
+### dumps<span class="tag">method of FeSplitSummary</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/util/traceability_util.py/#L151-L161>View source on Github</a>
 ```python
 dumps(
 	self

@@ -2,19 +2,19 @@
 
 ## Overview
 In this tutorial, we will talk about:
-* [Estimator API](./tutorials/r1.2/beginner/t07_estimator#t07estimator)
-    * [Reducing the number of training steps per epoch](./tutorials/r1.2/beginner/t07_estimator#t07train)
-    * [Reducing the number of evaluation steps per epoch](./tutorials/r1.2/beginner/t07_estimator#t07eval)
-    * [Changing logging behavior](./tutorials/r1.2/beginner/t07_estimator#t07logging)
-    * [Monitoring intermediate results during training](./tutorials/r1.2/beginner/t07_estimator#t07intermediate)
-* [Trace](./tutorials/r1.2/beginner/t07_estimator#t07trace)
-    * [Concept](./tutorials/r1.2/beginner/t07_estimator#t07concept)
-    * [Structure](./tutorials/r1.2/beginner/t07_estimator#t07structure)
-    * [Usage](./tutorials/r1.2/beginner/t07_estimator#t07usage)
-* [Model Testing](./tutorials/r1.2/beginner/t07_estimator#t07testing)
-* [Related Apphub Examples](./tutorials/r1.2/beginner/t07_estimator#t07apphub)
+* [Estimator API](tutorials/r1.2/beginner/t07_estimator/#t07estimator)
+    * [Reducing the number of training steps per epoch](tutorials/r1.2/beginner/t07_estimator/#t07train)
+    * [Reducing the number of evaluation steps per epoch](tutorials/r1.2/beginner/t07_estimator/#t07eval)
+    * [Changing logging behavior](tutorials/r1.2/beginner/t07_estimator/#t07logging)
+    * [Monitoring intermediate results during training](tutorials/r1.2/beginner/t07_estimator/#t07intermediate)
+* [Trace](tutorials/r1.2/beginner/t07_estimator/#t07trace)
+    * [Concept](tutorials/r1.2/beginner/t07_estimator/#t07concept)
+    * [Structure](tutorials/r1.2/beginner/t07_estimator/#t07structure)
+    * [Usage](tutorials/r1.2/beginner/t07_estimator/#t07usage)
+* [Model Testing](tutorials/r1.2/beginner/t07_estimator/#t07testing)
+* [Related Apphub Examples](tutorials/r1.2/beginner/t07_estimator/#t07apphub)
 
-`Estimator` is the API that manages everything related to the training loop. It combines `Pipeline` and `Network` together and provides users with fine-grain control over the training loop. Before we demonstrate different ways to control the training loop let's define a template similar to [Tutorial 1](./tutorials/r1.2/beginner/t01_getting_started), but this time we will use a PyTorch model.
+`Estimator` is the API that manages everything related to the training loop. It combines `Pipeline` and `Network` together and provides users with fine-grain control over the training loop. Before we demonstrate different ways to control the training loop let's define a template similar to [tutorial 1](tutorials/r1.2/beginner/t01_getting_started), but this time we will use a PyTorch model.
 
 
 ```python
@@ -283,14 +283,14 @@ So what are the different training stages? They are:
 * End of epoch
 * End of training
 
-<img src="assets/branches/r1.2/tutorial/resources/t07_trace_concept.png" alt="drawing" width="500"/>
+<img src=assets/branches/r1.2/tutorial/resources/t07_trace_concept.png alt="drawing" width="500"/>
 
 As we can see from the illustration above, the training process is essentially a nested combination of batch loops and epoch loops. Over the course of training, `Trace` places 6 different "road blocks" for you to leverage.
 
 <a id='t07structure'></a>
 
 ### Structure
-If you are familiar with Keras, you will notice that the structure of `Trace` is very similar to the `Callback` in keras.  Despite the structural similarity, `Trace` gives you a lot more flexibility which we will talk about in depth in [advanced Tutorial 4](./tutorials/r1.2/advanced/t04_trace). Implementation-wise, `Trace` is a python class with the following structure:
+If you are familiar with Keras, you will notice that the structure of `Trace` is very similar to the `Callback` in keras.  Despite the structural similarity, `Trace` gives you a lot more flexibility which we will talk about in depth in [advanced tutorial 4](tutorials/r1.2/advanced/t04_trace). Implementation-wise, `Trace` is a python class with the following structure:
 
 
 ```python
@@ -414,4 +414,4 @@ This will feed all of your test dataset through the `Pipeline` and `Network`, an
 ## Apphub Examples
 You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
 
-* [UNet](./examples/r1.2/semantic_segmentation/unet/unet)
+* [UNet](examples/r1.2/semantic_segmentation/unet/unet)

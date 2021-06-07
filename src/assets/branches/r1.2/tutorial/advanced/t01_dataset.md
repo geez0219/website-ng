@@ -2,19 +2,19 @@
 
 ## Overview
 In this tutorial, we will talk about the following topics:
-* [Dataset Summary](./tutorials/r1.2/advanced/t01_dataset#ta01summary)
-* [Dataset Splitting](./tutorials/r1.2/advanced/t01_dataset#ta01splitting)
-    * [Random Fraction Split](./tutorials/r1.2/advanced/t01_dataset#ta01rfs)
-    * [Random Count Split](./tutorials/r1.2/advanced/t01_dataset#ta01rcs)
-    * [Index Split](./tutorials/r1.2/advanced/t01_dataset#ta01is)
-* [Global Dataset Editing](./tutorials/r1.2/advanced/t01_dataset#ta01gde)
-* [BatchDataset](./tutorials/r1.2/advanced/t01_dataset#ta01bd)
-    * [Deterministic Batching](./tutorials/r1.2/advanced/t01_dataset#ta01deterministic)
-    * [Distribution Batching](./tutorials/r1.2/advanced/t01_dataset#ta01distribution)
-    * [Unpaired Dataset](./tutorials/r1.2/advanced/t01_dataset#ta01ud)
-* [Related Apphub Examples](./tutorials/r1.2/advanced/t01_dataset#ta01rae)
+* [Dataset Summary](tutorials/r1.2/advanced/t01_dataset/#ta01summary)
+* [Dataset Splitting](tutorials/r1.2/advanced/t01_dataset/#ta01splitting)
+    * [Random Fraction Split](tutorials/r1.2/advanced/t01_dataset/#ta01rfs)
+    * [Random Count Split](tutorials/r1.2/advanced/t01_dataset/#ta01rcs)
+    * [Index Split](tutorials/r1.2/advanced/t01_dataset/#ta01is)
+* [Global Dataset Editing](tutorials/r1.2/advanced/t01_dataset/#ta01gde)
+* [BatchDataset](tutorials/r1.2/advanced/t01_dataset/#ta01bd)
+    * [Deterministic Batching](tutorials/r1.2/advanced/t01_dataset/#ta01deterministic)
+    * [Distribution Batching](tutorials/r1.2/advanced/t01_dataset/#ta01distribution)
+    * [Unpaired Dataset](tutorials/r1.2/advanced/t01_dataset/#ta01ud)
+* [Related Apphub Examples](tutorials/r1.2/advanced/t01_dataset/#ta01rae)
 
-Before going through the tutorial, it is recommended to check [Beginner Tutorial 2](./tutorials/r1.2/beginner/t02_dataset) for basic understanding of `dataset` from PyTorch and FastEstimator. We will talk about more details about `fe.dataset` API in this tutorial.
+Before going through the tutorial, it is recommended to check [Beginner Tutorial 2](tutorials/r1.2/beginner/t02_dataset) for basic understanding of `dataset` from PyTorch and FastEstimator. We will talk about more details about `fe.dataset` API in this tutorial.
 
 <a id='ta01summary'></a>
 
@@ -194,4 +194,4 @@ dataset_unpaired = BatchDataset(datasets=[mnist_data, cifair_data], num_samples=
 ## Apphub Examples
 You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
 
-* [DNN](./examples/r1.2/tabular/dnn/dnn)
+* [DNN](examples/r1.2/tabular/dnn/dnn)

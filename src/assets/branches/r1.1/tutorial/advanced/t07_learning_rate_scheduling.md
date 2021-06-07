@@ -4,16 +4,16 @@
 
 In this tutorial, we will discuss:
 
-* [Customizing a Learning Rate Schedule Function](./tutorials/r1.1/advanced/t07_learning_rate_scheduling#ta07customize)
-    * [epoch-wise](./tutorials/r1.1/advanced/t07_learning_rate_scheduling#ta07epoch)
-    * [step-wise](./tutorials/r1.1/advanced/t07_learning_rate_scheduling#ta07step)
-* [Using a Built-In lr_schedule Function](./tutorials/r1.1/advanced/t07_learning_rate_scheduling#ta07builtin)
-    * [cosine decay](./tutorials/r1.1/advanced/t07_learning_rate_scheduling#ta07cosine)
-* [Related Apphub Examples](./tutorials/r1.1/advanced/t07_learning_rate_scheduling#ta07apphub)
+* [Customizing a Learning Rate Schedule Function](tutorials/r1.1/advanced/t07_learning_rate_scheduling/#ta07customize)
+    * [epoch-wise](tutorials/r1.1/advanced/t07_learning_rate_scheduling/#ta07epoch)
+    * [step-wise](tutorials/r1.1/advanced/t07_learning_rate_scheduling/#ta07step)
+* [Using a Built-In lr_schedule Function](tutorials/r1.1/advanced/t07_learning_rate_scheduling/#ta07builtin)
+    * [cosine decay](tutorials/r1.1/advanced/t07_learning_rate_scheduling/#ta07cosine)
+* [Related Apphub Examples](tutorials/r1.1/advanced/t07_learning_rate_scheduling/#ta07apphub)
 
 Learning rate schedules can be implemented using the `LRScheduler` `Trace`. `LRScheduler` takes the model and learning schedule through the **lr_fn** parameter. **lr_fn** should be a function/lambda function with 'step' or 'epoch' as its input parameter. This determines whether the learning schedule will be applied at a step or epoch level.
 
-For more details on traces, you can visit [Beginner Tutorial 7](./tutorials/r1.1/beginner/t07_estimator) and [Advanced Tutorial 4](./tutorials/r1.1/advanced/t04_trace). 
+For more details on traces, you can visit [Beginner Tutorial 7](tutorials/r1.1/beginner/t07_estimator) and [Advanced Tutorial 4](tutorials/r1.1/advanced/t04_trace). 
 
 Let's create a function to generate the pipeline, model, and network to be used for this tutorial:
 
@@ -54,7 +54,7 @@ We can specify a custom learning schedule by passing a custom function to the **
 <a id='ta07epoch'></a>
 
 ### Epoch-wise
-To apply learning rate scheduling at an epoch level, the custom function should have 'epoch' as its parameter. Let's look at the example below which demonstrates this. We will be using the summary parameter in the fit method to be able to visualize the learning rate later. You can go through [Advanced Tutorial 6](./tutorials/r1.1/advanced/t06_summary) for more details on accessing training history.
+To apply learning rate scheduling at an epoch level, the custom function should have 'epoch' as its parameter. Let's look at the example below which demonstrates this. We will be using the summary parameter in the fit method to be able to visualize the learning rate later. You can go through [Advanced Tutorial 6](tutorials/r1.1/advanced/t06_summary) for more details on accessing training history.
 
 
 ```python
@@ -332,5 +332,5 @@ visualize_logs(history3, include_metrics="LeNet_lr")
 ## Apphub Examples
 You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
 
-* [MNIST](./examples/r1.1/image_classification/mnist)
-* [CIFAR10](./examples/r1.1/image_classification/cifar10_fast)
+* [MNIST](examples/r1.1/image_classification/mnist/mnist)
+* [CIFAR10](examples/r1.1/image_classification/cifar10_fast/cifar10_fast)

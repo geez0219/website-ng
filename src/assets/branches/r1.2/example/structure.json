@@ -1,1 +1,192 @@
-[{"name": "overview.md", "displayName": "Overview"}, {"name": "adversarial_training", "displayName": "Adversarial Training", "children": [{"name": "adversarial_training/ecc/ecc.md", "displayName": "Adversarial Robustness with Error Correcting Codes"}, {"name": "adversarial_training/ecc_hinge/ecc_hinge.md", "displayName": "Adversarial Robustness with Error Correcting Codes (and Hinge Loss)"}, {"name": "adversarial_training/fgsm/fgsm.md", "displayName": "Fast Gradient Sign Method"}]}, {"name": "anomaly_detection", "displayName": "Anomaly Detection", "children": [{"name": "anomaly_detection/alocc/alocc.md", "displayName": "Adversarially Learned One-Class Classifier for Novelty Detection"}]}, {"name": "automl", "displayName": "AutoML", "children": [{"name": "automl/rand_augment/rand_augment.md", "displayName": "RandAugment"}]}, {"name": "contrastive_learning", "displayName": "Contrastive Learning", "children": [{"name": "contrastive_learning/simclr/simclr.md", "displayName": "SimCLR"}]}, {"name": "curriculum_learning", "displayName": "Curriculum Learning", "children": [{"name": "curriculum_learning/superloss/superloss.md", "displayName": "SuperLoss"}]}, {"name": "image_classification", "displayName": "Image Classification", "children": [{"name": "image_classification/cifar10_fast/cifar10_fast.md", "displayName": "CIFAR-10 Fast"}, {"name": "image_classification/mnist/mnist.md", "displayName": "MNIST"}, {"name": "image_classification/pyramidnet/pyramidnet.md", "displayName": "Pyramid Network"}]}, {"name": "image_generation", "displayName": "Image Generation", "children": [{"name": "image_generation/cvae/cvae.md", "displayName": "CVAE"}, {"name": "image_generation/cyclegan/cyclegan.md", "displayName": "Cycle-GAN"}, {"name": "image_generation/dcgan/dcgan.md", "displayName": "DCGAN"}, {"name": "image_generation/pggan/pggan.md", "displayName": "PGGAN"}]}, {"name": "style_transfer", "displayName": "Image Style Transfer", "children": [{"name": "style_transfer/fst_coco/fst.md", "displayName": "Fast Style Transfer"}]}, {"name": "instance_detection", "displayName": "Instance Detection", "children": [{"name": "instance_detection/retinanet/retinanet.md", "displayName": "RetinaNet"}]}, {"name": "lr_controller", "displayName": "Learning Rate Scheduling", "children": [{"name": "lr_controller/super_convergence/super_convergence.md", "displayName": "Super Convergence"}]}, {"name": "NLP", "displayName": "Natural Language Processing (NLP)", "children": [{"name": "NLP/language_modeling/ptb.md", "displayName": "Language Modeling"}, {"name": "NLP/named_entity_recognition/bert.md", "displayName": "Named Entity Recognition"}, {"name": "NLP/imdb/imdb.md", "displayName": "Text Classification"}]}, {"name": "one_shot_learning", "displayName": "One-shot Learning", "children": [{"name": "one_shot_learning/siamese.md", "displayName": "Siamese Network"}]}, {"name": "semantic_segmentation", "displayName": "Semantic Segmentation", "children": [{"name": "semantic_segmentation/unet/unet.md", "displayName": "UNet"}]}, {"name": "tabular", "displayName": "Tabular Data", "children": [{"name": "tabular/dnn/dnn.md", "displayName": "DNN"}]}, {"name": "test", "displayName": "Test", "children": [{"name": "test/test.md", "displayName": "Test Link"}]}]
+[
+    {
+        "name": "overview.md",
+        "displayName": "Overview"
+    },
+    {
+        "name": "adversarial_training",
+        "displayName": "Adversarial Training",
+        "children": [
+            {
+                "name": "adversarial_training/ecc/ecc.md",
+                "displayName": "Adversarial Robustness with Error Correcting Codes"
+            },
+            {
+                "name": "adversarial_training/ecc_hinge/ecc_hinge.md",
+                "displayName": "Adversarial Robustness with Error Correcting Codes (and Hinge Loss)"
+            },
+            {
+                "name": "adversarial_training/fgsm/fgsm.md",
+                "displayName": "Fast Gradient Sign Method"
+            }
+        ]
+    },
+    {
+        "name": "anomaly_detection",
+        "displayName": "Anomaly Detection",
+        "children": [
+            {
+                "name": "anomaly_detection/alocc/alocc.md",
+                "displayName": "Adversarially Learned One-Class Classifier for Novelty Detection"
+            }
+        ]
+    },
+    {
+        "name": "automl",
+        "displayName": "AutoML",
+        "children": [
+            {
+                "name": "automl/rand_augment/rand_augment.md",
+                "displayName": "RandAugment"
+            }
+        ]
+    },
+    {
+        "name": "contrastive_learning",
+        "displayName": "Contrastive Learning",
+        "children": [
+            {
+                "name": "contrastive_learning/simclr/simclr.md",
+                "displayName": "SimCLR"
+            }
+        ]
+    },
+    {
+        "name": "curriculum_learning",
+        "displayName": "Curriculum Learning",
+        "children": [
+            {
+                "name": "curriculum_learning/superloss/superloss.md",
+                "displayName": "SuperLoss"
+            }
+        ]
+    },
+    {
+        "name": "image_classification",
+        "displayName": "Image Classification",
+        "children": [
+            {
+                "name": "image_classification/cifar10_fast/cifar10_fast.md",
+                "displayName": "CIFAR-10 Fast"
+            },
+            {
+                "name": "image_classification/mnist/mnist.md",
+                "displayName": "MNIST"
+            },
+            {
+                "name": "image_classification/pyramidnet/pyramidnet.md",
+                "displayName": "Pyramid Network"
+            }
+        ]
+    },
+    {
+        "name": "image_generation",
+        "displayName": "Image Generation",
+        "children": [
+            {
+                "name": "image_generation/cvae/cvae.md",
+                "displayName": "CVAE"
+            },
+            {
+                "name": "image_generation/cyclegan/cyclegan.md",
+                "displayName": "Cycle-GAN"
+            },
+            {
+                "name": "image_generation/dcgan/dcgan.md",
+                "displayName": "DCGAN"
+            },
+            {
+                "name": "image_generation/pggan/pggan.md",
+                "displayName": "PGGAN"
+            }
+        ]
+    },
+    {
+        "name": "style_transfer",
+        "displayName": "Image Style Transfer",
+        "children": [
+            {
+                "name": "style_transfer/fst_coco/fst.md",
+                "displayName": "Fast Style Transfer"
+            }
+        ]
+    },
+    {
+        "name": "instance_detection",
+        "displayName": "Instance Detection",
+        "children": [
+            {
+                "name": "instance_detection/retinanet/retinanet.md",
+                "displayName": "RetinaNet"
+            }
+        ]
+    },
+    {
+        "name": "lr_controller",
+        "displayName": "Learning Rate Scheduling",
+        "children": [
+            {
+                "name": "lr_controller/super_convergence/super_convergence.md",
+                "displayName": "Super Convergence"
+            }
+        ]
+    },
+    {
+        "name": "NLP",
+        "displayName": "Natural Language Processing (NLP)",
+        "children": [
+            {
+                "name": "NLP/language_modeling/ptb.md",
+                "displayName": "Language Modeling"
+            },
+            {
+                "name": "NLP/named_entity_recognition/bert.md",
+                "displayName": "Named Entity Recognition"
+            },
+            {
+                "name": "NLP/imdb/imdb.md",
+                "displayName": "Text Classification"
+            }
+        ]
+    },
+    {
+        "name": "one_shot_learning",
+        "displayName": "One-shot Learning",
+        "children": [
+            {
+                "name": "one_shot_learning/siamese.md",
+                "displayName": "Siamese Network"
+            }
+        ]
+    },
+    {
+        "name": "semantic_segmentation",
+        "displayName": "Semantic Segmentation",
+        "children": [
+            {
+                "name": "semantic_segmentation/unet/unet.md",
+                "displayName": "UNet"
+            }
+        ]
+    },
+    {
+        "name": "tabular",
+        "displayName": "Tabular Data",
+        "children": [
+            {
+                "name": "tabular/dnn/dnn.md",
+                "displayName": "DNN"
+            }
+        ]
+    },
+    {
+        "name": "test",
+        "displayName": "Test",
+        "children": [
+            {
+                "name": "test/test.md",
+                "displayName": "Test Link"
+            }
+        ]
+    }
+]

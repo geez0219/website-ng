@@ -2,11 +2,11 @@
 
 ## Overview
 In this tutorial we are going to cover:
-* [Modes](./tutorials/r1.0/beginner/t08_mode#t08mode)
-* [When Modes are Activated](./tutorials/r1.0/beginner/t08_mode#t08when)
-* [How to Set Modes](./tutorials/r1.0/beginner/t08_mode#t08how)
-* [A Code Example](./tutorials/r1.0/beginner/t08_mode#t08code)
-* [Related Apphub Examples](./tutorials/r1.0/beginner/t08_mode#t08apphub)
+* [Modes](tutorials/r1.0/beginner/t08_mode/#t08mode)
+* [When Modes are Activated](tutorials/r1.0/beginner/t08_mode/#t08when)
+* [How to Set Modes](tutorials/r1.0/beginner/t08_mode/#t08how)
+* [A Code Example](tutorials/r1.0/beginner/t08_mode/#t08code)
+* [Related Apphub Examples](tutorials/r1.0/beginner/t08_mode/#t08apphub)
 
 <a id='t08mode'></a>
 
@@ -20,7 +20,7 @@ FastEstimator provides 4 corresponding modes: `train`, `eval`, `test`, and `infe
 * train: `estimator.fit()` being called, during training cycle
 * eval: `estimator.fit()` being called, during evaluation cycle
 * test: `estimator.test()` being called
-* infer: `pipeline.transform(mode="infer")` or `network.transform(mode="infer")` being called (inference will be covered in [Tutorial 9](./tutorials/r1.0/beginner/t09_inference))
+* infer: `pipeline.transform(mode="infer")` or `network.transform(mode="infer")` being called (inference will be covered in [tutorial 9](tutorials/r1.0/beginner/t09_inference))
 
 <a id='t08how'></a>
 
@@ -93,26 +93,26 @@ estimator = fe.Estimator(pipeline=pipeline,
 ### Train Mode
 The following figure shows the execution flow for the "train" mode. It has a complete data pipeline including the `CoarseDropout` data augmentation Op. The data source of the pipeline is "train_data". The `Accuracy` Trace will not exist in this mode because the default mode of that trace is "eval" and "test".
 
-<img src="assets/branches/r1.0/tutorial/../resources/t08_train_mode.PNG" alt="drawing" width="700"/>
+<img src=assets/branches/r1.0/tutorial/resources/t08_train_mode.PNG alt="drawing" width="700"/>
 
 ### Eval Mode
 The following figure shows the execution flow for the "eval" mode. The data augmentation block is missing and the pipeline data source is "eval_data". The `Accuracy` block exist in this mode because of its default trace setting.
 
-<img src="assets/branches/r1.0/tutorial/../resources/t08_eval_mode.PNG" alt="drawing" width="700"/>
+<img src=assets/branches/r1.0/tutorial/resources/t08_eval_mode.PNG alt="drawing" width="700"/>
 
 ### Test Mode
 Everything in the "test" mode is the same as the "eval" mode, except that the data source of pipeline has switched to "test_data":
 
-<img src="assets/branches/r1.0/tutorial/../resources/t08_test_mode.PNG" alt="drawing" width="700"/>
+<img src=assets/branches/r1.0/tutorial/resources/t08_test_mode.PNG alt="drawing" width="700"/>
 
 ### Infer Mode
-"Infer" mode only has the minimum operations that model inference requires. The data source is not defined yet because input data will not be passed until the inference function is invoked. See [Tutorial 9](./tutorials/r1.0/beginner/t09_inference) for more details.
+"Infer" mode only has the minimum operations that model inference requires. The data source is not defined yet because input data will not be passed until the inference function is invoked. See [tutorial 9](tutorials/r1.0/beginner/t09_inference) for more details.
 
-<img src="assets/branches/r1.0/tutorial/../resources/t08_infer_mode.PNG" alt="drawing" width="700"/>
+<img src=assets/branches/r1.0/tutorial/resources/t08_infer_mode.PNG alt="drawing" width="700"/>
 
 <a id='t08apphub'></a>
 
 ## Apphub Examples
 You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
 
-* [CIFAR10](./examples/r1.0/image_classification/cifar10_fast)
+* [CIFAR10](examples/r1.0/image_classification/cifar10_fast/cifar10_fast)

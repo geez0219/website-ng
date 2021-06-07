@@ -2,11 +2,11 @@
 
 ## Overview
 In this tutorial, we will discuss the following topics:
-* [Saliency Maps](./tutorials/r1.2/advanced/t08_xai#ta08saliency)
-    * [With Traces](./tutorials/r1.2/advanced/t08_xai#ta08with)
-    * [Without Traces](./tutorials/r1.2/advanced/t08_xai#ta08without)
-* [Label Tracking](./tutorials/r1.2/advanced/t08_xai#ta08labels)
-* [Instance Tracking](./tutorials/r1.2/advanced/t08_xai#ta08instance)
+* [Saliency Maps](tutorials/r1.2/advanced/t08_xai/#ta08saliency)
+    * [With Traces](tutorials/r1.2/advanced/t08_xai/#ta08with)
+    * [Without Traces](tutorials/r1.2/advanced/t08_xai/#ta08without)
+* [Label Tracking](tutorials/r1.2/advanced/t08_xai/#ta08labels)
+* [Instance Tracking](tutorials/r1.2/advanced/t08_xai/#ta08instance)
 
 We'll start by getting the imports out of the way:
 

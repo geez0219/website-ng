@@ -1,4 +1,4 @@
-## build<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/network.py/#L691-L780>View source on Github</a>
+## build<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/network.py/#L692-L781>View source on Github</a>
 ```python
 build(
 	model_fn: Callable[[], Union[~Model, List[~Model]]],

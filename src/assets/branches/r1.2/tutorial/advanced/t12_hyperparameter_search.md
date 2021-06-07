@@ -2,12 +2,12 @@
 
 ## Overview
 In this tutorial, we will discuss the following topics:
-* [FastEstimator Search API](./tutorials/r1.2/advanced/t12_hyperparameter_search#ta12searchapi)
-    * [Getting the search results](./tutorials/r1.2/advanced/t12_hyperparameter_search#ta12searchresults)
-    * [Saving and loading search results](./tutorials/r1.2/advanced/t12_hyperparameter_search#ta12saveload)
-    * [Interruption-resilient search](./tutorials/r1.2/advanced/t12_hyperparameter_search#ta12interruption)
-* [Example 1: Hyperparameter Tuning by Grid Search](./tutorials/r1.2/advanced/t12_hyperparameter_search#ta12example1)
-* [Example 2: RUA Augmentation via Golden-Section Search](./tutorials/r1.2/advanced/t12_hyperparameter_search#ta12example2)
+* [FastEstimator Search API](tutorials/r1.2/advanced/t12_hyperparameter_search/#ta12searchapi)
+    * [Getting the search results](tutorials/r1.2/advanced/t12_hyperparameter_search/#ta12searchresults)
+    * [Saving and loading search results](tutorials/r1.2/advanced/t12_hyperparameter_search/#ta12saveload)
+    * [Interruption-resilient search](tutorials/r1.2/advanced/t12_hyperparameter_search/#ta12interruption)
+* [Example 1: Hyperparameter Tuning by Grid Search](tutorials/r1.2/advanced/t12_hyperparameter_search/#ta12example1)
+* [Example 2: RUA Augmentation via Golden-Section Search](tutorials/r1.2/advanced/t12_hyperparameter_search/#ta12example2)
 
 <a id='ta12searchapi'></a>
 

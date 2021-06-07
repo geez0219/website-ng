@@ -1,4 +1,4 @@
-## RepeatScheduler<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/schedule/schedule.py/#L48-L81>View source on Github</a>
+## RepeatScheduler<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/schedule/schedule.py/#L48-L86>View source on Github</a>
 ```python
 RepeatScheduler(
 	repeat_list: List[Union[~T, NoneType]]

@@ -2,13 +2,13 @@
 
 ## Overview
 In this tutorial we are going to cover:
-* [`Network` Scope](./tutorials/r1.2/beginner/t06_network#t06network)
-* [`TensorOp` and its Children](./tutorials/r1.2/beginner/t06_network#t06tensorop)
-* [How to Customize a `TensorOp`](./tutorials/r1.2/beginner/t06_network#t06customize)
-    * [TensorFlow](./tutorials/r1.2/beginner/t06_network#t06tf)
-    * [PyTorch](./tutorials/r1.2/beginner/t06_network#t06torch)
-    * [fe.backend](./tutorials/r1.2/beginner/t06_network#t06backend)
-* [Related Apphub Examples](./tutorials/r1.2/beginner/t06_network#t06apphub)
+* [`Network` Scope](tutorials/r1.2/beginner/t06_network/#t06network)
+* [`TensorOp` and its Children](tutorials/r1.2/beginner/t06_network/#t06tensorop)
+* [How to Customize a `TensorOp`](tutorials/r1.2/beginner/t06_network/#t06customize)
+    * [TensorFlow](tutorials/r1.2/beginner/t06_network/#t06tf)
+    * [PyTorch](tutorials/r1.2/beginner/t06_network/#t06torch)
+    * [fe.backend](tutorials/r1.2/beginner/t06_network/#t06backend)
+* [Related Apphub Examples](tutorials/r1.2/beginner/t06_network/#t06apphub)
 
 <a id='t06network'></a>
 
@@ -17,7 +17,7 @@ In this tutorial we are going to cover:
  
 Here we show two `Network` example graphs to enhance the concept:
 
-<img src="assets/branches/r1.2/tutorial/resources/t06_network_example.png" alt="drawing" width="1000"/> 
+<img src=assets/branches/r1.2/tutorial/resources/t06_network_example.png alt="drawing" width="1000"/> 
 
 
 
@@ -27,20 +27,20 @@ As the figure shows, models (orange) are only piece of a `Network`. It also incl
 
 ## TensorOp and its Children
 
-A `Network` is composed of basic units called `TensorOps`. All of the building blocks inside a `Network` should derive from the `TensorOp` base class. A `TensorOp` is a kind of `Op` and therefore follows the same rules described in [Tutorial 3](./tutorials/r1.2/beginner/t03_operator). 
+A `Network` is composed of basic units called `TensorOps`. All of the building blocks inside a `Network` should derive from the `TensorOp` base class. A `TensorOp` is a kind of `Op` and therefore follows the same rules described in [Tutorial 3](tutorials/r1.2/beginner/t03_operator). 
 
-<img src="assets/branches/r1.2/tutorial/resources/t06_tensorop_class.png" alt="drawing" width="500"/>
+<img src=assets/branches/r1.2/tutorial/resources/t06_tensorop_class.png alt="drawing" width="500"/>
 
 There are some common `TensorOp` classes we would like to specially mention because of their prevalence:
 
 ### ModelOp
-Any model instance created from `fe.build` (see [Tutorial 5](./tutorials/r1.2/beginner/t05_model)) needs to be packaged as a `ModelOp` such that it can interact with other components inside the `Network` API. The orange blocks in the first figure are `ModelOps`.
+Any model instance created from `fe.build` (see [Tutorial 5](tutorials/r1.2/beginner/t05_model)) needs to be packaged as a `ModelOp` such that it can interact with other components inside the `Network` API. The orange blocks in the first figure are `ModelOps`.
 
 ### UpdateOp
 FastEstimator use `UpdateOp` to associate the model with its loss. Unlike other `Ops` that use `inputs` and `outputs` for expressing their connections, `UpdateOp` uses the arguments `loss`, and `model` instead. The green blocks in the first figure are `UpdateOps`.
 
 ### Others (loss, gradient, meta, etc.)
-There are many ready-to-use `TensorOps` that users can directly import from `fe.op.tensorop`. Some examples include loss and gradient computation ops. There is also a category of `TensorOp` called `MetaOp`, which takes other Ops as input and generates more complex execution graphs (see [Advanced Tutorial 9](./tutorials/r1.2/advanced/t09_meta_ops)).
+There are many ready-to-use `TensorOps` that users can directly import from `fe.op.tensorop`. Some examples include loss and gradient computation ops. There is also a category of `TensorOp` called `MetaOp`, which takes other Ops as input and generates more complex execution graphs (see [Advanced Tutorial 9](tutorials/r1.2/advanced/t09_meta_ops)).
 
 For all available Ops please check out the FastEstimator API.
 
@@ -52,7 +52,7 @@ FastEstimator provides flexibility that allows users to customize their own `Ten
 
 If you want to customize a `TensorOp` by directly leveraging API calls from TensorFlow or PyTorch, **please make sure that all of the `TensorOp`s in the `Network` are backend-consistent**. In other words, you cannot have `TensorOp`s built specifically for TensorFlow and PyTorch in the same `Network`. Note that the `ModelOp` backend is determined by which library the model function uses, and so must be consistent with any custom `TensorOp` that you write.
 
-Here we are going to demonstrate how to build a `TenorOp` that takes high dimensional inputs and returns an average scalar value. For more advanced tutorial of customizing a `TensorOp` please check out [Advanced Tutorial 3](./tutorials/r1.2/advanced/t03_operator). 
+Here we are going to demonstrate how to build a `TenorOp` that takes high dimensional inputs and returns an average scalar value. For more advanced tutorial of customizing a `TensorOp` please check out [Advanced Tutorial 3](tutorials/r1.2/advanced/t03_operator). 
 
 <a id='t06tf'></a>
 
@@ -102,5 +102,5 @@ class ReduceMean(TensorOp):
 ## Apphub Examples
 You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
 
-* [Fast Style Transfer](./examples/r1.2/style_transfer/fst_coco/fst)
-* [DC-GAN](./examples/r1.2/image_generation/dcgan/dcgan)
+* [Fast Style Transfer](examples/r1.2/style_transfer/fst_coco/fst)
+* [DC-GAN](examples/r1.2/image_generation/dcgan/dcgan)

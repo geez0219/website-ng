@@ -2,14 +2,14 @@
 
 ## Overview
 In this tutorial, we will discuss:
-* [Meta Op Overview](./tutorials/r1.2/advanced/t09_meta_ops#ta09mo)
-* [Sometimes](./tutorials/r1.2/advanced/t09_meta_ops#ta09so)
-* [OneOf](./tutorials/r1.2/advanced/t09_meta_ops#ta09oo)
-* [Repeat](./tutorials/r1.2/advanced/t09_meta_ops#ta09re)
-    * [Static](./tutorials/r1.2/advanced/t09_meta_ops#ta09res)
-    * [Dynamic](./tutorials/r1.2/advanced/t09_meta_ops#ta09red)
-* [Fuse](./tutorials/r1.2/advanced/t09_meta_ops#ta09fu)
-* [Related Apphub Examples](./tutorials/r1.2/advanced/t09_meta_ops#ta09rae)
+* [Meta Op Overview](tutorials/r1.2/advanced/t09_meta_ops/#ta09mo)
+* [Sometimes](tutorials/r1.2/advanced/t09_meta_ops/#ta09so)
+* [OneOf](tutorials/r1.2/advanced/t09_meta_ops/#ta09oo)
+* [Repeat](tutorials/r1.2/advanced/t09_meta_ops/#ta09re)
+    * [Static](tutorials/r1.2/advanced/t09_meta_ops/#ta09res)
+    * [Dynamic](tutorials/r1.2/advanced/t09_meta_ops/#ta09red)
+* [Fuse](tutorials/r1.2/advanced/t09_meta_ops/#ta09fu)
+* [Related Apphub Examples](tutorials/r1.2/advanced/t09_meta_ops/#ta09rae)
 
 ## Preliminary Setup
 
@@ -37,14 +37,14 @@ class AddOne(NumpyOp):
 <a id='ta09mo'></a>
 
 ## Meta Op Overview
-We learned about the operator structure in [Beginner Tutorial 3](./tutorials/r1.2/beginner/t03_operator). Operators are used to build complex computation graphs in FastEstimator. 
+We learned about the operator structure in [Beginner Tutorial 3](tutorials/r1.2/beginner/t03_operator). Operators are used to build complex computation graphs in FastEstimator. 
 
 Meta Ops are Operators which take other Operators as inputs and modify their functionality. These can allow for much more complicated computation graphs, as we will see in the following examples. They are available as both NumpyOps for use in a `Pipeline`, and as TensorOps for use in a `Network`.
 
 <a id='ta09so'></a>
 
 ## Sometimes
-`Sometimes` is a meta op which applies a given Op with a specified probability, by default 50% of the time. The `Sometimes` Op cannot be used to create keys which do not already exist in the data dictionary, since then it would not be clear what should be done when the Op decides not to execute. One convenient way to create default values is to first use a `LambdaOp`, as described in [Advanced Tutorial 3](./tutorials/r1.2/advanced/t03_operator). 
+`Sometimes` is a meta op which applies a given Op with a specified probability, by default 50% of the time. The `Sometimes` Op cannot be used to create keys which do not already exist in the data dictionary, since then it would not be clear what should be done when the Op decides not to execute. One convenient way to create default values is to first use a `LambdaOp`, as described in [Advanced Tutorial 3](tutorials/r1.2/advanced/t03_operator). 
 
 
 ```python
@@ -204,4 +204,4 @@ fig = img.paint_figure()
 
 You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
 
-* [Semantic Segmentation](./examples/r1.2/semantic_segmentation/unet/unet)
+* [Semantic Segmentation](examples/r1.2/semantic_segmentation/unet/unet)

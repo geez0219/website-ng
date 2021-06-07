@@ -1,17 +1,17 @@
 # Advanced Tutorial 5: Scheduler
 In this tutorial, we will talk about:
-* [Scheduler](./tutorials/r1.1/advanced/t05_scheduler#ta05scheduler)
-    * [Concept](./tutorials/r1.1/advanced/t05_scheduler#ta05concept)
-    * [EpochScheduler](./tutorials/r1.1/advanced/t05_scheduler#ta05epoch)
-    * [RepeatScheduler](./tutorials/r1.1/advanced/t05_scheduler#ta05repeat)
-* [Things You Can Schedule](./tutorials/r1.1/advanced/t05_scheduler#ta05things)
-    * [Datasets](./tutorials/r1.1/advanced/t05_scheduler#ta05dataset)
-    * [Batch Size](./tutorials/r1.1/advanced/t05_scheduler#ta05batch)
-    * [NumpyOps](./tutorials/r1.1/advanced/t05_scheduler#ta05numpy)
-    * [Optimizers](./tutorials/r1.1/advanced/t05_scheduler#ta05optimizer)
-    * [TensorOps](./tutorials/r1.1/advanced/t05_scheduler#ta05tensor)
-    * [Traces](./tutorials/r1.1/advanced/t05_scheduler#ta05trace)
-* [Related Apphub Examples](./tutorials/r1.1/advanced/t05_scheduler#ta05apphub)
+* [Scheduler](tutorials/r1.1/advanced/t05_scheduler/#ta05scheduler)
+    * [Concept](tutorials/r1.1/advanced/t05_scheduler/#ta05concept)
+    * [EpochScheduler](tutorials/r1.1/advanced/t05_scheduler/#ta05epoch)
+    * [RepeatScheduler](tutorials/r1.1/advanced/t05_scheduler/#ta05repeat)
+* [Things You Can Schedule](tutorials/r1.1/advanced/t05_scheduler/#ta05things)
+    * [Datasets](tutorials/r1.1/advanced/t05_scheduler/#ta05dataset)
+    * [Batch Size](tutorials/r1.1/advanced/t05_scheduler/#ta05batch)
+    * [NumpyOps](tutorials/r1.1/advanced/t05_scheduler/#ta05numpy)
+    * [Optimizers](tutorials/r1.1/advanced/t05_scheduler/#ta05optimizer)
+    * [TensorOps](tutorials/r1.1/advanced/t05_scheduler/#ta05tensor)
+    * [Traces](tutorials/r1.1/advanced/t05_scheduler/#ta05trace)
+* [Related Apphub Examples](tutorials/r1.1/advanced/t05_scheduler/#ta05apphub)
 
 <a id='ta05scheduler'></a>
 
@@ -237,4 +237,4 @@ estimator.fit()
 ## Apphub Examples
 You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
 
-* [PGGAN](./examples/r1.1/image_generation/pggan)
+* [PGGAN](examples/r1.1/image_generation/pggan/pggan)

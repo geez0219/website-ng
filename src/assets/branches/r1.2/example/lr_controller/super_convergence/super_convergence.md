@@ -35,7 +35,7 @@ save_dir=tempfile.mkdtemp()
 ```
 
 ## Network Architecture and Data Pipeline
-We will use almost the same image classification configuration of the other Apphub example: [CIFAR10 Fast](./examples/r1.2/image_classification/cifar10_fast/cifar10_fast) including network architecture and data pipeline. The only difference is that we use SGD optimizer instead of Adam because author of the paper specially pointed out the incompatibility between Adam optimizer and super-convergence. 
+We will use almost the same image classification configuration of the other Apphub example: [CIFAR10 Fast](examples/r1.2/image_classification/cifar10_fast/cifar10_fast) including network architecture and data pipeline. The only difference is that we use SGD optimizer instead of Adam because author of the paper specially pointed out the incompatibility between Adam optimizer and super-convergence. 
 
 
 ```python

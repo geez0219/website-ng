@@ -1,4 +1,4 @@
-## EpochScheduler<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/schedule/schedule.py/#L85-L145>View source on Github</a>
+## EpochScheduler<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/schedule/schedule.py/#L90-L157>View source on Github</a>
 ```python
 EpochScheduler(
 	epoch_dict: Dict[int, ~T]

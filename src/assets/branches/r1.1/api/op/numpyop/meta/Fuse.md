@@ -1,4 +1,4 @@
-## Fuse<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/numpyop/meta/fuse.py/#L25-L57>View source on Github</a>
+## Fuse<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/numpyop/meta/fuse.py/#L25-L60>View source on Github</a>
 ```python
 Fuse(
 	ops: Union[fastestimator.op.numpyop.numpyop.NumpyOp, List[fastestimator.op.numpyop.numpyop.NumpyOp]]

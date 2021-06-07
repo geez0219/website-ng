@@ -2,8 +2,8 @@
 
 ## Overview
 In this tutorial, we will discuss the following topics:
-* [Calculating Calibration Error](./tutorials/r1.2/advanced/t11_model_calibration#ta11error)
-* [Generating and Applying a Model Calibrator](./tutorials/r1.2/advanced/t11_model_calibration#ta11calibrator)
+* [Calculating Calibration Error](tutorials/r1.2/advanced/t11_model_calibration/#ta11error)
+* [Generating and Applying a Model Calibrator](tutorials/r1.2/advanced/t11_model_calibration/#ta11calibrator)
 
 We'll start by getting the imports out of the way:
 

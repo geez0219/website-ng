@@ -2,7 +2,7 @@
 ```python
 ImageSaver(
 	inputs: Union[str, Sequence[str]],
-	save_dir: str='/home/geez219/angular_project/website-ng2/parser_files',
+	save_dir: str='/home/geez0219/angular_projects/website-ng',
 	dpi: int=300,
 	mode: Union[str, Set[str]]=('eval', 'test')
 )

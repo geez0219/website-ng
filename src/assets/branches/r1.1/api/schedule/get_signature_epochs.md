@@ -1,4 +1,4 @@
-## get_signature_epochs<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/schedule/schedule.py/#L148-L166>View source on Github</a>
+## get_signature_epochs<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/schedule/schedule.py/#L160-L178>View source on Github</a>
 ```python
 get_signature_epochs(
 	items: List[Any],

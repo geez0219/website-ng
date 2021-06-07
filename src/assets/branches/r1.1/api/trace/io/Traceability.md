@@ -1,4 +1,4 @@
-## Traceability<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/trace/io/traceability.py/#L67-L673>View source on Github</a>
+## Traceability<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/trace/io/traceability.py/#L68-L689>View source on Github</a>
 ```python
 Traceability(
 	save_path: str,

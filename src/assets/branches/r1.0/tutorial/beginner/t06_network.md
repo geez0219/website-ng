@@ -2,13 +2,13 @@
 
 ## Overview
 In this tutorial we are going to cover:
-* [`Network` Scope](./tutorials/r1.0/beginner/t06_network#t06network)
-* [`TensorOp` and its Children](./tutorials/r1.0/beginner/t06_network#t06tensorop)
-* [How to Customize a `TensorOp`](./tutorials/r1.0/beginner/t06_network#t06customize)
-    * [TensorFlow](./tutorials/r1.0/beginner/t06_network#t06tf)
-    * [PyTorch](./tutorials/r1.0/beginner/t06_network#t06torch)
-    * [fe.backend](./tutorials/r1.0/beginner/t06_network#t06backend)
-* [Related Apphub Examples](./tutorials/r1.0/beginner/t06_network#t06apphub)
+* [`Network` Scope](tutorials/r1.0/beginner/t06_network/#t06network)
+* [`TensorOp` and its Children](tutorials/r1.0/beginner/t06_network/#t06tensorop)
+* [How to Customize a `TensorOp`](tutorials/r1.0/beginner/t06_network/#t06customize)
+    * [TensorFlow](tutorials/r1.0/beginner/t06_network/#t06tf)
+    * [PyTorch](tutorials/r1.0/beginner/t06_network/#t06torch)
+    * [fe.backend](tutorials/r1.0/beginner/t06_network/#t06backend)
+* [Related Apphub Examples](tutorials/r1.0/beginner/t06_network/#t06apphub)
 
 <a id='t06network'></a>
 
@@ -17,7 +17,7 @@ In this tutorial we are going to cover:
  
 Here we show two `Network` example graphs to enhance the concept:
 
-<img src="assets/branches/r1.0/tutorial/../resources/t06_network_example.png" alt="drawing" width="1000"/> 
+<img src=assets/branches/r1.0/tutorial/resources/t06_network_example.png alt="drawing" width="1000"/> 
 
 
 
@@ -27,14 +27,14 @@ As the figure shows, models (orange) are only piece of a `Network`. It also incl
 
 ## TensorOp and its Children
 
-A `Network` is composed of basic units called `TensorOps`. All of the building blocks inside a `Network` should derive from the `TensorOp` base class. A `TensorOp` is a kind of `Op` and therefore follows the same rules described in [Tutorial 3](./tutorials/r1.0/beginner/t03_operator). 
+A `Network` is composed of basic units called `TensorOps`. All of the building blocks inside a `Network` should derive from the `TensorOp` base class. A `TensorOp` is a kind of `Op` and therefore follows the same rules described in [tutorial 3](tutorials/r1.0/beginner/t03_operator). 
 
-<img src="assets/branches/r1.0/tutorial/../resources/t06_tensorop_class.png" alt="drawing" width="500"/>
+<img src=assets/branches/r1.0/tutorial/resources/t06_tensorop_class.png alt="drawing" width="500"/>
 
 There are some common `TensorOp` classes we would like to specially mention because of their prevalence:
 
 ### ModelOp
-Any model instance created from `fe.build` (see [Tutorial 5](./tutorials/r1.0/beginner/t05_model)) needs to be packaged as a `ModelOp` such that it can interact with other components inside the `Network` API. The orange blocks in the first figure are `ModelOps`.
+Any model instance created from `fe.build` (see [tutorial 5](tutorials/r1.0/beginner/t05_model)) needs to be packaged as a `ModelOp` such that it can interact with other components inside the `Network` API. The orange blocks in the first figure are `ModelOps`.
 
 ### UpdateOp
 FastEstimator use `UpdateOp` to associate the model with its loss. Unlike other `Ops` that use `inputs` and `outputs` for expressing their connections, `UpdateOp` uses the arguments `loss`, and `model` instead. The green blocks in the first figure are `UpdateOps`.
@@ -100,5 +100,5 @@ class ReduceMean(TensorOp):
 ## Apphub Examples
 You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
 
-* [Fast Style Transfer](./examples/r1.0/style_transfer/fst)
-* [DC-GAN](./examples/r1.0/image_generation/dcgan)
+* [Fast Style Transfer](examples/r1.0/style_transfer/fst_coco/fst)
+* [DC-GAN](examples/r1.0/image_generation/dcgan/dcgan)

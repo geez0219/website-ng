@@ -1,9 +1,10 @@
 import os
 import pdb
 
-# for path, dirs, files in os.walk("src/app"):
-#     print(f"path:{path}, dirs:{dirs}, files:{files}")
-#     pdb.set_trace()
 
-for f in ["a", "b", "c"] if f != "c":
-    print(f)
+if __name__ == "__main__":
+
+    A = os.system("asdasdas")
+    B = os.system("ls")
+    C = os.system("python play2.py")
+    pdb.set_trace()
