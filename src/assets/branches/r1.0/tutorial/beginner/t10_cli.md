@@ -3,11 +3,11 @@
 ## Overview
 FastEstimator comes with a set of CLI commands that can help users train and test their models quickly. In this tutorial, we will go through the CLI usage and the arguments these CLI commands take. This tutorial is divided into the following sections:
 
-* [How Does the CLI Work](./tutorials/r1.0/beginner/t10_cli#t10intro)
-* [CLI Usage](./tutorials/r1.0/beginner/t10_cli#t10usage)
-* [Sending Input Args to `get_estimator`](./tutorials/r1.0/beginner/t10_cli#t10args)
-    * [Using --arg](./tutorials/r1.0/beginner/t10_cli#t10arg)
-    * [Using a JSON file](./tutorials/r1.0/beginner/t10_cli#t10json)
+* [How Does the CLI Work](tutorials/r1.0/beginner/t10_cli/#t10intro)
+* [CLI Usage](tutorials/r1.0/beginner/t10_cli/#t10usage)
+* [Sending Input Args to `get_estimator`](tutorials/r1.0/beginner/t10_cli/#t10args)
+    * [Using --arg](tutorials/r1.0/beginner/t10_cli/#t10arg)
+    * [Using a JSON file](tutorials/r1.0/beginner/t10_cli/#t10json)
 
 <a id='t10intro'></a>
 ## How Does the CLI Work

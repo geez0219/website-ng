@@ -1,4 +1,4 @@
-## enable_deterministic<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/estimator.py/#L436-L450>View source on Github</a>
+## enable_deterministic<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/estimator.py/#L452-L466>View source on Github</a>
 ```python
 enable_deterministic(
 	seed

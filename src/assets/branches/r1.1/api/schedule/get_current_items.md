@@ -1,4 +1,4 @@
-## get_current_items<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/schedule/schedule.py/#L169-L197>View source on Github</a>
+## get_current_items<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/schedule/schedule.py/#L181-L209>View source on Github</a>
 ```python
 get_current_items(
 	items: Iterable[Union[~T, fastestimator.schedule.schedule.Scheduler[~T]]],

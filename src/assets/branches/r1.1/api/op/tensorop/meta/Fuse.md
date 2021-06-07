@@ -1,4 +1,4 @@
-## Fuse<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/tensorop/meta/fuse.py/#L30-L82>View source on Github</a>
+## Fuse<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/tensorop/meta/fuse.py/#L30-L85>View source on Github</a>
 ```python
 Fuse(
 	ops: Union[fastestimator.op.tensorop.tensorop.TensorOp, List[fastestimator.op.tensorop.tensorop.TensorOp]]

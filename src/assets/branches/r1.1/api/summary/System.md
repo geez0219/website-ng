@@ -1,4 +1,4 @@
-## System<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/summary/system.py/#L31-L189>View source on Github</a>
+## System<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/summary/system.py/#L38-L315>View source on Github</a>
 ```python
 System(
 	network: fastestimator.network.BaseNetwork,
@@ -72,10 +72,11 @@ This class is intentionally not @traceable.
 
 ---
 
-### load_state<span class="tag">method of System</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/summary/system.py/#L115-L124>View source on Github</a>
+### load_state<span class="tag">method of System</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/summary/system.py/#L203-L232>View source on Github</a>
 ```python
 load_state(
-	self, json_path
+	self,
+	load_dir: str
 )
 -> None
 ```
@@ -85,11 +86,16 @@ Load training state.
 <h4>Args:</h4>
 
 
-* **json_path**: The json file path to load from.
+* **load_dir**: The directory from which to reload the state. 
+
+<h4>Raises:</h4>
+
+
+* **FileNotFoundError**: If necessary files can not be found.
 
 ---
 
-### reset<span class="tag">method of System</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/summary/system.py/#L153-L165>View source on Github</a>
+### reset<span class="tag">method of System</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/summary/system.py/#L138-L150>View source on Github</a>
 ```python
 reset(
 	self,
@@ -110,7 +116,7 @@ Reset the current `System` for a new round of training, including a new `Summary
 
 ---
 
-### reset_for_test<span class="tag">method of System</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/summary/system.py/#L167-L179>View source on Github</a>
+### reset_for_test<span class="tag">method of System</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/summary/system.py/#L152-L164>View source on Github</a>
 ```python
 reset_for_test(
 	self,
@@ -128,10 +134,11 @@ Partially reset the current `System` object for a new round of testing.
 
 ---
 
-### save_state<span class="tag">method of System</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/summary/system.py/#L126-L135>View source on Github</a>
+### save_state<span class="tag">method of System</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/summary/system.py/#L176-L201>View source on Github</a>
 ```python
 save_state(
-	self, json_path
+	self,
+	save_dir: str
 )
 -> None
 ```
@@ -141,11 +148,11 @@ Load training state.
 <h4>Args:</h4>
 
 
-* **json_path**: The json file path to save to.
+* **save_dir**: The directory into which to save the state
 
 ---
 
-### update_batch_idx<span class="tag">method of System</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/summary/system.py/#L145-L151>View source on Github</a>
+### update_batch_idx<span class="tag">method of System</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/summary/system.py/#L130-L136>View source on Github</a>
 ```python
 update_batch_idx(
 	self
@@ -157,7 +164,7 @@ Increment the current `batch_idx`.
 
 ---
 
-### update_global_step<span class="tag">method of System</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/summary/system.py/#L137-L143>View source on Github</a>
+### update_global_step<span class="tag">method of System</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/summary/system.py/#L122-L128>View source on Github</a>
 ```python
 update_global_step(
 	self
@@ -169,7 +176,7 @@ Increment the current `global_step`.
 
 ---
 
-### write_summary<span class="tag">method of System</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/summary/system.py/#L181-L189>View source on Github</a>
+### write_summary<span class="tag">method of System</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/summary/system.py/#L166-L174>View source on Github</a>
 ```python
 write_summary(
 	self,

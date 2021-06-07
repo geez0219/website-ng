@@ -2,9 +2,9 @@
 
 ## Overview
 In this tutorial, we will discuss:
-* [Overview and Dependencies](./tutorials/r1.1/advanced/t10_report_generation#ta10od)
-* [Traceability](./tutorials/r1.1/advanced/t10_report_generation#ta10t)
-* [Test Report](./tutorials/r1.1/advanced/t10_report_generation#ta10tr)
+* [Overview and Dependencies](tutorials/r1.1/advanced/t10_report_generation/#ta10od)
+* [Traceability](tutorials/r1.1/advanced/t10_report_generation/#ta10t)
+* [Test Report](tutorials/r1.1/advanced/t10_report_generation/#ta10tr)
 
 ## Preliminary Setup
 
@@ -177,7 +177,7 @@ If everything went according to plan, then inside your root save directory you s
         sample_mnist_report.txt
 ```
 
-You could then switch up your experiment parameters and call .fit() with a new experiment name in order to write more reports into the same folder. A call to `fastestimator logs ./resources` would then allow you to easily compare these experiments, as described in [Advanced Tutorial 6](./tutorials/r1.1/advanced/t06_summary)
+You could then switch up your experiment parameters and call .fit() with a new experiment name in order to write more reports into the same folder. A call to `fastestimator logs ./resources` would then allow you to easily compare these experiments, as described in [Advanced Tutorial 6](tutorials/r1.1/advanced/t06_summary)
 
 Our report should look something like this (use Chrome or Firefox to view):
 
@@ -194,7 +194,7 @@ IFrame('../resources/t10a_traceability.pdf', width=600, height=800)
 <iframe
     width="600"
     height="800"
-    src="assets/branches/r1.1/tutorial/../resources/t10a_traceability.pdf"
+    src=assets/branches/r1.1/tutorial/resources/t10a_traceability.pdf
     frameborder="0"
     allowfullscreen
 ></iframe>
@@ -314,7 +314,7 @@ IFrame('../resources/t10a_test.pdf', width=600, height=800)
 <iframe
     width="600"
     height="800"
-    src="assets/branches/r1.1/tutorial/../resources/t10a_test.pdf"
+    src=assets/branches/r1.1/tutorial/resources/t10a_test.pdf
     frameborder="0"
     allowfullscreen
 ></iframe>

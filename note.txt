@@ -1,0 +1,114 @@
+1. don't need to call parse advanced tutorial and beginner tutorial separately
+2. make overall invoking script and return error code while internal script fail
+3. make script to parse tutorial and example become the same
+4. make apphub reference links to apphub and tutorial work
+5. make the parser script not assume with only single level
+
+-------------------------------------------------------------------
+
+what is the difference between apphub and tutorial
+1. apphub parse the README.md to know the mapping from file name to display name
+
+github file structure
+
+.tutorial/
+├── advanced/
+│   ├── t01_dataset.ipynb
+│   ├── t02_pipeline.ipynb
+│   └── ...
+├── beginner/
+│   ├── t01_getting_started.ipynb
+│   ├── t02_dataset.ipynb
+│   └── ...
+└── resources
+    ├── t01_api.png
+    └── ...
+
+
+../r1.2
+├── tutorial/
+│    ├── advanced/
+│    │   ├── t01_dataset.md
+│    │   ├── t02_pipeline.md
+│    │   └── ...
+│    └── beginner/
+│        ├── t01_getting_started.md
+│        ├── t01_getting_started_files/
+|        |   └─ t01_getting_started_19_1.png
+│        ├── t02_dataset.md
+|        └── ...
+└── resources/
+    ├── t01_api.png
+    └── ...
+
+
+
+
+
+.apphub/
+├── image_generation/
+│   ├── cvae/
+│   |   ├── cvae.ipynb
+|   |   └── VAE_complete.png
+|   |── pggan/
+|   |   ├── pggan.ipynb
+|   |   └── Figure/
+|   |       ├── pggan_1024x1024.png
+|   |       └── ...
+|   └── ...
+└── ...
+
+.example/
+├── image_generation/
+|   ├── cvae.md
+|   ├── cvae_files/
+|   |   ├── cvae_11_0.png
+|   |   └── ...
+|   ├── VAE_complete.png
+|   ├── pggan.md
+|   ├── pggan_files/
+|   |   ├── pggan_10_0.png
+|   |   └── ...
+|   ├── Figure/
+|   |   ├── pggan_1024x1024.png
+|   |   └── ...
+│   └── ...
+└── ...
+
+
+.apphub/
+├── image_generation/
+│   ├── cvae/
+│   |   ├── cvae.ipynb
+|   |   └── VAE_complete.png
+|   |── pggan/
+|   |   ├── pggan.ipynb
+|   |   └── Figure/
+|   |       ├── pggan_1024x1024.png
+|   |       └── ...
+|   └── ...
+└── ...
+
+
+// v4
+.apphub/
+├── image_generation/
+│   ├── cvae/
+│   |   ├── cvae.md
+|   |   ├── cvae_files/
+|   |   |   └──  cvae_11_0.png
+|   |   └── VAE_complete.png
+|   |── pggan/
+|   |   ├── pggan.md
+|   |   ├── pggan_files/
+|   |   |   └── pggan_10_0.png
+|   |   └─── Figure/
+|   |        ├── pggan_1024x1024.png
+|   |        └── ...
+|   └── ...
+└── ...
+
+* reference to tutorial (relative to tutorial .ipynb)
+* reference to apphub (relative to apphub .ipynb)
+* reference to API (relative to dir or .py)
+* reference to tag

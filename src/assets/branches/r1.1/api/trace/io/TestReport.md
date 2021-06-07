@@ -1,4 +1,4 @@
-## TestReport<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/trace/io/test_report.py/#L86-L517>View source on Github</a>
+## TestReport<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/trace/io/test_report.py/#L86-L526>View source on Github</a>
 ```python
 TestReport(
 	test_cases: Union[fastestimator.trace.io.test_report.TestCase, List[fastestimator.trace.io.test_report.TestCase]],

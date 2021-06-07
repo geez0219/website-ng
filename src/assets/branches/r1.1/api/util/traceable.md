@@ -1,8 +1,8 @@
-## traceable<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/util/traceability_util.py/#L1017-L1084>View source on Github</a>
+## traceable<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/util/traceability_util.py/#L1116-L1174>View source on Github</a>
 ```python
 traceable(
-	whitelist: Union[str, Tuple[str]]=(),
-	blacklist: Union[str, Tuple[str]]=()
+	whitelist: Union[str, Tuple[str, ...]]=(),
+	blacklist: Union[str, Tuple[str, ...]]=()
 )
 -> Callable
 ```

@@ -1,4 +1,4 @@
-## BatchDataset<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/dataset/batch_dataset.py/#L27-L237>View source on Github</a>
+## BatchDataset<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/dataset/batch_dataset.py/#L27-L240>View source on Github</a>
 ```python
 BatchDataset(
 	datasets: Union[fastestimator.dataset.dataset.FEDataset, Iterable[fastestimator.dataset.dataset.FEDataset]],
@@ -44,7 +44,7 @@ This dataset helps to enable several use-cases:
 
 ---
 
-### reset_index_maps<span class="tag">method of BatchDataset</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/dataset/batch_dataset.py/#L223-L237>View source on Github</a>
+### reset_index_maps<span class="tag">method of BatchDataset</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/dataset/batch_dataset.py/#L226-L240>View source on Github</a>
 ```python
 reset_index_maps(
 	self
@@ -108,7 +108,7 @@ This function enables several types of splitting:
 
 ---
 
-### summary<span class="tag">method of BatchDataset</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/dataset/batch_dataset.py/#L169-L179>View source on Github</a>
+### summary<span class="tag">method of BatchDataset</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/dataset/batch_dataset.py/#L172-L182>View source on Github</a>
 ```python
 summary(
 	self

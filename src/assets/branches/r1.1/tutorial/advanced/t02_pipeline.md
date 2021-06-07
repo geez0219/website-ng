@@ -4,14 +4,14 @@
 
 In this tutorial, we will discuss the following topics:
 
-* [Iterating Through Pipeline](./tutorials/r1.1/advanced/t02_pipeline#ta02itp)
-    * [Basic Concept](./tutorials/r1.1/advanced/t02_pipeline#ta02bc)
-    * [Example](./tutorials/r1.1/advanced/t02_pipeline#ta02example)
-* [Dropping Last Batch](./tutorials/r1.1/advanced/t02_pipeline#ta02dlb)
-* [Padding Batch Data](./tutorials/r1.1/advanced/t02_pipeline#ta02pbd)
-* [Benchmark Pipeline Speed](./tutorials/r1.1/advanced/t02_pipeline#ta02bps)
+* [Iterating Through Pipeline](tutorials/r1.1/advanced/t02_pipeline/#ta02itp)
+    * [Basic Concept](tutorials/r1.1/advanced/t02_pipeline/#ta02bc)
+    * [Example](tutorials/r1.1/advanced/t02_pipeline/#ta02example)
+* [Dropping Last Batch](tutorials/r1.1/advanced/t02_pipeline/#ta02dlb)
+* [Padding Batch Data](tutorials/r1.1/advanced/t02_pipeline/#ta02pbd)
+* [Benchmark Pipeline Speed](tutorials/r1.1/advanced/t02_pipeline/#ta02bps)
 
-In the [Beginner Tutorial 4](./tutorials/r1.1/beginner/t04_pipeline), we learned how to build a data pipeline that handles data loading and preprocessing tasks efficiently. Now that you have understood some basic operations in the `Pipeline`, we will demonstrate some advanced concepts and how to leverage them to create efficient `Pipelines` in this tutorial.
+In the [Beginner Tutorial 4](tutorials/r1.1/beginner/t04_pipeline), we learned how to build a data pipeline that handles data loading and preprocessing tasks efficiently. Now that you have understood some basic operations in the `Pipeline`, we will demonstrate some advanced concepts and how to leverage them to create efficient `Pipelines` in this tutorial.
 
 <a id='ta02itp'></a>
 

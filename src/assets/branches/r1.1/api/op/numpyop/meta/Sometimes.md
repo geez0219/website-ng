@@ -1,4 +1,4 @@
-## Sometimes<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/numpyop/meta/sometimes.py/#L24-L67>View source on Github</a>
+## Sometimes<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/numpyop/meta/sometimes.py/#L24-L70>View source on Github</a>
 ```python
 Sometimes(
 	numpy_op: fastestimator.op.numpyop.numpyop.NumpyOp,
@@ -23,7 +23,7 @@ invoking the Sometimes.
 
 ---
 
-### forward<span class="tag">method of Sometimes</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/numpyop/meta/sometimes.py/#L48-L67>View source on Github</a>
+### forward<span class="tag">method of Sometimes</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/op/numpyop/meta/sometimes.py/#L51-L70>View source on Github</a>
 ```python
 forward(
 	self,

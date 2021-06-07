@@ -116,7 +116,7 @@ export class TutorialComponent implements OnInit, AfterViewChecked {
     /* Scroll to the fragment postition.
        The reason for adding a scroll threshold is to scroll to the fragment position after image loaded.
        Before the counter goes to scollThreshold, the scrolling postion will stick to fragment.
-       This wook will trigger the onScroll event and trigger back to this funtion again.
+       This hook will trigger the onScroll event and trigger back to this funtion again.
        So the counter will goes extremely fast.
     */
 

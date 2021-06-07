@@ -1,4 +1,4 @@
-## trace_model<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/util/traceability_util.py/#L984-L1014>View source on Github</a>
+## trace_model<span class="tag">function</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/util/traceability_util.py/#L1083-L1113>View source on Github</a>
 ```python
 trace_model(
 	model: ~Model,

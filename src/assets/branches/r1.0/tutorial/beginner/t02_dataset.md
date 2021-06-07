@@ -3,15 +3,15 @@
 ## Overview
 In this tutorial we are going to cover three different ways to create a Dataset using FastEstimator. This tutorial is structured as follows:
 
-* [Torch Dataset Recap](./tutorials/r1.0/beginner/t02_dataset#t02Recap)
-* [FastEstimator Dataset](./tutorials/r1.0/beginner/t02_dataset#t02FEDS)
-    * [Dataset from disk](./tutorials/r1.0/beginner/t02_dataset#t02Disk)
-        * [LabeledDirDataset](./tutorials/r1.0/beginner/t02_dataset#t02LDirDs)
-        * [CSVDataset](./tutorials/r1.0/beginner/t02_dataset#t02CSVDS)
-    * [Dataset from memory](./tutorials/r1.0/beginner/t02_dataset#t02Memory)
-        * [NumpyDataset](./tutorials/r1.0/beginner/t02_dataset#t02Numpy)
-    * [Dataset from generator](./tutorials/r1.0/beginner/t02_dataset#t02Generator)
-* [Related Apphub Examples](./tutorials/r1.0/beginner/t02_dataset#t02Apphub)
+* [Torch Dataset Recap](tutorials/r1.0/beginner/t02_dataset/#t02Recap)
+* [FastEstimator Dataset](tutorials/r1.0/beginner/t02_dataset/#t02FEDS)
+    * [Dataset from disk](tutorials/r1.0/beginner/t02_dataset/#t02Disk)
+        * [LabeledDirDataset](tutorials/r1.0/beginner/t02_dataset/#t02LDirDs)
+        * [CSVDataset](tutorials/r1.0/beginner/t02_dataset/#t02CSVDS)
+    * [Dataset from memory](tutorials/r1.0/beginner/t02_dataset/#t02Memory)
+        * [NumpyDataset](tutorials/r1.0/beginner/t02_dataset/#t02Numpy)
+    * [Dataset from generator](tutorials/r1.0/beginner/t02_dataset/#t02Generator)
+* [Related Apphub Examples](tutorials/r1.0/beginner/t02_dataset/#t02Apphub)
 
 <a id='t02Recap'></a>
 
@@ -70,7 +70,7 @@ In this tutorial we will showcase two ways to create a Dataset from disk:
 
 To showcase this we will first have to create a dummy directory structure representing the two classes. Then we create a few files in each of the directories. The following image shows the hierarchy of our temporary data directory:
 
-<img src="assets/branches/r1.0/tutorial/../resources/t02_dataset_folder_structure.png" alt="drawing" width="200"/>
+<img src=assets/branches/r1.0/tutorial/resources/t02_dataset_folder_structure.png alt="drawing" width="200"/>
 
 Let's prepare the data according to the directory structure:
 
@@ -208,6 +208,6 @@ print(len(dataset))
 ## Apphub Examples
 You can find some practical examples of the concepts described here in the following FastEstimator Apphubs:
 
-* [UNET](./examples/r1.0/semantic_segmentation/unet)
-* [DCGAN](./examples/r1.0/image_generation/dcgan)
-* [Siamese Networks](./examples/r1.0/one_shot_learning/siamese)
+* [UNET](examples/r1.0/semantic_segmentation/unet/unet)
+* [DCGAN](examples/r1.0/image_generation/dcgan/dcgan)
+* [Siamese Networks](examples/r1.0/one_shot_learning/siamese_network/siamese)

@@ -9,8 +9,7 @@ if __name__ == "__main__":
     scripts = ["fe_parser.py", "apphub_parser.py", "tutorial_parser.py", "install_parser.py"]
     for script in scripts:
         script_path = os.path.abspath(os.path.join(__file__, "..", script))
-        os.system(
+        script_return = os.system(
             f"python {script_path} {repo_path} {output_path} {branch}")
-
-    resource_path = os.path.join(repo_path, "tutorial", "resources")
-    os.system(f"cp -r {resource_path} {output_path}")
+        if script_return:
+            raise RuntimeError(f"It had error while running {script}")

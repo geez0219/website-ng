@@ -1,4 +1,4 @@
-## Estimator<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/estimator.py/#L45-L426>View source on Github</a>
+## Estimator<span class="tag">class</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/estimator.py/#L46-L442>View source on Github</a>
 ```python
 Estimator(
 	pipeline: fastestimator.pipeline.Pipeline,
@@ -39,7 +39,7 @@ defines the whole optimization process.
 
 ---
 
-### fit<span class="tag">method of Estimator</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/estimator.py/#L103-L123>View source on Github</a>
+### fit<span class="tag">method of Estimator</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/estimator.py/#L104-L124>View source on Github</a>
 ```python
 fit(
 	self,
@@ -64,7 +64,7 @@ Train the network for the number of epochs specified by the estimator's construc
 
 ---
 
-### get_scheduled_items<span class="tag">method of Estimator</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/estimator.py/#L223-L232>View source on Github</a>
+### get_scheduled_items<span class="tag">method of Estimator</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/estimator.py/#L224-L233>View source on Github</a>
 ```python
 get_scheduled_items(
 	self,
@@ -86,7 +86,7 @@ Get a list of items considered for scheduling.
 
 ---
 
-### test<span class="tag">method of Estimator</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/estimator.py/#L157-L172>View source on Github</a>
+### test<span class="tag">method of Estimator</span><a class="sourcelink" href=https://github.com/fastestimator/fastestimator/blob/r1.1/fastestimator/estimator.py/#L158-L173>View source on Github</a>
 ```python
 test(
 	self,
