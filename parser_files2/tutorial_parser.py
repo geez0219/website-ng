@@ -32,15 +32,14 @@ import re
 import shutil
 import subprocess
 import sys
-from functools import partial
 from shutil import copy
 
-RE_SIDEBAR_TITLE = '[^A-Za-z0-9:!,$%. ()]+'
-RE_ROUTE_TITLE = '[^A-Za-z0-9 ]+'
-BRANCH = None
+T_NAME = {"repo": "tutorial", "asset": "tutorial", "route": "tutorials"}
+
+A_NAME = {"repo": "apphub", "asset": "example", "route": "examples"}
 
 
-def generateMarkdowns(source_tutorial, output_tutorial): # generateMDCopyResource
+def generate_md(source_tutorial, output_tutorial):
     """ Parse repo tutorial and generate assets tutorial for webpage.
     Args:
         source_tutorial: tutorial source (ex: fastestimator/tutorial)
@@ -78,139 +77,176 @@ def generateMarkdowns(source_tutorial, output_tutorial): # generateMDCopyResourc
     shutil.copytree(source_resources, output_resources)
 
 
-def replaceRefLink(match, tutorial_type):
+def replace_link_to_tutorial(match):
     """
-    ex: [Tutorial 2](./t02_dataset.ipynb)
-     -> [Tutorial 2](./tutorials/master/beginner/t02_dataset)
-    """
-    ref_tutorial_type = match.group(1)
-    tutorial_no = match.group(2)
-    tutorial_name = match.group(3).split('/')
+    pattern = f'^(.+)\.ipynb$'
 
-    if ref_tutorial_type != '':
-        tutorial = '[{} Tutorial {}]'.format(ref_tutorial_type, tutorial_no)
+    ex: ../beginner/t02_dataset
+     -> tutorial/r1.2/beginner/t02_dataset
+    """
+
+    return f'{T_NAME["route"]}/{BRANCH}/{match.group(1)}'
+
+
+def replace_link_to_tutorial_tag(match):
+    """
+    pattern = f'^(.+)\.ipynb#(.+)$'
+
+    ex: ../beginner/t02_dataset#t02Apphub
+     -> tutorial/r1.2/beginner/t02_dataset#t02Apphub
+    """
+
+    return f'{T_NAME["route"]}/{BRANCH}/{match.group(1)}#{match.group(2)}'
+
+
+def replace_link_to_apphub(match):
+    """
+    pattern = f'^\.\.\/{A_NAME["repo"]}\/(.+)\.ipynb$'
+
+    ex: ../../apphub/adversarial_training/fgsm/fgsm.ipynb
+        examples/r1.2/adversarial_training/fgsm/fgsm.ipynb
+    """
+    return f'{A_NAME["route"]}/{BRANCH}/{match.group(1)}'
+
+
+def replace_link_to_apphub_tag(match):
+    """
+    pattern = f'^\.\.\/{A_NAME["repo"]}\/(.+)\.ipynb#(.+)$'
+
+    ex: ../../apphub/adversarial_training/fgsm/fgsm.ipynb#model-testing
+     -> examples/r1.2/adversarial_training/fgsm/fgsm.ipynb#model-testing
+    """
+    return f'{A_NAME["route"]}/{BRANCH}/{match.group(1)}#{match.group(2)}'
+
+
+def update_link_to_page(link, rel_path):
+    """
+    tutorial to apphub
+    ex: ../../apphub/adversarial_training/fgsm/fgsm.ipynb
+     -> examples/r1.2/adversarial_training/fgsm/fgsm.ipynb
+
+    tutorial to tutorial
+    ex: ../beginner/t02_dataset
+     -> tutorial/r1.2/beginner/t02_dataset
+    """
+
+    rel_path_link = os.path.normpath(os.path.join(rel_path, link))
+
+    apphub_pattern = f'^\.\.\/{A_NAME["repo"]}\/(.+)\.ipynb$'
+    apphub_pattern_tag = f'^\.\.\/{A_NAME["repo"]}\/(.+)\.ipynb#(.+)$'
+
+    tutorial_pattern = f'^(.+)\.ipynb$'
+    tutorial_pattern_tag = f'^(.+)\.ipynb#(.+)$'
+
+    if rel_path_link.startswith(f'../{A_NAME["repo"]}'):  # to apphub
+        if re.search(apphub_pattern, rel_path_link):
+            link = re.sub(apphub_pattern, replace_link_to_apphub,
+                          rel_path_link)
+        elif re.search(apphub_pattern_tag, rel_path_link):
+            link = re.sub(apphub_pattern_tag, replace_link_to_apphub_tag,
+                          rel_path_link)
+
+    elif rel_path_link.startswith(f'../'):
+        raise RuntimeError(
+            "The page link need to point to either tutorial or apphub")
+    else:  # to tutorial
+        if re.search(tutorial_pattern, rel_path_link):
+            link = re.sub(tutorial_pattern, replace_link_to_tutorial,
+                          rel_path_link)
+        elif re.search(tutorial_pattern_tag, rel_path_link):
+            link = re.sub(tutorial_pattern_tag, replace_link_to_tutorial_tag,
+                          rel_path_link)
+
+    return link
+
+
+def update_link_to_asset(link, rel_path):
+    """to repo asset file
+    ex: ../resources/t01_api.png
+     -> assets/branches/r1.2/tutorial/resources/t01_api.png
+    """
+    prefix = f"assets/branches/{BRANCH}"
+    rel_path_link = os.path.normpath(
+        os.path.join(T_NAME["asset"], rel_path, link))
+
+    return os.path.join(prefix, rel_path_link)
+
+
+def update_link_pure_tag(link, rel_path, fname):
+    """to same apphub with tag
+    ex: #t02Apphub
+     -> tutorial/r1.2/beginner/t02_dataset#t02Apphub
+    """
+    fname, _ = os.path.splitext(fname)
+    link = os.path.join(T_NAME["route"], BRANCH, rel_path, fname, link)
+    return link
+
+
+def update_link(link, rel_path, fname):
+    link = link.strip()
+    url_pattern = r'^https?:\/\/|^www.'
+    nb_pattern = r'\.ipynb$|\.ipynb#(.)+$'
+    tag_pattern = r'^#[^\/]+$'
+
+    if re.search(url_pattern, link):  # if the link is url
+        pass
+    elif re.search(nb_pattern, link):  # if it points to nb file
+        link = update_link_to_page(link, rel_path)
+
+    elif re.search(tag_pattern, link):  # if it points to pure hashtag
+        link = update_link_pure_tag(link, rel_path, fname)
+
     else:
-        tutorial = '[Tutorial {}]'.format(tutorial_no)
-    if len(tutorial_name) > 1:
-        return f'{tutorial}(./tutorials/{BRANCH}/{tutorial_name[-2]}/{tutorial_name[-1]})'
-    else:
-        return f'{tutorial}(./tutorials/{BRANCH}/{tutorial_type}/{tutorial_name[-1]})'
+        link = update_link_to_asset(link, rel_path)
+
+    return link
 
 
-def replaceApphubLink(match):
-    """
-    ex: [MNIST](../../apphub/image_classification/mnist/mnist.ipynb)
-     -> [MNIST](./examples/r1.2/image_classification/mnist/mnist)
-    """
-    apphub_link_segments = match.group(3).strip()
+def update_line(line, rel_path, fname):
+    link_pattern1 = r'\[([^\[]+)\]\(([^\)]+)\)'
+    link_pattern2 = r'src=[\"\']([^\"\']+)[\"\']'
+    link_pattern3 = r'href=[\"\']([^\"\']+)[\"\']'
+    if re.search(link_pattern1, line):
+        line = re.sub(
+            link_pattern1, lambda match:
+            f'[{match.group(1)}]({update_link(match.group(2), rel_path, fname)})',
+            line)
+    elif re.search(link_pattern2, line):
+        # pdb.set_trace()
+        line = re.sub(
+            link_pattern2, lambda match:
+            f'src={update_link(match.group(1), rel_path, fname)}', line)
 
-    return f'[{match.group(1)}](./examples/{BRANCH}/{apphub_link_segments})'
+    elif re.search(link_pattern3, line):
+        line = re.sub(
+            link_pattern3, lambda match:
+            f'href={update_link(match.group(1), rel_path, fname)}', line)
 
-
-def replaceAnchorLink(match, tutorial_type, fname):
-    """
-    ex: [Traces](#ta05trace)
-     -> [Traces](./tutorials/r1.2/advanced/t05_scheduler#ta05trace)
-    """
-    anchor_text = match.group(1)
-    anchor_link = match.group(2)
-    fname = fname.split('/')[-1].split('.')[0]
-    return f'[{anchor_text}](./tutorials/{BRANCH}/{tutorial_type}/{fname}#{anchor_link})'
-
-
-def replaceRepoLink(match):
-    """
-
-    ex: [Architectures](../../fastestimator/architecture)    # in beginner t05
-     -> [Architectures](https://github.com/fastestimator/fastestimator/tree/{BRANCH}/fastestimator/architecture)
-    """
-    name = match.group(1)
-    url = match.group(2)
-    fe_url = f'https://github.com/fastestimator/fastestimator/tree/{BRANCH}/'
-    pdb.set_trace()
-    return '[{}]({})'.format(name, os.path.join(fe_url, url))
+    return line
 
 
-def replaceImgLink(match):
-    """
-    deal with src=""
-    ex: <img src="../resources/t01_api.png" alt="drawing" width="700"/>
-     -> <img src="assets/branches/master/tutorial/resources/t01_api.png" alt="drawing" width="700"/>
-    """
-    path_prefix = f'assets/branches/{BRANCH}/tutorial'
-
-    src_strip = "/".join(match.group(1).split(
-        "/")[1:])  # strip the "../" from "../resources/t01_api.png"
-    new_src = os.path.join(path_prefix, src_strip)
-
-    return f'src=\"{new_src}\"'
-
-
-def replaceImgLink2(match, tutorial_type):
-    """
-    deal with img link from papermill nbconvert generated markdown
-    ex: ![png](t01_getting_started_files/t01_getting_started_19_1.png)
-     -> ![png](assets/branches/master/tutorial/beginner/t01_getting_started_files/t01_getting_started_19_1.png)
-    """
-    return f'![png](assets/branches/{BRANCH}/tutorial/{tutorial_type}/{match.group(1)})'
-
-
-def replaceLink(line, tutorial_type, fname):
-    re_ref_link = r'\[(\w*)\s*[tT]utorial\s*(\d+)\]\(\.+\/([^\)]*)\.ipynb\)'
-    re_apphub_link = r'\[([\w\d\-\/\s]+)\]\((.+apphub/(.+))\.ipynb\)'
-    re_anchortag_link = r'\[([^\]]+)\]\(#([^)]+)\)'
-    re_repo_link = r'\[([\w|\d|\s]*)\]\([\./]*([^\)\.#]*)(?:\.py|)\)'
-    re_src_img_link = r'src=\"([^ ]+)\"'
-    re_png_img_link = r'!\[png\]\((.+)\)'
-
-    output_line = re.sub(re_repo_link, replaceRepoLink, line)
-    output_line = re.sub(
-        re_ref_link, lambda x: replaceRefLink(x, tutorial_type=tutorial_type),
-        output_line)
-    output_line = re.sub(re_apphub_link, replaceApphubLink, output_line)
-    output_line = re.sub(
-        re_anchortag_link, lambda x: replaceAnchorLink(
-            x, tutorial_type=tutorial_type, fname=fname), output_line)
-
-    output_line = re.sub(re_src_img_link, replaceImgLink, output_line)
-    output_line = re.sub(
-        re_png_img_link,
-        lambda x: replaceImgLink2(x, tutorial_type=tutorial_type), output_line)
-
-    return output_line
-
-
-def updateLink(mdfile, tutorial_type):
-    """Replace all links to fit web application.
-
-    Args:
-        mdfile: markdown file path
-        tutorial_type = Type of tutorial e.g. 'beginner' or 'advanced'
-    """
-    mdcontent = open(mdfile).readlines()
-    mdfile_updated = []
-    for line in mdcontent:
-        line = replaceLink(line, tutorial_type, mdfile)
-        mdfile_updated.append(line)
-
-    with open(mdfile, 'w') as f:
-        f.write("".join(mdfile_updated))
-
-
-def updateLinkLoop(target_dir):
+def update_md(target_dir):
     """ Replace all links in the tutorials of src/assets to fit web application.
 
     Args:
         target_dir: The path to tutorial dir that is full of md file generated by papermill nbconvert.
     """
-    for tutorial_type in ["advanced", "beginner"]:
-        for f in os.listdir(os.path.join(target_dir, tutorial_type)):
+    for path, dirs, files in os.walk(target_dir):
+        rel_path = os.path.relpath(path, target_dir)
+        for f in files:
             if f.endswith('.md'):
-                updateLink(os.path.join(target_dir, tutorial_type, f),
-                           tutorial_type)
+                md_path = os.path.join(path, f)
+                mdcontent = open(md_path).readlines()
+                mdfile_updated = []
+                for line in mdcontent:
+                    line = update_line(line, rel_path, f)
+                    mdfile_updated.append(line)
+
+                with open(md_path, 'w') as f:
+                    f.write("".join(mdfile_updated))
 
 
-def createJson(target_dir):
+def create_json(target_dir):
     """ Create structure.json
 
     Args:
@@ -218,7 +254,7 @@ def createJson(target_dir):
             assume file structure need to be:
     """
     dir_arr = []
-    for tutorial_type in ["advanced", "beginner"]:
+    for tutorial_type in ["beginner", "advanced"]:
         dir_obj = {
             "name": tutorial_type,
             "displayName": tutorial_type.capitalize() + ' Tutorials',
@@ -230,7 +266,8 @@ def createJson(target_dir):
             if f.endswith('.md'):
                 # open updated markdown file and extract table of content
                 title = open(os.path.join(sub_tutorial_dir, f)).readlines()[0]
-                title = re.sub(RE_SIDEBAR_TITLE, '', title)
+                title = re.sub(r'[^A-Za-z0-9:!,$%. ()]+', '',
+                               title)  # remove illegal characters
                 f_obj = {
                     "name": os.path.join(tutorial_type, f),
                     "displayName": title
@@ -247,7 +284,6 @@ def createJson(target_dir):
 
 
 if __name__ == '__main__':
-    # take fastestimator dir path and output dir
     FE_DIR = sys.argv[1]
     OUTPUT_PATH = sys.argv[2]
     BRANCH = sys.argv[3]
@@ -255,6 +291,6 @@ if __name__ == '__main__':
     source_path = os.path.join(FE_DIR, "tutorial")
     output_path = os.path.join(OUTPUT_PATH, "tutorial")
 
-    generateMarkdowns(source_path, output_path)  # create markdown
-    updateLinkLoop(output_path)
-    createJson(output_path)
+    generate_md(source_path, output_path)
+    update_md(output_path)
+    create_json(output_path)
