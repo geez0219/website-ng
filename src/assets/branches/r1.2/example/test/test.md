@@ -16,7 +16,7 @@
 [gif](https://1.bp.blogspot.com/--vH4PKpE9Yo/Xo4a2BYervI/AAAAAAAAFpM/vaFDwPXOyAokAC8Xh852DzOgEs22NhbXwCLcBGAsYHQ/s1600/image4.gif)
 
 ### to outside folder
-[architecture](assets/branches/r1.2/fastestimator/architecture)
+[architecture](https://github.com/fastestimator/fastestimator/tree/r1.2/fastestimator/architecture)
 
 ## Test href=
 ### link to other apphub
