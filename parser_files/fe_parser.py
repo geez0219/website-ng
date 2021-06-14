@@ -1,3 +1,34 @@
+""" FastEstimator API parser. This script parses the fastestimator/fastestimator folder and generates the assets files
+    for webpage
+
+    The example parsing case where...
+    * repo_dir = "fastestimator"
+    * output_dir = "branches/r1.2/"
+    * branch = "r1.2"
+
+    (repo)                                  (asset)
+    fastestimator/fastestimaor/             branches/r1.2/api/
+    ├── estimator.py                        ├── fe/
+    ├── network.py                          |   ├── build.md
+    ├── pipeline.py                         |   ├── Esimator.md
+    ├── backend/                            |   ├── Network.md
+    │   ├── abs.py              =>          |   ├── Pipeline.md
+    │   ├── argmax.py                       |   └── ....
+    │   └── ...                             ├── backend/
+    └── ...                                 │   ├── abs.md
+                                            │   ├── argmax.md
+                                            │   └── ...
+                                            └── ...
+    Note:
+    * The repo to asset follow the folder-to-folder rules whcih means if there is a folder in the repo, you can see the
+        correspoding folder in asset with same name.
+    * The asset have "fe" folder to accommodate all files in fastestimator/fastesitmator levels
+    * For each folder, the parser will read every python file in that folder level and generate markdown file for each
+        function and class.
+    * The repo to asset doesn't follow file-to-file rules which means one python file might result in mutilple markdown
+      file.
+
+"""
 import os
 import sys
 from os import sep
@@ -240,12 +271,11 @@ class DocString:
         if self.args:
             content.append(self._format_args(level))
 
-        if self.raises:
-            content.append(self._format_raises(level))
-            # pdb.set_trace()
-
         if self.returns:
             content.append(self._format_returns(level))
+
+        if self.raises:
+            content.append(self._format_raises(level))
 
         return "".join(content)
 
