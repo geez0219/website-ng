@@ -137,7 +137,7 @@ class APIMarkdown:
     def process_module_name(name):
         """ fastestimator -> fe.dataset.data.cifar10
         """
-        return re.sub("^fastestimator\.", "tf.", name)
+        return re.sub("^fastestimator\.", "fe.", name)
 
     def file_to_md(self, obj):
         content = []
