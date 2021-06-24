@@ -1,39 +1,99 @@
-# FeWebsite
+# FasEstimator website
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.6.
+## Pipeline to deploy website
+The FastEstimator website has a pipeline to handle every stage of deployment including:
+1. parsing FE online repo
+2. building web application
+3. scraping web page (collecting search index)
+4. search server update
+5. website deployment
 
-## Development server
+The pipeline is built on Jenkins (http://jenkins.fastestimator.org:8080/job/fastestimator_web/) and its Jenkinsfile is
+in the `CICD` folder.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+---
 
-Run `npm run dev:ssr` for a dev server of SSR
+## Parsing FE
+```
+python parser_files/parse_all.py <fe_path> <output_path> <branch>
+```
+This will parse the FE repo at \<fe_path\> and generates the assets file dir at \<output_path\>. \<branch\> is the
+git branch of that FE repo.
 
+---
 
-## Code scaffolding
+## Building Website
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Configure
+* step 0: build docker image
+    ```
+    docker build -t <image> - < docker/Dockerfile
+    ```
 
-## Build
+* step 1: build docker environment (`--network host` is required for localhost mapping)
+    ```
+    docker run -it --network host <image>
+    ```
+* step 2: install npm dependency
+    ```
+    npm install
+    ```
 
-### normal (SPA)
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### Test
 
-### server-side rendering (SSR)
-Run `npm run build:ssr` to build the project. To serve the build dist, run `npm run serve:ssr`
+* serve the website on localhost
+    ```
+    npm run ng serve
+    ```
 
+* serve the website on localhost (SSR)
+    ```
+    npm run dev:ssr
+    ```
 
-## Running unit tests
+### Build
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* build the website (SSR)
+    ```
+    npm run build:ssr
+    ```
 
-## Running end-to-end tests
+---
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Scraping Website
 
-## Further help
+Scraping website means crawl the website and generate the mapping of keyword to content for search server usage
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+* step 1: configure Chrome and download the Chrome Driver (docker/Dockerfile cover all)
+* step 2: serve the website (ssr)
+* step 3: run website_scraping
+    ```
+    python parsed_files/fe_scraper.py <branch> <index_dir> <chrome_driver_path>
+    ```
+  This will generate index folder at \<index_dir\>
 
-### Elastic Beanstalk
-1. compress `dist` folder and `package.json` into a zip file
-2. upload the zip file to EBS.
+---
+
+## Search server update
+Our website has own search server, therefore every time before we depoly the new website, we need to update the
+search server. Search server is set up in ec2 instance `FE-Search(don't stop)`. The server repo is https://github.com/fastestimator-util/nodejs-elasticsearch
+
+* step 1: copy the \<index_dir\> generated at scraping stage to `FE-Search(don't stop)`
+
+* step 2: run load_index.py at `FE-Search(don't stop)` instance for each branch
+    ```
+    python3 load_index.py <index_dir>/<branch> <branch>
+    ```
+
+---
+
+## Deployment (manually)
+
+* step 1: Build the website (ssr)
+* step 2: Compress the dist/ and package.json into a zip file
+
+    example code:
+    ```
+    zip -r dist.zip dist package.json
+    ```
+* step 3: Upload the zip file to AWS elastic beanstalk
