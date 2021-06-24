@@ -8,9 +8,6 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class GlobalService {
-
-  examplesURL = 'https://api.github.com/repos/fastestimator/fastestimator/contents/apphub?Accept=application/vnd.github.v3+json';
-
   versions: Version[];
   selectedVersion: string;
   latestVersion: string;
@@ -21,15 +18,6 @@ export class GlobalService {
   @Output() change: EventEmitter<boolean> = new EventEmitter();
 
   constructor(private http: HttpClient) { }
-
-  getExampleList() {
-    return this.http.get(this.examplesURL);
-  }
-
-  toggleLoading() {
-    this.loading = !this.loading;
-    this.change.emit(this.loading);
-  }
 
   setLoading() {
     this.loading = true;
